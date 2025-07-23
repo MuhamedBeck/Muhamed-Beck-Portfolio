@@ -51,7 +51,7 @@ export const LoadingScreen = ({ onComplete }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex flex-col items-center justify-center transition-opacity duration-800 ${
+      className={`fixed inset-0 z-50 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex flex-col items-center justify-center transition-opacity duration-800 overflow-x-hidden ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}>
       <div className="absolute inset-0 overflow-hidden">
@@ -61,9 +61,9 @@ export const LoadingScreen = ({ onComplete }) => {
         <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-purple-400 rounded-full animate-pulse opacity-30 animation-delay-900"></div>
       </div>
 
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-4 w-full">
         <div className="mb-8">
-          <h1 className="text-6xl md:text-8xl font-light tracking-wider mb-4">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-light tracking-wider mb-4">
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
               {text}
             </span>
@@ -76,7 +76,7 @@ export const LoadingScreen = ({ onComplete }) => {
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
             }`}>
-            <p className="text-xl md:text-2xl text-gray-300 font-light tracking-wide mb-8">
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 font-light tracking-wide mb-8 px-2">
               {subText}
             </p>
 

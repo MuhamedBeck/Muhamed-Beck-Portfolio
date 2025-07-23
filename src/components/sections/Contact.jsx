@@ -30,7 +30,6 @@ export const Contact = () => {
       })
       .catch(() => {
         setLoading(false);
-        // Optionally show error animation/message
       });
   };
   return (

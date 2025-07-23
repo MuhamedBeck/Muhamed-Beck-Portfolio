@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
+  // ...existing code...
+
   return (
     <div
       className={`fixed top-0 left-0 w-full bg-[rgba(10,10,10,0.8)] z-40 flex flex-col items-center justify-center]
@@ -16,50 +18,46 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         aria-label="Close Menu">
         &times;
       </button>
-      <a
-        href="#home"
+      <button
         onClick={() => setMenuOpen(false)}
-        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 cursor-pointer
               ${
                 menuOpen
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-5"
               }`}>
-        Home
-      </a>{" "}
-      <a
-        href="#projects"
+        <a href="#home">Home</a>
+      </button>
+      <button
         onClick={() => setMenuOpen(false)}
-        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 cursor-pointer
               ${
                 menuOpen
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-5"
               }`}>
-        Projects
-      </a>{" "}
-      <a
-        href="#contact"
+        <a href="#projects">Projects</a>
+      </button>
+      <button
         onClick={() => setMenuOpen(false)}
-        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 cursor-pointer
               ${
                 menuOpen
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-5"
               }`}>
-        Contact
-      </a>{" "}
-      <a
-        href="#about"
+        <a href="#contact">Contact</a>
+      </button>
+      <button
         onClick={() => setMenuOpen(false)}
-        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300
+        className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 cursor-pointer
               ${
                 menuOpen
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-5"
               }`}>
-        About
-      </a>{" "}
+        <a href="#about">About</a>
+      </button>
     </div>
   );
 };
