@@ -44,7 +44,7 @@ export const Projects = () => {
                   href="https://www.phoenixparkservice.de"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4">
+                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
                   Visit Website →
                 </a>
               </div>
@@ -75,7 +75,7 @@ export const Projects = () => {
                   href="https://linkedin-analyzer-amgf.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4">
+                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
                   Visit Website →
                 </a>
               </div>
@@ -83,16 +83,18 @@ export const Projects = () => {
             <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">
-                  Unit Test Generation Tool (AI)
+                  LLM Unit Test Automation (Master Thesis)
                 </h3>
                 <p className="text-gray-400 mb-4">
-                  Maven plugin for real-world projects at Infomotion. Uses
-                  OpenAI to automatically generate unit tests, streamlining test
-                  coverage and developer productivity. Not publicly accessible.
+                  Revolutionary AI-powered Maven plugin automating unit test
+                  generation for Spring Boot projects. Integrates ChatGPT with
+                  JaCoCo for intelligent test coverage analysis, achieving 96%
+                  time reduction and significant cost savings in enterprise
+                  environments.
                 </p>
               </div>
               <div className="flex flex-wrap gap-1 mb-2 justify-start">
-                {["Java", "Maven", "Spring Boot", "OpenAI API", "Jacoco"].map(
+                {["Java", "Maven", "ChatGPT", "JaCoCo", "Spring Boot"].map(
                   (tech, key) => (
                     <span
                       key={key}
@@ -104,8 +106,39 @@ export const Projects = () => {
               </div>
               <div className="flex justify-end">
                 <a
-                  href="/projects/llm-unit-test-automation"
+                  href="/projects/llm-maven-plugin"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4">
+                  View Details →
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+              <div className="flex-grow">
+                <h3 className="text-xl font-bold mb-2">
+                  AR Data Visualization (Bachelor Thesis)
+                </h3>
+                <p className="text-gray-400 mb-4">
+                  Groundbreaking research combining Augmented Reality with SAP
+                  BusinessObjects for immersive data visualization. Web-based AR
+                  solution transforming traditional reports into interactive 3D
+                  experiences.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-1 mb-2 justify-start">
+                {["Angular", "AR.js", "SAP BO", "Spring Boot", "A-Frame"].map(
+                  (tech, key) => (
+                    <span
+                      key={key}
+                      className="bg-blue-500/15 text-blue-300 py-2 px-4 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default">
+                      {tech}
+                    </span>
+                  )
+                )}
+              </div>
+              <div className="flex justify-end">
+                <a
+                  href="/projects/ar-data-visualization"
+                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
                   View Details →
                 </a>
               </div>

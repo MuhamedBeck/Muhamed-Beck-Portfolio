@@ -17,6 +17,7 @@ body {
 
 #root {
   overflow-x: hidden;
+  cursor: default;
 }
 
 @layer utilities {

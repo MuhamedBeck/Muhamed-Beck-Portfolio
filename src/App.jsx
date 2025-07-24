@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LoadingScreen } from "./components/LoadingScreen";
 import "./App.css";
 import "./index.css";
@@ -10,12 +10,26 @@ import { Projects } from "./components/sections/Projects";
 import { Contact } from "./components/sections/Contact";
 
 function App() {
-  const [isLoaded, setIstLoaded] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Check if user has visited before to determine initial state
+  const hasVisitedBefore =
+    typeof window !== "undefined"
+      ? sessionStorage.getItem("hasVisitedPortfolio")
+      : null;
+  const [isLoaded, setIstLoaded] = useState(!!hasVisitedBefore);
+  const [showLoadingScreen, setShowLoadingScreen] = useState(!hasVisitedBefore);
+
+  useEffect(() => {
+    if (!hasVisitedBefore) {
+      // Mark as visited for future navigations in this session
+      sessionStorage.setItem("hasVisitedPortfolio", "true");
+    }
+  }, [hasVisitedBefore]);
 
   return (
     <>
-      {!isLoaded && (
+      {showLoadingScreen && !isLoaded && (
         <LoadingScreen onComplete={() => setIstLoaded(true)}></LoadingScreen>
       )}
       <div
