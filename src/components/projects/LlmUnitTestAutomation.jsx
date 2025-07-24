@@ -15,7 +15,6 @@ export const LlmUnitTestAutomation = () => {
             </p>
           </div>
 
-          {/* Project summary */}
           <RevealOnScroll>
             <div className="mb-10">
               <h2 className="text-2xl font-bold text-blue-400 mb-4">
@@ -28,14 +27,11 @@ export const LlmUnitTestAutomation = () => {
                 identifies untested areas using JaCoCo, and generates
                 high-quality, ready-to-run JUnit tests—instantly.
               </p>
-
-              {/* Process Steps */}
               <div className="mt-12 p-6 bg-gradient-to-br from-gray-900/50 to-blue-950/30 rounded-xl border border-blue-900/30">
                 <h3 className="text-xl font-bold text-blue-400 mb-6 text-center">
                   Plugin Architecture & Workflow
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
-                  {/* Professional, less colorful process steps */}
                   <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-700">
                     <div className="flex items-center mb-2">
                       <span className="w-6 h-6 bg-neutral-700 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
