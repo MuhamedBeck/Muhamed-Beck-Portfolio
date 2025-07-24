@@ -1,0 +1,80 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle with Gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#06b6d4;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e7ff;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0891b2;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Film strip holes pattern -->
+    <pattern id="filmPattern" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="none"/>
+      <circle cx="4" cy="4" r="1" fill="rgba(255,255,255,0.1)"/>
+    </pattern>
+    
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer ring with film strip effect -->
+  <circle cx="60" cy="60" r="58" fill="url(#bgGradient)" stroke="url(#accentGradient)" stroke-width="2"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="url(#filmPattern)" stroke-width="16" opacity="0.3"/>
+  
+  <!-- Inner cinematic elements -->
+  <g transform="translate(60,60)">
+    <!-- Lens aperture lines -->
+    <g opacity="0.2">
+      <line x1="-35" y1="0" x2="-25" y2="0" stroke="white" stroke-width="1"/>
+      <line x1="25" y1="0" x2="35" y2="0" stroke="white" stroke-width="1"/>
+      <line x1="0" y1="-35" x2="0" y2="-25" stroke="white" stroke-width="1"/>
+      <line x1="0" y1="25" x2="0" y2="35" stroke="white" stroke-width="1"/>
+      <line x1="-25" y1="-25" x2="-18" y2="-18" stroke="white" stroke-width="1"/>
+      <line x1="18" y1="18" x2="25" y2="25" stroke="white" stroke-width="1"/>
+      <line x1="25" y1="-25" x2="18" y2="-18" stroke="white" stroke-width="1"/>
+      <line x1="-18" y1="18" x2="-25" y2="25" stroke="white" stroke-width="1"/>
+    </g>
+    
+    <!-- Main letters -->
+    <g filter="url(#glow)">
+      <!-- Letter M -->
+      <path d="M -28 -15 L -28 15 L -22 15 L -22 0 L -15 12 L -10 12 L -3 0 L -3 15 L 3 15 L 3 -15 L -5 -15 L -12.5 0 L -20 -15 Z" 
+            fill="url(#textGradient)" 
+            stroke="rgba(255,255,255,0.3)" 
+            stroke-width="0.5"/>
+      
+      <!-- Letter B -->
+      <path d="M 8 -15 L 8 15 L 22 15 C 26 15 28 13 28 9 C 28 7 27 5.5 25 5 C 27 4 28 2 28 0 C 28 -4 26 -6 22 -6 L 22 -15 Z M 14 -9 L 20 -9 C 21 -9 22 -8 22 -6 C 22 -4 21 -3 20 -3 L 14 -3 Z M 14 3 L 21 3 C 22 3 23 4 23 6 C 23 8 22 9 21 9 L 14 9 Z" 
+            fill="url(#textGradient)" 
+            stroke="rgba(255,255,255,0.3)" 
+            stroke-width="0.5"/>
+    </g>
+    
+    <!-- Accent dot -->
+    <circle cx="0" cy="25" r="2" fill="url(#accentGradient)" filter="url(#glow)"/>
+  </g>
+  
+  <!-- Corner accents -->
+  <g opacity="0.6">
+    <path d="M 10 10 L 20 10 L 20 20" fill="none" stroke="url(#accentGradient)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 110 10 L 100 10 L 100 20" fill="none" stroke="url(#accentGradient)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 10 110 L 20 110 L 20 100" fill="none" stroke="url(#accentGradient)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M 110 110 L 100 110 L 100 100" fill="none" stroke="url(#accentGradient)" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

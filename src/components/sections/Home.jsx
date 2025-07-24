@@ -19,7 +19,7 @@ export const Home = () => {
             exceptional performance, delightful user experience and innovative
             solutions.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 sm:space-x-4 px-4">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:space-x-4 px-4">
             <a
               href="#projects"
               className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 text-center group cursor-pointer">

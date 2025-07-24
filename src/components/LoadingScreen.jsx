@@ -25,9 +25,9 @@ export const LoadingScreen = ({ onComplete }) => {
 
       if (index > fullText.length) {
         clearInterval(typingInterval);
-        setTimeout(() => setShowSubtext(true), 800);
+        setTimeout(() => setShowSubtext(true), 400);
       }
-    }, 100);
+    }, 60);
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
@@ -36,12 +36,12 @@ export const LoadingScreen = ({ onComplete }) => {
           setTimeout(() => {
             setFadeOut(true);
             setTimeout(() => onComplete(), 1000);
-          }, 1200);
+          }, 1000);
           return 100;
         }
         return prev + 1;
       });
-    }, 70);
+    }, 30);
 
     return () => {
       clearInterval(typingInterval);
@@ -89,7 +89,7 @@ export const LoadingScreen = ({ onComplete }) => {
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-4"
                   }`}
-                  style={{ transitionDelay: `${index * 200 + 500}ms` }}>
+                  style={{ transitionDelay: `${index * 100 + 300}ms` }}>
                   {tech}
                 </span>
               ))}
