@@ -107,7 +107,7 @@ export const Projects = () => {
               <div className="flex justify-end">
                 <a
                   href="/projects/llm-maven-plugin"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4">
+                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
                   View Details →
                 </a>
               </div>

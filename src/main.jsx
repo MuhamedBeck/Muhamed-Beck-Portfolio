@@ -15,10 +15,7 @@ createRoot(document.getElementById("root")).render(
           path="/projects/ar-data-visualization"
           element={<ArDataVisualization />}
         />
-        <Route
-          path="/projects/llm-maven-plugin"
-          element={<LLMMavenPlugin />}
-        />
+        <Route path="/projects/llm-maven-plugin" element={<LLMMavenPlugin />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
