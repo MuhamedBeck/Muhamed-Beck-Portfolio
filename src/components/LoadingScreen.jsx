@@ -13,7 +13,7 @@ export const LoadingScreen = ({ onComplete }) => {
     "React",
     "Spring Boot",
     "Java",
-    "Wordpress"
+    "Wordpress",
     "AI",
     "Digital Marketing",
   ];
