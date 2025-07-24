@@ -76,7 +76,7 @@ export const Projects = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                  View Website →
+                  Visit Website →
                 </a>
               </div>
             </div>
@@ -104,9 +104,9 @@ export const Projects = () => {
               </div>
               <div className="flex justify-end">
                 <a
-                  href="/projects/llm-unit-automation"
+                  href="/projects/llm-unit-test-automation"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4">
-                  View Details (Coming Soon) →
+                  View Details →
                 </a>
               </div>
             </div>
