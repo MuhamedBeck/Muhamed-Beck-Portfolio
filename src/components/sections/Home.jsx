@@ -19,7 +19,7 @@ export const Home = () => {
             exceptional performance, delightful user experience and innovative
             solutions.
           </p>
-          
+
           {/* Social Links */}
           <div className="flex justify-center items-center gap-6 mb-8">
             <a
