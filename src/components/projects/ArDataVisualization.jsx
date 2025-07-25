@@ -38,8 +38,7 @@ export const ArDataVisualization = () => {
                   <ul className="space-y-2 text-gray-300 text-sm">
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                      Bachelor of Science (B.Sc.) - International Business
-                      Information Systems
+                      B.Sc. - International Business Information Systems
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
@@ -68,7 +67,7 @@ export const ArDataVisualization = () => {
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                      Bridges gap between traditional BI and emerging tech
+                      Bridges gap between BI and emerging tech
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
@@ -88,10 +87,7 @@ export const ArDataVisualization = () => {
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
                   <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-700">
-                    <div className="flex items-center mb-2">
-                      <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
-                        AR
-                      </span>
+                    <div className="mb-2">
                       <span className="text-neutral-200 font-semibold">
                         Frontend Layer
                       </span>
@@ -102,10 +98,7 @@ export const ArDataVisualization = () => {
                     </p>
                   </div>
                   <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-700">
-                    <div className="flex items-center mb-2">
-                      <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
-                        API
-                      </span>
+                    <div className="mb-2">
                       <span className="text-neutral-200 font-semibold">
                         Backend Services
                       </span>
@@ -116,10 +109,7 @@ export const ArDataVisualization = () => {
                     </p>
                   </div>
                   <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-700">
-                    <div className="flex items-center mb-2">
-                      <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
-                        SAP
-                      </span>
+                    <div className="mb-2">
                       <span className="text-neutral-200 font-semibold">
                         Data Source
                       </span>
@@ -130,10 +120,7 @@ export const ArDataVisualization = () => {
                     </p>
                   </div>
                   <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-700">
-                    <div className="flex items-center mb-2">
-                      <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
-                        DB
-                      </span>
+                    <div className="mb-2">
                       <span className="text-neutral-200 font-semibold">
                         Library Database
                       </span>

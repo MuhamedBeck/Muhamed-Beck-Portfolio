@@ -67,7 +67,7 @@ export const LLMMavenPlugin = () => {
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                      Significant cost and time reduction in test development
+                      Significant cost & time reduction in test development
                     </li>
                     <li className="flex items-center">
                       <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
@@ -87,10 +87,7 @@ export const LLMMavenPlugin = () => {
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
                   <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-700">
-                    <div className="flex items-center mb-2">
-                      <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
-                        AI
-                      </span>
+                    <div className="mb-2">
                       <span className="text-neutral-200 font-semibold">
                         LLM Integration
                       </span>
@@ -101,10 +98,7 @@ export const LLMMavenPlugin = () => {
                     </p>
                   </div>
                   <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-700">
-                    <div className="flex items-center mb-2">
-                      <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
-                        MVN
-                      </span>
+                    <div className="mb-2">
                       <span className="text-neutral-200 font-semibold">
                         Maven Plugin
                       </span>
@@ -115,10 +109,7 @@ export const LLMMavenPlugin = () => {
                     </p>
                   </div>
                   <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-700">
-                    <div className="flex items-center mb-2">
-                      <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
-                        COV
-                      </span>
+                    <div className="mb-2">
                       <span className="text-neutral-200 font-semibold">
                         Coverage Analysis
                       </span>
@@ -129,10 +120,7 @@ export const LLMMavenPlugin = () => {
                     </p>
                   </div>
                   <div className="bg-neutral-900/80 p-3 rounded-lg border border-neutral-700">
-                    <div className="flex items-center mb-2">
-                      <span className="w-6 h-6 bg-blue-600 rounded-full flex items-center justify-center text-white text-xs font-bold mr-2">
-                        SEC
-                      </span>
+                    <div className="mb-2">
                       <span className="text-neutral-200 font-semibold">
                         Enterprise Security
                       </span>
@@ -414,7 +402,7 @@ export const LLMMavenPlugin = () => {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-gray-300">Average Improvement</span>
-                      <span className="text-cyan-400 font-bold">+33s%</span>
+                      <span className="text-cyan-400 font-bold">+33%</span>
                     </div>
                   </div>
                 </div>
@@ -453,6 +441,13 @@ export const LLMMavenPlugin = () => {
               </div>
             </div>
           </RevealOnScroll>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/"
+              className="border border-blue-400 text-blue-400 py-3 px-8 rounded-lg font-semibold hover:bg-blue-400/10 transition-all duration-300 my-4">
+              Back to Portfolio
+            </a>
+          </div>
         </div>
       </RevealOnScroll>
     </section>
