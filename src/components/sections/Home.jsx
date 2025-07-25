@@ -1,4 +1,5 @@
 import { RevealOnScroll } from "../RevealOnScroll";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 export const Home = () => {
   // ...existing code...
@@ -18,6 +19,27 @@ export const Home = () => {
             exceptional performance, delightful user experience and innovative
             solutions.
           </p>
+          
+          {/* Social Links */}
+          <div className="flex justify-center items-center gap-6 mb-8">
+            <a
+              href="https://www.linkedin.com/in/muhamed-nur-beck"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+              aria-label="Connect on LinkedIn">
+              <FaLinkedin className="w-8 h-8" />
+            </a>
+            <a
+              href="https://www.github.com/MuhamedBeck"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]"
+              aria-label="View GitHub profile">
+              <FaGithub className="w-8 h-8" />
+            </a>
+          </div>
+
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:space-x-4 px-4">
             <a
               href="#projects"
