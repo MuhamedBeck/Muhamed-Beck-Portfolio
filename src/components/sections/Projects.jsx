@@ -14,7 +14,7 @@ export const Projects = () => {
             <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">Phoenix Parkservice</h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-400 mb-11">
                   Developed and led the IT infrastructure including the Website
                   for{" "}
                   <a
@@ -27,26 +27,27 @@ export const Projects = () => {
                   with modern DevOps, microservices, and AI-powered SEO process
                   optimazation.
                 </p>
-              </div>
-              <div className="flex flex-wrap gap-1 mb-2 justify-start">
-                {["Spring Boot", "Angular", "Docker", "CI/CD", "n8n"].map(
-                  (tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-blue-500/15 text-blue-300 py-2 px-4 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default">
-                      {tech}
-                    </span>
-                  )
-                )}
-              </div>
-              <div className="flex justify-end">
-                <a
-                  href="https://www.phoenixparkservice.de"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
-                  Visit Website →
-                </a>
+                <div className="flex flex-wrap gap-1 mb-2 justify-start">
+                  {["Spring Boot", "Angular", "Docker", "CI/CD", "n8n"].map(
+                    (tech, key) => (
+                      <span
+                        key={key}
+                        className="bg-blue-500/15 text-blue-300 py-2 px-4 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default">
+                        {tech}
+                      </span>
+                    )
+                  )}
+                </div>
+                <div className="flex justify-end">
+                  <a
+                    href="https://www.phoenixparkservice.de"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold"
+                    aria-label="Visit Phoenix Parkservice website">
+                    Visit Website &rarr;
+                  </a>
+                </div>
               </div>
             </div>
             <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
