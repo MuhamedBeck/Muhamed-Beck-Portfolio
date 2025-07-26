@@ -12,10 +12,9 @@ export const Home = () => {
             Hi, I'm Muhamed Nur Beck
           </h1>
           <p className="text-gray-400 text-base sm:text-lg mb-8 max-w-lg mx-auto px-2">
-            I'm a full-stack & AI developer who loves crafting clean, scalable
-            web applications. My goal is to build solutions that offer
-            exceptional performance, delightful user experience and innovative
-            solutions.
+            I'm a full-stack and AI developer passionate about crafting clean,
+            scalable web applications. I build solutions that deliver
+            exceptional performance and a good user experience.
           </p>
 
           {/* Social Links */}

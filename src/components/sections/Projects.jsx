@@ -15,17 +15,16 @@ export const Projects = () => {
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">Phoenix Parkservice</h3>
                 <p className="text-gray-400 mb-11">
-                  Developed and led the IT infrastructure including the Website
-                  for{" "}
+                  Developed and led the IT infrastructure and website for
                   <a
                     href="https://www.phoenixparkservice.de"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline text-blue-300 hover:text-blue-400">
                     phoenixparkservice.de
-                  </a>{" "}
-                  with modern DevOps, microservices, and AI-powered SEO process
-                  optimazation.
+                  </a>
+                  , including modern DevOps, microservices, and AI-powered SEO
+                  automation.
                 </p>
                 <div className="flex flex-wrap gap-1 mb-2 justify-start">
                   {["Spring Boot", "Angular", "Docker", "CI/CD", "n8n"].map(
