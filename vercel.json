@@ -1,7 +1,15 @@
 {
   "rewrites": [
     {
-      "source": "/((?!sitemap\\.xml|robots\\.txt|favicon\\.ico|.*\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)).*)",
+      "source": "/:file(sitemap.xml|robots.txt|favicon.ico)",
+      "destination": "/:file"
+    },
+    {
+      "source": "/:static(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)/:file",
+      "destination": "/:static/:file"
+    },
+    {
+      "source": "/:path*",
       "destination": "/index.html"
     }
   ],
