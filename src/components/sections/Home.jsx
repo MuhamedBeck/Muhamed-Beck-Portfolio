@@ -2,8 +2,6 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 export const Home = () => {
-  // ...existing code...
-
   return (
     <section
       id="home"
@@ -26,17 +24,17 @@ export const Home = () => {
               href="https://www.linkedin.com/in/muhamed-nur-beck"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+              className="text-gray-400 bg-transparent focus:outline-none transition-all duration-300"
               aria-label="Connect on LinkedIn">
-              <FaLinkedin className="w-8 h-8" />
+              <FaLinkedin className="w-8 h-8 hover:text-blue-400 hover:scale-110 hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300" />
             </a>
             <a
               href="https://www.github.com/MuhamedBeck"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-cyan-400 transition-all duration-300 hover:scale-110 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)]"
+              className="text-gray-400 bg-transparent focus:outline-none transition-all duration-300"
               aria-label="View GitHub profile">
-              <FaGithub className="w-8 h-8" />
+              <FaGithub className="w-8 h-8 hover:text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all duration-300" />
             </a>
           </div>
 
@@ -66,7 +64,7 @@ export const Home = () => {
                 <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                 <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
               </svg>
-              Contact
+              Contact Me
             </a>
           </div>
         </div>
