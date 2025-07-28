@@ -15,7 +15,7 @@ export const Projects = () => {
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">Phoenix Parkservice</h3>
                 <p className="text-gray-400 mb-11">
-                  Developed and led the IT infrastructure and website for 
+                  Developed and led the IT infrastructure and website for
                   <a
                     href="https://www.phoenixparkservice.de"
                     target="_blank"
