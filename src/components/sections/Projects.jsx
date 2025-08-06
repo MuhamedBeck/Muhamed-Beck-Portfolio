@@ -14,8 +14,8 @@ export const Projects = () => {
             <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">Phoenix Parkservice</h3>
-                <p className="text-gray-400 mb-11">
-                  Developed and led the IT infrastructure and website for
+                <p className="text-gray-400 mb-4">
+                  Developed and led the IT infrastructure and website for{" "}
                   <a
                     href="https://www.phoenixparkservice.de"
                     target="_blank"
@@ -23,60 +23,29 @@ export const Projects = () => {
                     className="underline text-blue-300 hover:text-blue-400">
                     phoenixparkservice.de
                   </a>
-                  , including modern DevOps, microservices, and AI-powered SEO
-                  automation.
-                </p>
-                <div className="flex flex-wrap gap-1 mb-2 justify-start">
-                  {["Spring Boot", "Angular", "Docker", "CI/CD", "n8n"].map(
-                    (tech, key) => (
-                      <span
-                        key={key}
-                        className="bg-blue-500/15 text-blue-300 py-2 px-4 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default">
-                        {tech}
-                      </span>
-                    )
-                  )}
-                </div>
-                <div className="flex justify-end">
-                  <a
-                    href="https://www.phoenixparkservice.de"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold"
-                    aria-label="Visit Phoenix Parkservice website">
-                    Visit Website &rarr;
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
-              <div className="flex-grow">
-                <h3 className="text-xl font-bold mb-2">LinkedIn AI Analyzer</h3>
-                <p className="text-gray-400 mb-4">
-                  A tool for analyzing LinkedIn posts and generating
-                  personalized messages. Features: post engagement analysis,
-                  priority lead identification, AI-powered news, lead scoring by
-                  seniority.
+                  , including modern DevOps, booking service, microservices, and
+                  AI-powered SEO automation using n8n Workflow.
                 </p>
               </div>
               <div className="flex flex-wrap gap-1 mb-2 justify-start">
-                {["React", "Vite", "Spring Boot", "Java", "OpenAI API"].map(
+                {["Spring Boot", "Angular", "Docker", "CI/CD", "n8n"].map(
                   (tech, key) => (
                     <span
                       key={key}
-                      className="bg-blue-500/15 text-blue-300 py-2 px-4 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default">
+                      className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
                       {tech}
                     </span>
                   )
                 )}
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end mt-auto">
                 <a
-                  href="https://linkedin-analyzer-amgf.vercel.app/"
+                  href="https://www.phoenixparkservice.de"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
-                  Visit Website →
+                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold"
+                  aria-label="Visit Phoenix Parkservice website">
+                  Visit Website &rarr;
                 </a>
               </div>
             </div>
@@ -98,17 +67,52 @@ export const Projects = () => {
                   (tech, key) => (
                     <span
                       key={key}
-                      className="bg-blue-500/15 text-blue-300 py-2 px-4 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default">
+                      className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
                       {tech}
                     </span>
                   )
                 )}
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end mt-auto">
                 <a
                   href="/projects/llm-maven-plugin"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
                   View Details →
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+              <div className="flex-grow">
+                <h3 className="text-xl font-bold mb-2">TaskFlow</h3>
+                <p className="text-gray-400 mb-4">
+                  A full-stack task management application built with Angular
+                  and Spring Boot, featuring JWT authentication, modern UI
+                  design, and comprehensive task management capabilities with
+                  priority system and due date tracking.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-1 mb-2 justify-start">
+                {[
+                  "Angular",
+                  "Spring Boot",
+                  "PostgreSQL",
+                  "JWT",
+                  "TypeScript",
+                ].map((tech, key) => (
+                  <span
+                    key={key}
+                    className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <div className="flex justify-end mt-auto">
+                <a
+                  href="https://taskflow-nu-three.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
+                  Visit Website →
                 </a>
               </div>
             </div>
@@ -129,17 +133,48 @@ export const Projects = () => {
                   (tech, key) => (
                     <span
                       key={key}
-                      className="bg-blue-500/15 text-blue-300 py-2 px-4 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default">
+                      className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
                       {tech}
                     </span>
                   )
                 )}
               </div>
-              <div className="flex justify-end">
+              <div className="flex justify-end mt-auto">
                 <a
                   href="/projects/ar-data-visualization"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
                   View Details →
+                </a>
+              </div>
+            </div>
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+              <div className="flex-grow">
+                <h3 className="text-xl font-bold mb-2">LinkedIn AI Analyzer</h3>
+                <p className="text-gray-400 mb-4">
+                  A tool for analyzing LinkedIn posts and generating
+                  personalized messages. Features: post engagement analysis,
+                  priority lead identification, AI-powered news, lead scoring by
+                  seniority.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-1 mb-2 justify-start">
+                {["React", "Vite", "Spring Boot", "Java", "OpenAI API"].map(
+                  (tech, key) => (
+                    <span
+                      key={key}
+                      className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
+                      {tech}
+                    </span>
+                  )
+                )}
+              </div>
+              <div className="flex justify-end mt-auto">
+                <a
+                  href="https://linkedin-analyzer-amgf.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
+                  Visit Website →
                 </a>
               </div>
             </div>

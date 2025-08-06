@@ -1,5 +1,5 @@
 import { RevealOnScroll } from "../RevealOnScroll";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 
 export const Home = () => {
   return (
@@ -34,6 +34,12 @@ export const Home = () => {
               className="text-gray-400 bg-transparent focus:outline-none transition-all duration-300"
               aria-label="View GitHub profile">
               <FaGithub className="w-8 h-8 hover:text-cyan-400 hover:scale-110 hover:shadow-[0_0_15px_rgba(34,211,238,0.3)] transition-all duration-300" />
+            </a>
+            <a
+              href="mailto:m.nur.beck@hotmail.de"
+              className="text-gray-400 bg-transparent focus:outline-none transition-all duration-300"
+              aria-label="Send email">
+              <FaEnvelope className="w-8 h-8 hover:text-green-400 hover:scale-110 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] transition-all duration-300" />
             </a>
           </div>
 

@@ -122,18 +122,26 @@ export const Contact = () => {
                 w-full flex items-center justify-center gap-2
                 bg-gradient-to-r from-blue-500 to-cyan-500 text-white
                 py-3 px-4 md:py-4 md:px-6 rounded-lg font-medium
-                transition overflow-hidden shadow-lg hover:-translate-y-0.5
-                cursor-pointer hover:shadow-[0_0_15px_rgba(95,130,246,0.4)]
+                transition-all duration-300 overflow-hidden shadow-lg 
+                hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)]
+                hover:from-blue-400 hover:to-cyan-400
+                active:scale-[0.98] active:translate-y-0
+                cursor-pointer
                 text-base md:text-lg
+                relative group
                 ${loading ? "opacity-60 pointer-events-none" : ""}
               `}>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <FaEnvelopeOpenText
                 className={`
-                  text-xl md:text-2xl transition-transform duration-300
+                  text-xl md:text-2xl transition-transform duration-300 relative z-10
+                  group-hover:scale-110
                   ${loading ? "animate-spin" : sent ? "animate-bounce" : ""}
                 `}
               />
-              {loading ? "Sending..." : sent ? "Sent!" : "Send Message"}
+              <span className="relative z-10">
+                {loading ? "Sending..." : sent ? "Sent!" : "Send Message"}
+              </span>
             </button>
           </form>
         </div>
