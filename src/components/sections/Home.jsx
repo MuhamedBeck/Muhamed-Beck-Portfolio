@@ -23,13 +23,13 @@ export const Home = ({ isLoaded = true }) => {
       return;
     }
 
-    // Start animations when loading is complete
-    const imageTimer = setTimeout(() => setShowImage(true), 200);
-    const backgroundTimer = setTimeout(() => setShowBackground(true), 300);
-    const titleTimer = setTimeout(() => setShowTitle(true), 1000);
-    const descTimer = setTimeout(() => setShowDescription(true), 1300);
-    const socialTimer = setTimeout(() => setShowSocials(true), 1600);
-    const buttonTimer = setTimeout(() => setShowButtons(true), 1900);
+    // Start animations when loading is complete - faster timing
+    const imageTimer = setTimeout(() => setShowImage(true), 100);
+    const backgroundTimer = setTimeout(() => setShowBackground(true), 150);
+    const titleTimer = setTimeout(() => setShowTitle(true), 600);
+    const descTimer = setTimeout(() => setShowDescription(true), 800);
+    const socialTimer = setTimeout(() => setShowSocials(true), 1000);
+    const buttonTimer = setTimeout(() => setShowButtons(true), 1200);
 
     return () => {
       clearTimeout(imageTimer);

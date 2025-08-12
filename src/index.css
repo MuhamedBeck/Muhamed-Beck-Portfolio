@@ -13,11 +13,24 @@ body {
   color: #f3f4f6;
   overflow-x: hidden;
   scroll-behavior: smooth;
+  /* Ensure full viewport coverage on mobile */
+  height: 100vh;
+  height: -webkit-fill-available;
+}
+
+/* iOS Safari specific fix */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    height: -webkit-fill-available;
+  }
 }
 
 #root {
   overflow-x: hidden;
   cursor: default;
+  /* Ensure root container fills entire viewport */
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 @layer utilities {
