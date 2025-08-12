@@ -47,7 +47,7 @@ function App() {
         <LoadingScreen onComplete={() => setIstLoaded(true)}></LoadingScreen>
       )}
       <div
-        className={`min-h-screen transition-opacity duration-700 ${
+        className={`safe-area-full min-h-screen transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
         } bg-black text-gray-100`}
         style={{ overflow: isLoaded ? "visible" : "hidden" }}>

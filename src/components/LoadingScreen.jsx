@@ -52,17 +52,11 @@ export const LoadingScreen = ({ onComplete }) => {
 
   return (
     <div
-      className={`z-50 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex flex-col items-center justify-center transition-opacity duration-800 ${
+      className={`loading-screen-safe z-50 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex flex-col items-center justify-center transition-opacity duration-800 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
       style={{ 
-        willChange: "opacity",
-        position: "fixed",
-        top: 0,
-        left: 0,
-        width: "100vw",
-        height: "100vh",
-        minHeight: "-webkit-fill-available"
+        willChange: "opacity"
       }}>
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>

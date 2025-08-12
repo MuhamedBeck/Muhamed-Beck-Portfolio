@@ -16,6 +16,9 @@ body {
   /* Ensure full viewport coverage on mobile */
   height: 100vh;
   height: -webkit-fill-available;
+  /* Extend behind safe areas */
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* iOS Safari specific fix */
@@ -25,12 +28,53 @@ body {
   }
 }
 
+/* Safe Area Support */
+.safe-area-full {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+.safe-area-top {
+  padding-top: env(safe-area-inset-top);
+}
+
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Loading screen safe area coverage */
+.loading-screen-safe {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Force extend to absolute edges */
+  top: calc(-1 * env(safe-area-inset-top, 0px));
+  bottom: calc(-1 * env(safe-area-inset-bottom, 0px)); 
+  left: calc(-1 * env(safe-area-inset-left, 0px));
+  right: calc(-1 * env(safe-area-inset-right, 0px));
+  width: calc(100vw + env(safe-area-inset-left, 0px) + env(safe-area-inset-right, 0px));
+  height: calc(100vh + env(safe-area-inset-top, 0px) + env(safe-area-inset-bottom, 0px));
+  /* Add padding for content positioning */
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  padding-left: env(safe-area-inset-left, 0px);
+  padding-right: env(safe-area-inset-right, 0px);
+  box-sizing: border-box;
+}
+
 #root {
   overflow-x: hidden;
   cursor: default;
-  /* Ensure root container fills entire viewport */
+  /* Ensure root container fills entire viewport including safe areas */
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  /* Extend behind safe areas */
+  margin: 0;
+  padding: 0;
 }
 
 @layer utilities {
