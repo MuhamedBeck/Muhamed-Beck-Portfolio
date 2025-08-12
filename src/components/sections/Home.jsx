@@ -20,7 +20,7 @@ export const Home = () => {
         <div className="text-center px-4 w-full max-w-4xl mx-auto">
           
           {/* Profile Picture */}
-          <div className="relative mb-4 mt-12 sm:mt-14 md:mt-16 flex justify-center">
+          <div className="relative mb-4 mt-20 sm:mt-14 md:mt-16 flex justify-center">
             <div className="relative group">
               {/* Animated gradient background */}
               <div 
@@ -57,7 +57,7 @@ export const Home = () => {
                   
                   {/* Premium glass morphism container */}
                   <div 
-                    className="relative w-full h-full overflow-hidden group-hover:scale-[1.03] group-hover:rotate-1 group-hover:shadow-[0_40px_80px_-15px_rgba(59,130,246,0.6)] transition-all duration-1200 ease-out"
+                    className="relative w-full h-full overflow-hidden transition-all duration-1200 ease-out"
                     style={{
                       borderRadius: '24px',
                       boxShadow: '0 35px 70px -12px rgba(59, 130, 246, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 0 3px rgba(59, 130, 246, 0.4), inset 0 3px 0 rgba(255, 255, 255, 0.4), inset 0 -3px 0 rgba(0, 0, 0, 0.3)',
