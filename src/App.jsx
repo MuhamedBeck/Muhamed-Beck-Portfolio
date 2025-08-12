@@ -28,6 +28,19 @@ function App() {
     }
   }, [hasVisitedBefore]);
 
+  // Control body overflow during loading
+  useEffect(() => {
+    if (!isLoaded) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isLoaded]);
+
   return (
     <>
       {showLoadingScreen && !isLoaded && (
@@ -36,10 +49,11 @@ function App() {
       <div
         className={`min-h-screen transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
-        } bg-black text-gray-100`}>
+        } bg-black text-gray-100`}
+        style={{ overflow: isLoaded ? "visible" : "hidden" }}>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <Home />
+        <Home isLoaded={isLoaded} />
         <About />
         <Projects />
         <Contact />

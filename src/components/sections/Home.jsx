@@ -3,7 +3,7 @@ import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import profilePicture from "../../assets/profilepicture.png";
 import { useState, useEffect } from "react";
 
-export const Home = () => {
+export const Home = ({ isLoaded = true }) => {
   const [showImage, setShowImage] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
   const [showTitle, setShowTitle] = useState(false);
@@ -12,17 +12,23 @@ export const Home = () => {
   const [showButtons, setShowButtons] = useState(false);
 
   useEffect(() => {
-    // Picture appears first
+    if (!isLoaded) {
+      // Reset all states when loading
+      setShowImage(false);
+      setShowBackground(false);
+      setShowTitle(false);
+      setShowDescription(false);
+      setShowSocials(false);
+      setShowButtons(false);
+      return;
+    }
+
+    // Start animations when loading is complete
     const imageTimer = setTimeout(() => setShowImage(true), 200);
-    // Background shapes appear with picture
     const backgroundTimer = setTimeout(() => setShowBackground(true), 300);
-    // Title appears after picture
     const titleTimer = setTimeout(() => setShowTitle(true), 1000);
-    // Description appears after title
     const descTimer = setTimeout(() => setShowDescription(true), 1300);
-    // Social links appear after description
     const socialTimer = setTimeout(() => setShowSocials(true), 1600);
-    // Buttons appear last
     const buttonTimer = setTimeout(() => setShowButtons(true), 1900);
 
     return () => {
@@ -33,7 +39,7 @@ export const Home = () => {
       clearTimeout(socialTimer);
       clearTimeout(buttonTimer);
     };
-  }, []);
+  }, [isLoaded]);
 
   return (
     <>
