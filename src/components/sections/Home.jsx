@@ -1,8 +1,40 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import profilePicture from "../../assets/profilepicture.png";
+import { useState, useEffect } from "react";
 
 export const Home = () => {
+  const [showImage, setShowImage] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
+  const [showTitle, setShowTitle] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
+  const [showSocials, setShowSocials] = useState(false);
+  const [showButtons, setShowButtons] = useState(false);
+
+  useEffect(() => {
+    // Picture appears first
+    const imageTimer = setTimeout(() => setShowImage(true), 200);
+    // Background shapes appear with picture
+    const backgroundTimer = setTimeout(() => setShowBackground(true), 300);
+    // Title appears after picture
+    const titleTimer = setTimeout(() => setShowTitle(true), 1000);
+    // Description appears after title
+    const descTimer = setTimeout(() => setShowDescription(true), 1300);
+    // Social links appear after description
+    const socialTimer = setTimeout(() => setShowSocials(true), 1600);
+    // Buttons appear last
+    const buttonTimer = setTimeout(() => setShowButtons(true), 1900);
+
+    return () => {
+      clearTimeout(imageTimer);
+      clearTimeout(backgroundTimer);
+      clearTimeout(titleTimer);
+      clearTimeout(descTimer);
+      clearTimeout(socialTimer);
+      clearTimeout(buttonTimer);
+    };
+  }, []);
+
   return (
     <>
       <style jsx>{`
@@ -20,15 +52,19 @@ export const Home = () => {
         <div className="text-center px-4 w-full max-w-4xl mx-auto">
           
           {/* Profile Picture */}
-          <div className="relative mb-4 mt-20 sm:mt-14 md:mt-16 flex justify-center">
+          <div className={`relative mb-4 mt-20 sm:mt-14 md:mt-16 flex justify-center transition-all duration-700 ease-out ${
+            showImage ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-98'
+          }`} style={{ willChange: 'transform, opacity' }}>
             <div className="relative group">
-              {/* Simplified gradient background */}
+              {/* Animated gradient background */}
               <div 
-                className="absolute -inset-12 blur-2xl opacity-40"
+                className={`absolute -inset-12 blur-2xl transition-all duration-800 ease-out ${
+                  showBackground ? 'opacity-40 scale-100' : 'opacity-0 scale-95'
+                }`}
                 style={{
                   background: 'linear-gradient(-45deg, rgba(59, 130, 246, 0.12), rgba(34, 211, 238, 0.08), rgba(79, 70, 229, 0.12))',
                   backgroundSize: '300% 300%',
-                  animation: 'gradientMove 15s ease infinite',
+                  animation: showBackground ? 'gradientMove 15s ease infinite' : 'none',
                   transform: 'translateZ(0)',
                   willChange: 'background-position'
                 }}
@@ -37,9 +73,11 @@ export const Home = () => {
               {/* Main profile container - larger size */}
               <div className="relative">
                 <div className="relative w-60 h-72 sm:w-72 sm:h-84 md:w-80 md:h-96">
-                  {/* Optimized outer glow */}
+                  {/* Animated outer glow */}
                   <div 
-                    className="absolute -inset-3 opacity-40"
+                    className={`absolute -inset-3 transition-all duration-600 ease-out delay-100 ${
+                      showBackground ? 'opacity-40 scale-100' : 'opacity-0 scale-98'
+                    }`}
                     style={{
                       background: 'linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(34, 211, 238, 0.15), rgba(79, 70, 229, 0.2))',
                       borderRadius: '28px',
@@ -115,17 +153,27 @@ export const Home = () => {
                   ></div>
                 </div>
                 
-                {/* Premium accent lights */}
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-18 h-1.5 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent animate-pulse" style={{ animationDuration: '4s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-22 h-1.5 bg-gradient-to-r from-transparent via-blue-500/70 to-transparent animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
-                <div className="absolute -left-3 top-1/2 transform -translate-y-1/2 w-1.5 h-18 bg-gradient-to-b from-transparent via-indigo-400/60 to-transparent animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
-                <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-1.5 h-22 bg-gradient-to-b from-transparent via-cyan-300/60 to-transparent animate-pulse" style={{ animationDuration: '4.5s', animationDelay: '0.5s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
+                {/* Animated premium accent lights */}
+                <div className={`absolute -top-3 left-1/2 transform -translate-x-1/2 w-18 h-1.5 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent transition-all duration-500 ease-out delay-300 ${
+                  showBackground ? 'opacity-100 animate-pulse' : 'opacity-0'
+                }`} style={{ animationDuration: showBackground ? '4s' : '0s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
+                <div className={`absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-22 h-1.5 bg-gradient-to-r from-transparent via-blue-500/70 to-transparent transition-all duration-500 ease-out delay-400 ${
+                  showBackground ? 'opacity-100 animate-pulse' : 'opacity-0'
+                }`} style={{ animationDuration: showBackground ? '5s' : '0s', animationDelay: showBackground ? '1s' : '0s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
+                <div className={`absolute -left-3 top-1/2 transform -translate-y-1/2 w-1.5 h-18 bg-gradient-to-b from-transparent via-indigo-400/60 to-transparent transition-all duration-500 ease-out delay-500 ${
+                  showBackground ? 'opacity-100 animate-pulse' : 'opacity-0'
+                }`} style={{ animationDuration: showBackground ? '6s' : '0s', animationDelay: showBackground ? '2s' : '0s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
+                <div className={`absolute -right-3 top-1/2 transform -translate-y-1/2 w-1.5 h-22 bg-gradient-to-b from-transparent via-cyan-300/60 to-transparent transition-all duration-500 ease-out delay-600 ${
+                  showBackground ? 'opacity-100 animate-pulse' : 'opacity-0'
+                }`} style={{ animationDuration: showBackground ? '4.5s' : '0s', animationDelay: showBackground ? '0.5s' : '0s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
               </div>
             </div>
           </div>
 
-          {/* Professional 3D background extension */}
-          <div className="absolute top-80 sm:top-96 md:top-[28rem] left-1/2 transform -translate-x-1/2 w-40 h-32 sm:w-48 sm:h-36 md:w-56 md:h-40 opacity-12 -z-10">
+          {/* Animated 3D background extension */}
+          <div className={`absolute top-80 sm:top-96 md:top-[28rem] left-1/2 transform -translate-x-1/2 w-40 h-32 sm:w-48 sm:h-36 md:w-56 md:h-40 opacity-12 -z-10 transition-all duration-700 ease-out delay-200 ${
+            showBackground ? 'opacity-12 translate-y-0 scale-100' : 'opacity-0 translate-y-2 scale-98'
+          }`} style={{ willChange: 'transform, opacity' }}>
             <div 
               className="w-full h-full overflow-hidden"
               style={{
@@ -151,19 +199,25 @@ export const Home = () => {
             </div>
           </div>
 
-          {/* Text Content */}
+          {/* Animated Text Content */}
           <div className="relative z-20">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-tight">
+          <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-tight transition-all duration-600 ease-out ${
+            showTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`} style={{ willChange: 'transform, opacity' }}>
             Hi, I'm Muhamed Nur Beck
           </h1>
-          <p className="text-gray-400 text-base sm:text-lg mb-8 max-w-lg mx-auto px-2">
+          <p className={`text-gray-400 text-base sm:text-lg mb-8 max-w-lg mx-auto px-2 transition-all duration-600 ease-out ${
+            showDescription ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`} style={{ willChange: 'transform, opacity' }}>
             I'm a full-stack and AI developer passionate about crafting clean,
             scalable web applications. I build solutions that deliver
             exceptional performance and a good user experience.
           </p>
 
-          {/* Social Links */}
-          <div className="flex justify-center items-center gap-6 mb-8">
+          {/* Animated Social Links */}
+          <div className={`flex justify-center items-center gap-6 mb-8 transition-all duration-600 ease-out ${
+            showSocials ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`} style={{ willChange: 'transform, opacity' }}>
             <a
               href="https://www.linkedin.com/in/muhamed-nur-beck"
               target="_blank"
@@ -188,7 +242,9 @@ export const Home = () => {
             </a>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:space-x-4 px-4">
+          <div className={`flex flex-col sm:flex-row justify-center items-center gap-4 sm:space-x-4 px-4 transition-all duration-600 ease-out ${
+            showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`} style={{ willChange: 'transform, opacity' }}>
             <a
               href="#projects"
               className="bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white py-3 px-6 rounded font-medium transition relative overflow-hidden hover:-translate-y-0.5 hover:shadow-[0_0_20px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 text-center group cursor-pointer"

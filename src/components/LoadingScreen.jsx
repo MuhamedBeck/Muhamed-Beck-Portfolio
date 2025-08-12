@@ -60,7 +60,15 @@ export const LoadingScreen = ({ onComplete }) => {
         minHeight: "100vh",
         minWidth: "100vw",
         height: "100dvh",
-        width: "100dvw"
+        width: "100dvw",
+        paddingTop: "env(safe-area-inset-top)",
+        paddingBottom: "env(safe-area-inset-bottom)",
+        paddingLeft: "env(safe-area-inset-left)",
+        paddingRight: "env(safe-area-inset-right)",
+        marginTop: "calc(-1 * env(safe-area-inset-top))",
+        marginBottom: "calc(-1 * env(safe-area-inset-bottom))",
+        marginLeft: "calc(-1 * env(safe-area-inset-left))",
+        marginRight: "calc(-1 * env(safe-area-inset-right))"
       }}>
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
