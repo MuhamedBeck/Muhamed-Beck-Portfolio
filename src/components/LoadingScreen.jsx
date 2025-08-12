@@ -58,14 +58,19 @@ export const LoadingScreen = ({ onComplete }) => {
       style={{ 
         willChange: "opacity",
         height: "100vh",
-        height: "100dvh",
+        height: "100dvh", 
         width: "100vw",
         width: "100dvw",
         position: "fixed",
         top: 0,
         left: 0,
         right: 0,
-        bottom: 0
+        bottom: 0,
+        paddingTop: "env(safe-area-inset-top)",
+        paddingBottom: "env(safe-area-inset-bottom)",
+        paddingLeft: "env(safe-area-inset-left)",
+        paddingRight: "env(safe-area-inset-right)",
+        boxSizing: "border-box"
       }}>
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>

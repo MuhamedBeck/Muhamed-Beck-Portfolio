@@ -93,26 +93,27 @@ body {
 }
 
 /* Custom Scrollbar Styling */
-/* Webkit browsers (Chrome, Safari, Edge) */
+/* Webkit browsers (Chrome, Safari, Edge, Mobile Safari) */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
   background: rgba(17, 17, 17, 0.8);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.8) 0%, 
-    rgba(34, 211, 238, 0.8) 50%, 
-    rgba(79, 70, 229, 0.8) 100%
+    rgba(59, 130, 246, 0.9) 0%, 
+    rgba(34, 211, 238, 0.9) 50%, 
+    rgba(79, 70, 229, 0.9) 100%
   );
-  border-radius: 4px;
+  border-radius: 3px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
+  min-height: 20px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -121,7 +122,7 @@ body {
     rgba(34, 211, 238, 1) 50%, 
     rgba(79, 70, 229, 1) 100%
   );
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
 }
 
 ::-webkit-scrollbar-corner {
@@ -129,7 +130,26 @@ body {
 }
 
 /* Firefox scrollbar styling */
-html {
+* {
   scrollbar-width: thin;
-  scrollbar-color: rgba(59, 130, 246, 0.8) rgba(17, 17, 17, 0.8);
+  scrollbar-color: rgba(59, 130, 246, 0.9) rgba(17, 17, 17, 0.8);
+}
+
+/* Mobile scrollbar indicator enhancement */
+@media (hover: none) and (pointer: coarse) {
+  /* Mobile devices - enhance scrollbar visibility */
+  ::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, 
+      rgba(59, 130, 246, 1) 0%, 
+      rgba(34, 211, 238, 1) 50%, 
+      rgba(79, 70, 229, 1) 100%
+    );
+    border-radius: 2px;
+    min-height: 30px;
+  }
 }
