@@ -42,7 +42,7 @@ export const LoadingScreen = ({ onComplete }) => {
         }
         return prev + 1;
       });
-    }, 30);
+    }, 50);
 
     return () => {
       clearInterval(typingInterval);
@@ -54,7 +54,8 @@ export const LoadingScreen = ({ onComplete }) => {
     <div
       className={`fixed top-0 left-0 w-screen h-screen z-50 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex flex-col items-center justify-center transition-opacity duration-800 ${
         fadeOut ? "opacity-0" : "opacity-100"
-      }`}>
+      }`}
+      style={{ willChange: "opacity" }}>
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
         <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-pulse opacity-40 animation-delay-300"></div>
@@ -108,10 +109,12 @@ export const LoadingScreen = ({ onComplete }) => {
 
           <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden shadow-inner">
             <div
-              className="h-full bg-gradient-to-r from-blue-500 via-cyan-500 to-indigo-500 rounded-full shadow-lg transition-all duration-300 ease-out"
+              className="h-full bg-gradient-to-r from-blue-500 via-cyan-500 to-indigo-500 rounded-full shadow-lg transition-all duration-200 ease-out"
               style={{
                 width: `${progress}%`,
-                boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
+                boxShadow: "0 0 15px rgba(59, 130, 246, 0.4)",
+                transform: "translateZ(0)",
+                willChange: "width",
               }}></div>
           </div>
 

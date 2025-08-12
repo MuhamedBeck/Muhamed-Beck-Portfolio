@@ -22,129 +22,132 @@ export const Home = () => {
           {/* Profile Picture */}
           <div className="relative mb-4 mt-20 sm:mt-14 md:mt-16 flex justify-center">
             <div className="relative group">
-              {/* Animated gradient background */}
-              <div 
-                className="absolute -inset-16 blur-3xl opacity-60"
-                style={{
-                  background: 'linear-gradient(-45deg, rgba(59, 130, 246, 0.2), rgba(34, 211, 238, 0.15), rgba(79, 70, 229, 0.2), rgba(59, 130, 246, 0.15))',
-                  backgroundSize: '400% 400%',
-                  animation: 'gradientMove 8s ease infinite'
-                }}
-              ></div>
+              {/* Simplified gradient background */}
               <div 
                 className="absolute -inset-12 blur-2xl opacity-40"
                 style={{
-                  background: 'linear-gradient(45deg, rgba(34, 211, 238, 0.15), rgba(59, 130, 246, 0.2), rgba(34, 211, 238, 0.1), rgba(79, 70, 229, 0.15))',
+                  background: 'linear-gradient(-45deg, rgba(59, 130, 246, 0.12), rgba(34, 211, 238, 0.08), rgba(79, 70, 229, 0.12))',
                   backgroundSize: '300% 300%',
-                  animation: 'gradientMove 12s ease infinite reverse'
+                  animation: 'gradientMove 15s ease infinite',
+                  transform: 'translateZ(0)',
+                  willChange: 'background-position'
                 }}
               ></div>
               
               {/* Main profile container - larger size */}
               <div className="relative">
                 <div className="relative w-60 h-72 sm:w-72 sm:h-84 md:w-80 md:h-96">
-                  {/* Enhanced outer glow with motion */}
+                  {/* Optimized outer glow */}
                   <div 
-                    className="absolute -inset-3 opacity-80"
+                    className="absolute -inset-3 opacity-40"
                     style={{
-                      background: 'linear-gradient(45deg, rgba(59, 130, 246, 0.4), rgba(34, 211, 238, 0.3), rgba(79, 70, 229, 0.4), rgba(34, 211, 238, 0.3))',
+                      background: 'linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(34, 211, 238, 0.15), rgba(79, 70, 229, 0.2))',
                       borderRadius: '28px',
-                      filter: 'blur(12px)',
-                      backgroundSize: '200% 200%',
-                      animation: 'gradientMove 6s ease infinite'
+                      filter: 'blur(6px)',
+                      transform: 'translateZ(0)',
+                      willChange: 'transform'
                     }}
                   ></div>
                   
-                  {/* Premium glass morphism container */}
+                  {/* Optimized glass morphism container */}
                   <div 
-                    className="relative w-full h-full overflow-hidden transition-all duration-1200 ease-out"
+                    className="relative w-full h-full overflow-hidden transition-all duration-500 ease-out"
                     style={{
                       borderRadius: '24px',
-                      boxShadow: '0 35px 70px -12px rgba(59, 130, 246, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.2), 0 0 0 3px rgba(59, 130, 246, 0.4), inset 0 3px 0 rgba(255, 255, 255, 0.4), inset 0 -3px 0 rgba(0, 0, 0, 0.3)',
-                      background: 'linear-gradient(150deg, rgba(59, 130, 246, 0.18) 0%, rgba(34, 211, 238, 0.15) 25%, rgba(79, 70, 229, 0.22) 50%, rgba(34, 211, 238, 0.18) 75%, rgba(59, 130, 246, 0.18) 100%)',
-                      backdropFilter: 'blur(6px) saturate(1.8) contrast(1.1)',
-                      backgroundSize: '400% 400%',
-                      animation: 'gradientMove 10s ease infinite reverse'
+                      boxShadow: '0 25px 50px -12px rgba(59, 130, 246, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15)',
+                      background: 'linear-gradient(150deg, rgba(59, 130, 246, 0.14) 0%, rgba(34, 211, 238, 0.11) 50%, rgba(79, 70, 229, 0.16) 100%)',
+                      backdropFilter: 'blur(2px) saturate(1.2)',
+                      transform: 'translateZ(0)',
+                      willChange: 'transform'
                     }}
                   >
                     <img
                       src={profilePicture}
                       alt="Muhamed Nur Beck"
-                      className="w-full h-full object-cover filter brightness-112 contrast-118 saturate-115"
+                      className="w-full h-full object-cover"
                       style={{
                         objectPosition: 'center 20%',
                         borderRadius: '24px',
-                        filter: 'brightness(112%) contrast(118%) saturate(115%) drop-shadow(0 0 20px rgba(59,130,246,0.3))'
+                        filter: 'brightness(105%) contrast(108%) saturate(105%)',
+                        transform: 'translateZ(0)',
+                        willChange: 'transform'
                       }}
+                      loading="eager"
+                      decoding="async"
                     />
-                    {/* Sophisticated gradient overlays */}
+                    {/* Professional gradient overlays */}
                     <div 
-                      className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/12 via-65% to-transparent"
-                      style={{ borderRadius: '24px' }}
+                      className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/10 via-65% to-transparent"
+                      style={{ borderRadius: '24px', willChange: 'transform' }}
                     ></div>
                     <div 
-                      className="absolute inset-0 bg-gradient-to-br from-blue-500/22 via-transparent to-cyan-400/28"
-                      style={{ borderRadius: '24px' }}
+                      className="absolute inset-0 bg-gradient-to-br from-blue-500/18 via-transparent to-cyan-400/22"
+                      style={{ borderRadius: '24px', willChange: 'transform' }}
                     ></div>
                     <div 
-                      className="absolute inset-0 bg-gradient-to-tl from-indigo-600/15 via-transparent to-blue-400/18"
-                      style={{ borderRadius: '24px' }}
+                      className="absolute inset-0 bg-gradient-to-tl from-indigo-600/12 via-transparent to-blue-400/15"
+                      style={{ borderRadius: '24px', willChange: 'transform' }}
                     ></div>
                     
-                    {/* Premium light reflection */}
+                    {/* Optimized light reflection */}
                     <div 
-                      className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30"
+                      className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-25"
                       style={{
-                        background: 'linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 20%, transparent 80%, rgba(255,255,255,0.2) 100%)',
+                        background: 'linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 30%)',
                         borderRadius: '24px',
                         mixBlendMode: 'overlay'
                       }}
                     ></div>
                   </div>
                   
-                  {/* Premium multi-layer borders */}
+                  {/* Professional multi-layer borders */}
                   <div 
-                    className="absolute -inset-px border border-white/30 opacity-70"
-                    style={{ borderRadius: '24px' }}
+                    className="absolute -inset-px border border-white/25 opacity-70"
+                    style={{ borderRadius: '24px', willChange: 'transform' }}
                   ></div>
                   <div 
-                    className="absolute -inset-px border border-cyan-400/60 opacity-80"
-                    style={{ borderRadius: '24px' }}
+                    className="absolute -inset-px border border-cyan-400/50 opacity-80"
+                    style={{ borderRadius: '24px', willChange: 'transform' }}
                   ></div>
                   <div 
-                    className="absolute -inset-1 border border-blue-500/40 opacity-50 blur-sm"
-                    style={{ borderRadius: '25px' }}
+                    className="absolute -inset-1 border border-blue-500/30 opacity-40"
+                    style={{ borderRadius: '25px', filter: 'blur(1px)', willChange: 'transform' }}
                   ></div>
                 </div>
                 
-                {/* Elegant accent lights */}
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-20 h-1.5 bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent blur-md animate-pulse" style={{ animationDuration: '4s' }}></div>
-                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1.5 bg-gradient-to-r from-transparent via-blue-500/80 to-transparent blur-md animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }}></div>
-                <div className="absolute -left-3 top-1/2 transform -translate-y-1/2 w-1.5 h-20 bg-gradient-to-b from-transparent via-indigo-400/70 to-transparent blur-md animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }}></div>
-                <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-1.5 h-24 bg-gradient-to-b from-transparent via-cyan-300/70 to-transparent blur-md animate-pulse" style={{ animationDuration: '4.5s', animationDelay: '0.5s' }}></div>
+                {/* Premium accent lights */}
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-18 h-1.5 bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent animate-pulse" style={{ animationDuration: '4s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
+                <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-22 h-1.5 bg-gradient-to-r from-transparent via-blue-500/70 to-transparent animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
+                <div className="absolute -left-3 top-1/2 transform -translate-y-1/2 w-1.5 h-18 bg-gradient-to-b from-transparent via-indigo-400/60 to-transparent animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
+                <div className="absolute -right-3 top-1/2 transform -translate-y-1/2 w-1.5 h-22 bg-gradient-to-b from-transparent via-cyan-300/60 to-transparent animate-pulse" style={{ animationDuration: '4.5s', animationDelay: '0.5s', willChange: 'opacity', filter: 'blur(2px)' }}></div>
               </div>
             </div>
           </div>
 
-          {/* 3D Background Extension - Bottom part of profile behind text */}
-          <div className="absolute top-80 sm:top-96 md:top-[28rem] left-1/2 transform -translate-x-1/2 w-40 h-32 sm:w-48 sm:h-36 md:w-56 md:h-40 opacity-15 blur-sm -z-10">
+          {/* Professional 3D background extension */}
+          <div className="absolute top-80 sm:top-96 md:top-[28rem] left-1/2 transform -translate-x-1/2 w-40 h-32 sm:w-48 sm:h-36 md:w-56 md:h-40 opacity-12 -z-10">
             <div 
               className="w-full h-full overflow-hidden"
               style={{
                 clipPath: 'polygon(25% 0%, 75% 0%, 90% 100%, 10% 100%)',
-                background: 'linear-gradient(180deg, rgba(59, 130, 246, 0.1) 0%, rgba(34, 211, 238, 0.05) 100%)'
+                background: 'linear-gradient(180deg, rgba(59, 130, 246, 0.08) 0%, rgba(34, 211, 238, 0.04) 100%)',
+                willChange: 'transform'
               }}
             >
               <img
                 src={profilePicture}
                 alt=""
-                className="w-full h-full object-cover object-bottom filter brightness-90 contrast-120 blur-xs"
+                className="w-full h-full object-cover object-bottom"
                 style={{
-                  transform: 'scale(1.2) translateY(-60%)',
-                  transformOrigin: 'center bottom'
+                  transform: 'scale(1.15) translateY(-55%)',
+                  transformOrigin: 'center bottom',
+                  filter: 'brightness(85%) contrast(110%) blur(0.5px)',
+                  willChange: 'transform'
                 }}
+                loading="lazy"
+                decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent"></div>
             </div>
           </div>
 
