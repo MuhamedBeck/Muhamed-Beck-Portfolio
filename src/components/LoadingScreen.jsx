@@ -52,10 +52,16 @@ export const LoadingScreen = ({ onComplete }) => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-screen h-screen z-50 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex flex-col items-center justify-center transition-opacity duration-800 ${
+      className={`fixed inset-0 z-50 bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white flex flex-col items-center justify-center transition-opacity duration-800 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
-      style={{ willChange: "opacity" }}>
+      style={{ 
+        willChange: "opacity",
+        minHeight: "100vh",
+        minWidth: "100vw",
+        height: "100dvh",
+        width: "100dvw"
+      }}>
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
         <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-pulse opacity-40 animation-delay-300"></div>
