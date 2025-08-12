@@ -170,7 +170,7 @@ export const Projects = () => {
               </div>
               <div className="flex justify-end mt-auto">
                 <a
-                  href="https://linkedin-analyzer-amgf.vercel.app/"
+                  href="https://linkedin-analyzer-weld.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
