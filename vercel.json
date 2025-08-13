@@ -5,8 +5,8 @@
       "destination": "/:file"
     },
     {
-      "source": "/:static(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)/:file",
-      "destination": "/:static/:file"
+      "source": "/assets/:file*",
+      "destination": "/assets/:file*"
     },
     {
       "source": "/:path*",
