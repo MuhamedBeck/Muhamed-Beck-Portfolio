@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ArDataVisualization } from "./components/projects/ArDataVisualization";
 import { LLMMavenPlugin } from "./components/projects/LLMMavenPlugin";
 import NotFound from "./components/NotFound";
+import { Analytics } from "@vercel/analytics/react";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/projects/llm-maven-plugin" element={<LLMMavenPlugin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
   </StrictMode>
 );
