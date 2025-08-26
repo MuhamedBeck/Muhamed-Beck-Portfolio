@@ -7,6 +7,7 @@ import { ArDataVisualization } from "./components/projects/ArDataVisualization";
 import { LLMMavenPlugin } from "./components/projects/LLMMavenPlugin";
 import NotFound from "./components/NotFound";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Analytics />
+      <SpeedInsights />
     </BrowserRouter>
   </StrictMode>
 );
