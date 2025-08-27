@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { LoadingScreen } from "./components/LoadingScreen";
 import "./App.css";
 import "./index.css";
@@ -58,6 +59,7 @@ function App() {
         <Projects />
         <Contact />
         <Footer />
+        <SpeedInsights />
       </div>
     </>
   );
