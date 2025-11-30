@@ -4,12 +4,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="google-site-verification" content="OvDO9UTcz8aeTy1y9Tx8cLPczyJi4lmM5zkav54t6yA" />
-  <link rel="icon" type="image/svg+xml" href="./src/assets/logo.svg" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <link rel="apple-touch-icon" href="/logo.svg" />
+  <link rel="manifest" href="/manifest.json" />
   
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  
+  <!-- Preload critical font -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" as="style" />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -137,6 +144,55 @@
         "item": "https://mbeck.vercel.app/#contact"
       }
     ]
+  }
+  </script>
+
+  <!-- Structured Data: Professional Service -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Muhamed Beck - IT & AI Services",
+    "url": "https://mbeck.vercel.app/services",
+    "description": "Professional IT services including workflow automation, web development, SEO optimization, and AI integration.",
+    "provider": {
+      "@type": "Person",
+      "name": "Muhamed Nur Beck"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "Germany"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "IT Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Workflow Automation",
+            "description": "Automate business processes with n8n, Zapier, and custom solutions"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Web Development",
+            "description": "Modern websites with React, Angular, and responsive design"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "SEO Optimization",
+            "description": "Technical SEO and performance optimization"
+          }
+        }
+      ]
+    }
   }
   </script>
 </head>

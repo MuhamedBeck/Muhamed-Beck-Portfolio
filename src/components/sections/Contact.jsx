@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaEnvelopeOpenText } from "react-icons/fa";
 import { RevealOnScroll } from "../RevealOnScroll";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
