@@ -20,22 +20,28 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
       number: "01",
     },
     {
+      href: "/services",
+      label: "Services",
+      description: "What I Offer",
+      number: "02",
+    },
+    {
       href: "#about",
       label: "About",
       description: "Background & Skills",
-      number: "02",
+      number: "03",
     },
     {
       href: "#projects",
       label: "Projects",
       description: "Featured Work",
-      number: "03",
+      number: "04",
     },
     {
       href: "#contact",
       label: "Contact",
       description: "Get In Touch",
-      number: "04",
+      number: "05",
     },
   ];
 
