@@ -1,5 +1,5 @@
 import { RevealOnScroll } from "../RevealOnScroll";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaCogs,
   FaCode,
@@ -10,6 +10,18 @@ import {
 } from "react-icons/fa";
 
 export const Services = () => {
+  const navigate = useNavigate();
+
+  const handleContactClick = () => {
+    navigate("/");
+    setTimeout(() => {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+  };
+
   const services = [
     {
       icon: <FaCogs className="w-10 h-10" />,
@@ -196,15 +208,15 @@ export const Services = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link
-                    to="/#contact"
-                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white py-3 px-8 rounded-lg font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 group">
+                  <button
+                    onClick={handleContactClick}
+                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white py-3 px-8 rounded-lg font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 group cursor-pointer">
                     <FaEnvelope className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
                     <span>Contact Me</span>
-                  </Link>
+                  </button>
 
                   <a
-                    href="mailto:m.nur.beck@hotmail.de"
+                    href="mailto:m.nur.beck@hotmail.de?subject=Anfrage%20via%20Portfolio%20Seite&body=Sehr%20geehrter%20Herr%20Beck%2C%0A%0AIch%20war%20auf%20ihrer%20Portfolio%20Seite%20und%20habe%20folgende%20Anfrage%3A%0A%0A"
                     className="inline-flex items-center justify-center gap-2 border border-blue-500 text-blue-400 py-3 px-8 rounded-lg font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-500/10">
                     <span>m.nur.beck@hotmail.de</span>
                   </a>
