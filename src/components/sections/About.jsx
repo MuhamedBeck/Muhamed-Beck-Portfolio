@@ -25,9 +25,23 @@ export const About = () => {
 
   const mainExperience = [
     {
+      title: "AI Automation Manager",
+      company: "TOPEOPLE Group GmbH",
+      period: "09/2025 - Present",
+      highlights: [
+        "Automated recruiting & internal workflows with n8n/Zapier; cut cycle time 80%",
+        "Built GPT apps (OpenAI/Azure, LangChain/RAG) for candidate ops; raised automation rate 90%",
+        "Deployed Voice AI agents (Twilio/WebRTC, STT/TTS); improved CSAT",
+        "Shipped ATS/CRM integrations (REST/Webhooks; OAuth2/JWT) incl. Personio/Greenhouse/HubSpot",
+        "Ran CI/CD & Ops (GitLab, Docker/Kubernetes); Prometheus monitoring",
+        "Set LLM guardrails (PII/GDPR, evaluation tests, audit/RBAC) and ROI tracking (time-to-hire, SLA)",
+        "Built standalone apps using JavaScript, HTML & CSS with forms connected to n8n and Zapier",
+      ],
+    },
+    {
       title: "Full-Stack Developer & AI Integration Lead",
       company: "Phoenix Parkservice (Freelance)",
-      period: "06/2024 - Present",
+      period: "06/2024 - 09/2025",
       highlights: [
         "Architected microservices with Spring Boot/Angular & REST APIs",
         "Implemented complete DevOps pipeline with Docker & CI/CD",
