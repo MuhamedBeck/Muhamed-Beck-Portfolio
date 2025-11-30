@@ -5,19 +5,19 @@
   <!-- Homepage - Main landing page -->
   <url>
     <loc>https://mbeck.vercel.app/</loc>
-    <lastmod>2025-08-13</lastmod>
+    <lastmod>2025-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://mbeck.vercel.app/assets/profilepicture.png</image:loc>
-      <image:title>Muhamed Beck - Software Developer Portfolio</image:title>
+      <image:title>Muhamed Beck - Full-Stack Developer and AI Engineer Portfolio based in Frankfurt Germany</image:title>
     </image:image>
   </url>
 
   <!-- Project: AR Data Visualization -->
   <url>
     <loc>https://mbeck.vercel.app/projects/ar-data-visualization</loc>
-    <lastmod>2025-08-13</lastmod>
+    <lastmod>2025-11-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -25,15 +25,15 @@
   <!-- Project: LLM Maven Plugin -->
   <url>
     <loc>https://mbeck.vercel.app/projects/llm-maven-plugin</loc>
-    <lastmod>2025-08-13</lastmod>
+    <lastmod>2025-11-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
-  <!-- Section: About -->
+  <!-- Section: About - Skills and Experience -->
   <url>
     <loc>https://mbeck.vercel.app/#about</loc>
-    <lastmod>2025-08-13</lastmod>
+    <lastmod>2025-11-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -41,7 +41,7 @@
   <!-- Section: Projects -->
   <url>
     <loc>https://mbeck.vercel.app/#projects</loc>
-    <lastmod>2025-08-13</lastmod>
+    <lastmod>2025-11-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -49,7 +49,7 @@
   <!-- Section: Contact -->
   <url>
     <loc>https://mbeck.vercel.app/#contact</loc>
-    <lastmod>2025-08-13</lastmod>
+    <lastmod>2025-11-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
