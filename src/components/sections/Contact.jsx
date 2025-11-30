@@ -36,7 +36,7 @@ export const Contact = () => {
   return (
     <section
       id="contact"
-      className="min-h-screen items-center justify-center py-20">
+      className="items-center justify-center py-12 pb-8">
       <RevealOnScroll>
         {/* Wrapper mit max-width */}
         <div className="px-4 w-full max-w-screen-lg mx-auto relative">
