@@ -1,5 +1,6 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import {
   FaCogs,
   FaCode,
@@ -8,9 +9,13 @@ import {
   FaRocket,
   FaEnvelope,
 } from "react-icons/fa";
+import { Navbar } from "../Navbar";
+import { MobileMenu } from "../MobileMenu";
+import Footer from "../Footer";
 
 export const Services = () => {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleContactClick = () => {
     navigate("/");
@@ -114,20 +119,24 @@ export const Services = () => {
   ];
 
   return (
-    <section className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-blue-950 py-20 px-4">
-      {/* Back to Home Link */}
-      <div className="max-w-6xl mx-auto mb-8">
-        <Link
-          to="/"
-          className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors duration-300 group">
-          <span className="transform group-hover:-translate-x-1 transition-transform duration-300">
-            ←
-          </span>
-          <span>Back to Home</span>
-        </Link>
-      </div>
+    <div className="min-h-screen bg-black text-gray-100">
+      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      
+      <section className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-blue-950 py-20 pt-28 px-4">
+        {/* Back to Home Link */}
+        <div className="max-w-6xl mx-auto mb-8">
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors duration-300 group">
+            <span className="transform group-hover:-translate-x-1 transition-transform duration-300">
+              ←
+            </span>
+            <span>Back to Home</span>
+          </Link>
+        </div>
 
-      <RevealOnScroll>
+        <RevealOnScroll>
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
@@ -234,5 +243,8 @@ export const Services = () => {
         </div>
       </RevealOnScroll>
     </section>
+    
+    <Footer />
+    </div>
   );
 };
