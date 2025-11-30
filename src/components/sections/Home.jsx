@@ -112,7 +112,7 @@ export const Home = ({ isLoaded = true }) => {
                       style={{
                         objectPosition: 'center 20%',
                         borderRadius: '24px',
-                        filter: 'brightness(105%) contrast(108%) saturate(105%)',
+                        filter: 'brightness(115%) contrast(106%) saturate(105%)',
                         transform: 'translateZ(0)',
                         willChange: 'transform'
                       }}
