@@ -208,6 +208,17 @@ export const About = () => {
                       2018 - 2022 • GPA: 1.6 (German scale)
                     </p>
                   </div>
+                  <div className="p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
+                    <h4 className="font-bold text-blue-400 mb-2">
+                      Abitur (General University Entrance Qualification)
+                    </h4>
+                    <p className="text-gray-300 mb-1">
+                      Ernst-Reuter-Schule 1, Frankfurt
+                    </p>
+                    <p className="text-sm text-gray-400">
+                      Dec 2012 - Jun 2017 • Grade: 1.9 (German scale)
+                    </p>
+                  </div>
                 </div>
               </div>
 
@@ -306,6 +317,71 @@ export const About = () => {
                     </button>
                   </div>
                 </div>
+              </div>
+            </div>
+          </RevealOnScroll>
+
+          <RevealOnScroll>
+            <div className="mt-16">
+              <h3 className="text-2xl font-bold mb-6 text-center">
+                Certificates & Credentials
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  {
+                    title: "Inspect Rich Documents with Gemini Multimodality and Multimodal RAG",
+                    issuer: "Google",
+                    date: "Jan 2026",
+                    iconBg: "bg-blue-500/20 border-blue-500/30",
+                    iconColor: "text-blue-400",
+                  },
+                  {
+                    title: "React.js",
+                    issuer: "Great Learning",
+                    date: "Jul 2025",
+                    iconBg: "bg-cyan-500/20 border-cyan-500/30",
+                    iconColor: "text-cyan-400",
+                  },
+                  {
+                    title: "SAP BusinessObjects Web Intelligence Grundlagen",
+                    issuer: "INFOMOTION GmbH",
+                    date: "Feb 2022",
+                    iconBg: "bg-indigo-500/20 border-indigo-500/30",
+                    iconColor: "text-indigo-400",
+                  },
+                  {
+                    title: "Advanced Proficiency in KNIME Analytics Platform",
+                    issuer: "KNIME",
+                    date: "Apr 2023",
+                    iconBg: "bg-purple-500/20 border-purple-500/30",
+                    iconColor: "text-purple-400",
+                  },
+                  {
+                    title: "Basic Proficiency in KNIME Analytics Platform",
+                    issuer: "KNIME",
+                    date: "Apr 2023",
+                    iconBg: "bg-purple-500/20 border-purple-500/30",
+                    iconColor: "text-purple-400",
+                  },
+                ].map((cert, index) => (
+                  <div
+                    key={index}
+                    className="p-5 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 flex items-start gap-4">
+                    <div className={`mt-0.5 w-8 h-8 shrink-0 rounded-lg flex items-center justify-center border ${cert.iconBg}`}>
+                      <svg className={`w-4 h-4 ${cert.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                      </svg>
+                    </div>
+                    <div className="min-w-0">
+                      <p className="text-white font-semibold text-sm leading-snug mb-1">
+                        {cert.title}
+                      </p>
+                      <p className="text-gray-400 text-xs">
+                        {cert.issuer} • {cert.date}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </RevealOnScroll>

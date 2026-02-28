@@ -14,7 +14,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
 
   const menuItems = [
     {
-      href: "#home",
+      href: "/",
       label: "Home",
       description: "Welcome & Introduction",
       number: "01",
