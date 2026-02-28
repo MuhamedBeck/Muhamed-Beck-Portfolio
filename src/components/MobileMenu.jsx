@@ -5,183 +5,146 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     }
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
-  const menuItems = [
-    {
-      href: "/",
-      label: "Home",
-      description: "Welcome & Introduction",
-      number: "01",
-    },
-    {
-      href: "/services",
-      label: "Services",
-      description: "What I Offer",
-      number: "02",
-    },
-    {
-      href: "#about",
-      label: "About",
-      description: "Background & Skills",
-      number: "03",
-    },
-    {
-      href: "#projects",
-      label: "Projects",
-      description: "Featured Work",
-      number: "04",
-    },
-    {
-      href: "#contact",
-      label: "Contact",
-      description: "Get In Touch",
-      number: "05",
-    },
-    {
-      href: "/hire",
-      label: "Hire Me",
-      description: "Request a Service",
-      number: "06",
-    },
+  const navLinks = [
+    { href: "/", label: "Home" },
+    { href: "/services", label: "Services" },
+    { href: "#about", label: "About" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
     <>
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 bg-black/60 backdrop-blur-sm z-40 transition-all duration-500 ${
-          menuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        className={`fixed inset-0 bg-black/70 backdrop-blur-sm z-40 transition-opacity duration-300 ${
+          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
       />
 
       {/* Menu Panel */}
       <div
-        className={`safe-area-full fixed top-0 right-0 h-full w-80 max-w-[85vw] z-50 transition-all duration-500 ease-out ${
+        className={`fixed top-0 right-0 h-full w-72 max-w-[85vw] z-50 flex flex-col transition-transform duration-300 ease-out ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
           background:
-            "linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(17, 24, 39, 0.95) 100%)",
-          backdropFilter: "blur(20px) saturate(1.2)",
-          borderLeft: "1px solid rgba(59, 130, 246, 0.2)",
+            "linear-gradient(160deg, rgba(9,9,11,0.98) 0%, rgba(15,23,42,0.98) 100%)",
+          borderLeft: "1px solid rgba(255,255,255,0.06)",
         }}>
         {/* Header */}
-        <div className="relative p-8 border-b border-white/10">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-3">
-                <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-cyan-400 rounded-full"></div>
-                <div>
-                  <h3 className="text-white font-semibold text-xl tracking-wide">
-                    NAVIGATION
-                  </h3>
-                  <p className="text-blue-400 text-xs font-mono uppercase tracking-widest">
-                    PORTFOLIO 2025
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <button
-              onClick={() => setMenuOpen(false)}
-              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-all duration-300 group"
-              aria-label="Close Menu">
-              <svg
-                className="w-5 h-5 transition-transform duration-300 group-hover:rotate-90"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Decorative line */}
-          <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
+        <div className="flex items-center justify-between px-6 h-16 border-b border-white/[0.06] shrink-0">
+          <a
+            href="/"
+            onClick={() => setMenuOpen(false)}
+            className="font-mono font-bold text-white text-base tracking-wide">
+            <span className="text-blue-500">MNB</span>
+            <span className="text-gray-500 mx-1.5">—</span>
+            <span className="text-gray-300 text-sm">PORTFOLIO</span>
+          </a>
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-white transition-colors rounded-lg hover:bg-white/5"
+            aria-label="Close menu">
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
         </div>
 
-        {/* Navigation Items */}
-        <nav className="p-6">
-          <div className="space-y-2">
-            {menuItems.map((item, index) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className={`group flex items-center space-x-4 p-4 rounded-xl transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-blue-500/20 transform ${
-                  menuOpen
-                    ? "opacity-100 translate-x-0"
-                    : "opacity-0 translate-x-8"
-                }`}
-                style={{
-                  transitionDelay: menuOpen ? `${index * 100}ms` : "0ms",
-                  willChange: "transform, opacity",
-                }}>
-                <div className="w-16 h-16 rounded-lg border border-blue-500/30 flex items-center justify-center transition-all duration-300 group-hover:border-blue-400/60 group-hover:bg-blue-500/5 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-400/10"></div>
-                  <span className="text-blue-400 font-mono text-lg font-bold relative z-10 group-hover:text-blue-300 transition-colors duration-300">
-                    {item.number}
-                  </span>
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-                </div>
-
-                <div className="flex-1">
-                  <span className="block text-white font-semibold text-lg tracking-wide group-hover:text-blue-300 transition-colors duration-300">
+        {/* Nav — overflow-y-auto + overscroll-contain prevents page scroll-through on iOS */}
+        <nav className="flex-1 overflow-y-auto overscroll-contain px-4 py-6">
+          <ul className="space-y-0.5">
+            {navLinks.map((item, i) => (
+              <li key={item.href}>
+                <a
+                  href={item.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`flex items-center justify-between w-full px-4 py-3.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/[0.05] active:bg-white/10 group ${
+                    menuOpen
+                      ? "opacity-100 translate-x-0"
+                      : "opacity-0 translate-x-6"
+                  }`}
+                  style={{
+                    transitionDelay: menuOpen ? `${80 + i * 45}ms` : "0ms",
+                    transitionProperty: "opacity, transform",
+                    transitionDuration: "300ms",
+                  }}>
+                  <span className="font-medium text-[15px] tracking-wide">
                     {item.label}
                   </span>
-                  <span className="block text-gray-400 text-sm font-mono uppercase tracking-wider group-hover:text-gray-300 transition-colors duration-300">
-                    {item.description}
-                  </span>
-                </div>
-
-                <div className="text-gray-500 group-hover:text-blue-400 transition-all duration-300 group-hover:translate-x-1">
-                  <div className="w-6 h-6 border border-gray-500/50 rounded group-hover:border-blue-400/80 flex items-center justify-center transition-all duration-300">
-                    <div className="w-2 h-2 border-r border-t border-gray-500 group-hover:border-blue-400 transform rotate-45 transition-colors duration-300"></div>
-                  </div>
-                </div>
-              </a>
+                  <svg
+                    className="w-4 h-4 text-gray-700 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all duration-200"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
+
+          {/* Divider */}
+          <div className="my-6 border-t border-white/[0.06]" />
+
+          {/* Hire Me CTA */}
+          <a
+            href="/hire"
+            onClick={() => setMenuOpen(false)}
+            className={`flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.25)] hover:shadow-[0_0_28px_rgba(59,130,246,0.45)] ${
+              menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
+            }`}
+            style={{
+              transitionDelay: menuOpen ? `${80 + navLinks.length * 45}ms` : "0ms",
+              transitionProperty: "opacity, transform, box-shadow",
+              transitionDuration: "300ms",
+            }}>
+            Hire Me
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </a>
         </nav>
 
         {/* Footer */}
-        <div className="absolute bottom-8 left-6 right-6">
-          <div className="relative p-6 rounded-lg border border-blue-500/20 bg-gradient-to-r from-blue-500/5 to-cyan-400/5 backdrop-blur-sm">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-transparent to-cyan-400/10 rounded-lg"></div>
-            <div className="relative text-center">
-              <div className="flex items-center justify-center space-x-2 mb-2">
-                <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                <p className="text-blue-400 text-xs font-mono uppercase tracking-widest">
-                  DEVELOPED BY
-                </p>
-                <div
-                  className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"
-                  style={{ animationDelay: "1s" }}></div>
-              </div>
-              <p className="text-white font-semibold tracking-wide">
-                MUHAMED NUR BECK
-              </p>
-              <p className="text-gray-400 text-xs font-mono mt-1">
-                © 2025 ALL RIGHTS RESERVED
-              </p>
-            </div>
-          </div>
+        <div className="px-6 py-4 border-t border-white/[0.06] shrink-0">
+          <p className="text-gray-600 text-xs font-mono text-center tracking-wider">
+            © 2025 Muhamed Nur Beck
+          </p>
         </div>
-
-        {/* Decorative gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none rounded-l-2xl" />
       </div>
     </>
   );

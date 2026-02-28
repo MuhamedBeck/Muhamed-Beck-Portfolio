@@ -11,7 +11,7 @@ export const Projects = () => {
             Featured Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">Phoenix Parkservice</h3>
                 <p className="text-gray-400 mb-4">
@@ -49,7 +49,7 @@ export const Projects = () => {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">
                   LLM Unit Test Automation (Master Thesis)
@@ -81,7 +81,7 @@ export const Projects = () => {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">TaskFlow</h3>
                 <p className="text-gray-400 mb-4">
@@ -116,7 +116,7 @@ export const Projects = () => {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">
                   AR Data Visualization (Bachelor Thesis)
@@ -147,7 +147,7 @@ export const Projects = () => {
                 </a>
               </div>
             </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">LinkedIn AI Analyzer</h3>
                 <p className="text-gray-400 mb-4">

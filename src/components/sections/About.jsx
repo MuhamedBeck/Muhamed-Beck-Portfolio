@@ -108,7 +108,7 @@ export const About = () => {
           </div>
 
           <RevealOnScroll>
-            <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6 mb-16">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               <div className="group relative">
                 <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
                   <h3 className="text-xl font-bold mb-4 text-blue-400">
