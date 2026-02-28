@@ -43,6 +43,12 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
       description: "Get In Touch",
       number: "05",
     },
+    {
+      href: "/hire",
+      label: "Hire Me",
+      description: "Request a Service",
+      number: "06",
+    },
   ];
 
   return (

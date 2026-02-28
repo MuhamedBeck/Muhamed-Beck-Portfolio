@@ -48,6 +48,11 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
               className="text-gray-300 hover:text-white transition-colors cursor-pointer">
               Contact
             </a>
+            <a
+              href="/hire"
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-blue-500 hover:to-indigo-500 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300">
+              Hire Me
+            </a>
           </div>
         </div>
       </div>

@@ -105,14 +105,14 @@ export const Services = () => {
       description:
         "Have a unique challenge? Let's talk! From AI integration and DevOps pipelines to custom software development, I bring creative solutions to complex technical problems.",
       features: [
-        "AI & LLM integration (OpenAI, Azure)",
+        "AI & LLM integration (OpenAI, Claude, Azure)",
+        "OpenClaw & Anthropic Claude integration",
+        "Voice AI agents (Twilio/WebRTC, STT/TTS)",
         "DevOps & CI/CD pipelines",
         "Docker & Kubernetes deployment",
         "Cloud architecture (Azure, AWS)",
-        "Database design & optimization",
         "Security & authentication (OAuth2, JWT)",
-        "Voice AI & chatbot development",
-        "Custom API development",
+        "Custom API development & webhooks",
       ],
       highlight: "Let's build something amazing together",
     },

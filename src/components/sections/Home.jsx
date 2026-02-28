@@ -215,9 +215,10 @@ export const Home = ({ isLoaded = true }) => {
           <p className={`text-gray-400 text-base sm:text-lg mb-8 max-w-lg mx-auto px-2 transition-all duration-600 ease-out ${
             showDescription ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`} style={{ willChange: 'transform, opacity' }}>
-            I'm a full-stack and AI developer passionate about crafting clean,
-            scalable web applications. I build solutions that deliver
-            exceptional performance and a good user experience.
+            AI Automation Manager & Full-Stack Developer based in Frankfurt.
+            I build production-ready AI pipelines with OpenAI, Claude & OpenClaw,
+            automate workflows with n8n & Zapier, and craft scalable web
+            applications with React, Angular & Spring Boot.
           </p>
 
           {/* Animated Social Links */}

@@ -21,7 +21,7 @@ export const About = () => {
   ];
 
   const otherSkills = ["Docker", "Kubernetes", "CI/CD", "Helm", "Git"];
-  const digitalSkills = ["WordPress", "Google Ads", "Google Analytics", "SEO"];
+  const aiSkills = ["n8n", "Zapier", "OpenAI/GPT", "Anthropic Claude", "OpenClaw", "Voice AI", "Prompt Engineering"];
 
   const mainExperience = [
     {
@@ -99,9 +99,11 @@ export const About = () => {
 
           <div className="rounded-2xl p-8 border border-white/10 backdrop-blur-sm bg-gray-900/50 mb-12">
             <p className="text-gray-300 text-lg leading-relaxed text-center max-w-3xl mx-auto">
-              Passionate Full-Stack Developer with expertise in building
-              scalable web applications, implementing AI solutions, and creating
-              innovative DevOps pipelines that drive business growth.
+              AI Automation Manager & Full-Stack Developer specializing in LLM
+              integration, n8n/Zapier workflow automation, and modern web
+              development. Building production-ready AI solutions with OpenAI,
+              Anthropic Claude, and OpenClaw — from intelligent automation
+              pipelines to scalable full-stack applications.
             </p>
           </div>
 
@@ -161,10 +163,10 @@ export const About = () => {
               <div className="group relative">
                 <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
                   <h3 className="text-xl font-bold mb-4 text-purple-400">
-                    Digital Marketing
+                    AI & Automation
                   </h3>
                   <div className="flex flex-wrap gap-2">
-                    {digitalSkills.map((tech, key) => (
+                    {aiSkills.map((tech, key) => (
                       <span
                         key={key}
                         className="bg-purple-500/20 text-purple-200 py-2 px-4 rounded-lg text-sm font-semibold shadow-sm hover:bg-purple-500/30 hover:text-white transition-all duration-300 cursor-default">

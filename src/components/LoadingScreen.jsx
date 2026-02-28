@@ -13,9 +13,9 @@ export const LoadingScreen = ({ onComplete }) => {
     "React",
     "Spring Boot",
     "Java",
-    "Wordpress",
-    "AI",
-    "Digital Marketing",
+    "n8n & Zapier",
+    "Claude AI",
+    "AI Automation",
   ];
 
   useEffect(() => {
