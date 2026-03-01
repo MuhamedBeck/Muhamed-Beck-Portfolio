@@ -71,6 +71,20 @@ body {
     animation: blink 0.8s step-end infinite;
   }
 
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .animate-marquee {
+    animation: marquee 35s linear infinite;
+    will-change: transform;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
   @keyframes loading {
     0% {
       transform: translateX(-100%);

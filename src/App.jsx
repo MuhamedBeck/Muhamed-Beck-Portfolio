@@ -9,6 +9,7 @@ import { Home } from "./components/sections/Home";
 import { About } from "./components/sections/About";
 import { Projects } from "./components/sections/Projects";
 import { Contact } from "./components/sections/Contact";
+import { TechMarquee } from "./components/TechMarquee";
 import Footer from "./components/Footer";
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Home isLoaded={isLoaded} />
+        <TechMarquee />
         <About />
         <Projects />
         <Contact />
