@@ -70,7 +70,7 @@ export const LoadingScreen = ({ onComplete }) => {
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 w-full">
         <div className="mb-8">
           <div className="flex justify-center mb-8">
-            <img src={mnbLogo} alt="MNB Logo" className="h-16 w-auto opacity-90" />
+            <img src={mnbLogo} alt="MNB Logo" className="h-28 w-auto opacity-90" />
           </div>
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-light tracking-wider mb-4 whitespace-nowrap">
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
