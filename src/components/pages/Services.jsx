@@ -119,11 +119,11 @@ export const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-gray-100">
+    <div className="min-h-screen text-gray-100" style={{ background: '#0a0a0a' }}>
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       
-      <section className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-blue-950 py-20 pt-28 px-4">
+      <section className="min-h-screen w-full py-20 pt-28 px-4" style={{ background: '#0a0a0a' }}>
         {/* Back to Home Link */}
         <div className="max-w-6xl mx-auto mb-8">
           <Link
@@ -206,7 +206,7 @@ export const Services = () => {
           {/* CTA Section */}
           <RevealOnScroll>
             <div className="mt-16 text-center">
-              <div className="inline-block rounded-2xl border border-white/10 bg-gradient-to-br from-gray-900/80 to-blue-950/50 p-10 md:p-12">
+              <div className="inline-block rounded-2xl border border-white/10 bg-white/5 p-10 md:p-12">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   Ready to Get Started?
                 </h2>

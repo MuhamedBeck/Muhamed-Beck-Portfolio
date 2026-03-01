@@ -2,8 +2,8 @@ import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from "react-icons/fa";
 
 const Footer = () => (
   <footer
-    className="w-full pt-6 text-center text-gray-400 bg-black border-t border-gray-800 mt-4"
-    style={{ paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom, 20px))' }}>
+    className="w-full pt-6 text-center text-gray-400 border-t border-gray-800 mt-4"
+    style={{ background: '#0a0a0a', paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom, 20px))' }}>
     <div className="max-w-6xl mx-auto px-4">
       {/* Single Row Layout */}
       <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">

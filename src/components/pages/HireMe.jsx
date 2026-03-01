@@ -132,7 +132,7 @@ export const HireMe = () => {
     "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all duration-300";
 
   return (
-    <div className="min-h-screen bg-black text-gray-100">
+    <div className="min-h-screen text-gray-100" style={{ background: '#0a0a0a' }}>
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
@@ -233,7 +233,7 @@ export const HireMe = () => {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="py-16 px-4 bg-gradient-to-b from-transparent via-gray-900/20 to-transparent">
+      <section className="py-16 px-4">
         <RevealOnScroll>
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 text-white">
