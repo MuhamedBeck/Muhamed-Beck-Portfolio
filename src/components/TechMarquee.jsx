@@ -1,10 +1,16 @@
 import {
   SiAngular, SiReact, SiTypescript, SiJavascript,
   SiSpring, SiDocker, SiKubernetes, SiPython,
-  SiNodedotjs, SiN8n, SiZapier, SiHubspot,
+  SiNodedotjs, SiZapier, SiHubspot,
   SiOpenai, SiPostgresql, SiGit,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
+import { N8n } from "@lobehub/icons";
+
+// Wrap N8n.Color so it accepts the same className/style interface as react-icons
+const N8nIcon = ({ className }) => (
+  <N8n.Color size={28} className={className} />
+);
 
 const techs = [
   { Icon: SiReact,       name: "React",       color: "#61DAFB" },
@@ -13,7 +19,7 @@ const techs = [
   { Icon: SiSpring,      name: "Spring Boot", color: "#6DB33F" },
   { Icon: SiTypescript,  name: "TypeScript",  color: "#3178C6" },
   { Icon: SiJavascript,  name: "JavaScript",  color: "#F7DF1E" },
-  { Icon: SiN8n,         name: "n8n",         color: "#EA4B71" },
+  { Icon: N8nIcon,       name: "n8n",         color: "#EA4B71" },
   { Icon: SiZapier,      name: "Zapier",      color: "#FF4A00" },
   { Icon: SiOpenai,      name: "OpenAI",      color: "#10a37f" },
   { Icon: SiHubspot,     name: "HubSpot",     color: "#FF7A59" },
