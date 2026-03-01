@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   useEffect(() => {
@@ -13,11 +14,11 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   }, [menuOpen]);
 
   const navLinks = [
-    { href: "/", label: "Home" },
-    { href: "/services", label: "Services" },
-    { href: "#about", label: "About" },
-    { href: "#projects", label: "Projects" },
-    { href: "#contact", label: "Contact" },
+    { href: "/", label: "Home", isRoute: true },
+    { href: "/services", label: "Services", isRoute: true },
+    { href: "/#about", label: "About" },
+    { href: "/#projects", label: "Projects" },
+    { href: "/#contact", label: "Contact" },
   ];
 
   return (
@@ -73,47 +74,41 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         {/* Nav — overflow-y-auto + overscroll-contain prevents page scroll-through on iOS */}
         <nav className="flex-1 overflow-y-auto overscroll-contain px-4 py-6">
           <ul className="space-y-0.5">
-            {navLinks.map((item, i) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
-                  onClick={() => setMenuOpen(false)}
-                  className={`flex items-center justify-between w-full px-4 py-3.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/[0.05] active:bg-white/10 group ${
-                    menuOpen
-                      ? "opacity-100 translate-x-0"
-                      : "opacity-0 translate-x-6"
-                  }`}
-                  style={{
-                    transitionDelay: menuOpen ? `${80 + i * 45}ms` : "0ms",
-                    transitionProperty: "opacity, transform",
-                    transitionDuration: "300ms",
-                  }}>
-                  <span className="font-medium text-[15px] tracking-wide">
-                    {item.label}
-                  </span>
-                  <svg
-                    className="w-4 h-4 text-gray-700 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all duration-200"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
+            {navLinks.map((item, i) => {
+              const linkClass = `flex items-center justify-between w-full px-4 py-3.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/[0.05] active:bg-white/10 group ${
+                menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
+              }`;
+              const linkStyle = {
+                transitionDelay: menuOpen ? `${80 + i * 45}ms` : "0ms",
+                transitionProperty: "opacity, transform",
+                transitionDuration: "300ms",
+              };
+              const inner = (
+                <>
+                  <span className="font-medium text-[15px] tracking-wide">{item.label}</span>
+                  <svg className="w-4 h-4 text-gray-700 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </a>
-              </li>
-            ))}
+                </>
+              );
+              return (
+                <li key={item.href}>
+                  {item.isRoute ? (
+                    <Link to={item.href} onClick={() => setMenuOpen(false)} className={linkClass} style={linkStyle}>{inner}</Link>
+                  ) : (
+                    <a href={item.href} onClick={() => setMenuOpen(false)} className={linkClass} style={linkStyle}>{inner}</a>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           {/* Divider */}
           <div className="my-6 border-t border-white/[0.06]" />
 
           {/* Hire Me CTA */}
-          <a
-            href="/hire"
+          <Link
+            to="/hire"
             onClick={() => setMenuOpen(false)}
             className={`flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.25)] hover:shadow-[0_0_28px_rgba(59,130,246,0.45)] ${
               menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
@@ -136,7 +131,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
                 d="M13 7l5 5m0 0l-5 5m5-5H6"
               />
             </svg>
-          </a>
+          </Link>
         </nav>
 
         {/* Footer */}

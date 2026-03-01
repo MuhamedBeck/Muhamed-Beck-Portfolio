@@ -16,8 +16,6 @@ body {
   /* Use min-height + dvh: adjusts dynamically as browser chrome shows/hides */
   min-height: 100vh;
   min-height: 100dvh;
-  /* Prevent rubber-band overscroll from exposing the system grey background */
-  overscroll-behavior-y: none;
 }
 
 /* Safe Area Support */
