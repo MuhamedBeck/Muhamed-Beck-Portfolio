@@ -58,7 +58,7 @@ export const TechMarquee = () => (
             key={i}
             className="flex flex-col items-center gap-2 px-8 group cursor-default">
             <Icon
-              className="w-7 h-7 transition-all duration-300 opacity-30 group-hover:opacity-100 group-hover:scale-110"
+              className="w-7 h-7 transition-all duration-300 opacity-50 group-hover:opacity-100 group-hover:scale-110"
               style={{ color }}
             />
             <span className="text-[11px] text-gray-600 group-hover:text-gray-300 transition-colors duration-300 whitespace-nowrap">
