@@ -48,10 +48,10 @@ function App() {
         <LoadingScreen onComplete={() => setIstLoaded(true)}></LoadingScreen>
       )}
       <div
-        className={`safe-area-full min-h-screen transition-opacity duration-700 ${
+        className={`safe-area-top min-h-[100dvh] transition-opacity duration-700 ${
           isLoaded ? "opacity-100" : "opacity-0"
-        } bg-black text-gray-100`}
-        style={{ overflow: isLoaded ? "visible" : "hidden" }}>
+        } text-gray-100`}
+        style={{ background: '#0a0a0a', overflow: isLoaded ? "visible" : "hidden" }}>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <Home isLoaded={isLoaded} />
