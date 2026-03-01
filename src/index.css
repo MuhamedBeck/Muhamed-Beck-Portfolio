@@ -13,19 +13,9 @@ body {
   color: #f3f4f6;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  /* Ensure full viewport coverage on mobile */
-  height: 100vh;
-  height: -webkit-fill-available;
-  /* Extend behind safe areas */
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-/* iOS Safari specific fix */
-@supports (-webkit-touch-callout: none) {
-  html, body {
-    height: -webkit-fill-available;
-  }
+  /* Use min-height + dvh: adjusts dynamically as browser chrome shows/hides */
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* Safe Area Support */
@@ -69,10 +59,8 @@ body {
 #root {
   overflow-x: hidden;
   cursor: default;
-  /* Ensure root container fills entire viewport including safe areas */
   min-height: 100vh;
-  min-height: -webkit-fill-available;
-  /* Extend behind safe areas */
+  min-height: 100dvh;
   margin: 0;
   padding: 0;
 }
