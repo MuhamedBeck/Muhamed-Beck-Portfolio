@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import mnbLogo from "../assets/MNB_Logo.png";
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   useEffect(() => {
@@ -44,14 +45,9 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         }}>
         {/* Header */}
         <div className="flex items-center justify-between px-6 h-16 border-b border-white/[0.06] shrink-0">
-          <a
-            href="/"
-            onClick={() => setMenuOpen(false)}
-            className="font-mono font-bold text-white text-base tracking-wide">
-            <span className="text-blue-500">MNB</span>
-            <span className="text-gray-500 mx-1.5">—</span>
-            <span className="text-gray-300 text-sm">PORTFOLIO</span>
-          </a>
+          <Link to="/" onClick={() => setMenuOpen(false)} className="flex items-center">
+            <img src={mnbLogo} alt="MNB Logo" className="h-8 w-auto" />
+          </Link>
           <button
             onClick={() => setMenuOpen(false)}
             className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-white transition-colors rounded-lg hover:bg-white/5"
