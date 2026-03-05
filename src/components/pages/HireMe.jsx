@@ -5,8 +5,6 @@ import { MobileMenu } from "../MobileMenu";
 import Footer from "../Footer";
 import { RevealOnScroll } from "../RevealOnScroll";
 import {
-  FaEnvelopeOpenText,
-  FaRocket,
   FaCogs,
   FaCode,
   FaExchangeAlt,
@@ -40,21 +38,21 @@ export const HireMe = () => {
       icon: <FaCogs className="w-7 h-7" />,
       title: "AI & Workflow Automation",
       description:
-        "Automate your business processes with n8n, Zapier, OpenAI, Claude AI & OpenClaw. Cut cycle times by up to 80% and increase your automation rate to ~90%.",
+        "Custom workflows with n8n, Zapier, OpenAI, Claude AI & OpenClaw. Connecting tools, eliminating manual work, and speeding up your processes.",
       tags: ["n8n", "Zapier", "Claude AI", "OpenClaw", "OpenAI"],
     },
     {
       icon: <FaCode className="w-7 h-7" />,
       title: "Full-Stack Web Development",
       description:
-        "Modern, scalable web applications built with React, Angular, Spring Boot & Docker. From landing pages to complex microservice architectures.",
+        "Web applications with React, Angular, Spring Boot & Docker. From landing pages to microservice architectures.",
       tags: ["React", "Angular", "Spring Boot", "Docker", "REST API"],
     },
     {
       icon: <FaExchangeAlt className="w-7 h-7" />,
       title: "HubSpot & CRM Integration",
       description:
-        "Seamless HubSpot, RecruitCRM & ATS integrations via REST APIs, webhooks & OAuth2. Automate your lead and candidate pipelines end-to-end.",
+        "HubSpot, RecruitCRM & ATS integrations via REST APIs, webhooks & OAuth2. Connecting your lead and candidate pipelines.",
       tags: ["HubSpot", "RecruitCRM", "REST API", "OAuth2", "Webhooks"],
     },
   ];
@@ -156,15 +154,13 @@ export const HireMe = () => {
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent leading-tight">
-              Let's Build Something
-              <br />
-              That Actually Works
+              Let's Work Together
             </h1>
 
             <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
-              AI Automation Manager & Full-Stack Developer based in
-              Frankfurt/Rhein-Main. I turn complex business processes into
-              clean, automated solutions — and I respond within{" "}
+              I help businesses automate workflows and build web applications.
+              Based in Frankfurt — available for freelance projects, remote or on-site.
+              I respond within{" "}
               <span className="text-cyan-400 font-semibold">24 hours</span>.
             </p>
 
@@ -184,9 +180,8 @@ export const HireMe = () => {
 
             <a
               href="#request-form"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 transition-all duration-300 group cursor-pointer">
-              <FaRocket className="group-hover:scale-110 transition-transform duration-300" />
-              Request a Service
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 transition-all duration-300 cursor-pointer">
+              Get in Touch
             </a>
           </div>
         </RevealOnScroll>
@@ -196,12 +191,9 @@ export const HireMe = () => {
       <section className="py-16 px-4">
         <RevealOnScroll>
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-2 text-white">
-              What I Do Best
+            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-10 text-white">
+              Services
             </h2>
-            <p className="text-center text-gray-400 mb-10 text-sm">
-              Focused on services that deliver measurable results
-            </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {services.map((service, i) => (
                 <div
@@ -443,8 +435,7 @@ export const HireMe = () => {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white py-4 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 disabled:opacity-60 disabled:pointer-events-none cursor-pointer group">
-                  <FaEnvelopeOpenText className="text-lg group-hover:scale-110 transition-transform duration-300" />
+                  className="w-full flex items-center justify-center bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white py-4 px-6 rounded-lg font-semibold text-base transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 disabled:opacity-60 disabled:pointer-events-none cursor-pointer">
                   {loading ? "Sending..." : "Send Request"}
                 </button>
 

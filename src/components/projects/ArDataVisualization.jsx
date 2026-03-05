@@ -11,8 +11,7 @@ export const ArDataVisualization = () => {
               AR Data Visualization
             </h1>
             <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto">
-              Revolutionizing Business Intelligence: SAP BusinessObjects meets
-              Augmented Reality
+              SAP BusinessObjects meets Augmented Reality
             </p>
           </div>
 
@@ -22,12 +21,11 @@ export const ArDataVisualization = () => {
                 Bachelor Thesis Overview
               </h2>
               <p className="text-gray-300 text-base leading-relaxed mb-6">
-                This groundbreaking bachelor thesis explores the innovative
-                fusion of Augmented Reality (AR) with business data
-                visualization. The project successfully demonstrates how
-                traditional SAP BusinessObjects reports and dashboards can be
-                transformed into immersive 3D AR experiences, creating an
-                entirely new paradigm for data interaction and analysis.
+                This bachelor thesis explores the combination of Augmented
+                Reality (AR) with business data visualization. The project
+                demonstrates how SAP BusinessObjects reports and dashboards
+                can be turned into interactive 3D AR experiences accessible
+                through the browser.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">

@@ -7,7 +7,6 @@ import {
   FaSearch,
   FaHeadset,
   FaRocket,
-  FaEnvelope,
 } from "react-icons/fa";
 import { Navbar } from "../Navbar";
 import { MobileMenu } from "../MobileMenu";
@@ -33,7 +32,7 @@ export const Services = () => {
       title: "Workflow Automation",
       subtitle: "n8n & Zapier Solutions",
       description:
-        "Transform your business processes with intelligent automation. I build custom workflows using n8n and Zapier that connect your favorite tools, eliminate repetitive tasks, and save you hours every week.",
+        "I build custom workflows using n8n and Zapier that connect your tools, eliminate repetitive tasks, and free up your team's time.",
       features: [
         "Custom n8n workflow development",
         "Zapier integrations & automations",
@@ -50,7 +49,7 @@ export const Services = () => {
       title: "Web Development",
       subtitle: "Full-Stack Solutions",
       description:
-        "From sleek landing pages to complex web applications, I deliver modern, responsive, and high-performance websites tailored to your needs. Built with cutting-edge technologies for speed and scalability.",
+        "Landing pages, dashboards, or full web applications — I build responsive, performant sites with modern frameworks, tailored to what you actually need.",
       features: [
         "React.js & Angular applications",
         "Spring Boot & Node.js backends",
@@ -68,7 +67,7 @@ export const Services = () => {
       title: "SEO Optimization",
       subtitle: "Visibility & Growth",
       description:
-        "Get found online with data-driven SEO strategies. I optimize your website for search engines, improve your rankings, and drive organic traffic that converts into customers.",
+        "I optimize your site for search engines — from technical audits and structured data to page speed and local SEO for the German market.",
       features: [
         "Technical SEO audits & fixes",
         "On-page optimization",
@@ -86,7 +85,7 @@ export const Services = () => {
       title: "IT Support",
       subtitle: "1st & 2nd Level Support",
       description:
-        "Reliable IT support when you need it. From troubleshooting hardware and software issues to setting up new systems, I provide professional support that keeps your business running smoothly.",
+        "From troubleshooting hardware and software issues to setting up new systems — reliable support when you need it.",
       features: [
         "Hardware troubleshooting & setup",
         "Software installation & configuration",
@@ -103,7 +102,7 @@ export const Services = () => {
       title: "Custom IT Solutions",
       subtitle: "Tailored to Your Needs",
       description:
-        "Have a unique challenge? Let's talk! From AI integration and DevOps pipelines to custom software development, I bring creative solutions to complex technical problems.",
+        "AI integration, DevOps pipelines, custom software — if it doesn't fit a standard category, let's figure out the right approach together.",
       features: [
         "AI & LLM integration (OpenAI, Claude, Azure)",
         "OpenClaw & Anthropic Claude integration",
@@ -114,7 +113,7 @@ export const Services = () => {
         "Security & authentication (OAuth2, JWT)",
         "Custom API development & webhooks",
       ],
-      highlight: "Let's build something amazing together",
+      highlight: "Flexible scope, tailored to you",
     },
   ];
 
@@ -144,9 +143,8 @@ export const Services = () => {
               Services
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Professional IT services tailored to help your business grow.
-              From automation and web development to SEO and support – I deliver
-              solutions that make a real impact.
+              Automation, web development, SEO, and IT support — here's
+              what I can help you with.
             </p>
           </div>
 
@@ -211,17 +209,15 @@ export const Services = () => {
                   Ready to Get Started?
                 </h2>
                 <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-                  Let's discuss how I can help your business with custom IT
-                  solutions. Whether you have a specific project in mind or just
-                  want to explore possibilities – I'm here to help.
+                  Have a project in mind or just want to explore what's
+                  possible? Drop me a message.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={handleContactClick}
-                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white py-3 px-8 rounded-lg font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 group cursor-pointer">
-                    <FaEnvelope className="w-4 h-4 group-hover:scale-110 transition-transform duration-300" />
-                    <span>Contact Me</span>
+                    className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white py-3 px-8 rounded-lg font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 cursor-pointer">
+                    Contact Me
                   </button>
 
                   <a

@@ -55,11 +55,10 @@ export const Projects = () => {
                   LLM Unit Test Automation (Master Thesis)
                 </h3>
                 <p className="text-gray-400 mb-4">
-                  Revolutionary AI-powered Maven plugin automating unit test
-                  generation for Spring Boot projects. Integrates ChatGPT with
-                  JaCoCo for intelligent test coverage analysis, achieving 96%
-                  time reduction and significant cost savings in enterprise
-                  environments.
+                  AI-powered Maven plugin that automates unit test generation
+                  for Spring Boot projects. Integrates ChatGPT with JaCoCo
+                  for coverage analysis — achieved 96% time reduction compared
+                  to manual test writing.
                 </p>
               </div>
               <div className="flex flex-wrap gap-1 mb-2 justify-start">
@@ -122,10 +121,9 @@ export const Projects = () => {
                   AR Data Visualization (Bachelor Thesis)
                 </h3>
                 <p className="text-gray-400 mb-4">
-                  Groundbreaking research combining Augmented Reality with SAP
-                  BusinessObjects for immersive data visualization. Web-based AR
-                  solution transforming traditional reports into interactive 3D
-                  experiences.
+                  Web-based AR solution that turns SAP BusinessObjects reports
+                  into interactive 3D visualizations. Built with Angular, AR.js
+                  and A-Frame for browser-based augmented reality.
                 </p>
               </div>
               <div className="flex flex-wrap gap-1 mb-2 justify-start">

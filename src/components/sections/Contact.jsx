@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { FaEnvelopeOpenText } from "react-icons/fa";
 import { RevealOnScroll } from "../RevealOnScroll";
 import emailjs from "@emailjs/browser";
 
@@ -46,8 +45,7 @@ export const Contact = () => {
 
           {sent && (
             <div className="absolute left-1/2 -translate-x-1/2 top-16 flex flex-col items-center z-10 animate-fade-in-up">
-              <FaEnvelopeOpenText className="text-6xl text-blue-400 animate-bounce mb-2" />
-              <span className="text-lg text-blue-300 font-semibold bg-white/10 px-6 py-3 rounded-xl shadow-lg animate-fade-in-up">
+              <span className="text-lg text-blue-300 font-semibold bg-white/10 px-6 py-3 rounded-xl shadow-lg">
                 Message Sent!
               </span>
             </div>
@@ -132,13 +130,6 @@ export const Contact = () => {
                 ${loading ? "opacity-60 pointer-events-none" : ""}
               `}>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <FaEnvelopeOpenText
-                className={`
-                  text-xl md:text-2xl transition-transform duration-300 relative z-10
-                  group-hover:scale-110
-                  ${loading ? "animate-spin" : sent ? "animate-bounce" : ""}
-                `}
-              />
               <span className="relative z-10">
                 {loading ? "Sending..." : sent ? "Sent!" : "Send Message"}
               </span>

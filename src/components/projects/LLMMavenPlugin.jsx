@@ -11,8 +11,7 @@ export const LLMMavenPlugin = () => {
               LLM Unit Test Automation
             </h1>
             <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto">
-              Revolutionizing Software Testing: AI-Powered Automated Unit Test
-              Generation for Spring Boot Projects
+              AI-Powered Automated Unit Test Generation for Spring Boot Projects
             </p>
           </div>
 
@@ -22,13 +21,12 @@ export const LLMMavenPlugin = () => {
                 Master Thesis Overview
               </h2>
               <p className="text-gray-300 text-base leading-relaxed mb-6">
-                This groundbreaking master thesis explores the innovative
-                application of Large Language Models (LLMs) in automated unit
-                test generation for Java Spring Boot applications. The research
-                successfully demonstrates how ChatGPT can be integrated into
-                Maven build processes to automatically analyze code coverage and
-                generate high-quality unit tests, creating a paradigm shift in
-                software testing efficiency and quality assurance.
+                This master thesis explores the application of Large Language
+                Models (LLMs) in automated unit test generation for Java Spring
+                Boot applications. The research demonstrates how ChatGPT can be
+                integrated into Maven build processes to automatically analyze
+                code coverage and generate unit tests, significantly improving
+                testing efficiency.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
