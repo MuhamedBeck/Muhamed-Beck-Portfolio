@@ -382,27 +382,27 @@ export const HireMe = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, service_type: e.target.value })
                     }
-                    className="w-full bg-gray-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all duration-300 cursor-pointer appearance-none">
-                    <option value="" disabled>
+                    className="w-full bg-gray-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:bg-gray-800 transition-colors duration-300 cursor-pointer appearance-none">
+                    <option value="" disabled className="bg-gray-900 text-gray-400">
                       Select a service...
                     </option>
-                    <option value="AI Workflow Automation (n8n/Zapier)">
+                    <option value="AI Workflow Automation (n8n/Zapier)" className="bg-gray-900 text-white">
                       AI Workflow Automation (n8n / Zapier)
                     </option>
-                    <option value="Claude AI / OpenClaw Integration">
+                    <option value="Claude AI / OpenClaw Integration" className="bg-gray-900 text-white">
                       Claude AI / OpenClaw Integration
                     </option>
-                    <option value="HubSpot & CRM Integration">
+                    <option value="HubSpot & CRM Integration" className="bg-gray-900 text-white">
                       HubSpot & CRM Integration
                     </option>
-                    <option value="Full-Stack Web Development">
+                    <option value="Full-Stack Web Development" className="bg-gray-900 text-white">
                       Full-Stack Web Development
                     </option>
-                    <option value="SEO Optimization">SEO Optimization</option>
-                    <option value="Custom IT Solution">
+                    <option value="SEO Optimization" className="bg-gray-900 text-white">SEO Optimization</option>
+                    <option value="Custom IT Solution" className="bg-gray-900 text-white">
                       Custom IT Solution
                     </option>
-                    <option value="Other / Not sure yet">
+                    <option value="Other / Not sure yet" className="bg-gray-900 text-white">
                       Other / Not sure yet
                     </option>
                   </select>
