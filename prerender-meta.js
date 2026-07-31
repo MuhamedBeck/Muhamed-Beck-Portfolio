@@ -16,6 +16,17 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "dist");
 const template = readFileSync(join(distDir, "index.html"), "utf8");
 
+// The hero image is referenced only from inside the JS bundle, so the browser
+// cannot discover it until React has rendered. Preloading the hashed file makes
+// the LCP request start alongside the HTML instead of after script execution.
+const heroImage = readdirSync(join(distDir, "assets")).find(
+  (f) => f.startsWith("profilepicture-") && f.endsWith(".webp")
+);
+if (!heroImage) {
+  throw new Error("prerender-meta: hero image (profilepicture-*.webp) not found in dist/assets");
+}
+const heroPreload = `  <link rel="preload" as="image" href="/assets/${heroImage}" fetchpriority="high" />\n`;
+
 const escapeHtml = (text) =>
   text
     .replaceAll("&", "&amp;")
@@ -92,6 +103,11 @@ for (const route of ROUTES_META) {
   const faqScript = faqJsonLd(route.path);
   if (faqScript) {
     html = replaceRequired(html, /<\/head>/, () => `${faqScript}</head>`, "head end", route.path);
+  }
+
+  // Only the homepage renders the hero image, so only it gets the preload.
+  if (route.path === "/") {
+    html = replaceRequired(html, /<\/head>/, () => `${heroPreload}</head>`, "head end", route.path);
   }
 
   const outDir =

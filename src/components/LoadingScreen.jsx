@@ -19,6 +19,8 @@ export const LoadingScreen = ({ onComplete }) => {
     "AI Automation",
   ];
 
+  // Total budget is kept under one second: the splash is a brand moment, not a
+  // real loading step, and anything longer directly degrades LCP and Speed Index.
   useEffect(() => {
     let index = 0;
     const typingInterval = setInterval(() => {
@@ -27,23 +29,21 @@ export const LoadingScreen = ({ onComplete }) => {
 
       if (index > fullText.length) {
         clearInterval(typingInterval);
-        setTimeout(() => setShowSubtext(true), 400);
+        setShowSubtext(true);
       }
-    }, 60);
+    }, 28);
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
-          setTimeout(() => {
-            setFadeOut(true);
-            setTimeout(() => onComplete(), 1000);
-          }, 1000);
+          setFadeOut(true);
+          setTimeout(() => onComplete(), 260);
           return 100;
         }
-        return prev + 1;
+        return prev + 4;
       });
-    }, 50);
+    }, 16);
 
     return () => {
       clearInterval(typingInterval);
@@ -53,7 +53,7 @@ export const LoadingScreen = ({ onComplete }) => {
 
   return (
     <div
-      className={`loading-screen-safe z-50 text-white flex flex-col items-center justify-center transition-opacity duration-800 ${
+      className={`loading-screen-safe z-50 text-white flex flex-col items-center justify-center transition-opacity duration-300 ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
       style={{
@@ -80,7 +80,7 @@ export const LoadingScreen = ({ onComplete }) => {
           </h1>
 
           <div
-            className={`transition-all duration-1000 ${
+            className={`transition-all duration-300 ${
               showSubtext
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
@@ -93,12 +93,12 @@ export const LoadingScreen = ({ onComplete }) => {
               {techStack.map((tech, index) => (
                 <span
                   key={tech}
-                  className={`px-4 py-2 text-sm border border-white/20 rounded-full bg-white/5 backdrop-blur-sm transition-all duration-500 hover:border-blue-400/50 ${
+                  className={`px-4 py-2 text-sm border border-white/20 rounded-full bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/50 ${
                     showSubtext
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-4"
                   }`}
-                  style={{ transitionDelay: `${index * 100 + 300}ms` }}>
+                  style={{ transitionDelay: `${index * 25}ms` }}>
                   {tech}
                 </span>
               ))}
