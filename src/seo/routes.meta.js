@@ -2,7 +2,7 @@
 // Used by: generate-sitemap.js (build), prerender-meta.js (build) and usePageMeta (runtime).
 // `lastmod` feeds the sitemap; update it whenever the page content actually changes.
 // `lang` (default "en") sets the html lang attribute of the prerendered page.
-export const SITE_URL = "https://mbeck.vercel.app";
+export const SITE_URL = "https://muhamedbeck.com";
 
 export const DEFAULT_ROBOTS =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
@@ -129,7 +129,7 @@ export const ROUTES_META = [
     path: "/datenschutz",
     title: "Datenschutzerklärung | Muhamed Beck",
     description:
-      "Datenschutzerklärung für mbeck.vercel.app: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.",
+      "Datenschutzerklärung für muhamedbeck.com: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.",
     h1: "Datenschutzerklärung",
     lang: "de",
     lastmod: "2026-07-31",
@@ -140,7 +140,7 @@ export const ROUTES_META = [
 
 export const NOT_FOUND_META = {
   title: "404 Page Not Found | Muhamed Beck",
-  description: "This page does not exist. Return to mbeck.vercel.app.",
+  description: "This page does not exist. Return to muhamedbeck.com.",
   robots: "noindex, follow",
 };
 

@@ -1,4 +1,4 @@
-# robots.txt for https://mbeck.vercel.app
+# robots.txt for https://muhamedbeck.com
 
 User-agent: *
 Allow: /
@@ -25,4 +25,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://mbeck.vercel.app/sitemap.xml
+Sitemap: https://muhamedbeck.com/sitemap.xml
