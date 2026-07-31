@@ -28,3 +28,6 @@ dist-ssr
 .claude
 # Playwright MCP test artifacts
 .playwright-mcp/
+
+# Claude Code write-tracking metadata
+public/**/.claude/

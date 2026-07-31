@@ -19,7 +19,7 @@ const escapeXml = (text) =>
 
 const homepageImage = `    <image:image>
       <image:loc>${escapeXml(`${SITE_URL}/profilepicture.png`)}</image:loc>
-      <image:title>${escapeXml("Muhamed Beck – AI Automation Manager and Full-Stack Developer in Frankfurt, Germany")}</image:title>
+      <image:title>${escapeXml("Muhamed Beck, AI Automation Manager and Full-Stack Developer in Frankfurt, Germany")}</image:title>
     </image:image>`;
 
 const urlEntries = ROUTES_META.map((route) => {

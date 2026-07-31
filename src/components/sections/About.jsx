@@ -102,7 +102,7 @@ export const About = () => {
               AI Automation Manager & Full-Stack Developer specializing in LLM
               integration, n8n/Zapier workflow automation, and modern web
               development. Building production-ready AI solutions with OpenAI,
-              Anthropic Claude, and OpenClaw — from intelligent automation
+              Anthropic Claude, and OpenClaw, from intelligent automation
               pipelines to scalable full-stack applications.
             </p>
           </div>

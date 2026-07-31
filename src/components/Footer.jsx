@@ -1,4 +1,5 @@
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => (
   <footer
@@ -53,6 +54,22 @@ const Footer = () => (
         {/* Copyright */}
         <div className="text-xs text-gray-500 font-medium">
           &copy; {new Date().getFullYear()} Muhamed Nur Beck
+        </div>
+
+        <div className="w-px h-4 bg-gray-600 hidden sm:block"></div>
+
+        {/* Legal Links */}
+        <div className="flex items-center gap-4 text-xs font-medium">
+          <Link
+            to="/impressum"
+            className="text-gray-500 hover:text-blue-400 transition-colors duration-300">
+            Impressum
+          </Link>
+          <Link
+            to="/datenschutz"
+            className="text-gray-500 hover:text-blue-400 transition-colors duration-300">
+            Datenschutz
+          </Link>
         </div>
       </div>
     </div>

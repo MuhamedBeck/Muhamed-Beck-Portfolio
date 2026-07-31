@@ -153,7 +153,7 @@ export const HireMe = () => {
 
             <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed">
               I help businesses automate workflows and build web applications.
-              Based in Frankfurt — available for freelance projects, remote or on-site.
+              Based in Frankfurt and available for freelance projects, remote or on-site.
               I respond within{" "}
               <span className="text-cyan-400 font-semibold">24 hours</span>.
             </p>
@@ -261,7 +261,7 @@ export const HireMe = () => {
                 Request a Service
               </h2>
               <p className="text-gray-400">
-                Tell me about your project — I'll get back to you within 24
+                Tell me about your project and I'll get back to you within 24
                 hours.
               </p>
             </div>

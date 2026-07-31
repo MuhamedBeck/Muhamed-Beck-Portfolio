@@ -10,15 +10,9 @@
   <link rel="apple-touch-icon" href="/MNB_Logo.png" />
   <link rel="manifest" href="/manifest.json" />
   
-  <!-- Preconnect for performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-  
-  <!-- Preload critical font -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" as="style" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-  
+  <!-- Preload critical font (self-hosted, GDPR-compliant) -->
+  <link rel="preload" href="/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="theme-color" content="#0a0a0a" />
@@ -29,7 +23,7 @@
   <!-- Primary Meta Tags -->
   <title>Muhamed Beck | AI Automation & Full-Stack Developer in Frankfurt, Germany</title>
   <meta name="title" content="Muhamed Beck | AI Automation & Full-Stack Developer in Frankfurt, Germany" />
-  <meta name="description" content="Muhamed Beck – AI Automation Manager & Full-Stack Developer in Frankfurt. Expert in n8n, Zapier, OpenAI, Anthropic Claude, HubSpot integrations, React, Angular, Spring Boot & Docker. Available for freelance projects and collaborations." />
+  <meta name="description" content="AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG solutions, React, Angular, Spring Boot. Available for freelance projects." />
   <meta name="author" content="Muhamed Nur Beck" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://mbeck.vercel.app/" />
@@ -38,7 +32,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mbeck.vercel.app/" />
   <meta property="og:title" content="Muhamed Beck | AI Automation & Full-Stack Developer in Frankfurt, Germany" />
-  <meta property="og:description" content="Muhamed Beck – AI Automation Manager & Full-Stack Developer in Frankfurt. Expert in n8n, Zapier, OpenAI, Anthropic Claude, HubSpot integrations, React, Angular, Spring Boot & Docker. Available for freelance projects and collaborations." />
+  <meta property="og:description" content="AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG solutions, React, Angular, Spring Boot. Available for freelance projects." />
   <meta property="og:image" content="https://mbeck.vercel.app/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="800" />
@@ -50,7 +44,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:url" content="https://mbeck.vercel.app/" />
   <meta name="twitter:title" content="Muhamed Beck | AI Automation & Full-Stack Developer in Frankfurt, Germany" />
-  <meta name="twitter:description" content="Muhamed Beck – AI Automation Manager & Full-Stack Developer in Frankfurt. Expert in n8n, Zapier, OpenAI, Anthropic Claude, HubSpot integrations, React, Angular, Spring Boot & Docker. Available for freelance projects and collaborations." />
+  <meta name="twitter:description" content="AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG solutions, React, Angular, Spring Boot. Available for freelance projects." />
   <meta name="twitter:image" content="https://mbeck.vercel.app/og-image.jpg" />
 
   <!-- Additional SEO -->
@@ -75,7 +69,8 @@
       "@type": "EducationalOrganization",
       "name": "Frankfurt University of Applied Sciences"
     },
-    "knowsAbout": ["React", "Angular", "Spring Boot", "Java", "Python", "AI", "LLM", "ChatGPT", "n8n", "Zapier", "OpenClaw", "Anthropic Claude", "Claude AI", "HubSpot", "RecruitCRM", "Voice AI", "Prompt Engineering", "Workflow Automation", "Docker", "Kubernetes", "DevOps", "Full-Stack Development", "Web Development", "AI Automation", "REST APIs", "OAuth2", "Webhooks"],
+    "knowsAbout": ["React", "Angular", "Spring Boot", "Java", "Python", "AI", "LLM", "ChatGPT", "n8n", "Zapier", "OpenClaw", "Anthropic Claude", "Claude AI", "OpenAI", "Azure OpenAI", "RAG", "LangChain", "HubSpot", "RecruitCRM", "Personio", "Greenhouse", "Supabase", "Twilio", "Voice AI", "Prompt Engineering", "Workflow Automation", "Docker", "Kubernetes", "DevOps", "Elasticsearch", "Full-Stack Development", "Web Development", "AI Automation", "REST APIs", "OAuth2", "Webhooks", "SEO"],
+    "knowsLanguage": ["German", "English", "Arabic"],
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Frankfurt am Main",
@@ -176,37 +171,41 @@
   <!-- SEO: Fallback content for crawlers that don't execute JavaScript -->
   <noscript>
     <div style="padding: 40px; font-family: sans-serif; max-width: 800px; margin: 0 auto;">
-      <h1>Muhamed Nur Beck – AI Automation Manager & Full-Stack Developer in Frankfurt, Germany</h1>
-      <p>Based in Frankfurt/Rhein-Main, Germany. Specializing in AI workflow automation (n8n, Zapier), LLM integration (OpenAI, Anthropic Claude, OpenClaw), HubSpot/CRM integrations, and full-stack web development (React, Angular, Spring Boot). Available for freelance projects and collaborations.</p>
+      <h1>Muhamed Nur Beck, AI Automation Manager & Full-Stack Developer in Frankfurt, Germany</h1>
+      <p>Based in Frankfurt/Rhein-Main, Germany. Specializing in AI workflow automation (n8n, Zapier), LLM and GPT solutions (OpenAI, Azure, Anthropic Claude, RAG, LangChain), HubSpot/CRM integrations, and full-stack web development (React, Angular, Spring Boot). Available for freelance projects and collaborations.</p>
       <h2>Core Skills</h2>
       <ul>
-        <li>AI & Automation: n8n, Zapier, OpenAI/GPT, Anthropic Claude, OpenClaw, Voice AI, Prompt Engineering</li>
+        <li>AI & Automation: n8n, Zapier, OpenAI/GPT, Azure OpenAI, Anthropic Claude, RAG, LangChain, Voice AI (STT/TTS), Prompt Engineering</li>
         <li>Frontend: Angular, React.js, TypeScript, HTML/CSS, Tailwind CSS</li>
-        <li>Backend: Java, Spring Boot, Python, Node.js, REST APIs, Webhooks, OAuth2/JWT</li>
-        <li>Integrations: HubSpot, RecruitCRM, Personio, ATS/CRM systems</li>
-        <li>DevOps: Docker, Kubernetes, CI/CD (GitLab), Helm, Git</li>
+        <li>Backend: Java, Spring Boot, Python, Node.js, REST APIs, Webhooks, OAuth2/JWT, Microservices</li>
+        <li>Integrations: HubSpot, RecruitCRM, Personio, Greenhouse, ATS/CRM systems, Supabase, Twilio</li>
+        <li>DevOps: Docker, Kubernetes, CI/CD (GitLab), Helm, Azure, Monitoring (Prometheus)</li>
+        <li>Data & Analytics: SQL/NoSQL, Elasticsearch/Kibana, Google Analytics, Google Tag Manager</li>
       </ul>
       <h2>Services</h2>
       <ul>
-        <li>AI Workflow Automation with n8n & Zapier – cut cycle times by up to 80%</li>
-        <li>Claude AI & OpenClaw Integration for business processes</li>
-        <li>HubSpot & CRM Integration (REST, Webhooks, OAuth2)</li>
+        <li>AI Workflow Automation with n8n & Zapier (cut cycle times by up to 80%)</li>
+        <li>LLM and GPT solutions with OpenAI, Azure and Anthropic Claude (RAG, LangChain, candidate operations automated to about 90%)</li>
+        <li>HubSpot & CRM Integration (REST, Webhooks, OAuth2, rate limit and retry strategies)</li>
         <li>Full-Stack Web Development (React, Angular, Spring Boot)</li>
-        <li>SEO Optimization – increased organic traffic by 35%</li>
+        <li>SEO Optimization (increased organic traffic by 35%)</li>
         <li>Voice AI Agents (Twilio/WebRTC, STT/TTS)</li>
       </ul>
       <h2>Work Experience</h2>
       <ul>
-        <li>AI Automation Manager at TOPEOPLE Group GmbH (09/2025 – Present) – Frankfurt</li>
-        <li>Software Engineer & AI-Driven Digital Lead at Phoenix Parkservice (07/2024 – 09/2025)</li>
+        <li>AI Automation Manager at TOPEOPLE Group GmbH, Frankfurt (09/2025 – Present)</li>
+        <li>Full-Stack Developer & AI Integration Lead at Phoenix Parkservice, Freelance (06/2024 – 09/2025)</li>
         <li>Full-Stack Developer & Master Thesis at INFOMOTION GmbH (02/2022 – 10/2024)</li>
         <li>Cryptography Engineering Intern at Deutsche Bank (05/2021 – 10/2021)</li>
+        <li>Elastic Stack Project Student at Red Reply (04/2021 – 10/2021)</li>
       </ul>
       <h2>Education</h2>
       <ul>
-        <li>M.Sc in Business Informatics (GPA 1.4) – Frankfurt University of Applied Sciences (2022–2024)</li>
-        <li>B.Sc in International Business Information Systems (GPA 1.6) – Frankfurt University of Applied Sciences (2018–2022)</li>
+        <li>M.Sc. in Business Informatics, Frankfurt University of Applied Sciences (2022 – 2024), GPA 1.4</li>
+        <li>B.Sc. in International Business Information Systems, Frankfurt University of Applied Sciences (2018 – 2022), GPA 1.6</li>
       </ul>
+      <h2>Languages</h2>
+      <p>German, English, Arabic</p>
       <h2>Contact</h2>
       <p>Email: <a href="mailto:m.nur.beck@hotmail.de">m.nur.beck@hotmail.de</a></p>
       <p>Phone: <a href="tel:+4917666008485">+49 176 66 00 8485</a></p>

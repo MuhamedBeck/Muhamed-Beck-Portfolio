@@ -16,14 +16,15 @@ const setMetaByProperty = (property, content) => {
  * Twitter) on client-side navigation. Mutates the tags rendered in index.html
  * instead of adding new ones, so no duplicate metadata is ever emitted.
  *
- * @param {{ path?: string, title: string, description: string, robots?: string }} meta
+ * @param {{ path?: string, title: string, description: string, robots?: string, lang?: string }} meta
  *   `path` is the route path used for canonical/og:url; when omitted (e.g. on
  *   the 404 page) the current pathname is used, so the page is self-canonical
  *   instead of wrongly claiming to be the homepage.
  */
-export function usePageMeta({ path, title, description, robots = DEFAULT_ROBOTS }) {
+export function usePageMeta({ path, title, description, robots = DEFAULT_ROBOTS, lang = "en" }) {
   useEffect(() => {
     const url = `${SITE_URL}${path ?? window.location.pathname}`;
+    document.documentElement.lang = lang;
     document.title = title;
     setMetaByName("title", title);
     setMetaByName("description", description);
@@ -35,5 +36,5 @@ export function usePageMeta({ path, title, description, robots = DEFAULT_ROBOTS 
     document.querySelector('link[rel="canonical"]')?.setAttribute("href", url);
     setMetaByProperty("og:url", url);
     setMetaByName("twitter:url", url);
-  }, [path, title, description, robots]);
+  }, [path, title, description, robots, lang]);
 }

@@ -6,7 +6,7 @@
 // of truth even if index.html drifts. Subpages additionally get their own
 // <noscript> fallback so non-JS crawlers (GPTBot, ClaudeBot, PerplexityBot, ...)
 // don't see five URLs with identical homepage body content.
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROUTES_META, SITE_URL } from "./src/seo/routes.meta.js";
@@ -33,7 +33,7 @@ const subpageNoscript = (route) => `<noscript>
     <div style="padding: 40px; font-family: sans-serif; max-width: 800px; margin: 0 auto;">
       <h1>${escapeHtml(route.h1)}</h1>
       <p>${escapeHtml(route.description)}</p>
-      <p><a href="${SITE_URL}/">Muhamed Beck – AI Automation &amp; Full-Stack Development, Frankfurt</a></p>
+      <p><a href="${SITE_URL}/">Muhamed Beck, AI Automation &amp; Full-Stack Development in Frankfurt</a></p>
     </div>
   </noscript>`;
 
@@ -41,8 +41,12 @@ for (const route of ROUTES_META) {
   const url = `${SITE_URL}${route.path}`;
   const title = escapeHtml(route.title);
   const description = escapeHtml(route.description);
+  const lang = route.lang ?? "en";
+  const ogLocale = lang === "de" ? "de_DE" : "en_US";
 
   const replacements = [
+    [/(<html lang=")[^"]*(">)/, (m, a, b) => `${a}${lang}${b}`, "html lang"],
+    [/(<meta property="og:locale" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${ogLocale}${b}`, "og:locale"],
     [/<title>[^<]*<\/title>/, () => `<title>${title}</title>`, "title"],
     [/(<meta name="title" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "meta title"],
     [/(<meta name="description" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${description}${b}`, "meta description"],
@@ -76,3 +80,19 @@ for (const route of ROUTES_META) {
   writeFileSync(join(outDir, "index.html"), html);
   console.log(`prerendered ${route.path} -> ${join(outDir, "index.html")}`);
 }
+
+// Vite copies everything in public/ verbatim, including editor/tooling metadata
+// directories (e.g. ".claude" write-tracking). Strip them from the deployable output.
+const removeTrackingDirs = (dir) => {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const entryPath = join(dir, entry.name);
+    if (entry.name === ".claude") {
+      rmSync(entryPath, { recursive: true, force: true });
+      console.log(`removed tooling metadata ${entryPath}`);
+    } else {
+      removeTrackingDirs(entryPath);
+    }
+  }
+};
+removeTrackingDirs(distDir);

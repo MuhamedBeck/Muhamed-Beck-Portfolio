@@ -57,8 +57,8 @@ export const Projects = () => {
                 <p className="text-gray-400 mb-4">
                   AI-powered Maven plugin that automates unit test generation
                   for Spring Boot projects. Integrates ChatGPT with JaCoCo
-                  for coverage analysis — achieved 96% time reduction compared
-                  to manual test writing.
+                  for coverage analysis and cuts test writing time by up to
+                  95% compared to manual test development.
                 </p>
               </div>
               <div className="flex flex-wrap gap-1 mb-2 justify-start">

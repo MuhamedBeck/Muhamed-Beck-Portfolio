@@ -1,4 +1,4 @@
-# robots.txt – https://mbeck.vercel.app
+# robots.txt for https://mbeck.vercel.app
 
 User-agent: *
 Allow: /

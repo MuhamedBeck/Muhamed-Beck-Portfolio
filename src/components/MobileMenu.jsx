@@ -67,7 +67,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
           </button>
         </div>
 
-        {/* Nav — overflow-y-auto + overscroll-contain prevents page scroll-through on iOS */}
+        {/* Nav: overflow-y-auto + overscroll-contain prevents page scroll-through on iOS */}
         <nav className="flex-1 overflow-y-auto overscroll-contain px-4 py-6">
           <ul className="space-y-0.5">
             {navLinks.map((item, i) => {

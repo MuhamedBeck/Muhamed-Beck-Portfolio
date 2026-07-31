@@ -15,6 +15,8 @@ import { ArDataVisualization } from "./components/projects/ArDataVisualization";
 import { LLMMavenPlugin } from "./components/projects/LLMMavenPlugin";
 import { Services } from "./components/pages/Services";
 import { HireMe } from "./components/pages/HireMe";
+import { Impressum } from "./components/pages/Impressum";
+import { Datenschutz } from "./components/pages/Datenschutz";
 import NotFound from "./components/NotFound";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -32,6 +34,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/projects/llm-maven-plugin" element={<LLMMavenPlugin />} />
         <Route path="/services" element={<Services />} />
         <Route path="/hire" element={<HireMe />} />
+        <Route path="/impressum" element={<Impressum />} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Analytics />

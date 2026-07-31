@@ -52,7 +52,7 @@ export const Services = () => {
       title: "Web Development",
       subtitle: "Full-Stack Solutions",
       description:
-        "Landing pages, dashboards, or full web applications — I build responsive, performant sites with modern frameworks, tailored to what you actually need.",
+        "Whether you need a landing page, a dashboard, or a full web application, I build responsive, performant sites with modern frameworks, tailored to what you actually need.",
       features: [
         "React.js & Angular applications",
         "Spring Boot & Node.js backends",
@@ -70,7 +70,7 @@ export const Services = () => {
       title: "SEO Optimization",
       subtitle: "Visibility & Growth",
       description:
-        "I optimize your site for search engines — from technical audits and structured data to page speed and local SEO for the German market.",
+        "I optimize your site for search engines, covering technical audits, structured data, page speed, and local SEO for the German market.",
       features: [
         "Technical SEO audits & fixes",
         "On-page optimization",
@@ -88,7 +88,7 @@ export const Services = () => {
       title: "IT Support",
       subtitle: "1st & 2nd Level Support",
       description:
-        "From troubleshooting hardware and software issues to setting up new systems — reliable support when you need it.",
+        "Reliable support when you need it, from troubleshooting hardware and software issues to setting up new systems.",
       features: [
         "Hardware troubleshooting & setup",
         "Software installation & configuration",
@@ -105,7 +105,7 @@ export const Services = () => {
       title: "Custom IT Solutions",
       subtitle: "Tailored to Your Needs",
       description:
-        "AI integration, DevOps pipelines, custom software — if it doesn't fit a standard category, let's figure out the right approach together.",
+        "AI integration, DevOps pipelines, custom software: if your project doesn't fit a standard category, let's figure out the right approach together.",
       features: [
         "AI & LLM integration (OpenAI, Claude, Azure)",
         "OpenClaw & Anthropic Claude integration",
@@ -146,7 +146,7 @@ export const Services = () => {
               Services
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Automation, web development, SEO, and IT support — here's
+              Automation, web development, SEO, and IT support: here's
               what I can help you with.
             </p>
           </div>

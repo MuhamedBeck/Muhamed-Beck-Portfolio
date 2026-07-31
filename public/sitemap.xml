@@ -8,7 +8,7 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://mbeck.vercel.app/profilepicture.png</image:loc>
-      <image:title>Muhamed Beck – AI Automation Manager and Full-Stack Developer in Frankfurt, Germany</image:title>
+      <image:title>Muhamed Beck, AI Automation Manager and Full-Stack Developer in Frankfurt, Germany</image:title>
     </image:image>
   </url>
   <url>
@@ -34,5 +34,17 @@
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mbeck.vercel.app/impressum</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://mbeck.vercel.app/datenschutz</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
