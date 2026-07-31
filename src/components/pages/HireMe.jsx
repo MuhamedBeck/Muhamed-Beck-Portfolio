@@ -158,6 +158,10 @@ export const HireMe = () => {
               <span className="text-cyan-400 font-semibold">24 hours</span>.
             </p>
 
+            <div className="inline-flex items-center gap-2 border border-blue-500/40 bg-blue-500/10 text-blue-300 text-sm font-mono px-4 py-2 rounded-full mb-10">
+              Hourly rate: 90 to 135 € · by agreement, depending on project scope
+            </div>
+
             {/* Stats row */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-xl mx-auto mb-10">
               {stats.map((s) => (

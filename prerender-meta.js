@@ -10,6 +10,7 @@ import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "nod
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROUTES_META, SITE_URL } from "./src/seo/routes.meta.js";
+import { LEISTUNGEN } from "./src/content/leistungen.de.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "dist");
@@ -27,6 +28,22 @@ const replaceRequired = (html, pattern, replacement, label, path) => {
     throw new Error(`prerender-meta: tag "${label}" not found while rendering ${path}`);
   }
   return html.replace(pattern, replacement);
+};
+
+// FAQPage JSON-LD for landing pages whose visible content includes the same FAQ.
+const faqJsonLd = (path) => {
+  const leistung = LEISTUNGEN.find((l) => l.path === path);
+  if (!leistung?.faq?.length) return null;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: leistung.faq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+  return `  <script type="application/ld+json">\n  ${JSON.stringify(schema)}\n  </script>\n`;
 };
 
 const subpageNoscript = (route) => `<noscript>
@@ -66,11 +83,16 @@ for (const route of ROUTES_META) {
     );
   }
 
-  const html = replacements.reduce(
+  let html = replacements.reduce(
     (current, [pattern, replacement, label]) =>
       replaceRequired(current, pattern, replacement, label, route.path),
     template
   );
+
+  const faqScript = faqJsonLd(route.path);
+  if (faqScript) {
+    html = replaceRequired(html, /<\/head>/, () => `${faqScript}</head>`, "head end", route.path);
+  }
 
   const outDir =
     route.path === "/"

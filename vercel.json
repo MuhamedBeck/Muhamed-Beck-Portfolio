@@ -25,6 +25,26 @@
       "destination": "/projects/llm-maven-plugin/index.html"
     },
     {
+      "source": "/leistungen/n8n-automatisierung",
+      "destination": "/leistungen/n8n-automatisierung/index.html"
+    },
+    {
+      "source": "/leistungen/ki-automatisierung-frankfurt",
+      "destination": "/leistungen/ki-automatisierung-frankfurt/index.html"
+    },
+    {
+      "source": "/leistungen/hubspot-integration",
+      "destination": "/leistungen/hubspot-integration/index.html"
+    },
+    {
+      "source": "/projekte/recruiting-automatisierung",
+      "destination": "/projekte/recruiting-automatisierung/index.html"
+    },
+    {
+      "source": "/projekte/phoenix-parkservice",
+      "destination": "/projekte/phoenix-parkservice/index.html"
+    },
+    {
       "source": "/impressum",
       "destination": "/impressum/index.html"
     },

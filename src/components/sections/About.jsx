@@ -51,7 +51,7 @@ export const About = () => {
     {
       title: "Full-Stack Developer & Master Thesis",
       company: "INFOMOTION GmbH",
-      period: "02/2022 - 10/2024",
+      period: "09/2022 - 09/2024",
       highlights: [
         "Developed LLM-based Maven plugin increasing test coverage by 33%",
         "Created AR/3D visualization app for SAP BusinessObjects dashboards",

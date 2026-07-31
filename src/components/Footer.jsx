@@ -6,6 +6,39 @@ const Footer = () => (
     className="w-full pt-6 text-center text-gray-400 border-t border-gray-800 mt-4"
     style={{ background: '#0a0a0a', paddingBottom: 'max(1.5rem, env(safe-area-inset-bottom, 20px))' }}>
     <div className="max-w-6xl mx-auto px-4">
+      {/* German service pages */}
+      <div className="flex flex-wrap justify-center items-center gap-x-4 gap-y-1 mb-4 text-xs">
+        <Link
+          to="/leistungen/n8n-automatisierung"
+          className="text-gray-500 hover:text-blue-400 transition-colors duration-300">
+          n8n Automatisierung
+        </Link>
+        <span className="text-gray-700">·</span>
+        <Link
+          to="/leistungen/ki-automatisierung-frankfurt"
+          className="text-gray-500 hover:text-blue-400 transition-colors duration-300">
+          KI-Automatisierung Frankfurt
+        </Link>
+        <span className="text-gray-700">·</span>
+        <Link
+          to="/leistungen/hubspot-integration"
+          className="text-gray-500 hover:text-blue-400 transition-colors duration-300">
+          HubSpot Integration
+        </Link>
+        <span className="text-gray-700">·</span>
+        <Link
+          to="/projekte/recruiting-automatisierung"
+          className="text-gray-500 hover:text-blue-400 transition-colors duration-300">
+          Case Study Recruiting
+        </Link>
+        <span className="text-gray-700">·</span>
+        <Link
+          to="/projekte/phoenix-parkservice"
+          className="text-gray-500 hover:text-blue-400 transition-colors duration-300">
+          Case Study Phoenix
+        </Link>
+      </div>
+
       {/* Single Row Layout */}
       <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
         {/* Contact Information */}
