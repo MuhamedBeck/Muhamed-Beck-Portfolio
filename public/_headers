@@ -7,6 +7,11 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  # Tells browsers to use HTTPS for a year after the first visit. This only
+  # covers repeat visitors; the first plain-HTTP request still needs Cloudflare's
+  # "Always Use HTTPS" redirect. No "preload" directive: that would enrol the
+  # domain in a browser-baked list which is slow and awkward to undo.
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 # Hashed filenames, so the content behind a URL never changes.
 /assets/*
