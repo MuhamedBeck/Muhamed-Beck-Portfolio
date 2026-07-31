@@ -11,8 +11,8 @@ export default defineConfig({
     noExternal: ['react-icons'],
   },
   build: {
-    // Enable minification and tree-shaking
-    minify: 'esbuild',
+    // Minification is on by default and uses Rolldown's native Oxc minifier;
+    // Vite 8 no longer ships esbuild, so naming it here would fail the build.
     // Split chunks for better caching
     rollupOptions: {
       output: {
