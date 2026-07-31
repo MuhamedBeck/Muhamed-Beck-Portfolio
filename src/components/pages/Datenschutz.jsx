@@ -23,6 +23,7 @@ export const Datenschutz = () => {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
+      <main>
       <section className="min-h-screen w-full py-20 pt-28 px-4" style={{ background: "#0a0a0a" }}>
         <div className="max-w-4xl mx-auto mb-8">
           <Link
@@ -233,6 +234,7 @@ export const Datenschutz = () => {
           </div>
         </RevealOnScroll>
       </section>
+      </main>
 
       <Footer />
     </div>

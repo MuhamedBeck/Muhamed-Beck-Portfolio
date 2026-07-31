@@ -50,18 +50,23 @@ function App() {
       {showLoadingScreen && !isLoaded && (
         <LoadingScreen onComplete={() => setIstLoaded(true)}></LoadingScreen>
       )}
+      {/* The splash is a fixed, full-viewport overlay, so it already hides this
+          content. Fading the shell in on top of that would mean the hero paints
+          at opacity 0, and Chrome never accepts a fully transparent element as a
+          Largest Contentful Paint candidate, which left the page with no
+          measurable LCP at all. */}
       <div
-        className={`safe-area-top min-h-[100dvh] transition-opacity duration-300 ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        } text-gray-100`}
+        className="safe-area-top min-h-[100dvh] text-gray-100"
         style={{ background: '#0a0a0a', overflow: isLoaded ? "visible" : "hidden" }}>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <Home isLoaded={isLoaded} />
-        <TechMarquee />
-        <About />
-        <Projects />
-        <Contact />
+        <main>
+          <Home isLoaded={isLoaded} />
+          <TechMarquee />
+          <About />
+          <Projects />
+          <Contact />
+        </main>
         <Footer />
       </div>
     </>

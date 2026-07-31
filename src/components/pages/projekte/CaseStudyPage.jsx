@@ -17,6 +17,7 @@ export const CaseStudyPage = ({ data }) => {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
+      <main>
       <section className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-blue-950 py-20 pt-28 px-4">
         <div className="max-w-5xl mx-auto mb-8">
           <Link
@@ -116,6 +117,7 @@ export const CaseStudyPage = ({ data }) => {
           </div>
         </RevealOnScroll>
       </section>
+      </main>
 
       <Footer />
     </div>

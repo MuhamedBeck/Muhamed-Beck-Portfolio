@@ -14,7 +14,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center">
-            <img src={mnbLogo} alt="MNB Logo" className="h-12 w-auto" />
+            <img src={mnbLogo} alt="MNB Logo" width="500" height="500" className="h-12 w-auto" />
           </Link>
 
           <div

@@ -64,7 +64,7 @@ export const Home = ({ isLoaded = true }) => {
             <div className="relative group">
               {/* Animated gradient background */}
               <div 
-                className={`absolute -inset-12 blur-2xl transition-all duration-800 ease-out ${
+                className={`absolute -inset-12 blur-2xl transition-all duration-[800ms] ease-out ${
                   showBackground ? 'opacity-40 scale-100' : 'opacity-0 scale-95'
                 }`}
                 style={{
@@ -81,7 +81,7 @@ export const Home = ({ isLoaded = true }) => {
                 <div className="relative w-60 h-72 sm:w-72 sm:h-84 md:w-80 md:h-96">
                   {/* Animated outer glow */}
                   <div 
-                    className={`absolute -inset-3 transition-all duration-600 ease-out delay-100 ${
+                    className={`absolute -inset-3 transition-all duration-[600ms] ease-out delay-100 ${
                       showBackground ? 'opacity-40 scale-100' : 'opacity-0 scale-98'
                     }`}
                     style={{
@@ -108,6 +108,9 @@ export const Home = ({ isLoaded = true }) => {
                     <img
                       src={profilePicture}
                       alt="Muhamed Nur Beck"
+                      width="661"
+                      height="850"
+                      fetchPriority="high"
                       className="w-full h-full object-cover"
                       style={{
                         objectPosition: 'center 20%',
@@ -191,6 +194,9 @@ export const Home = ({ isLoaded = true }) => {
               <img
                 src={profilePicture}
                 alt=""
+                width="661"
+                height="850"
+                aria-hidden="true"
                 className="w-full h-full object-cover object-bottom"
                 style={{
                   transform: 'scale(1.15) translateY(-55%)',
@@ -207,12 +213,12 @@ export const Home = ({ isLoaded = true }) => {
 
           {/* Animated Text Content */}
           <div className="relative z-20">
-          <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-tight transition-all duration-600 ease-out ${
+          <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent leading-tight transition-all duration-[600ms] ease-out ${
             showTitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`} style={{ willChange: 'transform, opacity' }}>
             Hi, I'm Muhamed Nur Beck
           </h1>
-          <p className={`text-gray-400 text-base sm:text-lg mb-8 max-w-lg mx-auto px-2 transition-all duration-600 ease-out ${
+          <p className={`text-gray-400 text-base sm:text-lg mb-8 max-w-lg mx-auto px-2 transition-all duration-[600ms] ease-out ${
             showDescription ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`} style={{ willChange: 'transform, opacity' }}>
             AI Automation Manager & Full-Stack Developer based in Frankfurt.
@@ -222,7 +228,7 @@ export const Home = ({ isLoaded = true }) => {
           </p>
 
           {/* Animated Social Links */}
-          <div className={`flex justify-center items-center gap-6 mb-8 transition-all duration-600 ease-out ${
+          <div className={`flex justify-center items-center gap-6 mb-8 transition-all duration-[600ms] ease-out ${
             showSocials ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`} style={{ willChange: 'transform, opacity' }}>
             <a
@@ -249,7 +255,7 @@ export const Home = ({ isLoaded = true }) => {
             </a>
           </div>
 
-          <div className={`flex flex-col sm:flex-row justify-center items-center gap-4 sm:space-x-4 px-4 transition-all duration-600 ease-out ${
+          <div className={`flex flex-col sm:flex-row justify-center items-center gap-4 sm:space-x-4 px-4 transition-all duration-[600ms] ease-out ${
             showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`} style={{ willChange: 'transform, opacity' }}>
             <a

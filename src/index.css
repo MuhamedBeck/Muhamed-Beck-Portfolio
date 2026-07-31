@@ -160,6 +160,14 @@ body {
   transform: translateY(0);
 }
 
+/* Already in the viewport on mount: paint opaque immediately, with no
+   transition, so the element is a valid Largest Contentful Paint candidate. */
+.reveal.instant {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 /* Custom Scrollbar Styling */
 /* Webkit browsers (Chrome, Safari, Edge, Mobile Safari) */
 ::-webkit-scrollbar {

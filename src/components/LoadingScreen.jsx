@@ -19,8 +19,15 @@ export const LoadingScreen = ({ onComplete }) => {
     "AI Automation",
   ];
 
-  // Total budget is kept under one second: the splash is a brand moment, not a
-  // real loading step, and anything longer directly degrades LCP and Speed Index.
+  // Splash timing. The text is typed quickly so it is readable early, then the
+  // screen holds long enough to actually read it. Total is roughly
+  // TYPING_MS + BAR_MS + FADE_MS. Keep the total under ~2.5s: it is the delay
+  // before real content appears and it feeds directly into LCP and Speed Index.
+  const TYPING_MS = 42; // per character, 14 characters
+  const BAR_STEP_MS = 30; // progress bar tick
+  const BAR_STEP = 2; // percent per tick, so 50 ticks = 1.5s
+  const FADE_MS = 400;
+
   useEffect(() => {
     let index = 0;
     const typingInterval = setInterval(() => {
@@ -31,19 +38,19 @@ export const LoadingScreen = ({ onComplete }) => {
         clearInterval(typingInterval);
         setShowSubtext(true);
       }
-    }, 28);
+    }, TYPING_MS);
 
     const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           setFadeOut(true);
-          setTimeout(() => onComplete(), 260);
+          setTimeout(() => onComplete(), FADE_MS);
           return 100;
         }
-        return prev + 4;
+        return prev + BAR_STEP;
       });
-    }, 16);
+    }, BAR_STEP_MS);
 
     return () => {
       clearInterval(typingInterval);
@@ -53,7 +60,7 @@ export const LoadingScreen = ({ onComplete }) => {
 
   return (
     <div
-      className={`loading-screen-safe z-50 text-white flex flex-col items-center justify-center transition-opacity duration-300 ${
+      className={`loading-screen-safe z-50 text-white flex flex-col items-center justify-center transition-opacity duration-[400ms] ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
       style={{
@@ -70,7 +77,7 @@ export const LoadingScreen = ({ onComplete }) => {
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 w-full">
         <div className="mb-8">
           <div className="flex justify-center mb-8">
-            <img src={mnbLogo} alt="MNB Logo" className="h-28 w-auto opacity-90" />
+            <img src={mnbLogo} alt="MNB Logo" width="500" height="500" className="h-28 w-auto opacity-90" />
           </div>
           <h1 className="text-4xl sm:text-6xl md:text-8xl font-light tracking-wider mb-4 whitespace-nowrap">
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
@@ -80,7 +87,7 @@ export const LoadingScreen = ({ onComplete }) => {
           </h1>
 
           <div
-            className={`transition-all duration-300 ${
+            className={`transition-all duration-500 ${
               showSubtext
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-4"
@@ -93,12 +100,12 @@ export const LoadingScreen = ({ onComplete }) => {
               {techStack.map((tech, index) => (
                 <span
                   key={tech}
-                  className={`px-4 py-2 text-sm border border-white/20 rounded-full bg-white/5 backdrop-blur-sm transition-all duration-300 hover:border-blue-400/50 ${
+                  className={`px-4 py-2 text-sm border border-white/20 rounded-full bg-white/5 backdrop-blur-sm transition-all duration-[400ms] hover:border-blue-400/50 ${
                     showSubtext
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-4"
                   }`}
-                  style={{ transitionDelay: `${index * 25}ms` }}>
+                  style={{ transitionDelay: `${index * 55}ms` }}>
                   {tech}
                 </span>
               ))}

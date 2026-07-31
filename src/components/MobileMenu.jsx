@@ -46,7 +46,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         {/* Header */}
         <div className="flex items-center justify-between px-6 h-16 border-b border-white/[0.06] shrink-0">
           <Link to="/" onClick={() => setMenuOpen(false)} className="flex items-center">
-            <img src={mnbLogo} alt="MNB Logo" className="h-8 w-auto" />
+            <img src={mnbLogo} alt="MNB Logo" width="500" height="500" className="h-8 w-auto" />
           </Link>
           <button
             onClick={() => setMenuOpen(false)}
