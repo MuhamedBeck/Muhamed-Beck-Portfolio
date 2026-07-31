@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import mnbLogo from "../assets/MNB_Logo.png";
+import mnbLogo from "../assets/MNB_Logo.webp";
 
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
   useEffect(() => {

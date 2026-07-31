@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import mnbLogo from "../assets/MNB_Logo.png";
+import mnbLogo from "../assets/MNB_Logo.webp";
 
 export const LoadingScreen = ({ onComplete }) => {
   const [text, setText] = useState("");

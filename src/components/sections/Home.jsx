@@ -1,6 +1,6 @@
 import { RevealOnScroll } from "../RevealOnScroll";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
-import profilePicture from "../../assets/profilepicture.png";
+import profilePicture from "../../assets/profilepicture.webp";
 import { useState, useEffect } from "react";
 
 export const Home = ({ isLoaded = true }) => {

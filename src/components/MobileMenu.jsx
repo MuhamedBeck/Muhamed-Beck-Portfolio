@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import mnbLogo from "../assets/MNB_Logo.png";
+import mnbLogo from "../assets/MNB_Logo.webp";
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   useEffect(() => {
@@ -133,7 +133,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         {/* Footer */}
         <div className="px-6 py-4 border-t border-white/[0.06] shrink-0">
           <p className="text-gray-600 text-xs font-mono text-center tracking-wider">
-            © 2025 Muhamed Nur Beck
+            © {new Date().getFullYear()} Muhamed Nur Beck
           </p>
         </div>
       </div>
