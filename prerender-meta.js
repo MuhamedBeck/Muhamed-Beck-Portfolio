@@ -9,7 +9,7 @@
 import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { ROUTES_META, SITE_URL } from "./src/seo/routes.meta.js";
+import { NOT_FOUND_META, ROUTES_META, SITE_URL } from "./src/seo/routes.meta.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
 import { render } from "./dist-ssr/entry-server.js";
 
@@ -125,6 +125,33 @@ for (const route of ROUTES_META) {
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, "index.html"), html);
   console.log(`prerendered ${route.path} -> ${join(outDir, "index.html")}`);
+}
+
+// dist/404.html is what Cloudflare serves, with a real 404 status, for paths
+// that match no asset (see not_found_handling in wrangler.jsonc). Without it an
+// unknown URL would answer 200 with the homepage, which Search Console reports
+// as a soft 404.
+{
+  const title = escapeHtml(NOT_FOUND_META.title);
+  const description = escapeHtml(NOT_FOUND_META.description);
+  let html = [
+    [/<title>[^<]*<\/title>/, () => `<title>${title}</title>`, "title"],
+    [/(<meta name="title" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "meta title"],
+    [/(<meta name="description" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${description}${b}`, "meta description"],
+    [/(<meta name="robots" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${NOT_FOUND_META.robots}${b}`, "robots"],
+    [/<noscript>[\s\S]*?<\/noscript>\s*/, () => "", "noscript"],
+    [
+      /<div id="root"><\/div>/,
+      () => `<div id="root">${render("/__not-found__")}</div>`,
+      "root container",
+    ],
+  ].reduce(
+    (current, [pattern, replacement, label]) =>
+      replaceRequired(current, pattern, replacement, label, "404"),
+    template
+  );
+  writeFileSync(join(distDir, "404.html"), html);
+  console.log(`prerendered 404 -> ${join(distDir, "404.html")}`);
 }
 
 // Vite copies everything in public/ verbatim, including editor/tooling metadata

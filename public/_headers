@@ -1,0 +1,16 @@
+# Response headers for Cloudflare Workers Static Assets.
+# Mirrors the header rules that vercel.json defines, so the site behaves the
+# same on either host. Copied verbatim into dist/ by Vite.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Hashed filenames, so the content behind a URL never changes.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

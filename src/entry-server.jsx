@@ -19,6 +19,7 @@ import { Impressum } from "./components/pages/Impressum";
 import { Datenschutz } from "./components/pages/Datenschutz";
 import { LeistungPage } from "./components/pages/leistungen/LeistungPage";
 import { CaseStudyPage } from "./components/pages/projekte/CaseStudyPage";
+import NotFound from "./components/NotFound";
 import { getLeistung } from "./content/leistungen.de";
 import { getProjekt } from "./content/projekte.de";
 
@@ -51,6 +52,8 @@ const AppRoutes = () => (
     />
     <Route path="/impressum" element={<Impressum />} />
     <Route path="/datenschutz" element={<Datenschutz />} />
+    {/* Rendered into dist/404.html, which Cloudflare serves with a real 404. */}
+    <Route path="*" element={<NotFound />} />
   </Routes>
 );
 

@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "muhamed-beck-portfolio",
+  "compatibility_date": "2026-07-31",
+  "assets": {
+    "directory": "./dist",
+
+    // The build writes each route as dist/<route>/index.html, while the
+    // sitemap and every canonical tag use the form without a trailing slash.
+    // "drop-trailing-slash" serves /leistungen/n8n-automatisierung directly
+    // with 200 and redirects the slash variant to it, so the served URL and
+    // the canonical always agree.
+    "html_handling": "drop-trailing-slash",
+
+    // Unknown paths get a real 404 with the generated 404.html instead of the
+    // homepage with status 200, which Search Console reports as a soft 404.
+    "not_found_handling": "404-page"
+  }
+}
