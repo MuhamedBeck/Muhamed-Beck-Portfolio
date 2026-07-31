@@ -168,6 +168,13 @@ body {
   transition: none;
 }
 
+/* Used by the animated gradient behind the hero in Home.jsx. */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Custom Scrollbar Styling */
 /* Webkit browsers (Chrome, Safari, Edge, Mobile Safari) */
 ::-webkit-scrollbar {

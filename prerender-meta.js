@@ -1,16 +1,17 @@
-// Post-build step: writes a dedicated dist/<route>/index.html per route with
-// route-specific <title>, meta description, canonical and Open Graph/Twitter tags.
-// Without this, every route serves the homepage HTML whose canonical points to "/",
-// which tells Google all subpages are duplicates of the homepage.
-// The homepage itself is also rewritten so routes.meta.js stays the single source
-// of truth even if index.html drifts. Subpages additionally get their own
-// <noscript> fallback so non-JS crawlers (GPTBot, ClaudeBot, PerplexityBot, ...)
-// don't see five URLs with identical homepage body content.
+// Post-build step. For every route it writes a dedicated dist/<route>/index.html
+// containing:
+//   1. route-specific title, description, canonical, Open Graph and Twitter tags,
+//      so Google no longer sees every subpage as a duplicate of the homepage, and
+//   2. the fully rendered page markup inside #root, so crawlers that do not run
+//      JavaScript (GPTBot, ClaudeBot, PerplexityBot) read the actual content
+//      instead of an empty container.
+// routes.meta.js stays the single source of truth even if index.html drifts.
 import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROUTES_META, SITE_URL } from "./src/seo/routes.meta.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
+import { render } from "./dist-ssr/entry-server.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "dist");
@@ -57,14 +58,6 @@ const faqJsonLd = (path) => {
   return `  <script type="application/ld+json">\n  ${JSON.stringify(schema)}\n  </script>\n`;
 };
 
-const subpageNoscript = (route) => `<noscript>
-    <div style="padding: 40px; font-family: sans-serif; max-width: 800px; margin: 0 auto;">
-      <h1>${escapeHtml(route.h1)}</h1>
-      <p>${escapeHtml(route.description)}</p>
-      <p><a href="${SITE_URL}/">Muhamed Beck, AI Automation &amp; Full-Stack Development in Frankfurt</a></p>
-    </div>
-  </noscript>`;
-
 for (const route of ROUTES_META) {
   const url = `${SITE_URL}${route.path}`;
   const title = escapeHtml(route.title);
@@ -88,11 +81,26 @@ for (const route of ROUTES_META) {
   ];
 
   if (route.path !== "/") {
-    replacements.push(
-      [/(<meta property="og:image:alt" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "og:image:alt"],
-      [/<noscript>[\s\S]*?<\/noscript>/, () => subpageNoscript(route), "noscript"]
+    replacements.push([
+      /(<meta property="og:image:alt" content=")[^"]*(" \/>)/,
+      (m, a, b) => `${a}${title}${b}`,
+      "og:image:alt",
+    ]);
+  }
+
+  // The rendered markup replaces the hand-written noscript block: it carries the
+  // same information and much more, for every crawler rather than only for
+  // browsers with scripting disabled.
+  const markup = render(route.path);
+  if (!markup || markup.length < 500) {
+    throw new Error(
+      `prerender-meta: render("${route.path}") returned ${markup.length} chars, expected real markup`
     );
   }
+  replacements.push(
+    [/<noscript>[\s\S]*?<\/noscript>\s*/, () => "", "noscript"],
+    [/<div id="root"><\/div>/, () => `<div id="root">${markup}</div>`, "root container"]
+  );
 
   let html = replacements.reduce(
     (current, [pattern, replacement, label]) =>

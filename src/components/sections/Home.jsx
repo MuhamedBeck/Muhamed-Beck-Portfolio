@@ -43,13 +43,6 @@ export const Home = ({ isLoaded = true }) => {
 
   return (
     <>
-      <style jsx>{`
-        @keyframes gradientMove {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-      `}</style>
       <section
         id="home"
         className="min-h-screen flex items-center justify-center relative overflow-x-hidden">

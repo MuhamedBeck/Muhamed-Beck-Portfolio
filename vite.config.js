@@ -5,6 +5,11 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  ssr: {
+    // react-icons ships directory imports that Node's ESM loader rejects, so it
+    // has to be bundled into the build-time render entry rather than left external.
+    noExternal: ['react-icons'],
+  },
   build: {
     // Enable minification and tree-shaking
     minify: 'esbuild',
@@ -18,7 +23,7 @@ export default defineConfig({
           if (!id.includes('node_modules')) return
           if (/[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/.test(id)) return 'react-vendor'
           if (id.includes('react-router')) return 'router'
-          if (id.includes('react-icons') || id.includes('@lobehub')) return 'icons'
+          if (id.includes('react-icons')) return 'icons'
           return 'vendor'
         },
       }

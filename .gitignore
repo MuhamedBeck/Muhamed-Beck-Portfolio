@@ -31,3 +31,6 @@ dist-ssr
 
 # Claude Code write-tracking metadata
 public/**/.claude/
+
+# Build-time render bundle
+dist-ssr/

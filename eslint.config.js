@@ -5,7 +5,7 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', 'dist-ssr']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
@@ -27,9 +27,10 @@ export default defineConfig([
     },
   },
   {
-    // Entry point: has no exports by design, so the Fast Refresh rule
-    // (which requires component files to export their components) cannot apply.
-    files: ['src/main.jsx'],
+    // Entry points, not component modules: main.jsx has no exports at all and
+    // entry-server.jsx exports a build-time render function, so the Fast Refresh
+    // rule cannot apply to either.
+    files: ['src/main.jsx', 'src/entry-server.jsx'],
     rules: {
       'react-refresh/only-export-components': 'off',
     },

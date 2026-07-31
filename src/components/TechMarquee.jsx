@@ -5,12 +5,7 @@ import {
   SiOpenai, SiPostgresql, SiGit,
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa";
-import { N8n } from "@lobehub/icons";
-
-// Wrap N8n.Color so it accepts the same className/style interface as react-icons
-const N8nIcon = ({ className }) => (
-  <N8n.Color size={28} className={className} />
-);
+import { N8nIcon } from "./icons/N8nIcon";
 
 const techs = [
   { Icon: SiReact,       name: "React",       color: "#61DAFB" },

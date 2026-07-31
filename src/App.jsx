@@ -17,13 +17,16 @@ function App() {
   usePageMeta(getRouteMeta("/"));
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Check if user has visited before to determine initial state
-  const hasVisitedBefore =
-    typeof window !== "undefined"
-      ? sessionStorage.getItem("hasVisitedPortfolio")
-      : null;
-  const [isLoaded, setIstLoaded] = useState(!!hasVisitedBefore);
-  const [showLoadingScreen, setShowLoadingScreen] = useState(!hasVisitedBefore);
+  // Check if user has visited before to determine initial state.
+  // During build-time rendering there is no window, and the splash must not end
+  // up in the prerendered HTML: crawlers would then read "Loading Portfolio"
+  // instead of the page content.
+  const isBrowser = typeof window !== "undefined";
+  const hasVisitedBefore = isBrowser
+    ? sessionStorage.getItem("hasVisitedPortfolio")
+    : null;
+  const [isLoaded, setIstLoaded] = useState(!isBrowser || !!hasVisitedBefore);
+  const [showLoadingScreen] = useState(isBrowser && !hasVisitedBefore);
 
   useEffect(() => {
     if (!hasVisitedBefore) {
