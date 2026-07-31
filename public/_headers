@@ -1,16 +1,21 @@
 # Response headers for Cloudflare Workers Static Assets.
 # Mirrors the header rules that vercel.json defines, so the site behaves the
 # same on either host. Copied verbatim into dist/ by Vite.
+#
+# Note on Strict-Transport-Security: it tells browsers to use HTTPS for a year
+# after the first visit, so it only protects repeat visitors. The very first
+# plain-HTTP request still needs Cloudflare's "Always Use HTTPS" redirect, which
+# is a dashboard setting. The "preload" directive is omitted on purpose, since
+# enrolment in the browser preload list is slow and awkward to undo.
+#
+# Comments must stay at column 0. Inside an indented rule block a line is parsed
+# as a header, not as a comment.
 
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  # Tells browsers to use HTTPS for a year after the first visit. This only
-  # covers repeat visitors; the first plain-HTTP request still needs Cloudflare's
-  # "Always Use HTTPS" redirect. No "preload" directive: that would enrol the
-  # domain in a browser-baked list which is slow and awkward to undo.
   Strict-Transport-Security: max-age=31536000; includeSubDomains
 
 # Hashed filenames, so the content behind a URL never changes.
