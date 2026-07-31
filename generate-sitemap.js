@@ -1,72 +1,44 @@
-// Script to generate sitemap.xml for portfolio
-const fs = require("fs");
+// Generates public/sitemap.xml from the shared route metadata.
+// Runs before `vite build` (see package.json) so the sitemap is copied into dist/.
+// lastmod comes from routes.meta.js per route – it changes only when a page
+// actually changes, so Google keeps trusting it as a recrawl signal.
+import { writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { ROUTES_META, SITE_URL } from "./src/seo/routes.meta.js";
 
-// Get current date in YYYY-MM-DD format
-const getCurrentDate = () => {
-  return new Date().toISOString().split('T')[0];
-};
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const lastmod = getCurrentDate();
+const escapeXml = (text) =>
+  text
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&apos;");
 
-const sitemap = [
-  '<?xml version="1.0" encoding="UTF-8"?>',
-  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
-  '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
-  '  ',
-  '  <!-- Homepage - Main landing page -->',
-  '  <url>',
-  '    <loc>https://mbeck.vercel.app/</loc>',
-  `    <lastmod>${lastmod}</lastmod>`,
-  '    <changefreq>weekly</changefreq>',
-  '    <priority>1.0</priority>',
-  '    <image:image>',
-  '      <image:loc>https://mbeck.vercel.app/assets/profilepicture.png</image:loc>',
-  '      <image:title>Muhamed Beck - Software Developer Portfolio</image:title>',
-  '    </image:image>',
-  '  </url>',
-  '',
-  '  <!-- Project: AR Data Visualization -->',
-  '  <url>',
-  '    <loc>https://mbeck.vercel.app/projects/ar-data-visualization</loc>',
-  `    <lastmod>${lastmod}</lastmod>`,
-  '    <changefreq>monthly</changefreq>',
-  '    <priority>0.9</priority>',
-  '  </url>',
-  '',
-  '  <!-- Project: LLM Maven Plugin -->',
-  '  <url>',
-  '    <loc>https://mbeck.vercel.app/projects/llm-maven-plugin</loc>',
-  `    <lastmod>${lastmod}</lastmod>`,
-  '    <changefreq>monthly</changefreq>',
-  '    <priority>0.9</priority>',
-  '  </url>',
-  '',
-  '  <!-- Section: About -->',
-  '  <url>',
-  '    <loc>https://mbeck.vercel.app/#about</loc>',
-  `    <lastmod>${lastmod}</lastmod>`,
-  '    <changefreq>monthly</changefreq>',
-  '    <priority>0.8</priority>',
-  '  </url>',
-  '',
-  '  <!-- Section: Projects -->',
-  '  <url>',
-  '    <loc>https://mbeck.vercel.app/#projects</loc>',
-  `    <lastmod>${lastmod}</lastmod>`,
-  '    <changefreq>weekly</changefreq>',
-  '    <priority>0.8</priority>',
-  '  </url>',
-  '',
-  '  <!-- Section: Contact -->',
-  '  <url>',
-  '    <loc>https://mbeck.vercel.app/#contact</loc>',
-  `    <lastmod>${lastmod}</lastmod>`,
-  '    <changefreq>monthly</changefreq>',
-  '    <priority>0.7</priority>',
-  '  </url>',
-  '',
-  '</urlset>',
-];
+const homepageImage = `    <image:image>
+      <image:loc>${escapeXml(`${SITE_URL}/profilepicture.png`)}</image:loc>
+      <image:title>${escapeXml("Muhamed Beck – AI Automation Manager and Full-Stack Developer in Frankfurt, Germany")}</image:title>
+    </image:image>`;
 
-fs.writeFileSync("public/sitemap.xml", sitemap.join("\n"), "utf8");
-console.log(`sitemap.xml generated successfully with ${lastmod} lastmod date`);
+const urlEntries = ROUTES_META.map((route) => {
+  const image = route.path === "/" ? `\n${homepageImage}` : "";
+  return `  <url>
+    <loc>${escapeXml(`${SITE_URL}${route.path}`)}</loc>
+    <lastmod>${route.lastmod}</lastmod>
+    <changefreq>${route.changefreq}</changefreq>
+    <priority>${route.priority}</priority>${image}
+  </url>`;
+}).join("\n");
+
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${urlEntries}
+</urlset>
+`;
+
+const outPath = join(__dirname, "public", "sitemap.xml");
+writeFileSync(outPath, sitemap);
+console.log(`sitemap.xml generated with ${ROUTES_META.length} URLs -> ${outPath}`);

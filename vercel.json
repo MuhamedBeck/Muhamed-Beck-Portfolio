@@ -1,12 +1,28 @@
 {
   "rewrites": [
     {
-      "source": "/:file(sitemap.xml|robots.txt|favicon.ico|manifest.json|logo.svg)",
+      "source": "/:file(sitemap.xml|robots.txt|llms.txt|favicon.ico|manifest.json|profilepicture.png|og-image.jpg|MNB_Logo.png)",
       "destination": "/:file"
     },
     {
       "source": "/assets/:file*",
       "destination": "/assets/:file*"
+    },
+    {
+      "source": "/services",
+      "destination": "/services/index.html"
+    },
+    {
+      "source": "/hire",
+      "destination": "/hire/index.html"
+    },
+    {
+      "source": "/projects/ar-data-visualization",
+      "destination": "/projects/ar-data-visualization/index.html"
+    },
+    {
+      "source": "/projects/llm-maven-plugin",
+      "destination": "/projects/llm-maven-plugin/index.html"
     },
     {
       "source": "/:path*",

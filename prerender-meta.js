@@ -1,0 +1,78 @@
+// Post-build step: writes a dedicated dist/<route>/index.html per route with
+// route-specific <title>, meta description, canonical and Open Graph/Twitter tags.
+// Without this, every route serves the homepage HTML whose canonical points to "/",
+// which tells Google all subpages are duplicates of the homepage.
+// The homepage itself is also rewritten so routes.meta.js stays the single source
+// of truth even if index.html drifts. Subpages additionally get their own
+// <noscript> fallback so non-JS crawlers (GPTBot, ClaudeBot, PerplexityBot, ...)
+// don't see five URLs with identical homepage body content.
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
+import { ROUTES_META, SITE_URL } from "./src/seo/routes.meta.js";
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const distDir = join(__dirname, "dist");
+const template = readFileSync(join(distDir, "index.html"), "utf8");
+
+const escapeHtml = (text) =>
+  text
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+
+const replaceRequired = (html, pattern, replacement, label, path) => {
+  if (!pattern.test(html)) {
+    throw new Error(`prerender-meta: tag "${label}" not found while rendering ${path}`);
+  }
+  return html.replace(pattern, replacement);
+};
+
+const subpageNoscript = (route) => `<noscript>
+    <div style="padding: 40px; font-family: sans-serif; max-width: 800px; margin: 0 auto;">
+      <h1>${escapeHtml(route.h1)}</h1>
+      <p>${escapeHtml(route.description)}</p>
+      <p><a href="${SITE_URL}/">Muhamed Beck – AI Automation &amp; Full-Stack Development, Frankfurt</a></p>
+    </div>
+  </noscript>`;
+
+for (const route of ROUTES_META) {
+  const url = `${SITE_URL}${route.path}`;
+  const title = escapeHtml(route.title);
+  const description = escapeHtml(route.description);
+
+  const replacements = [
+    [/<title>[^<]*<\/title>/, () => `<title>${title}</title>`, "title"],
+    [/(<meta name="title" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "meta title"],
+    [/(<meta name="description" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${description}${b}`, "meta description"],
+    [/(<link rel="canonical" href=")[^"]*(" \/>)/, (m, a, b) => `${a}${url}${b}`, "canonical"],
+    [/(<meta property="og:url" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${url}${b}`, "og:url"],
+    [/(<meta property="og:title" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "og:title"],
+    [/(<meta property="og:description" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${description}${b}`, "og:description"],
+    [/(<meta name="twitter:url" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${url}${b}`, "twitter:url"],
+    [/(<meta name="twitter:title" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "twitter:title"],
+    [/(<meta name="twitter:description" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${description}${b}`, "twitter:description"],
+  ];
+
+  if (route.path !== "/") {
+    replacements.push(
+      [/(<meta property="og:image:alt" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "og:image:alt"],
+      [/<noscript>[\s\S]*?<\/noscript>/, () => subpageNoscript(route), "noscript"]
+    );
+  }
+
+  const html = replacements.reduce(
+    (current, [pattern, replacement, label]) =>
+      replaceRequired(current, pattern, replacement, label, route.path),
+    template
+  );
+
+  const outDir =
+    route.path === "/"
+      ? distDir
+      : join(distDir, ...route.path.split("/").filter(Boolean));
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(join(outDir, "index.html"), html);
+  console.log(`prerendered ${route.path} -> ${join(outDir, "index.html")}`);
+}

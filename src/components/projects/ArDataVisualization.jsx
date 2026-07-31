@@ -1,6 +1,9 @@
 import { RevealOnScroll } from "../RevealOnScroll";
+import { usePageMeta } from "../../seo/usePageMeta";
+import { getRouteMeta } from "../../seo/routes.meta";
 
 export const ArDataVisualization = () => {
+  usePageMeta(getRouteMeta("/projects/ar-data-visualization"));
   return (
     <section className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-blue-950 py-20 px-4 flex items-center justify-center">
       <RevealOnScroll>

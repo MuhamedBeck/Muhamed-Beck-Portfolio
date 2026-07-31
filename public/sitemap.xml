@@ -1,73 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
-  <!-- Homepage - Main landing page -->
   <url>
     <loc>https://mbeck.vercel.app/</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://mbeck.vercel.app/assets/profilepicture.png</image:loc>
-      <image:title>Muhamed Beck - Full-Stack Developer and AI Engineer Portfolio based in Frankfurt Germany</image:title>
+      <image:loc>https://mbeck.vercel.app/profilepicture.png</image:loc>
+      <image:title>Muhamed Beck – AI Automation Manager and Full-Stack Developer in Frankfurt, Germany</image:title>
     </image:image>
   </url>
-
-  <!-- Project: AR Data Visualization -->
-  <url>
-    <loc>https://mbeck.vercel.app/projects/ar-data-visualization</loc>
-    <lastmod>2026-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Project: LLM Maven Plugin -->
-  <url>
-    <loc>https://mbeck.vercel.app/projects/llm-maven-plugin</loc>
-    <lastmod>2026-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Services Page -->
   <url>
     <loc>https://mbeck.vercel.app/services</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Hire Me / Request Service Page -->
   <url>
     <loc>https://mbeck.vercel.app/hire</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.95</priority>
+    <priority>0.9</priority>
   </url>
-
-  <!-- Section: About - Skills and Experience -->
   <url>
-    <loc>https://mbeck.vercel.app/#about</loc>
-    <lastmod>2026-02-28</lastmod>
+    <loc>https://mbeck.vercel.app/projects/ar-data-visualization</loc>
+    <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Section: Projects -->
   <url>
-    <loc>https://mbeck.vercel.app/#projects</loc>
-    <lastmod>2026-02-28</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mbeck.vercel.app/projects/llm-maven-plugin</loc>
+    <lastmod>2026-07-31</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Section: Contact -->
-  <url>
-    <loc>https://mbeck.vercel.app/#contact</loc>
-    <lastmod>2026-02-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
 </urlset>

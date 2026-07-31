@@ -5,10 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node generate-sitemap.cjs && vite build",
+    "build": "node generate-sitemap.js && vite build && node prerender-meta.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "sitemap": "node generate-sitemap.cjs"
+    "sitemap": "node generate-sitemap.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

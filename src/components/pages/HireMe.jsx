@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Navbar } from "../Navbar";
 import { MobileMenu } from "../MobileMenu";
@@ -10,8 +10,11 @@ import {
   FaExchangeAlt,
   FaCheck,
 } from "react-icons/fa";
+import { usePageMeta } from "../../seo/usePageMeta";
+import { getRouteMeta } from "../../seo/routes.meta";
 
 export const HireMe = () => {
+  usePageMeta(getRouteMeta("/hire"));
   const [menuOpen, setMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -23,15 +26,6 @@ export const HireMe = () => {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const prev = document.title;
-    document.title =
-      "Hire Muhamed Beck | AI Automation & Web Development Frankfurt";
-    return () => {
-      document.title = prev;
-    };
-  }, []);
 
   const services = [
     {

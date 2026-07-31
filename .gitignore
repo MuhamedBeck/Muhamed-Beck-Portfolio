@@ -26,3 +26,5 @@ dist-ssr
 
 .env
 .claude
+# Playwright MCP test artifacts
+.playwright-mcp/

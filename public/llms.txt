@@ -1,0 +1,23 @@
+# Muhamed Nur Beck – AI Automation Manager & Full-Stack Developer
+
+> Portfolio of Muhamed Nur Beck, an AI automation and full-stack developer based in Frankfurt am Main, Germany. He builds AI workflow automations (n8n, Zapier, OpenAI, Anthropic Claude), full-stack web applications (React, Angular, Spring Boot) and CRM/ATS integrations (HubSpot, RecruitCRM, Personio). Available for freelance projects in Germany and remote.
+
+## Pages
+
+- [Homepage](https://mbeck.vercel.app/): Profile, skills, work experience, projects and contact.
+- [Services](https://mbeck.vercel.app/services): AI workflow automation, web development, CRM integration, SEO optimization and support offerings.
+- [Hire Me](https://mbeck.vercel.app/hire): Project request form with service selection.
+- [AR Data Visualization](https://mbeck.vercel.app/projects/ar-data-visualization): Case study – SAP BusinessObjects data in Augmented Reality.
+- [LLM Unit Test Automation](https://mbeck.vercel.app/projects/llm-maven-plugin): Master thesis – a Maven plugin generating unit tests for Spring Boot with Large Language Models.
+
+## Background
+
+- AI Automation Manager at TOPEOPLE Group GmbH, Frankfurt (since 09/2025)
+- M.Sc. Business Informatics, Frankfurt University of Applied Sciences
+- Core stack: n8n, Zapier, OpenAI, Anthropic Claude, React, Angular, Spring Boot, Java, Python, Docker, Kubernetes
+
+## Contact
+
+- Email: m.nur.beck@hotmail.de
+- LinkedIn: https://www.linkedin.com/in/muhamed-nur-beck
+- GitHub: https://www.github.com/MuhamedBeck

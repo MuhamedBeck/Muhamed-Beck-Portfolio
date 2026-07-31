@@ -11,8 +11,11 @@ import {
 import { Navbar } from "../Navbar";
 import { MobileMenu } from "../MobileMenu";
 import Footer from "../Footer";
+import { usePageMeta } from "../../seo/usePageMeta";
+import { getRouteMeta } from "../../seo/routes.meta";
 
 export const Services = () => {
+  usePageMeta(getRouteMeta("/services"));
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 

@@ -1,4 +1,9 @@
-const NotFound = () => (
+import { usePageMeta } from "../seo/usePageMeta";
+import { NOT_FOUND_META } from "../seo/routes.meta";
+
+const NotFound = () => {
+  usePageMeta(NOT_FOUND_META);
+  return (
   <div className="min-h-screen flex flex-col items-center justify-center bg-black text-gray-100">
     <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
       404
@@ -12,6 +17,7 @@ const NotFound = () => (
       Return to Home
     </a>
   </div>
-);
+  );
+};
 
 export default NotFound;
