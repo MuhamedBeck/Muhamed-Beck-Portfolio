@@ -3,8 +3,6 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
 
 // Only the landing route ("/") is bundled eagerly. Every other route is a
 // separate chunk, so a first-time visitor on the homepage does not download
@@ -65,8 +63,6 @@ createRoot(document.getElementById("root")).render(
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      <Analytics />
-      <SpeedInsights />
     </BrowserRouter>
   </StrictMode>
 );

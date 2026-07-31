@@ -1,123 +1,20 @@
 {
-  "rewrites": [
-    {
-      "source": "/:file(sitemap.xml|robots.txt|llms.txt|favicon.ico|manifest.json|profilepicture.png|og-image.jpg|MNB_Logo.png)",
-      "destination": "/:file"
-    },
-    {
-      "source": "/assets/:file*",
-      "destination": "/assets/:file*"
-    },
-    {
-      "source": "/services",
-      "destination": "/services/index.html"
-    },
-    {
-      "source": "/hire",
-      "destination": "/hire/index.html"
-    },
-    {
-      "source": "/projects/ar-data-visualization",
-      "destination": "/projects/ar-data-visualization/index.html"
-    },
-    {
-      "source": "/projects/llm-maven-plugin",
-      "destination": "/projects/llm-maven-plugin/index.html"
-    },
-    {
-      "source": "/leistungen/n8n-automatisierung",
-      "destination": "/leistungen/n8n-automatisierung/index.html"
-    },
-    {
-      "source": "/leistungen/ki-automatisierung-frankfurt",
-      "destination": "/leistungen/ki-automatisierung-frankfurt/index.html"
-    },
-    {
-      "source": "/leistungen/hubspot-integration",
-      "destination": "/leistungen/hubspot-integration/index.html"
-    },
-    {
-      "source": "/projekte/recruiting-automatisierung",
-      "destination": "/projekte/recruiting-automatisierung/index.html"
-    },
-    {
-      "source": "/projekte/phoenix-parkservice",
-      "destination": "/projekte/phoenix-parkservice/index.html"
-    },
-    {
-      "source": "/impressum",
-      "destination": "/impressum/index.html"
-    },
-    {
-      "source": "/datenschutz",
-      "destination": "/datenschutz/index.html"
-    },
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+
+  "//": [
+    "The site now runs on Cloudflare Workers (see wrangler.jsonc).",
+    "This file only keeps the old mbeck.vercel.app deployment alive as a",
+    "permanent redirect, so existing links and bookmarks reach the new domain",
+    "and search engines consolidate the two addresses instead of treating them",
+    "as duplicates. Delete the Vercel project and this file once Search Console",
+    "shows no traffic on the old host."
+  ],
+
+  "redirects": [
     {
       "source": "/:path*",
-      "destination": "/index.html"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/xml"
-        }
-      ]
-    },
-    {
-      "source": "/manifest.json",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/manifest+json"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/fonts/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "destination": "https://muhamedbeck.com/:path*",
+      "permanent": true
     }
   ]
 }

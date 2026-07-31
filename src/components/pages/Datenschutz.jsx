@@ -94,47 +94,47 @@ export const Datenschutz = () => {
                 </p>
               </Card>
 
-              <Card title="3. Hosting (Vercel)">
+              <Card title="3. Hosting und Auslieferung (Cloudflare)">
                 <p>
-                  Diese Website wird bei Vercel Inc., 440 N Barranca Ave
-                  #4133, Covina, CA 91723, USA, gehostet. Beim Aufruf der
-                  Website erhebt Vercel automatisch Server-Log-Daten, darunter
-                  Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs, Browsertyp
-                  und Betriebssystem. Diese Daten sind technisch erforderlich,
-                  um die Website auszuliefern und ihre Stabilität und
-                  Sicherheit zu gewährleisten.
+                  Diese Website wird über die Infrastruktur der Cloudflare,
+                  Inc., 101 Townsend Street, San Francisco, CA 94107, USA,
+                  ausgeliefert. Dort ist auch die Domain registriert. Beim
+                  Aufruf der Website verarbeitet Cloudflare automatisch
+                  technische Zugriffsdaten, darunter Ihre IP-Adresse, Datum
+                  und Uhrzeit des Zugriffs, die aufgerufene Adresse, Browsertyp
+                  und Betriebssystem. Diese Verarbeitung ist erforderlich, um
+                  die Seiteninhalte auszuliefern sowie Stabilität und
+                  Sicherheit zu gewährleisten, etwa zur Abwehr von Angriffen.
                 </p>
                 <p>
+                  Die Auslieferung an Besucher aus Deutschland erfolgt über
+                  europäische Standorte des Cloudflare-Netzwerks. Eine
+                  Verarbeitung in den USA lässt sich dabei nicht ausschließen.
                   Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
                   Interesse an einer sicheren und zuverlässigen Bereitstellung
-                  der Website). Die Datenübermittlung in die USA erfolgt auf
-                  Grundlage der EU-Standardvertragsklauseln sowie des EU-US
-                  Data Privacy Framework. Weitere Informationen finden Sie in
-                  der Datenschutzerklärung von Vercel:{" "}
+                  der Website). Mit Cloudflare besteht ein Vertrag zur
+                  Auftragsverarbeitung; die Übermittlung in die USA ist durch
+                  die EU-Standardvertragsklauseln abgesichert. Weitere
+                  Informationen finden Sie in der Datenschutzerklärung von
+                  Cloudflare:{" "}
                   <a
-                    href="https://vercel.com/legal/privacy-policy"
+                    href="https://www.cloudflare.com/de-de/privacypolicy/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-blue-400 hover:text-cyan-400 transition-colors break-all">
-                    vercel.com/legal/privacy-policy
+                    cloudflare.com/de-de/privacypolicy
                   </a>
                 </p>
               </Card>
 
-              <Card title="4. Reichweitenmessung (Vercel Analytics und Speed Insights)">
+              <Card title="4. Reichweitenmessung">
                 <p>
-                  Zur Analyse der Websitenutzung und der Ladeleistung setze
-                  ich Vercel Web Analytics und Vercel Speed Insights ein.
-                  Beide Dienste arbeiten ohne Cookies und ohne
-                  geräteübergreifendes Tracking. Es werden aggregierte,
-                  anonymisierte Nutzungsdaten erhoben (z. B. aufgerufene
-                  Seiten, Herkunftsland, Gerätetyp). Eine Identifizierung
-                  einzelner Besucher findet nicht statt.
-                </p>
-                <p>
-                  Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
-                  (berechtigtes Interesse an der statistischen Auswertung und
-                  Verbesserung dieser Website).
+                  Diese Website setzt keine Analyse- oder
+                  Reichweitenmessungsdienste ein. Es findet keine Auswertung
+                  Ihres Nutzungsverhaltens statt, weder durch eigene noch
+                  durch fremde Werkzeuge. Über die unter Ziffer 3 genannten
+                  technischen Zugriffsdaten hinaus werden beim bloßen Besuch
+                  der Website keine Daten erhoben.
                 </p>
               </Card>
 
