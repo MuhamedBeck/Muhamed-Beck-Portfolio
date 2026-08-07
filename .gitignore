@@ -34,3 +34,7 @@ public/**/.claude/
 
 # Build-time render bundle
 dist-ssr/
+
+# Local verification screenshots and wrangler dev scratch
+/*.png
+.wrangler/
