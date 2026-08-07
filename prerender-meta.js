@@ -19,6 +19,7 @@ import {
 } from "./src/routes/registry.js";
 import { localeConfig } from "./src/i18n/locales.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
+import { RATGEBER } from "./src/content/ratgeber.de.js";
 import { RATE_MAX, RATE_MIN, RATE_TEXT } from "./src/content/site.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
 
@@ -189,12 +190,34 @@ const serviceNode = (route, leistung) => ({
   },
 });
 
+/**
+ * BlogPosting node for a Ratgeber article.
+ *
+ * datePublished and dateModified match the "Stand:" line the page renders.
+ * Freshness is a real input to both ranking and citation, so it is stated
+ * explicitly, and it is never bumped without the content actually changing.
+ */
+const articleNode = (route, article) => ({
+  "@type": "BlogPosting",
+  "@id": `${SITE_URL}${route.path}#article`,
+  headline: article.h1,
+  description: article.lede,
+  datePublished: article.published,
+  dateModified: article.modified,
+  author: { "@id": PERSON_ID },
+  publisher: { "@id": BUSINESS_ID },
+  inLanguage: "de-DE",
+  articleSection: article.kicker,
+  image: `${SITE_URL}/og-image.jpg`,
+  mainEntityOfPage: `${SITE_URL}${route.path}`,
+});
+
 /** FAQPage from the same array the page renders, so they cannot diverge. */
-const faqNode = (leistung) =>
-  leistung?.faq?.length
+const faqNode = (source) =>
+  source?.faq?.length
     ? {
         "@type": "FAQPage",
-        mainEntity: leistung.faq.map((item) => ({
+        mainEntity: source.faq.map((item) => ({
           "@type": "Question",
           name: item.q,
           acceptedAnswer: { "@type": "Answer", text: item.a },
@@ -205,10 +228,12 @@ const faqNode = (leistung) =>
 /** Per-page structured data, as one @graph appended to the head. */
 const pageJsonLd = (route) => {
   const leistung = LEISTUNGEN.find((item) => item.path === route.path);
+  const article = RATGEBER.find((item) => item.path === route.path);
   const nodes = [
     breadcrumbNode(route),
     leistung ? serviceNode(route, leistung) : null,
-    faqNode(leistung),
+    article ? articleNode(route, article) : null,
+    faqNode(leistung ?? article),
   ].filter(Boolean);
 
   if (!nodes.length) return null;

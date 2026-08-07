@@ -131,10 +131,22 @@ for (const route of ROUTES) {
 // Dictionary completeness
 // ---------------------------------------------------------------------------
 
-/** Every leaf path in an object, as dotted strings, with the leaf's type. */
+/**
+ * Every leaf path in an object, as dotted strings, with the leaf's type.
+ *
+ * Arrays are described by their element shape rather than their length. The two
+ * locales deliberately differ in list length in places: the German navigation
+ * has more entries than the English one because the German site has more pages.
+ * What must match is the shape of each element, so a translated object cannot
+ * silently lose a key.
+ */
 function shapeOf(value, prefix = "") {
   if (Array.isArray(value)) {
-    return new Map([[prefix, `array[${value.length}]`]]);
+    const shape = new Map([[prefix, "array"]]);
+    if (value.length) {
+      for (const [path, type] of shapeOf(value[0], `${prefix}[]`)) shape.set(path, type);
+    }
+    return shape;
   }
   if (value && typeof value === "object") {
     const shape = new Map();

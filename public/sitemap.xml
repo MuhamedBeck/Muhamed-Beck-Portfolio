@@ -85,6 +85,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://muhamedbeck.com/ratgeber</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://muhamedbeck.com/ratgeber/n8n-freelancer-kosten</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muhamedbeck.com/ratgeber/n8n-vs-make-vs-zapier</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://muhamedbeck.com/ratgeber/recruiting-mit-n8n-automatisieren</loc>
+    <lastmod>2026-08-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://muhamedbeck.com/leistungen/n8n-automatisierung</loc>
     <lastmod>2026-07-31</lastmod>
     <changefreq>monthly</changefreq>

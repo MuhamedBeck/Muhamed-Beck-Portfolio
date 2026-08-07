@@ -9,6 +9,7 @@
 const de = {
   primary: [
     { to: "/leistungen", label: "Leistungen" },
+    { to: "/ratgeber", label: "Ratgeber" },
     { to: "/projekte", label: "Projekte" },
     { to: "/ueber-mich", label: "Über mich" },
   ],
