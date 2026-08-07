@@ -472,64 +472,29 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* Custom Scrollbar Styling */
-/* Webkit browsers (Chrome, Safari, Edge, Mobile Safari) */
+/* Scrollbar. Deliberately quiet: a bright blue-to-cyan gradient bar down the
+   edge of every page competes with the content for attention, which is the
+   opposite of what the rest of this design is doing. */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(17, 17, 17, 0.8);
-  border-radius: 3px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.9) 0%, 
-    rgba(34, 211, 238, 0.9) 50%, 
-    rgba(79, 70, 229, 0.9) 100%
-  );
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  min-height: 20px;
+  background: rgb(255 255 255 / 0.12);
+  border: 3px solid var(--color-ink);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 1) 0%, 
-    rgba(34, 211, 238, 1) 50%, 
-    rgba(79, 70, 229, 1) 100%
-  );
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  background: rgb(255 255 255 / 0.22);
 }
 
-::-webkit-scrollbar-corner {
-  background: rgba(17, 17, 17, 0.8);
-}
-
-/* Firefox scrollbar styling */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(59, 130, 246, 0.9) rgba(17, 17, 17, 0.8);
-}
-
-/* Mobile scrollbar indicator enhancement */
-@media (hover: none) and (pointer: coarse) {
-  /* Mobile devices - enhance scrollbar visibility */
-  ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, 
-      rgba(59, 130, 246, 1) 0%, 
-      rgba(34, 211, 238, 1) 50%, 
-      rgba(79, 70, 229, 1) 100%
-    );
-    border-radius: 2px;
-    min-height: 30px;
-  }
+  scrollbar-color: rgb(255 255 255 / 0.16) transparent;
 }

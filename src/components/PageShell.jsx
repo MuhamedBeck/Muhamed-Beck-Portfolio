@@ -22,8 +22,10 @@ export const PageShell = ({ label, headline, intro, children }) => {
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <main>
-        {/* pt-28 clears the fixed 64px navbar. */}
-        <Section className="!pt-28">
+        {/* pt-28 clears the fixed 64px navbar. The header carries no bottom
+            padding: the following section supplies the gap, so a short header
+            does not leave a hole the size of a full section rhythm. */}
+        <Section className="!pt-28 !pb-0">
           <SectionHeader label={label} headline={headline} intro={intro} />
         </Section>
         {children}

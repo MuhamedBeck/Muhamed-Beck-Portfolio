@@ -19,6 +19,7 @@ import {
 } from "./src/routes/registry.js";
 import { localeConfig } from "./src/i18n/locales.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
+import { RATE_MAX, RATE_MIN, RATE_TEXT } from "./src/content/site.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
 
 // Route components are loaded through dynamic import() so one registry entry can
@@ -104,19 +105,114 @@ const alternatesBlock = (route) => {
   return lines.join("\n");
 };
 
-// FAQPage JSON-LD for landing pages whose visible content includes the same FAQ.
-const faqJsonLd = (path) => {
-  const leistung = LEISTUNGEN.find((l) => l.path === path);
-  if (!leistung?.faq?.length) return null;
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: leistung.faq.map((item) => ({
-      "@type": "Question",
-      name: item.q,
-      acceptedAnswer: { "@type": "Answer", text: item.a },
-    })),
-  };
+const PERSON_ID = `${SITE_URL}/#person`;
+const BUSINESS_ID = `${SITE_URL}/#business`;
+
+// Breadcrumb labels for the path segments that appear in URLs. Derived from the
+// registry where a matching page exists, so a label can never disagree with the
+// page it points at.
+const breadcrumbName = (path, fallback) =>
+  ROUTES.find((route) => route.path === path)?.h1 ?? fallback;
+
+/**
+ * BreadcrumbList for a route, built from its own path.
+ *
+ * A crawler infers hierarchy from URL structure anyway; stating it explicitly
+ * removes the guesswork and is what produces the breadcrumb line in results
+ * instead of a bare URL.
+ */
+const breadcrumbNode = (route) => {
+  const segments = route.path.split("/").filter(Boolean);
+  if (!segments.length) return null;
+
+  const isEnglish = route.locale === "en";
+  const homePath = isEnglish ? "/en" : "/";
+  const items = [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: isEnglish ? "Home" : "Startseite",
+      item: `${SITE_URL}${homePath}`,
+    },
+  ];
+
+  // Skip the locale prefix itself: /en is the English home, already listed.
+  const trail = isEnglish ? segments.slice(1) : segments;
+  let prefix = isEnglish ? "/en" : "";
+  trail.forEach((segment, index) => {
+    prefix += `/${segment}`;
+    const isLast = index === trail.length - 1;
+    items.push({
+      "@type": "ListItem",
+      position: items.length + 1,
+      name: isLast ? route.h1 : breadcrumbName(prefix, segment),
+      ...(isLast ? {} : { item: `${SITE_URL}${prefix}` }),
+    });
+  });
+
+  return items.length > 1 ? { "@type": "BreadcrumbList", itemListElement: items } : null;
+};
+
+/**
+ * Service node for a Leistung page.
+ *
+ * priceSpecification carries the numeric bounds for machines while the
+ * description keeps the exact human wording, so the two cannot drift into
+ * saying different things. Deliberately no aggregateRating or review: none
+ * exist, and inventing them is a manual-action risk rather than a shortcut.
+ */
+const serviceNode = (route, leistung) => ({
+  "@type": "Service",
+  "@id": `${SITE_URL}${route.path}#service`,
+  name: leistung.h1,
+  serviceType: leistung.badge,
+  description: leistung.teaser,
+  provider: { "@id": PERSON_ID },
+  isRelatedTo: { "@id": BUSINESS_ID },
+  areaServed: [
+    { "@type": "Country", name: "Deutschland" },
+    { "@type": "Country", name: "Österreich" },
+    { "@type": "Country", name: "Schweiz" },
+  ],
+  audience: { "@type": "BusinessAudience", audienceType: "Mittelstand und KMU" },
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      priceCurrency: "EUR",
+      minPrice: RATE_MIN,
+      maxPrice: RATE_MAX,
+      unitCode: "HUR",
+      description: RATE_TEXT,
+    },
+  },
+});
+
+/** FAQPage from the same array the page renders, so they cannot diverge. */
+const faqNode = (leistung) =>
+  leistung?.faq?.length
+    ? {
+        "@type": "FAQPage",
+        mainEntity: leistung.faq.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      }
+    : null;
+
+/** Per-page structured data, as one @graph appended to the head. */
+const pageJsonLd = (route) => {
+  const leistung = LEISTUNGEN.find((item) => item.path === route.path);
+  const nodes = [
+    breadcrumbNode(route),
+    leistung ? serviceNode(route, leistung) : null,
+    faqNode(leistung),
+  ].filter(Boolean);
+
+  if (!nodes.length) return null;
+  const schema = { "@context": "https://schema.org", "@graph": nodes };
   return `  <script type="application/ld+json">\n  ${JSON.stringify(schema)}\n  </script>\n`;
 };
 
@@ -182,9 +278,9 @@ for (const route of ROUTES) {
     template
   );
 
-  const faqScript = faqJsonLd(route.path);
-  if (faqScript) {
-    html = replaceRequired(html, /<\/head>/, () => `${faqScript}</head>`, "head end", route.path);
+  const jsonLd = pageJsonLd(route);
+  if (jsonLd) {
+    html = replaceRequired(html, /<\/head>/, () => `${jsonLd}</head>`, "head end", route.path);
   }
 
   // Only pages that actually render the hero image get its preload.
