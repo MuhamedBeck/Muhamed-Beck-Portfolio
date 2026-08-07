@@ -63,8 +63,7 @@ export const ROUTES = [
     heroPreload: true,
     sitemapImage: true,
     load: () => import("../App.jsx"),
-    title:
-      "Muhamed Beck | AI Automation & Full-Stack Developer in Frankfurt, Germany",
+    title: "Muhamed Beck | AI Automation & Full-Stack Developer, Frankfurt",
     description:
       "AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG solutions, React, Angular, Spring Boot. Available for freelance work.",
     h1: "Hi, I'm Muhamed Nur Beck",
@@ -206,7 +205,7 @@ export const ROUTES = [
     group: "projekt.phoenix",
     load: () => import("../components/pages/projekte/CaseStudyRoute.jsx"),
     props: { path: "/projekte/phoenix-parkservice" },
-    title: "Case Study Phoenix Parkservice: Microservices & SEO | Muhamed Beck",
+    title: "Phoenix Parkservice: Microservices und KI-SEO | Muhamed Beck",
     description:
       "Microservices-Plattform mit Spring Boot und Angular, DevOps und KI-gestützte SEO-Workflows: 35 % mehr organischer Traffic für Phoenix Parkservice.",
     h1: "Microservices-Plattform und KI-SEO für Phoenix Parkservice",
@@ -299,4 +298,13 @@ export function getRouteMeta(path) {
 export function getAlternates(entry) {
   const peers = ROUTES.filter((route) => route.group === entry.group);
   return peers.length < 2 ? [] : peers;
+}
+
+/**
+ * Landing page for a locale. The language switcher falls back to this when the
+ * current page has no counterpart in the target locale, which is the common
+ * case: the German service pages and articles are deliberately not translated.
+ */
+export function getHome(locale) {
+  return ROUTES.find((route) => route.group === "home" && route.locale === locale);
 }

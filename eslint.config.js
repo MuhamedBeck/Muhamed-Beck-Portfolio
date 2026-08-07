@@ -35,4 +35,11 @@ export default defineConfig([
       'react-refresh/only-export-components': 'off',
     },
   },
+  {
+    // Build tooling: runs under Node, never in a browser.
+    files: ['scripts/**/*.js', '*.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ])
