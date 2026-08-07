@@ -1,62 +1,55 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import mnbLogo from "../assets/MNB_Logo.webp";
+import { useDict } from "../i18n";
+import { LanguageSwitcherRow } from "./LanguageSwitcher";
+import { PERSON } from "../content/site";
+import nav from "../i18n/dict/nav";
+import ui from "../i18n/dict/ui";
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
+  const t = useDict(nav);
+  const chrome = useDict(ui);
+
   useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
 
-  const navLinks = [
-    { href: "/", label: "Home", isRoute: true },
-    { href: "/services", label: "Services", isRoute: true },
-    { href: "/#about", label: "About" },
-    { href: "/#projects", label: "Projects" },
-    { href: "/#contact", label: "Contact" },
-  ];
+  const close = () => setMenuOpen(false);
+  const links = [...t.primary, t.cta];
 
   return (
     <>
-      {/* Backdrop */}
       <div
-        className={`fixed inset-0 bg-black/70 backdrop-blur-sm z-40 transition-opacity duration-300 ${
-          menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 z-40 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
+          menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
-        onClick={() => setMenuOpen(false)}
+        onClick={close}
         aria-hidden="true"
       />
 
-      {/* Menu Panel */}
       <div
-        className={`fixed top-0 right-0 h-full w-72 max-w-[85vw] z-50 flex flex-col transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 z-50 flex h-full w-72 max-w-[85vw] flex-col border-l border-white/10 bg-[#0a0a0a] transition-transform duration-300 ease-out ${
           menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-        style={{
-          background:
-            "linear-gradient(160deg, rgba(9,9,11,0.98) 0%, rgba(15,23,42,0.98) 100%)",
-          borderLeft: "1px solid rgba(255,255,255,0.06)",
-        }}>
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 h-16 border-b border-white/[0.06] shrink-0">
-          <Link to="/" onClick={() => setMenuOpen(false)} className="flex items-center">
-            <img src={mnbLogo} alt="MNB Logo" width="500" height="500" className="h-8 w-auto" />
+        }`}>
+        <div className="flex h-16 shrink-0 items-center justify-between border-b border-white/10 px-5">
+          <Link to="/" onClick={close} className="flex items-center">
+            <img src={mnbLogo} alt="" width="500" height="500" className="h-8 w-auto" />
           </Link>
           <button
-            onClick={() => setMenuOpen(false)}
-            className="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-white transition-colors rounded-lg hover:bg-white/5"
-            aria-label="Close menu">
+            type="button"
+            onClick={close}
+            className="flex h-11 w-11 items-center justify-center text-gray-500 transition-colors hover:text-white"
+            aria-label={chrome.closeMenu}>
             <svg
-              className="w-5 h-5"
+              className="h-5 w-5"
               fill="none"
               stroke="currentColor"
-              viewBox="0 0 24 24">
+              viewBox="0 0 24 24"
+              aria-hidden="true">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -67,74 +60,36 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
           </button>
         </div>
 
-        {/* Nav: overflow-y-auto + overscroll-contain prevents page scroll-through on iOS */}
-        <nav className="flex-1 overflow-y-auto overscroll-contain px-4 py-6">
-          <ul className="space-y-0.5">
-            {navLinks.map((item, i) => {
-              const linkClass = `flex items-center justify-between w-full px-4 py-3.5 rounded-xl text-gray-300 hover:text-white hover:bg-white/[0.05] active:bg-white/10 group ${
-                menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
-              }`;
-              const linkStyle = {
-                transitionDelay: menuOpen ? `${80 + i * 45}ms` : "0ms",
-                transitionProperty: "opacity, transform",
-                transitionDuration: "300ms",
-              };
-              const inner = (
-                <>
-                  <span className="font-medium text-[15px] tracking-wide">{item.label}</span>
-                  <svg className="w-4 h-4 text-gray-700 group-hover:text-blue-400 group-hover:translate-x-0.5 transition-all duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </>
-              );
-              return (
-                <li key={item.href}>
-                  {item.isRoute ? (
-                    <Link to={item.href} onClick={() => setMenuOpen(false)} className={linkClass} style={linkStyle}>{inner}</Link>
-                  ) : (
-                    <a href={item.href} onClick={() => setMenuOpen(false)} className={linkClass} style={linkStyle}>{inner}</a>
-                  )}
-                </li>
-              );
-            })}
+        {/* overflow-y-auto plus overscroll-contain stops the page behind the
+            drawer from scrolling through on iOS. */}
+        <nav className="flex-1 overflow-y-auto overscroll-contain px-3 py-6">
+          <ul>
+            {links.map((item, index) => (
+              <li key={item.to}>
+                <Link
+                  to={item.to}
+                  onClick={close}
+                  className={`flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-xs tracking-[0.18em] text-gray-300 uppercase transition-all duration-300 hover:bg-white/5 hover:text-white ${
+                    menuOpen ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0"
+                  }`}
+                  style={{ transitionDelay: menuOpen ? `${80 + index * 45}ms` : "0ms" }}>
+                  {item.label}
+                  <span aria-hidden="true" className="text-gray-600">
+                    ↗
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
-
-          {/* Divider */}
-          <div className="my-6 border-t border-white/[0.06]" />
-
-          {/* Hire Me CTA */}
-          <Link
-            to="/hire"
-            onClick={() => setMenuOpen(false)}
-            className={`flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-xl font-semibold text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-[0_0_20px_rgba(59,130,246,0.25)] hover:shadow-[0_0_28px_rgba(59,130,246,0.45)] ${
-              menuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
-            }`}
-            style={{
-              transitionDelay: menuOpen ? `${80 + navLinks.length * 45}ms` : "0ms",
-              transitionProperty: "opacity, transform, box-shadow",
-              transitionDuration: "300ms",
-            }}>
-            Hire Me
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </Link>
         </nav>
 
-        {/* Footer */}
-        <div className="px-6 py-4 border-t border-white/[0.06] shrink-0">
-          <p className="text-gray-600 text-xs font-mono text-center tracking-wider">
-            © {new Date().getFullYear()} Muhamed Nur Beck
+        <div className="flex shrink-0 items-center justify-between border-t border-white/10 px-5 py-3">
+          <p className="text-xs text-gray-600">
+            © {new Date().getFullYear()} {PERSON.name}
           </p>
+          {/* A row rather than a dropdown: there is room inside the drawer, and
+              an overlay within an overlay is awkward to dismiss. */}
+          <LanguageSwitcherRow onNavigate={close} />
         </div>
       </div>
     </>

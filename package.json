@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node generate-sitemap.js && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender-meta.js",
+    "build": "node scripts/check-i18n.js && node generate-sitemap.js && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender-meta.js",
     "lint": "eslint .",
     "preview": "vite preview",
-    "sitemap": "node generate-sitemap.js"
+    "sitemap": "node generate-sitemap.js",
+    "check:i18n": "node scripts/check-i18n.js",
+    "indexnow": "node scripts/indexnow.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

@@ -4,6 +4,26 @@ html {
 
 @import "tailwindcss";
 
+/* Design tokens. The palette was previously literal Tailwind classes and inline
+   rgba() scattered across ~20 components, so there was no single place to
+   adjust it. Naming them here also makes the "one accent colour" rule visible:
+   the blue/cyan gradient is now an accent, not the page's main voice. */
+@theme {
+  --color-ink: #0a0a0a; /* page ground */
+  --color-ink-raised: #111114; /* the rare raised surface */
+  --color-paper: #f3f4f6; /* primary text */
+  --color-paper-soft: #9ca3af; /* secondary text */
+  --color-paper-mute: #6b7280; /* captions, legal, meta */
+  --color-accent: #60a5fa; /* blue-400, the single accent */
+  --color-accent-dim: #22d3ee; /* cyan-400, used sparingly */
+  --color-hairline: rgb(255 255 255 / 0.1);
+
+  /* Entrance easing is symmetric and unhurried; hover easing settles fast.
+     Keeping them as tokens stops every component inventing its own curve. */
+  --ease-entrance: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --ease-hover: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
 /* Space Grotesk, self-hosted (GDPR: no requests to Google servers) */
 @font-face {
   font-family: "Space Grotesk";
@@ -149,6 +169,283 @@ body {
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Editorial type scale.
+
+   Hierarchy comes from size and letter-spacing, not from weight: display type
+   is tight (-0.02em) and micro type is wide (+0.25em), and that contrast is
+   what reads as deliberately set rather than default. Headlines are weight 300,
+   never bold.
+   --------------------------------------------------------------------------- */
+@layer components {
+  .label {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-accent);
+  }
+
+  .headline {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: var(--color-paper);
+  }
+
+  .headline-hero {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    color: var(--color-paper);
+  }
+
+  .headline-sub {
+    font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+    line-height: 1.15;
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    color: var(--color-paper);
+  }
+
+  .intro {
+    font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);
+    line-height: 1.5;
+    font-weight: 300;
+    color: var(--color-paper-soft);
+  }
+
+  /* Ghost button. The right padding subtracts the trailing letter-space so the
+     wide-tracked label sits optically centred rather than pushed left. */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.875rem calc(1.75rem - 0.25em) 0.875rem 1.75rem;
+    border: 1px solid var(--color-paper);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-paper);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 400;
+    cursor: pointer;
+    transition:
+      background-color 0.3s var(--ease-hover),
+      color 0.3s var(--ease-hover),
+      border-color 0.3s var(--ease-hover);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  /* The one filled button on the page, reserved for the primary conversion. */
+  .btn-accent {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  .btn-accent:hover {
+    background-color: transparent;
+    color: var(--color-accent);
+  }
+
+  /* Secondary action: an underlined micro-type link, not a second button. */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding-block: 0.875rem; /* keeps the target at 44px */
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-paper-soft);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.5em;
+    transition: color 0.3s var(--ease-hover);
+  }
+
+  .link-arrow:hover {
+    color: var(--color-paper);
+  }
+
+  /* Replaces the rounded card boxes: sections are separated by a hairline and
+     whitespace instead of by borders on every element. */
+  .rule {
+    border: 0;
+    border-top: 1px solid var(--color-hairline);
+    margin: 0;
+  }
+}
+
+/* Entrance stagger. Choreography lives in a --fade-delay custom property so a
+   list can compute its own rhythm from an index instead of needing a class per
+   step.
+
+   The hidden state is scoped to .is-ready, which the prerendered HTML always
+   carries. Without JavaScript nothing is ever hidden, so there is no
+   invisible-content failure mode. */
+.is-ready .stagger {
+  animation: stagger-in 0.7s var(--ease-entrance) var(--fade-delay, 0s) both;
+}
+
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Masked line reveal: the text rises from behind its own edge. Uses transform
+   rather than clip-path or scale, because an element clipped to zero height is
+   reported as invisible to IntersectionObserver and never un-hides. */
+.reveal-line {
+  overflow: hidden;
+  /* Small inset so ascenders and descenders are not clipped by the mask. */
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+
+.is-ready .reveal-line > span {
+  display: inline-block;
+  animation: reveal-line-in 0.9s var(--ease-entrance) var(--fade-delay, 0s) both;
+}
+
+@keyframes reveal-line-in {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-ready .stagger,
+  .is-ready .reveal-line > span {
+    animation: none;
+  }
+}
+
+/* Language switcher: flag plus a small chevron, with the remaining flags
+   opening directly underneath without a box. Trigger and menu items share the
+   2.75rem .lang-switch__column, so every flag lines up to the pixel. */
+.lang-switch summary::-webkit-details-marker {
+  display: none;
+}
+
+.lang-switch summary::marker {
+  content: "";
+}
+
+.lang-switch summary {
+  transition: opacity 0.3s var(--ease-hover);
+}
+
+.lang-switch summary:hover {
+  opacity: 0.6;
+}
+
+/* Shared alignment column, which doubles as the touch-target width. */
+.lang-switch__column {
+  display: flex;
+  width: 2.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2.75rem = 44px, the WCAG 2.5.5 minimum target size. */
+.lang-switch__item {
+  display: flex;
+  height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s var(--ease-hover);
+}
+
+.lang-switch__item:hover {
+  opacity: 0.6;
+}
+
+.lang-switch__chevron {
+  margin-left: -0.375rem;
+  flex-shrink: 0;
+  color: var(--color-paper-soft);
+  transition: transform 0.3s var(--ease-hover);
+}
+
+.lang-switch[open] .lang-switch__chevron {
+  transform: rotate(180deg);
+}
+
+/* The panel needs an opaque fill or the flags float over the page content.
+   Deliberately without a border: same colour as the page, so no visible edges. */
+.lang-switch__menu {
+  background-color: var(--color-ink);
+  transform-origin: top center;
+}
+
+.lang-switch[open] > ul {
+  animation: lang-switch-open 0.2s var(--ease-hover) both;
+}
+
+@keyframes lang-switch-open {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Active language in the mobile flag row: an underline rather than an outline
+   box, which would fight the switcher's borderless look. */
+.lang-switch__item[aria-current="true"] {
+  position: relative;
+}
+
+.lang-switch__item[aria-current="true"]::after {
+  content: "";
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  width: 1.25rem;
+  height: 1px;
+  background-color: var(--color-accent);
+  transform: translateX(-50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lang-switch summary,
+  .lang-switch__item,
+  .lang-switch__chevron,
+  .lang-switch[open] > ul {
+    transition: none;
+    animation: none;
+  }
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -175,64 +472,29 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* Custom Scrollbar Styling */
-/* Webkit browsers (Chrome, Safari, Edge, Mobile Safari) */
+/* Scrollbar. Deliberately quiet: a bright blue-to-cyan gradient bar down the
+   edge of every page competes with the content for attention, which is the
+   opposite of what the rest of this design is doing. */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(17, 17, 17, 0.8);
-  border-radius: 3px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 0.9) 0%, 
-    rgba(34, 211, 238, 0.9) 50%, 
-    rgba(79, 70, 229, 0.9) 100%
-  );
-  border-radius: 3px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-  min-height: 20px;
+  background: rgb(255 255 255 / 0.12);
+  border: 3px solid var(--color-ink);
+  border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, 
-    rgba(59, 130, 246, 1) 0%, 
-    rgba(34, 211, 238, 1) 50%, 
-    rgba(79, 70, 229, 1) 100%
-  );
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.4);
+  background: rgb(255 255 255 / 0.22);
 }
 
-::-webkit-scrollbar-corner {
-  background: rgba(17, 17, 17, 0.8);
-}
-
-/* Firefox scrollbar styling */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(59, 130, 246, 0.9) rgba(17, 17, 17, 0.8);
-}
-
-/* Mobile scrollbar indicator enhancement */
-@media (hover: none) and (pointer: coarse) {
-  /* Mobile devices - enhance scrollbar visibility */
-  ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, 
-      rgba(59, 130, 246, 1) 0%, 
-      rgba(34, 211, 238, 1) 50%, 
-      rgba(79, 70, 229, 1) 100%
-    );
-    border-radius: 2px;
-    min-height: 30px;
-  }
+  scrollbar-color: rgb(255 255 255 / 0.16) transparent;
 }

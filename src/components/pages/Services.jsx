@@ -11,11 +11,10 @@ import {
 import { Navbar } from "../Navbar";
 import { MobileMenu } from "../MobileMenu";
 import Footer from "../Footer";
-import { usePageMeta } from "../../seo/usePageMeta";
-import { getRouteMeta } from "../../seo/routes.meta";
+import { useRouteMeta } from "../../seo/useRouteMeta";
 
 export const Services = () => {
-  usePageMeta(getRouteMeta("/services"));
+  useRouteMeta();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -138,7 +137,7 @@ export const Services = () => {
           </Link>
         </div>
 
-        <RevealOnScroll>
+        <RevealOnScroll legacy>
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
@@ -154,7 +153,7 @@ export const Services = () => {
           {/* Services Grid */}
           <div className="space-y-8">
             {services.map((service, index) => (
-              <RevealOnScroll key={index}>
+              <RevealOnScroll legacy key={index}>
                 <div className="group relative rounded-2xl border border-white/10 bg-gray-900/50 p-8 md:p-10 hover:bg-gray-900/70 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
                   {/* Highlight Badge */}
                   <div className="absolute top-4 right-4 md:top-6 md:right-6">
@@ -205,7 +204,7 @@ export const Services = () => {
           </div>
 
           {/* CTA Section */}
-          <RevealOnScroll>
+          <RevealOnScroll legacy>
             <div className="mt-16 text-center">
               <div className="inline-block rounded-2xl border border-white/10 bg-white/5 p-10 md:p-12">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">

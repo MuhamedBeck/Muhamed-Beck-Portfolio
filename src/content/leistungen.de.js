@@ -9,6 +9,8 @@ export const LEISTUNGEN = [
   {
     path: "/leistungen/n8n-automatisierung",
     badge: "n8n & Zapier Spezialist",
+    teaser:
+      "Workflows, die CRM, ATS, E-Mail und interne Tools verbinden, mit Monitoring und Fehlerbehandlung statt Bastellösung.",
     h1: "n8n Freelancer für Workflow-Automatisierung",
     intro:
       "Ich baue Automatisierungen mit n8n und Zapier, die Ihre Tools verbinden, manuelle Arbeit abschaffen und Prozesse messbar beschleunigen. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse in der Praxis, nicht nur in Demos. Sie bekommen Workflows, die produktiv laufen: mit Monitoring, Fehlerbehandlung und sauberer Dokumentation.",
@@ -90,6 +92,8 @@ export const LEISTUNGEN = [
   {
     path: "/leistungen/ki-automatisierung-frankfurt",
     badge: "KI & LLM Spezialist · Frankfurt",
+    teaser:
+      "GPT- und LLM-Lösungen, RAG-Systeme und Voice-AI, die Prozesse übernehmen statt nur zu demonstrieren. DSGVO-konform aufgesetzt.",
     h1: "KI-Automatisierung für Unternehmen in Frankfurt",
     intro:
       "Ich entwickle KI-Lösungen, die echte Geschäftsprozesse übernehmen: GPT- und LLM-Integrationen, RAG-Systeme, Voice-AI-Agenten und automatisierte Abläufe. Als AI Automation Manager bei einem Frankfurter Unternehmen habe ich den Automatisierungsgrad der Candidate Operations auf rund 90 Prozent gehoben. Dieselbe Praxis bringe ich in Ihr Projekt, DSGVO-konform und mit sauberen Guardrails.",
@@ -171,6 +175,8 @@ export const LEISTUNGEN = [
   {
     path: "/leistungen/hubspot-integration",
     badge: "HubSpot & CRM Integrationen",
+    teaser:
+      "HubSpot, RecruitCRM, Personio und Greenhouse sauber angebunden: REST, Webhooks, OAuth2, Rate-Limit- und Retry-Strategien.",
     h1: "HubSpot Integration und CRM-Automatisierung",
     intro:
       "Ich verbinde HubSpot mit Ihren übrigen Systemen: ATS, Recruiting-Tools, interne Datenbanken oder Websites. Leads, Kandidaten und Deals fließen automatisch dorthin, wo sie gebraucht werden, ohne Doppeleingaben und ohne veraltete Datenstände. Aus der Praxis: Ich betreue produktive HubSpot- und RecruitCRM-Integrationen mit API-Management, Workflow-Automatisierung und Daten-Synchronisation.",
@@ -242,6 +248,243 @@ export const LEISTUNGEN = [
       {
         q: "Arbeiten Sie remote oder vor Ort?",
         a: "Beides, nach Absprache. Standort Frankfurt am Main, vor Ort im Rhein-Main-Gebiet, remote deutschlandweit und international.",
+      },
+    ],
+  },
+  {
+    path: "/leistungen/recruiting-automatisierung",
+    badge: "Recruiting & ATS Automatisierung",
+    teaser:
+      "Bewerbungseingang, Screening, Terminierung und Statuspflege automatisiert. Der Bereich, in dem ich täglich arbeite.",
+    h1: "Recruiting-Automatisierung mit n8n und ATS-Anbindung",
+    intro:
+      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager habe ich Durchlaufzeiten um rund 80 Prozent gesenkt und die Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht. Bewerbungseingang, Vorqualifizierung, Terminierung und Statuspflege laufen dabei ohne manuelle Zwischenschritte, angebunden an RecruitCRM, Personio, Greenhouse oder HubSpot.",
+    szenarien: [
+      {
+        title: "Bewerbungen ohne Copy-and-paste",
+        text: "Eingehende Bewerbungen landen automatisch im ATS, mit geparsten Lebenslaufdaten, Dublettenprüfung und passender Zuordnung zur Vakanz.",
+      },
+      {
+        title: "Vorqualifizierung mit GPT",
+        text: "Profile werden gegen die Anforderungen geprüft, angereichert und mit einer nachvollziehbaren Begründung eingestuft, statt nur nach Stichworten gefiltert.",
+      },
+      {
+        title: "Kommunikation, die nicht liegen bleibt",
+        text: "Eingangsbestätigungen, Terminvorschläge, Erinnerungen und Absagen laufen automatisch und im richtigen Ton, inklusive Voice-AI für Rückrufe.",
+      },
+    ],
+    leistungen: [
+      "Anbindung von RecruitCRM, Personio, Greenhouse und HubSpot über REST und Webhooks",
+      "Lebenslauf-Parsing und Datenanreicherung mit GPT-Modellen",
+      "Automatische Dublettenprüfung und Datenqualitätsregeln im ATS",
+      "Terminierung mit Kalenderanbindung, Erinnerungen und Nachfassen",
+      "Statuspflege und Reporting über den gesamten Funnel",
+      "Voice-AI-Agenten für Erstkontakt und Rückfragen (Twilio, STT/TTS)",
+      "DSGVO-Konzept für Bewerberdaten: Löschfristen, Rollen, Audit-Logging",
+    ],
+    ablauf: [
+      {
+        title: "Funnel aufnehmen",
+        text: "Wir gehen Ihren Recruiting-Prozess Schritt für Schritt durch und markieren, wo Zeit verloren geht und wo Daten doppelt erfasst werden.",
+      },
+      {
+        title: "Priorisieren",
+        text: "Der Schritt mit dem größten Zeitverlust kommt zuerst. Sie bekommen eine Aufwandsschätzung, bevor gebaut wird.",
+      },
+      {
+        title: "Umsetzen",
+        text: "Aufbau in n8n mit Anbindung an Ihr ATS, getestet mit echten Bewerbungen und abgesichert gegen API-Ausfälle.",
+      },
+      {
+        title: "Ausrollen",
+        text: "Übergabe an Ihr Team mit Dokumentation, danach schrittweise Erweiterung auf die nächsten Prozessschritte.",
+      },
+    ],
+    caseStudy: {
+      stat: "80 %",
+      statLabel: "kürzere Durchlaufzeiten im Recruiting",
+      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, habe ich Recruiting- und Vertriebsprozesse mit n8n, Zapier und GPT automatisiert. Die Durchlaufzeiten in den automatisierten Prozessen sanken um rund 80 Prozent.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Zur Case Study Recruiting-Automatisierung",
+    },
+    faq: [
+      {
+        q: "Welche ATS- und CRM-Systeme können Sie anbinden?",
+        a: "Produktiv angebunden habe ich RecruitCRM, Personio, Greenhouse und HubSpot. Grundsätzlich lässt sich jedes System mit einer REST-API oder Webhooks anbinden. Wenn eine API fehlt, prüfen wir vorab, ob ein Export- oder E-Mail-basierter Weg tragfähig ist.",
+      },
+      {
+        q: "Was passiert mit Bewerberdaten im Sinne der DSGVO?",
+        a: "Bewerberdaten sind besonders sensibel. n8n lässt sich self-hosted betreiben, sodass die Daten Ihre Infrastruktur nicht verlassen. Dazu kommen Löschfristen, ein Rollen- und Rechtekonzept und Audit-Logging. Für KI-Schritte lässt sich Azure OpenAI mit EU-Verarbeitung einsetzen, mit PII-Filterung vor dem Modellaufruf.",
+      },
+      {
+        q: "Ersetzt die Automatisierung meine Recruiter?",
+        a: "Nein, und das ist auch nicht das Ziel. Automatisiert werden die Schritte ohne Urteilsanteil: Daten erfassen, Dubletten prüfen, Termine koordinieren, Status pflegen. Die Entscheidung über Kandidaten bleibt beim Menschen. Der Gewinn ist, dass Recruiter wieder Zeit für Gespräche haben.",
+      },
+      {
+        q: "Was kostet Recruiting-Automatisierung?",
+        a: "Mein Stundensatz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang. Ein einzelner Workflow, etwa der automatisierte Bewerbungseingang, ist meist in wenigen Tagen produktiv. Eine durchgängige Kette über den ganzen Funnel dauert je nach Systemlandschaft einige Wochen.",
+      },
+      {
+        q: "Wie messe ich, ob sich das gelohnt hat?",
+        a: "Vor dem Start halten wir fest, wie lange die betroffenen Schritte heute dauern und wie oft sie anfallen. Nach dem Rollout stehen dieselben Kennzahlen im Reporting. Ohne diese Ausgangsmessung ist jede Prozentzahl hinterher wertlos.",
+      },
+    ],
+  },
+  {
+    path: "/leistungen/voice-ai-agenten",
+    badge: "Voice-AI & Telefonassistenten",
+    teaser:
+      "Sprachagenten, die Anrufe annehmen, qualifizieren und ins CRM schreiben. Mit Twilio, Speech-to-Text und Text-to-Speech.",
+    h1: "Voice-AI-Agenten für Telefon und Support",
+    intro:
+      "Ein KI-Telefonassistent nimmt Anrufe an, versteht das Anliegen, beantwortet wiederkehrende Fragen und übergibt an einen Menschen, sobald es nötig wird. Ich habe solche Agenten für Support- und Bewerberkommunikation produktiv gebaut, auf Basis von Twilio und WebRTC mit Speech-to-Text und Text-to-Speech. Der Anspruch dabei ist nicht, den Menschen zu imitieren, sondern die Anrufe abzufangen, die sonst niemand annimmt.",
+    szenarien: [
+      {
+        title: "Anrufe außerhalb der Bürozeiten",
+        text: "Der Agent nimmt an, erfasst Anliegen und Kontaktdaten strukturiert und legt daraus direkt einen Vorgang im CRM an.",
+      },
+      {
+        title: "Wiederkehrende Fragen",
+        text: "Öffnungszeiten, Status einer Bewerbung, Terminverschiebung: Fragen mit klarer Antwort beantwortet der Agent selbst, auf Basis Ihrer eigenen Inhalte.",
+      },
+      {
+        title: "Saubere Übergabe",
+        text: "Sobald das Anliegen unklar oder heikel wird, übergibt der Agent an einen Mitarbeiter, mit Gesprächsnotiz statt bei null.",
+      },
+    ],
+    leistungen: [
+      "Telefonie-Anbindung über Twilio und WebRTC",
+      "Speech-to-Text und Text-to-Speech mit natürlicher deutscher Aussprache",
+      "Gesprächslogik mit klaren Übergabepunkten an Menschen",
+      "Anbindung an CRM, ATS und Ticketsystem, damit jedes Gespräch dokumentiert ist",
+      "Wissensanbindung per RAG, damit Antworten aus Ihren Inhalten stammen",
+      "Transparenzhinweis zu Beginn des Gesprächs (EU AI Act, Artikel 50)",
+      "Auswertung der Gesprächsverläufe zur laufenden Verbesserung",
+    ],
+    ablauf: [
+      {
+        title: "Anrufgründe sortieren",
+        text: "Wir schauen an, weswegen tatsächlich angerufen wird, und trennen die Fälle mit klarer Antwort von denen mit Gesprächsbedarf.",
+      },
+      {
+        title: "Erster Anwendungsfall",
+        text: "Ein einzelner, eng umrissener Anrufgrund geht zuerst live. Das zeigt schnell und günstig, ob die Qualität trägt.",
+      },
+      {
+        title: "Integration",
+        text: "Anbindung an Ihre Systeme, damit aus jedem Gespräch ein sauberer Datensatz wird statt einer Notiz im Nirgendwo.",
+      },
+      {
+        title: "Nachschärfen",
+        text: "Anhand echter Gespräche werden Formulierungen, Übergabepunkte und Erkennungsraten verbessert.",
+      },
+    ],
+    caseStudy: {
+      stat: "CSAT",
+      statLabel: "verbessert durch Voice-AI im Support",
+      text: "In der Support- und Bewerberkommunikation habe ich Voice-AI-Agenten mit Twilio und WebRTC produktiv gebracht. Die Kundenzufriedenheit verbesserte sich, weil Anrufe angenommen wurden, die vorher ins Leere liefen.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Zur Case Study Recruiting-Automatisierung",
+    },
+    faq: [
+      {
+        q: "Merken Anrufer, dass sie mit einer KI sprechen?",
+        a: "Ja, und das ist Absicht. Der Agent weist zu Gesprächsbeginn darauf hin. Seit August 2026 verlangt Artikel 50 des EU AI Act ohnehin, dass Menschen erkennen können, wenn sie mit einem KI-System interagieren. Verschleierung wäre nicht nur rechtlich heikel, sie beschädigt auch das Vertrauen, sobald sie auffliegt.",
+      },
+      {
+        q: "Was passiert, wenn die KI nicht weiterweiß?",
+        a: "Dann übergibt sie. Der Übergabepunkt wird vorher festgelegt, nicht dem Modell überlassen. Der Mitarbeiter bekommt eine Zusammenfassung des bisherigen Gesprächs, sodass der Anrufer nicht alles wiederholen muss.",
+      },
+      {
+        q: "Funktioniert das auf Deutsch zuverlässig?",
+        a: "Ja. Die Erkennungsqualität für Deutsch ist inzwischen gut genug für den Produktivbetrieb. Dialekt, starke Nebengeräusche und Fachbegriffe bleiben die Schwachstellen, weshalb wir vor dem Rollout mit echten Aufnahmen aus Ihrem Umfeld testen.",
+      },
+      {
+        q: "Was kostet ein KI-Telefonassistent?",
+        a: "Die Umsetzung rechne ich mit 90 bis 135 € pro Stunde nach Absprache und je nach Projektumfang ab. Dazu kommen laufende Kosten für Telefonie und Sprachmodelle, die sich pro Gesprächsminute bemessen. Beides schätzen wir vor dem Start anhand Ihres tatsächlichen Anrufaufkommens.",
+      },
+      {
+        q: "Bleiben die Gesprächsdaten in der EU?",
+        a: "Das lässt sich so aufsetzen. Telefonie und Sprachverarbeitung können über EU-Regionen laufen, die Gesprächsdaten landen in Ihren eigenen Systemen. Wie weit das geht, hängt vom gewählten Anbieter ab; wir klären das vor der Architekturentscheidung, nicht danach.",
+      },
+    ],
+  },
+  {
+    path: "/leistungen/ki-agenten-entwicklung",
+    badge: "KI-Agenten für Unternehmen",
+    teaser:
+      "Agenten, die mehrstufige Aufgaben übernehmen, mit klaren Grenzen, Protokoll und einem Menschen an den richtigen Stellen.",
+    h1: "KI-Agenten entwickeln lassen",
+    intro:
+      "Ein KI-Agent ist ein System, das eine Aufgabe in mehreren Schritten selbst plant und dabei Werkzeuge benutzt, statt nur einen Text zu erzeugen. Das ist mächtig und genau deshalb heikel: Ohne klare Grenzen macht ein Agent Dinge, die niemand beauftragt hat. Ich baue Agenten mit definierten Berechtigungen, protokollierten Schritten und einem Menschen an den Stellen, an denen eine falsche Entscheidung teuer wird.",
+    szenarien: [
+      {
+        title: "Recherche und Aufbereitung",
+        text: "Der Agent sammelt Informationen aus Ihren Systemen und dem Web, prüft sie gegeneinander und liefert ein belegtes Ergebnis statt einer Behauptung.",
+      },
+      {
+        title: "Vorgänge bearbeiten",
+        text: "Anfragen werden klassifiziert, angereichert, im richtigen System angelegt und der zuständigen Person zugewiesen.",
+      },
+      {
+        title: "Mensch an der richtigen Stelle",
+        text: "Alles, was Geld kostet oder nach außen geht, läuft über eine Freigabe. Der Agent bereitet vor, ein Mensch entscheidet.",
+      },
+    ],
+    leistungen: [
+      "Agenten-Architektur mit klar abgegrenzten Werkzeugen und Berechtigungen",
+      "Anbindung an Ihre Systeme über APIs, ohne Vollzugriff als Standardfall",
+      "RAG-Wissensanbindung, damit Antworten aus Ihren Inhalten stammen",
+      "Freigabeschritte an den Stellen mit finanzieller oder rechtlicher Wirkung",
+      "Protokollierung jedes Schritts, damit Entscheidungen nachvollziehbar bleiben",
+      "Evaluation gegen einen festen Testsatz statt Bauchgefühl",
+      "Kostenkontrolle und Abbruchbedingungen gegen endlose Schleifen",
+    ],
+    ablauf: [
+      {
+        title: "Aufgabe abgrenzen",
+        text: "Wir definieren genau, was der Agent darf und was nicht. Diese Grenze ist die wichtigste Entscheidung im ganzen Projekt.",
+      },
+      {
+        title: "Testsatz aufbauen",
+        text: "Bevor gebaut wird, sammeln wir echte Fälle mit bekanntem richtigem Ergebnis. Ohne die lässt sich Qualität später nicht beurteilen.",
+      },
+      {
+        title: "Bauen und messen",
+        text: "Umsetzung gegen den Testsatz, mit Protokollierung jedes Schritts und harten Abbruchbedingungen.",
+      },
+      {
+        title: "Begleitet ausrollen",
+        text: "Start mit Freigabe bei jedem Schritt, dann schrittweise mehr Autonomie in den Bereichen, in denen die Ergebnisse stimmen.",
+      },
+    ],
+    caseStudy: {
+      stat: "90 %",
+      statLabel: "der Candidate Operations automatisiert",
+      text: "In den Candidate Operations habe ich GPT-gestützte Abläufe mit RAG und LangChain produktiv gebracht und den Automatisierungsgrad auf rund 90 Prozent gehoben, mit Guardrails für personenbezogene Daten.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Zur Case Study Recruiting-Automatisierung",
+    },
+    faq: [
+      {
+        q: "Was unterscheidet einen KI-Agenten von einem n8n-Workflow?",
+        a: "Ein Workflow führt festgelegte Schritte in festgelegter Reihenfolge aus. Ein Agent entscheidet selbst, welche Schritte nötig sind, und benutzt dafür Werkzeuge. Für klar definierte Abläufe ist der Workflow die bessere Wahl: er ist billiger, schneller und vorhersagbar. Ein Agent lohnt sich erst, wenn der Weg zum Ziel nicht vorab feststeht.",
+      },
+      {
+        q: "Wie verhindern Sie, dass ein Agent Unsinn anstellt?",
+        a: "Über drei Dinge: enge Werkzeugrechte, sodass der Agent technisch nicht kann, was er nicht soll; Freigabeschritte überall dort, wo eine Aktion Geld kostet oder nach außen geht; und Abbruchbedingungen gegen Schleifen. Dazu kommt Protokollierung, damit im Zweifel nachvollziehbar ist, was passiert ist.",
+      },
+      {
+        q: "Woher weiß ich, ob der Agent gut genug ist?",
+        a: "Aus einem Testsatz echter Fälle mit bekanntem richtigem Ergebnis, den wir vor dem Bauen anlegen. Jede Änderung wird dagegen gemessen. Ohne diesen Testsatz bleibt die Qualitätsfrage Meinungssache, und genau daran scheitern die meisten Agentenprojekte.",
+      },
+      {
+        q: "Welche Frameworks setzen Sie ein?",
+        a: "Je nach Anforderung n8n für die Orchestrierung, LangChain für Retrieval und Werkzeuganbindung, sowie die Modell-APIs von OpenAI, Azure OpenAI und Anthropic Claude. Die Auswahl richtet sich nach Datenschutzanforderung, Kosten und Qualität, nicht nach Mode.",
+      },
+      {
+        q: "Was kostet die Entwicklung eines KI-Agenten?",
+        a: "90 bis 135 € pro Stunde nach Absprache und je nach Projektumfang, dazu die laufenden Modellkosten. Der ehrliche Hinweis vorweg: Für viele Aufgaben ist ein normaler Workflow die günstigere und stabilere Lösung. Das prüfen wir im Erstgespräch, bevor Sie in einen Agenten investieren.",
       },
     ],
   },

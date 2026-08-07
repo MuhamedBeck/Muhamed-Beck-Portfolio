@@ -5,7 +5,8 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist', 'dist-ssr']),
+  // .wrangler holds generated dev-server scaffolding, not source.
+  globalIgnores(['dist', 'dist-ssr', '.wrangler']),
   {
     files: ['**/*.{js,jsx}'],
     extends: [
@@ -33,6 +34,13 @@ export default defineConfig([
     files: ['src/main.jsx', 'src/entry-server.jsx'],
     rules: {
       'react-refresh/only-export-components': 'off',
+    },
+  },
+  {
+    // Build tooling: runs under Node, never in a browser.
+    files: ['scripts/**/*.js', '*.js'],
+    languageOptions: {
+      globals: globals.node,
     },
   },
 ])

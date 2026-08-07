@@ -1,12 +1,11 @@
 import { RevealOnScroll } from "../RevealOnScroll";
-import { usePageMeta } from "../../seo/usePageMeta";
-import { getRouteMeta } from "../../seo/routes.meta";
+import { useRouteMeta } from "../../seo/useRouteMeta";
 
 export const LLMMavenPlugin = () => {
-  usePageMeta(getRouteMeta("/projects/llm-maven-plugin"));
+  useRouteMeta();
   return (
     <section className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-blue-950 py-20 px-4 flex items-center justify-center">
-      <RevealOnScroll>
+      <RevealOnScroll legacy>
         <div className="max-w-5xl mx-auto w-full rounded-2xl shadow-2xl bg-gray-900/80 border border-white/10 p-8 md:p-16 relative overflow-hidden">
           <div className="flex flex-col items-center mb-12">
             <div className="mb-4 animate-pulse"></div>
@@ -18,7 +17,7 @@ export const LLMMavenPlugin = () => {
             </p>
           </div>
 
-          <RevealOnScroll>
+          <RevealOnScroll legacy>
             <div className="mb-10">
               <h2 className="text-2xl font-bold text-blue-400 mb-4">
                 Master Thesis Overview
@@ -137,7 +136,7 @@ export const LLMMavenPlugin = () => {
           </RevealOnScroll>
 
           {/* Research Methodology */}
-          <RevealOnScroll>
+          <RevealOnScroll legacy>
             <div className="mb-10">
               <h2 className="text-2xl font-bold text-cyan-400 mb-4">
                 Research & Development Process
@@ -213,7 +212,7 @@ export const LLMMavenPlugin = () => {
           </RevealOnScroll>
 
           {/* Key Features */}
-          <RevealOnScroll>
+          <RevealOnScroll legacy>
             <div className="mb-10">
               <h2 className="text-2xl font-bold text-blue-400 mb-4">
                 Key Features & Capabilities
@@ -299,7 +298,7 @@ export const LLMMavenPlugin = () => {
           </RevealOnScroll>
 
           {/* Research Impact */}
-          <RevealOnScroll>
+          <RevealOnScroll legacy>
             <div className="mb-10">
               <h2 className="text-2xl font-bold text-blue-400 mb-4">
                 Research Impact & Findings
@@ -376,7 +375,7 @@ export const LLMMavenPlugin = () => {
           </RevealOnScroll>
 
           {/* Technical Achievements */}
-          <RevealOnScroll>
+          <RevealOnScroll legacy>
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-cyan-400 mb-4">
                 Technical Achievements & Validation

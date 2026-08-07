@@ -1,48 +1,50 @@
-# Muhamed Nur Beck: AI Automation Manager & Full-Stack Developer
+# Muhamed Nur Beck: KI- und Prozessautomatisierung, Frankfurt am Main
 
-> Portfolio of Muhamed Nur Beck, an AI automation and full-stack developer based in Frankfurt am Main, Germany. He builds AI workflow automations (n8n, Zapier, OpenAI, Azure OpenAI, Anthropic Claude, RAG, LangChain), full-stack web applications (React, Angular, Spring Boot) and CRM/ATS integrations (HubSpot, RecruitCRM, Personio, Greenhouse). Available for freelance projects in Germany and remote. Speaks German, English and Arabic.
+> AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.
+> Automatisiert Geschäftsprozesse mit n8n, baut KI-Agenten, Voice-AI und
+> RAG-Systeme und bindet CRM- und ATS-Systeme an (HubSpot, RecruitCRM, Personio,
+> Greenhouse). Verfügbar für Projekte remote in Deutschland, Österreich und der
+> Schweiz, vor Ort im Rhein-Main-Gebiet.
 
-## Key Results
+## Belegte Ergebnisse
 
-- Reduced recruiting process cycle times by about 80% through n8n and Zapier automation at TOPEOPLE Group GmbH.
-- Raised candidate operations automation to about 90% with GPT/LLM solutions (OpenAI, Azure, RAG, LangChain).
-- Built an in-house sales and recruiting SaaS end to end (React 19, Supabase, Vercel, Twilio) with multi-tenant RLS and a 9-role permission model.
-- Implemented voice AI agents (Twilio/WebRTC, STT/TTS) for support and applicant communication.
-- Increased organic traffic by 35% with AI-based SEO workflows at Phoenix Parkservice.
-- Master thesis at INFOMOTION: an LLM-based Maven plugin that raised test coverage by 33% and cut unit test writing time by up to 95%.
+- Durchlaufzeiten im Recruiting um rund 80 Prozent gesenkt (TOPEOPLE Group GmbH, Arbeitgeber, seit 09/2025).
+- Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht, mit GPT, RAG und LangChain.
+- Organischen Traffic um 35 Prozent gesteigert (Phoenix Parkservice, Freelance-Mandat 06/2024 bis 09/2025).
+- Testabdeckung um 33 Prozent erhöht und Schreibaufwand für Unit-Tests um bis zu 95 Prozent gesenkt (Masterarbeit, INFOMOTION GmbH).
 
-## Rates & Availability
+## Konditionen
 
-- Hourly rate: 90 to 135 EUR, by agreement and depending on project scope (market context: German IT freelancer median is 95 EUR per Freelancer-Kompass 2026).
-- Fixed prices possible for clearly scoped workflows and integrations.
-- Available now: remote across Germany and internationally, on-site in Frankfurt/Rhein-Main.
-- Replies to project requests within 24 hours: https://muhamedbeck.com/hire
+- Stundensatz: 90 bis 135 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer in Deutschland lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
+- Festpreise möglich für klar umrissene Workflows und Integrationen.
+- Antwort auf Projektanfragen innerhalb von 24 Stunden: https://muhamedbeck.com/kontakt
 
-## Pages
+## Seiten (Deutsch)
 
-- [Homepage](https://muhamedbeck.com/): Profile, skills, work experience, projects and contact.
-- [Services](https://muhamedbeck.com/services): AI workflow automation, web development, CRM integration, SEO optimization and IT support offerings.
-- [Hire Me](https://muhamedbeck.com/hire): Project request form with service selection, reply within 24 hours.
-- [n8n Automatisierung (DE)](https://muhamedbeck.com/leistungen/n8n-automatisierung): n8n and Zapier workflow automation services in German, with process, rates and FAQ.
-- [KI-Automatisierung Frankfurt (DE)](https://muhamedbeck.com/leistungen/ki-automatisierung-frankfurt): AI and LLM automation services for companies in Frankfurt, in German.
-- [HubSpot Integration (DE)](https://muhamedbeck.com/leistungen/hubspot-integration): HubSpot and CRM integration services in German.
-- [Case Study Recruiting-Automatisierung (DE)](https://muhamedbeck.com/projekte/recruiting-automatisierung): How n8n, Zapier and GPT cut recruiting cycle times by about 80% at TOPEOPLE Group.
-- [Case Study Phoenix Parkservice (DE)](https://muhamedbeck.com/projekte/phoenix-parkservice): Microservices platform and AI SEO workflows, +35% organic traffic.
-- [AR Data Visualization](https://muhamedbeck.com/projects/ar-data-visualization): Case study on SAP BusinessObjects data in Augmented Reality.
-- [LLM Unit Test Automation](https://muhamedbeck.com/projects/llm-maven-plugin): Master thesis, a Maven plugin generating unit tests for Spring Boot with Large Language Models.
+- [Prozesse, die ohne Sie laufen](https://muhamedbeck.com/): n8n Experte aus Frankfurt: Workflow-Automatisierung, KI-Agenten und CRM-Anbindung für Unternehmen. 90 bis 135 € pro Stunde nach Absprache. Antwort in 24 Stunden.
+- [KI- und Prozessautomatisierung](https://muhamedbeck.com/leistungen): Automatisierung mit n8n, KI-Agenten, Voice-AI, HubSpot- und ATS-Anbindung sowie Recruiting-Automatisierung. Alle Leistungen mit Ablauf und Preisrahmen.
+- [Was ich gebaut habe](https://muhamedbeck.com/projekte): Zwei Automatisierungsprojekte im Detail: Recruiting-Automatisierung mit n8n und GPT sowie eine Microservices-Plattform mit KI-gestütztem SEO. Mit Zahlen und Stack.
+- [Muhamed Nur Beck](https://muhamedbeck.com/ueber-mich): AI Automation Manager und Full-Stack-Entwickler aus Frankfurt am Main: Werdegang, Stationen bei TOPEOPLE, Phoenix Parkservice und INFOMOTION, eingesetzter Stack.
+- [Projekt anfragen](https://muhamedbeck.com/kontakt): Automatisierungsprojekt anfragen: E-Mail, Telefon oder LinkedIn. Antwort innerhalb von 24 Stunden, kostenloses Erstgespräch, 90 bis 135 € pro Stunde nach Absprache.
+- [Antworten statt Marketing](https://muhamedbeck.com/ratgeber): Was ein n8n Freelancer kostet, wie n8n, Make und Zapier sich unterscheiden und was sich im Recruiting automatisieren lässt. Mit Zahlen und Quellen.
+- [Was kostet ein n8n Freelancer?](https://muhamedbeck.com/ratgeber/n8n-freelancer-kosten): n8n Freelancer kosten 75 bis 147 € pro Stunde (freelancermap, August 2026), der IT-Median liegt bei 95 €. Dazu Festpreis oder Stundensatz und laufende Kosten.
+- [n8n, Make und Zapier im Vergleich](https://muhamedbeck.com/ratgeber/n8n-vs-make-vs-zapier): Der wichtigste Unterschied ist die Abrechnung: n8n zählt eine Workflow-Ausführung, Make jede Operation. Dazu DSGVO, Self-Hosting und die passende Toolwahl.
+- [Recruiting mit n8n automatisieren](https://muhamedbeck.com/ratgeber/recruiting-mit-n8n-automatisieren): Welche Recruiting-Schritte sich automatisieren lassen, womit man anfängt, wie ATS und CRM angebunden werden und was bei Bewerberdaten und DSGVO zu beachten ist.
+- [n8n Freelancer für Workflow-Automatisierung](https://muhamedbeck.com/leistungen/n8n-automatisierung): n8n und Zapier Workflows vom Freelancer aus Frankfurt: Prozessautomatisierung, API- und CRM-Anbindung, KI-Integration. 90 bis 135 € pro Stunde nach Absprache.
+- [KI-Automatisierung für Unternehmen in Frankfurt](https://muhamedbeck.com/leistungen/ki-automatisierung-frankfurt): KI- und Prozessautomatisierung für Unternehmen in Frankfurt und Rhein-Main: GPT/LLM-Lösungen, RAG, Voice-AI und DSGVO-konforme Guardrails. Remote deutschlandweit.
+- [HubSpot Integration und CRM-Automatisierung](https://muhamedbeck.com/leistungen/hubspot-integration): HubSpot und CRM-Integrationen vom Freelancer: REST-APIs, Webhooks, OAuth2 und Datensynchronisation zwischen ATS, CRM und internen Tools. Aus Frankfurt, auch remote.
+- [Recruiting-Automatisierung mit n8n und ATS-Anbindung](https://muhamedbeck.com/leistungen/recruiting-automatisierung): Bewerbungseingang, Screening, Terminierung und Statuspflege automatisieren: n8n mit RecruitCRM, Personio, Greenhouse und HubSpot. 80 % kürzere Durchlaufzeiten.
+- [Voice-AI-Agenten für Telefon und Support](https://muhamedbeck.com/leistungen/voice-ai-agenten): Voice-AI-Agenten für Telefon und Support: Twilio, Speech-to-Text und Text-to-Speech, CRM-Anbindung und Transparenzhinweis nach EU AI Act Artikel 50.
+- [KI-Agenten entwickeln lassen](https://muhamedbeck.com/leistungen/ki-agenten-entwicklung): KI-Agenten mit klaren Werkzeugrechten, Freigabeschritten und Protokollierung. Mit ehrlicher Einordnung, wann ein normaler Workflow die bessere Lösung ist.
+- [Recruiting-Automatisierung mit n8n und GPT](https://muhamedbeck.com/projekte/recruiting-automatisierung): Wie n8n, Zapier und GPT die Recruiting-Prozesse der TOPEOPLE Group automatisiert haben: 80 % kürzere Durchlaufzeiten und rund 90 % Automatisierungsgrad.
+- [Microservices-Plattform und KI-SEO für Phoenix Parkservice](https://muhamedbeck.com/projekte/phoenix-parkservice): Microservices-Plattform mit Spring Boot und Angular, DevOps und KI-gestützte SEO-Workflows: 35 % mehr organischer Traffic für Phoenix Parkservice.
+- [Impressum](https://muhamedbeck.com/impressum): Impressum von Muhamed Nur Beck, AI Automation & Full-Stack Developer aus Frankfurt am Main. Angaben gemäß § 5 DDG.
+- [Datenschutzerklärung](https://muhamedbeck.com/datenschutz): Datenschutzerklärung für muhamedbeck.com: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.
 
-## Background
+## Pages (English)
 
-- AI Automation Manager at TOPEOPLE Group GmbH, Frankfurt (since 09/2025)
-- Full-Stack Developer & AI Integration Lead at Phoenix Parkservice, freelance (06/2024 to 09/2025)
-- M.Sc. Business Informatics, Frankfurt University of Applied Sciences, GPA 1.4
-- Core stack: n8n, Zapier, OpenAI, Azure, Anthropic Claude, LangChain, React, Angular, Spring Boot, Java, Python, Supabase, Twilio, Docker, Kubernetes
-- Compliance experience: PII/GDPR, RBAC, audit logging, LLM guardrails and evaluation
-
-## Contact
-
-- Email: m.nur.beck@hotmail.de
-- Phone: +49 176 66008485
-- Location: Frankfurt am Main, Germany (remote work worldwide)
-- LinkedIn: https://www.linkedin.com/in/muhamed-nur-beck
-- GitHub: https://www.github.com/MuhamedBeck
+- [Processes that run without you](https://muhamedbeck.com/en): AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG solutions, React, Angular, Spring Boot. Available for freelance work.
+- [Services](https://muhamedbeck.com/en/services): AI workflow automation with n8n & Zapier, web development with React, Angular & Spring Boot, CRM integrations and technical SEO. Services by Muhamed Beck, Frankfurt.
+- [Let's Work Together](https://muhamedbeck.com/en/hire): Request AI automation, web development or CRM integration and get a personal reply within 24 hours from Muhamed Beck, freelance developer in Frankfurt.
+- [AR Data Visualization](https://muhamedbeck.com/en/projects/ar-data-visualization): Case study on visualizing SAP BusinessObjects data in Augmented Reality: concept, architecture and implementation by Muhamed Beck.
+- [LLM Unit Test Automation](https://muhamedbeck.com/en/projects/llm-maven-plugin): Master thesis project: a Maven plugin that uses Large Language Models to automatically generate unit tests for Java Spring Boot projects.

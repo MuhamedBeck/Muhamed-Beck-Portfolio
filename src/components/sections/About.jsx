@@ -91,7 +91,7 @@ export const About = () => {
     <section
       id="about"
       className="min-h-screen flex items-center justify-center py-20 overflow-x-hidden">
-      <RevealOnScroll>
+      <RevealOnScroll legacy>
         <div className="max-w-6xl mx-auto px-4 w-full">
           <h2 className="text-3xl sm:text-4xl font-bold mb-12 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
             About Me
@@ -107,7 +107,7 @@ export const About = () => {
             </p>
           </div>
 
-          <RevealOnScroll>
+          <RevealOnScroll legacy>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               <div className="group relative">
                 <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
@@ -179,7 +179,7 @@ export const About = () => {
             </div>
           </RevealOnScroll>
 
-          <RevealOnScroll>
+          <RevealOnScroll legacy>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="space-y-8">
                 <h3 className="text-2xl font-bold mb-6 text-center lg:text-left">
@@ -321,7 +321,7 @@ export const About = () => {
             </div>
           </RevealOnScroll>
 
-          <RevealOnScroll>
+          <RevealOnScroll legacy>
             <div className="mt-16">
               <h3 className="text-2xl font-bold mb-6 text-center">
                 Certificates & Credentials

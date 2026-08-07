@@ -1,162 +1,132 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaCheck } from "react-icons/fa";
-import { Navbar } from "../../Navbar";
-import { MobileMenu } from "../../MobileMenu";
-import Footer from "../../Footer";
-import { RevealOnScroll } from "../../RevealOnScroll";
-import { usePageMeta } from "../../../seo/usePageMeta";
-import { getRouteMeta } from "../../../seo/routes.meta";
+import { PageShell } from "../../PageShell";
+import { Section } from "../../Section";
 import { PREIS_TEXT } from "../../../content/leistungen.de";
+import { RATE_TEXT } from "../../../content/site";
 
-export const LeistungPage = ({ data }) => {
-  usePageMeta(getRouteMeta(data.path));
-  const [menuOpen, setMenuOpen] = useState(false);
+/**
+ * Landing page template for a service.
+ *
+ * Section order follows how someone actually evaluates a supplier: what this
+ * is, what it looks like in practice, what is included, how a project runs,
+ * what it costs, what it produced before, and the objections they are about to
+ * raise. Price sits before proof on purpose, because it is the question people
+ * leave over.
+ */
+export const LeistungPage = ({ data }) => (
+  <PageShell label={data.badge} headline={data.h1} intro={data.intro}>
+    <Section className="!pt-0">
+      <div className="grid gap-x-10 gap-y-10 md:grid-cols-3">
+        {data.szenarien.map((szenario, index) => (
+          <div
+            key={szenario.title}
+            className="stagger border-t border-white/10 pt-6"
+            style={{ "--fade-delay": `${index * 80}ms` }}>
+            <h2 className="text-lg font-normal text-gray-100">{szenario.title}</h2>
+            <p className="mt-3 leading-relaxed text-gray-400">{szenario.text}</p>
+          </div>
+        ))}
+      </div>
+    </Section>
 
-  return (
-    <div className="min-h-screen text-gray-100" style={{ background: "#0a0a0a" }}>
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-
-      <main>
-      <section className="min-h-screen w-full py-20 pt-28 px-4" style={{ background: "#0a0a0a" }}>
-        <div className="max-w-5xl mx-auto mb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors duration-300 group">
-            <span className="transform group-hover:-translate-x-1 transition-transform duration-300">
-              ←
+    <Section className="!pt-0">
+      <h2 className="label">Leistungen im Überblick</h2>
+      <ul className="mt-8 grid gap-x-12 md:grid-cols-2">
+        {data.leistungen.map((item) => (
+          <li
+            key={item}
+            className="flex items-start gap-3 border-t border-white/10 py-4 text-gray-300">
+            <span aria-hidden="true" className="mt-1 text-xs text-blue-400">
+              ✓
             </span>
-            <span>Zurück zur Startseite</span>
+            <span className="leading-relaxed">{item}</span>
+          </li>
+        ))}
+      </ul>
+    </Section>
+
+    <Section className="!pt-0">
+      <h2 className="label">So läuft ein Projekt ab</h2>
+      <ol className="mt-8 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+        {data.ablauf.map((step, index) => (
+          <li
+            key={step.title}
+            className="stagger border-t border-white/10 pt-6"
+            style={{ "--fade-delay": `${index * 70}ms` }}>
+            <span className="text-xs tracking-[0.25em] text-blue-400 tabular-nums">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 className="mt-4 text-lg font-normal text-gray-100">{step.title}</h3>
+            <p className="mt-2 leading-relaxed text-gray-400">{step.text}</p>
+          </li>
+        ))}
+      </ol>
+    </Section>
+
+    <Section className="!pt-0">
+      <div className="grid gap-x-12 gap-y-6 border-t border-white/10 pt-8 md:grid-cols-[1fr_1.4fr]">
+        <div>
+          <h2 className="label">Stundensatz</h2>
+          {/* One source for the rate wording, so this page, the FAQ, llms.txt
+              and the ProfessionalService priceRange cannot drift apart. */}
+          <p className="headline-sub mt-4">{RATE_TEXT}</p>
+        </div>
+        <p className="leading-relaxed text-gray-400">{PREIS_TEXT}</p>
+      </div>
+    </Section>
+
+    <Section className="!pt-0">
+      <div className="grid gap-x-12 gap-y-8 border-t border-white/10 pt-8 md:grid-cols-[1fr_1.4fr]">
+        <div>
+          <h2 className="label">Ergebnis aus der Praxis</h2>
+          <p className="mt-5 text-5xl font-light tabular-nums text-gray-100">
+            {data.caseStudy.stat}
+          </p>
+          <p className="mt-3 max-w-[26ch] text-sm text-gray-500">
+            {data.caseStudy.statLabel}
+          </p>
+        </div>
+        <div>
+          <p className="leading-relaxed text-gray-400">{data.caseStudy.text}</p>
+          <Link to={data.caseStudy.link} className="link-arrow mt-4">
+            {data.caseStudy.linkText}
+            <span aria-hidden="true">↗</span>
           </Link>
         </div>
+      </div>
+    </Section>
 
-        <RevealOnScroll>
-          <div className="max-w-5xl mx-auto">
-            {/* Header */}
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 border border-blue-500/40 bg-blue-500/10 text-blue-400 text-sm font-mono px-4 py-2 rounded-full mb-8">
-                {data.badge}
-              </div>
-              <h1 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent mb-6 leading-tight">
-                {data.h1}
-              </h1>
-              <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                {data.intro}
-              </p>
-            </div>
-
-            {/* Szenarien */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-              {data.szenarien.map((s) => (
-                <div
-                  key={s.title}
-                  className="rounded-2xl p-6 border border-white/10 bg-gray-900/50 backdrop-blur-sm">
-                  <h2 className="text-lg font-bold text-blue-400 mb-3">{s.title}</h2>
-                  <p className="text-gray-300 leading-relaxed text-sm">{s.text}</p>
-                </div>
-              ))}
-            </div>
-
-            {/* Leistungen */}
-            <div className="rounded-2xl p-8 border border-white/10 bg-gray-900/50 backdrop-blur-sm mb-16">
-              <h2 className="text-2xl font-bold text-blue-400 mb-6">Leistungen im Überblick</h2>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3">
-                {data.leistungen.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-gray-300">
-                    <FaCheck className="w-4 h-4 text-cyan-400 mt-1 shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Ablauf */}
-            <div className="mb-16">
-              <h2 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                So läuft ein Projekt ab
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {data.ablauf.map((step, i) => (
-                  <div
-                    key={step.title}
-                    className="rounded-2xl p-6 border border-white/10 bg-gray-900/50 backdrop-blur-sm">
-                    <div className="text-3xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-3">
-                      0{i + 1}
-                    </div>
-                    <h3 className="font-bold text-gray-100 mb-2">{step.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{step.text}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Preis */}
-            <div className="rounded-2xl p-8 border border-blue-500/30 bg-gradient-to-br from-blue-950/40 to-gray-900/50 backdrop-blur-sm mb-16 text-center">
-              <h2 className="text-2xl font-bold text-blue-400 mb-4">Stundensatz</h2>
-              <div className="text-4xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent mb-4">
-                90 bis 135 € / Stunde
-              </div>
-              <p className="text-gray-300 max-w-2xl mx-auto leading-relaxed">{PREIS_TEXT}</p>
-            </div>
-
-            {/* Case Study */}
-            <div className="rounded-2xl p-8 border border-white/10 bg-gray-900/50 backdrop-blur-sm mb-16">
-              <h2 className="text-2xl font-bold text-blue-400 mb-6">Ergebnis aus der Praxis</h2>
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="text-center shrink-0">
-                  <div className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                    {data.caseStudy.stat}
-                  </div>
-                  <div className="text-gray-400 text-sm mt-2 max-w-[180px]">
-                    {data.caseStudy.statLabel}
-                  </div>
-                </div>
-                <div>
-                  <p className="text-gray-300 leading-relaxed mb-4">{data.caseStudy.text}</p>
-                  <Link
-                    to={data.caseStudy.link}
-                    className="text-cyan-400 hover:text-blue-400 transition-colors font-medium">
-                    {data.caseStudy.linkText} →
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* FAQ */}
-            <div className="mb-16">
-              <h2 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                Häufige Fragen
-              </h2>
-              <div className="space-y-4">
-                {data.faq.map((item) => (
-                  <div
-                    key={item.q}
-                    className="rounded-2xl p-6 border border-white/10 bg-gray-900/50 backdrop-blur-sm">
-                    <h3 className="font-bold text-gray-100 mb-2">{item.q}</h3>
-                    <p className="text-gray-400 leading-relaxed">{item.a}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="text-center">
-              <Link
-                to="/hire"
-                className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg shadow-blue-500/25">
-                Projekt anfragen
-              </Link>
-              <p className="text-gray-500 text-sm mt-4">
-                Antwort innerhalb von 24 Stunden · Frankfurt & Remote
-              </p>
-            </div>
+    {/* Visible text and the FAQPage JSON-LD read from this same array, so the
+        two can never disagree. */}
+    <Section className="!pt-0">
+      <h2 className="label">Häufige Fragen</h2>
+      <dl className="mt-8 max-w-4xl">
+        {data.faq.map((item) => (
+          <div
+            key={item.q}
+            className="border-t border-white/10 py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
+            <dt className="text-lg leading-snug font-normal text-gray-100">{item.q}</dt>
+            <dd className="mt-3 leading-relaxed text-gray-400 md:mt-0">{item.a}</dd>
           </div>
-        </RevealOnScroll>
-      </section>
-      </main>
+        ))}
+      </dl>
+    </Section>
 
-      <Footer />
-    </div>
-  );
-};
+    <Section className="!pt-0">
+      <div className="max-w-2xl border-t border-white/10 pt-12">
+        <h2 className="headline-sub">Passt das zu Ihrem Prozess?</h2>
+        <p className="intro mt-5">
+          Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden
+          eine echte Einschätzung, ob und wie sich das automatisieren lässt.
+        </p>
+        <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
+          Projekt anfragen
+        </Link>
+        <p className="mt-5 text-sm text-gray-600">
+          Kostenloses Erstgespräch · Frankfurt und remote in Deutschland, Österreich und
+          der Schweiz
+        </p>
+      </div>
+    </Section>
+  </PageShell>
+);
