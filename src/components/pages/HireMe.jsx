@@ -10,11 +10,10 @@ import {
   FaExchangeAlt,
   FaCheck,
 } from "react-icons/fa";
-import { usePageMeta } from "../../seo/usePageMeta";
-import { getRouteMeta } from "../../seo/routes.meta";
+import { useRouteMeta } from "../../seo/useRouteMeta";
 
 export const HireMe = () => {
-  usePageMeta(getRouteMeta("/hire"));
+  useRouteMeta();
   const [menuOpen, setMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",

@@ -57,6 +57,11 @@ export const ROUTES = [
     // Stays in the main bundle so the landing page needs no extra round trip.
     // src/main.jsx must list this id in EAGER; check-i18n.js asserts it does.
     eager: true,
+    // Renders the profile photo, so this page gets the LCP preload and the
+    // sitemap image entry. Flags rather than a path comparison, because there
+    // will shortly be a home page per locale.
+    heroPreload: true,
+    sitemapImage: true,
     load: () => import("../App.jsx"),
     title:
       "Muhamed Beck | AI Automation & Full-Stack Developer in Frankfurt, Germany",
@@ -244,9 +249,12 @@ export const ROUTES = [
   },
 ];
 
+// Deliberately has no `path`: usePageMeta then falls back to the pathname the
+// visitor actually requested, so the 404 is self-canonical instead of claiming
+// to be some fixed URL. RENDER_PATH is only the location StaticRouter is given
+// to make the "*" route match at build time.
 export const NOT_FOUND_META = {
   id: "not-found",
-  path: "/__not-found__",
   locale: DEFAULT_LOCALE,
   group: "not-found",
   title: "404 Page Not Found | Muhamed Beck",
@@ -254,6 +262,8 @@ export const NOT_FOUND_META = {
   h1: "404",
   robots: "noindex, follow",
 };
+
+export const NOT_FOUND_RENDER_PATH = "/__not-found__";
 
 const BY_PATH = new Map(ROUTES.map((route) => [route.path, route]));
 

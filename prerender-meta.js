@@ -9,7 +9,15 @@
 import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { NOT_FOUND_META, ROUTES, SITE_URL } from "./src/routes/registry.js";
+import {
+  DEFAULT_LOCALE,
+  NOT_FOUND_META,
+  NOT_FOUND_RENDER_PATH,
+  ROUTES,
+  SITE_URL,
+  getAlternates,
+} from "./src/routes/registry.js";
+import { localeConfig } from "./src/i18n/locales.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
 
@@ -59,6 +67,43 @@ const replaceRequired = (html, pattern, replacement, label, path) => {
   return html.replace(pattern, replacement);
 };
 
+// hreflang cluster for a route, replacing the <!--i18n-alternates--> anchor in
+// index.html.
+//
+// Injected rather than pre-seeded as placeholder tags, because the number of
+// alternates varies per page: most pages have no translated twin and must emit
+// none at all. Pre-seeded placeholders would leave those pages pointing at
+// whatever the template happened to contain.
+//
+// Each tag carries data-i18n="alt" so usePageMeta can identify and replace
+// exactly these on client-side navigation without touching hand-written tags.
+const alternatesBlock = (route) => {
+  const alternates = getAlternates(route);
+  if (!alternates.length) return "";
+
+  const lines = alternates.map(
+    (alternate) =>
+      `  <link rel="alternate" hreflang="${localeConfig(alternate.locale).hreflang}" href="${SITE_URL}${alternate.path}" data-i18n="alt" />`
+  );
+
+  // x-default points at the German URL: German is the default, unprefixed
+  // locale and the primary market. There is no language-selector landing page.
+  const fallback =
+    alternates.find((alternate) => alternate.locale === DEFAULT_LOCALE) ?? alternates[0];
+  lines.push(
+    `  <link rel="alternate" hreflang="x-default" href="${SITE_URL}${fallback.path}" data-i18n="alt" />`
+  );
+
+  for (const alternate of alternates) {
+    if (alternate.locale === route.locale) continue;
+    lines.push(
+      `  <meta property="og:locale:alternate" content="${localeConfig(alternate.locale).ogLocale}" data-i18n="alt" />`
+    );
+  }
+
+  return lines.join("\n");
+};
+
 // FAQPage JSON-LD for landing pages whose visible content includes the same FAQ.
 const faqJsonLd = (path) => {
   const leistung = LEISTUNGEN.find((l) => l.path === path);
@@ -79,12 +124,14 @@ for (const route of ROUTES) {
   const url = `${SITE_URL}${route.path}`;
   const title = escapeHtml(route.title);
   const description = escapeHtml(route.description);
-  const lang = route.locale;
-  const ogLocale = lang === "de" ? "de_DE" : "en_US";
+  const { htmlLang, ogLocale } = localeConfig(route.locale);
+  const ogType = route.ogType ?? "website";
 
   const replacements = [
-    [/(<html lang=")[^"]*(">)/, (m, a, b) => `${a}${lang}${b}`, "html lang"],
+    [/(<html lang=")[^"]*(">)/, (m, a, b) => `${a}${htmlLang}${b}`, "html lang"],
     [/(<meta property="og:locale" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${ogLocale}${b}`, "og:locale"],
+    [/(<meta property="og:type" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${ogType}${b}`, "og:type"],
+    [/<!--i18n-alternates-->/, () => alternatesBlock(route), "i18n alternates anchor"],
     [/<title>[^<]*<\/title>/, () => `<title>${title}</title>`, "title"],
     [/(<meta name="title" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "meta title"],
     [/(<meta name="description" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${description}${b}`, "meta description"],
@@ -140,8 +187,8 @@ for (const route of ROUTES) {
     html = replaceRequired(html, /<\/head>/, () => `${faqScript}</head>`, "head end", route.path);
   }
 
-  // Only the homepage renders the hero image, so only it gets the preload.
-  if (route.path === "/") {
+  // Only pages that actually render the hero image get its preload.
+  if (route.heroPreload) {
     html = replaceRequired(html, /<\/head>/, () => `${heroPreload}</head>`, "head end", route.path);
   }
 
@@ -166,10 +213,13 @@ for (const route of ROUTES) {
     [/(<meta name="title" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "meta title"],
     [/(<meta name="description" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${description}${b}`, "meta description"],
     [/(<meta name="robots" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${NOT_FOUND_META.robots}${b}`, "robots"],
+    // A noindex page gets no hreflang: alternates on an excluded URL are
+    // ignored at best and confuse the cluster at worst.
+    [/<!--i18n-alternates-->/, () => "", "i18n alternates anchor"],
     [/<noscript>[\s\S]*?<\/noscript>\s*/, () => "", "noscript"],
     [
       /<div id="root"><\/div>/,
-      () => `<div id="root">${render("/__not-found__")}</div>`,
+      () => `<div id="root">${render(NOT_FOUND_RENDER_PATH)}</div>`,
       "root container",
     ],
   ].reduce(

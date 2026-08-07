@@ -1,8 +1,7 @@
-import { usePageMeta } from "../seo/usePageMeta";
-import { NOT_FOUND_META } from "../seo/routes.meta";
+import { useRouteMeta } from "../seo/useRouteMeta";
 
 const NotFound = () => {
-  usePageMeta(NOT_FOUND_META);
+  useRouteMeta();
   return (
   <div className="min-h-screen flex flex-col items-center justify-center bg-black text-gray-100">
     <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">

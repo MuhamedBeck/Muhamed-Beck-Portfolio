@@ -4,8 +4,7 @@ import { Navbar } from "../Navbar";
 import { MobileMenu } from "../MobileMenu";
 import Footer from "../Footer";
 import { RevealOnScroll } from "../RevealOnScroll";
-import { usePageMeta } from "../../seo/usePageMeta";
-import { getRouteMeta } from "../../seo/routes.meta";
+import { useRouteMeta } from "../../seo/useRouteMeta";
 
 const Card = ({ title, children }) => (
   <div className="rounded-2xl p-6 sm:p-8 border border-white/10 bg-gray-900/50 backdrop-blur-sm">
@@ -15,7 +14,7 @@ const Card = ({ title, children }) => (
 );
 
 export const Datenschutz = () => {
-  usePageMeta(getRouteMeta("/datenschutz"));
+  useRouteMeta();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (

@@ -5,12 +5,11 @@ import { Navbar } from "../../Navbar";
 import { MobileMenu } from "../../MobileMenu";
 import Footer from "../../Footer";
 import { RevealOnScroll } from "../../RevealOnScroll";
-import { usePageMeta } from "../../../seo/usePageMeta";
-import { getRouteMeta } from "../../../seo/routes.meta";
+import { useRouteMeta } from "../../../seo/useRouteMeta";
 import { PREIS_TEXT } from "../../../content/leistungen.de";
 
 export const LeistungPage = ({ data }) => {
-  usePageMeta(getRouteMeta(data.path));
+  useRouteMeta();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (

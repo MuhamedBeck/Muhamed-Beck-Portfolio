@@ -10,11 +10,10 @@ import { Projects } from "./components/sections/Projects";
 import { Contact } from "./components/sections/Contact";
 import { TechMarquee } from "./components/TechMarquee";
 import Footer from "./components/Footer";
-import { usePageMeta } from "./seo/usePageMeta";
-import { getRouteMeta } from "./seo/routes.meta";
+import { useRouteMeta } from "./seo/useRouteMeta";
 
 function App() {
-  usePageMeta(getRouteMeta("/"));
+  useRouteMeta();
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Check if user has visited before to determine initial state.
