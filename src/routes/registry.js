@@ -133,9 +133,6 @@ export const ROUTES = [
     path: "/en",
     locale: "en",
     group: "home",
-    // Stays in the main bundle so the landing page needs no extra round trip.
-    // src/main.jsx must list this id in EAGER; check-i18n.js asserts it does.
-    eager: true,
     heroPreload: true,
     load: () => import("../App.jsx"),
     title: "Muhamed Beck | AI Automation & Full-Stack Developer, Frankfurt",

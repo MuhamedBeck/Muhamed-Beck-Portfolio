@@ -2,20 +2,20 @@ import { StrictMode, Suspense, lazy, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import App from "./App.jsx";
 import { Startseite } from "./components/pages/Startseite.jsx";
 import { ROUTES } from "./routes/registry.js";
 
 // Routes come from src/routes/registry.js so this file and src/entry-server.jsx
 // can never disagree about which pages exist.
 
-// The landing route stays in the main bundle. Every other route is a separate
-// chunk, so a first-time visitor on the homepage does not download the code for
-// the service, case study and legal pages. Registry ids listed here must set
-// `eager: true`; scripts/check-i18n.js asserts the two stay in sync.
+// Only the German homepage stays in the main bundle: it is "/", the page most
+// visitors land on, and an extra round trip there is worth avoiding. The
+// English homepage is lazy like every other route, otherwise every German
+// visitor would download the English page's code as well. Registry ids listed
+// here must set `eager: true`; scripts/check-i18n.js asserts the two stay in
+// sync.
 const EAGER = {
   "home.de": Startseite,
-  "home.en": App,
 };
 
 // lazy() is called once, at module scope. Calling it during render would return
