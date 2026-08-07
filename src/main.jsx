@@ -1,33 +1,28 @@
 import { StrictMode, Suspense, lazy, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.jsx";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import App from "./App.jsx";
+import { ROUTES } from "./routes/registry.js";
 
-// Only the landing route ("/") is bundled eagerly. Every other route is a
-// separate chunk, so a first-time visitor on the homepage does not download
-// the code for the service, case study and legal pages.
-const ArDataVisualization = lazy(() =>
-  import("./components/projects/ArDataVisualization").then((m) => ({ default: m.ArDataVisualization }))
+// Routes come from src/routes/registry.js so this file and src/entry-server.jsx
+// can never disagree about which pages exist.
+
+// The landing route stays in the main bundle. Every other route is a separate
+// chunk, so a first-time visitor on the homepage does not download the code for
+// the service, case study and legal pages. Registry ids listed here must set
+// `eager: true`; scripts/check-i18n.js asserts the two stay in sync.
+const EAGER = {
+  "home.en": App,
+};
+
+// lazy() is called once, at module scope. Calling it during render would return
+// a fresh component type on every navigation and remount the page each time.
+const LAZY = new Map(
+  ROUTES.filter((route) => !EAGER[route.id]).map((route) => [route.id, lazy(route.load)])
 );
-const LLMMavenPlugin = lazy(() =>
-  import("./components/projects/LLMMavenPlugin").then((m) => ({ default: m.LLMMavenPlugin }))
-);
-const Services = lazy(() =>
-  import("./components/pages/Services").then((m) => ({ default: m.Services }))
-);
-const HireMe = lazy(() =>
-  import("./components/pages/HireMe").then((m) => ({ default: m.HireMe }))
-);
-const Impressum = lazy(() =>
-  import("./components/pages/Impressum").then((m) => ({ default: m.Impressum }))
-);
-const Datenschutz = lazy(() =>
-  import("./components/pages/Datenschutz").then((m) => ({ default: m.Datenschutz }))
-);
-const LeistungRoute = lazy(() => import("./components/pages/leistungen/LeistungRoute"));
-const CaseStudyRoute = lazy(() => import("./components/pages/projekte/CaseStudyRoute"));
-const NotFound = lazy(() => import("./components/NotFound"));
+
+const NotFound = lazy(() => import("./components/NotFound.jsx"));
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -48,18 +43,16 @@ createRoot(document.getElementById("root")).render(
       <ScrollToTop />
       <Suspense fallback={<RouteFallback />}>
         <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/projects/ar-data-visualization" element={<ArDataVisualization />} />
-          <Route path="/projects/llm-maven-plugin" element={<LLMMavenPlugin />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/hire" element={<HireMe />} />
-          <Route path="/leistungen/n8n-automatisierung" element={<LeistungRoute path="/leistungen/n8n-automatisierung" />} />
-          <Route path="/leistungen/ki-automatisierung-frankfurt" element={<LeistungRoute path="/leistungen/ki-automatisierung-frankfurt" />} />
-          <Route path="/leistungen/hubspot-integration" element={<LeistungRoute path="/leistungen/hubspot-integration" />} />
-          <Route path="/projekte/recruiting-automatisierung" element={<CaseStudyRoute path="/projekte/recruiting-automatisierung" />} />
-          <Route path="/projekte/phoenix-parkservice" element={<CaseStudyRoute path="/projekte/phoenix-parkservice" />} />
-          <Route path="/impressum" element={<Impressum />} />
-          <Route path="/datenschutz" element={<Datenschutz />} />
+          {ROUTES.map((route) => {
+            const Component = EAGER[route.id] ?? LAZY.get(route.id);
+            return (
+              <Route
+                key={route.id}
+                path={route.path}
+                element={<Component {...(route.props ?? {})} />}
+              />
+            );
+          })}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

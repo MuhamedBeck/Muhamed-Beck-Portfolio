@@ -9,9 +9,15 @@
 import { mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { NOT_FOUND_META, ROUTES_META, SITE_URL } from "./src/seo/routes.meta.js";
+import { NOT_FOUND_META, ROUTES, SITE_URL } from "./src/routes/registry.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
-import { render } from "./dist-ssr/entry-server.js";
+import { prepare, render } from "./dist-ssr/entry-server.js";
+
+// Route components are loaded through dynamic import() so one registry entry can
+// serve both the lazy client router and this eager build-time pass. They have to
+// be resolved before the first render: React.lazy suspends during
+// renderToString and would emit the Suspense fallback instead of the page.
+await prepare();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "dist");
@@ -34,6 +40,17 @@ const escapeHtml = (text) =>
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+
+// Mirrors react-dom/server's text escaping exactly, so a headline can be looked
+// up in the rendered markup. Note it escapes the apostrophe as &#x27;, which the
+// attribute escape above does not do.
+const escapeText = (text) =>
+  text
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#x27;");
 
 const replaceRequired = (html, pattern, replacement, label, path) => {
   if (!pattern.test(html)) {
@@ -58,11 +75,11 @@ const faqJsonLd = (path) => {
   return `  <script type="application/ld+json">\n  ${JSON.stringify(schema)}\n  </script>\n`;
 };
 
-for (const route of ROUTES_META) {
+for (const route of ROUTES) {
   const url = `${SITE_URL}${route.path}`;
   const title = escapeHtml(route.title);
   const description = escapeHtml(route.description);
-  const lang = route.lang ?? "en";
+  const lang = route.locale;
   const ogLocale = lang === "de" ? "de_DE" : "en_US";
 
   const replacements = [
@@ -94,7 +111,17 @@ for (const route of ROUTES_META) {
   const markup = render(route.path);
   if (!markup || markup.length < 500) {
     throw new Error(
-      `prerender-meta: render("${route.path}") returned ${markup.length} chars, expected real markup`
+      `prerender-meta: render("${route.path}") returned ${markup?.length ?? 0} chars, expected real markup`
+    );
+  }
+  // The length check alone is too weak: a page whose copy failed to resolve
+  // still emits several kB of navbar and footer chrome. Asserting the route's
+  // own headline turns a missing or mistyped translation key into a build
+  // failure instead of a silently empty page in production.
+  if (!markup.includes(escapeText(route.h1))) {
+    throw new Error(
+      `prerender-meta: render("${route.path}") does not contain its h1 ${JSON.stringify(route.h1)}. ` +
+        `Either the page failed to render its content, or the h1 in the route registry is out of date.`
     );
   }
   replacements.push(
