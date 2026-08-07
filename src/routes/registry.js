@@ -50,30 +50,105 @@ export const DEFAULT_LOCALE = "de";
 /** @type {RouteEntry[]} */
 export const ROUTES = [
   {
-    id: "home.en",
+    id: "home.de",
     path: "/",
+    locale: "de",
+    group: "home",
+    // Stays in the main client bundle so the landing page needs no extra round
+    // trip. src/main.jsx must list this id in EAGER; check-i18n.js asserts it.
+    eager: true,
+    // Renders the profile photo, so this page gets the LCP preload and the
+    // sitemap image entry.
+    heroPreload: true,
+    sitemapImage: true,
+    load: () =>
+      import("../components/pages/Startseite.jsx").then((m) => ({ default: m.Startseite })),
+    title: "n8n Freelancer & KI-Automatisierung Frankfurt | Muhamed Beck",
+    description:
+      "n8n Experte aus Frankfurt: Workflow-Automatisierung, KI-Agenten und CRM-Anbindung für Unternehmen. 90 bis 135 € pro Stunde nach Absprache. Antwort in 24 Stunden.",
+    h1: "Prozesse, die ohne Sie laufen",
+    lastmod: "2026-08-07",
+    changefreq: "weekly",
+    priority: "1.0",
+  },
+  {
+    id: "leistungen.hub",
+    path: "/leistungen",
+    locale: "de",
+    group: "services",
+    load: () => import("../components/pages/LeistungenHub.jsx"),
+    title: "Leistungen: KI- und Prozessautomatisierung | Muhamed Beck",
+    description:
+      "Automatisierung mit n8n, KI-Agenten, Voice-AI, HubSpot- und ATS-Anbindung sowie Recruiting-Automatisierung. Alle Leistungen mit Ablauf und Preisrahmen.",
+    h1: "KI- und Prozessautomatisierung",
+    lastmod: "2026-08-07",
+    changefreq: "monthly",
+    priority: "0.9",
+  },
+  {
+    id: "projekte.hub",
+    path: "/projekte",
+    locale: "de",
+    group: "projects",
+    load: () => import("../components/pages/ProjekteHub.jsx"),
+    title: "Projekte und Case Studies | Muhamed Beck",
+    description:
+      "Zwei Automatisierungsprojekte im Detail: Recruiting-Automatisierung mit n8n und GPT sowie eine Microservices-Plattform mit KI-gestütztem SEO. Mit Zahlen und Stack.",
+    h1: "Was ich gebaut habe",
+    lastmod: "2026-08-07",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
+    id: "ueber-mich",
+    path: "/ueber-mich",
+    locale: "de",
+    group: "about",
+    load: () => import("../components/pages/UeberMich.jsx"),
+    title: "Über mich: Muhamed Nur Beck, Frankfurt | Muhamed Beck",
+    description:
+      "AI Automation Manager und Full-Stack-Entwickler aus Frankfurt am Main: Werdegang, Stationen bei TOPEOPLE, Phoenix Parkservice und INFOMOTION, eingesetzter Stack.",
+    h1: "Muhamed Nur Beck",
+    ogType: "profile",
+    lastmod: "2026-08-07",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    id: "kontakt",
+    path: "/kontakt",
+    locale: "de",
+    group: "contact",
+    load: () => import("../components/pages/Kontakt.jsx"),
+    title: "Projekt anfragen | Muhamed Beck",
+    description:
+      "Automatisierungsprojekt anfragen: E-Mail, Telefon oder LinkedIn. Antwort innerhalb von 24 Stunden, kostenloses Erstgespräch, 90 bis 135 € pro Stunde nach Absprache.",
+    h1: "Projekt anfragen",
+    lastmod: "2026-08-07",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    id: "home.en",
+    path: "/en",
     locale: "en",
     group: "home",
     // Stays in the main bundle so the landing page needs no extra round trip.
     // src/main.jsx must list this id in EAGER; check-i18n.js asserts it does.
     eager: true,
-    // Renders the profile photo, so this page gets the LCP preload and the
-    // sitemap image entry. Flags rather than a path comparison, because there
-    // will shortly be a home page per locale.
     heroPreload: true,
-    sitemapImage: true,
     load: () => import("../App.jsx"),
     title: "Muhamed Beck | AI Automation & Full-Stack Developer, Frankfurt",
     description:
       "AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG solutions, React, Angular, Spring Boot. Available for freelance work.",
-    h1: "Hi, I'm Muhamed Nur Beck",
+    h1: "Processes that run without you",
     lastmod: "2026-07-31",
     changefreq: "weekly",
     priority: "1.0",
   },
   {
     id: "services.en",
-    path: "/services",
+    path: "/en/services",
     locale: "en",
     group: "services",
     load: () =>
@@ -88,9 +163,9 @@ export const ROUTES = [
   },
   {
     id: "hire.en",
-    path: "/hire",
+    path: "/en/hire",
     locale: "en",
-    group: "hire",
+    group: "contact",
     load: () =>
       import("../components/pages/HireMe.jsx").then((m) => ({ default: m.HireMe })),
     title: "Hire Muhamed Beck | AI Automation & Web Development Frankfurt",
@@ -103,7 +178,7 @@ export const ROUTES = [
   },
   {
     id: "project.ar",
-    path: "/projects/ar-data-visualization",
+    path: "/en/projects/ar-data-visualization",
     locale: "en",
     group: "project.ar",
     load: () =>
@@ -121,7 +196,7 @@ export const ROUTES = [
   },
   {
     id: "project.llm",
-    path: "/projects/llm-maven-plugin",
+    path: "/en/projects/llm-maven-plugin",
     locale: "en",
     group: "project.llm",
     load: () =>
@@ -181,6 +256,51 @@ export const ROUTES = [
     lastmod: "2026-07-31",
     changefreq: "monthly",
     priority: "0.9",
+  },
+  {
+    id: "leistung.recruiting",
+    path: "/leistungen/recruiting-automatisierung",
+    locale: "de",
+    group: "leistung.recruiting",
+    load: () => import("../components/pages/leistungen/LeistungRoute.jsx"),
+    props: { path: "/leistungen/recruiting-automatisierung" },
+    title: "Recruiting-Automatisierung mit n8n | Muhamed Beck",
+    description:
+      "Bewerbungseingang, Screening, Terminierung und Statuspflege automatisieren: n8n mit RecruitCRM, Personio, Greenhouse und HubSpot. 80 % kürzere Durchlaufzeiten.",
+    h1: "Recruiting-Automatisierung mit n8n und ATS-Anbindung",
+    lastmod: "2026-08-07",
+    changefreq: "monthly",
+    priority: "0.9",
+  },
+  {
+    id: "leistung.voice-ai",
+    path: "/leistungen/voice-ai-agenten",
+    locale: "de",
+    group: "leistung.voice-ai",
+    load: () => import("../components/pages/leistungen/LeistungRoute.jsx"),
+    props: { path: "/leistungen/voice-ai-agenten" },
+    title: "KI-Telefonassistent und Voice-AI-Agenten | Muhamed Beck",
+    description:
+      "Voice-AI-Agenten für Telefon und Support: Twilio, Speech-to-Text und Text-to-Speech, CRM-Anbindung und Transparenzhinweis nach EU AI Act Artikel 50.",
+    h1: "Voice-AI-Agenten für Telefon und Support",
+    lastmod: "2026-08-07",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    id: "leistung.ki-agenten",
+    path: "/leistungen/ki-agenten-entwicklung",
+    locale: "de",
+    group: "leistung.ki-agenten",
+    load: () => import("../components/pages/leistungen/LeistungRoute.jsx"),
+    props: { path: "/leistungen/ki-agenten-entwicklung" },
+    title: "KI-Agenten entwickeln lassen | Muhamed Beck",
+    description:
+      "KI-Agenten mit klaren Werkzeugrechten, Freigabeschritten und Protokollierung. Mit ehrlicher Einordnung, wann ein normaler Workflow die bessere Lösung ist.",
+    h1: "KI-Agenten entwickeln lassen",
+    lastmod: "2026-08-07",
+    changefreq: "monthly",
+    priority: "0.8",
   },
   {
     id: "projekt.recruiting",

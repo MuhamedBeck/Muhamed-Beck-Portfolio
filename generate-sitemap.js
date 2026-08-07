@@ -63,3 +63,49 @@ ${urlEntries}
 const outPath = join(__dirname, "public", "sitemap.xml");
 writeFileSync(outPath, sitemap);
 console.log(`sitemap.xml generated with ${ROUTES.length} URLs -> ${outPath}`);
+
+// llms.txt, generated from the same array.
+//
+// Worth being clear about the value here: Ahrefs analysed 137,000 sites and
+// found 97% of llms.txt files were never requested at all, and SE Ranking found
+// no significant correlation with citation frequency. Google has said it does
+// not support the format. So this is generated in a dozen lines rather than
+// hand-maintained across 20 pages, which is the only reason it still exists.
+const pageList = (locale) =>
+  ROUTES.filter((route) => route.locale === locale)
+    .map((route) => `- [${route.h1}](${SITE_URL}${route.path}): ${route.description}`)
+    .join("\n");
+
+const llms = `# Muhamed Nur Beck: KI- und Prozessautomatisierung, Frankfurt am Main
+
+> AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.
+> Automatisiert Geschäftsprozesse mit n8n, baut KI-Agenten, Voice-AI und
+> RAG-Systeme und bindet CRM- und ATS-Systeme an (HubSpot, RecruitCRM, Personio,
+> Greenhouse). Verfügbar für Projekte remote in Deutschland, Österreich und der
+> Schweiz, vor Ort im Rhein-Main-Gebiet.
+
+## Belegte Ergebnisse
+
+- Durchlaufzeiten im Recruiting um rund 80 Prozent gesenkt (TOPEOPLE Group GmbH, Arbeitgeber, seit 09/2025).
+- Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht, mit GPT, RAG und LangChain.
+- Organischen Traffic um 35 Prozent gesteigert (Phoenix Parkservice, Freelance-Mandat 06/2024 bis 09/2025).
+- Testabdeckung um 33 Prozent erhöht und Schreibaufwand für Unit-Tests um bis zu 95 Prozent gesenkt (Masterarbeit, INFOMOTION GmbH).
+
+## Konditionen
+
+- Stundensatz: 90 bis 135 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer in Deutschland lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
+- Festpreise möglich für klar umrissene Workflows und Integrationen.
+- Antwort auf Projektanfragen innerhalb von 24 Stunden: ${SITE_URL}/kontakt
+
+## Seiten (Deutsch)
+
+${pageList("de")}
+
+## Pages (English)
+
+${pageList("en")}
+`;
+
+const llmsPath = join(__dirname, "public", "llms.txt");
+writeFileSync(llmsPath, llms);
+console.log(`llms.txt generated with ${ROUTES.length} pages -> ${llmsPath}`);

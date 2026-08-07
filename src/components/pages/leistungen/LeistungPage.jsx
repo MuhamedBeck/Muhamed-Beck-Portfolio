@@ -30,7 +30,7 @@ export const LeistungPage = ({ data }) => {
           </Link>
         </div>
 
-        <RevealOnScroll>
+        <RevealOnScroll legacy>
           <div className="max-w-5xl mx-auto">
             {/* Header */}
             <div className="text-center mb-16">

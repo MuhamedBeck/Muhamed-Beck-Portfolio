@@ -35,7 +35,7 @@ export const Impressum = () => {
           </Link>
         </div>
 
-        <RevealOnScroll>
+        <RevealOnScroll legacy>
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl sm:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent mb-4">

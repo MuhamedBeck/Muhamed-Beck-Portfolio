@@ -29,7 +29,7 @@ export const CaseStudyPage = ({ data }) => {
           </Link>
         </div>
 
-        <RevealOnScroll>
+        <RevealOnScroll legacy>
           <div className="max-w-5xl mx-auto rounded-2xl shadow-2xl bg-gray-900/80 border border-white/10 p-8 md:p-16">
             {/* Header */}
             <div className="flex flex-col items-center mb-12 text-center">

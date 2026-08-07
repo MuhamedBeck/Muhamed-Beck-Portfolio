@@ -169,6 +169,182 @@ body {
   }
 }
 
+/* ---------------------------------------------------------------------------
+   Editorial type scale.
+
+   Hierarchy comes from size and letter-spacing, not from weight: display type
+   is tight (-0.02em) and micro type is wide (+0.25em), and that contrast is
+   what reads as deliberately set rather than default. Headlines are weight 300,
+   never bold.
+   --------------------------------------------------------------------------- */
+@layer components {
+  .label {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-accent);
+  }
+
+  .headline {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: var(--color-paper);
+  }
+
+  .headline-hero {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+    color: var(--color-paper);
+  }
+
+  .headline-sub {
+    font-size: clamp(1.375rem, 2.4vw, 1.875rem);
+    line-height: 1.15;
+    font-weight: 300;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    color: var(--color-paper);
+  }
+
+  .intro {
+    font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);
+    line-height: 1.5;
+    font-weight: 300;
+    color: var(--color-paper-soft);
+  }
+
+  /* Ghost button. The right padding subtracts the trailing letter-space so the
+     wide-tracked label sits optically centred rather than pushed left. */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.875rem calc(1.75rem - 0.25em) 0.875rem 1.75rem;
+    border: 1px solid var(--color-paper);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-paper);
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 400;
+    cursor: pointer;
+    transition:
+      background-color 0.3s var(--ease-hover),
+      color 0.3s var(--ease-hover),
+      border-color 0.3s var(--ease-hover);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  /* The one filled button on the page, reserved for the primary conversion. */
+  .btn-accent {
+    border-color: var(--color-accent);
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+  }
+
+  .btn-accent:hover {
+    background-color: transparent;
+    color: var(--color-accent);
+  }
+
+  /* Secondary action: an underlined micro-type link, not a second button. */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    padding-block: 0.875rem; /* keeps the target at 44px */
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--color-paper-soft);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.5em;
+    transition: color 0.3s var(--ease-hover);
+  }
+
+  .link-arrow:hover {
+    color: var(--color-paper);
+  }
+
+  /* Replaces the rounded card boxes: sections are separated by a hairline and
+     whitespace instead of by borders on every element. */
+  .rule {
+    border: 0;
+    border-top: 1px solid var(--color-hairline);
+    margin: 0;
+  }
+}
+
+/* Entrance stagger. Choreography lives in a --fade-delay custom property so a
+   list can compute its own rhythm from an index instead of needing a class per
+   step.
+
+   The hidden state is scoped to .is-ready, which the prerendered HTML always
+   carries. Without JavaScript nothing is ever hidden, so there is no
+   invisible-content failure mode. */
+.is-ready .stagger {
+  animation: stagger-in 0.7s var(--ease-entrance) var(--fade-delay, 0s) both;
+}
+
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Masked line reveal: the text rises from behind its own edge. Uses transform
+   rather than clip-path or scale, because an element clipped to zero height is
+   reported as invisible to IntersectionObserver and never un-hides. */
+.reveal-line {
+  overflow: hidden;
+  /* Small inset so ascenders and descenders are not clipped by the mask. */
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+
+.is-ready .reveal-line > span {
+  display: inline-block;
+  animation: reveal-line-in 0.9s var(--ease-entrance) var(--fade-delay, 0s) both;
+}
+
+@keyframes reveal-line-in {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .is-ready .stagger,
+  .is-ready .reveal-line > span {
+    animation: none;
+  }
+}
+
 /* Language switcher: flag plus a small chevron, with the remaining flags
    opening directly underneath without a box. Trigger and menu items share the
    2.75rem .lang-switch__column, so every flag lines up to the pixel. */

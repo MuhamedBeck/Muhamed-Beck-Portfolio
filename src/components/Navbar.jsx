@@ -1,59 +1,64 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import mnbLogo from "../assets/MNB_Logo.webp";
+import { useDict, useLocale } from "../i18n";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import nav from "../i18n/dict/nav";
+import ui from "../i18n/dict/ui";
 
 export const Navbar = ({ menuOpen, setMenuOpen }) => {
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-  }, [menuOpen]);
-
-  // ...existing code...
+  const t = useDict(nav);
+  const chrome = useDict(ui);
+  const locale = useLocale();
+  const homePath = locale === "de" ? "/" : "/en";
 
   return (
-    <nav className="fixed top-0 w-full z-40 bg-[rgba(10,10,10,0.8)] backdrop-blur-lg border-b border-white/10 shadow-lg">
-      <div className="max-w-5xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center">
-            <img src={mnbLogo} alt="MNB Logo" width="500" height="500" className="h-12 w-auto" />
+    <nav className="fixed top-0 z-40 w-full border-b border-white/10 bg-[rgba(10,10,10,0.85)] backdrop-blur-lg">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="flex h-16 items-center justify-between">
+          <Link to={homePath} className="flex items-center" aria-label={chrome.backToHome}>
+            <img
+              src={mnbLogo}
+              alt=""
+              width="500"
+              height="500"
+              className="h-11 w-auto"
+            />
           </Link>
 
-          <div
-            className="w-7 h-5 relative cursor-pointer z-40 md:hidden"
-            onClick={() => setMenuOpen((prev) => !prev)}>
-            &#9776;
+          <div className="hidden items-center gap-8 md:flex">
+            {t.primary.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="text-xs tracking-[0.18em] text-gray-400 uppercase transition-colors duration-300 hover:text-gray-100">
+                {item.label}
+              </Link>
+            ))}
+            <Link to={t.cta.to} className="btn-ghost !min-h-0 !py-2.5">
+              {t.cta.label}
+            </Link>
+            {/* Outside the link group so it does not inherit its gap: the
+                switcher supplies its own 44px touch column. */}
+            <LanguageSwitcher />
           </div>
-          <div className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/"
-              className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-              Home
-            </Link>
-            <Link
-              to="/services"
-              className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-              Services
-            </Link>
-            <a
-              href="/#projects"
-              className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-              Projects
-            </a>
-            <a
-              href="/#about"
-              className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-              About Me
-            </a>
-            <a
-              href="/#contact"
-              className="text-gray-300 hover:text-white transition-colors cursor-pointer">
-              Contact
-            </a>
-            <Link
-              to="/hire"
-              className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:from-blue-500 hover:to-indigo-500 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] transition-all duration-300">
-              Hire Me
-            </Link>
-          </div>
+
+          <button
+            type="button"
+            className="flex h-11 w-11 items-center justify-center text-gray-300 md:hidden"
+            onClick={() => setMenuOpen((previous) => !previous)}
+            aria-label={menuOpen ? chrome.closeMenu : chrome.openMenu}
+            aria-expanded={menuOpen}>
+            <svg
+              width="20"
+              height="14"
+              viewBox="0 0 20 14"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              aria-hidden="true">
+              <path d="M0 1h20M0 7h20M0 13h20" />
+            </svg>
+          </button>
         </div>
       </div>
     </nav>

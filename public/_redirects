@@ -1,0 +1,23 @@
+# 301s for the English pages, which moved under /en/ when German became the
+# default, unprefixed locale.
+#
+# Cloudflare Workers Static Assets parses this file from the assets directory
+# and applies it before serving any asset. It is not served as an asset itself.
+# Limits: 2000 static and 100 dynamic rules.
+#
+# Comments must stay at column 0, same parser rule as public/_headers.
+# A syntax error is dropped silently at upload, so verify with `npx wrangler dev`
+# before deploying rather than after.
+
+/services                          /en/services                        301
+/hire                              /en/hire                            301
+/projects/ar-data-visualization    /en/projects/ar-data-visualization  301
+/projects/llm-maven-plugin         /en/projects/llm-maven-plugin       301
+
+# Deliberately four explicit rules rather than /projects/* -> /en/projects/:splat.
+# A splat would also swallow any future /projects/... path that is meant to be
+# served directly.
+#
+# "/" is never redirected: it is the German homepage.
+# /leistungen/*, /projekte/*, /impressum and /datenschutz are already indexed at
+# these exact URLs and must not move.
