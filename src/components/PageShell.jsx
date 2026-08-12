@@ -26,7 +26,10 @@ export const PageShell = ({ label, headline, intro, children }) => {
             padding: the following section supplies the gap, so a short header
             does not leave a hole the size of a full section rhythm. */}
         <Section className="!pt-28 !pb-0">
-          <SectionHeader label={label} headline={headline} intro={intro} />
+          {/* as="h1": this is the page title, not a section heading. Every page
+              that renders through PageShell depends on this for its only
+              top-level heading. */}
+          <SectionHeader as="h1" label={label} headline={headline} intro={intro} />
         </Section>
         {children}
       </main>

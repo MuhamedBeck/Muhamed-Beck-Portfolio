@@ -25,19 +25,24 @@ export const Section = ({ id, children, className = "" }) => (
  * The label is the small wide-tracked line above the headline. That contrast
  * between wide micro type and tight display type is what carries the editorial
  * feel, so it is worth having a component that makes it the default.
+ *
+ * `as` sets the heading level. It defaults to h2 because most uses are section
+ * headings, but the page title has to pass "h1". Hardcoding h2 here left every
+ * page built on PageShell without a top-level heading at all.
  */
-export const SectionHeader = ({ label, headline, intro }) => (
+export const SectionHeader = ({ label, headline, intro, as: Heading = "h2" }) => (
   <header>
     {label ? (
       <p className="label stagger" style={{ "--fade-delay": "0ms" }}>
         {label}
       </p>
     ) : null}
-    <h2
+    <Heading
       className="headline reveal-line mt-6 max-w-[20ch]"
       style={{ "--fade-delay": "80ms" }}>
+      {/* The inner span is what .reveal-line animates; do not remove it. */}
       <span>{headline}</span>
-    </h2>
+    </Heading>
     {intro ? (
       <p className="intro stagger mt-7 max-w-[52ch]" style={{ "--fade-delay": "200ms" }}>
         {intro}

@@ -13,7 +13,7 @@ export const LEISTUNGEN = [
       "Workflows, die CRM, ATS, E-Mail und interne Tools verbinden, mit Monitoring und Fehlerbehandlung statt Bastellösung.",
     h1: "n8n Freelancer für Workflow-Automatisierung",
     intro:
-      "Ich baue Automatisierungen mit n8n und Zapier, die Ihre Tools verbinden, manuelle Arbeit abschaffen und Prozesse messbar beschleunigen. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse in der Praxis, nicht nur in Demos. Sie bekommen Workflows, die produktiv laufen: mit Monitoring, Fehlerbehandlung und sauberer Dokumentation.",
+      "Ich baue Automatisierungen mit n8n und Zapier, die Ihre Tools verbinden, manuelle Arbeit abschaffen und Prozesse messbar beschleunigen. Als AI Automation Manager und n8n Experte automatisiere ich täglich Recruiting- und Vertriebsprozesse in der Praxis, nicht nur in Demos. Sie bekommen Workflows, die produktiv laufen: mit Monitoring, Fehlerbehandlung und sauberer Dokumentation.",
     szenarien: [
       {
         title: "Tools verbinden",
@@ -58,7 +58,7 @@ export const LEISTUNGEN = [
     caseStudy: {
       stat: "-80%",
       statLabel: "Durchlaufzeit im Recruiting",
-      text: "Bei der TOPEOPLE Group GmbH in Frankfurt habe ich Recruiting- und interne Prozesse mit n8n und Zapier automatisiert. Die Durchlaufzeiten sanken um rund 80 Prozent.",
+      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, habe ich Recruiting- und interne Prozesse mit n8n und Zapier automatisiert. Die Durchlaufzeiten sanken um rund 80 Prozent.",
       link: "/projekte/recruiting-automatisierung",
       linkText: "Zur Case Study Recruiting-Automatisierung",
     },
@@ -85,7 +85,15 @@ export const LEISTUNGEN = [
       },
       {
         q: "Arbeiten Sie remote oder vor Ort?",
-        a: "Beides. Ich sitze in Frankfurt am Main und arbeite im Rhein-Main-Gebiet auch gerne vor Ort, ansonsten remote in ganz Deutschland und international.",
+        a: "Beides. Ich sitze in Frankfurt am Main und arbeite im Rhein-Main-Gebiet auch gerne vor Ort, ansonsten remote in ganz Deutschland, Österreich und der Schweiz.",
+      },
+      {
+        q: "Arbeiten Sie auch für Unternehmen in Österreich und der Schweiz?",
+        a: "Ja. Automatisierungsprojekte laufen ohnehin fast vollständig remote: Abstimmung per Video, Zugriff auf die Systeme über die üblichen Freigaben, Übergabe dokumentiert. Mein Standort ist Frankfurt am Main, die Zeitzone ist dieselbe, und Anfragen beantworte ich innerhalb von 24 Stunden. Vor Ort komme ich im Rhein-Main-Gebiet, für Termine in Wien oder Zürich klären wir Aufwand und Reise vorher.",
+      },
+      {
+        q: "Bleiben unsere Prozessdaten in der EU?",
+        a: "Ja, wenn Sie das brauchen. n8n lässt sich self-hosted auf Ihrer eigenen Infrastruktur oder bei einem Anbieter mit Rechenzentrum in Deutschland oder der EU betreiben, sodass keine Prozessdaten das Unternehmen verlassen. Für KI-Schritte lassen sich Modelle mit EU-Verarbeitung einsetzen, etwa Azure OpenAI mit EU-Region, mit PII-Filterung vor dem Modellaufruf. Wo KI-Systeme direkt mit Menschen sprechen, gilt seit August 2026 die Transparenzpflicht aus Artikel 50 des EU AI Act, in Deutschland und Österreich gleichermaßen.",
       },
     ],
   },
@@ -400,7 +408,7 @@ export const LEISTUNGEN = [
         a: "Ja. Die Erkennungsqualität für Deutsch ist inzwischen gut genug für den Produktivbetrieb. Dialekt, starke Nebengeräusche und Fachbegriffe bleiben die Schwachstellen, weshalb wir vor dem Rollout mit echten Aufnahmen aus Ihrem Umfeld testen.",
       },
       {
-        q: "Was kostet ein KI-Telefonassistent?",
+        q: "Was kostet ein KI-Telefonagent?",
         a: "Die Umsetzung rechne ich mit 90 bis 135 € pro Stunde nach Absprache und je nach Projektumfang ab. Dazu kommen laufende Kosten für Telefonie und Sprachmodelle, die sich pro Gesprächsminute bemessen. Beides schätzen wir vor dem Start anhand Ihres tatsächlichen Anrufaufkommens.",
       },
       {

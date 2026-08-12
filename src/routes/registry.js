@@ -282,7 +282,7 @@ export const ROUTES = [
     description:
       "n8n und Zapier Workflows vom Freelancer aus Frankfurt: Prozessautomatisierung, API- und CRM-Anbindung, KI-Integration. 90 bis 135 € pro Stunde nach Absprache.",
     h1: "n8n Freelancer für Workflow-Automatisierung",
-    lastmod: "2026-07-31",
+    lastmod: "2026-08-12",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -297,7 +297,7 @@ export const ROUTES = [
     description:
       "KI- und Prozessautomatisierung für Unternehmen in Frankfurt und Rhein-Main: GPT/LLM-Lösungen, RAG, Voice-AI und DSGVO-konforme Guardrails. Remote deutschlandweit.",
     h1: "KI-Automatisierung für Unternehmen in Frankfurt",
-    lastmod: "2026-07-31",
+    lastmod: "2026-08-12",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -312,7 +312,7 @@ export const ROUTES = [
     description:
       "HubSpot und CRM-Integrationen vom Freelancer: REST-APIs, Webhooks, OAuth2 und Datensynchronisation zwischen ATS, CRM und internen Tools. Aus Frankfurt, auch remote.",
     h1: "HubSpot Integration und CRM-Automatisierung",
-    lastmod: "2026-07-31",
+    lastmod: "2026-08-12",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -342,7 +342,7 @@ export const ROUTES = [
     description:
       "Voice-AI-Agenten für Telefon und Support: Twilio, Speech-to-Text und Text-to-Speech, CRM-Anbindung und Transparenzhinweis nach EU AI Act Artikel 50.",
     h1: "Voice-AI-Agenten für Telefon und Support",
-    lastmod: "2026-08-07",
+    lastmod: "2026-08-12",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -373,7 +373,7 @@ export const ROUTES = [
       "Wie n8n, Zapier und GPT die Recruiting-Prozesse der TOPEOPLE Group automatisiert haben: 80 % kürzere Durchlaufzeiten und rund 90 % Automatisierungsgrad.",
     h1: "Recruiting-Automatisierung mit n8n und GPT",
     ogType: "article",
-    lastmod: "2026-07-31",
+    lastmod: "2026-08-12",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -389,7 +389,7 @@ export const ROUTES = [
       "Microservices-Plattform mit Spring Boot und Angular, DevOps und KI-gestützte SEO-Workflows: 35 % mehr organischer Traffic für Phoenix Parkservice.",
     h1: "Microservices-Plattform und KI-SEO für Phoenix Parkservice",
     ogType: "article",
-    lastmod: "2026-07-31",
+    lastmod: "2026-08-12",
     changefreq: "monthly",
     priority: "0.8",
   },

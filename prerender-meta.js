@@ -286,10 +286,24 @@ for (const route of ROUTES) {
   // still emits several kB of navbar and footer chrome. Asserting the route's
   // own headline turns a missing or mistyped translation key into a build
   // failure instead of a silently empty page in production.
-  if (!markup.includes(escapeText(route.h1))) {
+  //
+  // This deliberately checks the headline is inside an <h1>, not merely present
+  // somewhere in the markup. The earlier version only checked for the text, and
+  // shipped 16 of 24 pages with their title rendered as an <h2> and no
+  // top-level heading at all, while reporting every page green.
+  const headings = [...markup.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/g)];
+  if (!headings.some((match) => match[1].includes(escapeText(route.h1)))) {
     throw new Error(
-      `prerender-meta: render("${route.path}") does not contain its h1 ${JSON.stringify(route.h1)}. ` +
-        `Either the page failed to render its content, or the h1 in the route registry is out of date.`
+      `prerender-meta: render("${route.path}") has no <h1> containing ${JSON.stringify(route.h1)}. ` +
+        `Found ${headings.length} h1 element(s). Either the page failed to render its content, ` +
+        `the heading level is wrong, or the h1 in the route registry is out of date.`
+    );
+  }
+  // Exactly one h1 per page. More than one is ambiguous to a parser and is
+  // usually a sign that a template nested two page shells.
+  if (headings.length !== 1) {
+    throw new Error(
+      `prerender-meta: render("${route.path}") emitted ${headings.length} <h1> elements, expected exactly 1.`
     );
   }
   replacements.push(
