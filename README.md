@@ -106,6 +106,34 @@ Two rules worth not rediscovering:
 | `npm run lint` | ESLint |
 | `npx wrangler dev` | serve `dist/` with the real `_redirects` and trailing-slash behaviour |
 
+## Environment
+
+The contact forms post through EmailJS, which needs three build-time values.
+Copy `.env.example` to `.env` and fill them in from
+[dashboard.emailjs.com](https://dashboard.emailjs.com):
+
+```bash
+cp .env.example .env
+```
+
+| | where |
+| --- | --- |
+| `VITE_SERVICE_ID` | Email Services -> your service |
+| `VITE_TEMPLATE_ID` | Email Templates -> your template |
+| `VITE_PUBLIC_KEY` | Account -> General |
+
+The template has to use `{{name}}`, `{{email}}` and `{{message}}`, because that
+is what both forms send.
+
+Vite inlines these at **build** time, so adding them to `.env` after a build
+does nothing: run `npm run build` again.
+
+Without them the forms are not rendered at all. Each page shows its direct
+contact details instead, so a visitor cannot fill in a form that has no way to
+send. This is deliberate: the site shipped without a `.env` once, and because
+the rejection was also being swallowed, every enquiry through the English forms
+was lost silently.
+
 ## Deployment
 
 Cloudflare Workers Static Assets, configured in `wrangler.jsonc`:

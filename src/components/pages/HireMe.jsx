@@ -3,6 +3,7 @@ import emailjs from "@emailjs/browser";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
 import { CONTACT, RATE_TEXT_EN } from "../../content/site";
+import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 
 /**
  * English project enquiry page.
@@ -102,10 +103,10 @@ export const HireMe = () => {
 
     try {
       await emailjs.send(
-        import.meta.env.VITE_SERVICE_ID,
-        import.meta.env.VITE_TEMPLATE_ID,
+        EMAILJS.serviceId,
+        EMAILJS.templateId,
         { name: formData.name, email: formData.email, message: combinedMessage },
-        import.meta.env.VITE_PUBLIC_KEY
+        EMAILJS.publicKey
       );
       setSent(true);
       setFormData({ name: "", email: "", company: "", service_type: "", message: "" });
@@ -203,7 +204,24 @@ export const HireMe = () => {
         <div className="max-w-2xl border-t border-hairline pt-12">
           <h2 className="headline-sub">Tell me about the project</h2>
 
-          {sent ? (
+          {!EMAILJS_IS_CONFIGURED ? (
+            /* No EmailJS credentials in this build, so the form could only
+               fail. Show the direct route instead, the way /kontakt does. */
+            <div className="mt-8">
+              <p className="intro">
+                Tell me which process costs you the most time, which systems are
+                involved and whether there is a deadline. One or two sentences is
+                enough.
+              </p>
+              <a href={`mailto:${CONTACT.email}`} className="btn-ghost btn-accent mt-8">
+                Write an email
+              </a>
+              <p className="mt-5 text-sm text-paper-mute">
+                {CONTACT.email} · {CONTACT.phoneDisplay} · Free first call · Reply
+                within 24 hours
+              </p>
+            </div>
+          ) : sent ? (
             <div className="mt-8" role="status">
               <p className="intro">Request sent.</p>
               <p className="mt-4 leading-relaxed text-gray-400">

@@ -2,6 +2,7 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { Section } from "../Section";
 import { CONTACT } from "../../content/site";
+import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 
 /**
  * Contact block on the English homepage.
@@ -27,10 +28,10 @@ export const Contact = () => {
 
     try {
       await emailjs.sendForm(
-        import.meta.env.VITE_SERVICE_ID,
-        import.meta.env.VITE_TEMPLATE_ID,
+        EMAILJS.serviceId,
+        EMAILJS.templateId,
         e.target,
-        import.meta.env.VITE_PUBLIC_KEY
+        EMAILJS.publicKey
       );
       setSent(true);
       setFormData({ name: "", email: "", message: "" });
@@ -55,7 +56,22 @@ export const Contact = () => {
         <div className="max-w-2xl border-t border-hairline pt-12">
           <h2 className="headline-sub">Which process costs you the most time?</h2>
 
-          {sent ? (
+          {!EMAILJS_IS_CONFIGURED ? (
+            /* No EmailJS credentials in this build, so the form could only
+               fail. Show the direct route instead, the way /kontakt does. */
+            <div className="mt-8">
+              <p className="intro">
+                Write a couple of sentences about it. You get a real assessment of
+                whether and how it can be automated, not a standard reply.
+              </p>
+              <a href={`mailto:${CONTACT.email}`} className="btn-ghost btn-accent mt-8">
+                Write an email
+              </a>
+              <p className="mt-5 text-sm text-paper-mute">
+                {CONTACT.email} · {CONTACT.phoneDisplay} · Reply within 24 hours
+              </p>
+            </div>
+          ) : sent ? (
             <div className="mt-8" role="status">
               <p className="intro">Message sent.</p>
               <p className="mt-4 leading-relaxed text-gray-400">
