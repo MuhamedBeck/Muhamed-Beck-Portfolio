@@ -78,7 +78,7 @@ const Footer = () => {
                 href={SOCIAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-mute transition-colors duration-300 hover:text-gray-100"
+                className="text-paper-soft transition-colors duration-300 hover:text-gray-100"
                 aria-label={chrome.linkedinAria}>
                 <FaLinkedin className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -86,7 +86,7 @@ const Footer = () => {
                 href={SOCIAL.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-mute transition-colors duration-300 hover:text-gray-100"
+                className="text-paper-soft transition-colors duration-300 hover:text-gray-100"
                 aria-label={chrome.githubAria}>
                 <FaGithub className="h-4 w-4" aria-hidden="true" />
               </a>

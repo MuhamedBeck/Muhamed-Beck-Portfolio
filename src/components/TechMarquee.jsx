@@ -64,10 +64,15 @@ export const TechMarquee = () => {
             key={i}
             className="flex flex-col items-center gap-2 px-8 group cursor-default">
             <Icon
-              className="w-7 h-7 transition-all duration-300 opacity-50 group-hover:opacity-100 group-hover:scale-110"
+              /* opacity-50 crushed saturated brand colours into the near-black
+                 ground: 14 of these 16 marks measured under the 3:1 floor, Angular
+                 worst at 1.68:1. 0.9 is the lowest value at which all 16 clear it.
+                 The restraint now comes from size and spacing; the hover still
+                 reads through the scale and the label brightening. */
+              className="w-7 h-7 transition-all duration-300 opacity-90 group-hover:opacity-100 group-hover:scale-110"
               style={{ color }}
             />
-            <span className="text-[11px] text-paper-mute group-hover:text-gray-300 transition-colors duration-300 whitespace-nowrap">
+            <span className="text-[11px] text-paper-soft group-hover:text-gray-100 transition-colors duration-300 whitespace-nowrap">
               {name}
             </span>
           </div>

@@ -107,7 +107,7 @@ export const Home = ({ isLoaded = true }) => {
                 href={SOCIAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-mute transition-colors duration-300 hover:text-accent"
+                className="text-paper-soft transition-colors duration-300 hover:text-accent"
                 aria-label={t.socials.linkedin}>
                 <FaLinkedin className="h-5 w-5" />
               </a>
@@ -115,13 +115,13 @@ export const Home = ({ isLoaded = true }) => {
                 href={SOCIAL.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-mute transition-colors duration-300 hover:text-accent"
+                className="text-paper-soft transition-colors duration-300 hover:text-accent"
                 aria-label={t.socials.github}>
                 <FaGithub className="h-5 w-5" />
               </a>
               <a
                 href={`mailto:${CONTACT.email}`}
-                className="text-paper-mute transition-colors duration-300 hover:text-accent"
+                className="text-paper-soft transition-colors duration-300 hover:text-accent"
                 aria-label={t.socials.email}>
                 <FaEnvelope className="h-5 w-5" />
               </a>
