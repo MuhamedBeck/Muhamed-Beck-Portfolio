@@ -8,6 +8,22 @@ export const PREIS_TEXT =
 export const LEISTUNGEN = [
   {
     path: "/leistungen/n8n-automatisierung",
+    // Every stage below restates something the leistungen array on this same
+    // entry already promises, so the diagram and the copy cannot drift apart.
+    flow: {
+      caption: "So läuft die Automatisierung",
+      stages: [
+        { kind: "Auslöser", title: "Etwas passiert",
+          text: "Webhook, Web-Formular, neue E-Mail oder ein Zeitplan startet den Workflow." },
+        { kind: "Schritt", title: "Daten prüfen und mappen",
+          text: "Validierung, Feld-Mapping und Routing, damit im Zielsystem nichts Halbes ankommt." },
+        { kind: "Schritt", title: "KI, wo sie trägt",
+          text: "GPT-Anreicherung, Klassifizierung oder Textbausteine, als Schritt im Workflow." },
+        { kind: "Ziel", title: "Daten landen richtig",
+          text: "CRM, ATS, E-Mail und interne Tools, über REST und Webhooks mit OAuth2 oder JWT." },
+      ],
+      alongside: "Monitoring, Fehlerbehandlung sowie Rate-Limit- und Retry-Strategien. Ein Workflow, der nachts still ausfällt, ist keiner.",
+    },
     badge: "n8n & Zapier Spezialist",
     teaser:
       "Workflows, die CRM, ATS, E-Mail und interne Tools verbinden, mit Monitoring und Fehlerbehandlung statt Bastellösung.",
@@ -99,6 +115,20 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-automatisierung-frankfurt",
+    flow: {
+      caption: "So läuft eine KI-Automatisierung",
+      stages: [
+        { kind: "Auslöser", title: "Eine Anfrage kommt an",
+          text: "Aus einem Formular, einem Anruf oder einem System, das eine Entscheidung braucht." },
+        { kind: "Schritt", title: "Kontext aus Ihren Inhalten",
+          text: "RAG und LangChain holen die Passagen, auf die sich die Antwort stützen soll." },
+        { kind: "Schritt", title: "Modell und Prüfung",
+          text: "OpenAI, Azure OpenAI oder Claude erzeugen die Ausgabe, Guardrails prüfen sie." },
+        { kind: "Ziel", title: "Ergebnis im System",
+          text: "Antwort, CRM-Eintrag oder Ticket, n8n als Rückgrat dahinter." },
+      ],
+      alongside: "PII- und DSGVO-Schutz, RBAC, Audit-Logging und Evaluation gegen einen festen Testsatz. Dazu KPI- und ROI-Tracking, damit der Nutzen messbar bleibt.",
+    },
     badge: "KI & LLM Spezialist · Frankfurt",
     teaser:
       "GPT- und LLM-Lösungen, RAG-Systeme und Voice-AI, die Prozesse übernehmen statt nur zu demonstrieren. DSGVO-konform aufgesetzt.",
@@ -182,6 +212,20 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/hubspot-integration",
+    flow: {
+      caption: "So läuft die Synchronisation",
+      stages: [
+        { kind: "Auslöser", title: "Ein Datensatz ändert sich",
+          text: "In HubSpot oder im ATS, gemeldet per Webhook statt per nächtlichem Export." },
+        { kind: "Schritt", title: "Abgleich und Dublettenprüfung",
+          text: "Feld-Mapping und Datenqualitätsregeln, bevor irgendetwas geschrieben wird." },
+        { kind: "Schritt", title: "Anreicherung",
+          text: "GPT qualifiziert Leads oder ergänzt fehlende Felder, wo es den Vertrieb entlastet." },
+        { kind: "Ziel", title: "Beide Seiten aktuell",
+          text: "HubSpot, RecruitCRM, Personio und Greenhouse bidirektional, ohne Doppeleingabe." },
+      ],
+      alongside: "OAuth2 und JWT für die Authentifizierung, dazu Rate-Limit- und Retry-Strategien mit Monitoring. APIs antworten nicht immer, und genau dann entscheidet sich, ob Daten verloren gehen.",
+    },
     badge: "HubSpot & CRM Integrationen",
     teaser:
       "HubSpot, RecruitCRM, Personio und Greenhouse sauber angebunden: REST, Webhooks, OAuth2, Rate-Limit- und Retry-Strategien.",
@@ -261,6 +305,20 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/recruiting-automatisierung",
+    flow: {
+      caption: "So läuft eine Bewerbung durch",
+      stages: [
+        { kind: "Auslöser", title: "Bewerbung geht ein",
+          text: "Über Web-Formular, Jobbörse oder E-Mail, in jedem Fall an derselben Stelle." },
+        { kind: "Schritt", title: "Parsen und anreichern",
+          text: "Lebenslauf-Parsing mit GPT, Dublettenprüfung und Datenqualitätsregeln im ATS." },
+        { kind: "Schritt", title: "Vorqualifizieren und terminieren",
+          text: "Screening nach Ihren Kriterien, Kalenderanbindung, Erinnerungen und Nachfassen." },
+        { kind: "Ziel", title: "Status gepflegt",
+          text: "RecruitCRM, Personio, Greenhouse oder HubSpot, mit Reporting über den ganzen Funnel." },
+      ],
+      alongside: "Ein DSGVO-Konzept für Bewerberdaten mit Löschfristen, Rollen und Audit-Logging. Bewerberdaten sind der Fall, in dem Datenschutz nicht verhandelbar ist.",
+    },
     badge: "Recruiting & ATS Automatisierung",
     teaser:
       "Bewerbungseingang, Screening, Terminierung und Statuspflege automatisiert. Der Bereich, in dem ich täglich arbeite.",
@@ -340,6 +398,20 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/voice-ai-agenten",
+    flow: {
+      caption: "So läuft ein Anruf",
+      stages: [
+        { kind: "Auslöser", title: "Das Telefon klingelt",
+          text: "Twilio oder WebRTC nimmt an, auch außerhalb der Bürozeiten." },
+        { kind: "Schritt", title: "Zuhören und verstehen",
+          text: "Speech-to-Text, dann die Antwort aus Ihren eigenen Inhalten per RAG." },
+        { kind: "Schritt", title: "Antworten oder übergeben",
+          text: "Text-to-Speech mit natürlicher deutscher Aussprache, mit klaren Übergabepunkten an Menschen." },
+        { kind: "Ziel", title: "Gespräch dokumentiert",
+          text: "CRM, ATS oder Ticketsystem, damit kein Anruf unprotokolliert bleibt." },
+      ],
+      alongside: "Ein Transparenzhinweis zu Gesprächsbeginn nach EU AI Act Artikel 50, dazu Auswertung der Gesprächsverläufe zur laufenden Verbesserung.",
+    },
     badge: "Voice-AI & Telefonassistenten",
     teaser:
       "Sprachagenten, die Anrufe annehmen, qualifizieren und ins CRM schreiben. Mit Twilio, Speech-to-Text und Text-to-Speech.",
@@ -419,6 +491,20 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-agenten-entwicklung",
+    flow: {
+      caption: "So arbeitet ein Agent",
+      stages: [
+        { kind: "Auslöser", title: "Ein Vorgang kommt herein",
+          text: "Eine mehrstufige Aufgabe, die sonst jemand von Hand durchklicken müsste." },
+        { kind: "Schritt", title: "Werkzeuge mit Grenzen",
+          text: "Zugriff über APIs auf klar abgegrenzte Werkzeuge, Vollzugriff ist nicht der Standardfall." },
+        { kind: "Schritt", title: "Mensch an der richtigen Stelle",
+          text: "Freigabeschritt überall dort, wo eine Entscheidung finanzielle oder rechtliche Wirkung hat." },
+        { kind: "Ziel", title: "Vorgang abgeschlossen",
+          text: "Ergebnis im Zielsystem, jeder Schritt davor nachvollziehbar protokolliert." },
+      ],
+      alongside: "Evaluation gegen einen festen Testsatz statt Bauchgefühl, dazu Kostenkontrolle und Abbruchbedingungen gegen endlose Schleifen.",
+    },
     badge: "KI-Agenten für Unternehmen",
     teaser:
       "Agenten, die mehrstufige Aufgaben übernehmen, mit klaren Grenzen, Protokoll und einem Menschen an den richtigen Stellen.",

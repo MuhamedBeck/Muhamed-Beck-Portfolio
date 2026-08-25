@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
+import { WorkflowDiagram } from "./WorkflowDiagram";
 import { PREIS_TEXT } from "../../../content/leistungen.de";
 import { RATE_TEXT } from "../../../content/site";
 
@@ -28,6 +29,12 @@ export const LeistungPage = ({ data }) => (
         ))}
       </div>
     </Section>
+
+    {data.flow ? (
+      <Section className="!pt-0">
+        <WorkflowDiagram data={data.flow} />
+      </Section>
+    ) : null}
 
     <Section className="!pt-0">
       <h2 className="label">Leistungen im Überblick</h2>
