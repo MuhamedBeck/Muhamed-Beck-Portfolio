@@ -9,6 +9,8 @@ import { FaJava } from "react-icons/fa";
 // Remix Icon instead; RiOpenaiFill matches the solid style of the Si icons.
 import { RiOpenaiFill } from "react-icons/ri";
 import { N8nIcon } from "./icons/N8nIcon";
+import { useDict } from "../i18n";
+import ui from "../i18n/dict/ui";
 
 const techs = [
   { Icon: SiReact,       name: "React",       color: "#61DAFB" },
@@ -32,13 +34,20 @@ const techs = [
 // Duplicate for seamless infinite loop
 const items = [...techs, ...techs];
 
-export const TechMarquee = () => (
+export const TechMarquee = () => {
+  const chrome = useDict(ui);
+
+  return (
   <section
     aria-label="Tech stack"
     className="py-10 overflow-hidden bg-ink">
-    <p className="text-center text-[10px] font-semibold tracking-[0.25em] text-paper-mute uppercase mb-8">
-      Tech Stack &amp; Tools
-    </p>
+    {/* The marquee itself is full-bleed, but its label belongs on the same left
+        edge as every other section label on the page. It was the last centred
+        heading in the editorial system, and it used a one-off 10px size and a
+        semibold weight instead of the shared .label style. */}
+    <div className="mx-auto mb-8 w-full max-w-6xl px-4">
+      <p className="label">{chrome.techStack}</p>
+    </div>
 
     {/* Fade mask on edges */}
     <div
@@ -66,4 +75,5 @@ export const TechMarquee = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
