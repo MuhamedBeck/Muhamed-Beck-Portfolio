@@ -24,6 +24,11 @@ on:
     # but shortens how long a broken form can sit there unnoticed.
     - cron: "17 */2 * * *"
   workflow_dispatch:
+    inputs:
+      base:
+        description: "Welche Adresse prüfen (zum Testen des Alarmwegs eine falsche eintragen)"
+        required: false
+        default: "https://muhamedbeck.com"
   push:
     branches: [main]
     paths:
@@ -36,15 +41,19 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: "22"
 
       - name: Live-Prüfung
         id: probe
-        run: node scripts/check-live.js 2>&1 | tee probe.log
+        run: |
+          node scripts/check-live.js \
+            --base "${{ inputs.base || 'https://muhamedbeck.com' }}" \
+            --attempts 3 2>&1 | tee probe.log
+          exit "${PIPESTATUS[0]}"
 
       - name: Befund in die Zusammenfassung schreiben
         if: always()
