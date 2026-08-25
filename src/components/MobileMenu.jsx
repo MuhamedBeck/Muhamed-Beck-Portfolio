@@ -36,7 +36,11 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}>
         <div className="flex h-16 shrink-0 items-center justify-between border-b border-hairline px-5">
-          <Link to="/" onClick={close} className="flex items-center">
+          <Link
+            to="/"
+            onClick={close}
+            className="flex items-center"
+            aria-label={chrome.backToHome}>
             <img src={mnbLogo} alt="" width="500" height="500" className="h-8 w-auto" />
           </Link>
           <button

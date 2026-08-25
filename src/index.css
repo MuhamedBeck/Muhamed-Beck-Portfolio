@@ -91,6 +91,17 @@ dd {
   text-wrap: pretty;
 }
 
+/* Splash screen keeps its animation, but not for anyone who has asked the
+   system for less of it: four pulsing dots, three bouncing dots and a blinking
+   caret are precisely what WCAG 2.3.3 covers. The screen still runs and still
+   completes, it just stops moving. */
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen-safe .animate-pulse,
+  .loading-screen-safe .animate-bounce {
+    animation: none;
+  }
+}
+
 /* Safe Area Support */
 .safe-area-full {
   padding-top: env(safe-area-inset-top);
@@ -149,6 +160,19 @@ dd {
 
   .animation-delay-900 {
     animation-delay: 900ms;
+  }
+
+  /* Splash vignette. Written out rather than composed from Tailwind's
+     from-/via-/to- classes: a hand-authored utility does not participate in the
+     v4 --tw-gradient-stops chain, so that version resolved to
+     background-image: none and the effect silently did nothing. */
+  .splash-vignette {
+    background: radial-gradient(
+      circle,
+      transparent 0%,
+      transparent 55%,
+      rgb(0 0 0 / 0.3) 100%
+    );
   }
 }
 
