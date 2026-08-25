@@ -39,5 +39,9 @@ export const SAME_AS = [SOCIAL.linkedin, SOCIAL.github];
 // median of 95 EUR/h for German IT freelancers. Used verbatim on landing pages,
 // in llms.txt and in the ProfessionalService priceRange.
 export const RATE_TEXT = "90 bis 135 € nach Absprache und je nach Projektumfang";
+// English rendering of the same rate. The German string is the one that goes
+// into llms.txt and the ProfessionalService priceRange; this exists so the
+// English pages do not print a German sentence at a reader.
+export const RATE_TEXT_EN = "90 to 135 € by agreement, depending on project scope";
 export const RATE_MIN = 90;
 export const RATE_MAX = 135;

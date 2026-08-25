@@ -168,7 +168,7 @@ export const ROUTES = [
     title: "Hire Muhamed Beck | AI Automation & Web Development Frankfurt",
     description:
       "Request AI automation, web development or CRM integration and get a personal reply within 24 hours from Muhamed Beck, freelance developer in Frankfurt.",
-    h1: "Let's Work Together",
+    h1: "Start a project",
     lastmod: "2026-07-31",
     changefreq: "monthly",
     priority: "0.9",
