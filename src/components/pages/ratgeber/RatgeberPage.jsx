@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
 import { STAND } from "../../../content/ratgeber.de";
+import { RateScale } from "./RateScale";
 
 /**
  * Article template.
@@ -22,7 +23,7 @@ export const RatgeberPage = ({ data }) => (
         {/* A visible date, matching datePublished/dateModified in the schema.
             Freshness is a real ranking and citation input, so it is stated
             rather than implied, and never faked. */}
-        <p className="border-t border-white/10 pt-5 text-xs tracking-[0.2em] text-gray-500 uppercase">
+        <p className="border-t border-hairline pt-5 text-xs tracking-[0.2em] text-paper-mute uppercase">
           Stand: {STAND}
         </p>
 
@@ -39,6 +40,61 @@ export const RatgeberPage = ({ data }) => (
       </div>
     </Section>
 
+    {data.scale ? (
+      <Section className="!pt-0">
+        <RateScale data={data.scale} />
+      </Section>
+    ) : null}
+
+    <Section className="!pt-0">
+      {/* Optional comparison table. A comparison article without one makes the
+          reader rebuild the table in their head from the prose. The wrapper
+          scrolls on its own so a wide table never makes the page scroll
+          sideways. */}
+      {data.table ? (
+        <figure className="mt-14">
+          <div className="-mx-4 overflow-x-auto px-4">
+            <table className="w-full min-w-[42rem] border-collapse text-left">
+              <caption className="label mb-6 text-left">{data.table.caption}</caption>
+              <thead>
+                <tr>
+                  <th scope="col" className="w-[13rem] pb-4 text-sm font-normal text-paper-mute">
+                    <span className="sr-only">Kriterium</span>
+                  </th>
+                  {data.table.columns.map((column) => (
+                    <th
+                      key={column}
+                      scope="col"
+                      className="pb-4 pl-6 text-lg font-normal text-gray-100">
+                      {column}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.table.rows.map((row) => (
+                  <tr key={row.label} className="border-t border-hairline align-top">
+                    <th
+                      scope="row"
+                      className="py-5 pr-6 text-sm font-normal leading-snug text-gray-300">
+                      {row.label}
+                    </th>
+                    {row.cells.map((cell, index) => (
+                      <td
+                        key={data.table.columns[index]}
+                        className="py-5 pl-6 leading-relaxed text-gray-400">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </figure>
+      ) : null}
+    </Section>
+
     {/* Visible FAQ and the FAQPage JSON-LD read from the same array. */}
     <Section className="!pt-0">
       <h2 className="label">Häufige Fragen</h2>
@@ -46,7 +102,7 @@ export const RatgeberPage = ({ data }) => (
         {data.faq.map((item) => (
           <div
             key={item.q}
-            className="border-t border-white/10 py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
+            className="border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
             <dt className="text-lg leading-snug font-normal text-gray-100">{item.q}</dt>
             <dd className="mt-3 leading-relaxed text-gray-400 md:mt-0">{item.a}</dd>
           </div>
@@ -55,7 +111,7 @@ export const RatgeberPage = ({ data }) => (
     </Section>
 
     <Section className="!pt-0">
-      <div className="border-t border-white/10 pt-8">
+      <div className="border-t border-hairline pt-8">
         <h2 className="label">Weiterlesen</h2>
         <ul className="mt-5 flex flex-col gap-3">
           {data.related.map((item) => (
@@ -69,7 +125,7 @@ export const RatgeberPage = ({ data }) => (
         </ul>
       </div>
 
-      <div className="mt-16 max-w-2xl border-t border-white/10 pt-12">
+      <div className="mt-16 max-w-2xl border-t border-hairline pt-12">
         <h2 className="headline-sub">Konkrete Frage zu Ihrem Prozess?</h2>
         <p className="intro mt-5">
           Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden

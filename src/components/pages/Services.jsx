@@ -1,248 +1,180 @@
-import { RevealOnScroll } from "../RevealOnScroll";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import {
-  FaCogs,
-  FaCode,
-  FaSearch,
-  FaHeadset,
-  FaRocket,
-} from "react-icons/fa";
-import { Navbar } from "../Navbar";
-import { MobileMenu } from "../MobileMenu";
-import Footer from "../Footer";
-import { useRouteMeta } from "../../seo/useRouteMeta";
+import { Link } from "react-router-dom";
+import { PageShell } from "../PageShell";
+import { Section } from "../Section";
+import { CONTACT, RATE_TEXT_EN } from "../../content/site";
 
-export const Services = () => {
-  useRouteMeta();
-  const navigate = useNavigate();
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const handleContactClick = () => {
-    navigate("/");
-    setTimeout(() => {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 100);
-  };
-
-  const services = [
-    {
-      icon: <FaCogs className="w-10 h-10" />,
-      title: "Workflow Automation",
-      subtitle: "n8n & Zapier Solutions",
-      description:
-        "I build custom workflows using n8n and Zapier that connect your tools, eliminate repetitive tasks, and free up your team's time.",
-      features: [
-        "Custom n8n workflow development",
-        "Zapier integrations & automations",
-        "API connections & webhooks",
-        "CRM/ATS automation (HubSpot, Personio, Greenhouse)",
-        "Email & notification automation",
-        "Data sync between platforms",
-        "AI-powered workflow optimization",
-      ],
-      highlight: "Cut cycle time by up to 80%",
+/**
+ * English services overview.
+ *
+ * Previously a stack of rounded-2xl cards under a centred gradient headline,
+ * each with an icon tile and a badge. Now the same content as an editorial
+ * list, matching /leistungen.
+ *
+ * Three of the five "highlight" lines said nothing measurable ("Modern tech
+ * stack, scalable solutions", "Fast response, reliable solutions", "Flexible
+ * scope, tailored to you"). They are gone. The two that referenced real figures
+ * stayed and now name where the figure comes from, the way the German pages do.
+ */
+const SERVICES = [
+  {
+    title: "Workflow automation",
+    label: "n8n and Zapier",
+    text: "Custom workflows with n8n and Zapier that connect your tools, remove repetitive steps and run with monitoring and error handling rather than as a one-off script.",
+    features: [
+      "Individual n8n workflows, self-hosted or cloud",
+      "Zapier automation and migration of existing Zaps to n8n",
+      "API connections and webhooks (REST, OAuth2, JWT)",
+      "CRM and ATS automation (HubSpot, RecruitCRM, Personio, Greenhouse)",
+      "Email and notification routing",
+      "Data sync between platforms",
+      "Monitoring, error handling, rate-limit and retry strategies",
+    ],
+    result: {
+      value: "80 %",
+      text: "shorter recruiting cycle times in the processes I automated at TOPEOPLE Group GmbH, my employer.",
     },
-    {
-      icon: <FaCode className="w-10 h-10" />,
-      title: "Web Development",
-      subtitle: "Full-Stack Solutions",
-      description:
-        "Whether you need a landing page, a dashboard, or a full web application, I build responsive, performant sites with modern frameworks, tailored to what you actually need.",
-      features: [
-        "React.js & Angular applications",
-        "Spring Boot & Node.js backends",
-        "TypeScript & JavaScript development",
-        "REST API design & implementation",
-        "WordPress development & customization",
-        "Responsive & mobile-first design",
-        "E-commerce & booking systems",
-        "Docker & cloud deployment",
-      ],
-      highlight: "Modern tech stack, scalable solutions",
+  },
+  {
+    title: "Web development",
+    label: "Full-stack",
+    text: "Landing page, dashboard or full web application, built with modern frameworks and deployed so it stays maintainable after handover.",
+    features: [
+      "React and Angular applications",
+      "Spring Boot and Node.js backends",
+      "TypeScript and JavaScript",
+      "REST API design and implementation",
+      "Responsive, mobile-first layouts",
+      "E-commerce and booking systems",
+      "Docker and cloud deployment",
+    ],
+  },
+  {
+    title: "Technical SEO",
+    label: "Visibility",
+    text: "Technical audits, structured data, page speed and local SEO for the German market, including the AI-assisted workflows that keep it running.",
+    features: [
+      "Technical audits and fixes",
+      "On-page optimisation",
+      "Meta tags and structured data (Schema.org)",
+      "Page speed and Core Web Vitals",
+      "Google Search Console and Analytics setup",
+      "AI-supported SEO workflows",
+      "Local SEO for German businesses",
+    ],
+    result: {
+      value: "35 %",
+      text: "more organic traffic for Phoenix Parkservice, a freelance engagement, through AI-supported SEO workflows.",
     },
-    {
-      icon: <FaSearch className="w-10 h-10" />,
-      title: "SEO Optimization",
-      subtitle: "Visibility & Growth",
-      description:
-        "I optimize your site for search engines, covering technical audits, structured data, page speed, and local SEO for the German market.",
-      features: [
-        "Technical SEO audits & fixes",
-        "On-page optimization",
-        "Meta tags & structured data (Schema.org)",
-        "Page speed optimization",
-        "Google Search Console setup",
-        "Google Analytics integration",
-        "AI-powered SEO automation",
-        "Local SEO for German businesses",
-      ],
-      highlight: "Increased organic traffic by 35%",
-    },
-    {
-      icon: <FaHeadset className="w-10 h-10" />,
-      title: "IT Support",
-      subtitle: "1st & 2nd Level Support",
-      description:
-        "Reliable support when you need it, from troubleshooting hardware and software issues to setting up new systems.",
-      features: [
-        "Hardware troubleshooting & setup",
-        "Software installation & configuration",
-        "Network & connectivity issues",
-        "System administration",
-        "User training & documentation",
-        "Remote & on-site support",
-        "Preventive maintenance",
-      ],
-      highlight: "Fast response, reliable solutions",
-    },
-    {
-      icon: <FaRocket className="w-10 h-10" />,
-      title: "Custom IT Solutions",
-      subtitle: "Tailored to Your Needs",
-      description:
-        "AI integration, DevOps pipelines, custom software: if your project doesn't fit a standard category, let's figure out the right approach together.",
-      features: [
-        "AI & LLM integration (OpenAI, Claude, Azure)",
-        "OpenClaw & Anthropic Claude integration",
-        "Voice AI agents (Twilio/WebRTC, STT/TTS)",
-        "DevOps & CI/CD pipelines",
-        "Docker & Kubernetes deployment",
-        "Cloud architecture (Azure, AWS)",
-        "Security & authentication (OAuth2, JWT)",
-        "Custom API development & webhooks",
-      ],
-      highlight: "Flexible scope, tailored to you",
-    },
-  ];
+  },
+  {
+    title: "AI and LLM integration",
+    label: "Agents and voice",
+    text: "GPT and LLM features that take over a step rather than demonstrate one, with clear boundaries, a log and a human at the points that need one.",
+    features: [
+      "OpenAI, Anthropic Claude and Azure OpenAI integration",
+      "RAG systems over your own documents",
+      "Voice AI agents (Twilio and WebRTC, speech-to-text, text-to-speech)",
+      "Classification, enrichment and text generation inside workflows",
+      "GDPR-compliant setups, self-hosted or EU region",
+      "Custom API development and webhooks",
+    ],
+  },
+  {
+    title: "DevOps and infrastructure",
+    label: "Build and run",
+    text: "Pipelines and environments that are reproducible, so a deployment is a routine step rather than an event.",
+    features: [
+      "CI/CD pipelines (GitLab CI, GitHub Actions)",
+      "Docker and Kubernetes deployment",
+      "Infrastructure as code",
+      "Cloud architecture (Azure, AWS)",
+      "Monitoring with Prometheus",
+      "Security and authentication (OAuth2, JWT)",
+    ],
+  },
+];
 
-  return (
-    <div className="min-h-screen text-gray-100" style={{ background: '#0a0a0a' }}>
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      
-      <section className="min-h-screen w-full py-20 pt-28 px-4" style={{ background: '#0a0a0a' }}>
-        {/* Back to Home Link */}
-        <div className="max-w-6xl mx-auto mb-8">
-          <Link
-            to="/"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors duration-300 group">
-            <span className="transform group-hover:-translate-x-1 transition-transform duration-300">
-              ←
-            </span>
-            <span>Back to Home</span>
-          </Link>
-        </div>
-
-        <RevealOnScroll legacy>
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent mb-6">
-              Services
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Automation, web development, SEO, and IT support: here's
-              what I can help you with.
-            </p>
-          </div>
-
-          {/* Services Grid */}
-          <div className="space-y-8">
-            {services.map((service, index) => (
-              <RevealOnScroll legacy key={index}>
-                <div className="group relative rounded-2xl border border-white/10 bg-gray-900/50 p-8 md:p-10 hover:bg-gray-900/70 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
-                  {/* Highlight Badge */}
-                  <div className="absolute top-4 right-4 md:top-6 md:right-6">
-                    <span className="inline-block bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-cyan-300 text-xs font-semibold px-3 py-1 rounded-full border border-cyan-500/30">
-                      {service.highlight}
-                    </span>
-                  </div>
-
-                  <div className="flex flex-col md:flex-row gap-6 md:gap-10">
-                    {/* Icon */}
-                    <div className="flex-shrink-0">
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:text-cyan-400 group-hover:scale-110 transition-all duration-500">
-                        {service.icon}
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex-grow">
-                      <div className="mb-4">
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-blue-300 transition-colors duration-300">
-                          {service.title}
-                        </h2>
-                        <p className="text-blue-400 font-medium">
-                          {service.subtitle}
-                        </p>
-                      </div>
-
-                      <p className="text-gray-300 mb-6 leading-relaxed">
-                        {service.description}
-                      </p>
-
-                      {/* Features Grid */}
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {service.features.map((feature, idx) => (
-                          <div
-                            key={idx}
-                            className="flex items-center gap-2 text-sm text-gray-400">
-                            <span className="w-1.5 h-1.5 bg-cyan-400 rounded-full flex-shrink-0"></span>
-                            <span>{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </RevealOnScroll>
-            ))}
-          </div>
-
-          {/* CTA Section */}
-          <RevealOnScroll legacy>
-            <div className="mt-16 text-center">
-              <div className="inline-block rounded-2xl border border-white/10 bg-white/5 p-10 md:p-12">
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  Ready to Get Started?
-                </h2>
-                <p className="text-gray-300 mb-8 max-w-xl mx-auto">
-                  Have a project in mind or just want to explore what's
-                  possible? Drop me a message.
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button
-                    onClick={handleContactClick}
-                    className="inline-flex items-center justify-center bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white py-3 px-8 rounded-lg font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.6)] hover:from-blue-500 hover:via-blue-600 hover:to-indigo-600 cursor-pointer">
-                    Contact Me
-                  </button>
-
-                  <a
-                    href="mailto:m.nur.beck@hotmail.de?subject=Anfrage%20via%20Portfolio%20Seite&body=Sehr%20geehrter%20Herr%20Beck%2C%0A%0AIch%20war%20auf%20ihrer%20Portfolio%20Seite%20und%20habe%20folgende%20Anfrage%3A%0A%0A"
-                    className="inline-flex items-center justify-center gap-2 border border-blue-500 text-blue-400 py-3 px-8 rounded-lg font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-500/10">
-                    <span>m.nur.beck@hotmail.de</span>
-                  </a>
-                </div>
-              </div>
+export const Services = () => (
+  <PageShell
+    label="Services"
+    headline="AI automation and web development"
+    intro="Five areas I work in. Each one lists what actually gets built, not what the category is called.">
+    <Section className="!pt-0">
+      {SERVICES.map((service, index) => (
+        <div
+          key={service.title}
+          className={`border-t border-hairline pt-8 ${index > 0 ? "mt-16" : ""}`}>
+          <div className="grid gap-x-12 gap-y-6 md:grid-cols-[1fr_1.4fr]">
+            <div>
+              <h2 className="headline-sub">{service.title}</h2>
+              <p className="label mt-4">{service.label}</p>
             </div>
-          </RevealOnScroll>
+            <div>
+              <p className="leading-relaxed text-gray-400">{service.text}</p>
 
-          {/* Bottom Info */}
-          <div className="mt-12 text-center text-gray-500 text-sm">
-            <p>
-              Based in Frankfurt, Germany • Available for remote work worldwide
-            </p>
+              <ul className="mt-8 grid gap-x-10">
+                {service.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="flex items-start gap-3 border-t border-hairline py-3 text-gray-300">
+                    <span aria-hidden="true" className="mt-1 text-xs text-accent">
+                      ✓
+                    </span>
+                    <span className="leading-relaxed">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {service.result ? (
+                <p className="mt-8 flex flex-wrap items-baseline gap-x-4 text-sm leading-relaxed text-paper-mute">
+                  <span className="text-3xl font-light tabular-nums text-gray-100">
+                    {service.result.value}
+                  </span>
+                  <span className="max-w-[46ch]">{service.result.text}</span>
+                </p>
+              ) : null}
+            </div>
           </div>
         </div>
-      </RevealOnScroll>
-    </section>
-    
-    <Footer />
-    </div>
-  );
-};
+      ))}
+    </Section>
+
+    <Section className="!pt-0">
+      <div className="grid gap-x-12 gap-y-6 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
+        <div>
+          <h2 className="label">Rate</h2>
+          <p className="headline-sub mt-4">{RATE_TEXT_EN}</p>
+        </div>
+        <p className="leading-relaxed text-gray-400">
+          Fixed prices are possible for clearly scoped workflows and integrations. Based
+          in Frankfurt am Main, on-site in the Rhine-Main area by arrangement and remote
+          across Germany, Austria and Switzerland.
+        </p>
+      </div>
+    </Section>
+
+    <Section className="!pt-0">
+      <div className="max-w-2xl border-t border-hairline pt-12">
+        <h2 className="headline-sub">Which process costs you the most time?</h2>
+        <p className="intro mt-5">
+          Write a couple of sentences about it. You get a real assessment within 24 hours
+          of whether and how it can be automated.
+        </p>
+        {/* Previously this button called navigate("/") and then tried to scroll
+            to #contact, which sent an English visitor to the German homepage,
+            where that anchor does not exist. */}
+        <Link to="/en/hire" className="btn-ghost btn-accent mt-8">
+          Start a project
+        </Link>
+        <p className="mt-5 text-sm text-paper-mute">
+          Or email directly:{" "}
+          {/* The old mailto prefilled a German salutation and body on an
+              English page. */}
+          <a href={`mailto:${CONTACT.email}`} className="text-accent hover:underline">
+            {CONTACT.email}
+          </a>
+        </p>
+      </div>
+    </Section>
+  </PageShell>
+);

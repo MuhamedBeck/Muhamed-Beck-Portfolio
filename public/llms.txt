@@ -44,7 +44,7 @@
 ## Pages (English)
 
 - [Processes that run without you](https://muhamedbeck.com/en): AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG solutions, React, Angular, Spring Boot. Available for freelance work.
-- [Services](https://muhamedbeck.com/en/services): AI workflow automation with n8n & Zapier, web development with React, Angular & Spring Boot, CRM integrations and technical SEO. Services by Muhamed Beck, Frankfurt.
-- [Let's Work Together](https://muhamedbeck.com/en/hire): Request AI automation, web development or CRM integration and get a personal reply within 24 hours from Muhamed Beck, freelance developer in Frankfurt.
-- [AR Data Visualization](https://muhamedbeck.com/en/projects/ar-data-visualization): Case study on visualizing SAP BusinessObjects data in Augmented Reality: concept, architecture and implementation by Muhamed Beck.
-- [LLM Unit Test Automation](https://muhamedbeck.com/en/projects/llm-maven-plugin): Master thesis project: a Maven plugin that uses Large Language Models to automatically generate unit tests for Java Spring Boot projects.
+- [AI automation and web development](https://muhamedbeck.com/en/services): AI workflow automation with n8n & Zapier, web development with React, Angular & Spring Boot, CRM integrations and technical SEO. Services by Muhamed Beck, Frankfurt.
+- [Start a project](https://muhamedbeck.com/en/hire): Request AI automation, web development or CRM integration and get a personal reply within 24 hours from Muhamed Beck, freelance developer in Frankfurt.
+- [AR data visualisation](https://muhamedbeck.com/en/projects/ar-data-visualization): Case study on visualizing SAP BusinessObjects data in Augmented Reality: concept, architecture and implementation by Muhamed Beck.
+- [LLM unit test automation](https://muhamedbeck.com/en/projects/llm-maven-plugin): Master thesis project: a Maven plugin that uses Large Language Models to automatically generate unit tests for Java Spring Boot projects.

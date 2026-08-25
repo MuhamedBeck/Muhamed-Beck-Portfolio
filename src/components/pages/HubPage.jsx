@@ -19,7 +19,7 @@ export const HubPage = ({ label, headline, intro, items, children }) => (
         {items.map((item, index) => (
           <li
             key={item.path}
-            className="stagger border-t border-white/10"
+            className="stagger border-t border-hairline"
             style={{ "--fade-delay": `${Math.min(index, 5) * 60}ms` }}>
             {/* The whole row is the target, and it shifts right on hover, which
                 reads as an editorial index rather than a grid of cards. */}
@@ -31,7 +31,7 @@ export const HubPage = ({ label, headline, intro, items, children }) => (
                   {item.title}
                 </h2>
                 {item.meta ? (
-                  <p className="mt-3 text-xs tracking-[0.2em] text-blue-400 uppercase">
+                  <p className="mt-3 text-xs tracking-[0.2em] text-accent uppercase">
                     {item.meta}
                   </p>
                 ) : null}
@@ -40,7 +40,7 @@ export const HubPage = ({ label, headline, intro, items, children }) => (
                 <p className="flex-1 leading-relaxed text-gray-400">{item.text}</p>
                 <span
                   aria-hidden="true"
-                  className="mt-1 text-gray-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  className="mt-1 text-paper-mute opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   ↗
                 </span>
               </div>

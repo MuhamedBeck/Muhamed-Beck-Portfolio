@@ -20,7 +20,7 @@ export const LeistungPage = ({ data }) => (
         {data.szenarien.map((szenario, index) => (
           <div
             key={szenario.title}
-            className="stagger border-t border-white/10 pt-6"
+            className="stagger border-t border-hairline pt-6"
             style={{ "--fade-delay": `${index * 80}ms` }}>
             <h2 className="text-lg font-normal text-gray-100">{szenario.title}</h2>
             <p className="mt-3 leading-relaxed text-gray-400">{szenario.text}</p>
@@ -35,8 +35,8 @@ export const LeistungPage = ({ data }) => (
         {data.leistungen.map((item) => (
           <li
             key={item}
-            className="flex items-start gap-3 border-t border-white/10 py-4 text-gray-300">
-            <span aria-hidden="true" className="mt-1 text-xs text-blue-400">
+            className="flex items-start gap-3 border-t border-hairline py-4 text-gray-300">
+            <span aria-hidden="true" className="mt-1 text-xs text-accent">
               ✓
             </span>
             <span className="leading-relaxed">{item}</span>
@@ -51,9 +51,9 @@ export const LeistungPage = ({ data }) => (
         {data.ablauf.map((step, index) => (
           <li
             key={step.title}
-            className="stagger border-t border-white/10 pt-6"
+            className="stagger border-t border-hairline pt-6"
             style={{ "--fade-delay": `${index * 70}ms` }}>
-            <span className="text-xs tracking-[0.25em] text-blue-400 tabular-nums">
+            <span className="text-xs tracking-[0.25em] text-accent tabular-nums">
               {String(index + 1).padStart(2, "0")}
             </span>
             <h3 className="mt-4 text-lg font-normal text-gray-100">{step.title}</h3>
@@ -64,7 +64,7 @@ export const LeistungPage = ({ data }) => (
     </Section>
 
     <Section className="!pt-0">
-      <div className="grid gap-x-12 gap-y-6 border-t border-white/10 pt-8 md:grid-cols-[1fr_1.4fr]">
+      <div className="grid gap-x-12 gap-y-6 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
         <div>
           <h2 className="label">Stundensatz</h2>
           {/* One source for the rate wording, so this page, the FAQ, llms.txt
@@ -76,13 +76,13 @@ export const LeistungPage = ({ data }) => (
     </Section>
 
     <Section className="!pt-0">
-      <div className="grid gap-x-12 gap-y-8 border-t border-white/10 pt-8 md:grid-cols-[1fr_1.4fr]">
+      <div className="grid gap-x-12 gap-y-8 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
         <div>
           <h2 className="label">Ergebnis aus der Praxis</h2>
           <p className="mt-5 text-5xl font-light tabular-nums text-gray-100">
             {data.caseStudy.stat}
           </p>
-          <p className="mt-3 max-w-[26ch] text-sm text-gray-500">
+          <p className="mt-3 max-w-[26ch] text-sm text-paper-mute">
             {data.caseStudy.statLabel}
           </p>
         </div>
@@ -104,7 +104,7 @@ export const LeistungPage = ({ data }) => (
         {data.faq.map((item) => (
           <div
             key={item.q}
-            className="border-t border-white/10 py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
+            className="border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
             <dt className="text-lg leading-snug font-normal text-gray-100">{item.q}</dt>
             <dd className="mt-3 leading-relaxed text-gray-400 md:mt-0">{item.a}</dd>
           </div>
@@ -113,7 +113,7 @@ export const LeistungPage = ({ data }) => (
     </Section>
 
     <Section className="!pt-0">
-      <div className="max-w-2xl border-t border-white/10 pt-12">
+      <div className="max-w-2xl border-t border-hairline pt-12">
         <h2 className="headline-sub">Passt das zu Ihrem Prozess?</h2>
         <p className="intro mt-5">
           Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden
@@ -122,7 +122,7 @@ export const LeistungPage = ({ data }) => (
         <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
           Projekt anfragen
         </Link>
-        <p className="mt-5 text-sm text-gray-600">
+        <p className="mt-5 text-sm text-paper-mute">
           Kostenloses Erstgespräch · Frankfurt und remote in Deutschland, Österreich und
           der Schweiz
         </p>

@@ -12,7 +12,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const homePath = locale === "de" ? "/" : "/en";
 
   return (
-    <nav className="fixed top-0 z-40 w-full border-b border-white/10 bg-[rgba(10,10,10,0.85)] backdrop-blur-lg">
+    <nav className="fixed top-0 z-40 w-full border-b border-hairline bg-[rgba(10,10,10,0.85)] backdrop-blur-lg">
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex h-16 items-center justify-between">
           <Link to={homePath} className="flex items-center" aria-label={chrome.backToHome}>

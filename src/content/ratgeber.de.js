@@ -24,6 +24,14 @@ export const RATGEBER = [
     // The lede is written to be quotable on its own, with no unresolved
     // pronouns and no dependency on a preceding paragraph.
     lede: "Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer insgesamt liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde. Mein eigener Satz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang.",
+    // Same four figures the prose states, so the scale and the text cannot
+    // disagree. Sources are named in the copy below.
+    scale: {
+      caption: "Stundensätze im Vergleich (Stand: August 2026)",
+      market: { from: 75, to: 147, label: "n8n-Profile bei freelancermap" },
+      median: { value: 95, label: "Median IT-Freelancer, Freelancer-Kompass 2026" },
+      own: { from: 90, to: 135, label: "mein Satz, nach Absprache und Projektumfang" },
+    },
     sections: [
       {
         h2: "Was kostet ein n8n Freelancer pro Stunde?",
@@ -98,6 +106,61 @@ export const RATGEBER = [
     published: "2026-08-07",
     modified: "2026-08-07",
     lede: "Zapier ist am schnellsten eingerichtet, Make ist am visuellsten, n8n ist am flexibelsten und als einziges der drei self-hosted betreibbar. Der praktisch wichtigste Unterschied ist die Abrechnung: n8n zählt eine Workflow-Ausführung, Make zählt jede einzelne Operation darin.",
+    // A comparison article about three tools with no comparison table was the
+    // most obvious content gap on the site. Every row below restates something
+    // the prose or the FAQ on this same page already establishes, so the table
+    // and the text cannot disagree. The one exception is Zapier's billing unit,
+    // which the article never states outright.
+    table: {
+      caption: "n8n, Make und Zapier im direkten Vergleich (Stand: August 2026)",
+      columns: ["n8n", "Make", "Zapier"],
+      rows: [
+        {
+          label: "Abrechnung",
+          cells: [
+            "eine Ausführung pro Workflow-Durchlauf",
+            "jede einzelne Operation im Workflow",
+            "pro Task, also pro Aktionsschritt",
+          ],
+        },
+        {
+          label: "Self-hosted möglich",
+          cells: ["ja, Community Edition", "nein", "nein"],
+        },
+        {
+          label: "Prozessdaten bleiben im Haus",
+          cells: ["ja, bei self-hosted Betrieb", "nein", "nein"],
+        },
+        {
+          label: "Einstiegshürde",
+          cells: [
+            "belohnt technisches Vorwissen",
+            "mittel, visuell aufgebaut",
+            "niedrig, ohne Vorwissen bedienbar",
+          ],
+        },
+        {
+          label: "Eigene Logik",
+          cells: [
+            "Code-Node, HTTP-Request-Node",
+            "begrenzt, über Szenario-Bausteine",
+            "Kette von Hilfskonstruktionen",
+          ],
+        },
+        {
+          label: "Fertige Integrationen",
+          cells: ["weniger, dafür selbst ergänzbar", "viele", "die größte Zahl"],
+        },
+        {
+          label: "Stärkste Seite",
+          cells: [
+            "Flexibilität und hohes Volumen",
+            "visuelles Szenario-Diagramm",
+            "in Minuten eingerichtet",
+          ],
+        },
+      ],
+    },
     sections: [
       {
         h2: "Was ist der wichtigste Unterschied zwischen n8n, Make und Zapier?",

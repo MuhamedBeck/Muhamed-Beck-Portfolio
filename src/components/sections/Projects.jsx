@@ -1,184 +1,105 @@
-import { RevealOnScroll } from "../RevealOnScroll";
+import { Link } from "react-router-dom";
+import { Section } from "../Section";
 
-export const Projects = () => {
-  return (
-    <section
-      id="projects"
-      className="min-h-screen flex items-center justify-center py-20 overflow-x-hidden">
-      <RevealOnScroll legacy>
-        <div className="max-w-5xl mx-auto px-4 w-full">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-12 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            Featured Projects
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
-              <div className="flex-grow">
-                <h3 className="text-xl font-bold mb-2">Phoenix Parkservice</h3>
-                <p className="text-gray-400 mb-4">
-                  Developed and led the IT infrastructure and website for{" "}
-                  <a
-                    href="https://www.phoenixparkservice.de"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-300 hover:text-blue-400">
-                    phoenixparkservice.de
-                  </a>
-                  , including modern DevOps, booking service, microservices, and
-                  AI-powered SEO automation using n8n Workflow.
+/**
+ * Projects block on the English homepage.
+ *
+ * Was five bordered cards with min-h-[320px], hover lift, blue glow and pill
+ * tags, under a gradient-clipped "Featured Projects" heading. Now an editorial
+ * index, the same shape HubPage uses for /projekte, so the whole row is the
+ * click target and the stack reads as a list of work rather than a grid of
+ * boxes.
+ *
+ * Internal links point at /en/projects/... directly. public/_redirects has
+ * documented 301s from the old /projects/... paths, which stay as a safety net
+ * for anything already linking there, but there is no reason to make a visitor
+ * take the redirect hop.
+ */
+const PROJECTS = [
+  {
+    title: "Phoenix Parkservice",
+    text: "Microservices platform and booking service for a parking operator, including the DevOps pipeline and AI-supported SEO workflows built with n8n. Organic traffic rose 35 percent.",
+    stack: "Spring Boot, Angular, Docker, CI/CD, n8n",
+    href: "https://www.phoenixparkservice.de",
+    linkText: "phoenixparkservice.de",
+    external: true,
+  },
+  {
+    title: "LLM unit test automation",
+    text: "Master thesis. A Maven plugin that generates unit tests for Spring Boot projects, pairing an LLM with JaCoCo coverage analysis. Test coverage rose 33 percent and writing effort fell by up to 95 percent.",
+    stack: "Java, Maven, ChatGPT, JaCoCo, Spring Boot",
+    href: "/en/projects/llm-maven-plugin",
+    linkText: "Read the case study",
+  },
+  {
+    title: "AR data visualisation",
+    text: "Bachelor thesis. A browser-based augmented reality solution that turns SAP BusinessObjects reports into interactive 3D visualisations, rendering at over 50 frames per second.",
+    stack: "Angular, AR.js, A-Frame, SAP BO, Spring Boot",
+    href: "/en/projects/ar-data-visualization",
+    linkText: "Read the case study",
+  },
+  {
+    title: "TaskFlow",
+    text: "Full-stack task management application with JWT authentication, a priority system and due date tracking.",
+    stack: "Angular, Spring Boot, PostgreSQL, JWT",
+    href: "https://taskflow-nu-three.vercel.app/",
+    linkText: "Open the app",
+    external: true,
+  },
+  {
+    title: "LinkedIn AI Analyzer",
+    text: "Analyses LinkedIn posts and drafts personalised messages: engagement analysis, lead identification and lead scoring by seniority.",
+    stack: "React, Vite, Spring Boot, Java, OpenAI API",
+    href: "https://linkedin-analyzer-weld.vercel.app/",
+    linkText: "Open the app",
+    external: true,
+  },
+];
+
+export const Projects = () => (
+  <div id="projects">
+    <Section>
+      <h2 className="label">Selected work</h2>
+      <ul className="mt-8">
+        {PROJECTS.map((project) => {
+          const inner = (
+            <>
+              <div>
+                <h3 className="headline-sub">{project.title}</h3>
+                <p className="mt-3 text-sm text-paper-mute">{project.stack}</p>
+              </div>
+              <div className="mt-4 md:mt-0">
+                <p className="max-w-[62ch] leading-relaxed text-gray-400">
+                  {project.text}
                 </p>
+                <span className="link-arrow mt-2">
+                  {project.linkText}
+                  <span aria-hidden="true">↗</span>
+                </span>
               </div>
-              <div className="flex flex-wrap gap-1 mb-2 justify-start">
-                {["Spring Boot", "Angular", "Docker", "CI/CD", "n8n"].map(
-                  (tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
-                      {tech}
-                    </span>
-                  )
-                )}
-              </div>
-              <div className="flex justify-end mt-auto">
+            </>
+          );
+          const rowClass =
+            "group block border-t border-hairline py-8 transition-transform duration-300 hover:translate-x-2 md:grid md:grid-cols-[1fr_1.2fr] md:gap-x-12";
+          return (
+            <li key={project.title}>
+              {project.external ? (
                 <a
-                  href="https://www.phoenixparkservice.de"
+                  href={project.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold"
-                  aria-label="Visit Phoenix Parkservice website">
-                  Visit Website &rarr;
+                  className={rowClass}>
+                  {inner}
                 </a>
-              </div>
-            </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
-              <div className="flex-grow">
-                <h3 className="text-xl font-bold mb-2">
-                  LLM Unit Test Automation (Master Thesis)
-                </h3>
-                <p className="text-gray-400 mb-4">
-                  AI-powered Maven plugin that automates unit test generation
-                  for Spring Boot projects. Integrates ChatGPT with JaCoCo
-                  for coverage analysis and cuts test writing time by up to
-                  95% compared to manual test development.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-1 mb-2 justify-start">
-                {["Java", "Maven", "ChatGPT", "JaCoCo", "Spring Boot"].map(
-                  (tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
-                      {tech}
-                    </span>
-                  )
-                )}
-              </div>
-              <div className="flex justify-end mt-auto">
-                <a
-                  href="/projects/llm-maven-plugin"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
-                  View Details →
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
-              <div className="flex-grow">
-                <h3 className="text-xl font-bold mb-2">TaskFlow</h3>
-                <p className="text-gray-400 mb-4">
-                  A full-stack task management application built with Angular
-                  and Spring Boot, featuring JWT authentication, modern UI
-                  design, and comprehensive task management capabilities with
-                  priority system and due date tracking.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-1 mb-2 justify-start">
-                {[
-                  "Angular",
-                  "Spring Boot",
-                  "PostgreSQL",
-                  "JWT",
-                  "TypeScript",
-                ].map((tech, key) => (
-                  <span
-                    key={key}
-                    className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <div className="flex justify-end mt-auto">
-                <a
-                  href="https://taskflow-nu-three.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
-                  Visit Website →
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
-              <div className="flex-grow">
-                <h3 className="text-xl font-bold mb-2">
-                  AR Data Visualization (Bachelor Thesis)
-                </h3>
-                <p className="text-gray-400 mb-4">
-                  Web-based AR solution that turns SAP BusinessObjects reports
-                  into interactive 3D visualizations. Built with Angular, AR.js
-                  and A-Frame for browser-based augmented reality.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-1 mb-2 justify-start">
-                {["Angular", "AR.js", "SAP BO", "Spring Boot", "A-Frame"].map(
-                  (tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
-                      {tech}
-                    </span>
-                  )
-                )}
-              </div>
-              <div className="flex justify-end mt-auto">
-                <a
-                  href="/projects/ar-data-visualization"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
-                  View Details →
-                </a>
-              </div>
-            </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
-              <div className="flex-grow">
-                <h3 className="text-xl font-bold mb-2">LinkedIn AI Analyzer</h3>
-                <p className="text-gray-400 mb-4">
-                  A tool for analyzing LinkedIn posts and generating
-                  personalized messages. Features: post engagement analysis,
-                  priority lead identification, AI-powered news, lead scoring by
-                  seniority.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-1 mb-2 justify-start">
-                {["React", "Vite", "Spring Boot", "Java", "OpenAI API"].map(
-                  (tech, key) => (
-                    <span
-                      key={key}
-                      className="bg-blue-500/15 text-blue-300 py-1 px-2 rounded-lg text-sm hover:bg-blue-500/25 hover:text-blue-200 transition-all duration-300 cursor-default whitespace-nowrap">
-                      {tech}
-                    </span>
-                  )
-                )}
-              </div>
-              <div className="flex justify-end mt-auto">
-                <a
-                  href="https://linkedin-analyzer-weld.vercel.app/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
-                  Visit Website →
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </RevealOnScroll>
-    </section>
-  );
-};
+              ) : (
+                <Link to={project.href} className={rowClass}>
+                  {inner}
+                </Link>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </Section>
+  </div>
+);

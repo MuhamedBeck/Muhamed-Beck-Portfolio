@@ -13,10 +13,22 @@ html {
   --color-ink-raised: #111114; /* the rare raised surface */
   --color-paper: #f3f4f6; /* primary text */
   --color-paper-soft: #9ca3af; /* secondary text */
-  --color-paper-mute: #6b7280; /* captions, legal, meta */
+  /* Captions, legal and meta. Measured against --color-ink, the previous
+     #6b7280 reached only 4.10:1, and the gray-600 used alongside it 2.62:1 --
+     both under the 4.5:1 WCAG 1.4.3 floor for body-size text. This clears it
+     at 5.32:1 and still sits a clear step below --color-paper-soft (7.80:1),
+     so the hierarchy survives the fix. */
+  --color-paper-mute: #7d8592;
   --color-accent: #60a5fa; /* blue-400, the single accent */
   --color-accent-dim: #22d3ee; /* cyan-400, used sparingly */
   --color-hairline: rgb(255 255 255 / 0.1);
+
+  /* Two faces, two jobs. Space Grotesk is a display face and was carrying 100%
+     of the elements on the site, long-form Ratgeber articles included. It now
+     keeps the work it is good at -- headings, micro-labels, buttons, nav -- and
+     IBM Plex Sans takes the reading text. */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-text: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
 
   /* Entrance easing is symmetric and unhurried; hover easing settles fast.
      Keeping them as tokens stops every component inventing its own curve. */
@@ -47,18 +59,130 @@ html {
     U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
+/* IBM Plex Sans, self-hosted alongside Space Grotesk. The privacy policy states
+   that font files are local and that loading them contacts no Google server, so
+   a CDN link here would make that sentence untrue.
+
+   One variable file per subset covers 400 and 600, which is why the weight
+   range is declared rather than shipping two static cuts. */
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-sans-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("/fonts/ibm-plex-sans-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Space Grotesk", sans-serif;
-  background: #0a0a0a;
+  font-family: var(--font-text);
+  background: var(--color-ink);
   color: #f3f4f6;
   overflow-x: hidden;
   scroll-behavior: smooth;
   /* Use min-height + dvh: adjusts dynamically as browser chrome shows/hides */
   min-height: 100vh;
   min-height: 100dvh;
+}
+
+/* 18px for reading text.
+   Deliberately on body alone and not in the html, body block above: rem
+   resolves against the root, so setting it on html too makes body compound to
+   20.25px and drags the whole rem-based type scale and every Tailwind spacing
+   utility up with it. Keeping html at the 16px default leaves the scale
+   anchored and moves only the text that inherits from body. */
+body {
+  font-size: 1.125rem;
+}
+
+/* Headings, micro-type and controls keep the display face. Everything not
+   listed here is reading text and inherits Plex from body. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav,
+caption,
+dt,
+.label,
+.btn-ghost,
+.link-arrow,
+/* These three are not always on a heading element: LeistungPage renders the
+   rate as <p class="headline-sub">, so the element selectors above miss it. */
+.headline,
+.headline-hero,
+.headline-sub {
+  font-family: var(--font-display);
+}
+
+/* German is the language automatic hyphenation matters most in: compounds like
+   "Datenhaltungs-Argument" or "Zwei-Schritt-Verknuepfungen" do not fit in a
+   part-used line, so the line breaks early and leaves a visible gap. Measured
+   on a Ratgeber article at 18px: average line fill rose from 94% to 98% and the
+   shortest line from 79% to 96%, with no change in line count.
+
+   prerender-meta.js writes the correct lang per locale, so each page hyphenates
+   by its own language rather than by German rules applied to English. */
+p,
+li,
+dd,
+td,
+.intro {
+  hyphens: auto;
+}
+
+/* Keyboard focus.
+
+   There was previously not a single :focus or :focus-visible rule in the whole
+   stylesheet, and several form fields set focus:outline-none on top of that, so
+   a keyboard user had nothing but a border tint to locate themselves by. One
+   rule here covers every interactive element on every page.
+
+   :focus-visible rather than :focus, so a mouse click on a button does not
+   leave a ring behind. outline (not box-shadow) survives overflow:hidden
+   ancestors, and outline-offset keeps the ring off the glyphs. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Body copy: prevents a single word stranded on the last line. The headline
+   classes already set text-wrap: balance; this is the paragraph counterpart,
+   and it replaces every manual <br> the copy would otherwise need. */
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
+/* Splash screen keeps its animation, but not for anyone who has asked the
+   system for less of it: four pulsing dots, three bouncing dots and a blinking
+   caret are precisely what WCAG 2.3.3 covers. The screen still runs and still
+   completes, it just stops moving. */
+@media (prefers-reduced-motion: reduce) {
+  .loading-screen-safe .animate-pulse,
+  .loading-screen-safe .animate-bounce {
+    animation: none;
+  }
 }
 
 /* Safe Area Support */
@@ -95,23 +219,6 @@ body {
 }
 
 @layer utilities {
-  @keyframes blink {
-
-    0%,
-    100% {
-      opacity: 1;
-      transform: translateX(-100%);
-    }
-
-    50% {
-      opacity: 0;
-    }
-  }
-
-  .animate-blink {
-    animation: blink 0.8s step-end infinite;
-  }
-
   @keyframes marquee {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -126,32 +233,6 @@ body {
     animation-play-state: paused;
   }
 
-  @keyframes loading {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(250%);
-    }
-  }
-
-  .animate-loading-bar {
-    animation: loading 0.8s ease infinite;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
   .animation-delay-300 {
     animation-delay: 300ms;
   }
@@ -164,8 +245,17 @@ body {
     animation-delay: 900ms;
   }
 
-  .bg-gradient-radial {
-    background: radial-gradient(circle, var(--tw-gradient-stops));
+  /* Splash vignette. Written out rather than composed from Tailwind's
+     from-/via-/to- classes: a hand-authored utility does not participate in the
+     v4 --tw-gradient-stops chain, so that version resolved to
+     background-image: none and the effect silently did nothing. */
+  .splash-vignette {
+    background: radial-gradient(
+      circle,
+      transparent 0%,
+      transparent 55%,
+      rgb(0 0 0 / 0.3) 100%
+    );
   }
 }
 
@@ -185,6 +275,15 @@ body {
     text-transform: uppercase;
     font-weight: 400;
     color: var(--color-accent);
+    /* A floor for the gap under a label, not a fixed value. The class carried
+       margin: 0 and left the spacing to whatever utility sat on the next
+       element, which had drifted to four different answers for the same
+       relationship: 16px, 20px, 24px and 32px. At 16px a 12px uppercase line
+       with 0.25em tracking sits on top of the text it introduces.
+
+       Adjacent vertical margins collapse, so this only lifts the tight cases
+       to 24px and leaves anything already roomier exactly as it was. */
+    margin-bottom: 1.5rem;
   }
 
   .headline {
@@ -217,7 +316,12 @@ body {
   .intro {
     font-size: clamp(1.0625rem, 1.5vw, 1.3125rem);
     line-height: 1.5;
-    font-weight: 300;
+    /* 400, not 300. The lede is reading text and now sets in Plex, whose
+       variable file covers 400 to 600; a declared 300 lands outside that range
+       and gets clamped to 400 anyway. Saying 400 makes the stylesheet describe
+       what actually renders, and light weights on a dark ground thin out
+       optically regardless. */
+    font-weight: 400;
     color: var(--color-paper-soft);
   }
 
@@ -319,9 +423,30 @@ body {
    reported as invisible to IntersectionObserver and never un-hides. */
 .reveal-line {
   overflow: hidden;
-  /* Small inset so ascenders and descenders are not clipped by the mask. */
+  /* Small inset so ascenders and descenders are not clipped by the mask, with a
+     negative margin cancelling it so the element's outer box is unchanged.
+
+     Note the trap this sets: the shorthand writes margin-top and margin-bottom,
+     this rule is unlayered, and unlayered rules beat anything in @layer, so it
+     silently overrides Tailwind margin utilities on the same element. Every
+     heading carrying `reveal-line mt-6` was getting -0.08em, not 24px. Put
+     spacing on a neighbour or on a higher-specificity selector rather than an
+     mt-* utility here. */
   padding-block: 0.08em;
   margin-block: -0.08em;
+}
+
+/* Gap between a blue label and the headline it introduces.
+
+   Two classes, so this outranks the single-class .reveal-line above and the
+   margin actually lands. The 0.08em term cancels that rule's negative margin,
+   which scales with the heading's font size, so the gap the eye sees stays the
+   same whether the heading is the 72px hero or a 52px section head. Measured
+   before: 12px in the hero and 17px on a section. */
+.label + .headline,
+.label + .headline-hero,
+.label + .headline-sub {
+  margin-top: calc(1.75rem + 0.08em);
 }
 
 .is-ready .reveal-line > span {
@@ -463,13 +588,6 @@ body {
   opacity: 1;
   transform: none;
   transition: none;
-}
-
-/* Used by the animated gradient behind the hero in Home.jsx. */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* Scrollbar. Deliberately quiet: a bright blue-to-cyan gradient bar down the

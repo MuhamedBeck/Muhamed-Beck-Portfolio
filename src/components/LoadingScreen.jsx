@@ -1,6 +1,21 @@
 import { useEffect, useState } from "react";
 import mnbLogo from "../assets/MNB_Logo.webp";
 
+/**
+ * First-visit splash screen.
+ *
+ * This is the one place on the site that keeps the gradient wordmark, the
+ * gradient progress bar and the drifting accent dots, and it keeps them on
+ * purpose. A splash is a self-contained moment before the site rather than a
+ * page in it: it has no content to compete with, it is shown once per session,
+ * and its whole job is to be pleasant while something loads. The editorial
+ * restraint the pages follow exists so content can lead, and here there is no
+ * content yet.
+
+ * The one thing it was missing is a reduced-motion path. Four pulsing dots,
+ * three bouncing dots and a typewriter caret are exactly what WCAG 2.3.3 asks
+ * you to drop for someone who has asked the OS for less motion.
+ */
 export const LoadingScreen = ({ onComplete }) => {
   const [text, setText] = useState("");
   const [showSubtext, setShowSubtext] = useState(false);
@@ -60,11 +75,10 @@ export const LoadingScreen = ({ onComplete }) => {
 
   return (
     <div
-      className={`loading-screen-safe z-50 text-white flex flex-col items-center justify-center transition-opacity duration-[400ms] ${
+      className={`loading-screen-safe z-50 bg-ink text-white flex flex-col items-center justify-center transition-opacity duration-[400ms] ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
       style={{
-        background: '#0a0a0a',
         willChange: "opacity"
       }}>
       <div className="absolute inset-0 overflow-hidden">
@@ -118,7 +132,7 @@ export const LoadingScreen = ({ onComplete }) => {
             <span className="text-sm text-gray-400 font-light">
               Loading Portfolio
             </span>
-            <span className="text-sm text-blue-400 font-mono">{progress}%</span>
+            <span className="text-sm text-accent font-mono">{progress}%</span>
           </div>
 
           <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden shadow-inner">
@@ -144,7 +158,7 @@ export const LoadingScreen = ({ onComplete }) => {
         </div>
       </div>
 
-      <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/30 pointer-events-none"></div>
+      <div className="absolute inset-0 splash-vignette pointer-events-none"></div>
     </div>
   );
 };

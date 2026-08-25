@@ -1,392 +1,221 @@
 import { useState } from "react";
-import { RevealOnScroll } from "../RevealOnScroll";
+import { Section } from "../Section";
+
+/**
+ * About block on the English homepage.
+ *
+ * Was four skill cards distinguished only by accent colour (blue, cyan, indigo,
+ * purple, carrying no meaning), a two-column grid of bordered education and
+ * experience boxes, and a three-up certificate row -- the only genuine
+ * card-overkill instances left on the site, each combining border, background,
+ * shadow-lg, a hover lift and a scale.
+ *
+ * Now built like UeberMich, its German counterpart: a period column, hairlines
+ * and whitespace. Every fact, date and grade is unchanged.
+ */
+const SKILLS = [
+  {
+    title: "Automation and AI",
+    items: "n8n, Zapier, OpenAI and Azure OpenAI, Anthropic Claude, OpenClaw, RAG, LangChain, Voice AI, prompt engineering",
+  },
+  {
+    title: "Frontend",
+    items: "Angular, React, TypeScript, HTML and CSS, Tailwind",
+  },
+  {
+    title: "Backend",
+    items: "Java, Spring Boot, Python, Node.js, REST APIs",
+  },
+  {
+    title: "Infrastructure",
+    items: "Docker, Kubernetes, Helm, GitLab CI/CD, Git, Prometheus",
+  },
+];
+
+const EXPERIENCE = [
+  {
+    period: "Since 09/2025",
+    role: "AI Automation Manager",
+    org: "TOPEOPLE Group GmbH, Frankfurt am Main",
+    highlights: [
+      "Automated recruiting and internal workflows with n8n and Zapier, cutting cycle time by 80 percent",
+      "Built GPT applications (OpenAI and Azure, LangChain and RAG) for candidate operations, reaching roughly 90 percent automation",
+      "Deployed Voice AI agents over Twilio and WebRTC with speech-to-text and text-to-speech",
+      "Shipped ATS and CRM integrations over REST and webhooks with OAuth2 and JWT, including Personio, Greenhouse and HubSpot",
+      "Ran CI/CD and operations on GitLab, Docker and Kubernetes with Prometheus monitoring",
+      "Set LLM guardrails covering PII and GDPR, evaluation tests, audit and RBAC, plus ROI tracking on time-to-hire and SLA",
+    ],
+  },
+  {
+    period: "06/2024 to 09/2025",
+    role: "Full-Stack Developer and AI Integration Lead",
+    org: "Phoenix Parkservice, freelance",
+    highlights: [
+      "Architected a microservices platform with Spring Boot, Angular and REST APIs",
+      "Implemented the full DevOps pipeline with Docker and CI/CD",
+      "Increased organic traffic by 35 percent through AI-supported SEO workflows",
+    ],
+  },
+  {
+    period: "09/2022 to 09/2024",
+    role: "Full-Stack Developer and Master Thesis",
+    org: "INFOMOTION GmbH",
+    highlights: [
+      "Developed an LLM-based Maven plugin that raised test coverage by 33 percent",
+      "Created an AR and 3D visualisation app for SAP BusinessObjects dashboards",
+      "Managed Kubernetes deployments and Azure cloud integration",
+    ],
+  },
+  {
+    period: "05/2021 to 10/2021",
+    role: "Cryptography Engineering Intern",
+    org: "Deutsche Bank",
+    highlights: [
+      "Supported the proof of concept and deployment of a digital signature validation service",
+    ],
+  },
+];
+
+const EARLIER_EXPERIENCE = [
+  {
+    period: "11/2020 to 03/2021",
+    role: "Java Tutor",
+    org: "Frankfurt University of Applied Sciences",
+    highlights: ["Led tutorials for over 30 students and improved pass rates by 20 percent"],
+  },
+  {
+    period: "04/2018 to 11/2018",
+    role: "1st and 2nd Level Support",
+    org: "Mila IT-Services",
+    highlights: ["Resolved over 60 hardware and software issues"],
+  },
+];
+
+const EDUCATION = [
+  {
+    period: "2022 to 2024",
+    role: "M.Sc. Business Informatics",
+    org: "Frankfurt University of Applied Sciences",
+    note: "Final grade 1.4 (German scale)",
+  },
+  {
+    period: "2018 to 2022",
+    role: "B.Sc. International Business Information Systems",
+    org: "Frankfurt University of Applied Sciences",
+    note: "Final grade 1.6 (German scale)",
+  },
+  {
+    period: "2012 to 2017",
+    role: "Abitur",
+    org: "Ernst-Reuter-Schule 1, Frankfurt",
+    note: "Grade 1.9 (German scale)",
+  },
+];
+
+const CERTIFICATES = [
+  {
+    title: "Inspect Rich Documents with Gemini Multimodality and Multimodal RAG",
+    issuer: "Google",
+    date: "Jan 2026",
+  },
+  { title: "React.js", issuer: "Great Learning", date: "Jul 2025" },
+  { title: "Advanced Proficiency in KNIME Analytics Platform", issuer: "KNIME", date: "Apr 2023" },
+  { title: "Basic Proficiency in KNIME Analytics Platform", issuer: "KNIME", date: "Apr 2023" },
+  {
+    title: "SAP BusinessObjects Web Intelligence Grundlagen",
+    issuer: "INFOMOTION GmbH",
+    date: "Feb 2022",
+  },
+];
+
+const Station = ({ entry }) => (
+  <li className="border-t border-hairline py-8 md:grid md:grid-cols-[14rem_1fr] md:gap-x-12">
+    <div>
+      <p className="text-xs tracking-[0.2em] text-accent uppercase tabular-nums">
+        {entry.period}
+      </p>
+      <h3 className="mt-3 text-lg font-normal text-gray-100">{entry.role}</h3>
+      <p className="mt-1 text-sm text-paper-mute">{entry.org}</p>
+    </div>
+    <div className="mt-4 max-w-[62ch] md:mt-0">
+      {entry.note ? <p className="leading-relaxed text-gray-400">{entry.note}</p> : null}
+      {entry.highlights ? (
+        <ul className="space-y-2">
+          {entry.highlights.map((highlight) => (
+            <li key={highlight} className="flex items-start gap-3 text-gray-400">
+              <span aria-hidden="true" className="mt-2 h-px w-3 shrink-0 bg-accent" />
+              <span className="leading-relaxed">{highlight}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </div>
+  </li>
+);
 
 export const About = () => {
-  const [showAllExperiences, setShowAllExperiences] = useState(false);
-
-  const frontendSkills = [
-    "Angular",
-    "React.js",
-    "TypeScript",
-    "HTML/CSS",
-    "Tailwind",
-  ];
-
-  const backendSkills = [
-    "Java",
-    "Spring Boot",
-    "Python",
-    "Node.js",
-    "REST APIs",
-  ];
-
-  const otherSkills = ["Docker", "Kubernetes", "CI/CD", "Helm", "Git"];
-  const aiSkills = ["n8n", "Zapier", "OpenAI/GPT", "Anthropic Claude", "OpenClaw", "Voice AI", "Prompt Engineering"];
-
-  const mainExperience = [
-    {
-      title: "AI Automation Manager",
-      company: "TOPEOPLE Group GmbH",
-      period: "09/2025 - Present",
-      highlights: [
-        "Automated recruiting & internal workflows with n8n/Zapier; cut cycle time 80%",
-        "Built GPT apps (OpenAI/Azure, LangChain/RAG) for candidate ops; raised automation rate 90%",
-        "Deployed Voice AI agents (Twilio/WebRTC, STT/TTS); improved CSAT",
-        "Shipped ATS/CRM integrations (REST/Webhooks; OAuth2/JWT) incl. Personio/Greenhouse/HubSpot",
-        "Ran CI/CD & Ops (GitLab, Docker/Kubernetes); Prometheus monitoring",
-        "Set LLM guardrails (PII/GDPR, evaluation tests, audit/RBAC) and ROI tracking (time-to-hire, SLA)",
-        "Built standalone apps using JavaScript, HTML & CSS with forms connected to n8n and Zapier",
-      ],
-    },
-    {
-      title: "Full-Stack Developer & AI Integration Lead",
-      company: "Phoenix Parkservice (Freelance)",
-      period: "06/2024 - 09/2025",
-      highlights: [
-        "Architected microservices with Spring Boot/Angular & REST APIs",
-        "Implemented complete DevOps pipeline with Docker & CI/CD",
-        "Increased organic traffic by 35% through AI-based SEO automation",
-      ],
-    },
-    {
-      title: "Full-Stack Developer & Master Thesis",
-      company: "INFOMOTION GmbH",
-      period: "09/2022 - 09/2024",
-      highlights: [
-        "Developed LLM-based Maven plugin increasing test coverage by 33%",
-        "Created AR/3D visualization app for SAP BusinessObjects dashboards",
-        "Managed Kubernetes deployments and Azure cloud integration",
-      ],
-    },
-    {
-      title: "Cryptographie Engineering Intern",
-      company: "Deutsche Bank",
-      period: "05/2021 - 10/2021",
-      highlights: [
-        "Supported digital signature validation service PoC and deployment",
-      ],
-    },
-  ];
-
-  const additionalExperience = [
-    {
-      title: "Java Tutor",
-      company: "Frankfurt University of Applied Sciences",
-      period: "11/2020 - 03/2021",
-      highlights: [
-        "Led tutorials for 30+ students, improved pass rates by 20%",
-      ],
-    },
-    {
-      title: "1st & 2nd Level Support",
-      company: "Mila IT-Services",
-      period: "04/2018 - 11/2018",
-      highlights: [
-        "Resolved 60+ hardware/software issues, maintained high satisfaction",
-      ],
-    },
-  ];
+  const [showEarlier, setShowEarlier] = useState(false);
 
   return (
-    <section
-      id="about"
-      className="min-h-screen flex items-center justify-center py-20 overflow-x-hidden">
-      <RevealOnScroll legacy>
-        <div className="max-w-6xl mx-auto px-4 w-full">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-12 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-            About Me
-          </h2>
+    <div id="about">
+      <Section>
+        <h2 className="label">Experience</h2>
+        <ol className="mt-8">
+          {EXPERIENCE.map((entry) => (
+            <Station key={entry.period} entry={entry} />
+          ))}
+          {showEarlier
+            ? EARLIER_EXPERIENCE.map((entry) => (
+                <Station key={entry.period} entry={entry} />
+              ))
+            : null}
+        </ol>
+        <button
+          type="button"
+          onClick={() => setShowEarlier(!showEarlier)}
+          className="link-arrow mt-2"
+          aria-expanded={showEarlier}>
+          {showEarlier ? "Show less" : "Earlier positions"}
+          <span aria-hidden="true">{showEarlier ? "↑" : "↓"}</span>
+        </button>
+      </Section>
 
-          <div className="rounded-2xl p-8 border border-white/10 backdrop-blur-sm bg-gray-900/50 mb-12">
-            <p className="text-gray-300 text-lg leading-relaxed text-center max-w-3xl mx-auto">
-              AI Automation Manager & Full-Stack Developer specializing in LLM
-              integration, n8n/Zapier workflow automation, and modern web
-              development. Building production-ready AI solutions with OpenAI,
-              Anthropic Claude, and OpenClaw, from intelligent automation
-              pipelines to scalable full-stack applications.
-            </p>
-          </div>
+      <Section className="!pt-0">
+        <h2 className="label">Education</h2>
+        <ol className="mt-8">
+          {EDUCATION.map((entry) => (
+            <Station key={entry.period} entry={entry} />
+          ))}
+        </ol>
+      </Section>
 
-          <RevealOnScroll legacy>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-              <div className="group relative">
-                <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
-                  <h3 className="text-xl font-bold mb-4 text-blue-400">
-                    Frontend
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {frontendSkills.map((tech, key) => (
-                      <span
-                        key={key}
-                        className="bg-blue-500/20 text-blue-200 py-2 px-4 rounded-lg text-sm font-semibold shadow-sm hover:bg-blue-500/30 hover:text-white transition-all duration-300 cursor-default">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative">
-                <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
-                  <h3 className="text-xl font-bold mb-4 text-cyan-400">
-                    Backend
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {backendSkills.map((tech, key) => (
-                      <span
-                        key={key}
-                        className="bg-cyan-500/20 text-cyan-200 py-2 px-4 rounded-lg text-sm font-semibold shadow-sm hover:bg-cyan-500/30 hover:text-white transition-all duration-300 cursor-default">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative">
-                <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
-                  <h3 className="text-xl font-bold mb-4 text-indigo-400">
-                    DevOps & Cloud
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {otherSkills.map((tech, key) => (
-                      <span
-                        key={key}
-                        className="bg-indigo-500/20 text-indigo-200 py-2 px-4 rounded-lg text-sm font-semibold shadow-sm hover:bg-indigo-500/30 hover:text-white transition-all duration-300 cursor-default">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="group relative">
-                <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
-                  <h3 className="text-xl font-bold mb-4 text-purple-400">
-                    AI & Automation
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {aiSkills.map((tech, key) => (
-                      <span
-                        key={key}
-                        className="bg-purple-500/20 text-purple-200 py-2 px-4 rounded-lg text-sm font-semibold shadow-sm hover:bg-purple-500/30 hover:text-white transition-all duration-300 cursor-default">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+      <Section className="!pt-0">
+        <h2 className="label">What I work with</h2>
+        <dl className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
+          {SKILLS.map((skill) => (
+            <div key={skill.title} className="border-t border-hairline pt-5">
+              <dt className="text-lg font-normal text-gray-100">{skill.title}</dt>
+              <dd className="mt-2 leading-relaxed text-gray-400">{skill.items}</dd>
             </div>
-          </RevealOnScroll>
+          ))}
+        </dl>
+      </Section>
 
-          <RevealOnScroll legacy>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="space-y-8">
-                <h3 className="text-2xl font-bold mb-6 text-center lg:text-left">
-                  Education
-                </h3>
-                <div className="space-y-4">
-                  <div className="p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
-                    <h4 className="font-bold text-blue-400 mb-2">
-                      M.Sc in Business Informatics
-                    </h4>
-                    <p className="text-gray-300 mb-1">
-                      Frankfurt University of Applied Sciences
-                    </p>
-                    <p className="text-sm text-gray-400">
-                      2022 - 2024 • GPA: 1.4 (German scale)
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
-                    <h4 className="font-bold text-blue-400 mb-2">
-                      B.Sc in International Business Information Systems
-                    </h4>
-                    <p className="text-gray-300 mb-1">
-                      Frankfurt University of Applied Sciences
-                    </p>
-                    <p className="text-sm text-gray-400">
-                      2018 - 2022 • GPA: 1.6 (German scale)
-                    </p>
-                  </div>
-                  <div className="p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
-                    <h4 className="font-bold text-blue-400 mb-2">
-                      Abitur (General University Entrance Qualification)
-                    </h4>
-                    <p className="text-gray-300 mb-1">
-                      Ernst-Reuter-Schule 1, Frankfurt
-                    </p>
-                    <p className="text-sm text-gray-400">
-                      Dec 2012 - Jun 2017 • Grade: 1.9 (German scale)
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-8">
-                <h3 className="text-2xl font-bold mb-6 text-center lg:text-left">
-                  Work Experience
-                </h3>
-                <div className="space-y-4">
-                  {mainExperience.map((job, index) => (
-                    <div
-                      key={index}
-                      className="group p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
-                      <div className="flex justify-between items-start mb-3">
-                        <div>
-                          <h4 className="font-bold text-cyan-400 mb-1">
-                            {job.title}
-                          </h4>
-                          <p className="text-gray-300">{job.company}</p>
-                        </div>
-                        <span className="text-sm text-gray-400 whitespace-nowrap ml-4">
-                          {job.period}
-                        </span>
-                      </div>
-                      <ul className="space-y-1">
-                        {job.highlights.map((highlight, idx) => (
-                          <li
-                            key={idx}
-                            className="text-sm text-gray-400 flex items-start">
-                            <span className="text-cyan-400 mr-2">•</span>
-                            <span>{highlight}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-
-                  <div
-                    className={`grid grid-cols-1 gap-4 transition-all duration-700 ease-in-out ${
-                      showAllExperiences
-                        ? "max-h-[1000px] opacity-100 mt-4"
-                        : "max-h-0 opacity-0 overflow-hidden"
-                    }`}>
-                    {additionalExperience.map((job, index) => (
-                      <div
-                        key={index}
-                        className={`group p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 ${
-                          showAllExperiences
-                            ? `translate-y-0 opacity-100 delay-${
-                                (index + 1) * 100
-                              }`
-                            : "translate-y-4 opacity-0"
-                        }`}
-                        style={{
-                          transitionDelay: showAllExperiences
-                            ? `${(index + 1) * 100}ms`
-                            : "0ms",
-                        }}>
-                        <div className="flex justify-between items-start mb-3">
-                          <div>
-                            <h4 className="font-bold text-cyan-400 mb-1">
-                              {job.title}
-                            </h4>
-                            <p className="text-gray-300">{job.company}</p>
-                          </div>
-                          <span className="text-sm text-gray-400 whitespace-nowrap ml-4">
-                            {job.period}
-                          </span>
-                        </div>
-                        <ul className="space-y-1">
-                          {job.highlights.map((highlight, idx) => (
-                            <li
-                              key={idx}
-                              className="text-sm text-gray-400 flex items-start">
-                              <span className="text-cyan-400 mr-2">•</span>
-                              <span>{highlight}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="text-center pt-4">
-                    <button
-                      onClick={() => setShowAllExperiences(!showAllExperiences)}
-                      className="text-sm text-gray-400 hover:text-blue-400 transition-colors duration-300 flex items-center justify-center mx-auto gap-2">
-                      {showAllExperiences
-                        ? "Show less"
-                        : "View all experiences"}
-                      <span
-                        className={`transform transition-transform duration-300 ${
-                          showAllExperiences ? "rotate-180" : ""
-                        }`}>
-                        ↓
-                      </span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </RevealOnScroll>
-
-          <RevealOnScroll legacy>
-            <div className="mt-16">
-              <h3 className="text-2xl font-bold mb-6 text-center">
-                Certificates & Credentials
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {[
-                  {
-                    title: "Inspect Rich Documents with Gemini Multimodality and Multimodal RAG",
-                    issuer: "Google",
-                    date: "Jan 2026",
-                    iconBg: "bg-blue-500/20 border-blue-500/30",
-                    iconColor: "text-blue-400",
-                  },
-                  {
-                    title: "React.js",
-                    issuer: "Great Learning",
-                    date: "Jul 2025",
-                    iconBg: "bg-cyan-500/20 border-cyan-500/30",
-                    iconColor: "text-cyan-400",
-                  },
-                  {
-                    title: "SAP BusinessObjects Web Intelligence Grundlagen",
-                    issuer: "INFOMOTION GmbH",
-                    date: "Feb 2022",
-                    iconBg: "bg-indigo-500/20 border-indigo-500/30",
-                    iconColor: "text-indigo-400",
-                  },
-                  {
-                    title: "Advanced Proficiency in KNIME Analytics Platform",
-                    issuer: "KNIME",
-                    date: "Apr 2023",
-                    iconBg: "bg-purple-500/20 border-purple-500/30",
-                    iconColor: "text-purple-400",
-                  },
-                  {
-                    title: "Basic Proficiency in KNIME Analytics Platform",
-                    issuer: "KNIME",
-                    date: "Apr 2023",
-                    iconBg: "bg-purple-500/20 border-purple-500/30",
-                    iconColor: "text-purple-400",
-                  },
-                ].map((cert, index) => (
-                  <div
-                    key={index}
-                    className="p-5 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 flex items-start gap-4">
-                    <div className={`mt-0.5 w-8 h-8 shrink-0 rounded-lg flex items-center justify-center border ${cert.iconBg}`}>
-                      <svg className={`w-4 h-4 ${cert.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                      </svg>
-                    </div>
-                    <div className="min-w-0">
-                      <p className="text-white font-semibold text-sm leading-snug mb-1">
-                        {cert.title}
-                      </p>
-                      <p className="text-gray-400 text-xs">
-                        {cert.issuer} • {cert.date}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </RevealOnScroll>
-        </div>
-      </RevealOnScroll>
-    </section>
+      <Section className="!pt-0">
+        <h2 className="label">Certificates</h2>
+        <ul className="mt-8">
+          {CERTIFICATES.map((cert) => (
+            <li
+              key={cert.title}
+              className="border-t border-hairline py-5 md:grid md:grid-cols-[1fr_14rem] md:gap-x-12">
+              <p className="leading-snug text-gray-100">{cert.title}</p>
+              <p className="mt-1 text-sm text-paper-mute md:mt-0 md:text-right">
+                {cert.issuer} · {cert.date}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </Section>
+    </div>
   );
 };

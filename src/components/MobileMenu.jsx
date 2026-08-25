@@ -32,17 +32,21 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
       />
 
       <div
-        className={`fixed top-0 right-0 z-50 flex h-full w-72 max-w-[85vw] flex-col border-l border-white/10 bg-[#0a0a0a] transition-transform duration-300 ease-out ${
+        className={`fixed top-0 right-0 z-50 flex h-full w-72 max-w-[85vw] flex-col border-l border-hairline bg-ink transition-transform duration-300 ease-out ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}>
-        <div className="flex h-16 shrink-0 items-center justify-between border-b border-white/10 px-5">
-          <Link to="/" onClick={close} className="flex items-center">
+        <div className="flex h-16 shrink-0 items-center justify-between border-b border-hairline px-5">
+          <Link
+            to="/"
+            onClick={close}
+            className="flex items-center"
+            aria-label={chrome.backToHome}>
             <img src={mnbLogo} alt="" width="500" height="500" className="h-8 w-auto" />
           </Link>
           <button
             type="button"
             onClick={close}
-            className="flex h-11 w-11 items-center justify-center text-gray-500 transition-colors hover:text-white"
+            className="flex h-11 w-11 items-center justify-center text-paper-mute transition-colors hover:text-white"
             aria-label={chrome.closeMenu}>
             <svg
               className="h-5 w-5"
@@ -74,7 +78,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
                   }`}
                   style={{ transitionDelay: menuOpen ? `${80 + index * 45}ms` : "0ms" }}>
                   {item.label}
-                  <span aria-hidden="true" className="text-gray-600">
+                  <span aria-hidden="true" className="text-paper-mute">
                     ↗
                   </span>
                 </Link>
@@ -83,8 +87,8 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
           </ul>
         </nav>
 
-        <div className="flex shrink-0 items-center justify-between border-t border-white/10 px-5 py-3">
-          <p className="text-xs text-gray-600">
+        <div className="flex shrink-0 items-center justify-between border-t border-hairline px-5 py-3">
+          <p className="text-xs text-paper-mute">
             © {new Date().getFullYear()} {PERSON.name}
           </p>
           {/* A row rather than a dropdown: there is room inside the drawer, and
