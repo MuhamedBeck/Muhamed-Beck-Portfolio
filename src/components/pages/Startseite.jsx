@@ -4,6 +4,8 @@ import { Navbar } from "../Navbar";
 import { MobileMenu } from "../MobileMenu";
 import Footer from "../Footer";
 import { TechMarquee } from "../TechMarquee";
+import { LoadingScreen } from "../LoadingScreen";
+import { useSplashGate } from "../useSplashGate";
 import { Home } from "../sections/Home";
 import { Section, SectionHeader } from "../Section";
 import { useDict } from "../../i18n";
@@ -25,14 +27,18 @@ export const Startseite = () => {
   useRouteMeta();
   const t = useDict(startseite);
   const [menuOpen, setMenuOpen] = useState(false);
+  // The splash used to run only on /en, because the gate lived inside App.jsx.
+  // This is the page most visitors land on, so it belongs here too.
+  const { showSplash, isLoaded, onSplashDone } = useSplashGate();
 
   return (
     <div className="min-h-[100dvh] text-gray-100 bg-ink">
+      {showSplash && !isLoaded && <LoadingScreen onComplete={onSplashDone} />}
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <main>
-        <Home />
+        <Home isLoaded={isLoaded} />
         <TechMarquee />
 
         <Section id="leistungen">

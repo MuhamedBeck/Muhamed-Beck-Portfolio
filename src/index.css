@@ -423,9 +423,30 @@ dd {
    reported as invisible to IntersectionObserver and never un-hides. */
 .reveal-line {
   overflow: hidden;
-  /* Small inset so ascenders and descenders are not clipped by the mask. */
+  /* Small inset so ascenders and descenders are not clipped by the mask, with a
+     negative margin cancelling it so the element's outer box is unchanged.
+
+     Note the trap this sets: the shorthand writes margin-top and margin-bottom,
+     this rule is unlayered, and unlayered rules beat anything in @layer, so it
+     silently overrides Tailwind margin utilities on the same element. Every
+     heading carrying `reveal-line mt-6` was getting -0.08em, not 24px. Put
+     spacing on a neighbour or on a higher-specificity selector rather than an
+     mt-* utility here. */
   padding-block: 0.08em;
   margin-block: -0.08em;
+}
+
+/* Gap between a blue label and the headline it introduces.
+
+   Two classes, so this outranks the single-class .reveal-line above and the
+   margin actually lands. The 0.08em term cancels that rule's negative margin,
+   which scales with the heading's font size, so the gap the eye sees stays the
+   same whether the heading is the 72px hero or a 52px section head. Measured
+   before: 12px in the hero and 17px on a section. */
+.label + .headline,
+.label + .headline-hero,
+.label + .headline-sub {
+  margin-top: calc(1.75rem + 0.08em);
 }
 
 .is-ready .reveal-line > span {
