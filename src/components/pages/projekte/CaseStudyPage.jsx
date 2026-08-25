@@ -19,15 +19,20 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
     <Section className="!pt-0">
       <dl className="grid gap-x-10 gap-y-8 border-t border-hairline pt-8 sm:grid-cols-3">
         {data.stats.map((stat, index) => (
+          /* A <div> inside a <dl> may hold only <dt> and <dd>, and the terms
+             have to come before their descriptions. This had the note in a <p>
+             and the value in a <dd> ahead of its own <dt>, so the list was
+             invalid twice over on all six case studies. Flex order keeps the
+             figure on top where it belongs visually. */
           <div
             key={stat.label}
-            className="stagger"
+            className="stagger flex flex-col"
             style={{ "--fade-delay": `${index * 80}ms` }}>
-            <dd className="text-5xl font-light tabular-nums text-gray-100">
+            <dt className="order-2 mt-4 text-sm text-gray-300">{stat.label}</dt>
+            <dd className="order-1 text-5xl font-light tabular-nums text-gray-100">
               {stat.value}
             </dd>
-            <dt className="mt-4 text-sm text-gray-300">{stat.label}</dt>
-            <p className="mt-1 text-sm text-paper-mute">{stat.note}</p>
+            <dd className="order-3 mt-1 text-sm text-paper-mute">{stat.note}</dd>
           </div>
         ))}
       </dl>

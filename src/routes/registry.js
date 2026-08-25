@@ -174,6 +174,42 @@ export const ROUTES = [
     priority: "0.9",
   },
   {
+    id: "projekt.llm",
+    path: "/projekte/llm-unit-test-automatisierung",
+    locale: "de",
+    // Same group as the English case study, so the hreflang pair is derived
+    // rather than declared. Both were English-only until now, which left the
+    // hardest-sourced figures on this site off the pages that compete for
+    // German search volume.
+    group: "project.llm",
+    load: () => import("../components/pages/projekte/CaseStudyRoute.jsx"),
+    props: { path: "/projekte/llm-unit-test-automatisierung" },
+    title: "Unit-Tests mit LLM erzeugen: Masterarbeit | Muhamed Beck",
+    description:
+      "Maven-Plugin, das Unit-Tests für Spring Boot mit einem LLM erzeugt: 33 % mehr Testabdeckung mit JaCoCo gemessen, Kosten je Testsuite von 566 € auf 2,13 €.",
+    h1: "Unit-Tests automatisch erzeugen mit einem LLM",
+    ogType: "article",
+    lastmod: "2026-08-25",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
+    id: "projekt.ar",
+    path: "/projekte/ar-datenvisualisierung",
+    locale: "de",
+    group: "project.ar",
+    load: () => import("../components/pages/projekte/CaseStudyRoute.jsx"),
+    props: { path: "/projekte/ar-datenvisualisierung" },
+    title: "SAP-Berichte in Augmented Reality: Bachelorarbeit",
+    description:
+      "AR-Visualisierung von SAP-BusinessObjects-Berichten im Browser, mit einer Befragung von 81 Personen in deutschen Unternehmen zu den Hürden der Einführung.",
+    h1: "SAP-BusinessObjects-Berichte in Augmented Reality",
+    ogType: "article",
+    lastmod: "2026-08-25",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
     id: "project.ar",
     path: "/en/projects/ar-data-visualization",
     locale: "en",
