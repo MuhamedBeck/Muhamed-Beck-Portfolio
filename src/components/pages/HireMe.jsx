@@ -43,7 +43,11 @@ const SERVICES = [
 const STEPS = [
   {
     title: "You send the request",
-    text: "One or two sentences about the process is enough. The form below is the fastest route.",
+    // Without EmailJS credentials this page shows contact details instead of a
+    // form, so a fixed "the form below" would point at nothing.
+    text: EMAILJS_IS_CONFIGURED
+      ? "One or two sentences about the process is enough. The form below is the fastest route."
+      : "One or two sentences about the process is enough. An email is the fastest route.",
   },
   {
     title: "I reply within 24 hours",

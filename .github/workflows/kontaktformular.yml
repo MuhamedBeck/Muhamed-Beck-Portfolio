@@ -1,0 +1,72 @@
+# Watches the live site for the failure that looks like success.
+#
+# Both contact forms disappear when the EmailJS variables are missing at build
+# time. The resulting page is a valid HTTP 200 with a polite line offering an
+# email address instead, so nothing about it looks broken: not the build, not
+# the deploy, not the browser. It has shipped that way twice, and both times it
+# was found by accident.
+#
+# This job fetches the live pages and fails when the forms are gone. GitHub
+# emails a failed workflow run to whoever watches the repository, which is the
+# notification. Check it is switched on under
+#   github.com/settings/notifications -> Actions -> Email, "Only notify for failed workflows"
+#
+# No npm install: scripts/check-live.js uses only Node builtins and reads the
+# route registry directly, so the probe cannot be broken by a dependency.
+#
+# GitHub disables scheduled workflows in a repository with no activity for 60
+# days and mails a warning first. Pushing anything re-enables it.
+name: Kontaktformular-Wache
+
+on:
+  schedule:
+    # Every two hours. Only failures notify, so checking often costs nothing
+    # but shortens how long a broken form can sit there unnoticed.
+    - cron: "17 */2 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/check-live.js"
+      - ".github/workflows/kontaktformular.yml"
+
+jobs:
+  probe:
+    name: Sind die Formulare da?
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Live-Prüfung
+        id: probe
+        run: node scripts/check-live.js 2>&1 | tee probe.log
+
+      - name: Befund in die Zusammenfassung schreiben
+        if: always()
+        run: |
+          {
+            echo "### Live-Prüfung muhamedbeck.com"
+            echo ""
+            if [ "${{ steps.probe.outcome }}" = "success" ]; then
+              echo "Alles in Ordnung."
+            else
+              echo "**Fehlgeschlagen.** Wahrscheinlichste Ursache: der letzte Deploy"
+              echo "wurde ohne ausgefüllte \`.env\` gebaut, dann fehlen beide"
+              echo "Kontaktformulare und jede Anfrage darüber geht verloren."
+              echo ""
+              echo "Behebung:"
+              echo ""
+              echo '```'
+              echo "npm run deploy"
+              echo '```'
+            fi
+            echo ""
+            echo '```'
+            cat probe.log 2>/dev/null || echo "(keine Ausgabe)"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

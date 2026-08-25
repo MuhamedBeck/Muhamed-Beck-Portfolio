@@ -61,6 +61,23 @@ In `wrangler.jsonc` stehen `workers_dev: false` und `preview_urls: false`
 erreichbar und Google würde sie als Duplikat indexieren. Diese beiden Schalter
 bleiben aus.
 
+Deployt wird über die Kette, nicht über `wrangler deploy` allein:
+
+```bash
+npm run deploy
+  1. npm run build          bricht ohne EmailJS-Zugangsdaten ab
+  2. wrangler deploy
+  3. node scripts/check-live.js   prüft die ausgelieferte Seite
+```
+
+Der Grund für Schritt 1 und 3: Ohne die drei `VITE_`-Werte ersetzt der Build
+beide Kontaktformulare durch einen Hinweis mit E-Mail-Adresse und endet trotzdem
+mit Code 0. Die Seite ist dann HTTP 200, sieht unauffällig aus und verliert jede
+Anfrage. Das ist zweimal so live gegangen. `scripts/check-env.js` verhindert den
+Build, `scripts/check-live.js` prüft danach die echte Auslieferung, und
+`.github/workflows/kontaktformular.yml` wiederholt diese Prüfung alle zwei
+Stunden — ein Fehlschlag dort schickt GitHub per Mail.
+
 Nach dem Deploy neuer oder geänderter Seiten:
 
 ```bash
@@ -90,5 +107,6 @@ keine Umschreibungen wie `ae`/`oe`/`ue`.
 
 - [ ] `npm run lint` ohne neue Fehler
 - [ ] `npm run build` grün (die volle Kette, siehe §2)
+- [ ] Nach dem Deploy `npm run check:live` grün — beide Formulare müssen rendern
 - [ ] Bei neuen Routen: `dist/<route>/index.html` enthält den richtigen Titel
 - [ ] Keine Secrets im Diff (EmailJS-Keys gehören in Umgebungsvariablen)

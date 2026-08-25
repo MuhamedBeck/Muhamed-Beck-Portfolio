@@ -5,12 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/check-i18n.js && node generate-sitemap.js && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender-meta.js",
+    "build": "node scripts/check-env.js && node scripts/check-i18n.js && node generate-sitemap.js && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender-meta.js",
+    "deploy": "npm run build && wrangler deploy && node scripts/check-live.js",
     "lint": "eslint .",
     "preview": "vite preview",
     "sitemap": "node generate-sitemap.js",
     "check:i18n": "node scripts/check-i18n.js",
-    "indexnow": "node scripts/indexnow.js"
+    "indexnow": "node scripts/indexnow.js",
+    "check:env": "node scripts/check-env.js",
+    "check:live": "node scripts/check-live.js"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
