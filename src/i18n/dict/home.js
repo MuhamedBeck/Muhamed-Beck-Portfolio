@@ -22,6 +22,8 @@ const de = {
     { value: "90 %", label: "der Candidate Operations automatisiert" },
     { value: "24 h", label: "bis zur Antwort auf Ihre Anfrage" },
   ],
+  statsNote:
+    "Alle Werte stammen aus produktiv laufenden Systemen, nicht aus Demos. TOPEOPLE Group GmbH ist mein Arbeitgeber, Phoenix Parkservice war ein Freelance-Mandat.",
   socials: {
     linkedin: "Muhamed Nur Beck auf LinkedIn",
     github: "Muhamed Nur Beck auf GitHub",
@@ -42,6 +44,8 @@ const en = {
     { value: "90 %", label: "of candidate operations automated" },
     { value: "24 h", label: "to a reply on your enquiry" },
   ],
+  statsNote:
+    "All figures come from systems running in production, not from demos. TOPEOPLE Group GmbH is my employer; Phoenix Parkservice was a freelance engagement.",
   socials: {
     linkedin: "Muhamed Nur Beck on LinkedIn",
     github: "Muhamed Nur Beck on GitHub",

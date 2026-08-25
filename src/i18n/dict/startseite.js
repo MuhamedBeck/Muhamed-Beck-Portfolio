@@ -17,12 +17,6 @@ const de = {
       "Von einzelnen Workflows bis zur durchgängigen Prozesskette. Jede Leistung ist eine eigene Seite mit Ablauf, Beispielen und Preisrahmen.",
     all: "Alle Leistungen ansehen",
   },
-  proof: {
-    label: "Aus der Praxis",
-    headline: "Zahlen aus echten Projekten",
-    intro:
-      "Alle Werte stammen aus produktiv laufenden Systemen, nicht aus Demos. TOPEOPLE Group GmbH ist mein Arbeitgeber, Phoenix Parkservice war ein Freelance-Mandat.",
-  },
   cases: {
     label: "Case Studies",
     headline: "Zwei Projekte im Detail",
@@ -98,12 +92,6 @@ const en = {
     intro:
       "From a single workflow to an end-to-end process chain. Each service has its own page with the process, examples and a price range.",
     all: "See all services",
-  },
-  proof: {
-    label: "In production",
-    headline: "Numbers from real projects",
-    intro:
-      "Every figure comes from a system running in production, not from a demo. TOPEOPLE Group GmbH is my employer; Phoenix Parkservice was a freelance engagement.",
   },
   cases: {
     label: "Case studies",

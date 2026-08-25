@@ -8,6 +8,10 @@ export const PREIS_TEXT =
 export const LEISTUNGEN = [
   {
     path: "/leistungen/n8n-automatisierung",
+    weiterlesen: [
+      { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+    ],
     // Every stage below restates something the leistungen array on this same
     // entry already promises, so the diagram and the copy cannot drift apart.
     flow: {
@@ -115,6 +119,10 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-automatisierung-frankfurt",
+    weiterlesen: [
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+      { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
+    ],
     flow: {
       caption: "So läuft eine KI-Automatisierung",
       stages: [
@@ -212,6 +220,13 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/hubspot-integration",
+    weiterlesen: [
+      {
+        path: "/ratgeber/recruiting-mit-n8n-automatisieren",
+        label: "Recruiting mit n8n automatisieren",
+      },
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+    ],
     flow: {
       caption: "So läuft die Synchronisation",
       stages: [
@@ -305,6 +320,13 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/recruiting-automatisierung",
+    weiterlesen: [
+      {
+        path: "/ratgeber/recruiting-mit-n8n-automatisieren",
+        label: "Recruiting mit n8n automatisieren",
+      },
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+    ],
     flow: {
       caption: "So läuft eine Bewerbung durch",
       stages: [
@@ -398,6 +420,13 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/voice-ai-agenten",
+    weiterlesen: [
+      {
+        path: "/ratgeber/recruiting-mit-n8n-automatisieren",
+        label: "Recruiting mit n8n automatisieren",
+      },
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+    ],
     flow: {
       caption: "So läuft ein Anruf",
       stages: [
@@ -494,6 +523,10 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-agenten-entwicklung",
+    weiterlesen: [
+      { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+    ],
     flow: {
       caption: "So arbeitet ein Agent",
       stages: [

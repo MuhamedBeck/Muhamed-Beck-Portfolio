@@ -102,6 +102,10 @@ export const Startseite = () => {
               </li>
             ))}
           </ul>
+          <Link to="/projekte" className="link-arrow mt-10">
+            {t.cases.all}
+            <span aria-hidden="true">↗</span>
+          </Link>
         </Section>
 
         <Section id="ablauf">

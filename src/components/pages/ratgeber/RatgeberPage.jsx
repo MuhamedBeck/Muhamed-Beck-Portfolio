@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
 import { STAND } from "../../../content/ratgeber.de";
+import { PERSON } from "../../../content/site";
 import { RateScale } from "./RateScale";
 
 /**
@@ -23,8 +24,19 @@ export const RatgeberPage = ({ data }) => (
         {/* A visible date, matching datePublished/dateModified in the schema.
             Freshness is a real ranking and citation input, so it is stated
             rather than implied, and never faked. */}
-        <p className="border-t border-hairline pt-5 text-xs tracking-[0.2em] text-paper-mute uppercase">
-          Stand: {STAND}
+        {/* Byline. /ueber-mich carries the CV that every figure in these
+            articles traces back to, and had no inbound link from any body text
+            at all -- only the navbar. An article that cites its own numbers
+            should say whose numbers they are and let the reader check. */}
+        <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-hairline pt-5 text-xs tracking-[0.2em] text-paper-mute uppercase">
+          <span>Stand: {STAND}</span>
+          <span aria-hidden="true">·</span>
+          <span>
+            Von{" "}
+            <Link to="/ueber-mich" className="text-accent underline-offset-4 hover:underline">
+              {PERSON.name}
+            </Link>
+          </span>
         </p>
 
         {data.sections.map((section) => (

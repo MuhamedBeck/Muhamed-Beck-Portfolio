@@ -148,7 +148,15 @@ export const Home = ({ isLoaded = true }) => {
           ))}
         </dl>
 
-        <p className="mt-10 text-xs text-paper-mute">{chrome.replyPromise}</p>
+        {/* Provenance for the three figures above. It was written months ago
+            and sat unrendered in the dictionary; a number without its source is
+            the one thing a reader cannot check, and naming employer versus
+            freelance client is exactly what makes these checkable. */}
+        <p className="mt-8 max-w-[72ch] text-sm leading-relaxed text-paper-mute">
+          {t.statsNote}
+        </p>
+
+        <p className="mt-6 text-xs text-paper-mute">{chrome.replyPromise}</p>
       </div>
     </section>
   );

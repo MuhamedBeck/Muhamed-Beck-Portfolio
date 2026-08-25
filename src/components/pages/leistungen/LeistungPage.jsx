@@ -129,6 +129,27 @@ export const LeistungPage = ({ data }) => (
       </dl>
     </Section>
 
+    {/* The guides linked out to the service pages; nothing linked back. Six
+        money pages pointing at zero articles left the whole Ratgeber cluster
+        without internal authority from the strongest pages on the site. */}
+    {data.weiterlesen ? (
+      <Section className="!pt-0">
+        <div className="border-t border-hairline pt-8">
+          <h2 className="label">Weiterlesen</h2>
+          <ul className="mt-5 flex flex-col gap-3">
+            {data.weiterlesen.map((item) => (
+              <li key={item.path}>
+                <Link to={item.path} className="link-arrow">
+                  {item.label}
+                  <span aria-hidden="true">↗</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+    ) : null}
+
     <Section className="!pt-0">
       <div className="max-w-2xl border-t border-hairline pt-12">
         <h2 className="headline-sub">Passt das zu Ihrem Prozess?</h2>
