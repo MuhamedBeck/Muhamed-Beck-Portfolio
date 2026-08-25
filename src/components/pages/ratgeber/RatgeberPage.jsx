@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
 import { STAND } from "../../../content/ratgeber.de";
+import { RateScale } from "./RateScale";
 
 /**
  * Article template.
@@ -38,6 +39,12 @@ export const RatgeberPage = ({ data }) => (
         ))}
       </div>
     </Section>
+
+    {data.scale ? (
+      <Section className="!pt-0">
+        <RateScale data={data.scale} />
+      </Section>
+    ) : null}
 
     <Section className="!pt-0">
       {/* Optional comparison table. A comparison article without one makes the

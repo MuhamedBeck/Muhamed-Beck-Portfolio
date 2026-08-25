@@ -24,6 +24,14 @@ export const RATGEBER = [
     // The lede is written to be quotable on its own, with no unresolved
     // pronouns and no dependency on a preceding paragraph.
     lede: "Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer insgesamt liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde. Mein eigener Satz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang.",
+    // Same four figures the prose states, so the scale and the text cannot
+    // disagree. Sources are named in the copy below.
+    scale: {
+      caption: "Stundensätze im Vergleich (Stand: August 2026)",
+      market: { from: 75, to: 147, label: "n8n-Profile bei freelancermap" },
+      median: { value: 95, label: "Median IT-Freelancer, Freelancer-Kompass 2026" },
+      own: { from: 90, to: 135, label: "mein Satz, nach Absprache und Projektumfang" },
+    },
     sections: [
       {
         h2: "Was kostet ein n8n Freelancer pro Stunde?",
