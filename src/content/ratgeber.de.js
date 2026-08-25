@@ -282,6 +282,7 @@ export const RATGEBER = [
     related: [
       { path: "/leistungen/recruiting-automatisierung", label: "Recruiting-Automatisierung mit n8n und ATS-Anbindung" },
       { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
+      { path: "/leistungen/hubspot-integration", label: "HubSpot- und CRM-Anbindung" },
       { path: "/projekte/recruiting-automatisierung", label: "Case Study: Recruiting-Automatisierung" },
     ],
   },

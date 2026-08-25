@@ -422,6 +422,7 @@ export const LEISTUNGEN = [
   {
     path: "/leistungen/voice-ai-agenten",
     weiterlesen: [
+      { path: "/ratgeber/ki-recruiting-ai-act", label: "Was der AI Act für KI-Telefonie verlangt" },
       {
         path: "/ratgeber/recruiting-mit-n8n-automatisieren",
         label: "Recruiting mit n8n automatisieren",
