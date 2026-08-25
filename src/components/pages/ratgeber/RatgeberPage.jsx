@@ -39,6 +39,55 @@ export const RatgeberPage = ({ data }) => (
       </div>
     </Section>
 
+    <Section className="!pt-0">
+      {/* Optional comparison table. A comparison article without one makes the
+          reader rebuild the table in their head from the prose. The wrapper
+          scrolls on its own so a wide table never makes the page scroll
+          sideways. */}
+      {data.table ? (
+        <figure className="mt-14">
+          <div className="-mx-4 overflow-x-auto px-4">
+            <table className="w-full min-w-[42rem] border-collapse text-left">
+              <caption className="label mb-6 text-left">{data.table.caption}</caption>
+              <thead>
+                <tr>
+                  <th scope="col" className="w-[13rem] pb-4 text-sm font-normal text-paper-mute">
+                    <span className="sr-only">Kriterium</span>
+                  </th>
+                  {data.table.columns.map((column) => (
+                    <th
+                      key={column}
+                      scope="col"
+                      className="pb-4 pl-6 text-lg font-normal text-gray-100">
+                      {column}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {data.table.rows.map((row) => (
+                  <tr key={row.label} className="border-t border-hairline align-top">
+                    <th
+                      scope="row"
+                      className="py-5 pr-6 text-sm font-normal leading-snug text-gray-300">
+                      {row.label}
+                    </th>
+                    {row.cells.map((cell, index) => (
+                      <td
+                        key={data.table.columns[index]}
+                        className="py-5 pl-6 leading-relaxed text-gray-400">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </figure>
+      ) : null}
+    </Section>
+
     {/* Visible FAQ and the FAQPage JSON-LD read from the same array. */}
     <Section className="!pt-0">
       <h2 className="label">Häufige Fragen</h2>
