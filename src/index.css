@@ -192,6 +192,15 @@ dd {
     text-transform: uppercase;
     font-weight: 400;
     color: var(--color-accent);
+    /* A floor for the gap under a label, not a fixed value. The class carried
+       margin: 0 and left the spacing to whatever utility sat on the next
+       element, which had drifted to four different answers for the same
+       relationship: 16px, 20px, 24px and 32px. At 16px a 12px uppercase line
+       with 0.25em tracking sits on top of the text it introduces.
+
+       Adjacent vertical margins collapse, so this only lifts the tight cases
+       to 24px and leaves anything already roomier exactly as it was. */
+    margin-bottom: 1.5rem;
   }
 
   .headline {
