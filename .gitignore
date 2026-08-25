@@ -38,3 +38,6 @@ dist-ssr/
 # Local verification screenshots and wrangler dev scratch
 /*.png
 .wrangler/
+
+# Local type specimen, not part of the site
+/schriftprobe.html
