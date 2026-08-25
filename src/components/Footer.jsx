@@ -44,7 +44,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="w-full border-t border-white/10 bg-[#0a0a0a] pt-16"
+      className="w-full border-t border-hairline bg-ink pt-16"
       style={{ paddingBottom: "max(2rem, env(safe-area-inset-bottom, 20px))" }}>
       <div className="mx-auto max-w-6xl px-4">
         <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4">

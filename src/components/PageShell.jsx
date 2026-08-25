@@ -17,7 +17,7 @@ export const PageShell = ({ label, headline, intro, children }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-[100dvh] text-gray-100" style={{ background: "#0a0a0a" }}>
+    <div className="min-h-[100dvh] text-gray-100 bg-ink">
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 

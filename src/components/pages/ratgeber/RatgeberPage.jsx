@@ -22,7 +22,7 @@ export const RatgeberPage = ({ data }) => (
         {/* A visible date, matching datePublished/dateModified in the schema.
             Freshness is a real ranking and citation input, so it is stated
             rather than implied, and never faked. */}
-        <p className="border-t border-white/10 pt-5 text-xs tracking-[0.2em] text-paper-mute uppercase">
+        <p className="border-t border-hairline pt-5 text-xs tracking-[0.2em] text-paper-mute uppercase">
           Stand: {STAND}
         </p>
 
@@ -46,7 +46,7 @@ export const RatgeberPage = ({ data }) => (
         {data.faq.map((item) => (
           <div
             key={item.q}
-            className="border-t border-white/10 py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
+            className="border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
             <dt className="text-lg leading-snug font-normal text-gray-100">{item.q}</dt>
             <dd className="mt-3 leading-relaxed text-gray-400 md:mt-0">{item.a}</dd>
           </div>
@@ -55,7 +55,7 @@ export const RatgeberPage = ({ data }) => (
     </Section>
 
     <Section className="!pt-0">
-      <div className="border-t border-white/10 pt-8">
+      <div className="border-t border-hairline pt-8">
         <h2 className="label">Weiterlesen</h2>
         <ul className="mt-5 flex flex-col gap-3">
           {data.related.map((item) => (
@@ -69,7 +69,7 @@ export const RatgeberPage = ({ data }) => (
         </ul>
       </div>
 
-      <div className="mt-16 max-w-2xl border-t border-white/10 pt-12">
+      <div className="mt-16 max-w-2xl border-t border-hairline pt-12">
         <h2 className="headline-sub">Konkrete Frage zu Ihrem Prozess?</h2>
         <p className="intro mt-5">
           Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden

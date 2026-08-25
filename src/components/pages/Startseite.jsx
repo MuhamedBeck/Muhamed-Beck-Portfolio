@@ -27,7 +27,7 @@ export const Startseite = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-[100dvh] text-gray-100" style={{ background: "#0a0a0a" }}>
+    <div className="min-h-[100dvh] text-gray-100 bg-ink">
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
@@ -45,7 +45,7 @@ export const Startseite = () => {
             {LEISTUNGEN.map((leistung, index) => (
               <li
                 key={leistung.path}
-                className="stagger border-t border-white/10 pt-6"
+                className="stagger border-t border-hairline pt-6"
                 style={{ "--fade-delay": `${(index % 2) * 80}ms` }}>
                 <Link to={leistung.path} className="group block">
                   <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
@@ -75,7 +75,7 @@ export const Startseite = () => {
             {PROJEKTE.map((projekt, index) => (
               <li
                 key={projekt.path}
-                className="stagger border-t border-white/10 pt-6"
+                className="stagger border-t border-hairline pt-6"
                 style={{ "--fade-delay": `${index * 80}ms` }}>
                 <Link to={projekt.path} className="group block">
                   <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
@@ -104,9 +104,9 @@ export const Startseite = () => {
             {t.approach.steps.map((step, index) => (
               <li
                 key={step.title}
-                className="stagger border-t border-white/10 pt-6"
+                className="stagger border-t border-hairline pt-6"
                 style={{ "--fade-delay": `${index * 70}ms` }}>
-                <span className="text-xs tracking-[0.25em] text-blue-400 tabular-nums">
+                <span className="text-xs tracking-[0.25em] text-accent tabular-nums">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <h3 className="mt-4 text-lg font-normal text-gray-100">{step.title}</h3>
@@ -124,7 +124,7 @@ export const Startseite = () => {
             {t.faq.items.map((item, index) => (
               <div
                 key={item.q}
-                className="stagger border-t border-white/10 py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12"
+                className="stagger border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12"
                 style={{ "--fade-delay": `${Math.min(index, 3) * 60}ms` }}>
                 <dt className="text-lg leading-snug font-normal text-gray-100">{item.q}</dt>
                 <dd className="mt-3 leading-relaxed text-gray-400 md:mt-0">{item.a}</dd>

@@ -6,7 +6,7 @@ export const LLMMavenPlugin = () => {
   return (
     <section className="min-h-[100dvh] w-full bg-gradient-to-br from-black via-gray-900 to-blue-950 py-20 px-4 flex items-center justify-center">
       <RevealOnScroll legacy>
-        <div className="max-w-5xl mx-auto w-full rounded-2xl shadow-2xl bg-gray-900/80 border border-white/10 p-8 md:p-16 relative overflow-hidden">
+        <div className="max-w-5xl mx-auto w-full rounded-2xl shadow-2xl bg-gray-900/80 border border-hairline p-8 md:p-16 relative overflow-hidden">
           <div className="flex flex-col items-center mb-12">
             <div className="mb-4 animate-pulse"></div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent text-center drop-shadow-lg mb-2">
@@ -19,7 +19,7 @@ export const LLMMavenPlugin = () => {
 
           <RevealOnScroll legacy>
             <div className="mb-10">
-              <h2 className="text-2xl font-bold text-blue-400 mb-4">
+              <h2 className="text-2xl font-bold text-accent mb-4">
                 Master Thesis Overview
               </h2>
               <p className="text-gray-300 text-base leading-relaxed mb-6">
@@ -33,7 +33,7 @@ export const LLMMavenPlugin = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div className="bg-gradient-to-br from-gray-900/50 to-blue-950/30 rounded-xl border border-blue-900/30 p-6">
-                  <h3 className="text-xl font-bold text-blue-400 mb-4">
+                  <h3 className="text-xl font-bold text-accent mb-4">
                     Academic Achievement
                   </h3>
                   <ul className="space-y-2 text-gray-300 text-sm">
@@ -57,7 +57,7 @@ export const LLMMavenPlugin = () => {
                 </div>
 
                 <div className="bg-gradient-to-br from-gray-900/50 to-blue-950/30 rounded-xl border border-blue-900/30 p-6">
-                  <h3 className="text-xl font-bold text-blue-400 mb-4">
+                  <h3 className="text-xl font-bold text-accent mb-4">
                     Innovation Impact
                   </h3>
                   <ul className="space-y-2 text-gray-300 text-sm">
@@ -82,7 +82,7 @@ export const LLMMavenPlugin = () => {
               </div>
 
               <div className="mt-12 p-6 bg-gradient-to-br from-gray-900/50 to-blue-950/30 rounded-xl border border-blue-900/30">
-                <h3 className="text-xl font-bold text-blue-400 mb-6 text-center">
+                <h3 className="text-xl font-bold text-accent mb-6 text-center">
                   Technology Stack & Architecture
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
@@ -214,7 +214,7 @@ export const LLMMavenPlugin = () => {
           {/* Key Features */}
           <RevealOnScroll legacy>
             <div className="mb-10">
-              <h2 className="text-2xl font-bold text-blue-400 mb-4">
+              <h2 className="text-2xl font-bold text-accent mb-4">
                 Key Features & Capabilities
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -300,13 +300,13 @@ export const LLMMavenPlugin = () => {
           {/* Research Impact */}
           <RevealOnScroll legacy>
             <div className="mb-10">
-              <h2 className="text-2xl font-bold text-blue-400 mb-4">
+              <h2 className="text-2xl font-bold text-accent mb-4">
                 Research Impact & Findings
               </h2>
               <div className="bg-gradient-to-br from-gray-900/50 to-blue-950/30 rounded-xl border border-blue-900/30 p-6">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                   <div>
-                    <div className="text-3xl font-bold text-blue-400 mb-2">
+                    <div className="text-3xl font-bold text-accent mb-2">
                       95%
                     </div>
                     <div className="text-gray-300 text-sm">Time Reduction</div>
@@ -315,7 +315,7 @@ export const LLMMavenPlugin = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-blue-400 mb-2">
+                    <div className="text-3xl font-bold text-accent mb-2">
                       74%
                     </div>
                     <div className="text-gray-300 text-sm">
@@ -326,7 +326,7 @@ export const LLMMavenPlugin = () => {
                     </div>
                   </div>
                   <div>
-                    <div className="text-3xl font-bold text-blue-400 mb-2">
+                    <div className="text-3xl font-bold text-accent mb-2">
                       84%
                     </div>
                     <div className="text-gray-300 text-sm">Success Rate</div>
@@ -444,7 +444,7 @@ export const LLMMavenPlugin = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="/"
-              className="border border-blue-400 text-blue-400 py-3 px-8 rounded-lg font-semibold hover:bg-blue-400/10 transition-all duration-300 my-4">
+              className="border border-blue-400 text-accent py-3 px-8 rounded-lg font-semibold hover:bg-blue-400/10 transition-all duration-300 my-4">
               Back to Portfolio
             </a>
           </div>

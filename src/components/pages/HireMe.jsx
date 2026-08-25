@@ -120,10 +120,10 @@ export const HireMe = () => {
   };
 
   const inputClass =
-    "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-blue-500 focus:bg-blue-500/5 transition-all duration-300";
+    "w-full bg-white/5 border border-hairline rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-blue-500 focus:bg-blue-500/5 transition-all duration-300";
 
   return (
-    <div className="min-h-[100dvh] text-gray-100" style={{ background: '#0a0a0a' }}>
+    <div className="min-h-[100dvh] text-gray-100 bg-ink">
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
@@ -166,7 +166,7 @@ export const HireMe = () => {
               {stats.map((s) => (
                 <div
                   key={s.label}
-                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-4 text-center backdrop-blur-sm">
+                  className="rounded-xl border border-hairline bg-white/5 px-3 py-4 text-center backdrop-blur-sm">
                   <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                     {s.value}
                   </div>
@@ -195,8 +195,8 @@ export const HireMe = () => {
               {services.map((service, i) => (
                 <div
                   key={i}
-                  className="group rounded-2xl border border-white/10 bg-gray-900/50 p-6 hover:bg-gray-900/70 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.1)]">
-                  <div className="text-blue-400 mb-4 group-hover:text-cyan-400 transition-colors duration-300">
+                  className="group rounded-2xl border border-hairline bg-gray-900/50 p-6 hover:bg-gray-900/70 hover:border-blue-500/30 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_25px_rgba(59,130,246,0.1)]">
+                  <div className="text-accent mb-4 group-hover:text-cyan-400 transition-colors duration-300">
                     {service.icon}
                   </div>
                   <h3 className="text-white font-bold text-lg mb-2 group-hover:text-blue-300 transition-colors duration-300">
@@ -234,7 +234,7 @@ export const HireMe = () => {
                   {/* connector line on desktop */}
                   <div className="relative flex justify-center mb-4">
                     <div className="w-12 h-12 rounded-xl border border-blue-500/40 bg-blue-500/10 flex items-center justify-center">
-                      <span className="text-blue-400 font-mono font-bold text-sm">
+                      <span className="text-accent font-mono font-bold text-sm">
                         {step.number}
                       </span>
                     </div>
@@ -284,7 +284,7 @@ export const HireMe = () => {
                   No confirmation?{" "}
                   <a
                     href="mailto:m.nur.beck@hotmail.de"
-                    className="text-blue-400 hover:underline">
+                    className="text-accent hover:underline">
                     m.nur.beck@hotmail.de
                   </a>
                 </p>
@@ -292,7 +292,7 @@ export const HireMe = () => {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="space-y-5 rounded-2xl border border-white/10 bg-gray-900/50 p-8">
+                className="space-y-5 rounded-2xl border border-hairline bg-gray-900/50 p-8">
                 {/* Name + Email */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
@@ -371,7 +371,7 @@ export const HireMe = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, service_type: e.target.value })
                     }
-                    className="w-full bg-gray-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:bg-gray-800 transition-colors duration-300 cursor-pointer appearance-none">
+                    className="w-full bg-gray-900 border border-hairline rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:bg-gray-800 transition-colors duration-300 cursor-pointer appearance-none">
                     <option value="" disabled className="bg-gray-900 text-gray-400">
                       Select a service...
                     </option>
@@ -449,13 +449,13 @@ export const HireMe = () => {
                 Prefer direct contact?{" "}
                 <a
                   href="mailto:m.nur.beck@hotmail.de?subject=Service Request via Portfolio"
-                  className="text-blue-400 hover:text-cyan-400 transition-colors">
+                  className="text-accent hover:text-cyan-400 transition-colors">
                   m.nur.beck@hotmail.de
                 </a>{" "}
                 ·{" "}
                 <a
                   href="tel:+4917666008485"
-                  className="text-blue-400 hover:text-cyan-400 transition-colors">
+                  className="text-accent hover:text-cyan-400 transition-colors">
                   +49 176 66 00 8485
                 </a>
               </p>

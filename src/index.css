@@ -57,7 +57,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Space Grotesk", sans-serif;
-  background: #0a0a0a;
+  background: var(--color-ink);
   color: #f3f4f6;
   overflow-x: hidden;
   scroll-behavior: smooth;
@@ -125,23 +125,6 @@ dd {
 }
 
 @layer utilities {
-  @keyframes blink {
-
-    0%,
-    100% {
-      opacity: 1;
-      transform: translateX(-100%);
-    }
-
-    50% {
-      opacity: 0;
-    }
-  }
-
-  .animate-blink {
-    animation: blink 0.8s step-end infinite;
-  }
-
   @keyframes marquee {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
@@ -154,32 +137,6 @@ dd {
 
   .animate-marquee:hover {
     animation-play-state: paused;
-  }
-
-  @keyframes loading {
-    0% {
-      transform: translateX(-100%);
-    }
-
-    100% {
-      transform: translateX(250%);
-    }
-  }
-
-  .animate-loading-bar {
-    animation: loading 0.8s ease infinite;
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
   }
 
   .animation-delay-300 {
@@ -493,13 +450,6 @@ dd {
   opacity: 1;
   transform: none;
   transition: none;
-}
-
-/* Used by the animated gradient behind the hero in Home.jsx. */
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* Scrollbar. Deliberately quiet: a bright blue-to-cyan gradient bar down the

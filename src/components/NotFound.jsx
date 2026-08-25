@@ -12,7 +12,7 @@ const NotFound = () => {
     </p>
     <a
       href="/"
-      className="text-blue-400 underline hover:text-cyan-400 transition">
+      className="text-accent underline hover:text-cyan-400 transition">
       Return to Home
     </a>
   </div>

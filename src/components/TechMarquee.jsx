@@ -35,8 +35,7 @@ const items = [...techs, ...techs];
 export const TechMarquee = () => (
   <section
     aria-label="Tech stack"
-    className="py-10 overflow-hidden"
-    style={{ background: "#0a0a0a" }}>
+    className="py-10 overflow-hidden bg-ink">
     <p className="text-center text-[10px] font-semibold tracking-[0.25em] text-paper-mute uppercase mb-8">
       Tech Stack &amp; Tools
     </p>

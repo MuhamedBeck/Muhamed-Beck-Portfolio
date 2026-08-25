@@ -119,9 +119,9 @@ const UeberMich = () => (
         {STATIONS.map((station) => (
           <li
             key={station.period}
-            className="border-t border-white/10 py-8 md:grid md:grid-cols-[14rem_1fr] md:gap-x-12">
+            className="border-t border-hairline py-8 md:grid md:grid-cols-[14rem_1fr] md:gap-x-12">
             <div>
-              <p className="text-xs tracking-[0.2em] text-blue-400 uppercase tabular-nums">
+              <p className="text-xs tracking-[0.2em] text-accent uppercase tabular-nums">
                 {station.period}
               </p>
               <h3 className="mt-3 text-lg font-normal text-gray-100">{station.role}</h3>
@@ -139,7 +139,7 @@ const UeberMich = () => (
       <h2 className="label">Womit ich arbeite</h2>
       <dl className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
         {SKILLS.map((skill) => (
-          <div key={skill.title} className="border-t border-white/10 pt-5">
+          <div key={skill.title} className="border-t border-hairline pt-5">
             <dt className="text-lg font-normal text-gray-100">{skill.title}</dt>
             <dd className="mt-2 leading-relaxed text-gray-400">{skill.items}</dd>
           </div>

@@ -60,11 +60,10 @@ export const LoadingScreen = ({ onComplete }) => {
 
   return (
     <div
-      className={`loading-screen-safe z-50 text-white flex flex-col items-center justify-center transition-opacity duration-[400ms] ${
+      className={`loading-screen-safe z-50 bg-ink text-white flex flex-col items-center justify-center transition-opacity duration-[400ms] ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
       style={{
-        background: '#0a0a0a',
         willChange: "opacity"
       }}>
       <div className="absolute inset-0 overflow-hidden">
@@ -118,7 +117,7 @@ export const LoadingScreen = ({ onComplete }) => {
             <span className="text-sm text-gray-400 font-light">
               Loading Portfolio
             </span>
-            <span className="text-sm text-blue-400 font-mono">{progress}%</span>
+            <span className="text-sm text-accent font-mono">{progress}%</span>
           </div>
 
           <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden shadow-inner">

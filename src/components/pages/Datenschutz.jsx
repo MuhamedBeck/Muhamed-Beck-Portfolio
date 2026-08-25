@@ -7,8 +7,8 @@ import { RevealOnScroll } from "../RevealOnScroll";
 import { useRouteMeta } from "../../seo/useRouteMeta";
 
 const Card = ({ title, children }) => (
-  <div className="rounded-2xl p-6 sm:p-8 border border-white/10 bg-gray-900/50 backdrop-blur-sm">
-    <h2 className="text-xl font-bold text-blue-400 mb-4">{title}</h2>
+  <div className="rounded-2xl p-6 sm:p-8 border border-hairline bg-gray-900/50 backdrop-blur-sm">
+    <h2 className="text-xl font-bold text-accent mb-4">{title}</h2>
     <div className="text-gray-300 leading-relaxed space-y-3">{children}</div>
   </div>
 );
@@ -18,16 +18,16 @@ export const Datenschutz = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-[100dvh] text-gray-100" style={{ background: "#0a0a0a" }}>
+    <div className="min-h-[100dvh] text-gray-100 bg-ink">
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <main>
-      <section className="w-full py-20 pt-28 px-4" style={{ background: "#0a0a0a" }}>
+      <section className="w-full py-20 pt-28 px-4 bg-ink">
         <div className="max-w-4xl mx-auto mb-8">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors duration-300 group">
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors duration-300 group">
             <span className="transform group-hover:-translate-x-1 transition-transform duration-300">
               ←
             </span>
@@ -60,14 +60,14 @@ export const Datenschutz = () => {
                   Telefon:{" "}
                   <a
                     href="tel:+4917666008485"
-                    className="text-blue-400 hover:text-cyan-400 transition-colors">
+                    className="text-accent hover:text-cyan-400 transition-colors">
                     +49 176 66008485
                   </a>
                   <br />
                   E-Mail:{" "}
                   <a
                     href="mailto:m.nur.beck@hotmail.de"
-                    className="text-blue-400 hover:text-cyan-400 transition-colors">
+                    className="text-accent hover:text-cyan-400 transition-colors">
                     m.nur.beck@hotmail.de
                   </a>
                 </p>
@@ -120,7 +120,7 @@ export const Datenschutz = () => {
                     href="https://www.cloudflare.com/de-de/privacypolicy/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-cyan-400 transition-colors break-all">
+                    className="text-accent hover:text-cyan-400 transition-colors break-all">
                     cloudflare.com/de-de/privacypolicy
                   </a>
                 </p>
@@ -160,7 +160,7 @@ export const Datenschutz = () => {
                     href="https://www.emailjs.com/legal/privacy-policy/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-blue-400 hover:text-cyan-400 transition-colors break-all">
+                    className="text-accent hover:text-cyan-400 transition-colors break-all">
                     emailjs.com/legal/privacy-policy
                   </a>
                 </p>

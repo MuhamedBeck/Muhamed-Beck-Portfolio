@@ -42,7 +42,7 @@ export const Contact = () => {
   // users without a reliable position indicator. The global :focus-visible rule
   // in index.css now supplies the ring.
   const inputClass =
-    "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 md:px-6 md:py-4 text-white transition focus:border-blue-500 focus:bg-blue-500/5 text-base md:text-lg";
+    "w-full bg-white/5 border border-hairline rounded-lg px-4 py-3 md:px-6 md:py-4 text-white transition focus:border-blue-500 focus:bg-blue-500/5 text-base md:text-lg";
 
   return (
     <section
@@ -70,7 +70,7 @@ export const Contact = () => {
                 No reply?{" "}
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="text-blue-400 underline hover:text-blue-300">
+                  className="text-accent underline hover:text-blue-300">
                   {CONTACT.email}
                 </a>
               </p>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { LoadingScreen } from "./components/LoadingScreen";
-import "./App.css";
 import "./index.css";
 import { Navbar } from "./components/Navbar";
 import { MobileMenu } from "./components/MobileMenu";
@@ -58,8 +57,8 @@ function App() {
           Largest Contentful Paint candidate, which left the page with no
           measurable LCP at all. */}
       <div
-        className="safe-area-top min-h-[100dvh] text-gray-100"
-        style={{ background: '#0a0a0a', overflow: isLoaded ? "visible" : "hidden" }}>
+        className="safe-area-top min-h-[100dvh] bg-ink text-gray-100"
+        style={{ overflow: isLoaded ? "visible" : "hidden" }}>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <main>

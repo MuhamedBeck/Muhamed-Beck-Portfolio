@@ -97,7 +97,7 @@ export const About = () => {
             About Me
           </h2>
 
-          <div className="rounded-2xl p-8 border border-white/10 backdrop-blur-sm bg-gray-900/50 mb-12">
+          <div className="rounded-2xl p-8 border border-hairline backdrop-blur-sm bg-gray-900/50 mb-12">
             <p className="text-gray-300 text-lg leading-relaxed text-center max-w-3xl mx-auto">
               AI Automation Manager & Full-Stack Developer specializing in LLM
               integration, n8n/Zapier workflow automation, and modern web
@@ -110,8 +110,8 @@ export const About = () => {
           <RevealOnScroll legacy>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               <div className="group relative">
-                <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
-                  <h3 className="text-xl font-bold mb-4 text-blue-400">
+                <div className="relative rounded-2xl p-6 h-full border border-hairline bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
+                  <h3 className="text-xl font-bold mb-4 text-accent">
                     Frontend
                   </h3>
                   <div className="flex flex-wrap gap-2">
@@ -127,7 +127,7 @@ export const About = () => {
               </div>
 
               <div className="group relative">
-                <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
+                <div className="relative rounded-2xl p-6 h-full border border-hairline bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
                   <h3 className="text-xl font-bold mb-4 text-cyan-400">
                     Backend
                   </h3>
@@ -144,7 +144,7 @@ export const About = () => {
               </div>
 
               <div className="group relative">
-                <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
+                <div className="relative rounded-2xl p-6 h-full border border-hairline bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
                   <h3 className="text-xl font-bold mb-4 text-indigo-400">
                     DevOps & Cloud
                   </h3>
@@ -161,7 +161,7 @@ export const About = () => {
               </div>
 
               <div className="group relative">
-                <div className="relative rounded-2xl p-6 h-full border border-white/10 bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
+                <div className="relative rounded-2xl p-6 h-full border border-hairline bg-gray-900/50 shadow-lg hover:bg-gray-900/70 group-hover:-translate-y-2 group-hover:scale-[1.03] transition-all duration-500">
                   <h3 className="text-xl font-bold mb-4 text-purple-400">
                     AI & Automation
                   </h3>
@@ -186,8 +186,8 @@ export const About = () => {
                   Education
                 </h3>
                 <div className="space-y-4">
-                  <div className="p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
-                    <h4 className="font-bold text-blue-400 mb-2">
+                  <div className="p-6 rounded-xl border border-hairline bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
+                    <h4 className="font-bold text-accent mb-2">
                       M.Sc in Business Informatics
                     </h4>
                     <p className="text-gray-300 mb-1">
@@ -197,8 +197,8 @@ export const About = () => {
                       2022 - 2024 • GPA: 1.4 (German scale)
                     </p>
                   </div>
-                  <div className="p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
-                    <h4 className="font-bold text-blue-400 mb-2">
+                  <div className="p-6 rounded-xl border border-hairline bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
+                    <h4 className="font-bold text-accent mb-2">
                       B.Sc in International Business Information Systems
                     </h4>
                     <p className="text-gray-300 mb-1">
@@ -208,8 +208,8 @@ export const About = () => {
                       2018 - 2022 • GPA: 1.6 (German scale)
                     </p>
                   </div>
-                  <div className="p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
-                    <h4 className="font-bold text-blue-400 mb-2">
+                  <div className="p-6 rounded-xl border border-hairline bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
+                    <h4 className="font-bold text-accent mb-2">
                       Abitur (General University Entrance Qualification)
                     </h4>
                     <p className="text-gray-300 mb-1">
@@ -230,7 +230,7 @@ export const About = () => {
                   {mainExperience.map((job, index) => (
                     <div
                       key={index}
-                      className="group p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
+                      className="group p-6 rounded-xl border border-hairline bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300">
                       <div className="flex justify-between items-start mb-3">
                         <div>
                           <h4 className="font-bold text-cyan-400 mb-1">
@@ -264,7 +264,7 @@ export const About = () => {
                     {additionalExperience.map((job, index) => (
                       <div
                         key={index}
-                        className={`group p-6 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 ${
+                        className={`group p-6 rounded-xl border border-hairline bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 ${
                           showAllExperiences
                             ? `translate-y-0 opacity-100 delay-${
                                 (index + 1) * 100
@@ -304,7 +304,7 @@ export const About = () => {
                   <div className="text-center pt-4">
                     <button
                       onClick={() => setShowAllExperiences(!showAllExperiences)}
-                      className="text-sm text-gray-400 hover:text-blue-400 transition-colors duration-300 flex items-center justify-center mx-auto gap-2">
+                      className="text-sm text-gray-400 hover:text-accent transition-colors duration-300 flex items-center justify-center mx-auto gap-2">
                       {showAllExperiences
                         ? "Show less"
                         : "View all experiences"}
@@ -333,7 +333,7 @@ export const About = () => {
                     issuer: "Google",
                     date: "Jan 2026",
                     iconBg: "bg-blue-500/20 border-blue-500/30",
-                    iconColor: "text-blue-400",
+                    iconColor: "text-accent",
                   },
                   {
                     title: "React.js",
@@ -366,7 +366,7 @@ export const About = () => {
                 ].map((cert, index) => (
                   <div
                     key={index}
-                    className="p-5 rounded-xl border border-white/10 bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 flex items-start gap-4">
+                    className="p-5 rounded-xl border border-hairline bg-gray-900/50 hover:bg-gray-900/70 transition-all duration-300 flex items-start gap-4">
                     <div className={`mt-0.5 w-8 h-8 shrink-0 rounded-lg flex items-center justify-center border ${cert.iconBg}`}>
                       <svg className={`w-4 h-4 ${cert.iconColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />

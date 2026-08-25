@@ -120,16 +120,16 @@ export const Services = () => {
   ];
 
   return (
-    <div className="min-h-[100dvh] text-gray-100" style={{ background: '#0a0a0a' }}>
+    <div className="min-h-[100dvh] text-gray-100 bg-ink">
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       
-      <section className="w-full py-20 pt-28 px-4" style={{ background: '#0a0a0a' }}>
+      <section className="w-full py-20 pt-28 px-4 bg-ink">
         {/* Back to Home Link */}
         <div className="max-w-6xl mx-auto mb-8">
           <Link
             to="/"
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors duration-300 group">
+            className="inline-flex items-center gap-2 text-gray-400 hover:text-accent transition-colors duration-300 group">
             <span className="transform group-hover:-translate-x-1 transition-transform duration-300">
               ←
             </span>
@@ -154,7 +154,7 @@ export const Services = () => {
           <div className="space-y-8">
             {services.map((service, index) => (
               <RevealOnScroll legacy key={index}>
-                <div className="group relative rounded-2xl border border-white/10 bg-gray-900/50 p-8 md:p-10 hover:bg-gray-900/70 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+                <div className="group relative rounded-2xl border border-hairline bg-gray-900/50 p-8 md:p-10 hover:bg-gray-900/70 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
                   {/* Highlight Badge */}
                   <div className="absolute top-4 right-4 md:top-6 md:right-6">
                     <span className="inline-block bg-gradient-to-r from-blue-500/20 to-cyan-500/20 text-cyan-300 text-xs font-semibold px-3 py-1 rounded-full border border-cyan-500/30">
@@ -165,7 +165,7 @@ export const Services = () => {
                   <div className="flex flex-col md:flex-row gap-6 md:gap-10">
                     {/* Icon */}
                     <div className="flex-shrink-0">
-                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:text-cyan-400 group-hover:scale-110 transition-all duration-500">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center text-accent group-hover:text-cyan-400 group-hover:scale-110 transition-all duration-500">
                         {service.icon}
                       </div>
                     </div>
@@ -176,7 +176,7 @@ export const Services = () => {
                         <h2 className="text-2xl md:text-3xl font-bold text-white mb-1 group-hover:text-blue-300 transition-colors duration-300">
                           {service.title}
                         </h2>
-                        <p className="text-blue-400 font-medium">
+                        <p className="text-accent font-medium">
                           {service.subtitle}
                         </p>
                       </div>
@@ -206,7 +206,7 @@ export const Services = () => {
           {/* CTA Section */}
           <RevealOnScroll legacy>
             <div className="mt-16 text-center">
-              <div className="inline-block rounded-2xl border border-white/10 bg-white/5 p-10 md:p-12">
+              <div className="inline-block rounded-2xl border border-hairline bg-white/5 p-10 md:p-12">
                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
                   Ready to Get Started?
                 </h2>
@@ -224,7 +224,7 @@ export const Services = () => {
 
                   <a
                     href="mailto:m.nur.beck@hotmail.de?subject=Anfrage%20via%20Portfolio%20Seite&body=Sehr%20geehrter%20Herr%20Beck%2C%0A%0AIch%20war%20auf%20ihrer%20Portfolio%20Seite%20und%20habe%20folgende%20Anfrage%3A%0A%0A"
-                    className="inline-flex items-center justify-center gap-2 border border-blue-500 text-blue-400 py-3 px-8 rounded-lg font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-500/10">
+                    className="inline-flex items-center justify-center gap-2 border border-blue-500 text-accent py-3 px-8 rounded-lg font-medium transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-500/10">
                     <span>m.nur.beck@hotmail.de</span>
                   </a>
                 </div>

@@ -11,7 +11,7 @@ export const Projects = () => {
             Featured Projects
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-hairline hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">Phoenix Parkservice</h3>
                 <p className="text-gray-400 mb-4">
@@ -20,7 +20,7 @@ export const Projects = () => {
                     href="https://www.phoenixparkservice.de"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="underline text-blue-300 hover:text-blue-400">
+                    className="underline text-blue-300 hover:text-accent">
                     phoenixparkservice.de
                   </a>
                   , including modern DevOps, booking service, microservices, and
@@ -43,13 +43,13 @@ export const Projects = () => {
                   href="https://www.phoenixparkservice.de"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold"
+                  className="text-accent hover:text-blue-300 transition-colors my-4 font-bold"
                   aria-label="Visit Phoenix Parkservice website">
                   Visit Website &rarr;
                 </a>
               </div>
             </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-hairline hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">
                   LLM Unit Test Automation (Master Thesis)
@@ -75,12 +75,12 @@ export const Projects = () => {
               <div className="flex justify-end mt-auto">
                 <a
                   href="/projects/llm-maven-plugin"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
+                  className="text-accent hover:text-blue-300 transition-colors my-4 font-bold">
                   View Details →
                 </a>
               </div>
             </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-hairline hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">TaskFlow</h3>
                 <p className="text-gray-400 mb-4">
@@ -110,12 +110,12 @@ export const Projects = () => {
                   href="https://taskflow-nu-three.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
+                  className="text-accent hover:text-blue-300 transition-colors my-4 font-bold">
                   Visit Website →
                 </a>
               </div>
             </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-hairline hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">
                   AR Data Visualization (Bachelor Thesis)
@@ -140,12 +140,12 @@ export const Projects = () => {
               <div className="flex justify-end mt-auto">
                 <a
                   href="/projects/ar-data-visualization"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
+                  className="text-accent hover:text-blue-300 transition-colors my-4 font-bold">
                   View Details →
                 </a>
               </div>
             </div>
-            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
+            <div className="flex flex-col h-full min-h-[320px] p-6 rounded-xl border border-hairline hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_15px_rgba(59,130,246,0.1)] transition-all">
               <div className="flex-grow">
                 <h3 className="text-xl font-bold mb-2">LinkedIn AI Analyzer</h3>
                 <p className="text-gray-400 mb-4">
@@ -171,7 +171,7 @@ export const Projects = () => {
                   href="https://linkedin-analyzer-weld.vercel.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors my-4 font-bold">
+                  className="text-accent hover:text-blue-300 transition-colors my-4 font-bold">
                   Visit Website →
                 </a>
               </div>

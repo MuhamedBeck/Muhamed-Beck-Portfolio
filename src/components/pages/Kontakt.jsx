@@ -48,11 +48,11 @@ const Kontakt = () => (
           <h2 className="label">Direkt erreichbar</h2>
           <ul className="mt-6">
             {CHANNELS.map((channel) => (
-              <li key={channel.label} className="border-t border-white/10 py-6">
+              <li key={channel.label} className="border-t border-hairline py-6">
                 <a href={channel.href} className="group block">
                   <span className="flex items-center gap-3">
                     <channel.icon
-                      className="h-4 w-4 shrink-0 text-blue-400"
+                      className="h-4 w-4 shrink-0 text-accent"
                       aria-hidden="true"
                     />
                     <span className="text-lg text-gray-100 underline-offset-4 group-hover:underline">
@@ -72,7 +72,7 @@ const Kontakt = () => (
             {HELPFUL.map((question) => (
               <li
                 key={question}
-                className="border-t border-white/10 py-4 leading-relaxed text-gray-400">
+                className="border-t border-hairline py-4 leading-relaxed text-gray-400">
                 {question}
               </li>
             ))}
