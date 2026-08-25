@@ -153,7 +153,7 @@ export const ROUTES = [
     title: "AI Automation & Web Development Services | Muhamed Beck",
     description:
       "AI workflow automation with n8n & Zapier, web development with React, Angular & Spring Boot, CRM integrations and technical SEO. Services by Muhamed Beck, Frankfurt.",
-    h1: "Services",
+    h1: "AI automation and web development",
     lastmod: "2026-07-31",
     changefreq: "monthly",
     priority: "0.9",
