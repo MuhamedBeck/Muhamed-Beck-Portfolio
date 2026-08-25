@@ -242,7 +242,7 @@ export const RATGEBER = [
       {
         h2: "Wie werden ATS und CRM angebunden?",
         body: [
-          "Über REST-APIs und Webhooks. Produktiv angebunden habe ich RecruitCRM, Personio, Greenhouse und HubSpot. Grundsätzlich lässt sich jedes System anbinden, das eine dokumentierte API hat.",
+          "Über REST-APIs und Webhooks. Welcher der beiden Wege genutzt wird, entscheidet, wie aktuell die Daten sind: Ein Webhook meldet die Änderung in dem Moment, in dem sie passiert, eine API muss abgefragt werden und liefert deshalb nur so frisch, wie das Abfrageintervall es zulässt. Bei Bewerbungseingängen ist das der Unterschied zwischen Minuten und Stunden.",
           "Der Aufwand entscheidet sich an der Datenqualität, nicht an der Schnittstelle. Wenn im Zielsystem Dubletten, uneinheitliche Statuswerte und Freitextfelder liegen, ist die Anbindung schnell gebaut und die Bereinigung die eigentliche Arbeit.",
         ],
       },
@@ -264,11 +264,11 @@ export const RATGEBER = [
     faq: [
       {
         q: "Ersetzt Recruiting-Automatisierung Recruiter?",
-        a: "Nein. Automatisiert werden die Schritte ohne Urteilsanteil: Daten erfassen, Dubletten prüfen, Termine koordinieren, Status pflegen. Die Auswahlentscheidung bleibt beim Menschen. Der Gewinn ist, dass Recruiter wieder Zeit für Gespräche statt für Dateneingabe haben.",
+        a: "Nein, und die Grenze verläuft ziemlich scharf. Automatisierbar ist alles, was kein Urteil erfordert: Datenerfassung, Dublettenprüfung, Terminkoordination, Statuspflege. Sobald ein Schritt eine Bewertung von Menschen enthält, ist er nicht nur schwer zu automatisieren, sondern nach EU AI Act auch regulatorisch heikel. Die Zeitersparnis entsteht ohnehin im ersten Bereich: dort liegt der Großteil der Minuten, nicht in der Auswahl selbst.",
       },
       {
         q: "Welche ATS-Systeme lassen sich mit n8n verbinden?",
-        a: "Jedes System mit dokumentierter REST-API oder Webhooks. Produktiv angebunden habe ich RecruitCRM, Personio, Greenhouse und HubSpot. Fehlt eine API, bleibt oft ein Export- oder E-Mail-basierter Weg, der aber vor dem Projektstart geprüft werden sollte.",
+        a: "Jedes System mit dokumentierter REST-API oder Webhooks, was im DACH-Recruiting auf die meisten zutrifft. Entscheidend ist weniger, ob eine Schnittstelle existiert, als was sie kann: Ob sie Schreibzugriff erlaubt, ob sie Ereignisse per Webhook meldet oder nur auf Abruf antwortet, und wie eng ihr Rate-Limit gesetzt ist. Fehlt eine API ganz, bleibt oft ein Export- oder E-Mail-basierter Weg, der aber vor Projektstart geprüft gehört.",
       },
       {
         q: "Dürfen Bewerberdaten durch ein KI-Modell laufen?",

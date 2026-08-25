@@ -141,6 +141,13 @@ export const Startseite = () => {
               </div>
             ))}
           </dl>
+          {/* The homepage answers short; the service page answers in full. This
+              is the way from one to the other, and it stops the two versions
+              from having to say the same thing at the same length. */}
+          <Link to="/leistungen/n8n-automatisierung" className="link-arrow mt-10">
+            {t.faq.all}
+            <span aria-hidden="true">↗</span>
+          </Link>
         </Section>
 
         <Section id="kontakt">
