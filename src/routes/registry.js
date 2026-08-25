@@ -200,7 +200,7 @@ export const ROUTES = [
     group: "project.ar",
     load: () => import("../components/pages/projekte/CaseStudyRoute.jsx"),
     props: { path: "/projekte/ar-datenvisualisierung" },
-    title: "SAP-Berichte in Augmented Reality: Bachelorarbeit",
+    title: "SAP-Berichte in Augmented Reality: Bachelorarbeit | Muhamed Beck",
     description:
       "AR-Visualisierung von SAP-BusinessObjects-Berichten im Browser, mit einer Befragung von 81 Personen in deutschen Unternehmen zu den Hürden der Einführung.",
     h1: "SAP-BusinessObjects-Berichte in Augmented Reality",
