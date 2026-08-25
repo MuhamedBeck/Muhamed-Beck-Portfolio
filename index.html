@@ -3,6 +3,27 @@
 
 <head>
   <meta charset="UTF-8" />
+
+  <!-- Marks that JavaScript is running, before the first paint.
+       index.css uses this to apply the entrance state of .stagger and
+       .reveal-line up front. Without it those elements paint fully visible and
+       are only hidden once React hydrates and RevealOnScroll adds .is-ready,
+       which on a cold cache is well over a second later. The page then blanks
+       the text it had already shown and fades it back in.
+       Inline and not deferred on purpose: a module script would run too late,
+       and an external one would add a request in front of the first paint.
+       With JavaScript off the class never lands and nothing is ever hidden. -->
+  <script>
+    var root = document.documentElement;
+    root.classList.add("js");
+    // Only for the case where the app never arrives: a failed bundle, or one so
+    // slow that an entrance would blank text the visitor has been reading. main.jsx
+    // sets "hydrated" as soon as it renders, and then this does nothing, because
+    // revealing everything here would kill the scroll reveal further down the page.
+    setTimeout(function () {
+      if (!root.classList.contains("hydrated")) root.classList.add("entrance-timeout");
+    }, 2500);
+  </script>
   <meta name="google-site-verification" content="OvDO9UTcz8aeTy1y9Tx8cLPczyJi4lmM5zkav54t6yA" />
   
   <!-- Favicon -->

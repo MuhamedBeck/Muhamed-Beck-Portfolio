@@ -66,7 +66,7 @@ export const Home = ({ isLoaded = true }) => {
               fetchPriority="high"
               loading="eager"
               decoding="async"
-              className="h-44 w-44 rounded-full border border-white/15 object-cover sm:h-56 sm:w-56 md:h-64 md:w-64"
+              className="h-52 w-52 rounded-full border border-white/15 object-cover sm:h-64 sm:w-64 md:h-80 md:w-80"
               style={{ objectPosition: "center 18%" }}
             />
           </div>

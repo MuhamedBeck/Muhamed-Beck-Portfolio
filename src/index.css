@@ -400,9 +400,41 @@ dd {
    list can compute its own rhythm from an index instead of needing a class per
    step.
 
-   The hidden state is scoped to .is-ready, which the prerendered HTML always
-   carries. Without JavaScript nothing is ever hidden, so there is no
-   invisible-content failure mode. */
+   The hidden state used to be scoped to .is-ready alone, with a comment
+   claiming the prerendered HTML carried that class. It does not: RevealOnScroll
+   adds it from a layout effect, so it lands only after the bundle has loaded
+   and hydrated. Until then nothing was hidden and the prerendered text painted
+   in full, then vanished and faded back in. The page visibly corrected itself.
+
+   So the entrance state is applied by .js, which the inline script in
+   index.html sets before the first paint, while .is-ready still decides *when*
+   a block animates. That is what keeps the scroll reveal working further down
+   the page. Without JavaScript neither class is ever set and nothing is hidden. */
+.js .stagger {
+  opacity: 0;
+}
+
+.js .reveal-line > span {
+  display: inline-block;
+  transform: translateY(105%);
+}
+
+/* The failsafe, set by the same inline script 2.5s in. It covers two cases at
+   once: a bundle that never executes, which would otherwise leave this content
+   invisible for good, and one that arrives so late that playing the entrance
+   would blank text the visitor has already been reading. A timer in CSS could
+   only do the first, and would reintroduce the very flash this is here to
+   prevent as soon as .is-ready landed after it.
+
+   :root adds a pseudo-class to the specificity, so this outranks the .is-ready
+   rules below without needing !important. */
+:root.entrance-timeout .stagger,
+:root.entrance-timeout .reveal-line > span {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
+
 .is-ready .stagger {
   animation: stagger-in 0.7s var(--ease-entrance) var(--fade-delay, 0s) both;
 }
@@ -464,6 +496,16 @@ dd {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  /* Both halves matter here. Killing the animation without also undoing the
+     entrance state would leave every staggered element at opacity 0 for anyone
+     who asked for reduced motion, which is the worst possible reading of that
+     preference. */
+  .js .stagger,
+  .js .reveal-line > span {
+    opacity: 1;
+    transform: none;
+  }
+
   .is-ready .stagger,
   .is-ready .reveal-line > span {
     animation: none;

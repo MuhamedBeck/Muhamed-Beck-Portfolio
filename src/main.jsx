@@ -112,6 +112,12 @@ const boot = async () => {
       </BrowserRouter>
     </StrictMode>
   );
+
+  // Tells the inline script in index.html that the app is alive. Without this
+  // its 2.5s failsafe fires on every visit and reveals the whole page at once,
+  // which would silently kill the scroll reveal for anyone who scrolls later
+  // than that, meaning nearly everyone.
+  document.documentElement.classList.add("hydrated");
 };
 
 boot();
