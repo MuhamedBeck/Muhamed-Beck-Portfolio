@@ -460,8 +460,11 @@ export const LEISTUNGEN = [
       },
     ],
     caseStudy: {
-      stat: "CSAT",
-      statLabel: "verbessert durch Voice-AI im Support",
+      // No stat: customer satisfaction improved because calls that used to ring
+      // out got answered, but that was never measured against a baseline, and
+      // an unmeasured figure in a text-5xl slot reads as one that was.
+      statLabel:
+        "Anrufe außerhalb der Bürozeiten werden angenommen statt ins Leere zu laufen",
       text: "In der Support- und Bewerberkommunikation habe ich Voice-AI-Agenten mit Twilio und WebRTC produktiv gebracht. Die Kundenzufriedenheit verbesserte sich, weil Anrufe angenommen wurden, die vorher ins Leere liefen.",
       link: "/projekte/recruiting-automatisierung",
       linkText: "Zur Case Study Recruiting-Automatisierung",

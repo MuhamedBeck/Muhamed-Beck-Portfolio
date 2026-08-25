@@ -86,10 +86,20 @@ export const LeistungPage = ({ data }) => (
       <div className="grid gap-x-12 gap-y-8 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
         <div>
           <h2 className="label">Ergebnis aus der Praxis</h2>
-          <p className="mt-5 text-5xl font-light tabular-nums text-gray-100">
-            {data.caseStudy.stat}
-          </p>
-          <p className="mt-3 max-w-[26ch] text-sm text-paper-mute">
+          {/* stat is optional on purpose. This slot renders at text-5xl and
+              reads as a measurement, so it may only hold one. Where there is no
+              measured figure the label carries the result on its own, which is
+              what this site argues for elsewhere: "Ohne diese Ausgangsmessung
+              ist jede Prozentzahl hinterher wertlos." */}
+          {data.caseStudy.stat ? (
+            <p className="mt-5 text-5xl font-light tabular-nums text-gray-100">
+              {data.caseStudy.stat}
+            </p>
+          ) : null}
+          <p
+            className={`max-w-[26ch] text-sm text-paper-mute ${
+              data.caseStudy.stat ? "mt-3" : "mt-5"
+            }`}>
             {data.caseStudy.statLabel}
           </p>
         </div>

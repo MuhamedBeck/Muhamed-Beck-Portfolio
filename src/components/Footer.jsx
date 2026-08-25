@@ -58,8 +58,7 @@ const Footer = () => {
               <li>
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors duration-300 hover:text-gray-100"
-                  aria-label={chrome.emailAria}>
+                  className="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors duration-300 hover:text-gray-100">
                   <FaEnvelope className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   {CONTACT.email}
                 </a>
@@ -67,8 +66,7 @@ const Footer = () => {
               <li>
                 <a
                   href={`tel:${CONTACT.phone}`}
-                  className="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors duration-300 hover:text-gray-100"
-                  aria-label={chrome.phoneAria}>
+                  className="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors duration-300 hover:text-gray-100">
                   <FaPhone className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   {CONTACT.phoneDisplay}
                 </a>

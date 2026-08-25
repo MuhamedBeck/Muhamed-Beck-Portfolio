@@ -51,24 +51,28 @@ export const RateScale = ({ data }) => (
         <span>{AXIS.max} €</span>
       </div>
 
+      {/* A <dl> may contain <div> wrappers, but <dt> and <dd> have to be that
+          div's direct children. The first version nested them one level deeper
+          behind the swatch, which is invalid and which Lighthouse flagged on
+          this page. The swatch now lives inside the <dt> it marks, and the <dd>
+          is indented to match by the swatch's width plus its gap. */}
       <dl className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
-        <div className="flex items-baseline gap-3">
-          <span aria-hidden="true" className="h-2 w-6 shrink-0 rounded-full bg-white/10" />
-          <div>
-            <dt className="text-sm text-gray-100 tabular-nums">
-              {data.market.from} bis {data.market.to} €
-            </dt>
-            <dd className="mt-1 text-sm text-paper-mute">{data.market.label}</dd>
-          </div>
+        <div>
+          <dt className="flex items-baseline gap-3 text-sm text-gray-100 tabular-nums">
+            <span
+              aria-hidden="true"
+              className="h-2 w-6 shrink-0 rounded-full bg-white/10"
+            />
+            {data.market.from} bis {data.market.to} €
+          </dt>
+          <dd className="mt-1 pl-9 text-sm text-paper-mute">{data.market.label}</dd>
         </div>
-        <div className="flex items-baseline gap-3">
-          <span aria-hidden="true" className="h-2 w-6 shrink-0 rounded-full bg-accent" />
-          <div>
-            <dt className="text-sm text-gray-100 tabular-nums">
-              {data.own.from} bis {data.own.to} €
-            </dt>
-            <dd className="mt-1 text-sm text-paper-mute">{data.own.label}</dd>
-          </div>
+        <div>
+          <dt className="flex items-baseline gap-3 text-sm text-gray-100 tabular-nums">
+            <span aria-hidden="true" className="h-2 w-6 shrink-0 rounded-full bg-accent" />
+            {data.own.from} bis {data.own.to} €
+          </dt>
+          <dd className="mt-1 pl-9 text-sm text-paper-mute">{data.own.label}</dd>
         </div>
       </dl>
     </div>

@@ -1,4 +1,4 @@
-// Submits every URL in the route registry to IndexNow.
+// Submits changed URLs to IndexNow.
 //
 // Why this matters more here than on an established site: ChatGPT Search
 // retrieves through Bing's index, so a page Bing has not crawled effectively
@@ -9,9 +9,20 @@
 // One submission reaches every participating engine: Bing, Yandex, Seznam,
 // Naver. Google does not participate.
 //
+// Bing is explicit that this is not a "ping everything" endpoint: "you should
+// publish only URLs changing (added, updated, or deleted) since the time you
+// start to use IndexNow." Submitting all 24 routes on every run is the kind of
+// noise that earns a 429 and teaches the engine to discount the signal.
+//
+// So the default is the newest lastmod cohort from the route registry. That
+// field already is this project's record of when a page actually changed, and
+// generate-sitemap.js keeps it honest: it moves only when a page moves.
+//
 // Usage:
-//   npm run indexnow           submit every route
-//   npm run indexnow -- --dry  print what would be sent
+//   npm run indexnow                    submit routes carrying the newest lastmod
+//   npm run indexnow -- --all           submit every route (use after a full rebuild)
+//   npm run indexnow -- /kontakt /en    submit exactly these paths
+//   npm run indexnow -- --dry           print what would be sent, send nothing
 //
 // The key file must already be live at https://muhamedbeck.com/<key>.txt, which
 // is how the endpoint verifies you control the host. Deploy before submitting.
@@ -40,7 +51,34 @@ if (keyFiles.length !== 1) {
 
 const key = keyFiles[0].replace(/\.txt$/, "");
 const host = new URL(SITE_URL).host;
-const urlList = ROUTES.map((route) => `${SITE_URL}${route.path}`);
+
+const flags = process.argv.slice(2);
+const explicitPaths = flags.filter((arg) => arg.startsWith("/"));
+
+let selected;
+let reason;
+if (explicitPaths.length > 0) {
+  const known = new Set(ROUTES.map((route) => route.path));
+  const unknown = explicitPaths.filter((path) => !known.has(path));
+  if (unknown.length > 0) {
+    console.error(`indexnow: not in the route registry: ${unknown.join(", ")}`);
+    process.exit(1);
+  }
+  selected = explicitPaths;
+  reason = "explicitly listed";
+} else if (flags.includes("--all")) {
+  selected = ROUTES.map((route) => route.path);
+  reason = "--all";
+} else {
+  const newest = ROUTES.reduce(
+    (latest, route) => (route.lastmod > latest ? route.lastmod : latest),
+    ""
+  );
+  selected = ROUTES.filter((route) => route.lastmod === newest).map((route) => route.path);
+  reason = `lastmod ${newest}`;
+}
+
+const urlList = selected.map((path) => `${SITE_URL}${path}`);
 
 const payload = {
   host,
@@ -65,7 +103,9 @@ const response = await fetch(ENDPOINT, {
 // submitted before it went live.
 const body = await response.text();
 if (response.ok) {
-  console.log(`indexnow: submitted ${urlList.length} URLs for ${host} (HTTP ${response.status})`);
+  console.log(
+    `indexnow: submitted ${urlList.length} of ${ROUTES.length} URLs for ${host} (${reason}, HTTP ${response.status})`
+  );
 } else {
   console.error(`indexnow: HTTP ${response.status} ${body}`);
   if (response.status === 403) {

@@ -16,8 +16,6 @@ const de = {
   requestProject: "Projekt anfragen",
   replyPromise: "Antwort innerhalb von 24 Stunden · Frankfurt und remote",
   techStack: "Tech-Stack und Werkzeuge",
-  emailAria: "E-Mail schreiben",
-  phoneAria: "Anrufen",
   linkedinAria: "LinkedIn-Profil",
   githubAria: "GitHub-Profil",
 };
@@ -31,8 +29,6 @@ const en = {
   requestProject: "Start a project",
   replyPromise: "Reply within 24 hours · Frankfurt and remote",
   techStack: "Tech stack and tools",
-  emailAria: "Send email",
-  phoneAria: "Call",
   linkedinAria: "LinkedIn profile",
   githubAria: "GitHub profile",
 };
