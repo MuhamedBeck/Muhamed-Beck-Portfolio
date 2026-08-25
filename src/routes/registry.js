@@ -179,13 +179,13 @@ export const ROUTES = [
     locale: "en",
     group: "project.ar",
     load: () =>
-      import("../components/projects/ArDataVisualization.jsx").then((m) => ({
-        default: m.ArDataVisualization,
+      import("../components/pages/projekte/CaseStudyEnRoute.jsx").then((m) => ({
+        default: () => m.default({ path: "/en/projects/ar-data-visualization" }),
       })),
     title: "AR Data Visualization with SAP BusinessObjects | Muhamed Beck",
     description:
       "Case study on visualizing SAP BusinessObjects data in Augmented Reality: concept, architecture and implementation by Muhamed Beck.",
-    h1: "AR Data Visualization",
+    h1: "AR data visualisation",
     ogType: "article",
     lastmod: "2026-07-31",
     changefreq: "monthly",
@@ -197,13 +197,13 @@ export const ROUTES = [
     locale: "en",
     group: "project.llm",
     load: () =>
-      import("../components/projects/LLMMavenPlugin.jsx").then((m) => ({
-        default: m.LLMMavenPlugin,
+      import("../components/pages/projekte/CaseStudyEnRoute.jsx").then((m) => ({
+        default: () => m.default({ path: "/en/projects/llm-maven-plugin" }),
       })),
     title: "LLM Unit Test Automation for Spring Boot | Muhamed Beck",
     description:
       "Master thesis project: a Maven plugin that uses Large Language Models to automatically generate unit tests for Java Spring Boot projects.",
-    h1: "LLM Unit Test Automation",
+    h1: "LLM unit test automation",
     ogType: "article",
     lastmod: "2026-07-31",
     changefreq: "monthly",

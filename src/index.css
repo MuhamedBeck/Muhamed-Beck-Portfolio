@@ -150,10 +150,6 @@ dd {
   .animation-delay-900 {
     animation-delay: 900ms;
   }
-
-  .bg-gradient-radial {
-    background: radial-gradient(circle, var(--tw-gradient-stops));
-  }
 }
 
 /* ---------------------------------------------------------------------------
