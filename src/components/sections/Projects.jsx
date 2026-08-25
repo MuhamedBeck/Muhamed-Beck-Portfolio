@@ -4,7 +4,7 @@ export const Projects = () => {
   return (
     <section
       id="projects"
-      className="min-h-screen flex items-center justify-center py-20 overflow-x-hidden">
+      className="min-h-[100dvh] flex items-center justify-center py-20 overflow-x-hidden">
       <RevealOnScroll legacy>
         <div className="max-w-5xl mx-auto px-4 w-full">
           <h2 className="text-3xl sm:text-4xl font-bold mb-12 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">

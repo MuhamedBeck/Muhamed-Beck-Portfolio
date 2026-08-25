@@ -18,12 +18,12 @@ export const Impressum = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen text-gray-100" style={{ background: "#0a0a0a" }}>
+    <div className="min-h-[100dvh] text-gray-100" style={{ background: "#0a0a0a" }}>
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <main>
-      <section className="min-h-screen w-full py-20 pt-28 px-4" style={{ background: "#0a0a0a" }}>
+      <section className="w-full py-20 pt-28 px-4" style={{ background: "#0a0a0a" }}>
         <div className="max-w-4xl mx-auto mb-8">
           <Link
             to="/"

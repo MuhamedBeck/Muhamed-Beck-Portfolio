@@ -59,7 +59,7 @@ const Kontakt = () => (
                       {channel.value}
                     </span>
                   </span>
-                  <span className="mt-2 block text-sm text-gray-500">{channel.note}</span>
+                  <span className="mt-2 block text-sm text-paper-mute">{channel.note}</span>
                 </a>
               </li>
             ))}
@@ -77,7 +77,7 @@ const Kontakt = () => (
               </li>
             ))}
           </ul>
-          <p className="mt-8 text-sm leading-relaxed text-gray-500">
+          <p className="mt-8 text-sm leading-relaxed text-paper-mute">
             Nichts davon ist Pflicht. Ein Satz reicht, den Rest klären wir im Gespräch.
           </p>
         </div>

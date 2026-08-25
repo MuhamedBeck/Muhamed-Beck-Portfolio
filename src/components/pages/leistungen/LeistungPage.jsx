@@ -82,7 +82,7 @@ export const LeistungPage = ({ data }) => (
           <p className="mt-5 text-5xl font-light tabular-nums text-gray-100">
             {data.caseStudy.stat}
           </p>
-          <p className="mt-3 max-w-[26ch] text-sm text-gray-500">
+          <p className="mt-3 max-w-[26ch] text-sm text-paper-mute">
             {data.caseStudy.statLabel}
           </p>
         </div>
@@ -122,7 +122,7 @@ export const LeistungPage = ({ data }) => (
         <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
           Projekt anfragen
         </Link>
-        <p className="mt-5 text-sm text-gray-600">
+        <p className="mt-5 text-sm text-paper-mute">
           Kostenloses Erstgespräch · Frankfurt und remote in Deutschland, Österreich und
           der Schweiz
         </p>

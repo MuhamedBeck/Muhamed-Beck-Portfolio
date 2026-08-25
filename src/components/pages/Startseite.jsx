@@ -27,7 +27,7 @@ export const Startseite = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen text-gray-100" style={{ background: "#0a0a0a" }}>
+    <div className="min-h-[100dvh] text-gray-100" style={{ background: "#0a0a0a" }}>
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
@@ -81,14 +81,14 @@ export const Startseite = () => {
                   <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
                     {projekt.title}
                   </h3>
-                  <p className="mt-3 text-sm text-gray-500">{projekt.subtitle}</p>
+                  <p className="mt-3 text-sm text-paper-mute">{projekt.subtitle}</p>
                   <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
                     {projekt.stats.map((stat) => (
                       <div key={stat.label}>
                         <dd className="text-2xl font-light tabular-nums text-gray-100">
                           {stat.value}
                         </dd>
-                        <dt className="mt-1 text-xs text-gray-500">{stat.label}</dt>
+                        <dt className="mt-1 text-xs text-paper-mute">{stat.label}</dt>
                       </div>
                     ))}
                   </dl>

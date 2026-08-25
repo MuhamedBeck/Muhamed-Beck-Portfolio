@@ -120,11 +120,11 @@ export const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen text-gray-100" style={{ background: '#0a0a0a' }}>
+    <div className="min-h-[100dvh] text-gray-100" style={{ background: '#0a0a0a' }}>
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       
-      <section className="min-h-screen w-full py-20 pt-28 px-4" style={{ background: '#0a0a0a' }}>
+      <section className="w-full py-20 pt-28 px-4" style={{ background: '#0a0a0a' }}>
         {/* Back to Home Link */}
         <div className="max-w-6xl mx-auto mb-8">
           <Link
@@ -233,7 +233,7 @@ export const Services = () => {
           </RevealOnScroll>
 
           {/* Bottom Info */}
-          <div className="mt-12 text-center text-gray-500 text-sm">
+          <div className="mt-12 text-center text-paper-mute text-sm">
             <p>
               Based in Frankfurt, Germany • Available for remote work worldwide
             </p>

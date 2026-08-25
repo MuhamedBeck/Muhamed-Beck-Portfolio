@@ -22,7 +22,7 @@ export const RatgeberPage = ({ data }) => (
         {/* A visible date, matching datePublished/dateModified in the schema.
             Freshness is a real ranking and citation input, so it is stated
             rather than implied, and never faked. */}
-        <p className="border-t border-white/10 pt-5 text-xs tracking-[0.2em] text-gray-500 uppercase">
+        <p className="border-t border-white/10 pt-5 text-xs tracking-[0.2em] text-paper-mute uppercase">
           Stand: {STAND}
         </p>
 

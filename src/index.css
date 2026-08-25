@@ -13,7 +13,12 @@ html {
   --color-ink-raised: #111114; /* the rare raised surface */
   --color-paper: #f3f4f6; /* primary text */
   --color-paper-soft: #9ca3af; /* secondary text */
-  --color-paper-mute: #6b7280; /* captions, legal, meta */
+  /* Captions, legal and meta. Measured against --color-ink, the previous
+     #6b7280 reached only 4.10:1, and the gray-600 used alongside it 2.62:1 --
+     both under the 4.5:1 WCAG 1.4.3 floor for body-size text. This clears it
+     at 5.32:1 and still sits a clear step below --color-paper-soft (7.80:1),
+     so the hierarchy survives the fix. */
+  --color-paper-mute: #7d8592;
   --color-accent: #60a5fa; /* blue-400, the single accent */
   --color-accent-dim: #22d3ee; /* cyan-400, used sparingly */
   --color-hairline: rgb(255 255 255 / 0.1);
@@ -59,6 +64,31 @@ body {
   /* Use min-height + dvh: adjusts dynamically as browser chrome shows/hides */
   min-height: 100vh;
   min-height: 100dvh;
+}
+
+/* Keyboard focus.
+
+   There was previously not a single :focus or :focus-visible rule in the whole
+   stylesheet, and several form fields set focus:outline-none on top of that, so
+   a keyboard user had nothing but a border tint to locate themselves by. One
+   rule here covers every interactive element on every page.
+
+   :focus-visible rather than :focus, so a mouse click on a button does not
+   leave a ring behind. outline (not box-shadow) survives overflow:hidden
+   ancestors, and outline-offset keeps the ring off the glyphs. */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Body copy: prevents a single word stranded on the last line. The headline
+   classes already set text-wrap: balance; this is the paragraph counterpart,
+   and it replaces every manual <br> the copy would otherwise need. */
+p,
+li,
+dd {
+  text-wrap: pretty;
 }
 
 /* Safe Area Support */

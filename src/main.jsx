@@ -36,7 +36,7 @@ function ScrollToTop() {
 
 // Matches the page background so a chunk load never flashes white.
 const RouteFallback = () => (
-  <div className="min-h-screen" style={{ background: "#0a0a0a" }} />
+  <div className="min-h-[100dvh]" style={{ background: "#0a0a0a" }} />
 );
 
 createRoot(document.getElementById("root")).render(

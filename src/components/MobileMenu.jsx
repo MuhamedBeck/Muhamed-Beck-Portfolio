@@ -42,7 +42,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
           <button
             type="button"
             onClick={close}
-            className="flex h-11 w-11 items-center justify-center text-gray-500 transition-colors hover:text-white"
+            className="flex h-11 w-11 items-center justify-center text-paper-mute transition-colors hover:text-white"
             aria-label={chrome.closeMenu}>
             <svg
               className="h-5 w-5"
@@ -74,7 +74,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
                   }`}
                   style={{ transitionDelay: menuOpen ? `${80 + index * 45}ms` : "0ms" }}>
                   {item.label}
-                  <span aria-hidden="true" className="text-gray-600">
+                  <span aria-hidden="true" className="text-paper-mute">
                     ↗
                   </span>
                 </Link>
@@ -84,7 +84,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
         </nav>
 
         <div className="flex shrink-0 items-center justify-between border-t border-white/10 px-5 py-3">
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-paper-mute">
             © {new Date().getFullYear()} {PERSON.name}
           </p>
           {/* A row rather than a dropdown: there is room inside the drawer, and

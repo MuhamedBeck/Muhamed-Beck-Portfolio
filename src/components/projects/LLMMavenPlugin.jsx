@@ -4,7 +4,7 @@ import { useRouteMeta } from "../../seo/useRouteMeta";
 export const LLMMavenPlugin = () => {
   useRouteMeta();
   return (
-    <section className="min-h-screen w-full bg-gradient-to-br from-black via-gray-900 to-blue-950 py-20 px-4 flex items-center justify-center">
+    <section className="min-h-[100dvh] w-full bg-gradient-to-br from-black via-gray-900 to-blue-950 py-20 px-4 flex items-center justify-center">
       <RevealOnScroll legacy>
         <div className="max-w-5xl mx-auto w-full rounded-2xl shadow-2xl bg-gray-900/80 border border-white/10 p-8 md:p-16 relative overflow-hidden">
           <div className="flex flex-col items-center mb-12">
@@ -310,7 +310,7 @@ export const LLMMavenPlugin = () => {
                       95%
                     </div>
                     <div className="text-gray-300 text-sm">Time Reduction</div>
-                    <div className="text-gray-500 text-xs">
+                    <div className="text-paper-mute text-xs">
                       Compared to manual test development
                     </div>
                   </div>
@@ -321,7 +321,7 @@ export const LLMMavenPlugin = () => {
                     <div className="text-gray-300 text-sm">
                       Error-Free Tests
                     </div>
-                    <div className="text-gray-500 text-xs">
+                    <div className="text-paper-mute text-xs">
                       Generated without modification
                     </div>
                   </div>
@@ -330,7 +330,7 @@ export const LLMMavenPlugin = () => {
                       84%
                     </div>
                     <div className="text-gray-300 text-sm">Success Rate</div>
-                    <div className="text-gray-500 text-xs">
+                    <div className="text-paper-mute text-xs">
                       After minimal adjustments
                     </div>
                   </div>

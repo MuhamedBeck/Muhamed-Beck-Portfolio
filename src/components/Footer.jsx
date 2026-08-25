@@ -18,7 +18,7 @@ const columnFor = (locale, prefix) =>
 const FooterColumn = ({ title, links }) =>
   links.length ? (
     <div>
-      <h2 className="label !text-gray-500">{title}</h2>
+      <h2 className="label !text-paper-mute">{title}</h2>
       <ul className="mt-4 space-y-2.5">
         {links.map((link) => (
           <li key={link.to}>
@@ -53,7 +53,7 @@ const Footer = () => {
           <FooterColumn title={t.projects} links={projects} />
 
           <div>
-            <h2 className="label !text-gray-500">{t.contact}</h2>
+            <h2 className="label !text-paper-mute">{t.contact}</h2>
             <ul className="mt-4 space-y-2.5">
               <li>
                 <a
@@ -80,7 +80,7 @@ const Footer = () => {
                 href={SOCIAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 transition-colors duration-300 hover:text-gray-100"
+                className="text-paper-mute transition-colors duration-300 hover:text-gray-100"
                 aria-label={chrome.linkedinAria}>
                 <FaLinkedin className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -88,7 +88,7 @@ const Footer = () => {
                 href={SOCIAL.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 transition-colors duration-300 hover:text-gray-100"
+                className="text-paper-mute transition-colors duration-300 hover:text-gray-100"
                 aria-label={chrome.githubAria}>
                 <FaGithub className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -98,7 +98,7 @@ const Footer = () => {
 
         <hr className="rule mt-14" />
 
-        <div className="flex flex-col items-center gap-3 pt-6 text-xs text-gray-600 sm:flex-row sm:justify-between">
+        <div className="flex flex-col items-center gap-3 pt-6 text-xs text-paper-mute sm:flex-row sm:justify-between">
           <p>
             © {new Date().getFullYear()} {PERSON.name}. {t.rights}
           </p>

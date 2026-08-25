@@ -125,7 +125,7 @@ const UeberMich = () => (
                 {station.period}
               </p>
               <h3 className="mt-3 text-lg font-normal text-gray-100">{station.role}</h3>
-              <p className="mt-1 text-sm text-gray-500">{station.org}</p>
+              <p className="mt-1 text-sm text-paper-mute">{station.org}</p>
             </div>
             <p className="mt-4 max-w-[62ch] leading-relaxed text-gray-400 md:mt-0">
               {station.text}

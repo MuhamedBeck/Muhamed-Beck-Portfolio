@@ -120,10 +120,10 @@ export const HireMe = () => {
   };
 
   const inputClass =
-    "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all duration-300";
+    "w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-blue-500 focus:bg-blue-500/5 transition-all duration-300";
 
   return (
-    <div className="min-h-screen text-gray-100" style={{ background: '#0a0a0a' }}>
+    <div className="min-h-[100dvh] text-gray-100" style={{ background: '#0a0a0a' }}>
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
@@ -280,7 +280,7 @@ export const HireMe = () => {
                 <p className="text-gray-400 mb-3">
                   I'll get back to you within 24 hours.
                 </p>
-                <p className="text-gray-500 text-sm">
+                <p className="text-paper-mute text-sm">
                   No confirmation?{" "}
                   <a
                     href="mailto:m.nur.beck@hotmail.de"
@@ -341,7 +341,7 @@ export const HireMe = () => {
                     className="block text-sm text-gray-400 mb-2"
                     htmlFor="hire-company">
                     Company / Organization{" "}
-                    <span className="text-gray-600">(optional)</span>
+                    <span className="text-paper-mute">(optional)</span>
                   </label>
                   <input
                     id="hire-company"
@@ -371,7 +371,7 @@ export const HireMe = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, service_type: e.target.value })
                     }
-                    className="w-full bg-gray-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:bg-gray-800 transition-colors duration-300 cursor-pointer appearance-none">
+                    className="w-full bg-gray-900 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-blue-500 focus:bg-gray-800 transition-colors duration-300 cursor-pointer appearance-none">
                     <option value="" disabled className="bg-gray-900 text-gray-400">
                       Select a service...
                     </option>
@@ -436,7 +436,7 @@ export const HireMe = () => {
                   {loading ? "Sending..." : "Send Request"}
                 </button>
 
-                <p className="text-center text-xs text-gray-500 flex items-center justify-center gap-2">
+                <p className="text-center text-xs text-paper-mute flex items-center justify-center gap-2">
                   <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse inline-block" />
                   Response within 24 hours · Frankfurt, Germany
                 </p>
@@ -445,7 +445,7 @@ export const HireMe = () => {
 
             {/* Direct contact fallback */}
             <div className="mt-6 text-center">
-              <p className="text-gray-500 text-sm">
+              <p className="text-paper-mute text-sm">
                 Prefer direct contact?{" "}
                 <a
                   href="mailto:m.nur.beck@hotmail.de?subject=Service Request via Portfolio"

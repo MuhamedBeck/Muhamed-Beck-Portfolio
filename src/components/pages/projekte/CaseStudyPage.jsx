@@ -23,7 +23,7 @@ export const CaseStudyPage = ({ data }) => (
               {stat.value}
             </dd>
             <dt className="mt-4 text-sm text-gray-300">{stat.label}</dt>
-            <p className="mt-1 text-sm text-gray-500">{stat.note}</p>
+            <p className="mt-1 text-sm text-paper-mute">{stat.note}</p>
           </div>
         ))}
       </dl>

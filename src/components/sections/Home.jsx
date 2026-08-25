@@ -35,7 +35,7 @@ export const Home = ({ isLoaded = true }) => {
   return (
     <section
       id="home"
-      className={`relative flex min-h-screen items-center justify-center overflow-x-hidden px-4 ${
+      className={`relative flex min-h-[100dvh] items-center justify-center overflow-x-hidden px-4 ${
         isLoaded ? "is-ready" : ""
       }`}>
       <div className="mx-auto w-full max-w-3xl py-24 text-center">
@@ -90,7 +90,7 @@ export const Home = ({ isLoaded = true }) => {
             href={SOCIAL.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 transition-colors duration-300 hover:text-blue-400"
+            className="text-paper-mute transition-colors duration-300 hover:text-blue-400"
             aria-label={t.socials.linkedin}>
             <FaLinkedin className="h-5 w-5" />
           </a>
@@ -98,13 +98,13 @@ export const Home = ({ isLoaded = true }) => {
             href={SOCIAL.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 transition-colors duration-300 hover:text-blue-400"
+            className="text-paper-mute transition-colors duration-300 hover:text-blue-400"
             aria-label={t.socials.github}>
             <FaGithub className="h-5 w-5" />
           </a>
           <a
             href={`mailto:${CONTACT.email}`}
-            className="text-gray-500 transition-colors duration-300 hover:text-blue-400"
+            className="text-paper-mute transition-colors duration-300 hover:text-blue-400"
             aria-label={t.socials.email}>
             <FaEnvelope className="h-5 w-5" />
           </a>
@@ -122,12 +122,12 @@ export const Home = ({ isLoaded = true }) => {
               <dd className="text-4xl font-light tracking-tight tabular-nums text-gray-100">
                 {stat.value}
               </dd>
-              <dt className="mt-3 text-sm leading-snug text-gray-500">{stat.label}</dt>
+              <dt className="mt-3 text-sm leading-snug text-paper-mute">{stat.label}</dt>
             </div>
           ))}
         </dl>
 
-        <p className="mt-10 text-xs text-gray-600">{chrome.replyPromise}</p>
+        <p className="mt-10 text-xs text-paper-mute">{chrome.replyPromise}</p>
       </div>
     </section>
   );

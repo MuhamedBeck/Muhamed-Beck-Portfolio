@@ -37,7 +37,7 @@ export const TechMarquee = () => (
     aria-label="Tech stack"
     className="py-10 overflow-hidden"
     style={{ background: "#0a0a0a" }}>
-    <p className="text-center text-[10px] font-semibold tracking-[0.25em] text-gray-600 uppercase mb-8">
+    <p className="text-center text-[10px] font-semibold tracking-[0.25em] text-paper-mute uppercase mb-8">
       Tech Stack &amp; Tools
     </p>
 
@@ -59,7 +59,7 @@ export const TechMarquee = () => (
               className="w-7 h-7 transition-all duration-300 opacity-50 group-hover:opacity-100 group-hover:scale-110"
               style={{ color }}
             />
-            <span className="text-[11px] text-gray-600 group-hover:text-gray-300 transition-colors duration-300 whitespace-nowrap">
+            <span className="text-[11px] text-paper-mute group-hover:text-gray-300 transition-colors duration-300 whitespace-nowrap">
               {name}
             </span>
           </div>

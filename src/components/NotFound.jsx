@@ -3,7 +3,7 @@ import { useRouteMeta } from "../seo/useRouteMeta";
 const NotFound = () => {
   useRouteMeta();
   return (
-  <div className="min-h-screen flex flex-col items-center justify-center bg-black text-gray-100">
+  <div className="min-h-[100dvh] flex flex-col items-center justify-center bg-black text-gray-100">
     <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
       404
     </h1>
