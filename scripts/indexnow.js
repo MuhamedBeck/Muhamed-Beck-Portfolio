@@ -14,9 +14,11 @@
 // start to use IndexNow." Submitting all 24 routes on every run is the kind of
 // noise that earns a 429 and teaches the engine to discount the signal.
 //
-// So the default is the newest lastmod cohort from the route registry. That
-// field already is this project's record of when a page actually changed, and
-// generate-sitemap.js keeps it honest: it moves only when a page moves.
+// So the default is the newest lastmod cohort from the route registry. Nothing
+// enforces that field: generate-sitemap.js only reads it. It stays truthful
+// because whoever changes a page bumps that page's row and no others -- which
+// is why the checklist in CLAUDE.md names it, and why a run where every route
+// shares the newest date stops instead of submitting everything.
 //
 // Usage:
 //   npm run indexnow                    submit routes carrying the newest lastmod
@@ -74,7 +76,25 @@ if (explicitPaths.length > 0) {
     (latest, route) => (route.lastmod > latest ? route.lastmod : latest),
     ""
   );
-  selected = ROUTES.filter((route) => route.lastmod === newest).map((route) => route.path);
+  const cohort = ROUTES.filter((route) => route.lastmod === newest);
+
+  // If every route shares the newest date, the cohort filter has selected
+  // nothing and this run would submit the whole site -- exactly what the
+  // default exists to prevent. That happens when a bulk edit stamps one date
+  // across the registry, which is legitimate after a site-wide change and a
+  // mistake after a two-page one. The script cannot tell those apart, so it
+  // refuses and makes the caller say which it was.
+  if (cohort.length === ROUTES.length) {
+    console.error(
+      `indexnow: all ${ROUTES.length} routes carry lastmod ${newest}, so the newest cohort is the entire site.`
+    );
+    console.error("indexnow: after a site-wide change, confirm with:  npm run indexnow -- --all");
+    console.error("indexnow: after changing a few pages, bump only their lastmod in src/routes/registry.js,");
+    console.error("indexnow: or name them directly:  npm run indexnow -- /pfad-a /pfad-b");
+    process.exit(1);
+  }
+
+  selected = cohort.map((route) => route.path);
   reason = `lastmod ${newest}`;
 }
 

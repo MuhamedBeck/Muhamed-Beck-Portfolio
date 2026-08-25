@@ -44,6 +44,11 @@ zugleich. Eine neue Seite entsteht **dort**, nicht in einer Komponente.
 Wer eine Route hinzufügt, prüft in dieser Reihenfolge:
 
 - [ ] Eintrag in `src/routes/registry.js`
+- [ ] `lastmod` **nur** bei den tatsächlich geänderten Routen hochsetzen. Das Feld
+      ist die einzige Aufzeichnung darüber, wann eine Seite sich geändert hat, und
+      `npm run indexnow` meldet genau diese Kohorte an Bing. Wer alle 26 Zeilen
+      pauschal auf heute setzt, meldet die ganze Seite an — das Skript bricht in
+      dem Fall ab und verlangt eine bewusste Entscheidung.
 - [ ] Metadaten in `src/seo/routes.meta.js` (Titel, Description, Canonical, OG)
 - [ ] Übersetzungen in `src/i18n/dict/` für **alle** Sprachen aus `LIVE_LOCALES`
 - [ ] `npm run check:i18n` grün
