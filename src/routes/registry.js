@@ -308,6 +308,22 @@ export const ROUTES = [
     priority: "0.8",
   },
   {
+    id: "ratgeber.aiact",
+    path: "/ratgeber/ki-recruiting-ai-act",
+    locale: "de",
+    group: "ratgeber.aiact",
+    load: () => import("../components/pages/ratgeber/RatgeberRoute.jsx"),
+    props: { path: "/ratgeber/ki-recruiting-ai-act" },
+    title: "AI Act und KI im Recruiting: Was 2026 schon gilt",
+    description:
+      "Die Hochrisiko-Pflichten für Recruiting-KI gelten erst ab Dezember 2027. Emotionserkennung im Bewerbungsgespräch ist dagegen seit Februar 2025 verboten.",
+    h1: "KI im Recruiting und der AI Act",
+    ogType: "article",
+    lastmod: "2026-08-25",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
     id: "leistung.n8n",
     path: "/leistungen/n8n-automatisierung",
     locale: "de",

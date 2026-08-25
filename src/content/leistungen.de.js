@@ -321,6 +321,7 @@ export const LEISTUNGEN = [
   {
     path: "/leistungen/recruiting-automatisierung",
     weiterlesen: [
+      { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
       {
         path: "/ratgeber/recruiting-mit-n8n-automatisieren",
         label: "Recruiting mit n8n automatisieren",

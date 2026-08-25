@@ -281,7 +281,138 @@ export const RATGEBER = [
     ],
     related: [
       { path: "/leistungen/recruiting-automatisierung", label: "Recruiting-Automatisierung mit n8n und ATS-Anbindung" },
+      { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
       { path: "/projekte/recruiting-automatisierung", label: "Case Study: Recruiting-Automatisierung" },
+    ],
+  },
+  {
+    path: "/ratgeber/ki-recruiting-ai-act",
+    kicker: "Recht",
+    h1: "KI im Recruiting und der AI Act",
+    published: "2026-08-25",
+    modified: "2026-08-25",
+    lede: "Die Hochrisiko-Pflichten des AI Act für KI in der Bewerberauswahl gelten erst ab dem 2. Dezember 2027. Die Verordnung (EU) 2026/1744, veröffentlicht am 24. Juli 2026, hat die ursprüngliche Frist des 2. August 2026 um sechzehn Monate verschoben. Wer daraus schließt, KI im Recruiting sei bis dahin unreguliert, irrt an der teuersten Stelle: Emotionserkennung im Bewerbungsverfahren ist seit dem 2. Februar 2025 verboten, und der Bußgeldrahmen dafür beträgt bis zu 35 Millionen Euro oder 7 Prozent des weltweiten Jahresumsatzes.",
+    table: {
+      caption: "Welche Norm im Recruiting wann greift (Stand: August 2026)",
+      columns: ["Gilt seit oder ab", "Bußgeldrahmen"],
+      rows: [
+        {
+          label: "Verbot der Emotionserkennung, Art. 5 Abs. 1 lit. f KI-VO",
+          cells: ["2. Februar 2025", "bis 35 Mio. € oder 7 % des Jahresumsatzes (Art. 99 Abs. 3 KI-VO)"],
+        },
+        {
+          label: "Transparenzpflicht bei KI-Kontakt, Art. 50 KI-VO",
+          cells: ["2. August 2026", "bis 15 Mio. € oder 3 % des Jahresumsatzes (Art. 99 Abs. 4 KI-VO)"],
+        },
+        {
+          label: "Erläuterung an abgelehnte Personen, Art. 86 KI-VO",
+          cells: ["2. August 2026", "bis 50.000 € als Ordnungswidrigkeit (§ 15 KI-MIG)"],
+        },
+        {
+          label: "Hochrisiko-Pflichten Recruiting, Anhang III Nr. 4 KI-VO",
+          cells: ["2. Dezember 2027", "bis 15 Mio. € oder 3 % des Jahresumsatzes (Art. 99 Abs. 4 KI-VO)"],
+        },
+        {
+          label: "Automatisierte Einzelentscheidung, Art. 22 DSGVO",
+          cells: ["25. Mai 2018", "bis 20 Mio. € oder 4 % des Jahresumsatzes (Art. 83 Abs. 5 lit. b DSGVO)"],
+        },
+        {
+          label: "Benachteiligungsverbot, §§ 3, 7 AGG",
+          cells: ["18. August 2006", "Entschädigung, bei aussichtsloser Bewerbung höchstens drei Monatsgehälter (§ 15 Abs. 2 AGG)"],
+        },
+      ],
+    },
+    sections: [
+      {
+        h2: "Gelten die AI-Act-Pflichten für Recruiting-KI schon?",
+        body: [
+          "Nein, die Pflichten für eigenständige Hochrisiko-KI-Systeme nach Anhang III Nummer 4, also für KI in Beschäftigung und Personalmanagement, gelten erst ab dem 2. Dezember 2027. Rechtsgrundlage der Verschiebung ist die Verordnung (EU) 2026/1744, die Digital-Omnibus-Verordnung zur KI, veröffentlicht am 24. Juli 2026 und in Kraft seit dem 27. Juli 2026. Ursprünglich war der 2. August 2026 vorgesehen.",
+          "Verschoben wurde der komplette Pflichtenkatalog für Hochrisiko-Systeme: Risikomanagement, Datenqualität, technische Dokumentation, Protokollierung, menschliche Aufsicht und Konformitätsbewertung. Das sind die Artikel 6 bis 27 der KI-Verordnung. Für die zweite Gruppe von Hochrisiko-Systemen, KI als Sicherheitsbauteil in ohnehin regulierten Produkten wie Maschinen oder Medizinprodukten, gilt sogar erst der 2. August 2028. Fürs Recruiting spielt diese Gruppe keine Rolle.",
+          "Für Sie heißt das vor allem eines: Prüfen Sie bei jeder Checkliste, jedem Fachbeitrag und jeder Beraterfolie zuerst das Standdatum. Alles, was vor August 2026 entstanden ist, nennt für das Recruiting noch die alte Frist. Die vielzitierte Übersicht auf artificialintelligenceact.eu trug im Sommer 2026 noch den Stand vom 1. August 2024. Verbindlich sind ohnehin nur die im Amtsblatt veröffentlichten Fassungen; die praktische konsolidierte Fassung bei EUR-Lex trägt selbst den Hinweis, dass sie allein Informationszwecken dient.",
+        ],
+      },
+      {
+        h2: "Was ist im Bewerbungsverfahren schon heute verboten?",
+        body: [
+          "Emotionserkennung ist verboten, und zwar seit dem 2. Februar 2025. Artikel 5 Absatz 1 Buchstabe f der KI-Verordnung untersagt den Einsatz von KI-Systemen, die Emotionen einer natürlichen Person am Arbeitsplatz ableiten. Das steht im selben Katalog wie Social Scoring: Diese Praktiken werden nicht reguliert, sondern untersagt.",
+          "Dass ein Bewerbungsverfahren als Arbeitsplatz zählt, ist nach Auffassung der Europäischen Kommission geklärt. Sie hat das in ihren Leitlinien zu verbotenen KI-Praktiken, C(2025) 5052 final vom 29. Juli 2025, ausdrücklich festgehalten: Der Arbeitsplatz umfasst auch das Auswahl- und Einstellungsverfahren, weil zwischen Unternehmen und Bewerbern dasselbe Machtungleichgewicht besteht wie im laufenden Arbeitsverhältnis (Randnummer 254). Als Standardfall nennen dieselben Leitlinien wörtlich: „Der Einsatz von Emotionserkennungssystemen während des Einstellungsverfahrens ist verboten.“ Auch die Probezeit ist genannt. Diese Leitlinien binden Gerichte nicht, das sagen sie selbst; verbindlich auslegen kann die Verordnung nur der Europäische Gerichtshof. Sie sind aber der Maßstab, an dem sich die Aufsichtsbehörden orientieren.",
+          "Die beiden Ausnahmen sind eng. Medizinische Zwecke meinen nach Randnummer 257 CE-gekennzeichnete Medizinprodukte, nicht die allgemeine Erfassung von Wohlbefinden oder Stresspegeln. Sicherheitsgründe meinen nach Randnummer 258 den Schutz von Leben und Gesundheit, nicht den Schutz von Eigentum vor Diebstahl oder Betrug. Klarstellend heißt es in Erwägungsgrund 18, also in der amtlichen Begründung im Vorspann der Verordnung, dass körperliche Zustände wie Schmerz oder Müdigkeit keine Emotionen sind. Ein System, das im Video-Interview allein Sprechpausen zählt, misst deshalb noch keine Emotion; eines, das daraus auf Nervosität schließt, sehr wohl.",
+        ],
+      },
+      {
+        h2: "Fällt die Auswertung von Video-Interviews darunter?",
+        body: [
+          "Die Auswertung von Mimik und Stimme fällt unter das Verbot, die reine Textanalyse nicht. Die Grenze verläuft an den biometrischen Daten: Artikel 3 Nummer 39 der KI-Verordnung, anwendbar seit dem 2. Februar 2025, setzt für ein Emotionserkennungssystem biometrische Daten voraus. Die Kommission legt das Verbot entsprechend aus, obwohl der Wortlaut des Artikel 5 Absatz 1 Buchstabe f diese Definition nicht ausdrücklich in Bezug nimmt (Randnummern 244 und 245 der Leitlinien). Wer aus Gesichtsausdruck oder Stimmlage auf Motivation, Belastbarkeit oder Persönlichkeit schließt, arbeitet mit biometrischen Daten und ist erfasst.",
+          "Ein System, das Stimmungen aus geschriebenem Text ableitet, also die klassische Stimmungsanalyse einer Bewerbung, arbeitet nicht mit biometrischen Daten und fällt deshalb nicht unter dieses Verbot (Randnummern 250 und 251). Unbedenklich ist es damit nicht: Sobald es Bewerber bewertet oder in eine Rangfolge bringt, greifen die übrigen Regeln dieses Artikels.",
+          "Ein zweites Verbot liegt daneben und wird oft übersehen. Artikel 5 Absatz 1 Buchstabe g untersagt die biometrische Kategorisierung, mit der aus biometrischen Daten auf Ethnie, politische Einstellung, Gewerkschaftszugehörigkeit, religiöse oder weltanschauliche Überzeugung, Sexualleben oder sexuelle Orientierung geschlossen wird. Ein Video-Interview liefert genau die Datenbasis für solche Rückschlüsse. Fragen Sie Ihren Anbieter deshalb schriftlich, welche Merkmale sein System aus Bild und Ton ableitet, und lassen Sie sich bestätigen, dass keine dieser Kategorien darunter ist.",
+          "Die Begründung des Gesetzgebers steht in Erwägungsgrund 44 und ist ungewöhnlich deutlich: Es bestehen ernsthafte Bedenken hinsichtlich der wissenschaftlichen Grundlage von Systemen, die Emotionen erkennen sollen, weil Emotionsausdruck zwischen Kulturen, Situationen und sogar bei derselben Person erheblich variiert. Das Verbot beruht also nicht auf einem Datenschutzargument, sondern auf dem Zweifel, dass die Technik überhaupt misst, was sie zu messen vorgibt.",
+        ],
+      },
+      {
+        h2: "Haftet der Arbeitgeber auch bei zugekaufter Software?",
+        body: [
+          "Ja, der Arbeitgeber haftet auch bei zugekaufter Software. Randnummer 243 der Kommissionsleitlinien C(2025) 5052 final vom 29. Juli 2025 stellt klar, dass das Verbot Anbieter und Betreiber gleichermaßen trifft, jeweils in ihrem Verantwortungsbereich. Wer ein fertiges Emotionserkennungstool im Bewerbungsverfahren einsetzt, ist selbst Adressat und kann sich nicht darauf berufen, das System nicht entwickelt zu haben.",
+          "Der Bußgeldrahmen für Verstöße gegen Artikel 5 liegt nach Artikel 99 Absatz 3 bei bis zu 35 Millionen Euro oder 7 Prozent des weltweiten Jahresumsatzes, je nachdem, welcher Betrag höher ist. Das ist die höchste Stufe der Verordnung, deutlich über den bis zu 15 Millionen Euro oder 3 Prozent für Verstöße gegen Betreiber- und Transparenzpflichten.",
+          "Für kleine und mittlere Unternehmen einschließlich Start-ups kehrt Artikel 99 Absatz 6 die Rechnung um: Dort gilt der jeweils niedrigere der beiden Werte, und zwar für alle drei Bußgeldstufen. Die Digital-Omnibus-Verordnung hat mit einem neuen Absatz 6a eine ähnliche, aber engere Deckelung für kleine Midcap-Unternehmen ergänzt, also für Unternehmen, die aus der KMU-Definition herausgewachsen sind. Diese Deckelung greift nur bei den Bußgeldern nach Absatz 4 und 5. Für Verstöße gegen die Verbote des Artikel 5 bleibt es dort beim höheren Wert.",
+          "Unabhängig davon greift das Allgemeine Gleichbehandlungsgesetz (AGG). Auch eine diskriminierende Vorauswahl durch zugekaufte Software befreit den Arbeitgeber nicht von der Haftung gegenüber der abgelehnten Person. Die Auslagerung verlagert das Risiko technisch, nicht rechtlich.",
+        ],
+      },
+      {
+        h2: "Muss man Bewerber informieren, wenn eine KI mit ihnen spricht?",
+        body: [
+          "Ja, seit dem 2. August 2026 muss für die betroffene Person erkennbar sein, dass sie mit einem KI-System spricht. Das verlangt Artikel 50 der KI-Verordnung. Diese Frist wurde vom Digital Omnibus ausdrücklich nicht verschoben, wie die Europäische Kommission in ihren FAQ vom Juli 2026 bestätigt hat. Der Bußgeldrahmen liegt nach Artikel 99 Absatz 4 Buchstabe g bei bis zu 15 Millionen Euro oder 3 Prozent des weltweiten Jahresumsatzes.",
+          "Normadressat des Artikel 50 Absatz 1 ist der Anbieter des Systems, nicht der Betreiber, und die Pflicht entfällt, wenn die KI-Natur ohnehin offensichtlich ist. Für Arbeitgeber ist das trotzdem kein Freibrief: Wer ein zugekauftes System unter eigenem Namen einsetzt oder es wesentlich verändert, gilt nach Artikel 25 Absatz 1 selbst als Anbieter und haftet dann unmittelbar. Praktisch heißt das, den Hinweis vertraglich vom Anbieter zu verlangen und im eigenen Gesprächsleitfaden zu verankern.",
+          "Praktisch ist das der billigste Teil der ganzen Verordnung: ein Satz zu Gesprächsbeginn, vor der ersten inhaltlichen Frage. Zum Beispiel: „Sie sprechen mit einem KI-Assistenten. Auf Wunsch verbinde ich Sie mit einem Mitarbeiter.“ Teuer wird es nur, wenn er fehlt.",
+        ],
+      },
+      {
+        h2: "Was gilt im Recruiting unabhängig vom AI Act?",
+        body: [
+          "Das meiste gilt schon lange. Artikel 22 DSGVO verbietet seit dem 25. Mai 2018 die ausschließlich automatisierte Entscheidung mit rechtlicher oder ähnlich erheblicher Wirkung. Erlaubt ist sie nur in drei Fällen: wenn sie für einen Vertrag erforderlich ist, wenn eine Rechtsvorschrift sie zulässt oder wenn die betroffene Person ausdrücklich eingewilligt hat. Eine vollautomatisch erzeugte Absage ohne menschliche Beteiligung ist damit seit Jahren angreifbar. Der Europäische Gerichtshof hat am 7. Dezember 2023 in der Sache C-634/21 zu SCHUFA entschieden, dass schon die Erstellung eines Scores eine automatisierte Entscheidung sein kann, wenn dieser Wert das Ergebnis maßgeblich bestimmt. Für ein Bewerber-Ranking ist das die entscheidende Aussage.",
+          "Das Allgemeine Gleichbehandlungsgesetz gilt seit dem 18. August 2006. Zwei Vorschriften sind für algorithmische Vorauswahl entscheidend. § 3 Absatz 2 erfasst die mittelbare Benachteiligung: ein Kriterium, das neutral aussieht, eine geschützte Gruppe aber systematisch schlechter stellt. Noch wichtiger ist § 22. Trägt eine abgelehnte Person Indizien für eine Benachteiligung vor, muss der Arbeitgeber beweisen, dass keine vorlag. Wer nicht erklären kann, wie sein Modell zu seiner Reihenfolge kommt, führt diesen Beweis nicht. Die Entschädigung nach § 15 Absatz 2 ist auf drei Monatsgehälter begrenzt, wenn die Person auch bei fehlerfreier Auswahl nicht eingestellt worden wäre, sonst gibt es keine Obergrenze. Geltend zu machen ist der Anspruch nach § 15 Absatz 4 binnen zwei Monaten ab Zugang der Absage.",
+          "Wo ein Betriebsrat besteht, kommen drei Pflichten zusammen. Erstens kann ein KI-gestütztes Auswahlverfahren eine technische Einrichtung nach § 87 Absatz 1 Nummer 6 BetrVG sein, dann muss der Betriebsrat zustimmen. Das folgt allerdings nicht schon daraus, dass Bewerber bewertet werden: Die Vorschrift schützt Arbeitnehmer, und Bewerber sind noch keine. Mitbestimmungspflichtig wird das System, sobald es objektiv geeignet ist, auch Verhalten oder Leistung der eigenen Beschäftigten zu erfassen, etwa weil Recruiter darin protokolliert werden. Zweitens ist der Betriebsrat nach § 90 Absatz 1 Nummer 3 über die Planung von Arbeitsverfahren zu unterrichten und zu beraten, und zwar rechtzeitig. Drittens stellt § 95 Absatz 2a ausdrücklich klar, dass Auswahlrichtlinien auch dann zustimmungspflichtig sind, wenn bei ihrer Aufstellung künstliche Intelligenz zum Einsatz kommt.",
+        ],
+      },
+      {
+        h2: "Wer beaufsichtigt das in Deutschland?",
+        body: [
+          "Die Bundesnetzagentur beaufsichtigt die KI-Verordnung in Deutschland. Das KI-Marktüberwachungs- und Innovationsförderungsgesetz vom 22. Juli 2026, kurz KI-MIG, ist am 29. Juli 2026 in Kraft getreten und benennt sie in § 2 Absatz 1 als allgemein zuständige Marktüberwachungsbehörde. Deutschland hat die unionsrechtliche Frist zur Benennung, den 2. August 2025, damit um knapp ein Jahr verfehlt.",
+          "Für Recruiting sind zwei Vorschriften dieses Gesetzes relevant. § 8 richtet bei der Bundesnetzagentur eine zentrale Beschwerdestelle ein, an die sich auch abgelehnte Bewerberinnen und Bewerber wenden können. Und § 15 ahndet bestimmte Verstöße als Ordnungswidrigkeit mit einer Geldbuße bis zu 50.000 Euro. Dazu gehört ausdrücklich der Fall, dass ein Unternehmen einer abgelehnten Person die nach Artikel 86 Absatz 1 der KI-Verordnung geschuldete Erklärung verweigert.",
+          "Die Aufsicht ist nicht vollständig zentralisiert: § 2 Absätze 2 bis 8 weisen sektorale Zuständigkeiten zu, etwa der BaFin für beaufsichtigte Finanzdienstleistungen und den Landesbehörden für öffentliche Stellen.",
+        ],
+      },
+      {
+        h2: "Was sollten Arbeitgeber bis Dezember 2027 vorbereiten?",
+        body: [
+          "Eine Bestandsaufnahme zuerst. In den meisten Recruiting-Prozessen laufen mehr Modelle mit, als die Beteiligten wissen: der eingebaute Abgleich im Bewerbermanagementsystem, eine automatische Rangfolge im Jobportal, eine Vorqualifizierung im Chat. Die Frage ist nicht, ob KI im Einsatz ist, sondern welche Entscheidung sie trifft und wer sie danach noch prüft.",
+          "Danach gilt eine einfache Reihenfolge. Alles, was im Beschäftigungskontext Emotionen aus Gesicht oder Stimme ableitet, gehört heute abgeschaltet und nicht erst 2027; im Bewerbungsverfahren gilt das ausnahmslos. Jede Absage braucht eine menschliche Entscheidung, die diesen Namen verdient, also mit Kenntnis des Falls und der Befugnis, das Modell zu überstimmen. Wer Bewerber automatisch in eine Rangfolge bringt, sollte festhalten, welche Merkmale diese Rangfolge bestimmt haben: Genau danach fragt § 22 AGG, in Kraft seit dem 18. August 2006, sobald eine abgelehnte Person Indizien für eine Benachteiligung vorträgt. Und der Betriebsrat gehört an den Anfang des Projekts, nicht an sein Ende.",
+          "Wer das bis Ende 2027 stehen hat, muss im Dezember 2027 nicht umbauen, sondern nur dokumentieren. Das ist der Unterschied zwischen einer Frist und einem Problem.",
+          "Dieser Text ordnet die Rechtslage zum Stand August 2026 ein und ersetzt keine Rechtsberatung. Für die verbindliche Beurteilung eines konkreten Auswahlverfahrens ist anwaltlicher Rat einzuholen.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Ist ein Lebenslauf-Parser Hochrisiko-KI?",
+        a: "Anhang III Nummer 4 erfasst KI, die Bewerbungen analysiert, filtert oder Kandidaten bewertet. Ob ein konkretes System deshalb Hochrisiko ist, entscheidet aber Artikel 6 Absatz 3: Systeme, die nur eine eng gefasste Verfahrensaufgabe oder eine rein vorbereitende Aufgabe erfüllen und kein erhebliches Grundrechtsrisiko bergen, fallen heraus. Ein Parser, der Felder ausliest, ohne eine Rangfolge oder Eignungsaussage zu erzeugen, kann darunter fallen; ein Matching-Score kaum. Die Einstufung muss der Anbieter dokumentieren, und die daran hängenden Pflichten greifen ohnehin erst am 2. Dezember 2027.",
+      },
+      {
+        q: "Darf ein KI-Agent Bewerber anrufen?",
+        a: "Ja, mit Hinweis zu Gesprächsbeginn. Zwei Details gehen dabei oft unter: Der Hinweis muss vor der ersten inhaltlichen Frage fallen, nicht am Ende, und er gilt für Chat und Messenger genauso wie fürs Telefon. Nicht erlaubt bleibt in jedem Fall, aus Stimmlage oder Sprechweise auf Emotionen zu schließen. Das fällt unter das Verbot des Artikel 5 Absatz 1 Buchstabe f, das seit dem 2. Februar 2025 gilt.",
+      },
+      {
+        q: "Was passiert, wenn ein abgelehnter Bewerber Auskunft verlangt?",
+        a: "Er kann sich auf Artikel 15 DSGVO stützen und auf Artikel 86 der KI-Verordnung, der seit dem 2. August 2026 gilt und vom Digital Omnibus nicht verschoben wurde. In Deutschland ist das Verweigern dieser Erläuterung nach § 15 KI-MIG eine Ordnungswidrigkeit mit bis zu 50.000 Euro. Unabhängig davon kehrt § 22 AGG die Beweislast um, sobald Indizien für eine Benachteiligung vorgetragen sind.",
+      },
+      {
+        q: "Gilt das auch für kleine Unternehmen?",
+        a: "Verbote und Pflichten gelten unabhängig von der Größe. Nur beim Bußgeld wird unterschieden: Bei kleinen und mittleren Unternehmen einschließlich Start-ups gilt nach Artikel 99 Absatz 6 der niedrigere der beiden Werte, und zwar für alle Bußgeldstufen. Für kleine Midcap-Unternehmen hat die Digital-Omnibus-Verordnung mit Artikel 99 Absatz 6a eine engere Deckelung ergänzt: Sie greift nur bei den Bußgeldern nach Absatz 4 und 5, nicht bei Verstößen gegen die Verbote des Artikel 5.",
+      },
+    ],
+    related: [
+      { path: "/leistungen/recruiting-automatisierung", label: "Recruiting-Automatisierung mit n8n und ATS-Anbindung" },
+      { path: "/ratgeber/recruiting-mit-n8n-automatisieren", label: "Recruiting mit n8n automatisieren" },
+      { path: "/leistungen/voice-ai-agenten", label: "Voice-AI-Agenten und der Transparenzhinweis" },
     ],
   },
 ];
