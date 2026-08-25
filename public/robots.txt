@@ -3,14 +3,34 @@
 User-agent: *
 Allow: /
 
-# AI crawlers explicitly welcome (generative engine optimization)
-User-agent: GPTBot
-Allow: /
+# KI-/Antwortmaschinen ausdruecklich erlaubt (Stand 2026-08-24).
+# Funktional deckt "*" sie bereits ab; die expliziten Gruppen sind eine
+# Absicherung: Wer spaeter ein Disallow in "*" ergaenzt, sperrt damit nicht
+# versehentlich die Sichtbarkeit in ChatGPT, Claude und Perplexity aus.
+#
+# Wichtig ist die Unterscheidung zweier Bot-Klassen:
+#   Training  - GPTBot, ClaudeBot, Google-Extended, Applebot-Extended
+#   Retrieval - OAI-SearchBot, Claude-SearchBot, PerplexityBot
+# Nur die Retrieval-Bots entscheiden, ob die Seite in einer KI-Antwort
+# zitiert werden kann. Wer sie sperrt, verschwindet dort vollstaendig.
 
+# --- OpenAI / ChatGPT ---
 User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+# --- Anthropic / Claude ---
+# Claude-SearchBot ist der Retrieval-Bot hinter den Zitaten in Claude.
+# "Claude-Web" ist der abgeloeste Name und bleibt nur der Vollstaendigkeit halber.
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
 Allow: /
 
 User-agent: ClaudeBot
@@ -19,10 +39,21 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
+# --- Perplexity ---
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
+# --- Google / Apple ---
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://muhamedbeck.com/sitemap.xml
