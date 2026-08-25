@@ -78,7 +78,7 @@ export const Startseite = () => {
         <Section id="projekte">
           <SectionHeader label={t.cases.label} headline={t.cases.headline} />
           <ul className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2">
-            {PROJEKTE.map((projekt, index) => (
+            {PROJEKTE.filter((projekt) => projekt.kind === "mandat").map((projekt, index) => (
               <li
                 key={projekt.path}
                 className="stagger border-t border-hairline pt-6"

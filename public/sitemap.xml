@@ -73,16 +73,40 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://muhamedbeck.com/kontakt"/>
   </url>
   <url>
+    <loc>https://muhamedbeck.com/projekte/llm-unit-test-automatisierung</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://muhamedbeck.com/projekte/llm-unit-test-automatisierung"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://muhamedbeck.com/en/projects/llm-maven-plugin"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://muhamedbeck.com/projekte/llm-unit-test-automatisierung"/>
+  </url>
+  <url>
+    <loc>https://muhamedbeck.com/projekte/ar-datenvisualisierung</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://muhamedbeck.com/projekte/ar-datenvisualisierung"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://muhamedbeck.com/en/projects/ar-data-visualization"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://muhamedbeck.com/projekte/ar-datenvisualisierung"/>
+  </url>
+  <url>
     <loc>https://muhamedbeck.com/en/projects/ar-data-visualization</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://muhamedbeck.com/projekte/ar-datenvisualisierung"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://muhamedbeck.com/en/projects/ar-data-visualization"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://muhamedbeck.com/projekte/ar-datenvisualisierung"/>
   </url>
   <url>
     <loc>https://muhamedbeck.com/en/projects/llm-maven-plugin</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://muhamedbeck.com/projekte/llm-unit-test-automatisierung"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://muhamedbeck.com/en/projects/llm-maven-plugin"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://muhamedbeck.com/projekte/llm-unit-test-automatisierung"/>
   </url>
   <url>
     <loc>https://muhamedbeck.com/ratgeber</loc>
