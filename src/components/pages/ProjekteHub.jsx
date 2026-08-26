@@ -5,7 +5,11 @@ const ProjekteHub = () => (
   <HubPage
     label="Projekte"
     headline="Was ich gebaut habe"
-    intro="Zwei Projekte im Detail, mit Ausgangslage, Lösung und den Zahlen dahinter. Beide Systeme laufen produktiv."
+    /* Keine Anzahl im Text. Sie stand hier als "Zwei" und die Liste zeigte
+       vier, weil der Satz beim Anlegen jeder weiteren Fallstudie vergessen
+       wurde. Eine Zahl, die von der Länge eines Arrays abhängt, gehört
+       nicht in Prosa. */
+    intro="Kundenprojekte und Abschlussarbeiten im Detail, mit Ausgangslage, Lösung und den Zahlen dahinter."
     items={PROJEKTE.map((projekt) => ({
       path: projekt.path,
       title: projekt.title,

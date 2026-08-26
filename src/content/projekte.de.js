@@ -3,7 +3,81 @@
 // `kind` separates paid engagements from the two theses. The homepage shows
 // only the engagements, because someone evaluating a supplier is asking what
 // was delivered for a client; /projekte shows everything.
+import maflatsHell from "../assets/projekte/maflats-hell.webp";
+import maflatsDunkel from "../assets/projekte/maflats-dunkel.webp";
+import maflatsMobil from "../assets/projekte/maflats-mobil.webp";
+
 export const PROJEKTE = [
+  {
+    path: "/projekte/maflats",
+    kind: "mandat",
+    title: "Website-Relaunch für MA-Flats",
+    subtitle:
+      "Neubau von maflats.de: fünf Sprachen, neun Standorte, ohne eine Zeile ausgeliefertes JavaScript",
+    role: "Web Development (Freelance), 07/2026 bis 08/2026",
+    /* Alle drei Werte am 26.08.2026 an der Live-Seite gemessen, nicht aus dem
+       Projekt übernommen. Der LCP-Wert steht bewusst mit seiner Messbedingung
+       da: ungedrosselt wären es 132 ms, aber eine Zahl, die ein Kunde nicht
+       reproduzieren kann, ist schlimmer als keine. */
+    stats: [
+      { value: "0", label: "JavaScript-Dateien", note: "ausgeliefert, nicht minimiert" },
+      { value: "1,35 s", label: "LCP", note: "Slow 4G, vierfache CPU-Drosselung" },
+      { value: "100", label: "Barrierefreiheit", note: "Lighthouse, mobil" },
+    ],
+    screenshots: [
+      {
+        src: maflatsHell,
+        width: 1600,
+        height: 1000,
+        alt: "Startseite von maflats.de in der hellen Ansicht, mit Navigation, Überschrift und Apartmentfoto",
+        caption: "Startseite, helle Ansicht",
+        wide: true,
+      },
+      {
+        src: maflatsDunkel,
+        width: 1600,
+        height: 1000,
+        alt: "Dieselbe Startseite in der dunklen Ansicht",
+        caption: "Dieselbe Seite, dunkle Ansicht. Umschaltbar, ohne Aufblitzen beim Laden.",
+        wide: true,
+      },
+      {
+        src: maflatsMobil,
+        width: 720,
+        height: 1559,
+        alt: "maflats.de auf dem Smartphone, mit fest stehender Aktionsleiste am unteren Rand",
+        caption: "Auf dem Telefon rückt die Kontaktaufnahme an den unteren Rand.",
+      },
+    ],
+    liveUrl: { href: "https://maflats.de/", label: "maflats.de ansehen" },
+    ausgangslage:
+      "Die bestehende Seite lief auf einem Baukasten und lud auf der Startseite rund 6 MB, davon fast 5 MB Hintergrundbilder. Für eine Vermietung, deren Anfragen überwiegend vom Telefon kommen, ist das die falsche Grundlage: Wer auf dem Bau steht und eine Unterkunft sucht, wartet nicht. Dazu kam die Sprachfrage, denn ein erheblicher Teil der Monteure spricht Polnisch, Slowenisch oder Serbisch.",
+    loesung: [
+      "Vollständiger Neubau als statisch erzeugte Seite mit Astro und Tailwind. Jede Seite ist fertiges HTML, es läuft kein Framework im Browser mit.",
+      "Fünf Sprachen mit typgeprüfter Vollständigkeit: Die deutsche Fassung ist der Vertrag, jedes fehlende Feld in einer Übersetzung bricht den Build statt still deutschen Text auszuliefern.",
+      "Neun Standortseiten aus einer Datenquelle, damit eine neue Stadt ein Eintrag ist und keine neue Seite.",
+      "Datum der letzten Änderung je Seite aus der Git-Historie statt aus dem Build-Datum: Ein pauschales Datum behauptet bei jedem Deploy, jede Seite habe sich geändert, und entwertet damit das Signal.",
+      "Meldung geänderter Seiten an Bing über IndexNow, mit einer Normalisierung, die den gemeinsamen CSS-Hash ausklammert. Ohne sie hätte jeder Deploy alle 86 Seiten als geändert gemeldet statt der tatsächlich geänderten fünf.",
+      "Bewegung ausschließlich über CSS, scrollgesteuert, doppelt abgesichert gegen fehlende Browserunterstützung und gegen die Einstellung für reduzierte Bewegung.",
+    ],
+    ergebnisse: [
+      "Keine einzige JavaScript-Datei im Auslieferungsverzeichnis. Alles Interaktive liegt in Schnipseln, die klein genug sind, um im HTML zu stehen",
+      "LCP 1,35 Sekunden unter Slow-4G mit vierfacher CPU-Drosselung, CLS 0,00, gemessen am 26.08.2026",
+      "Lighthouse mobil: 100 für Barrierefreiheit, 100 für SEO, 96 für Best Practices",
+      "HTML der Startseite 17 KB komprimiert, das gesamte CSS 8 KB in einer einzigen Datei",
+      "90 indexierbare Adressen mit wechselseitig vollständigem hreflang-Verbund über alle fünf Sprachen",
+    ],
+    stack: [
+      "Astro",
+      "Tailwind CSS",
+      "TypeScript",
+      "Statische Erzeugung",
+      "Mehrsprachigkeit",
+      "IndexNow",
+      "GitHub Actions",
+      "IONOS Deploy Now",
+    ],
+  },
   {
     path: "/projekte/recruiting-automatisierung",
     kind: "mandat",

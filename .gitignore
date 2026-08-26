@@ -41,3 +41,7 @@ dist-ssr/
 
 # Local type specimen, not part of the site
 /schriftprobe.html
+
+# Rohaufnahmen der Screenshots. Was ausgeliefert wird, liegt komprimiert in
+# src/assets/projekte/; die PNGs davor gehoeren nicht ins Repository.
+.screenshots/

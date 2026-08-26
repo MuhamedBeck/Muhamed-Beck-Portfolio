@@ -7,6 +7,115 @@ export const PREIS_TEXT =
 
 export const LEISTUNGEN = [
   {
+    path: "/leistungen/webentwicklung",
+    weiterlesen: [
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+    ],
+    flow: {
+      caption: "So entsteht eine Seite",
+      stages: [
+        {
+          kind: "Auslöser",
+          title: "Die alte Seite bremst",
+          text: "Zu langsam, nicht auffindbar, nicht pflegbar, oder alles zusammen. Meist merkt man es an den ausbleibenden Anfragen, nicht an der Technik.",
+        },
+        {
+          kind: "Schritt",
+          title: "Struktur vor Gestaltung",
+          text: "Welche Seiten es gibt, wonach gesucht wird und was auf jeder Seite passieren soll. Erst danach wird etwas gebaut.",
+        },
+        {
+          kind: "Schritt",
+          title: "Bauen und messen",
+          text: "Statisch erzeugtes HTML statt eines Frameworks, das im Browser mitläuft. Gemessen wird während des Bauens, nicht danach.",
+        },
+        {
+          kind: "Ziel",
+          title: "Übergabe mit Dokumentation",
+          text: "Sie bekommen den Quelltext, die Zugänge und eine Anleitung. Weiterbetreuung ist ein Angebot, keine Abhängigkeit.",
+        },
+      ],
+      alongside:
+        "Mehrsprachigkeit, strukturierte Daten für Suchmaschinen und ein Kontaktweg, der auch ohne Formular funktioniert.",
+    },
+    badge: "Webentwicklung & Relaunch",
+    teaser:
+      "Schnelle, auffindbare Webseiten ohne Baukasten. Statisch erzeugt, mehrsprachig wenn nötig, und mit Messwerten statt Versprechen.",
+    h1: "Webentwicklung und Website-Relaunch",
+    intro:
+      "Eine Webseite ist kein Selbstzweck: Sie soll gefunden werden, schnell laden und Anfragen erzeugen. Ich baue sie so, dass diese drei Dinge messbar sind, und übergebe sie so, dass Sie nicht an mir hängen.",
+    szenarien: [
+      {
+        title: "Relaunch statt Baukasten",
+        text: "Bestehende Seiten aus Baukästen laden häufig mehrere Megabyte und sind auf dem Telefon kaum benutzbar. Ein Neubau als statisch erzeugte Seite bringt dieselben Inhalte auf einen Bruchteil der Datenmenge.",
+      },
+      {
+        title: "Mehrsprachige Seiten",
+        text: "Eine Sprache mehr ist kein Kopieren, sondern eine Struktur. Übersetzungen werden so geprüft, dass eine fehlende Zeile den Build bricht statt still deutschen Text auszuliefern.",
+      },
+      {
+        title: "Auffindbarkeit von Anfang an",
+        text: "Titel, Beschreibungen, strukturierte Daten, saubere Adressen und ein hreflang-Verbund, der in beide Richtungen stimmt. Nachträglich ist das teurer als beim Bauen.",
+      },
+    ],
+    leistungen: [
+      "Neubau und Relaunch von Unternehmensseiten, statisch erzeugt",
+      "Mehrsprachigkeit mit geprüfter Vollständigkeit der Übersetzungen",
+      "Technisches SEO: Titel, Beschreibungen, strukturierte Daten, Sitemap, hreflang",
+      "Barrierefreiheit: Tastaturbedienung, Kontraste, reduzierte Bewegung",
+      "Kernwerte im Blick: Ladezeit, Layoutstabilität, Reaktionszeit",
+      "Anbindung an bestehende Systeme, Formulare und Terminbuchung",
+      "Übergabe mit Quelltext, Zugängen und Dokumentation",
+    ],
+    ablauf: [
+      {
+        title: "Bestandsaufnahme",
+        text: "Was ist da, was wird gesucht, was fehlt. Bei einem Relaunch wird die alte Seite vorher gemessen, damit der Vergleich hinterher belastbar ist.",
+      },
+      {
+        title: "Struktur und Inhalte",
+        text: "Seitenstruktur, Adressen und Texte. Die Inhalte kommen von Ihnen oder entstehen gemeinsam, aber sie stehen vor der Gestaltung.",
+      },
+      {
+        title: "Bauen",
+        text: "In sichtbaren Schritten, mit einer Vorschauadresse, die Sie jederzeit ansehen können.",
+      },
+      {
+        title: "Umstellung und Übergabe",
+        text: "Alte Adressen werden weitergeleitet, damit nichts verloren geht. Danach Quelltext, Zugänge und Dokumentation.",
+      },
+    ],
+    caseStudy: {
+      stat: "0",
+      statLabel: "ausgelieferte JavaScript-Dateien bei maflats.de",
+      text: "Für MA-Flats habe ich maflats.de vollständig neu gebaut: fünf Sprachen, neun Standorte, 1,35 Sekunden LCP unter gedrosselter Verbindung und 100 Punkte für Barrierefreiheit.",
+      link: "/projekte/maflats",
+      linkText: "Zur Case Study MA-Flats",
+    },
+    faq: [
+      {
+        q: "Was kostet eine neue Webseite?",
+        a: "Das hängt am Umfang, nicht an der Seitenzahl. Eine einsprachige Unternehmensseite mit klarer Struktur liegt meist im Bereich weniger Wochen, eine mehrsprachige Seite mit vielen Standortseiten darüber. Abgerechnet wird zu 90 bis 135 € pro Stunde oder als Festpreis, wenn der Umfang vorher steht.",
+      },
+      {
+        q: "Warum keine Baukastenlösung oder WordPress?",
+        a: "Beides kann richtig sein, wenn Sie täglich selbst Inhalte pflegen. Für eine Unternehmensseite, die sich selten ändert, zahlen Sie damit dauerhaft mit Ladezeit und Wartungsaufwand für Flexibilität, die Sie nicht nutzen. Statisch erzeugtes HTML hat keine Datenbank, kein Plugin-Update und keine Angriffsfläche dieser Art.",
+      },
+      {
+        q: "Kann ich die Inhalte danach selbst ändern?",
+        a: "Ja. Texte liegen in klar benannten Dateien, nicht im Quelltext der Seiten. Für Änderungen, die über Text hinausgehen, gibt es die Dokumentation, und Sie können jederzeit jemand anderen damit beauftragen.",
+      },
+      {
+        q: "Was passiert mit meinen alten Adressen?",
+        a: "Sie werden auf die neuen weitergeleitet. Das ist der Punkt, an dem Relaunches am häufigsten Sichtbarkeit verlieren: Wer alte Adressen ins Leere laufen lässt, verliert die Platzierungen, die daran hängen.",
+      },
+      {
+        q: "Arbeiten Sie remote oder vor Ort?",
+        a: "Überwiegend remote, in ganz Deutschland, Österreich und der Schweiz. Vor Ort im Rhein-Main-Gebiet nach Absprache.",
+      },
+    ],
+  },
+  {
     path: "/leistungen/n8n-automatisierung",
     weiterlesen: [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },

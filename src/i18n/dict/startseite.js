@@ -19,7 +19,12 @@ const de = {
   },
   cases: {
     label: "Case Studies",
-    headline: "Zwei Projekte im Detail",
+    /* Keine Anzahl. Sie stand hier als "Zwei", der Abschnitt zeigte drei, und
+       das war der dritte Zähler dieser Art im Bestand: Projekte-Hub,
+       Routenbeschreibung und diese Überschrift wurden alle beim Anlegen einer
+       Fallstudie vergessen. Eine Zahl, die von der Länge eines Arrays abhängt,
+       gehört nicht in Prosa. */
+    headline: "Kundenprojekte im Detail",
     all: "Alle Projekte ansehen",
   },
   approach: {

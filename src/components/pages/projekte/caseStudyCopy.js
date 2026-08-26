@@ -11,6 +11,7 @@ export const CASE_STUDY_COPY = {
     solution: "Lösung",
     results: "Ergebnisse",
     stack: "Technologie-Stack",
+    screenshots: "Die Seite",
     ctaHeadline: "Ähnliche Prozesse in Ihrem Unternehmen?",
     ctaIntro:
       "Schreiben Sie mir, welcher Ablauf bei Ihnen am meisten Zeit kostet. Den Rest klären wir im Gespräch.",
@@ -22,6 +23,7 @@ export const CASE_STUDY_COPY = {
     solution: "Approach",
     results: "Results",
     stack: "Technology stack",
+    screenshots: "The site",
     ctaHeadline: "Similar processes in your company?",
     ctaIntro:
       "Tell me which process costs you the most time. We can work out the rest in a call.",
@@ -41,6 +43,7 @@ export const CASE_STUDY_COPY = {
     solution: "الحل",
     results: "النتائج",
     stack: "التقنيات المستخدمة",
+    screenshots: "الموقع",
     ctaHeadline: "هل لديك عمليات مشابهة في شركتك؟",
     ctaIntro:
       "اكتب لي أي سير عمل يستهلك أكبر وقت لديك. أما الباقي فنوضحه في المحادثة.",

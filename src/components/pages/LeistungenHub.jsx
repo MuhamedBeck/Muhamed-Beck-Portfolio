@@ -5,7 +5,7 @@ const LeistungenHub = () => (
   <HubPage
     label="Leistungen"
     headline="KI- und Prozessautomatisierung"
-    intro="Sechs Bereiche, in denen ich Unternehmen unterstütze. Jede Seite beschreibt konkret, was umgesetzt wird, wie ein Projekt abläuft und was es kostet."
+    intro="Die Bereiche, in denen ich Unternehmen unterstütze. Jede Seite beschreibt konkret, was umgesetzt wird, wie ein Projekt abläuft und was es kostet."
     items={LEISTUNGEN.map((leistung) => ({
       path: leistung.path,
       title: leistung.h1,

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
+import { LinkArrow } from "../../LinkArrow";
 import { CASE_STUDY_COPY } from "./caseStudyCopy";
 
 /**
@@ -37,6 +38,63 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
         ))}
       </dl>
     </Section>
+
+    {/* Screenshots, for the case studies that are about something you can see.
+        Guarded: most entries have no images and must not render an empty band.
+
+        Deliberately not before the stats. A visitor comparing suppliers scans
+        for the result first, and a picture at the top would push the numbers
+        below the fold on a phone.
+
+        No lightbox: this template is rendered by renderToString at build time,
+        so anything needing an effect or a window object cannot live here. The
+        live link underneath is the better version of that anyway. */}
+    {data.screenshots?.length ? (
+      <Section className="!pt-0">
+        {/* The only section that does not use the label-beside-content grid the
+            others share. Inside it the images came out 306px wide, which is no
+            way to show somebody a website. The label sits above instead and the
+            pictures get the full measure. */}
+        <div className="border-t border-hairline pt-8">
+          <h2 className="label">{copy.screenshots}</h2>
+          <div className="mt-8">
+            <ul className="grid gap-8 sm:grid-cols-2">
+              {data.screenshots.map((bild, index) => (
+                <li
+                  key={bild.src}
+                  className={`stagger ${bild.wide ? "sm:col-span-2" : ""}`}
+                  style={{ "--fade-delay": `${index * 80}ms` }}>
+                  <figure>
+                    <img
+                      src={bild.src}
+                      alt={bild.alt}
+                      width={bild.width}
+                      height={bild.height}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full rounded-lg border border-hairline"
+                    />
+                    <figcaption className="mt-3 text-sm text-paper-mute">
+                      {bild.caption}
+                    </figcaption>
+                  </figure>
+                </li>
+              ))}
+            </ul>
+            {data.liveUrl ? (
+              <a
+                href={data.liveUrl.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-arrow mt-8 inline-flex">
+                {data.liveUrl.label}
+                <LinkArrow />
+              </a>
+            ) : null}
+          </div>
+        </div>
+      </Section>
+    ) : null}
 
     <Section className="!pt-0">
       <div className="grid gap-x-12 gap-y-4 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
