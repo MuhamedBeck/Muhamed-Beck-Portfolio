@@ -116,7 +116,7 @@ export const LanguageSwitcher = ({ className = "" }) => {
           <path d="M6 9l6 6 6-6" />
         </svg>
       </summary>
-      <ul className="lang-switch__menu absolute top-full left-0 z-30">
+      <ul className="lang-switch__menu absolute top-full start-0 z-30">
         {others.map((target) => (
           <li key={target.locale}>
             <FlagLink target={target} onNavigate={close} />

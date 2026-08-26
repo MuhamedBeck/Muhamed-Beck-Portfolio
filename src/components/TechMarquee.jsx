@@ -58,7 +58,7 @@ export const TechMarquee = () => {
         WebkitMaskImage:
           "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
       }}>
-      <div className="flex animate-marquee" style={{ width: "max-content" }}>
+      <div className="marquee-strip flex animate-marquee" style={{ width: "max-content" }}>
         {items.map(({ Icon, name, color }, i) => (
           <div
             key={i}

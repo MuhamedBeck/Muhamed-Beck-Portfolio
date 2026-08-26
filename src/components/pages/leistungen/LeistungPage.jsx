@@ -4,6 +4,7 @@ import { Section } from "../../Section";
 import { WorkflowDiagram } from "./WorkflowDiagram";
 import { PREIS_TEXT } from "../../../content/leistungen.de";
 import { RATE_TEXT } from "../../../content/site";
+import { LinkArrow } from "../../LinkArrow";
 
 /**
  * Landing page template for a service.
@@ -107,7 +108,7 @@ export const LeistungPage = ({ data }) => (
           <p className="leading-relaxed text-paper-soft">{data.caseStudy.text}</p>
           <Link to={data.caseStudy.link} className="link-arrow mt-4">
             {data.caseStudy.linkText}
-            <span aria-hidden="true">↗</span>
+            <LinkArrow />
           </Link>
         </div>
       </div>
@@ -141,7 +142,7 @@ export const LeistungPage = ({ data }) => (
               <li key={item.path}>
                 <Link to={item.path} className="link-arrow">
                   {item.label}
-                  <span aria-hidden="true">↗</span>
+                  <LinkArrow />
                 </Link>
               </li>
             ))}

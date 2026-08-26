@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
+import { LinkArrow } from "../LinkArrow";
 
 /**
  * Overview page listing a set of entries.
@@ -38,11 +39,7 @@ export const HubPage = ({ label, headline, intro, items, children }) => (
               </div>
               <div className="mt-4 flex items-start gap-4 md:mt-0">
                 <p className="flex-1 leading-relaxed text-paper-soft">{item.text}</p>
-                <span
-                  aria-hidden="true"
-                  className="mt-1 text-paper-mute opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  ↗
-                </span>
+                <LinkArrow className="mt-1 text-paper-mute opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
             </Link>
           </li>

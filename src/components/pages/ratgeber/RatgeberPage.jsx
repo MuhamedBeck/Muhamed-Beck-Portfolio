@@ -4,6 +4,7 @@ import { Section } from "../../Section";
 import { STAND } from "../../../content/ratgeber.de";
 import { PERSON } from "../../../content/site";
 import { RateScale } from "./RateScale";
+import { LinkArrow } from "../../LinkArrow";
 
 /**
  * Article template.
@@ -66,8 +67,8 @@ export const RatgeberPage = ({ data }) => (
       {data.table ? (
         <figure className="mt-14">
           <div className="-mx-4 overflow-x-auto px-4">
-            <table className="w-full min-w-[42rem] border-collapse text-left">
-              <caption className="label mb-6 text-left">{data.table.caption}</caption>
+            <table className="w-full min-w-[42rem] border-collapse text-start">
+              <caption className="label mb-6 text-start">{data.table.caption}</caption>
               <thead>
                 <tr>
                   <th scope="col" className="w-[13rem] pb-4 text-sm font-normal text-paper-mute">
@@ -77,7 +78,7 @@ export const RatgeberPage = ({ data }) => (
                     <th
                       key={column}
                       scope="col"
-                      className="pb-4 pl-6 text-lg font-normal text-paper">
+                      className="pb-4 ps-6 text-lg font-normal text-paper">
                       {column}
                     </th>
                   ))}
@@ -88,13 +89,13 @@ export const RatgeberPage = ({ data }) => (
                   <tr key={row.label} className="border-t border-hairline align-top">
                     <th
                       scope="row"
-                      className="py-5 pr-6 text-sm font-normal leading-snug text-paper-dim">
+                      className="py-5 pe-6 text-sm font-normal leading-snug text-paper-dim">
                       {row.label}
                     </th>
                     {row.cells.map((cell, index) => (
                       <td
                         key={data.table.columns[index]}
-                        className="py-5 pl-6 leading-relaxed text-paper-soft">
+                        className="py-5 ps-6 leading-relaxed text-paper-soft">
                         {cell}
                       </td>
                     ))}
@@ -130,7 +131,7 @@ export const RatgeberPage = ({ data }) => (
             <li key={item.path}>
               <Link to={item.path} className="link-arrow">
                 {item.label}
-                <span aria-hidden="true">↗</span>
+                <LinkArrow />
               </Link>
             </li>
           ))}

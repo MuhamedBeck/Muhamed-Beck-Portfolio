@@ -6,6 +6,7 @@ import { LanguageSwitcherRow } from "./LanguageSwitcher";
 import { PERSON } from "../content/site";
 import nav from "../i18n/dict/nav";
 import ui from "../i18n/dict/ui";
+import { LinkArrow } from "./LinkArrow";
 
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   const t = useDict(nav);
@@ -32,8 +33,8 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
       />
 
       <div
-        className={`fixed top-0 right-0 z-50 flex h-full w-72 max-w-[85vw] flex-col border-l border-hairline bg-ink transition-transform duration-300 ease-out ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
+        className={`fixed top-0 end-0 z-50 flex h-full w-72 max-w-[85vw] flex-col border-s border-hairline bg-ink transition-transform duration-300 ease-out ${
+          menuOpen ? "translate-x-0" : "translate-x-full rtl:-translate-x-full"
         }`}>
         <div className="flex h-16 shrink-0 items-center justify-between border-b border-hairline px-5">
           <Link
@@ -74,13 +75,11 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
                   to={item.to}
                   onClick={close}
                   className={`flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-xs tracking-[0.18em] text-paper-dim uppercase transition-all duration-300 hover:bg-surface hover:text-paper ${
-                    menuOpen ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0"
+                    menuOpen ? "translate-x-0 opacity-100" : "translate-x-6 rtl:-translate-x-6 opacity-0"
                   }`}
                   style={{ transitionDelay: menuOpen ? `${80 + index * 45}ms` : "0ms" }}>
                   {item.label}
-                  <span aria-hidden="true" className="text-paper-mute">
-                    ↗
-                  </span>
+                  <LinkArrow className="text-paper-mute" />
                 </Link>
               </li>
             ))}

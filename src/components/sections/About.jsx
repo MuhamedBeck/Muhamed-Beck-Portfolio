@@ -209,7 +209,7 @@ export const About = () => {
               key={cert.title}
               className="border-t border-hairline py-5 md:grid md:grid-cols-[1fr_14rem] md:gap-x-12">
               <p className="leading-snug text-paper">{cert.title}</p>
-              <p className="mt-1 text-sm text-paper-mute md:mt-0 md:text-right">
+              <p className="mt-1 text-sm text-paper-mute md:mt-0 md:text-end">
                 {cert.issuer} · {cert.date}
               </p>
             </li>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" dir="ltr">
 
 <head>
   <meta charset="UTF-8" />
@@ -23,6 +23,17 @@
     // Nothing is stamped when no choice was stored: the attribute must stay
     // absent so prefers-color-scheme keeps deciding, and index.css is written
     // for exactly those three states.
+    // Writing direction before the first paint, for the same reason as the
+    // theme: an Arabic page that paints left-to-right and flips on hydration is
+    // the most visible version of the self-correcting flash. The prerendered
+    // HTML already carries the right value, so this only matters for a
+    // client-side navigation that lands before React has run.
+    var pfad = location.pathname;
+    if (pfad === "/ar" || pfad.indexOf("/ar/") === 0) {
+      root.setAttribute("dir", "rtl");
+      root.setAttribute("lang", "ar");
+    }
+
     try {
       var gewaehlt = localStorage.getItem("theme");
       if (gewaehlt === "light" || gewaehlt === "dark") {

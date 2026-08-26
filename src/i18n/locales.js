@@ -22,6 +22,9 @@ export const LIVE_LOCALES = ["de", "en"];
  * @property endonym   language name in its own language, for the switcher label
  * @property flag      country code of the flag icon (gb, not us: British English
  *                     is the convention for an EU-facing site)
+ * @property dir       writing direction for <html dir>. Lives here rather than
+ *                     being derived from the language, because this file is the
+ *                     one place both React and the bare-node build scripts read.
  */
 export const LOCALES = {
   de: {
@@ -31,6 +34,7 @@ export const LOCALES = {
     intlLocale: "de-DE",
     endonym: "Deutsch",
     flag: "de",
+    dir: "ltr",
   },
   en: {
     htmlLang: "en",
@@ -39,6 +43,19 @@ export const LOCALES = {
     intlLocale: "en-US",
     endonym: "English",
     flag: "gb",
+    dir: "ltr",
+  },
+  ar: {
+    htmlLang: "ar",
+    ogLocale: "ar_SA",
+    hreflang: "ar",
+    // ar-AE rather than ar-EG: the Gulf business convention is Western digits,
+    // and ar-EG would default Intl to Arabic-Indic ones. The site's numbers are
+    // load-bearing content and its prices are in euro, so they stay 0-9.
+    intlLocale: "ar-AE",
+    endonym: "العربية",
+    flag: "sa",
+    dir: "rtl",
   },
 };
 

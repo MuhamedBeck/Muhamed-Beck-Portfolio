@@ -14,6 +14,18 @@
 const AXIS = { min: 60, max: 160 };
 const pct = (value) => ((value - AXIS.min) / (AXIS.max - AXIS.min)) * 100;
 
+/* Positioned from the inline start, not from the left.
+ *
+ * This is the one component on the site where a naive right-to-left rendering
+ * produces confidently wrong information rather than visibly broken layout. The
+ * axis underneath is a flex row, so it mirrors on its own and 60 EUR moves to
+ * the right. The bars were positioned with `left`, which does not mirror, so
+ * they would have been measured from the 160 EUR end while labelled as if
+ * measured from 60. Every value on the scale would read inverted.
+ *
+ * inset-inline-start follows the direction the axis already follows. */
+const von = (value) => ({ insetInlineStart: `${pct(value)}%` });
+
 export const RateScale = ({ data }) => (
   <figure className="mt-14">
     <figcaption className="label">{data.caption}</figcaption>
@@ -23,21 +35,21 @@ export const RateScale = ({ data }) => (
         {/* Market range */}
         <div
           className="absolute top-6 h-2 rounded-full bg-surface-strong"
-          style={{ left: `${pct(data.market.from)}%`, width: `${pct(data.market.to) - pct(data.market.from)}%` }}
+          style={{ ...von(data.market.from), width: `${pct(data.market.to) - pct(data.market.from)}%` }}
         />
         {/* Own rate, the one thing on the page that is a commitment */}
         <div
           className="absolute top-6 h-2 rounded-full bg-accent"
-          style={{ left: `${pct(data.own.from)}%`, width: `${pct(data.own.to) - pct(data.own.from)}%` }}
+          style={{ ...von(data.own.from), width: `${pct(data.own.to) - pct(data.own.from)}%` }}
         />
         {/* Median tick */}
         <div
           className="absolute top-2 h-10 w-px bg-paper-soft"
-          style={{ left: `${pct(data.median.value)}%` }}
+          style={von(data.median.value)}
         />
         <p
           className="absolute top-14 -translate-x-1/2 text-center text-xs leading-snug text-paper-mute"
-          style={{ left: `${pct(data.median.value)}%` }}>
+          style={von(data.median.value)}>
           <span className="block text-sm text-paper tabular-nums">
             {data.median.value} €
           </span>
@@ -65,14 +77,14 @@ export const RateScale = ({ data }) => (
             />
             {data.market.from} bis {data.market.to} €
           </dt>
-          <dd className="mt-1 pl-9 text-sm text-paper-mute">{data.market.label}</dd>
+          <dd className="mt-1 ps-9 text-sm text-paper-mute">{data.market.label}</dd>
         </div>
         <div>
           <dt className="flex items-baseline gap-3 text-sm text-paper tabular-nums">
             <span aria-hidden="true" className="h-2 w-6 shrink-0 rounded-full bg-accent" />
             {data.own.from} bis {data.own.to} €
           </dt>
-          <dd className="mt-1 pl-9 text-sm text-paper-mute">{data.own.label}</dd>
+          <dd className="mt-1 ps-9 text-sm text-paper-mute">{data.own.label}</dd>
         </div>
       </dl>
     </div>

@@ -79,6 +79,10 @@ export function usePageMeta(route) {
     const localeConfig = LOCALES[locale] ?? LOCALES[DEFAULT_LOCALE];
 
     document.documentElement.lang = localeConfig.htmlLang;
+    // Without this, navigating from an Arabic page to a German one leaves the
+    // document right-to-left, and the other way round leaves Arabic laid out
+    // left-to-right. Same class of bug as the og:locale note below.
+    document.documentElement.dir = localeConfig.dir ?? "ltr";
     document.title = title;
 
     setMetaByName("title", title);

@@ -3,6 +3,7 @@ import { PageShell } from "../PageShell";
 import { Section } from "../Section";
 import profilePicture from "../../assets/profilepicture.webp";
 import { PERSON, SOCIAL } from "../../content/site";
+import { LinkArrow } from "../LinkArrow";
 
 // The site had no About page in German at all, which is the single biggest
 // structural gap it had. This is where the Person entity lives: an assistant
@@ -99,14 +100,14 @@ const UeberMich = () => (
               target="_blank"
               rel="noopener noreferrer"
               className="link-arrow">
-              LinkedIn <span aria-hidden="true">↗</span>
+              LinkedIn <LinkArrow />
             </a>
             <a
               href={SOCIAL.github}
               target="_blank"
               rel="noopener noreferrer"
               className="link-arrow">
-              GitHub <span aria-hidden="true">↗</span>
+              GitHub <LinkArrow />
             </a>
           </p>
         </div>

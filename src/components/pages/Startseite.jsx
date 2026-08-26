@@ -13,6 +13,7 @@ import { useRouteMeta } from "../../seo/useRouteMeta";
 import { LEISTUNGEN } from "../../content/leistungen.de";
 import { PROJEKTE } from "../../content/projekte.de";
 import startseite from "../../i18n/dict/startseite";
+import { LinkArrow } from "../LinkArrow";
 
 /**
  * German homepage.
@@ -62,7 +63,7 @@ export const Startseite = () => {
                   </p>
                   <span className="link-arrow mt-3">
                     {leistung.badge}
-                    <span aria-hidden="true">↗</span>
+                    <LinkArrow />
                   </span>
                 </Link>
               </li>
@@ -104,7 +105,7 @@ export const Startseite = () => {
           </ul>
           <Link to="/projekte" className="link-arrow mt-10">
             {t.cases.all}
-            <span aria-hidden="true">↗</span>
+            <LinkArrow />
           </Link>
         </Section>
 
@@ -146,7 +147,7 @@ export const Startseite = () => {
               from having to say the same thing at the same length. */}
           <Link to="/leistungen/n8n-automatisierung" className="link-arrow mt-10">
             {t.faq.all}
-            <span aria-hidden="true">↗</span>
+            <LinkArrow />
           </Link>
         </Section>
 

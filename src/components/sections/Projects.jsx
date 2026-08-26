@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Section } from "../Section";
+import { LinkArrow } from "../LinkArrow";
 
 /**
  * Projects block on the English homepage.
@@ -74,7 +75,7 @@ export const Projects = () => (
                 </p>
                 <span className="link-arrow mt-2">
                   {project.linkText}
-                  <span aria-hidden="true">↗</span>
+                  <LinkArrow />
                 </span>
               </div>
             </>

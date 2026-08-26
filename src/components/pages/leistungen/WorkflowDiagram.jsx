@@ -37,13 +37,13 @@ export const WorkflowDiagram = ({ data }) => (
           <li
             key={stage.title}
             className={`
-              relative pl-8 md:pl-0
+              relative ps-8 md:ps-0
               ${!isLast ? "pb-1" : ""}
               before:absolute before:content-['']
-              before:top-2 before:bottom-[-2.25rem] before:left-[7px] before:w-px
+              before:top-2 before:bottom-[-2.25rem] before:start-[7px] before:w-px
               before:bg-hairline
-              md:before:top-[7px] md:before:right-0 md:before:bottom-auto
-              md:before:left-0 md:before:h-px md:before:w-auto
+              md:before:top-[7px] md:before:end-0 md:before:bottom-auto
+              md:before:start-0 md:before:h-px md:before:w-auto
               ${isLast ? "before:hidden md:before:block" : ""}
             `}>
             {/* Node marker. The last one is filled: it is where the data ends
@@ -51,8 +51,8 @@ export const WorkflowDiagram = ({ data }) => (
             <span
               aria-hidden="true"
               className={`
-                absolute top-0 left-0 z-10 block h-[15px] w-[15px] rounded-full border
-                md:relative md:top-auto md:left-auto
+                absolute top-0 start-0 z-10 block h-[15px] w-[15px] rounded-full border
+                md:relative md:top-auto md:start-auto
                 ${isLast ? "border-accent bg-accent" : "border-accent bg-ink"}
               `}
             />

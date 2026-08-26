@@ -161,7 +161,7 @@ const SECTIONS = [
     body: (
       <>
         <p>Ihnen stehen folgende Rechte zu:</p>
-        <ul className="list-disc space-y-1 pl-5">
+        <ul className="list-disc space-y-1 ps-5">
           <li>Auskunft über Ihre gespeicherten Daten (Art. 15 DSGVO)</li>
           <li>Berichtigung unrichtiger Daten (Art. 16 DSGVO)</li>
           <li>Löschung Ihrer Daten (Art. 17 DSGVO)</li>

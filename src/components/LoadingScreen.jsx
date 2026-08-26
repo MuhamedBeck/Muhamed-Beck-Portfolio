@@ -82,10 +82,10 @@ export const LoadingScreen = ({ onComplete }) => {
         willChange: "opacity"
       }}>
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-pulse opacity-40 animation-delay-300"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-indigo-400 rounded-full animate-pulse opacity-50 animation-delay-600"></div>
-        <div className="absolute bottom-1/3 right-1/4 w-1 h-1 bg-purple-400 rounded-full animate-pulse opacity-30 animation-delay-900"></div>
+        <div className="absolute top-1/4 start-1/4 w-1 h-1 bg-blue-400 rounded-full animate-pulse opacity-60"></div>
+        <div className="absolute top-1/3 end-1/3 w-1 h-1 bg-cyan-400 rounded-full animate-pulse opacity-40 animation-delay-300"></div>
+        <div className="absolute bottom-1/4 start-1/3 w-1 h-1 bg-indigo-400 rounded-full animate-pulse opacity-50 animation-delay-600"></div>
+        <div className="absolute bottom-1/3 end-1/4 w-1 h-1 bg-purple-400 rounded-full animate-pulse opacity-30 animation-delay-900"></div>
       </div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 w-full">
@@ -97,7 +97,7 @@ export const LoadingScreen = ({ onComplete }) => {
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
               {text}
             </span>
-            <span className="animate-pulse text-cyan-400 ml-2">|</span>
+            <span className="animate-pulse text-cyan-400 ms-2">|</span>
           </h1>
 
           <div

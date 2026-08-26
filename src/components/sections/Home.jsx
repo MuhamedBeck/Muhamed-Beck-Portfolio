@@ -5,6 +5,7 @@ import { useDict, useLocale } from "../../i18n";
 import home from "../../i18n/dict/home";
 import ui from "../../i18n/dict/ui";
 import { CONTACT, SOCIAL } from "../../content/site";
+import { LinkArrow } from "../LinkArrow";
 
 // Entrance choreography, in milliseconds. One ladder rather than six pieces of
 // component state driving six timers: the previous version reset and restarted
@@ -96,7 +97,7 @@ export const Home = ({ isLoaded = true }) => {
               </Link>
               <Link to={servicesPath} className="link-arrow">
                 {t.ctaSecondary}
-                <span aria-hidden="true">↗</span>
+                <LinkArrow />
               </Link>
             </div>
 

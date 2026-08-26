@@ -245,11 +245,16 @@ for (const route of ROUTES) {
   const url = `${SITE_URL}${route.path}`;
   const title = escapeHtml(route.title);
   const description = escapeHtml(route.description);
-  const { htmlLang, ogLocale } = localeConfig(route.locale);
+  const { htmlLang, ogLocale, dir } = localeConfig(route.locale);
   const ogType = route.ogType ?? "website";
 
   const replacements = [
-    [/(<html lang=")[^"]*(">)/, (m, a, b) => `${a}${htmlLang}${b}`, "html lang"],
+    // Matches the attribute rather than the whole tag. The previous pattern
+    // closed on `">` and so assumed lang was the only attribute on <html>;
+    // adding dir to the template made it fail to match, and every replacement
+    // here is mandatory, so the build would have thrown rather than degraded.
+    [/(<html[^>]*\slang=")[^"]*(")/, (m, a, b) => `${a}${htmlLang}${b}`, "html lang"],
+    [/(<html[^>]*\sdir=")[^"]*(")/, (m, a, b) => `${a}${dir}${b}`, "html dir"],
     [/(<meta property="og:locale" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${ogLocale}${b}`, "og:locale"],
     [/(<meta property="og:type" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${ogType}${b}`, "og:type"],
     [/<!--i18n-alternates-->/, () => alternatesBlock(route), "i18n alternates anchor"],
