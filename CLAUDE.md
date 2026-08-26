@@ -97,13 +97,39 @@ npm run indexnow
 - Für Audits steht der Chrome-DevTools-MCP bereit (`lighthouse_audit` liefert
   Performance-, SEO- und Accessibility-Werte samt Core Web Vitals).
 
-## 6. Sprache
+## 6. Zwei Farbschemata
+
+Die Seite hat eine helle und eine dunkle Ansicht. Umgeschaltet wird über den
+Sonne/Mond-Knopf in der Navigation.
+
+**Farben gehören in Tokens, niemals fest in eine Komponente.** `src/index.css`
+definiert die dunkle Palette im `@theme`-Block und die helle daneben als
+`--light-*`-Werte, die an zwei Stellen zugewiesen werden. Wer eine Farbe
+braucht, nimmt `text-paper`, `text-paper-soft`, `text-paper-dim`,
+`text-paper-mute`, `bg-ink`, `bg-surface`, `border-hairline` oder `text-accent`.
+Ein `text-gray-400` im JSX funktioniert in genau einer der beiden Ansichten und
+ist deshalb ein Fehler.
+
+Drei Zustände, nicht zwei: Eine bewusste Wahl setzt `data-theme` auf `<html>`,
+keine Wahl setzt nichts, und dann entscheidet `prefers-color-scheme`. Deshalb
+schließt die Medienabfrage in `index.css` eine ausdrückliche Dunkelwahl aus.
+Gestempelt wird vor dem ersten Frame durch das Inline-Skript in `index.html`,
+sonst malt die Seite dunkel und kippt danach sichtbar um.
+
+Was kein Token erreicht, braucht eine eigene Regel: Die Wortmarke und die
+Technologie-Logos sind Bilder beziehungsweise Markenfarben und werden im
+Hellmodus per `filter` abgedunkelt, weil sie sonst auf 2,03:1 beziehungsweise
+1,27:1 fallen. Der Splashscreen bleibt in beiden Ansichten dunkel.
+
+Nach jeder Farbänderung beide Ansichten prüfen, nicht nur eine.
+
+## 7. Sprache
 
 Sichtbare Texte gehören in die Dictionaries unter `src/i18n/dict/`, niemals
 fest in eine Komponente. Deutsche Texte tragen echte Umlaute (ä, ö, ü, ß),
 keine Umschreibungen wie `ae`/`oe`/`ue`.
 
-## 7. Vor jedem Push
+## 8. Vor jedem Push
 
 - [ ] `npm run lint` ohne neue Fehler
 - [ ] `npm run build` grün (die volle Kette, siehe §2)

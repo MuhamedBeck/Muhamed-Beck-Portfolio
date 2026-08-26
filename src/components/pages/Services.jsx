@@ -110,13 +110,13 @@ export const Services = () => (
               <p className="label mt-4">{service.label}</p>
             </div>
             <div>
-              <p className="leading-relaxed text-gray-400">{service.text}</p>
+              <p className="leading-relaxed text-paper-soft">{service.text}</p>
 
               <ul className="mt-8 grid gap-x-10">
                 {service.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-start gap-3 border-t border-hairline py-3 text-gray-300">
+                    className="flex items-start gap-3 border-t border-hairline py-3 text-paper-dim">
                     <span aria-hidden="true" className="mt-1 text-xs text-accent">
                       ✓
                     </span>
@@ -127,7 +127,7 @@ export const Services = () => (
 
               {service.result ? (
                 <p className="mt-8 flex flex-wrap items-baseline gap-x-4 text-sm leading-relaxed text-paper-mute">
-                  <span className="text-3xl font-light tabular-nums text-gray-100">
+                  <span className="text-3xl font-light tabular-nums text-paper">
                     {service.result.value}
                   </span>
                   <span className="max-w-[46ch]">{service.result.text}</span>
@@ -145,7 +145,7 @@ export const Services = () => (
           <h2 className="label">Rate</h2>
           <p className="headline-sub mt-4">{RATE_TEXT_EN}</p>
         </div>
-        <p className="leading-relaxed text-gray-400">
+        <p className="leading-relaxed text-paper-soft">
           Fixed prices are possible for clearly scoped workflows and integrations. Based
           in Frankfurt am Main, on-site in the Rhine-Main area by arrangement and remote
           across Germany, Austria and Switzerland.

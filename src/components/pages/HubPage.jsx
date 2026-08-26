@@ -37,7 +37,7 @@ export const HubPage = ({ label, headline, intro, items, children }) => (
                 ) : null}
               </div>
               <div className="mt-4 flex items-start gap-4 md:mt-0">
-                <p className="flex-1 leading-relaxed text-gray-400">{item.text}</p>
+                <p className="flex-1 leading-relaxed text-paper-soft">{item.text}</p>
                 <span
                   aria-hidden="true"
                   className="mt-1 text-paper-mute opacity-0 transition-opacity duration-300 group-hover:opacity-100">

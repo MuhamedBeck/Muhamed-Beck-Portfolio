@@ -71,10 +71,10 @@ const UeberMich = () => (
           height="850"
           loading="lazy"
           decoding="async"
-          className="h-44 w-44 rounded-full border border-white/15 object-cover"
+          className="h-44 w-44 rounded-full border border-hairline-strong object-cover"
           style={{ objectPosition: "center 18%" }}
         />
-        <div className="max-w-[58ch] space-y-5 leading-relaxed text-gray-400">
+        <div className="max-w-[58ch] space-y-5 leading-relaxed text-paper-soft">
           <p>
             Ich habe an der Frankfurt University of Applied Sciences Wirtschaftsinformatik
             studiert, den Bachelor 2022 und den Master 2024. Seitdem arbeite ich an der
@@ -124,10 +124,10 @@ const UeberMich = () => (
               <p className="text-xs tracking-[0.2em] text-accent uppercase tabular-nums">
                 {station.period}
               </p>
-              <h3 className="mt-3 text-lg font-normal text-gray-100">{station.role}</h3>
+              <h3 className="mt-3 text-lg font-normal text-paper">{station.role}</h3>
               <p className="mt-1 text-sm text-paper-mute">{station.org}</p>
             </div>
-            <p className="mt-4 max-w-[62ch] leading-relaxed text-gray-400 md:mt-0">
+            <p className="mt-4 max-w-[62ch] leading-relaxed text-paper-soft md:mt-0">
               {station.text}
             </p>
           </li>
@@ -140,8 +140,8 @@ const UeberMich = () => (
       <dl className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
         {SKILLS.map((skill) => (
           <div key={skill.title} className="border-t border-hairline pt-5">
-            <dt className="text-lg font-normal text-gray-100">{skill.title}</dt>
-            <dd className="mt-2 leading-relaxed text-gray-400">{skill.items}</dd>
+            <dt className="text-lg font-normal text-paper">{skill.title}</dt>
+            <dd className="mt-2 leading-relaxed text-paper-soft">{skill.items}</dd>
           </div>
         ))}
       </dl>

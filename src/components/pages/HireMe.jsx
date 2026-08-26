@@ -125,7 +125,7 @@ export const HireMe = () => {
   // and the previous placeholders were "Max Mustermann" and "ACME GmbH", which
   // is the German spelling of John Doe at Acme Corp.
   const inputClass =
-    "w-full rounded-lg border border-hairline bg-white/5 px-4 py-3 text-white transition focus:border-blue-500 focus:bg-blue-500/5";
+    "w-full rounded-lg border border-hairline bg-surface px-4 py-3 text-paper transition focus:border-blue-500 focus:bg-blue-500/5";
   const labelClass = "mb-2 block text-sm text-paper-mute";
 
   return (
@@ -140,8 +140,8 @@ export const HireMe = () => {
               key={service.title}
               className="stagger border-t border-hairline pt-6"
               style={{ "--fade-delay": `${index * 80}ms` }}>
-              <h2 className="text-lg font-normal text-gray-100">{service.title}</h2>
-              <p className="mt-3 leading-relaxed text-gray-400">{service.text}</p>
+              <h2 className="text-lg font-normal text-paper">{service.title}</h2>
+              <p className="mt-3 leading-relaxed text-paper-soft">{service.text}</p>
               <p className="mt-4 text-sm text-paper-mute">{service.tools}</p>
             </div>
           ))}
@@ -159,8 +159,8 @@ export const HireMe = () => {
               <span className="text-xs tracking-[0.25em] text-accent tabular-nums">
                 {String(index + 1).padStart(2, "0")}
               </span>
-              <h3 className="mt-4 text-lg font-normal text-gray-100">{step.title}</h3>
-              <p className="mt-2 leading-relaxed text-gray-400">{step.text}</p>
+              <h3 className="mt-4 text-lg font-normal text-paper">{step.title}</h3>
+              <p className="mt-2 leading-relaxed text-paper-soft">{step.text}</p>
             </li>
           ))}
         </ol>
@@ -172,7 +172,7 @@ export const HireMe = () => {
             <h2 className="label">Rate</h2>
             <p className="headline-sub mt-4">{RATE_TEXT_EN}</p>
           </div>
-          <p className="leading-relaxed text-gray-400">
+          <p className="leading-relaxed text-paper-soft">
             Small workflows are done in a few hours, so for clearly scoped work a fixed
             price is possible after a free first call. Based in Frankfurt am Main,
             on-site in the Rhine-Main area by arrangement and remote across Germany,
@@ -187,7 +187,7 @@ export const HireMe = () => {
           <dl className="mt-8 grid gap-x-16 gap-y-8 sm:grid-cols-3">
             {RESULTS.map((result) => (
               <div key={result.label}>
-                <dd className="text-4xl font-light tracking-tight tabular-nums text-gray-100">
+                <dd className="text-4xl font-light tracking-tight tabular-nums text-paper">
                   {result.value}
                 </dd>
                 <dt className="mt-3 max-w-[24ch] text-sm leading-snug text-paper-mute">
@@ -228,7 +228,7 @@ export const HireMe = () => {
           ) : sent ? (
             <div className="mt-8" role="status">
               <p className="intro">Request sent.</p>
-              <p className="mt-4 leading-relaxed text-gray-400">
+              <p className="mt-4 leading-relaxed text-paper-soft">
                 I&apos;ll get back to you within 24 hours. No reply?{" "}
                 <a
                   href={`mailto:${CONTACT.email}`}

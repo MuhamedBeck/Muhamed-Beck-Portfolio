@@ -19,7 +19,7 @@ const shared = {
   "aria-hidden": "true",
   focusable: "false",
   // A hairline keeps the white in either flag from dissolving into the page.
-  className: "block shrink-0 object-cover border border-white/25",
+  className: "block shrink-0 object-cover border border-hairline-strong",
 };
 
 const De = (props) => (

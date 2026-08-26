@@ -32,7 +32,7 @@ export const Startseite = () => {
   const { showSplash, isLoaded, onSplashDone } = useSplashGate();
 
   return (
-    <div className="min-h-[100dvh] text-gray-100 bg-ink">
+    <div className="min-h-[100dvh] text-paper bg-ink">
       {showSplash && !isLoaded && <LoadingScreen onComplete={onSplashDone} />}
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -57,7 +57,7 @@ export const Startseite = () => {
                   <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
                     {leistung.h1}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-400">
+                  <p className="mt-3 text-sm leading-relaxed text-paper-soft">
                     {leistung.teaser}
                   </p>
                   <span className="link-arrow mt-3">
@@ -91,7 +91,7 @@ export const Startseite = () => {
                   <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
                     {projekt.stats.map((stat) => (
                       <div key={stat.label}>
-                        <dd className="text-2xl font-light tabular-nums text-gray-100">
+                        <dd className="text-2xl font-light tabular-nums text-paper">
                           {stat.value}
                         </dd>
                         <dt className="mt-1 text-xs text-paper-mute">{stat.label}</dt>
@@ -119,8 +119,8 @@ export const Startseite = () => {
                 <span className="text-xs tracking-[0.25em] text-accent tabular-nums">
                   {String(index + 1).padStart(2, "0")}
                 </span>
-                <h3 className="mt-4 text-lg font-normal text-gray-100">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-gray-400">{step.text}</p>
+                <h3 className="mt-4 text-lg font-normal text-paper">{step.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-paper-soft">{step.text}</p>
               </li>
             ))}
           </ol>
@@ -136,8 +136,8 @@ export const Startseite = () => {
                 key={item.q}
                 className="stagger border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12"
                 style={{ "--fade-delay": `${Math.min(index, 3) * 60}ms` }}>
-                <dt className="text-lg leading-snug font-normal text-gray-100">{item.q}</dt>
-                <dd className="mt-3 leading-relaxed text-gray-400 md:mt-0">{item.a}</dd>
+                <dt className="text-lg leading-snug font-normal text-paper">{item.q}</dt>
+                <dd className="mt-3 leading-relaxed text-paper-soft md:mt-0">{item.a}</dd>
               </div>
             ))}
           </dl>

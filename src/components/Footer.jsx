@@ -24,7 +24,7 @@ const FooterColumn = ({ title, links }) =>
           <li key={link.to}>
             <Link
               to={link.to}
-              className="text-sm leading-snug text-gray-400 transition-colors duration-300 hover:text-gray-100">
+              className="text-sm leading-snug text-paper-soft transition-colors duration-300 hover:text-paper">
               {link.label}
             </Link>
           </li>
@@ -58,7 +58,7 @@ const Footer = () => {
               <li>
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors duration-300 hover:text-gray-100">
+                  className="inline-flex items-center gap-2 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
                   <FaEnvelope className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   {CONTACT.email}
                 </a>
@@ -66,7 +66,7 @@ const Footer = () => {
               <li>
                 <a
                   href={`tel:${CONTACT.phone}`}
-                  className="inline-flex items-center gap-2 text-sm text-gray-400 transition-colors duration-300 hover:text-gray-100">
+                  className="inline-flex items-center gap-2 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
                   <FaPhone className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   {CONTACT.phoneDisplay}
                 </a>
@@ -78,7 +78,7 @@ const Footer = () => {
                 href={SOCIAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-soft transition-colors duration-300 hover:text-gray-100"
+                className="text-paper-soft transition-colors duration-300 hover:text-paper"
                 aria-label={chrome.linkedinAria}>
                 <FaLinkedin className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -86,7 +86,7 @@ const Footer = () => {
                 href={SOCIAL.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-soft transition-colors duration-300 hover:text-gray-100"
+                className="text-paper-soft transition-colors duration-300 hover:text-paper"
                 aria-label={chrome.githubAria}>
                 <FaGithub className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -105,10 +105,10 @@ const Footer = () => {
             {/* Legal pages stay German regardless of interface language: they
                 are the legally binding text and a translation would only add
                 exposure. */}
-            <Link to="/impressum" className="transition-colors hover:text-gray-300">
+            <Link to="/impressum" className="transition-colors hover:text-paper-dim">
               {t.imprint}
             </Link>
-            <Link to="/datenschutz" className="transition-colors hover:text-gray-300">
+            <Link to="/datenschutz" className="transition-colors hover:text-paper-dim">
               {t.privacy}
             </Link>
           </div>

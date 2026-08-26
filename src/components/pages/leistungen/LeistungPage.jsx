@@ -23,8 +23,8 @@ export const LeistungPage = ({ data }) => (
             key={szenario.title}
             className="stagger border-t border-hairline pt-6"
             style={{ "--fade-delay": `${index * 80}ms` }}>
-            <h2 className="text-lg font-normal text-gray-100">{szenario.title}</h2>
-            <p className="mt-3 leading-relaxed text-gray-400">{szenario.text}</p>
+            <h2 className="text-lg font-normal text-paper">{szenario.title}</h2>
+            <p className="mt-3 leading-relaxed text-paper-soft">{szenario.text}</p>
           </div>
         ))}
       </div>
@@ -42,7 +42,7 @@ export const LeistungPage = ({ data }) => (
         {data.leistungen.map((item) => (
           <li
             key={item}
-            className="flex items-start gap-3 border-t border-hairline py-4 text-gray-300">
+            className="flex items-start gap-3 border-t border-hairline py-4 text-paper-dim">
             <span aria-hidden="true" className="mt-1 text-xs text-accent">
               ✓
             </span>
@@ -63,8 +63,8 @@ export const LeistungPage = ({ data }) => (
             <span className="text-xs tracking-[0.25em] text-accent tabular-nums">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <h3 className="mt-4 text-lg font-normal text-gray-100">{step.title}</h3>
-            <p className="mt-2 leading-relaxed text-gray-400">{step.text}</p>
+            <h3 className="mt-4 text-lg font-normal text-paper">{step.title}</h3>
+            <p className="mt-2 leading-relaxed text-paper-soft">{step.text}</p>
           </li>
         ))}
       </ol>
@@ -78,7 +78,7 @@ export const LeistungPage = ({ data }) => (
               and the ProfessionalService priceRange cannot drift apart. */}
           <p className="headline-sub mt-4">{RATE_TEXT}</p>
         </div>
-        <p className="leading-relaxed text-gray-400">{PREIS_TEXT}</p>
+        <p className="leading-relaxed text-paper-soft">{PREIS_TEXT}</p>
       </div>
     </Section>
 
@@ -92,7 +92,7 @@ export const LeistungPage = ({ data }) => (
               what this site argues for elsewhere: "Ohne diese Ausgangsmessung
               ist jede Prozentzahl hinterher wertlos." */}
           {data.caseStudy.stat ? (
-            <p className="mt-5 text-5xl font-light tabular-nums text-gray-100">
+            <p className="mt-5 text-5xl font-light tabular-nums text-paper">
               {data.caseStudy.stat}
             </p>
           ) : null}
@@ -104,7 +104,7 @@ export const LeistungPage = ({ data }) => (
           </p>
         </div>
         <div>
-          <p className="leading-relaxed text-gray-400">{data.caseStudy.text}</p>
+          <p className="leading-relaxed text-paper-soft">{data.caseStudy.text}</p>
           <Link to={data.caseStudy.link} className="link-arrow mt-4">
             {data.caseStudy.linkText}
             <span aria-hidden="true">↗</span>
@@ -122,8 +122,8 @@ export const LeistungPage = ({ data }) => (
           <div
             key={item.q}
             className="border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
-            <dt className="text-lg leading-snug font-normal text-gray-100">{item.q}</dt>
-            <dd className="mt-3 leading-relaxed text-gray-400 md:mt-0">{item.a}</dd>
+            <dt className="text-lg leading-snug font-normal text-paper">{item.q}</dt>
+            <dd className="mt-3 leading-relaxed text-paper-soft md:mt-0">{item.a}</dd>
           </div>
         ))}
       </dl>

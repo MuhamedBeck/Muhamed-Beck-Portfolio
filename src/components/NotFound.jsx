@@ -3,7 +3,7 @@ import { useRouteMeta } from "../seo/useRouteMeta";
 const NotFound = () => {
   useRouteMeta();
   return (
-    <div className="flex min-h-[100dvh] flex-col justify-center bg-ink px-4 text-gray-100">
+    <div className="flex min-h-[100dvh] flex-col justify-center bg-ink px-4 text-paper">
       <div className="mx-auto w-full max-w-6xl">
         <p className="label">404</p>
         <h1 className="headline mt-6 max-w-[20ch]">This page does not exist</h1>

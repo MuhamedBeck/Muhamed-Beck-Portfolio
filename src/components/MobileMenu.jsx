@@ -24,7 +24,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
   return (
     <>
       <div
-        className={`fixed inset-0 z-40 bg-black/70 backdrop-blur-sm transition-opacity duration-300 ${
+        className={`fixed inset-0 z-40 bg-ink/70 backdrop-blur-sm transition-opacity duration-300 ${
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={close}
@@ -41,12 +41,12 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
             onClick={close}
             className="flex items-center"
             aria-label={chrome.backToHome}>
-            <img src={mnbLogo} alt="" width="500" height="500" className="h-8 w-auto" />
+            <img src={mnbLogo} alt="" width="500" height="500" className="site-logo h-8 w-auto" />
           </Link>
           <button
             type="button"
             onClick={close}
-            className="flex h-11 w-11 items-center justify-center text-paper-mute transition-colors hover:text-white"
+            className="flex h-11 w-11 items-center justify-center text-paper-mute transition-colors hover:text-paper"
             aria-label={chrome.closeMenu}>
             <svg
               className="h-5 w-5"
@@ -73,7 +73,7 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
                 <Link
                   to={item.to}
                   onClick={close}
-                  className={`flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-xs tracking-[0.18em] text-gray-300 uppercase transition-all duration-300 hover:bg-white/5 hover:text-white ${
+                  className={`flex w-full items-center justify-between rounded-lg px-4 py-3.5 text-xs tracking-[0.18em] text-paper-dim uppercase transition-all duration-300 hover:bg-surface hover:text-paper ${
                     menuOpen ? "translate-x-0 opacity-100" : "translate-x-6 opacity-0"
                   }`}
                   style={{ transitionDelay: menuOpen ? `${80 + index * 45}ms` : "0ms" }}>

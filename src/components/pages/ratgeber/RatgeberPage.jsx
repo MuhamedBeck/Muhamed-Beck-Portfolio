@@ -43,7 +43,7 @@ export const RatgeberPage = ({ data }) => (
           <section key={section.h2} className="mt-14">
             <h2 className="headline-sub">{section.h2}</h2>
             {section.body.map((paragraph) => (
-              <p key={paragraph} className="mt-5 leading-relaxed text-gray-400">
+              <p key={paragraph} className="mt-5 leading-relaxed text-paper-soft">
                 {paragraph}
               </p>
             ))}
@@ -77,7 +77,7 @@ export const RatgeberPage = ({ data }) => (
                     <th
                       key={column}
                       scope="col"
-                      className="pb-4 pl-6 text-lg font-normal text-gray-100">
+                      className="pb-4 pl-6 text-lg font-normal text-paper">
                       {column}
                     </th>
                   ))}
@@ -88,13 +88,13 @@ export const RatgeberPage = ({ data }) => (
                   <tr key={row.label} className="border-t border-hairline align-top">
                     <th
                       scope="row"
-                      className="py-5 pr-6 text-sm font-normal leading-snug text-gray-300">
+                      className="py-5 pr-6 text-sm font-normal leading-snug text-paper-dim">
                       {row.label}
                     </th>
                     {row.cells.map((cell, index) => (
                       <td
                         key={data.table.columns[index]}
-                        className="py-5 pl-6 leading-relaxed text-gray-400">
+                        className="py-5 pl-6 leading-relaxed text-paper-soft">
                         {cell}
                       </td>
                     ))}
@@ -115,8 +115,8 @@ export const RatgeberPage = ({ data }) => (
           <div
             key={item.q}
             className="border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
-            <dt className="text-lg leading-snug font-normal text-gray-100">{item.q}</dt>
-            <dd className="mt-3 leading-relaxed text-gray-400 md:mt-0">{item.a}</dd>
+            <dt className="text-lg leading-snug font-normal text-paper">{item.q}</dt>
+            <dd className="mt-3 leading-relaxed text-paper-soft md:mt-0">{item.a}</dd>
           </div>
         ))}
       </dl>

@@ -69,7 +69,7 @@ export const Projects = () => (
                 <p className="mt-3 text-sm text-paper-mute">{project.stack}</p>
               </div>
               <div className="mt-4 md:mt-0">
-                <p className="max-w-[62ch] leading-relaxed text-gray-400">
+                <p className="max-w-[62ch] leading-relaxed text-paper-soft">
                   {project.text}
                 </p>
                 <span className="link-arrow mt-2">

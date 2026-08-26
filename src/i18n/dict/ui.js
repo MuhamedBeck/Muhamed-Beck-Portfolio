@@ -18,6 +18,8 @@ const de = {
   techStack: "Tech-Stack und Werkzeuge",
   linkedinAria: "LinkedIn-Profil",
   githubAria: "GitHub-Profil",
+  themeToLight: "Zur hellen Ansicht wechseln",
+  themeToDark: "Zur dunklen Ansicht wechseln",
 };
 
 const en = {
@@ -31,6 +33,8 @@ const en = {
   techStack: "Tech stack and tools",
   linkedinAria: "LinkedIn profile",
   githubAria: "GitHub profile",
+  themeToLight: "Switch to the light theme",
+  themeToDark: "Switch to the dark theme",
 };
 
 export default { de, en };

@@ -28,8 +28,8 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
             key={stat.label}
             className="stagger flex flex-col"
             style={{ "--fade-delay": `${index * 80}ms` }}>
-            <dt className="order-2 mt-4 text-sm text-gray-300">{stat.label}</dt>
-            <dd className="order-1 text-5xl font-light tabular-nums text-gray-100">
+            <dt className="order-2 mt-4 text-sm text-paper-dim">{stat.label}</dt>
+            <dd className="order-1 text-5xl font-light tabular-nums text-paper">
               {stat.value}
             </dd>
             <dd className="order-3 mt-1 text-sm text-paper-mute">{stat.note}</dd>
@@ -41,7 +41,7 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
     <Section className="!pt-0">
       <div className="grid gap-x-12 gap-y-4 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
         <h2 className="label">{copy.situation}</h2>
-        <p className="max-w-[62ch] leading-relaxed text-gray-400">{data.ausgangslage}</p>
+        <p className="max-w-[62ch] leading-relaxed text-paper-soft">{data.ausgangslage}</p>
       </div>
     </Section>
 
@@ -50,7 +50,7 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
         <h2 className="label">{copy.solution}</h2>
         <ul className="max-w-[62ch]">
           {data.loesung.map((item) => (
-            <li key={item} className="flex items-start gap-3 py-2 text-gray-400">
+            <li key={item} className="flex items-start gap-3 py-2 text-paper-soft">
               <span aria-hidden="true" className="mt-1.5 text-xs text-accent">
                 ✓
               </span>
@@ -66,7 +66,7 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
         <h2 className="label">{copy.results}</h2>
         <ul className="max-w-[62ch]">
           {data.ergebnisse.map((item) => (
-            <li key={item} className="flex items-start gap-3 py-2 text-gray-400">
+            <li key={item} className="flex items-start gap-3 py-2 text-paper-soft">
               <span aria-hidden="true" className="mt-1.5 text-xs text-accent">
                 ✓
               </span>
@@ -82,7 +82,7 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
         <h2 className="label">{copy.stack}</h2>
         <ul className="flex flex-wrap gap-x-6 gap-y-2">
           {data.stack.map((tech) => (
-            <li key={tech} className="text-sm text-gray-400">
+            <li key={tech} className="text-sm text-paper-soft">
               {tech}
             </li>
           ))}

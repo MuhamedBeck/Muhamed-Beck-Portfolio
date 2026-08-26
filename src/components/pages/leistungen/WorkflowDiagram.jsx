@@ -59,8 +59,8 @@ export const WorkflowDiagram = ({ data }) => (
             <p className="text-xs tracking-[0.2em] text-accent uppercase md:mt-5">
               {stage.kind}
             </p>
-            <h3 className="mt-3 text-base font-normal text-gray-100">{stage.title}</h3>
-            <p className="mt-2 max-w-[46ch] text-sm leading-relaxed text-gray-400">
+            <h3 className="mt-3 text-base font-normal text-paper">{stage.title}</h3>
+            <p className="mt-2 max-w-[46ch] text-sm leading-relaxed text-paper-soft">
               {stage.text}
             </p>
           </li>
@@ -71,7 +71,7 @@ export const WorkflowDiagram = ({ data }) => (
     {/* The band underneath is the actual differentiator: anyone can wire two
         tools together, the question is what happens when a call fails at 3am. */}
     <p className="mt-12 border-t border-hairline pt-5 text-sm leading-relaxed text-paper-mute">
-      <span className="text-gray-300">Läuft durchgehend mit: </span>
+      <span className="text-paper-dim">Läuft durchgehend mit: </span>
       {data.alongside}
     </p>
   </figure>

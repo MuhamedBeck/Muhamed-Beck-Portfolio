@@ -134,15 +134,15 @@ const Station = ({ entry }) => (
       <p className="text-xs tracking-[0.2em] text-accent uppercase tabular-nums">
         {entry.period}
       </p>
-      <h3 className="mt-3 text-lg font-normal text-gray-100">{entry.role}</h3>
+      <h3 className="mt-3 text-lg font-normal text-paper">{entry.role}</h3>
       <p className="mt-1 text-sm text-paper-mute">{entry.org}</p>
     </div>
     <div className="mt-4 max-w-[62ch] md:mt-0">
-      {entry.note ? <p className="leading-relaxed text-gray-400">{entry.note}</p> : null}
+      {entry.note ? <p className="leading-relaxed text-paper-soft">{entry.note}</p> : null}
       {entry.highlights ? (
         <ul className="space-y-2">
           {entry.highlights.map((highlight) => (
-            <li key={highlight} className="flex items-start gap-3 text-gray-400">
+            <li key={highlight} className="flex items-start gap-3 text-paper-soft">
               <span aria-hidden="true" className="mt-2 h-px w-3 shrink-0 bg-accent" />
               <span className="leading-relaxed">{highlight}</span>
             </li>
@@ -194,8 +194,8 @@ export const About = () => {
         <dl className="mt-8 grid gap-x-12 gap-y-8 md:grid-cols-2">
           {SKILLS.map((skill) => (
             <div key={skill.title} className="border-t border-hairline pt-5">
-              <dt className="text-lg font-normal text-gray-100">{skill.title}</dt>
-              <dd className="mt-2 leading-relaxed text-gray-400">{skill.items}</dd>
+              <dt className="text-lg font-normal text-paper">{skill.title}</dt>
+              <dd className="mt-2 leading-relaxed text-paper-soft">{skill.items}</dd>
             </div>
           ))}
         </dl>
@@ -208,7 +208,7 @@ export const About = () => {
             <li
               key={cert.title}
               className="border-t border-hairline py-5 md:grid md:grid-cols-[1fr_14rem] md:gap-x-12">
-              <p className="leading-snug text-gray-100">{cert.title}</p>
+              <p className="leading-snug text-paper">{cert.title}</p>
               <p className="mt-1 text-sm text-paper-mute md:mt-0 md:text-right">
                 {cert.issuer} · {cert.date}
               </p>

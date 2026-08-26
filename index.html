@@ -16,6 +16,21 @@
   <script>
     var root = document.documentElement;
     root.classList.add("js");
+
+    // Stamp the chosen theme before the first paint. Without this the page
+    // paints in the default dark palette and then flips, which is the same
+    // self-correcting flash the entrance animations used to produce.
+    // Nothing is stamped when no choice was stored: the attribute must stay
+    // absent so prefers-color-scheme keeps deciding, and index.css is written
+    // for exactly those three states.
+    try {
+      var gewaehlt = localStorage.getItem("theme");
+      if (gewaehlt === "light" || gewaehlt === "dark") {
+        root.setAttribute("data-theme", gewaehlt);
+      }
+    } catch (e) {
+      // Private mode or blocked site data. The system preference still applies.
+    }
     // Only for the case where the app never arrives: a failed bundle, or one so
     // slow that an entrance would blank text the visitor has been reading. main.jsx
     // sets "hydrated" as soon as it renders, and then this does nothing, because
@@ -40,7 +55,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#fafafb" media="(prefers-color-scheme: light)" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

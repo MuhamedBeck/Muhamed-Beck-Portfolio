@@ -22,7 +22,7 @@ export const RateScale = ({ data }) => (
       <div className="relative h-24">
         {/* Market range */}
         <div
-          className="absolute top-6 h-2 rounded-full bg-white/10"
+          className="absolute top-6 h-2 rounded-full bg-surface-strong"
           style={{ left: `${pct(data.market.from)}%`, width: `${pct(data.market.to) - pct(data.market.from)}%` }}
         />
         {/* Own rate, the one thing on the page that is a commitment */}
@@ -38,7 +38,7 @@ export const RateScale = ({ data }) => (
         <p
           className="absolute top-14 -translate-x-1/2 text-center text-xs leading-snug text-paper-mute"
           style={{ left: `${pct(data.median.value)}%` }}>
-          <span className="block text-sm text-gray-100 tabular-nums">
+          <span className="block text-sm text-paper tabular-nums">
             {data.median.value} €
           </span>
           {data.median.label}
@@ -58,17 +58,17 @@ export const RateScale = ({ data }) => (
           is indented to match by the swatch's width plus its gap. */}
       <dl className="mt-8 grid gap-x-10 gap-y-5 sm:grid-cols-2">
         <div>
-          <dt className="flex items-baseline gap-3 text-sm text-gray-100 tabular-nums">
+          <dt className="flex items-baseline gap-3 text-sm text-paper tabular-nums">
             <span
               aria-hidden="true"
-              className="h-2 w-6 shrink-0 rounded-full bg-white/10"
+              className="h-2 w-6 shrink-0 rounded-full bg-surface-strong"
             />
             {data.market.from} bis {data.market.to} €
           </dt>
           <dd className="mt-1 pl-9 text-sm text-paper-mute">{data.market.label}</dd>
         </div>
         <div>
-          <dt className="flex items-baseline gap-3 text-sm text-gray-100 tabular-nums">
+          <dt className="flex items-baseline gap-3 text-sm text-paper tabular-nums">
             <span aria-hidden="true" className="h-2 w-6 shrink-0 rounded-full bg-accent" />
             {data.own.from} bis {data.own.to} €
           </dt>

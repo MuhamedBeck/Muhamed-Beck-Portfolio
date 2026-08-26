@@ -24,10 +24,10 @@ export const LegalPage = ({ label, headline, intro, sections }) => (
           <div
             key={section.title}
             className="border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
-            <h2 className="text-lg leading-snug font-normal text-gray-100">
+            <h2 className="text-lg leading-snug font-normal text-paper">
               {section.title}
             </h2>
-            <div className="mt-3 space-y-3 leading-relaxed text-gray-400 md:mt-0">
+            <div className="mt-3 space-y-3 leading-relaxed text-paper-soft md:mt-0">
               {section.body}
             </div>
           </div>

@@ -69,10 +69,10 @@ export const TechMarquee = () => {
                  worst at 1.68:1. 0.9 is the lowest value at which all 16 clear it.
                  The restraint now comes from size and spacing; the hover still
                  reads through the scale and the label brightening. */
-              className="w-7 h-7 transition-all duration-300 opacity-90 group-hover:opacity-100 group-hover:scale-110"
+              className="tech-mark w-7 h-7 transition-all duration-300 opacity-90 group-hover:opacity-100 group-hover:scale-110"
               style={{ color }}
             />
-            <span className="text-[11px] text-paper-soft group-hover:text-gray-100 transition-colors duration-300 whitespace-nowrap">
+            <span className="text-[11px] text-paper-soft group-hover:text-paper transition-colors duration-300 whitespace-nowrap">
               {name}
             </span>
           </div>

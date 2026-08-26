@@ -19,9 +19,48 @@ html {
      at 5.32:1 and still sits a clear step below --color-paper-soft (7.80:1),
      so the hierarchy survives the fix. */
   --color-paper-mute: #7d8592;
+  /* Between paper and paper-soft. Existed as a literal text-gray-300 in ten
+     places; it needs a name so both themes can define it. */
+  --color-paper-dim: #d1d5db;
   --color-accent: #60a5fa; /* blue-400, the single accent */
   --color-accent-dim: #22d3ee; /* cyan-400, used sparingly */
+  /* What goes ON the accent. It has to flip with the theme: the dark accent is
+     a light blue and carries dark text, the light accent is a dark blue and
+     carries light text. Expressing it as a token is what lets btn-accent work
+     in both without a second rule. */
+  --color-accent-ink: #0a0a0a;
   --color-hairline: rgb(255 255 255 / 0.1);
+  --color-hairline-strong: rgb(255 255 255 / 0.2);
+  /* Faint fills: form fields, chips, the raised strip. Were bg-white/5 and
+     bg-white/10, which invert to invisible on a light ground. */
+  --color-surface: rgb(255 255 255 / 0.05);
+  --color-surface-strong: rgb(255 255 255 / 0.1);
+  --color-scrollbar: rgb(255 255 255 / 0.16);
+  --color-scrollbar-hover: rgb(255 255 255 / 0.22);
+
+  /* The light palette lives here as plain values, assigned twice below. Two
+     assignment lists are unavoidable in CSS, but keeping the values in one
+     place means the two can never drift apart.
+
+     Measured against the light ground #fafafb: paper 17,06:1, paper-dim
+     10,99:1, paper-soft 7,20:1, paper-mute 5,01:1, accent 6,42:1. The dark
+     side reads 17,99 / 13,44 / 7,80 / 5,32 / 7,79, so the hierarchy the design
+     relies on survives the switch instead of being re-invented. */
+  --light-ink: #fafafb;
+  --light-ink-raised: #f1f2f5;
+  --light-paper: #15181d;
+  --light-paper-dim: #333a45;
+  --light-paper-soft: #4d5563;
+  --light-paper-mute: #646d7c;
+  --light-accent: #1d4ed8;
+  --light-accent-dim: #0e7490;
+  --light-accent-ink: #fafafb;
+  --light-hairline: rgb(0 0 0 / 0.12);
+  --light-hairline-strong: rgb(0 0 0 / 0.22);
+  --light-surface: rgb(0 0 0 / 0.04);
+  --light-surface-strong: rgb(0 0 0 / 0.08);
+  --light-scrollbar: rgb(0 0 0 / 0.2);
+  --light-scrollbar-hover: rgb(0 0 0 / 0.32);
 
   /* Two faces, two jobs. Space Grotesk is a display face and was carrying 100%
      of the elements on the site, long-form Ratgeber articles included. It now
@@ -34,6 +73,63 @@ html {
      Keeping them as tokens stops every component inventing its own curve. */
   --ease-entrance: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   --ease-hover: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+/* Light mode.
+ *
+ * Three states, not two. An explicit choice stamps data-theme on <html>; the
+ * default setting stamps nothing, and then only prefers-color-scheme separates
+ * the two. So the media query has to exclude an explicit dark choice, or a
+ * visitor who picked dark on a light system would be overruled by their OS.
+ *
+ * The stamp is written before the first paint by the inline script in
+ * index.html, the same one that arms the entrance animations. Without that the
+ * page would paint dark and then flip.
+ *
+ * color-scheme is not decoration: it tells the browser which way to render form
+ * controls, the caret and the default scrollbar, which no token can reach. */
+:root {
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --color-ink: var(--light-ink);
+    --color-ink-raised: var(--light-ink-raised);
+    --color-paper: var(--light-paper);
+    --color-paper-dim: var(--light-paper-dim);
+    --color-paper-soft: var(--light-paper-soft);
+    --color-paper-mute: var(--light-paper-mute);
+    --color-accent: var(--light-accent);
+    --color-accent-dim: var(--light-accent-dim);
+    --color-accent-ink: var(--light-accent-ink);
+    --color-hairline: var(--light-hairline);
+    --color-hairline-strong: var(--light-hairline-strong);
+    --color-surface: var(--light-surface);
+    --color-surface-strong: var(--light-surface-strong);
+    --color-scrollbar: var(--light-scrollbar);
+    --color-scrollbar-hover: var(--light-scrollbar-hover);
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-ink: var(--light-ink);
+  --color-ink-raised: var(--light-ink-raised);
+  --color-paper: var(--light-paper);
+  --color-paper-dim: var(--light-paper-dim);
+  --color-paper-soft: var(--light-paper-soft);
+  --color-paper-mute: var(--light-paper-mute);
+  --color-accent: var(--light-accent);
+  --color-accent-dim: var(--light-accent-dim);
+  --color-accent-ink: var(--light-accent-ink);
+  --color-hairline: var(--light-hairline);
+  --color-hairline-strong: var(--light-hairline-strong);
+  --color-surface: var(--light-surface);
+  --color-surface-strong: var(--light-surface-strong);
+  --color-scrollbar: var(--light-scrollbar);
+  --color-scrollbar-hover: var(--light-scrollbar-hover);
 }
 
 /* Space Grotesk, self-hosted (GDPR: no requests to Google servers) */
@@ -93,7 +189,7 @@ body {
   padding: 0;
   font-family: var(--font-text);
   background: var(--color-ink);
-  color: #f3f4f6;
+  color: var(--color-paper);
   overflow-x: hidden;
   scroll-behavior: smooth;
   /* Use min-height + dvh: adjusts dynamically as browser chrome shows/hides */
@@ -358,7 +454,7 @@ dd {
   .btn-accent {
     border-color: var(--color-accent);
     background-color: var(--color-accent);
-    color: var(--color-ink);
+    color: var(--color-accent-ink);
   }
 
   .btn-accent:hover {
@@ -437,6 +533,48 @@ dd {
 
 .is-ready .stagger {
   animation: stagger-in 0.7s var(--ease-entrance) var(--fade-delay, 0s) both;
+}
+
+/* The wordmark on a light ground.
+ *
+ * It is a bitmap, so no token reaches it. Averaged over its opaque pixels it is
+ * #18c0f6, which measures 9,34:1 against the dark ground and 2,03:1 against the
+ * light one: on paper it nearly disappears. A logo is exempt from the contrast
+ * rules, but a washed-out wordmark is the clearest tell of a half-finished
+ * light theme.
+ *
+ * At 60 percent brightness it lands on 4,87:1 and keeps its cyan character
+ * instead of turning grey. The splash screen is deliberately excluded: it keeps
+ * its own dark world in both themes. */
+:root[data-theme="light"] .site-logo {
+  filter: brightness(0.6) saturate(1.2);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .site-logo {
+    filter: brightness(0.6) saturate(1.2);
+  }
+}
+
+/* Brand marks on a light ground.
+ *
+ * The marquee draws each logo in its own brand colour, which is chosen to sit
+ * on white paper or on a dark screen but never on both. Measured against the
+ * light ground, eight of the sixteen fell under 3:1 and JavaScript reached
+ * 1,27:1, which is the same failure the dark theme had at opacity-50, mirrored.
+ *
+ * Darkening to 60 percent is the point at which all sixteen clear 3:1. The
+ * saturation lift compensates for the muddiness that pure darkening produces,
+ * so the marks still read as themselves. The dark theme needs none of this and
+ * gets none. */
+:root[data-theme="light"] .tech-mark {
+  filter: brightness(0.6) saturate(1.25);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) .tech-mark {
+    filter: brightness(0.6) saturate(1.25);
+  }
 }
 
 @keyframes stagger-in {
@@ -645,16 +783,16 @@ dd {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(255 255 255 / 0.12);
+  background: var(--color-scrollbar);
   border: 3px solid var(--color-ink);
   border-radius: 999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(255 255 255 / 0.22);
+  background: var(--color-scrollbar-hover);
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgb(255 255 255 / 0.16) transparent;
+  scrollbar-color: var(--color-scrollbar) transparent;
 }

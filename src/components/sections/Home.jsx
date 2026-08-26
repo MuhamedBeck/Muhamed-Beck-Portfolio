@@ -66,7 +66,7 @@ export const Home = ({ isLoaded = true }) => {
               fetchPriority="high"
               loading="eager"
               decoding="async"
-              className="h-52 w-52 rounded-full border border-white/15 object-cover sm:h-64 sm:w-64 md:h-80 md:w-80"
+              className="h-52 w-52 rounded-full border border-hairline-strong object-cover sm:h-64 sm:w-64 md:h-80 md:w-80"
               style={{ objectPosition: "center 18%" }}
             />
           </div>
@@ -138,7 +138,7 @@ export const Home = ({ isLoaded = true }) => {
             <div key={stat.label}>
               {/* tabular-nums keeps the row from shifting between locales, which
                   format numbers differently. */}
-              <dd className="text-4xl font-light tracking-tight tabular-nums text-gray-100">
+              <dd className="text-4xl font-light tracking-tight tabular-nums text-paper">
                 {stat.value}
               </dd>
               <dt className="mt-3 max-w-[24ch] text-sm leading-snug text-paper-mute">

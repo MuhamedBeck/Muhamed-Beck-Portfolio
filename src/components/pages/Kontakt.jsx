@@ -92,7 +92,7 @@ const Kontakt = () => {
   // No placeholders: every field has a real label, and a placeholder that
   // disappears on typing is not a label.
   const inputClass =
-    "w-full rounded-lg border border-hairline bg-white/5 px-4 py-3 text-white transition focus:border-blue-500 focus:bg-blue-500/5";
+    "w-full rounded-lg border border-hairline bg-surface px-4 py-3 text-paper transition focus:border-blue-500 focus:bg-blue-500/5";
   const labelClass = "mb-2 block text-sm text-paper-mute";
 
   return (
@@ -108,7 +108,7 @@ const Kontakt = () => {
             {!EMAILJS_IS_CONFIGURED ? (
               /* No EmailJS credentials in this build, so a form could only
                  fail. The direct channels beside this already cover it. */
-              <p className="mt-6 leading-relaxed text-gray-400">
+              <p className="mt-6 leading-relaxed text-paper-soft">
                 Das Formular ist gerade nicht verfügbar. Schreiben Sie mir bitte
                 direkt an{" "}
                 <a
@@ -121,7 +121,7 @@ const Kontakt = () => {
             ) : sent ? (
               <div className="mt-6" role="status">
                 <p className="intro">Anfrage ist raus.</p>
-                <p className="mt-4 leading-relaxed text-gray-400">
+                <p className="mt-4 leading-relaxed text-paper-soft">
                   Sie hören innerhalb von 24 Stunden von mir. Keine Antwort erhalten?
                   Dann direkt an{" "}
                   <a
@@ -270,7 +270,7 @@ const Kontakt = () => {
                         className="h-4 w-4 shrink-0 text-accent"
                         aria-hidden="true"
                       />
-                      <span className="text-lg text-gray-100 underline-offset-4 group-hover:underline">
+                      <span className="text-lg text-paper underline-offset-4 group-hover:underline">
                         {channel.value}
                       </span>
                     </span>
@@ -293,18 +293,18 @@ const Kontakt = () => {
         <div className="grid gap-x-12 gap-y-10 pt-10 md:grid-cols-3">
           <div>
             <h2 className="label">Konditionen</h2>
-            <p className="leading-relaxed text-gray-400">{RATE_TEXT}</p>
+            <p className="leading-relaxed text-paper-soft">{RATE_TEXT}</p>
           </div>
           <div>
             <h2 className="label">Arbeitsweise</h2>
-            <p className="leading-relaxed text-gray-400">
+            <p className="leading-relaxed text-paper-soft">
               Remote in ganz Deutschland, Österreich und der Schweiz. Vor Ort im
               Rhein-Main-Gebiet nach Absprache.
             </p>
           </div>
           <div>
             <h2 className="label">Erstgespräch</h2>
-            <p className="leading-relaxed text-gray-400">
+            <p className="leading-relaxed text-paper-soft">
               Kostenlos und unverbindlich. Wenn Automatisierung sich in Ihrem Fall nicht
               rechnet, sage ich das.
             </p>
