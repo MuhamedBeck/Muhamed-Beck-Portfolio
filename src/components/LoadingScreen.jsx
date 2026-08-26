@@ -93,12 +93,21 @@ export const LoadingScreen = ({ onComplete }) => {
           <div className="flex justify-center mb-8">
             <img src={mnbLogo} alt="MNB Logo" width="500" height="500" className="h-28 w-auto opacity-90" />
           </div>
-          <h1 className="text-4xl sm:text-6xl md:text-8xl font-light tracking-wider mb-4 whitespace-nowrap">
+          {/* Bewusst kein <h1>. Der Splash liegt als Overlay ueber der Seite,
+              nicht an ihrer Stelle, also stand hier eine zweite Ueberschrift
+              erster Ordnung neben der echten, solange er lief. Der Waechter im
+              Build sieht das nie: er prueft das vorgerenderte Markup, und
+              Effekte laufen dort nicht, der Splash erscheint also erst im
+              Browser. Gemessen auf der Startseite: h1=2 waehrend des Splash.
+              Es ist eine Wortmarke in einer Ladeanzeige, keine Ueberschrift. */}
+          <p
+            aria-hidden="true"
+            className="text-4xl sm:text-6xl md:text-8xl font-light tracking-wider mb-4 whitespace-nowrap">
             <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-indigo-400 bg-clip-text text-transparent">
               {text}
             </span>
             <span className="animate-pulse text-cyan-400 ms-2">|</span>
-          </h1>
+          </p>
 
           <div
             className={`transition-all duration-500 ${

@@ -8,6 +8,17 @@ export const PREIS_TEXT =
 export const LEISTUNGEN = [
   {
     path: "/leistungen/webentwicklung",
+    preisText:
+      "90 bis 135 € pro Stunde nach Absprache. Für eine Webseite steht der Umfang meist vorher fest, deshalb ist hier häufiger ein Festpreis sinnvoll als bei laufenden Automatisierungen. Laufende Kosten entstehen nur für Domain und Hosting, nicht für die Seite selbst.",
+    /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
+       Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
+       und die ist auf jeder der sieben Seiten eine andere. */
+    cta: {
+      headline: "Brauchen Sie eine Webseite, die schnell ist und gefunden wird?",
+      intro:
+        "Schreiben Sie mir, was die jetzige Seite nicht leistet, oder dass es noch keine gibt. Sie bekommen innerhalb von 24 Stunden eine ehrliche Einschätzung, ob sich ein Neubau lohnt und was er kosten würde.",
+      button: "Webseite anfragen",
+    },
     weiterlesen: [
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
     ],
@@ -117,6 +128,15 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/n8n-automatisierung",
+    /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
+       Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
+       und die ist auf jeder der sieben Seiten eine andere. */
+    cta: {
+      headline: "Welcher Ablauf frisst bei Ihnen die meiste Zeit?",
+      intro:
+        "Beschreiben Sie ihn in zwei Sätzen, mit den Systemen, die daran hängen. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob n8n dafür das richtige Werkzeug ist oder ob es einfacher geht.",
+      button: "Workflow anfragen",
+    },
     weiterlesen: [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
@@ -228,6 +248,15 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-automatisierung-frankfurt",
+    /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
+       Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
+       und die ist auf jeder der sieben Seiten eine andere. */
+    cta: {
+      headline: "Wo soll KI bei Ihnen wirklich Arbeit abnehmen?",
+      intro:
+        "Schreiben Sie mir den Anwendungsfall, nicht die Technik. Wenn KI sich dafür nicht rechnet, sage ich das, bevor wir anfangen.",
+      button: "Projekt anfragen",
+    },
     weiterlesen: [
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
@@ -329,6 +358,15 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/hubspot-integration",
+    /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
+       Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
+       und die ist auf jeder der sieben Seiten eine andere. */
+    cta: {
+      headline: "Welche Systeme sprechen bei Ihnen nicht miteinander?",
+      intro:
+        "Nennen Sie mir die beiden Enden und was dazwischen heute von Hand passiert. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, wie die Anbindung aussehen würde.",
+      button: "Integration anfragen",
+    },
     weiterlesen: [
       {
         path: "/ratgeber/recruiting-mit-n8n-automatisieren",
@@ -429,6 +467,15 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/recruiting-automatisierung",
+    /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
+       Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
+       und die ist auf jeder der sieben Seiten eine andere. */
+    cta: {
+      headline: "Wie viele Stunden kostet Sie eine Stelle bis zum Vertrag?",
+      intro:
+        "Beschreiben Sie kurz Ihren Ablauf und welches Bewerbermanagement Sie nutzen. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was sich davon automatisieren lässt und was beim Menschen bleiben muss.",
+      button: "Recruiting-Projekt anfragen",
+    },
     weiterlesen: [
       { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
       {
@@ -530,6 +577,17 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/voice-ai-agenten",
+    preisText:
+      "90 bis 135 € pro Stunde für die Umsetzung. Anders als bei den übrigen Leistungen kommen laufende Kosten dazu: Sprachagenten werden je Gesprächsminute abgerechnet, dazu Telefonie und Rufnummer. Was das konkret bedeutet, steht im Ratgeber zu KI-Telefonagenten.",
+    /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
+       Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
+       und die ist auf jeder der sieben Seiten eine andere. */
+    cta: {
+      headline: "Wie viele Anrufe gehen bei Ihnen verloren?",
+      intro:
+        "Sagen Sie mir, wann das Telefon klingelt und niemand rangeht. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob ein Sprachassistent das auffängt und was er im Monat wirklich kostet.",
+      button: "Telefonassistent anfragen",
+    },
     weiterlesen: [
       { path: "/ratgeber/ki-recruiting-ai-act", label: "Was der AI Act für KI-Telefonie verlangt" },
       {
@@ -634,6 +692,17 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-agenten-entwicklung",
+    preisText:
+      "90 bis 135 € pro Stunde für die Entwicklung. Dazu kommen laufende Modellkosten je Anfrage, die vom eingesetzten Modell und vom Umfang der Eingaben abhängen. Beides wird vorher abgeschätzt, damit der Betrieb später keine Überraschung ist.",
+    /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
+       Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
+       und die ist auf jeder der sieben Seiten eine andere. */
+    cta: {
+      headline: "Welche Aufgabe soll ein Agent für Sie übernehmen?",
+      intro:
+        "Beschreiben Sie sie so genau wie möglich, samt der Stelle, an der ein Mensch übernehmen muss. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob ein Agent dafür trägt.",
+      button: "KI-Agenten anfragen",
+    },
     weiterlesen: [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },

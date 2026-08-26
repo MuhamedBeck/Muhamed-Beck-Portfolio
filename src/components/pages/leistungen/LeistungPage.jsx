@@ -75,11 +75,15 @@ export const LeistungPage = ({ data }) => (
       <div className="grid gap-x-12 gap-y-6 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
         <div>
           <h2 className="label">Stundensatz</h2>
-          {/* One source for the rate wording, so this page, the FAQ, llms.txt
-              and the ProfessionalService priceRange cannot drift apart. */}
+          {/* The rate itself is one source, so this page, the FAQ, llms.txt and
+              the ProfessionalService priceRange cannot drift apart. What the
+              rate means differs per service though: a website is often a fixed
+              price, a voice agent carries a per-minute cost the hourly rate
+              says nothing about. So the explanation beside it is overridable
+              and the number is not. */}
           <p className="headline-sub mt-4">{RATE_TEXT}</p>
         </div>
-        <p className="leading-relaxed text-paper-soft">{PREIS_TEXT}</p>
+        <p className="leading-relaxed text-paper-soft">{data.preisText ?? PREIS_TEXT}</p>
       </div>
     </Section>
 
@@ -152,14 +156,25 @@ export const LeistungPage = ({ data }) => (
     ) : null}
 
     <Section className="!pt-0">
+      {/* Asked the same question on every page: "Passt das zu Ihrem Prozess?",
+          followed by an offer to say whether it can be automated. On the
+          webentwicklung page that is the wrong question twice over, because
+          nobody wants to know whether their website can be automated.
+
+          A visitor who has just read a page about telephone agents should be
+          asked about missed calls, not about processes. So the wording comes
+          from the service, and the generic version stays as the fallback for
+          any page that has not been given its own. */}
       <div className="max-w-2xl border-t border-hairline pt-12">
-        <h2 className="headline-sub">Passt das zu Ihrem Prozess?</h2>
+        <h2 className="headline-sub">
+          {data.cta?.headline ?? "Passt das zu Ihrem Prozess?"}
+        </h2>
         <p className="intro mt-5">
-          Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden
-          eine echte Einschätzung, ob und wie sich das automatisieren lässt.
+          {data.cta?.intro ??
+            "Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden eine echte Einschätzung, ob und wie sich das automatisieren lässt."}
         </p>
         <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
-          Projekt anfragen
+          {data.cta?.button ?? "Projekt anfragen"}
         </Link>
         <p className="mt-5 text-sm text-paper-mute">
           Kostenloses Erstgespräch · Frankfurt und remote in Deutschland, Österreich und
