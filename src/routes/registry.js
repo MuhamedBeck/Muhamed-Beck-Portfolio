@@ -173,6 +173,96 @@ export const ROUTES = [
     changefreq: "monthly",
     priority: "0.9",
   },
+
+  /* Arabic. Same scope as the English section, joined to the existing groups so
+     hreflang stays symmetric by construction: adding these five made the German
+     and English pages advertise them without touching a single existing entry.
+
+     Latin slugs, like the English branch. Arabic ones would be percent-encoded
+     in every href, mail and message, and stop being shareable. */
+  {
+    id: "home.ar",
+    path: "/ar",
+    locale: "ar",
+    group: "home",
+    load: () =>
+      import("../components/pages/arabisch/ArabicHome.jsx").then((m) => ({
+        default: m.ArabicHome,
+      })),
+    title: "محمد نور بيك | أتمتة الذكاء الاصطناعي وn8n في فرانكفورت",
+    description:
+      "مدير أتمتة الذكاء الاصطناعي ومطوّر برمجيات متكامل في فرانكفورت. أتمتة العمليات باستخدام n8n، وربط أنظمة CRM وATS، ووكلاء ذكاء اصطناعي. الرد خلال 24 ساعة.",
+    h1: "عمليات تعمل من دونك",
+    lastmod: "2026-08-26",
+    changefreq: "monthly",
+    priority: "0.9",
+  },
+  {
+    id: "services.ar",
+    path: "/ar/services",
+    locale: "ar",
+    group: "services",
+    load: () =>
+      import("../components/pages/arabisch/ArabicServices.jsx").then((m) => ({
+        default: m.ArabicServices,
+      })),
+    title: "الخدمات: أتمتة العمليات والذكاء الاصطناعي | محمد بيك",
+    description:
+      "أتمتة سير العمل باستخدام n8n، ووكلاء الذكاء الاصطناعي، وربط أنظمة CRM وATS، ومساعدون صوتيون، وتطوير برمجي متكامل. من 90 إلى 135 يورو في الساعة.",
+    h1: "الأتمتة والذكاء الاصطناعي والتطوير",
+    lastmod: "2026-08-26",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    id: "hire.ar",
+    path: "/ar/hire",
+    locale: "ar",
+    group: "contact",
+    load: () =>
+      import("../components/pages/arabisch/ArabicHire.jsx").then((m) => ({
+        default: m.ArabicHire,
+      })),
+    title: "ابدأ مشروعًا مع محمد نور بيك | فرانكفورت وعن بُعد",
+    description:
+      "صف العملية التي تستهلك أكبر وقت لديك، وستحصل على تقييم صريح خلال 24 ساعة. الاستشارة الأولى مجانية، والعمل عن بُعد مع عملاء في أوروبا والمنطقة العربية.",
+    h1: "ابدأ مشروعًا",
+    lastmod: "2026-08-26",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    id: "project.llm.ar",
+    path: "/ar/projects/llm-maven-plugin",
+    locale: "ar",
+    group: "project.llm",
+    load: () => import("../components/pages/projekte/CaseStudyArRoute.jsx"),
+    props: { path: "/ar/projects/llm-maven-plugin" },
+    title: "أتمتة اختبارات الوحدة بنموذج لغوي | رسالة ماجستير",
+    description:
+      "مكوّن Maven إضافي يولّد اختبارات وحدة لمشاريع Spring Boot بنموذج لغوي: زيادة 33 بالمئة في التغطية مقيسة بـ JaCoCo، وكلفة 2,13 يورو بدل 566 يورو.",
+    h1: "أتمتة اختبارات الوحدة بنموذج لغوي",
+    ogType: "article",
+    lastmod: "2026-08-26",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
+  {
+    id: "project.ar.ar",
+    path: "/ar/projects/ar-data-visualization",
+    locale: "ar",
+    group: "project.ar",
+    load: () => import("../components/pages/projekte/CaseStudyArRoute.jsx"),
+    props: { path: "/ar/projects/ar-data-visualization" },
+    title: "تقارير SAP في الواقع المعزز | رسالة بكالوريوس",
+    description:
+      "عرض تقارير SAP BusinessObjects في الواقع المعزز داخل المتصفح، مع استبيان شمل 81 مشاركًا في شركات ألمانية حول عوائق التبني. أكثر من 50 إطارًا في الثانية.",
+    h1: "تصوير البيانات في الواقع المعزز",
+    ogType: "article",
+    lastmod: "2026-08-26",
+    changefreq: "monthly",
+    priority: "0.7",
+  },
   {
     id: "projekt.llm",
     path: "/projekte/llm-unit-test-automatisierung",
@@ -542,6 +632,29 @@ export function getRouteMeta(path) {
  * Returns [] for a group with a single member: a one-element hreflang cluster
  * is noise that search engines ignore.
  */
+/**
+ * Where each locale keeps its sections.
+ *
+ * The three components that needed this each carried their own
+ * `locale === "de" ? ... : ...`, which silently handed the English path to any
+ * third locale: the logo linked Arabic pages to /en, the hero's two buttons
+ * sent Arabic visitors to the English services and hire pages, and the footer
+ * quietly rendered empty columns. None of those fail loudly.
+ *
+ * A table keyed by locale cannot do that: a missing locale is `undefined` and
+ * shows up the first time anyone looks, rather than pointing at the wrong
+ * language.
+ */
+export const SECTIONS = {
+  de: { home: "/", services: "/leistungen", contact: "/kontakt", projects: "/projekte" },
+  en: { home: "/en", services: "/en/services", contact: "/en/hire", projects: "/en/projects" },
+  ar: { home: "/ar", services: "/ar/services", contact: "/ar/hire", projects: "/ar/projects" },
+};
+
+/** Section paths for a locale, falling back to the default rather than to a
+ *  foreign language. */
+export const sectionsFor = (locale) => SECTIONS[locale] ?? SECTIONS.de;
+
 export function getAlternates(entry) {
   const peers = ROUTES.filter((route) => route.group === entry.group);
   return peers.length < 2 ? [] : peers;

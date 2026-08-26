@@ -43,5 +43,10 @@ export const RATE_TEXT = "90 bis 135 € nach Absprache und je nach Projektumfan
 // into llms.txt and the ProfessionalService priceRange; this exists so the
 // English pages do not print a German sentence at a reader.
 export const RATE_TEXT_EN = "90 to 135 € by agreement, depending on project scope";
+// Arabic deliberately does not get a third suffix here. Its rate sentence lives
+// with the rest of its page copy in src/content/ar.js, the way the Arabic case
+// studies live in projects.ar.js: a suffix per locale stops scaling at three,
+// and a translated sentence sitting far from the page that renders it is how
+// translations drift.
 export const RATE_MIN = 90;
 export const RATE_MAX = 135;

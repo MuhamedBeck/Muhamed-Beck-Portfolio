@@ -28,4 +28,23 @@ export const CASE_STUDY_COPY = {
     ctaButton: "Start a project",
     ctaHref: "/en/hire",
   },
+  /* Rückübersetzung: Ausgangslage · Lösung · Ergebnisse · Technologie-Stack ·
+     Ähnliche Prozesse in Ihrem Unternehmen? · Schreiben Sie mir, welcher Ablauf
+     bei Ihnen am meisten Zeit kostet. Den Rest klären wir im Gespräch. ·
+     Ein Projekt starten
+
+     Dieses Objekt liegt außerhalb von src/i18n/dict/, wird von check-i18n also
+     nicht geprüft. Eine fehlende Sprache fiele hier auf den deutschen Zweig
+     zurück, ohne dass irgendetwas fehlschlägt. */
+  ar: {
+    situation: "الوضع القائم",
+    solution: "الحل",
+    results: "النتائج",
+    stack: "التقنيات المستخدمة",
+    ctaHeadline: "هل لديك عمليات مشابهة في شركتك؟",
+    ctaIntro:
+      "اكتب لي أي سير عمل يستهلك أكبر وقت لديك. أما الباقي فنوضحه في المحادثة.",
+    ctaButton: "ابدأ مشروعًا",
+    ctaHref: "/ar/hire",
+  },
 };

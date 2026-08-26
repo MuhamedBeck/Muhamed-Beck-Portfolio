@@ -37,4 +37,39 @@ const en = {
   themeToDark: "Switch to the dark theme",
 };
 
-export default { de, en };
+/* Arabisch, Hocharabisch (فصحى).
+ *
+ * Rückübersetzung, damit ohne Arabischkenntnisse prüfbar bleibt, was hier steht:
+ *
+ *   languageSwitcher  Sprache wählen
+ *   skipToContent     Zum Inhalt springen
+ *   backToHome        Zurück zur Startseite
+ *   openMenu          Menü öffnen
+ *   closeMenu         Menü schließen
+ *   requestProject    Ein Projekt starten
+ *   replyPromise      Antwort innerhalb von 24 Stunden · Frankfurt und remote
+ *   techStack         Technologien und Werkzeuge
+ *   linkedinAria      Profil auf LinkedIn
+ *   githubAria        Profil auf GitHub
+ *   themeToLight      Zur hellen Ansicht wechseln
+ *   themeToDark       Zur dunklen Ansicht wechseln
+ *
+ * Der Mitteltrenner in replyPromise steht zwischen einem lateinischen und einem
+ * arabischen Lauf. Er ist ein neutrales Zeichen, und der Bidi-Algorithmus
+ * ordnet solche Stellen je nach Umgebung um. */
+const ar = {
+  languageSwitcher: "اختر اللغة",
+  skipToContent: "الانتقال إلى المحتوى",
+  backToHome: "العودة إلى الصفحة الرئيسية",
+  openMenu: "فتح القائمة",
+  closeMenu: "إغلاق القائمة",
+  requestProject: "ابدأ مشروعًا",
+  replyPromise: "رد خلال 24 ساعة · فرانكفورت وعن بُعد",
+  techStack: "التقنيات والأدوات",
+  linkedinAria: "الملف الشخصي على لينكد إن",
+  githubAria: "الملف الشخصي على غيت هب",
+  themeToLight: "التبديل إلى المظهر الفاتح",
+  themeToDark: "التبديل إلى المظهر الداكن",
+};
+
+export default { de, en, ar };

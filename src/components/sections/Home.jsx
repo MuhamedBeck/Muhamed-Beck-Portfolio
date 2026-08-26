@@ -6,6 +6,7 @@ import home from "../../i18n/dict/home";
 import ui from "../../i18n/dict/ui";
 import { CONTACT, SOCIAL } from "../../content/site";
 import { LinkArrow } from "../LinkArrow";
+import { sectionsFor } from "../../routes/registry.js";
 
 // Entrance choreography, in milliseconds. One ladder rather than six pieces of
 // component state driving six timers: the previous version reset and restarted
@@ -30,8 +31,7 @@ export const Home = ({ isLoaded = true }) => {
   const t = useDict(home);
   const chrome = useDict(ui);
   const locale = useLocale();
-  const servicesPath = locale === "de" ? "/leistungen" : "/en/services";
-  const contactPath = locale === "de" ? "/kontakt" : "/en/hire";
+  const { services: servicesPath, contact: contactPath } = sectionsFor(locale);
 
   return (
     <section

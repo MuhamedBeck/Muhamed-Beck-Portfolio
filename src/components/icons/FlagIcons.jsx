@@ -46,8 +46,50 @@ const Gb = (props) => (
   </svg>
 );
 
+/* Saudi Arabia, served as a file rather than inlined like the other two.
+ *
+ * Two reasons, and the first is the one the header comment above anticipates:
+ * it is 9 968 B against 725 B for both other flags together, so inlining it
+ * would put it in every page's bundle for the sake of one switcher. The second
+ * is harder: the source carries clipPath and root ids, and the switcher renders
+ * each flag twice, once in the desktop dropdown and once in the mobile row.
+ * Duplicate ids in one document make the clip-path reference ambiguous.
+ *
+ * The flag bears the shahada, so a simplified redraw is not an option: at this
+ * size the script would be illegible anyway, and distorting it would be
+ * disrespectful. The accurate asset is the only correct choice. */
+const Sa = ({ className, ...props }) => (
+  <img
+    src="/flags/sa.svg"
+    alt=""
+    width={shared.width}
+    height={shared.height}
+    aria-hidden="true"
+    className={className ?? shared.className}
+    {...props}
+  />
+);
+
+const FLAGGEN = { de: De, gb: Gb, sa: Sa };
+
 /**
- * @param {{ code: string }} props `flag` from the locale config ("de" | "gb").
+ * @param {{ code: string }} props `flag` from the locale config.
+ *
+ * A lookup rather than the ternary this used to be. That ternary rendered the
+ * German flag for every code it did not recognise, so a new locale with a
+ * missing flag would have shipped the wrong one with no error anywhere.
+ *
+ * The component type is resolved from a module-scope table and then rendered,
+ * never returned. Resolving a type during render creates a fresh one on every
+ * pass, which resets state and defeats Fast Refresh.
  */
-export const Flag = ({ code, ...props }) =>
-  code === "gb" ? <Gb {...props} /> : <De {...props} />;
+export const Flag = ({ code, ...props }) => {
+  const Gewaehlt = FLAGGEN[code];
+  if (!Gewaehlt) {
+    if (import.meta.env.DEV) {
+      console.warn(`Flag: no icon for "${code}", falling back to none`);
+    }
+    return null;
+  }
+  return <Gewaehlt {...props} />;
+};

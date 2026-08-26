@@ -19,7 +19,7 @@
 - Festpreise möglich für klar umrissene Workflows und Integrationen.
 - Antwort auf Projektanfragen innerhalb von 24 Stunden: https://muhamedbeck.com/kontakt
 
-## Seiten (Deutsch)
+## Deutsch
 
 - [Prozesse, die ohne Sie laufen](https://muhamedbeck.com/): n8n Experte aus Frankfurt: Workflow-Automatisierung, KI-Agenten und CRM-Anbindung für Unternehmen. 90 bis 135 € pro Stunde nach Absprache. Antwort in 24 Stunden.
 - [KI- und Prozessautomatisierung](https://muhamedbeck.com/leistungen): Automatisierung mit n8n, KI-Agenten, Voice-AI, HubSpot- und ATS-Anbindung sowie Recruiting-Automatisierung. Alle Leistungen mit Ablauf und Preisrahmen.
@@ -45,10 +45,18 @@
 - [Impressum](https://muhamedbeck.com/impressum): Impressum von Muhamed Nur Beck, AI Automation & Full-Stack Developer aus Frankfurt am Main. Angaben gemäß § 5 DDG.
 - [Datenschutzerklärung](https://muhamedbeck.com/datenschutz): Datenschutzerklärung für muhamedbeck.com: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.
 
-## Pages (English)
+## English
 
 - [Processes that run without you](https://muhamedbeck.com/en): AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG solutions, React, Angular, Spring Boot. Available for freelance work.
 - [AI automation and web development](https://muhamedbeck.com/en/services): AI workflow automation with n8n & Zapier, web development with React, Angular & Spring Boot, CRM integrations and technical SEO. Services by Muhamed Beck, Frankfurt.
 - [Start a project](https://muhamedbeck.com/en/hire): Request AI automation, web development or CRM integration and get a personal reply within 24 hours from Muhamed Beck, freelance developer in Frankfurt.
 - [AR data visualisation](https://muhamedbeck.com/en/projects/ar-data-visualization): Case study on visualizing SAP BusinessObjects data in Augmented Reality: concept, architecture and implementation by Muhamed Beck.
 - [LLM unit test automation](https://muhamedbeck.com/en/projects/llm-maven-plugin): Master thesis project: a Maven plugin that uses Large Language Models to automatically generate unit tests for Java Spring Boot projects.
+
+## العربية
+
+- [عمليات تعمل من دونك](https://muhamedbeck.com/ar): مدير أتمتة الذكاء الاصطناعي ومطوّر برمجيات متكامل في فرانكفورت. أتمتة العمليات باستخدام n8n، وربط أنظمة CRM وATS، ووكلاء ذكاء اصطناعي. الرد خلال 24 ساعة.
+- [الأتمتة والذكاء الاصطناعي والتطوير](https://muhamedbeck.com/ar/services): أتمتة سير العمل باستخدام n8n، ووكلاء الذكاء الاصطناعي، وربط أنظمة CRM وATS، ومساعدون صوتيون، وتطوير برمجي متكامل. من 90 إلى 135 يورو في الساعة.
+- [ابدأ مشروعًا](https://muhamedbeck.com/ar/hire): صف العملية التي تستهلك أكبر وقت لديك، وستحصل على تقييم صريح خلال 24 ساعة. الاستشارة الأولى مجانية، والعمل عن بُعد مع عملاء في أوروبا والمنطقة العربية.
+- [أتمتة اختبارات الوحدة بنموذج لغوي](https://muhamedbeck.com/ar/projects/llm-maven-plugin): مكوّن Maven إضافي يولّد اختبارات وحدة لمشاريع Spring Boot بنموذج لغوي: زيادة 33 بالمئة في التغطية مقيسة بـ JaCoCo، وكلفة 2,13 يورو بدل 566 يورو.
+- [تصوير البيانات في الواقع المعزز](https://muhamedbeck.com/ar/projects/ar-data-visualization): عرض تقارير SAP BusinessObjects في الواقع المعزز داخل المتصفح، مع استبيان شمل 81 مشاركًا في شركات ألمانية حول عوائق التبني. أكثر من 50 إطارًا في الثانية.

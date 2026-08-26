@@ -1,7 +1,7 @@
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useDict, useLocale } from "../i18n";
-import { ROUTES } from "../routes/registry.js";
+import { ROUTES, sectionsFor } from "../routes/registry.js";
 import { CONTACT, PERSON, SOCIAL } from "../content/site";
 import nav from "../i18n/dict/nav";
 import ui from "../i18n/dict/ui";
@@ -38,9 +38,12 @@ const Footer = () => {
   const chrome = useDict(ui);
   const locale = useLocale();
 
-  const services = columnFor(locale, locale === "de" ? "/leistungen/" : "/en/services/");
+  const abschnitte = sectionsFor(locale);
+  const services = columnFor(locale, `${abschnitte.services}/`);
+  // Guides exist only in German today; columnFor returns [] for the others and
+  // FooterColumn renders nothing, which is the intended outcome.
   const guides = columnFor(locale, "/ratgeber/");
-  const projects = columnFor(locale, locale === "de" ? "/projekte/" : "/en/projects/");
+  const projects = columnFor(locale, `${abschnitte.projects}/`);
 
   return (
     <footer

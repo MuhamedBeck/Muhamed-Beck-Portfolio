@@ -24,3 +24,7 @@
 
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Flag artwork. Content behind these URLs never changes either.
+/flags/*
+  Cache-Control: public, max-age=31536000, immutable

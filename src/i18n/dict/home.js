@@ -53,4 +53,57 @@ const en = {
   },
 };
 
-export default { de, en };
+/* Arabisch. Zielgruppe sind arabischsprachige Entscheider in Europa ebenso wie
+ * im Golfraum, deshalb bleibt Frankfurt als Herkunft stehen und Fernarbeit ist
+ * ausdrücklich genannt. Ziffern westlich (0-9), nicht ostarabisch: im
+ * geschäftlichen Gebrauch beider Regionen der Normalfall, und die Preise der
+ * Seite sind in Euro.
+ *
+ * Der Name steht arabisch mit der lateinischen Schreibweise in Klammern. Beides
+ * hat einen Grund: arabische Leser sollen ihn lesen können, und die lateinische
+ * Form ist die, unter der er auffindbar ist und die in site.js sowie in jedem
+ * externen Profil steht.
+ *
+ * Rückübersetzung:
+ *   label       n8n, KI-Agenten und Prozessautomatisierung
+ *   h1          Prozesse, die ohne Sie laufen
+ *   intro       Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-
+ *               Entwickler in Frankfurt, Deutschland. Ich automatisiere
+ *               Geschäftsprozesse mit n8n, binde CRM- und ATS-Systeme an und
+ *               setze KI dort ein, wo sie messbar Arbeit abnimmt.
+ *   portraitAlt Muhamed Nur Beck, AI Automation Manager in Frankfurt
+ *   ctaPrimary  Ein Projekt starten
+ *   ctaSecondary Leistungen ansehen
+ *   stats       80 % kürzere Durchlaufzeit im Recruiting ·
+ *               90 % der Candidate Operations automatisiert ·
+ *               24 Stunden bis zur Antwort auf Ihre Anfrage
+ *   statsNote   Alle Zahlen stammen aus produktiv laufenden Systemen, nicht aus
+ *               Demos. TOPEOPLE Group GmbH ist mein Arbeitgeber, Phoenix
+ *               Parkservice war ein Freelance-Mandat.
+ *   socials     Muhamed Nur Beck auf LinkedIn / auf GitHub / E-Mail an ihn */
+const ar = {
+  label: "n8n ووكلاء الذكاء الاصطناعي وأتمتة العمليات",
+  h1: "عمليات تعمل من دونك",
+  intro:
+    "أنا محمد نور بيك (Muhamed Nur Beck)، مدير أتمتة الذكاء الاصطناعي ومطوّر برمجيات متكامل في فرانكفورت بألمانيا. أُتمِت عمليات الأعمال باستخدام n8n، وأربط أنظمة إدارة العملاء (CRM) وأنظمة التوظيف (ATS)، وأضع الذكاء الاصطناعي حيث يختصر العمل بصورة قابلة للقياس.",
+  portraitAlt: "محمد نور بيك، مدير أتمتة الذكاء الاصطناعي في فرانكفورت بألمانيا",
+  ctaPrimary: "ابدأ مشروعًا",
+  ctaSecondary: "اطّلع على الخدمات",
+  stats: [
+    /* Written without the space the German and English versions use. The
+       percent sign is bidi-neutral, so "80 %" renders as "% 80" in an Arabic
+       run, which reads as a different number entirely to anyone scanning. */
+    { value: "80%", label: "اختصار في زمن دورة التوظيف" },
+    { value: "90%", label: "من عمليات المرشحين مؤتمتة" },
+    { value: "24 ساعة", label: "حتى الرد على طلبك" },
+  ],
+  statsNote:
+    "جميع الأرقام مأخوذة من أنظمة تعمل في بيئة الإنتاج، لا من عروض توضيحية. شركة TOPEOPLE Group GmbH هي جهة عملي، ومشروع Phoenix Parkservice كان تكليفًا مستقلًا.",
+  socials: {
+    linkedin: "محمد نور بيك على لينكد إن",
+    github: "محمد نور بيك على غيت هب",
+    email: "مراسلة محمد نور بيك بالبريد الإلكتروني",
+  },
+};
+
+export default { de, en, ar };

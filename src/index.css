@@ -593,6 +593,9 @@ dd {
   letter-spacing: 0;
   font-weight: 600;
   line-height: 1.6;
+  /* uppercase does nothing to Arabic letters but it does reach the Latin runs
+     inside them, and it turned the brand n8n into N8N in the hero label. */
+  text-transform: none;
 }
 
 :lang(ar) .headline,

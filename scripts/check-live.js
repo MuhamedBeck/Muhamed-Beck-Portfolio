@@ -98,6 +98,20 @@ const probe = async () => {
     else if (!page.body.includes("<form")) fail(form.label, `${form.path} has the fields but no <form> around them`);
   }
 
+  // The Arabic contact page carries no form on purpose, so it cannot be checked
+  // the same way. What must hold there is that the direct route out survives: a
+  // mailto and a tel link. Losing those is the same failure as losing a form,
+  // and just as quiet.
+  for (const pfad of ["/ar/hire"]) {
+    const page = await get(pfad);
+    if (page.status !== 200) {
+      fail("Kontaktseite (arabisch)", `${pfad} answered HTTP ${page.status}`);
+    } else {
+      if (!/href="mailto:/.test(page.body)) fail("Kontaktseite (arabisch)", `${pfad} has no mailto link`);
+      if (!/href="tel:/.test(page.body)) fail("Kontaktseite (arabisch)", `${pfad} has no tel link`);
+    }
+  }
+
   // 2. Every route answers, and answers with content. A 404 or an empty render
   //    here is how a page silently leaves the index.
   const routes = await Promise.all(ROUTES.map(async (r) => ({ path: r.path, ...(await get(r.path)) })));

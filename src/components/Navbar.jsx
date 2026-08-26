@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import mnbLogo from "../assets/MNB_Logo.webp";
 import { useDict, useLocale } from "../i18n";
+import { sectionsFor } from "../routes/registry.js";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import nav from "../i18n/dict/nav";
@@ -10,7 +11,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const t = useDict(nav);
   const chrome = useDict(ui);
   const locale = useLocale();
-  const homePath = locale === "de" ? "/" : "/en";
+  const homePath = sectionsFor(locale).home;
 
   return (
     <nav className="fixed top-0 z-40 w-full border-b border-hairline bg-ink/85 backdrop-blur-lg">

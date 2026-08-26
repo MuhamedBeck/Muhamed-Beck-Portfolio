@@ -6,7 +6,7 @@ import { writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { DEFAULT_LOCALE, ROUTES, SITE_URL, getAlternates } from "./src/routes/registry.js";
-import { localeConfig } from "./src/i18n/locales.js";
+import { LIVE_LOCALES, localeConfig } from "./src/i18n/locales.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -71,6 +71,19 @@ console.log(`sitemap.xml generated with ${ROUTES.length} URLs -> ${outPath}`);
 // no significant correlation with citation frequency. Google has said it does
 // not support the format. So this is generated in a dozen lines rather than
 // hand-maintained across 20 pages, which is the only reason it still exists.
+/* One section per live locale, headed in that locale.
+ *
+ * This used to be two hardcoded calls with two hardcoded German and English
+ * headings, so a third locale's pages were absent from llms.txt while sitting
+ * correctly in sitemap.xml. That is the worst kind of gap: the file exists to
+ * tell a language model what is here, and a silently missing section reads as
+ * "there is no Arabic version". */
+const sectionsPerLocale = () =>
+  LIVE_LOCALES.map((locale) => {
+    const { endonym } = localeConfig(locale);
+    return `## ${endonym}\n\n${pageList(locale)}`;
+  }).join("\n\n");
+
 const pageList = (locale) =>
   ROUTES.filter((route) => route.locale === locale)
     .map((route) => `- [${route.h1}](${SITE_URL}${route.path}): ${route.description}`)
@@ -97,13 +110,7 @@ const llms = `# Muhamed Nur Beck: KI- und Prozessautomatisierung, Frankfurt am M
 - Festpreise möglich für klar umrissene Workflows und Integrationen.
 - Antwort auf Projektanfragen innerhalb von 24 Stunden: ${SITE_URL}/kontakt
 
-## Seiten (Deutsch)
-
-${pageList("de")}
-
-## Pages (English)
-
-${pageList("en")}
+${sectionsPerLocale()}
 `;
 
 const llmsPath = join(__dirname, "public", "llms.txt");

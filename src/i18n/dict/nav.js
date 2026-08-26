@@ -47,4 +47,34 @@ const en = {
   },
 };
 
-export default { de, en };
+/* Arabisch. Zuschnitt wie im englischen Zweig: eine Leistungsseite, die beiden
+ * Fallstudien, eine Kontaktroute. Die deutschen Ratgeber-Artikel bleiben außen
+ * vor, weil sie auf deutsche Suchbegriffe und deutsches Recht zielen.
+ *
+ * Rückübersetzung:
+ *   primary   Leistungen · Augmented Reality · Automatisierte Tests
+ *   cta       Ein Projekt starten
+ *   footer    Leistungen · Artikel · Projekte · Rechtliches · Kontakt ·
+ *             Impressum · Datenschutz · Alle Rechte vorbehalten. ·
+ *             Prozessautomatisierung und KI aus Frankfurt am Main, Deutschland. */
+const ar = {
+  primary: [
+    { to: "/ar/services", label: "الخدمات" },
+    { to: "/ar/projects/ar-data-visualization", label: "الواقع المعزز" },
+    { to: "/ar/projects/llm-maven-plugin", label: "الاختبارات الآلية" },
+  ],
+  cta: { to: "/ar/hire", label: "ابدأ مشروعًا" },
+  footer: {
+    services: "الخدمات",
+    guides: "المقالات",
+    projects: "المشاريع",
+    legal: "الشؤون القانونية",
+    contact: "التواصل",
+    imprint: "بيانات الناشر",
+    privacy: "الخصوصية",
+    rights: "جميع الحقوق محفوظة.",
+    tagline: "أتمتة العمليات والذكاء الاصطناعي من فرانكفورت، ألمانيا.",
+  },
+};
+
+export default { de, en, ar };

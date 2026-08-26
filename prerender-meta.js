@@ -16,6 +16,7 @@ import {
   ROUTES,
   SITE_URL,
   getAlternates,
+  sectionsFor,
 } from "./src/routes/registry.js";
 import { localeConfig } from "./src/i18n/locales.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
@@ -126,20 +127,27 @@ const breadcrumbNode = (route) => {
   const segments = route.path.split("/").filter(Boolean);
   if (!segments.length) return null;
 
-  const isEnglish = route.locale === "en";
-  const homePath = isEnglish ? "/en" : "/";
+  /* Derived from the locale rather than branched on English.
+   *
+   * The previous version asked `route.locale === "en"` and treated everything
+   * else as German, so an Arabic page opened its breadcrumb with a German
+   * "Startseite" pointing at the German homepage, and then listed "ar" as a
+   * step of its own because the prefix was never stripped. Both shipped without
+   * an error anywhere. */
+  const istStandard = route.locale === DEFAULT_LOCALE;
+  const { home: homePath } = sectionsFor(route.locale);
   const items = [
     {
       "@type": "ListItem",
       position: 1,
-      name: isEnglish ? "Home" : "Startseite",
+      name: localeConfig(route.locale).homeLabel,
       item: `${SITE_URL}${homePath}`,
     },
   ];
 
-  // Skip the locale prefix itself: /en is the English home, already listed.
-  const trail = isEnglish ? segments.slice(1) : segments;
-  let prefix = isEnglish ? "/en" : "";
+  // Skip the locale prefix itself: it is that locale's home, already listed.
+  const trail = istStandard ? segments : segments.slice(1);
+  let prefix = istStandard ? "" : homePath;
   trail.forEach((segment, index) => {
     prefix += `/${segment}`;
     const isLast = index === trail.length - 1;
@@ -206,7 +214,7 @@ const articleNode = (route, article) => ({
   dateModified: article.modified,
   author: { "@id": PERSON_ID },
   publisher: { "@id": BUSINESS_ID },
-  inLanguage: "de-DE",
+  inLanguage: localeConfig(route.locale).intlLocale,
   articleSection: article.kicker,
   image: `${SITE_URL}/og-image.jpg`,
   mainEntityOfPage: `${SITE_URL}${route.path}`,

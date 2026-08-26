@@ -166,8 +166,35 @@ const dictFiles = readdirSync(dictDir).filter((name) => name.endsWith(".js"));
 if (!dictFiles.length) fail("no dictionaries found in src/i18n/dict");
 
 for (const file of dictFiles) {
-  const namespace = (await import(join(dictDir, file))).default;
+  const module = await import(join(dictDir, file));
+  const namespace = module.default;
   const label = `dict/${file}`;
+
+  /* Which locales this namespace actually serves.
+   *
+   * Default: all of them, which is right for chrome that every page renders.
+   * A namespace that belongs to one locale's pages says so with a named SERVES
+   * export, and then a translation nothing renders is not demanded. Without
+   * this, dict/startseite.js already carried 423 words of English that no
+   * component reads, kept alive only to satisfy this check, and a third locale
+   * would have added a third dead object.
+   *
+   * This narrows the check rather than weakening it: an unlisted locale is one
+   * whose pages never read the namespace, so there is nothing to fall out of
+   * sync. Listing a locale that does render it is the mistake to avoid, and
+   * that shows up immediately as German text on a foreign page. */
+  const serves = module.SERVES ?? LIVE_LOCALES;
+  if (!Array.isArray(serves) || !serves.length) {
+    fail(`${label}: SERVES must be a non-empty array of locales`);
+    continue;
+  }
+  for (const locale of serves) {
+    if (!LOCALES[locale]) fail(`${label}: SERVES lists "${locale}", which is not a known locale`);
+  }
+  if (!serves.includes(DEFAULT_LOCALE)) {
+    fail(`${label}: SERVES must include the reference locale "${DEFAULT_LOCALE}"`);
+    continue;
+  }
 
   if (!namespace || typeof namespace !== "object") {
     fail(`${label}: default export must be an object shaped { de, en }`);
@@ -183,6 +210,7 @@ for (const file of dictFiles) {
 
   for (const locale of LIVE_LOCALES) {
     if (locale === DEFAULT_LOCALE) continue;
+    if (!serves.includes(locale)) continue;
     const translation = namespace[locale];
     if (!translation) {
       fail(`${label}: missing "${locale}"`);

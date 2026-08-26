@@ -159,4 +159,10 @@ const en = {
   },
 };
 
+/* Only the German homepage renders this namespace: Startseite.jsx reads it,
+   and the English and Arabic homepages are structurally different pages rather
+   than translations of it. Declaring that here stops check-i18n demanding
+   translations that nothing would ever display. */
+export const SERVES = ["de"];
+
 export default { de, en };

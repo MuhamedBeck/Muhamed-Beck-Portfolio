@@ -12,7 +12,7 @@ export const DEFAULT_LOCALE = "de";
  * considered. A locale can be built out behind the scenes and switched on by
  * adding it here.
  */
-export const LIVE_LOCALES = ["de", "en"];
+export const LIVE_LOCALES = ["de", "en", "ar"];
 
 /**
  * @property htmlLang  value for <html lang> and for the hreflang attribute
@@ -22,6 +22,8 @@ export const LIVE_LOCALES = ["de", "en"];
  * @property endonym   language name in its own language, for the switcher label
  * @property flag      country code of the flag icon (gb, not us: British English
  *                     is the convention for an EU-facing site)
+ * @property homeLabel the word for the home page, used by the breadcrumb the
+ *                     build emits. Not the h1: that is the hero headline.
  * @property dir       writing direction for <html dir>. Lives here rather than
  *                     being derived from the language, because this file is the
  *                     one place both React and the bare-node build scripts read.
@@ -33,6 +35,7 @@ export const LOCALES = {
     hreflang: "de",
     intlLocale: "de-DE",
     endonym: "Deutsch",
+    homeLabel: "Startseite",
     flag: "de",
     dir: "ltr",
   },
@@ -42,6 +45,7 @@ export const LOCALES = {
     hreflang: "en",
     intlLocale: "en-US",
     endonym: "English",
+    homeLabel: "Home",
     flag: "gb",
     dir: "ltr",
   },
@@ -54,6 +58,7 @@ export const LOCALES = {
     // load-bearing content and its prices are in euro, so they stay 0-9.
     intlLocale: "ar-AE",
     endonym: "العربية",
+    homeLabel: "الصفحة الرئيسية",
     flag: "sa",
     dir: "rtl",
   },

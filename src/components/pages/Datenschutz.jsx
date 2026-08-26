@@ -128,9 +128,10 @@ const SECTIONS = [
     title: "6. Schriftarten",
     body: (
       <p>
-        Diese Website verwendet die Schriftart Space Grotesk. Die Schriftdateien sind
-        lokal auf dem Webserver gespeichert. Beim Laden der Schrift wird keine
-        Verbindung zu Servern von Google oder anderen Drittanbietern aufgebaut.
+        Diese Website verwendet die Schriftarten Space Grotesk, IBM Plex Sans und
+        IBM Plex Sans Arabic. Alle Schriftdateien sind lokal auf dem Webserver
+        gespeichert. Beim Laden der Schriften wird keine Verbindung zu Servern von
+        Google oder anderen Drittanbietern aufgebaut.
       </p>
     ),
   },
