@@ -18,10 +18,10 @@ export const PROJECTS_EN = [
     title: "LLM unit test automation",
     subtitle:
       "Master thesis at INFOMOTION GmbH: automated unit test generation for Java Spring Boot projects",
-    role: "Master thesis, 09/2022 to 09/2024",
+    role: "Master thesis, 02/2022 to 10/2024",
     stats: [
-      { value: "+33%", label: "test coverage", note: "measured with JaCoCo" },
-      { value: "-95%", label: "writing effort", note: "against manual test development" },
+      { value: "9 → 42 %", label: "test coverage", note: "measured with JaCoCo" },
+      { value: "1,440 → 30 min", label: "writing effort", note: "per project, against manual test development" },
       { value: "€2.13", label: "per generated suite", note: "down from €566 manually" },
     ],
     ausgangslage:
@@ -35,8 +35,8 @@ export const PROJECTS_EN = [
       "Validated across multiple projects with quantitative coverage metrics and an expert evaluation.",
     ],
     ergebnisse: [
-      "Test coverage rose by 33 percent across the evaluated projects",
-      "Effort for writing tests fell by up to 95 percent compared with manual development",
+      "Test coverage rose from 9 to 42 percent across the evaluated projects",
+      "Effort for writing tests fell from 1,440 to 30 minutes per project compared with manual development",
       "Cost per generated test suite fell from about 566 € of developer time to about 2.13 € in API cost",
       "Prompt engineering was shown to measurably affect the quality of generated technical code",
       "Produced a reusable framework for integrating LLMs into enterprise software development workflows",
@@ -56,7 +56,7 @@ export const PROJECTS_EN = [
     title: "AR data visualisation",
     subtitle:
       "Bachelor thesis at INFOMOTION GmbH: SAP BusinessObjects reports as interactive 3D visualisations in the browser",
-    role: "Bachelor thesis, 2018 to 2022",
+    role: "Bachelor thesis, 2022",
     stats: [
       { value: "50+", label: "frames per second", note: "rendering in the browser" },
       { value: "< 15 s", label: "load time", note: "across all components" },

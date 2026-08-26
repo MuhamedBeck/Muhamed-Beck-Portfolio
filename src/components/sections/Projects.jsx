@@ -19,7 +19,7 @@ import { LinkArrow } from "../LinkArrow";
 const PROJECTS = [
   {
     title: "Phoenix Parkservice",
-    text: "Microservices platform and booking service for a parking operator, including the DevOps pipeline and AI-supported SEO workflows built with n8n. Organic traffic rose 35 percent.",
+    text: "Booking and administration software for a parking operator, built with Spring Boot and Angular, plus AI-supported SEO automation with n8n. Organic traffic rose 35 percent in three months.",
     stack: "Spring Boot, Angular, Docker, CI/CD, n8n",
     href: "https://www.phoenixparkservice.de",
     linkText: "phoenixparkservice.de",
@@ -27,7 +27,7 @@ const PROJECTS = [
   },
   {
     title: "LLM unit test automation",
-    text: "Master thesis. A Maven plugin that generates unit tests for Spring Boot projects, pairing an LLM with JaCoCo coverage analysis. Test coverage rose 33 percent and writing effort fell by up to 95 percent.",
+    text: "Master thesis. A Maven plugin that generates unit tests for Spring Boot projects, pairing an LLM with JaCoCo coverage analysis. Test coverage rose from 9 to 42 percent and writing effort fell from 1,440 to 30 minutes per project.",
     stack: "Java, Maven, ChatGPT, JaCoCo, Spring Boot",
     href: "/en/projects/llm-maven-plugin",
     linkText: "Read the case study",

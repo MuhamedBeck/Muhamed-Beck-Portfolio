@@ -30,7 +30,7 @@ const SERVICES = [
   },
   {
     title: "CRM and ATS integration",
-    text: "HubSpot, RecruitCRM, Personio and Greenhouse connected over REST, webhooks and OAuth2, with rate-limit and retry strategies.",
+    text: "HubSpot, RecruitCRM and Personio connected over REST, webhooks and OAuth2, with rate-limit and retry strategies.",
     tools: "HubSpot, RecruitCRM, REST, OAuth2",
   },
   {

@@ -93,8 +93,8 @@ const llms = `# Muhamed Nur Beck: KI- und Prozessautomatisierung, Frankfurt am M
 
 > AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.
 > Automatisiert Geschäftsprozesse mit n8n, baut KI-Agenten, Voice-AI und
-> RAG-Systeme und bindet CRM- und ATS-Systeme an (HubSpot, RecruitCRM, Personio,
-> Greenhouse). Verfügbar für Projekte remote in Deutschland, Österreich und der
+> RAG-Systeme und bindet CRM- und ATS-Systeme an (HubSpot, RecruitCRM,
+> Personio). Verfügbar für Projekte remote in Deutschland, Österreich und der
 > Schweiz, vor Ort im Rhein-Main-Gebiet.
 
 ## Belegte Ergebnisse
@@ -102,7 +102,7 @@ const llms = `# Muhamed Nur Beck: KI- und Prozessautomatisierung, Frankfurt am M
 - Durchlaufzeiten im Recruiting um rund 80 Prozent gesenkt (TOPEOPLE Group GmbH, Arbeitgeber, seit 09/2025).
 - Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht, mit GPT, RAG und LangChain.
 - Organischen Traffic um 35 Prozent gesteigert (Phoenix Parkservice, Freelance-Mandat 06/2024 bis 09/2025).
-- Testabdeckung um 33 Prozent erhöht und Schreibaufwand für Unit-Tests um bis zu 95 Prozent gesenkt (Masterarbeit, INFOMOTION GmbH).
+- Testabdeckung von 9 auf 42 Prozent gesteigert und den manuellen Aufwand je Projekt von 1.440 auf 30 Minuten gesenkt (Masterarbeit, INFOMOTION GmbH).
 
 ## Konditionen
 

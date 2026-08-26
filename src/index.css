@@ -930,3 +930,100 @@ dd {
   scrollbar-width: thin;
   scrollbar-color: var(--color-scrollbar) transparent;
 }
+
+/* ---------------------------------------------------------------------------
+   Druckausgabe
+
+   Es gibt genau einen Grund, warum dieses Projekt Druckstile hat: die
+   Lebenslaufseite soll sich über die Druckfunktion des Browsers als PDF
+   sichern lassen, damit eine Bewerbung wahlweise den Link oder die Datei
+   mitschicken kann.
+
+   Die Seite ist von Haus aus dunkel. Ein dunkler Ausdruck ist auf Papier
+   unbrauchbar und im PDF eine schwarze Fläche, deshalb bekommt der Druck
+   dieselbe helle Palette wie [data-theme="light"] — dieselben Variablen, damit
+   keine dritte Farbwelt entsteht, die niemand pflegt.
+   --------------------------------------------------------------------------- */
+
+/* Auf dem Bildschirm unsichtbar, im Druck sichtbar. Nicht display:none im
+   Druck-Block umkehren, sondern hier verstecken: sonst steht die Zeile für
+   jeden im Weg, der kein Druck-Medium hat. */
+.lebenslauf-nur-druck {
+  display: none;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+    --color-ink: var(--light-ink);
+    --color-ink-raised: var(--light-ink-raised);
+    --color-paper: var(--light-paper);
+    --color-paper-dim: var(--light-paper-dim);
+    --color-paper-soft: var(--light-paper-soft);
+    --color-paper-mute: var(--light-paper-mute);
+    --color-accent: var(--light-accent);
+    --color-accent-dim: var(--light-accent-dim);
+    --color-accent-ink: var(--light-accent-ink);
+    --color-hairline: var(--light-hairline);
+    --color-hairline-strong: var(--light-hairline-strong);
+    --color-surface: var(--light-surface);
+    --color-surface-strong: var(--light-surface-strong);
+  }
+
+  @page {
+    margin: 16mm 14mm;
+  }
+
+  html,
+  body {
+    background: #fff;
+  }
+
+  /* Navigation, Menü, Fußzeile und die Weiter-Links tragen auf Papier nichts
+     bei: anklicken kann man sie nicht, und sie kosten eine halbe Seite. */
+  header,
+  footer,
+  .lebenslauf-nur-bildschirm {
+    display: none !important;
+  }
+
+  .lebenslauf-nur-druck {
+    display: block;
+  }
+
+  /* Der Rahmen der Seite bringt oben 7rem Abstand für die fixierte Navigation
+     mit, die im Druck weg ist. */
+  main > section:first-child,
+  main > :first-child > section:first-child {
+    padding-top: 0 !important;
+  }
+
+  /* Eine Station soll nicht über zwei Blätter zerfallen. `avoid` ist eine
+     Bitte, keine Garantie — bei einer Station, die länger als eine Seite ist,
+     bricht der Browser trotzdem, und das ist richtig so. */
+  .lebenslauf-station,
+  .lebenslauf-kontakt > div,
+  figure,
+  li {
+    break-inside: avoid;
+  }
+
+  .lebenslauf-block {
+    break-inside: auto;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+  }
+
+  /* Eintrittsanimationen sind im Druck nicht nur nutzlos, sondern gefährlich:
+     was bei Opacity 0 startet und nie animiert wird, fehlt auf dem Papier. */
+  .stagger,
+  .reveal-line > span {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

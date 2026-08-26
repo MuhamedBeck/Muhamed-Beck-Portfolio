@@ -13,7 +13,7 @@
  *   1 Automatisierung von Unit-Tests mit einem Sprachmodell
  *     Masterarbeit bei INFOMOTION GmbH: automatische Erzeugung von Unit-Tests
  *     für Java-Spring-Boot-Projekte
- *     +33 % Testabdeckung (mit JaCoCo gemessen) · −95 % Schreibaufwand
+ *     Testabdeckung 9 → 42 % (mit JaCoCo gemessen) · Schreibaufwand 1.440 → 30 min
  *     (gegenüber manueller Entwicklung) · 2,13 € je erzeugter Testsuite
  *     (statt 566 € manuell)
  *   2 Datenvisualisierung in erweiterter Realität
@@ -29,10 +29,10 @@ export const PROJECTS_AR = [
     title: "أتمتة اختبارات الوحدة بنموذج لغوي",
     subtitle:
       "رسالة الماجستير لدى INFOMOTION GmbH: توليد اختبارات الوحدة تلقائيًا لمشاريع Java Spring Boot",
-    role: "رسالة ماجستير، 09/2022 حتى 09/2024",
+    role: "رسالة ماجستير، 02/2022 حتى 10/2024",
     stats: [
-      { value: "+33%", label: "تغطية الاختبارات", note: "مقيسة بأداة JaCoCo" },
-      { value: "-95%", label: "جهد الكتابة", note: "مقارنة بالتطوير اليدوي" },
+      { value: "9 → 42 %", label: "تغطية الاختبارات", note: "مقيسة بأداة JaCoCo" },
+      { value: "1.440 → 30 د", label: "جهد الكتابة", note: "لكل مشروع، مقارنة بالتطوير اليدوي" },
       { value: "2,13 €", label: "لكل مجموعة اختبارات", note: "بدلًا من 566 € يدويًا" },
     ],
     ausgangslage:
@@ -67,7 +67,7 @@ export const PROJECTS_AR = [
     title: "تصوير البيانات في الواقع المعزز",
     subtitle:
       "رسالة البكالوريوس لدى INFOMOTION GmbH: تقارير SAP BusinessObjects كرسوم ثلاثية الأبعاد تفاعلية داخل المتصفح",
-    role: "رسالة بكالوريوس، 2018 حتى 2022",
+    role: "رسالة بكالوريوس، 2022",
     stats: [
       { value: "50+", label: "إطارًا في الثانية", note: "أثناء العرض في المتصفح" },
       { value: "< 15 ث", label: "زمن التحميل", note: "لجميع المكوّنات" },

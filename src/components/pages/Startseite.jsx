@@ -24,6 +24,23 @@ import { LinkArrow } from "../LinkArrow";
  * keeps its portfolio shape because its audience is recruiters and remote
  * clients, who are looking for a CV.
  */
+/* Das Register im Hero, aus derselben Quelle wie der Leistungsabschnitt weiter
+   unten und wie die sieben Leistungsseiten selbst.
+
+   Der Anker wird aus caseStudy.stat ABGELEITET statt danebengeschrieben. Eine
+   Zahl, die an zwei Stellen gepflegt wird, driftet: die Fallstudie wird
+   aktualisiert, der Hero bleibt auf dem alten Wert stehen, und niemand merkt es,
+   weil beide fuer sich stimmig aussehen. Voice-AI hat bewusst keine stat, dort
+   traegt das Label allein. */
+const HERO_LEISTUNGEN = LEISTUNGEN.map((leistung) => ({
+  kurz: leistung.hero.kurz,
+  to: leistung.path,
+  anker: leistung.caseStudy?.stat
+    ? `${leistung.caseStudy.stat} ${leistung.hero.ankerLabel}`
+    : leistung.hero.ankerLabel,
+  auszeichnung: leistung.hero.auszeichnung,
+}));
+
 export const Startseite = () => {
   useRouteMeta();
   const t = useDict(startseite);
@@ -39,7 +56,7 @@ export const Startseite = () => {
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <main>
-        <Home isLoaded={isLoaded} />
+        <Home isLoaded={isLoaded} services={HERO_LEISTUNGEN} />
         <TechMarquee />
 
         <Section id="leistungen">

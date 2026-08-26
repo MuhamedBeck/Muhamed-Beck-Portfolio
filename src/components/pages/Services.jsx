@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "../PageShell";
+import { SERVICES } from "../../content/services.en";
 import { Section } from "../Section";
 import { CONTACT, RATE_TEXT_EN } from "../../content/site";
 
@@ -15,84 +16,6 @@ import { CONTACT, RATE_TEXT_EN } from "../../content/site";
  * scope, tailored to you"). They are gone. The two that referenced real figures
  * stayed and now name where the figure comes from, the way the German pages do.
  */
-const SERVICES = [
-  {
-    title: "Workflow automation",
-    label: "n8n and Zapier",
-    text: "Custom workflows with n8n and Zapier that connect your tools, remove repetitive steps and run with monitoring and error handling rather than as a one-off script.",
-    features: [
-      "Individual n8n workflows, self-hosted or cloud",
-      "Zapier automation and migration of existing Zaps to n8n",
-      "API connections and webhooks (REST, OAuth2, JWT)",
-      "CRM and ATS automation (HubSpot, RecruitCRM, Personio, Greenhouse)",
-      "Email and notification routing",
-      "Data sync between platforms",
-      "Monitoring, error handling, rate-limit and retry strategies",
-    ],
-    result: {
-      value: "80 %",
-      text: "shorter recruiting cycle times in the processes I automated at TOPEOPLE Group GmbH, my employer.",
-    },
-  },
-  {
-    title: "Web development",
-    label: "Full-stack",
-    text: "Landing page, dashboard or full web application, built with modern frameworks and deployed so it stays maintainable after handover.",
-    features: [
-      "React and Angular applications",
-      "Spring Boot and Node.js backends",
-      "TypeScript and JavaScript",
-      "REST API design and implementation",
-      "Responsive, mobile-first layouts",
-      "E-commerce and booking systems",
-      "Docker and cloud deployment",
-    ],
-  },
-  {
-    title: "Technical SEO",
-    label: "Visibility",
-    text: "Technical audits, structured data, page speed and local SEO for the German market, including the AI-assisted workflows that keep it running.",
-    features: [
-      "Technical audits and fixes",
-      "On-page optimisation",
-      "Meta tags and structured data (Schema.org)",
-      "Page speed and Core Web Vitals",
-      "Google Search Console and Analytics setup",
-      "AI-supported SEO workflows",
-      "Local SEO for German businesses",
-    ],
-    result: {
-      value: "35 %",
-      text: "more organic traffic for Phoenix Parkservice, a freelance engagement, through AI-supported SEO workflows.",
-    },
-  },
-  {
-    title: "AI and LLM integration",
-    label: "Agents and voice",
-    text: "GPT and LLM features that take over a step rather than demonstrate one, with clear boundaries, a log and a human at the points that need one.",
-    features: [
-      "OpenAI, Anthropic Claude and Azure OpenAI integration",
-      "RAG systems over your own documents",
-      "Voice AI agents (Twilio and WebRTC, speech-to-text, text-to-speech)",
-      "Classification, enrichment and text generation inside workflows",
-      "GDPR-compliant setups, self-hosted or EU region",
-      "Custom API development and webhooks",
-    ],
-  },
-  {
-    title: "DevOps and infrastructure",
-    label: "Build and run",
-    text: "Pipelines and environments that are reproducible, so a deployment is a routine step rather than an event.",
-    features: [
-      "CI/CD pipelines (GitLab CI, GitHub Actions)",
-      "Docker and Kubernetes deployment",
-      "Infrastructure as code",
-      "Cloud architecture (Azure, AWS)",
-      "Monitoring with Prometheus",
-      "Security and authentication (OAuth2, JWT)",
-    ],
-  },
-];
 
 export const Services = () => (
   <PageShell
@@ -103,7 +26,8 @@ export const Services = () => (
       {SERVICES.map((service, index) => (
         <div
           key={service.title}
-          className={`border-t border-hairline pt-8 ${index > 0 ? "mt-16" : ""}`}>
+          id={service.slug}
+          className={`scroll-mt-28 border-t border-hairline pt-8 ${index > 0 ? "mt-16" : ""}`}>
           <div className="grid gap-x-12 gap-y-6 md:grid-cols-[1fr_1.4fr]">
             <div>
               <h2 className="headline-sub">{service.title}</h2>

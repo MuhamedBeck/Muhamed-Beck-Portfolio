@@ -26,6 +26,14 @@ import { AR_UEBER, AR_LEISTUNGEN, AR_CTA } from "../../../content/ar";
  * is, what he does, how to reach him. The German guides target German search
  * terms and German law and have no Arabic counterpart on purpose.
  */
+/* Wie im Englischen eine Sammelseite mit Ankern, nicht sieben Einzelseiten.
+   Ohne Anker rechts: die arabischen Eintraege tragen keine Kennzahl, und eine
+   aus der deutschen Fassung uebernommene Zahl waere hier unbelegt. */
+const HERO_LEISTUNGEN_AR = AR_LEISTUNGEN.map((leistung) => ({
+  kurz: leistung.title,
+  to: `/ar/services#${leistung.slug}`,
+}));
+
 export const ArabicHome = () => {
   useRouteMeta();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,7 +49,7 @@ export const ArabicHome = () => {
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
         <main>
-          <Home isLoaded={isLoaded} />
+          <Home isLoaded={isLoaded} services={HERO_LEISTUNGEN_AR} />
           <TechMarquee />
 
           <Section id="about">

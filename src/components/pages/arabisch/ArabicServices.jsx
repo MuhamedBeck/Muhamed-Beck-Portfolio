@@ -13,7 +13,10 @@ export const ArabicServices = () => (
     <Section className="!pt-0">
       <ul className="grid gap-x-14 gap-y-14 md:grid-cols-2">
         {AR_LEISTUNGEN.map((leistung, index) => (
-          <li key={leistung.title} className="border-t border-hairline pt-6">
+          <li
+            key={leistung.title}
+            id={leistung.slug}
+            className="scroll-mt-28 border-t border-hairline pt-6">
             {/* tabular-nums keeps the two-digit counters on one optical column.
                 Western digits throughout, as decided for both target regions. */}
             <span className="label tabular-nums">

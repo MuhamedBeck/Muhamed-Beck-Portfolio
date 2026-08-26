@@ -17,25 +17,31 @@ const STATIONS = [
     period: "seit 09/2025",
     role: "AI Automation Manager",
     org: "TOPEOPLE Group GmbH, Frankfurt am Main",
-    text: "Automatisierung von Recruiting- und Vertriebsprozessen mit n8n, Zapier und GPT. Durchlaufzeiten in den automatisierten Prozessen um rund 80 Prozent gesenkt, Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht. Voice-AI-Agenten für Support und Bewerberkommunikation, Betrieb über GitLab CI/CD, Docker und Kubernetes mit Monitoring in Prometheus.",
+    text: "Automatisierung von Recruiting- und Vertriebsprozessen mit n8n, Zapier und GPT. Durchlaufzeiten in den automatisierten Prozessen um rund 80 Prozent gesenkt, Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht. Voice-AI-Agenten für Support und Bewerberkommunikation, Auslieferung über GitLab CI/CD und Vercel, mit Audit-Logging und automatisierter Fehler-Triage.",
   },
   {
-    period: "06/2024 bis 09/2025",
+    period: "07/2024 bis 09/2025",
     role: "Full-Stack Developer und AI Integration Lead",
     org: "Phoenix Parkservice, freiberuflich",
-    text: "Microservices-Plattform mit Spring Boot und Angular, dazu DevOps und KI-gestützte SEO-Workflows. Der organische Traffic stieg um 35 Prozent.",
+    text: "Buchungs- und Verwaltungssoftware mit Spring Boot und Angular, dazu KI-gestützte SEO-Automatisierung mit n8n. Der organische Traffic stieg in drei Monaten um 35 Prozent.",
   },
   {
-    period: "09/2022 bis 09/2024",
+    period: "02/2022 bis 10/2024",
     role: "Full-Stack Developer und Masterarbeit",
     org: "INFOMOTION GmbH",
-    text: "Masterarbeit über ein Maven-Plugin, das mit Large Language Models automatisch Unit-Tests für Java-Spring-Boot-Projekte erzeugt. Die Testabdeckung stieg um 33 Prozent, der Schreibaufwand für Tests sank um bis zu 95 Prozent.",
+    text: "Masterarbeit über ein Maven-Plugin, das mit Large Language Models automatisch Unit-Tests für Java-Spring-Boot-Projekte erzeugt. Die Testabdeckung stieg von 9 auf 42 Prozent, der Schreibaufwand für Tests sank je Projekt von 1.440 auf 30 Minuten.",
   },
   {
-    period: "2021",
-    role: "Werkstudent und Praktikant",
-    org: "Deutsche Bank, Red Reply",
-    text: "Kryptografie-Engineering bei der Deutschen Bank, Elastic-Stack-Projekt bei Red Reply.",
+    period: "10/2022 bis 02/2023",
+    role: "Projektstudent Elastic-Stack",
+    org: "Red Reply, Frankfurt am Main",
+    text: "Log-Analytics-Dashboard mit Elasticsearch, Logstash und Kibana für über 25.000 Logeinträge pro Tag aus mehreren Anwendungen. Architektur, Infrastruktur und Projektumfang eigenständig definiert, Ergebnisse vor Mentoren und Hochschulgutachtern präsentiert.",
+  },
+  {
+    period: "05/2021 bis 10/2021",
+    role: "Praktikant Cryptography Engineering",
+    org: "Deutsche Bank, Eschborn",
+    text: "Proof of Concept für einen Signature Validation Service zur automatisierten Prüfung elektronischer Signaturen. Aufbau und Betrieb der VMs im Crypto-Lab, Definition von Validierungsregeln und Trust-Lists.",
   },
 ];
 
@@ -50,7 +56,7 @@ const SKILLS = [
   },
   {
     title: "Systeme",
-    items: "HubSpot, RecruitCRM, Personio, Greenhouse, Supabase, Elasticsearch",
+    items: "HubSpot, RecruitCRM, Personio, Stripe, Slack, Calendly, DocuSeal, Supabase, Elasticsearch",
   },
   {
     title: "Entwicklung",
@@ -95,6 +101,9 @@ const UeberMich = () => (
             sage ich das im Erstgespräch statt hinterher.
           </p>
           <p className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+            <Link to="/lebenslauf" className="link-arrow">
+              Vollständiger Lebenslauf <LinkArrow />
+            </Link>
             <a
               href={SOCIAL.linkedin}
               target="_blank"

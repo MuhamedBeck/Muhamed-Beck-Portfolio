@@ -50,6 +50,10 @@ export const LEISTUNGEN = [
         "Mehrsprachigkeit, strukturierte Daten für Suchmaschinen und ein Kontaktweg, der auch ohne Formular funktioniert.",
     },
     badge: "Webentwicklung & Relaunch",
+    hero: {
+      kurz: "Webentwicklung und Relaunch",
+      ankerLabel: "ausgelieferte JS-Dateien",
+    },
     teaser:
       "Schnelle, auffindbare Webseiten ohne Baukasten. Statisch erzeugt, mehrsprachig wenn nötig, und mit Messwerten statt Versprechen.",
     h1: "Webentwicklung und Website-Relaunch",
@@ -158,6 +162,10 @@ export const LEISTUNGEN = [
       alongside: "Monitoring, Fehlerbehandlung sowie Rate-Limit- und Retry-Strategien. Ein Workflow, der nachts still ausfällt, ist keiner.",
     },
     badge: "n8n & Zapier Spezialist",
+    hero: {
+      kurz: "n8n- und Workflow-Automatisierung",
+      ankerLabel: "Durchlaufzeit",
+    },
     teaser:
       "Workflows, die CRM, ATS, E-Mail und interne Tools verbinden, mit Monitoring und Fehlerbehandlung statt Bastellösung.",
     h1: "n8n Freelancer für Workflow-Automatisierung",
@@ -181,7 +189,7 @@ export const LEISTUNGEN = [
       "Entwicklung individueller n8n-Workflows (self-hosted oder Cloud)",
       "Zapier-Automatisierungen und Migration bestehender Zaps zu n8n",
       "API-Anbindungen und Webhooks (REST, OAuth2/JWT)",
-      "CRM- und ATS-Automatisierung (HubSpot, RecruitCRM, Personio, Greenhouse)",
+      "CRM- und ATS-Automatisierung (HubSpot, RecruitCRM, Personio)",
       "Web-Formulare mit Validierung, Routing und Datenmapping an n8n anbinden",
       "KI-Schritte im Workflow: GPT-Anreicherung, Klassifizierung, Textbausteine",
       "Monitoring, Fehlerbehandlung, Rate-Limit- und Retry-Strategien",
@@ -226,7 +234,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Können Sie bestehende Systeme wie HubSpot oder Personio anbinden?",
-        a: "Ja. Ich habe unter anderem HubSpot, RecruitCRM, Personio und Greenhouse über REST-APIs, Webhooks und OAuth2 angebunden, inklusive Rate-Limit- und Retry-Strategien für einen stabilen Datenaustausch.",
+        a: "Ja. Ich habe unter anderem HubSpot, RecruitCRM und Personio über REST-APIs, Webhooks und OAuth2 angebunden, inklusive Rate-Limit- und Retry-Strategien für einen stabilen Datenaustausch.",
       },
       {
         q: "Übernehmen Sie auch Wartung und Weiterentwicklung?",
@@ -276,6 +284,10 @@ export const LEISTUNGEN = [
       alongside: "PII- und DSGVO-Schutz, RBAC, Audit-Logging und Evaluation gegen einen festen Testsatz. Dazu KPI- und ROI-Tracking, damit der Nutzen messbar bleibt.",
     },
     badge: "KI & LLM Spezialist · Frankfurt",
+    hero: {
+      kurz: "KI-Automatisierung",
+      ankerLabel: "Automatisierungsgrad",
+    },
     teaser:
       "GPT- und LLM-Lösungen, RAG-Systeme und Voice-AI, die Prozesse übernehmen statt nur zu demonstrieren. DSGVO-konform aufgesetzt.",
     h1: "KI-Automatisierung für Unternehmen in Frankfurt",
@@ -384,13 +396,17 @@ export const LEISTUNGEN = [
         { kind: "Schritt", title: "Anreicherung",
           text: "GPT qualifiziert Leads oder ergänzt fehlende Felder, wo es den Vertrieb entlastet." },
         { kind: "Ziel", title: "Beide Seiten aktuell",
-          text: "HubSpot, RecruitCRM, Personio und Greenhouse bidirektional, ohne Doppeleingabe." },
+          text: "HubSpot, RecruitCRM und Personio bidirektional, ohne Doppeleingabe." },
       ],
       alongside: "OAuth2 und JWT für die Authentifizierung, dazu Rate-Limit- und Retry-Strategien mit Monitoring. APIs antworten nicht immer, und genau dann entscheidet sich, ob Daten verloren gehen.",
     },
     badge: "HubSpot & CRM Integrationen",
+    hero: {
+      kurz: "HubSpot- und CRM-Integration",
+      ankerLabel: "Datenaustausch",
+    },
     teaser:
-      "HubSpot, RecruitCRM, Personio und Greenhouse sauber angebunden: REST, Webhooks, OAuth2, Rate-Limit- und Retry-Strategien.",
+      "HubSpot, RecruitCRM und Personio sauber angebunden: REST, Webhooks, OAuth2, Rate-Limit- und Retry-Strategien.",
     h1: "HubSpot Integration und CRM-Automatisierung",
     intro:
       "Ich verbinde HubSpot mit Ihren übrigen Systemen: ATS, Recruiting-Tools, interne Datenbanken oder Websites. Leads, Kandidaten und Deals fließen automatisch dorthin, wo sie gebraucht werden, ohne Doppeleingaben und ohne veraltete Datenstände. Aus der Praxis: Ich betreue produktive HubSpot- und RecruitCRM-Integrationen mit API-Management, Workflow-Automatisierung und Daten-Synchronisation.",
@@ -409,7 +425,7 @@ export const LEISTUNGEN = [
       },
     ],
     leistungen: [
-      "HubSpot-Anbindung an ATS- und Recruiting-Systeme (RecruitCRM, Personio, Greenhouse)",
+      "HubSpot-Anbindung an ATS- und Recruiting-Systeme (RecruitCRM, Personio)",
       "Bidirektionale Daten-Synchronisation für Leads, Kandidaten und Deals",
       "REST-API- und Webhook-Integrationen mit OAuth2/JWT",
       "Workflow-Automatisierung in und um HubSpot, auch mit n8n und Zapier",
@@ -449,7 +465,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Welche Systeme haben Sie bereits an HubSpot angebunden?",
-        a: "Unter anderem RecruitCRM, Personio und Greenhouse sowie eigene Web-Formulare und interne Tools, jeweils über REST-APIs, Webhooks und OAuth2.",
+        a: "Unter anderem RecruitCRM und Personio sowie eigene Web-Formulare und interne Tools, jeweils über REST-APIs, Webhooks und OAuth2.",
       },
       {
         q: "Wie stellen Sie sicher, dass keine Daten verloren gehen?",
@@ -494,16 +510,21 @@ export const LEISTUNGEN = [
         { kind: "Schritt", title: "Vorqualifizieren und terminieren",
           text: "Screening nach Ihren Kriterien, Kalenderanbindung, Erinnerungen und Nachfassen." },
         { kind: "Ziel", title: "Status gepflegt",
-          text: "RecruitCRM, Personio, Greenhouse oder HubSpot, mit Reporting über den ganzen Funnel." },
+          text: "RecruitCRM, Personio oder HubSpot, mit Reporting über den ganzen Funnel." },
       ],
       alongside: "Ein DSGVO-Konzept für Bewerberdaten mit Löschfristen, Rollen und Audit-Logging. Bewerberdaten sind der Fall, in dem Datenschutz nicht verhandelbar ist.",
     },
     badge: "Recruiting & ATS Automatisierung",
+    hero: {
+      kurz: "Recruiting-Automatisierung",
+      ankerLabel: "kürzere Durchlaufzeit",
+      auszeichnung: "Schwerpunkt",
+    },
     teaser:
       "Bewerbungseingang, Screening, Terminierung und Statuspflege automatisiert. Der Bereich, in dem ich täglich arbeite.",
     h1: "Recruiting-Automatisierung mit n8n und ATS-Anbindung",
     intro:
-      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager habe ich Durchlaufzeiten um rund 80 Prozent gesenkt und die Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht. Bewerbungseingang, Vorqualifizierung, Terminierung und Statuspflege laufen dabei ohne manuelle Zwischenschritte, angebunden an RecruitCRM, Personio, Greenhouse oder HubSpot.",
+      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager habe ich Durchlaufzeiten um rund 80 Prozent gesenkt und die Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht. Bewerbungseingang, Vorqualifizierung, Terminierung und Statuspflege laufen dabei ohne manuelle Zwischenschritte, angebunden an RecruitCRM, Personio oder HubSpot.",
     szenarien: [
       {
         title: "Bewerbungen ohne Copy-and-paste",
@@ -519,7 +540,7 @@ export const LEISTUNGEN = [
       },
     ],
     leistungen: [
-      "Anbindung von RecruitCRM, Personio, Greenhouse und HubSpot über REST und Webhooks",
+      "Anbindung von RecruitCRM, Personio und HubSpot über REST und Webhooks",
       "Lebenslauf-Parsing und Datenanreicherung mit GPT-Modellen",
       "Automatische Dublettenprüfung und Datenqualitätsregeln im ATS",
       "Terminierung mit Kalenderanbindung, Erinnerungen und Nachfassen",
@@ -555,7 +576,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Welche ATS- und CRM-Systeme können Sie anbinden?",
-        a: "Produktiv angebunden habe ich RecruitCRM, Personio, Greenhouse und HubSpot. Grundsätzlich lässt sich jedes System mit einer REST-API oder Webhooks anbinden. Wenn eine API fehlt, prüfen wir vorab, ob ein Export- oder E-Mail-basierter Weg tragfähig ist.",
+        a: "Produktiv angebunden habe ich RecruitCRM, Personio und HubSpot, dazu Stripe, Slack, Calendly und DocuSeal. Grundsätzlich lässt sich jedes System mit einer REST-API oder Webhooks anbinden. Wenn eine API fehlt, prüfen wir vorab, ob ein Export- oder E-Mail-basierter Weg tragfähig ist.",
       },
       {
         q: "Was passiert mit Bewerberdaten im Sinne der DSGVO?",
@@ -611,6 +632,10 @@ export const LEISTUNGEN = [
       alongside: "Ein Transparenzhinweis zu Gesprächsbeginn nach EU AI Act Artikel 50, dazu Auswertung der Gesprächsverläufe zur laufenden Verbesserung.",
     },
     badge: "Voice-AI & Telefonassistenten",
+    hero: {
+      kurz: "Voice-AI-Telefonassistenten",
+      ankerLabel: "auch außerhalb der Bürozeiten",
+    },
     teaser:
       "Sprachagenten, die Anrufe annehmen, qualifizieren und ins CRM schreiben. Mit Twilio, Speech-to-Text und Text-to-Speech.",
     h1: "Voice-AI-Agenten für Telefon und Support",
@@ -722,6 +747,10 @@ export const LEISTUNGEN = [
       alongside: "Evaluation gegen einen festen Testsatz statt Bauchgefühl, dazu Kostenkontrolle und Abbruchbedingungen gegen endlose Schleifen.",
     },
     badge: "KI-Agenten für Unternehmen",
+    hero: {
+      kurz: "KI-Agenten entwickeln lassen",
+      ankerLabel: "Candidate Operations",
+    },
     teaser:
       "Agenten, die mehrstufige Aufgaben übernehmen, mit klaren Grenzen, Protokoll und einem Menschen an den richtigen Stellen.",
     h1: "KI-Agenten entwickeln lassen",

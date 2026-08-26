@@ -16,11 +16,14 @@ const de = {
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main. Ich automatisiere Geschäftsprozesse mit n8n, binde CRM- und ATS-Systeme an und bringe KI dorthin, wo sie messbar Arbeit abnimmt.",
   portraitAlt: "Muhamed Nur Beck, AI Automation Manager aus Frankfurt am Main",
   ctaPrimary: "Projekt anfragen",
-  ctaSecondary: "Leistungen ansehen",
+  ctaSecondary: "Alle Leistungen im Detail",
+  introKurz:
+    "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.",
+  servicesHeading: "Was Sie beauftragen können",
+  preisZeile: "90 bis 135 € pro Stunde nach Absprache. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.",
   stats: [
     { value: "80 %", label: "kürzere Durchlaufzeiten im Recruiting" },
     { value: "90 %", label: "der Candidate Operations automatisiert" },
-    { value: "24 h", label: "bis zur Antwort auf Ihre Anfrage" },
   ],
   statsNote:
     "Alle Werte stammen aus produktiv laufenden Systemen, nicht aus Demos. TOPEOPLE Group GmbH ist mein Arbeitgeber, Phoenix Parkservice war ein Freelance-Mandat.",
@@ -38,11 +41,14 @@ const en = {
     "I'm Muhamed Nur Beck, AI Automation Manager and full-stack developer in Frankfurt, Germany. I automate business processes with n8n, connect CRM and ATS systems, and put AI where it measurably takes work off people's hands.",
   portraitAlt: "Muhamed Nur Beck, AI Automation Manager based in Frankfurt, Germany",
   ctaPrimary: "Start a project",
-  ctaSecondary: "See services",
+  ctaSecondary: "All services in detail",
+  introKurz:
+    "I'm Muhamed Nur Beck, AI Automation Manager and full-stack developer in Frankfurt, Germany.",
+  servicesHeading: "What you can commission",
+  preisZeile: "90 to 135 € per hour by agreement. Every service with process, examples and price range.",
   stats: [
     { value: "80 %", label: "shorter recruiting cycle times" },
     { value: "90 %", label: "of candidate operations automated" },
-    { value: "24 h", label: "to a reply on your enquiry" },
   ],
   statsNote:
     "All figures come from systems running in production, not from demos. TOPEOPLE Group GmbH is my employer; Phoenix Parkservice was a freelance engagement.",
@@ -88,14 +94,20 @@ const ar = {
     "أنا محمد نور بيك (Muhamed Nur Beck)، مدير أتمتة الذكاء الاصطناعي ومطوّر برمجيات متكامل في فرانكفورت بألمانيا. أُتمِت عمليات الأعمال باستخدام n8n، وأربط أنظمة إدارة العملاء (CRM) وأنظمة التوظيف (ATS)، وأضع الذكاء الاصطناعي حيث يختصر العمل بصورة قابلة للقياس.",
   portraitAlt: "محمد نور بيك، مدير أتمتة الذكاء الاصطناعي في فرانكفورت بألمانيا",
   ctaPrimary: "ابدأ مشروعًا",
-  ctaSecondary: "اطّلع على الخدمات",
+  ctaSecondary: "كل الخدمات بالتفصيل",
+  introKurz:
+    "أنا محمد نور بيك (Muhamed Nur Beck)، مدير أتمتة الذكاء الاصطناعي ومطوّر برمجيات متكامل في فرانكفورت بألمانيا.",
+  servicesHeading: "ما يمكنك طلبه",
+  /* Der Preis ohne Leerzeichen vor dem Prozent- beziehungsweise Eurozeichen,
+     aus demselben Grund wie bei stats: neutrale Zeichen kippen im arabischen
+     Lauf an die falsche Seite der Zahl. */
+  preisZeile: "من 90 إلى 135 يورو للساعة حسب الاتفاق. كل خدمة مع سير العمل والأمثلة ونطاق السعر.",
   stats: [
     /* Written without the space the German and English versions use. The
        percent sign is bidi-neutral, so "80 %" renders as "% 80" in an Arabic
        run, which reads as a different number entirely to anyone scanning. */
     { value: "80%", label: "اختصار في زمن دورة التوظيف" },
     { value: "90%", label: "من عمليات المرشحين مؤتمتة" },
-    { value: "24 ساعة", label: "حتى الرد على طلبك" },
   ],
   statsNote:
     "جميع الأرقام مأخوذة من أنظمة تعمل في بيئة الإنتاج، لا من عروض توضيحية. شركة TOPEOPLE Group GmbH هي جهة عملي، ومشروع Phoenix Parkservice كان تكليفًا مستقلًا.",

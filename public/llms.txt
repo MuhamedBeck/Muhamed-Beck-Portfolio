@@ -2,8 +2,8 @@
 
 > AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.
 > Automatisiert Geschäftsprozesse mit n8n, baut KI-Agenten, Voice-AI und
-> RAG-Systeme und bindet CRM- und ATS-Systeme an (HubSpot, RecruitCRM, Personio,
-> Greenhouse). Verfügbar für Projekte remote in Deutschland, Österreich und der
+> RAG-Systeme und bindet CRM- und ATS-Systeme an (HubSpot, RecruitCRM,
+> Personio). Verfügbar für Projekte remote in Deutschland, Österreich und der
 > Schweiz, vor Ort im Rhein-Main-Gebiet.
 
 ## Belegte Ergebnisse
@@ -11,7 +11,7 @@
 - Durchlaufzeiten im Recruiting um rund 80 Prozent gesenkt (TOPEOPLE Group GmbH, Arbeitgeber, seit 09/2025).
 - Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht, mit GPT, RAG und LangChain.
 - Organischen Traffic um 35 Prozent gesteigert (Phoenix Parkservice, Freelance-Mandat 06/2024 bis 09/2025).
-- Testabdeckung um 33 Prozent erhöht und Schreibaufwand für Unit-Tests um bis zu 95 Prozent gesenkt (Masterarbeit, INFOMOTION GmbH).
+- Testabdeckung von 9 auf 42 Prozent gesteigert und den manuellen Aufwand je Projekt von 1.440 auf 30 Minuten gesenkt (Masterarbeit, INFOMOTION GmbH).
 
 ## Konditionen
 
@@ -25,8 +25,9 @@
 - [KI- und Prozessautomatisierung](https://muhamedbeck.com/leistungen): Automatisierung mit n8n, KI-Agenten, Voice-AI, HubSpot- und ATS-Anbindung sowie Recruiting-Automatisierung. Alle Leistungen mit Ablauf und Preisrahmen.
 - [Was ich gebaut habe](https://muhamedbeck.com/projekte): Kundenprojekte im Detail: Website-Relaunch für MA-Flats, Recruiting-Automatisierung mit n8n und GPT, dazu zwei Abschlussarbeiten zu LLM und Augmented Reality.
 - [Muhamed Nur Beck](https://muhamedbeck.com/ueber-mich): AI Automation Manager und Full-Stack-Entwickler aus Frankfurt am Main: Werdegang, Stationen bei TOPEOPLE, Phoenix Parkservice und INFOMOTION, eingesetzter Stack.
+- [Muhamed Nur Beck](https://muhamedbeck.com/lebenslauf): Vollständiger Lebenslauf von Muhamed Nur Beck: AI Automation Manager in Frankfurt. Stationen, Ausbildung, Kenntnisse und Sprachen auf einer Seite, als PDF druckbar.
 - [Projekt anfragen](https://muhamedbeck.com/kontakt): Automatisierungsprojekt anfragen: E-Mail, Telefon oder LinkedIn. Antwort innerhalb von 24 Stunden, kostenloses Erstgespräch, 90 bis 135 € pro Stunde nach Absprache.
-- [Unit-Tests automatisch erzeugen mit einem LLM](https://muhamedbeck.com/projekte/llm-unit-test-automatisierung): Maven-Plugin, das Unit-Tests für Spring Boot mit einem LLM erzeugt: 33 % mehr Testabdeckung mit JaCoCo gemessen, Kosten je Testsuite von 566 € auf 2,13 €.
+- [Unit-Tests automatisch erzeugen mit einem LLM](https://muhamedbeck.com/projekte/llm-unit-test-automatisierung): Maven-Plugin, das Unit-Tests für Spring Boot mit einem LLM erzeugt: Testabdeckung von 9 auf 42 Prozent mit JaCoCo gemessen, Kosten je Testsuite von 566 € auf 2,13 €.
 - [SAP-BusinessObjects-Berichte in Augmented Reality](https://muhamedbeck.com/projekte/ar-datenvisualisierung): AR-Visualisierung von SAP-BusinessObjects-Berichten im Browser, mit einer Befragung von 81 Personen in deutschen Unternehmen zu den Hürden der Einführung.
 - [Antworten statt Marketing](https://muhamedbeck.com/ratgeber): Was ein n8n Freelancer kostet, wie n8n, Make und Zapier sich unterscheiden und was sich im Recruiting automatisieren lässt. Mit Zahlen und Quellen.
 - [Was kostet ein n8n Freelancer?](https://muhamedbeck.com/ratgeber/n8n-freelancer-kosten): n8n Freelancer kosten 75 bis 147 € pro Stunde (freelancermap, August 2026), der IT-Median liegt bei 95 €. Dazu Festpreis oder Stundensatz und laufende Kosten.
@@ -38,12 +39,12 @@
 - [n8n Freelancer für Workflow-Automatisierung](https://muhamedbeck.com/leistungen/n8n-automatisierung): n8n und Zapier Workflows vom Freelancer aus Frankfurt: Prozessautomatisierung, API- und CRM-Anbindung, KI-Integration. 90 bis 135 € pro Stunde nach Absprache.
 - [KI-Automatisierung für Unternehmen in Frankfurt](https://muhamedbeck.com/leistungen/ki-automatisierung-frankfurt): KI- und Prozessautomatisierung für Unternehmen in Frankfurt und Rhein-Main: GPT/LLM-Lösungen, RAG, Voice-AI und DSGVO-konforme Guardrails. Remote deutschlandweit.
 - [HubSpot Integration und CRM-Automatisierung](https://muhamedbeck.com/leistungen/hubspot-integration): HubSpot und CRM-Integrationen vom Freelancer: REST-APIs, Webhooks, OAuth2 und Datensynchronisation zwischen ATS, CRM und internen Tools. Aus Frankfurt, auch remote.
-- [Recruiting-Automatisierung mit n8n und ATS-Anbindung](https://muhamedbeck.com/leistungen/recruiting-automatisierung): Bewerbungseingang, Screening, Terminierung und Statuspflege automatisieren: n8n mit RecruitCRM, Personio, Greenhouse und HubSpot. 80 % kürzere Durchlaufzeiten.
+- [Recruiting-Automatisierung mit n8n und ATS-Anbindung](https://muhamedbeck.com/leistungen/recruiting-automatisierung): Bewerbungseingang, Screening, Terminierung und Statuspflege automatisieren: n8n mit RecruitCRM, Personio und HubSpot. 80 % kürzere Durchlaufzeiten.
 - [Voice-AI-Agenten für Telefon und Support](https://muhamedbeck.com/leistungen/voice-ai-agenten): Voice-AI-Agenten für Telefon und Support: Twilio, Speech-to-Text und Text-to-Speech, CRM-Anbindung und Transparenzhinweis nach EU AI Act Artikel 50.
 - [KI-Agenten entwickeln lassen](https://muhamedbeck.com/leistungen/ki-agenten-entwicklung): KI-Agenten mit klaren Werkzeugrechten, Freigabeschritten und Protokollierung. Mit ehrlicher Einordnung, wann ein normaler Workflow die bessere Lösung ist.
 - [Website-Relaunch für MA-Flats](https://muhamedbeck.com/projekte/maflats): Neubau von maflats.de als statische Seite: fünf Sprachen, neun Standorte, null ausgelieferte JavaScript-Dateien und 1,35 Sekunden LCP unter Slow-4G.
 - [Recruiting-Automatisierung mit n8n und GPT](https://muhamedbeck.com/projekte/recruiting-automatisierung): Wie n8n, Zapier und GPT die Recruiting-Prozesse der TOPEOPLE Group automatisiert haben: 80 % kürzere Durchlaufzeiten und rund 90 % Automatisierungsgrad.
-- [Microservices-Plattform und KI-SEO für Phoenix Parkservice](https://muhamedbeck.com/projekte/phoenix-parkservice): Microservices-Plattform mit Spring Boot und Angular, DevOps und KI-gestützte SEO-Workflows: 35 % mehr organischer Traffic für Phoenix Parkservice.
+- [Buchungsplattform und KI-SEO für Phoenix Parkservice](https://muhamedbeck.com/projekte/phoenix-parkservice): Buchungs- und Verwaltungssoftware mit Spring Boot und Angular, dazu KI-gestützte SEO-Automatisierung mit n8n: 35 % mehr organischer Traffic in drei Monaten.
 - [Impressum](https://muhamedbeck.com/impressum): Impressum von Muhamed Nur Beck, AI Automation & Full-Stack Developer aus Frankfurt am Main. Angaben gemäß § 5 DDG.
 - [Datenschutzerklärung](https://muhamedbeck.com/datenschutz): Datenschutzerklärung für muhamedbeck.com: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.
 

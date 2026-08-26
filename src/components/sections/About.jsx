@@ -41,13 +41,13 @@ const EXPERIENCE = [
       "Automated recruiting and internal workflows with n8n and Zapier, cutting cycle time by 80 percent",
       "Built GPT applications (OpenAI and Azure, LangChain and RAG) for candidate operations, reaching roughly 90 percent automation",
       "Deployed Voice AI agents over Twilio and WebRTC with speech-to-text and text-to-speech",
-      "Shipped ATS and CRM integrations over REST and webhooks with OAuth2 and JWT, including Personio, Greenhouse and HubSpot",
-      "Ran CI/CD and operations on GitLab, Docker and Kubernetes with Prometheus monitoring",
+      "Shipped ATS and CRM integrations over REST and webhooks with OAuth2 and JWT, including Personio, HubSpot and RecruitCRM",
+      "Ran delivery on GitLab CI/CD and Vercel, with audit logging and automated error triage",
       "Set LLM guardrails covering PII and GDPR, evaluation tests, audit and RBAC, plus ROI tracking on time-to-hire and SLA",
     ],
   },
   {
-    period: "06/2024 to 09/2025",
+    period: "07/2024 to 09/2025",
     role: "Full-Stack Developer and AI Integration Lead",
     org: "Phoenix Parkservice, freelance",
     highlights: [
@@ -57,13 +57,21 @@ const EXPERIENCE = [
     ],
   },
   {
-    period: "09/2022 to 09/2024",
+    period: "02/2022 to 10/2024",
     role: "Full-Stack Developer and Master Thesis",
     org: "INFOMOTION GmbH",
     highlights: [
-      "Developed an LLM-based Maven plugin that raised test coverage by 33 percent",
+      "Developed an LLM-based Maven plugin that raised test coverage from 9 to 42 percent",
       "Created an AR and 3D visualisation app for SAP BusinessObjects dashboards",
       "Managed Kubernetes deployments and Azure cloud integration",
+    ],
+  },
+  {
+    period: "10/2022 to 02/2023",
+    role: "Elastic Stack Project Student",
+    org: "Red Reply, Frankfurt",
+    highlights: [
+      "Built a log analytics dashboard with Elasticsearch, Logstash and Kibana for over 25,000 log entries per day",
     ],
   },
   {
@@ -81,13 +89,13 @@ const EARLIER_EXPERIENCE = [
     period: "11/2020 to 03/2021",
     role: "Java Tutor",
     org: "Frankfurt University of Applied Sciences",
-    highlights: ["Led tutorials for over 30 students and improved pass rates by 20 percent"],
+    highlights: ["Led weekly tutorials for over 30 students and cut the failure rate by 20 percent year over year"],
   },
   {
     period: "04/2018 to 11/2018",
     role: "1st and 2nd Level Support",
     org: "Mila IT-Services",
-    highlights: ["Resolved over 60 hardware and software issues"],
+    highlights: ["Handled first- and second-level support for hardware, software and network faults, including remote maintenance"],
   },
 ];
 
@@ -107,7 +115,7 @@ const EDUCATION = [
   {
     period: "2012 to 2017",
     role: "Abitur",
-    org: "Ernst-Reuter-Schule 1, Frankfurt",
+    org: "Frankfurt am Main",
     note: "Grade 1.9 (German scale)",
   },
 ];

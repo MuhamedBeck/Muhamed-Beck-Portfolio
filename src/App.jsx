@@ -5,6 +5,7 @@ import "./index.css";
 import { Navbar } from "./components/Navbar";
 import { MobileMenu } from "./components/MobileMenu";
 import { Home } from "./components/sections/Home";
+import { SERVICES } from "./content/services.en";
 import { About } from "./components/sections/About";
 import { Projects } from "./components/sections/Projects";
 import { TechMarquee } from "./components/TechMarquee";
@@ -13,6 +14,20 @@ import { Link } from "react-router-dom";
 import { CONTACT } from "./content/site";
 import Footer from "./components/Footer";
 import { useRouteMeta } from "./seo/useRouteMeta";
+
+/* Das Register im Hero. Englisch hat keine sieben Einzelseiten, sondern eine
+   Sammelseite, deshalb zielt jede Zeile auf ihren Abschnitt dort statt siebenmal
+   auf dieselbe URL. Die Slugs stehen an den Leistungen selbst, damit Link und
+   Sprungziel nicht getrennt gepflegt werden.
+
+   label statt einer Kennzahl als Anker: die englischen Eintraege fuehren keine
+   durchgaengige Zahl, und ein erfundener Wert waere schlechter als ein ehrliches
+   Stichwort. */
+const HERO_SERVICES = SERVICES.map((service) => ({
+  kurz: service.title,
+  to: `/en/services#${service.slug}`,
+  anker: service.label,
+}));
 
 function App() {
   useRouteMeta();
@@ -33,7 +48,7 @@ function App() {
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <main>
-          <Home isLoaded={isLoaded} />
+          <Home isLoaded={isLoaded} services={HERO_SERVICES} />
           <TechMarquee />
           <About />
           <Projects />
