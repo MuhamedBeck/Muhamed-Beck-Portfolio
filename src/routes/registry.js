@@ -278,6 +278,7 @@ export const ROUTES = [
     description:
       "Maven-Plugin, das Unit-Tests für Spring Boot mit einem LLM erzeugt: 33 % mehr Testabdeckung mit JaCoCo gemessen, Kosten je Testsuite von 566 € auf 2,13 €.",
     h1: "Unit-Tests automatisch erzeugen mit einem LLM",
+    navLabel: "Unit-Tests mit LLM",
     ogType: "article",
     lastmod: "2026-08-25",
     changefreq: "monthly",
@@ -294,6 +295,7 @@ export const ROUTES = [
     description:
       "AR-Visualisierung von SAP-BusinessObjects-Berichten im Browser, mit einer Befragung von 81 Personen in deutschen Unternehmen zu den Hürden der Einführung.",
     h1: "SAP-BusinessObjects-Berichte in Augmented Reality",
+    navLabel: "SAP-Berichte in AR",
     ogType: "article",
     lastmod: "2026-08-25",
     changefreq: "monthly",
@@ -360,6 +362,7 @@ export const ROUTES = [
     description:
       "n8n Freelancer kosten 75 bis 147 € pro Stunde (freelancermap, August 2026), der IT-Median liegt bei 95 €. Dazu Festpreis oder Stundensatz und laufende Kosten.",
     h1: "Was kostet ein n8n Freelancer?",
+    navLabel: "Was ein n8n Freelancer kostet",
     ogType: "article",
     lastmod: "2026-08-25",
     changefreq: "monthly",
@@ -376,6 +379,7 @@ export const ROUTES = [
     description:
       "Der wichtigste Unterschied ist die Abrechnung: n8n zählt eine Workflow-Ausführung, Make jede Operation. Dazu DSGVO, Self-Hosting und die passende Toolwahl.",
     h1: "n8n, Make und Zapier im Vergleich",
+    navLabel: "n8n, Make und Zapier",
     ogType: "article",
     lastmod: "2026-08-25",
     changefreq: "monthly",
@@ -392,6 +396,7 @@ export const ROUTES = [
     description:
       "Welche Recruiting-Schritte sich automatisieren lassen, womit man anfängt, wie ATS und CRM angebunden werden und was bei Bewerberdaten und DSGVO zu beachten ist.",
     h1: "Recruiting mit n8n automatisieren",
+    navLabel: "Recruiting mit n8n",
     ogType: "article",
     lastmod: "2026-08-25",
     changefreq: "monthly",
@@ -408,6 +413,7 @@ export const ROUTES = [
     description:
       "Die Hochrisiko-Pflichten für Recruiting-KI gelten erst ab Dezember 2027. Emotionserkennung im Bewerbungsgespräch ist dagegen seit Februar 2025 verboten.",
     h1: "KI im Recruiting und der AI Act",
+    navLabel: "KI-Recruiting und AI Act",
     ogType: "article",
     lastmod: "2026-08-25",
     changefreq: "monthly",
@@ -424,6 +430,7 @@ export const ROUTES = [
     description:
       "Was ein KI-Telefonagent je Minute kostet, welche Anbieter wirklich in der EU verarbeiten und warum das Mitschneiden ohne Einwilligung in Deutschland strafbar ist.",
     h1: "KI-Telefonagenten: Kosten und Rechtslage",
+    navLabel: "KI-Telefonagenten",
     ogType: "article",
     lastmod: "2026-08-26",
     changefreq: "monthly",
@@ -440,6 +447,7 @@ export const ROUTES = [
     description:
       "n8n und Zapier Workflows vom Freelancer aus Frankfurt: Prozessautomatisierung, API- und CRM-Anbindung, KI-Integration. 90 bis 135 € pro Stunde nach Absprache.",
     h1: "n8n Freelancer für Workflow-Automatisierung",
+    navLabel: "n8n-Automatisierung",
     lastmod: "2026-08-25",
     changefreq: "monthly",
     priority: "0.9",
@@ -455,6 +463,7 @@ export const ROUTES = [
     description:
       "KI- und Prozessautomatisierung für Unternehmen in Frankfurt und Rhein-Main: GPT/LLM-Lösungen, RAG, Voice-AI und DSGVO-konforme Guardrails. Remote deutschlandweit.",
     h1: "KI-Automatisierung für Unternehmen in Frankfurt",
+    navLabel: "KI-Automatisierung Frankfurt",
     lastmod: "2026-08-25",
     changefreq: "monthly",
     priority: "0.9",
@@ -470,6 +479,7 @@ export const ROUTES = [
     description:
       "HubSpot und CRM-Integrationen vom Freelancer: REST-APIs, Webhooks, OAuth2 und Datensynchronisation zwischen ATS, CRM und internen Tools. Aus Frankfurt, auch remote.",
     h1: "HubSpot Integration und CRM-Automatisierung",
+    navLabel: "HubSpot-Integration",
     lastmod: "2026-08-25",
     changefreq: "monthly",
     priority: "0.9",
@@ -485,6 +495,7 @@ export const ROUTES = [
     description:
       "Bewerbungseingang, Screening, Terminierung und Statuspflege automatisieren: n8n mit RecruitCRM, Personio, Greenhouse und HubSpot. 80 % kürzere Durchlaufzeiten.",
     h1: "Recruiting-Automatisierung mit n8n und ATS-Anbindung",
+    navLabel: "Recruiting-Automatisierung",
     lastmod: "2026-08-25",
     changefreq: "monthly",
     priority: "0.9",
@@ -500,6 +511,7 @@ export const ROUTES = [
     description:
       "Voice-AI-Agenten für Telefon und Support: Twilio, Speech-to-Text und Text-to-Speech, CRM-Anbindung und Transparenzhinweis nach EU AI Act Artikel 50.",
     h1: "Voice-AI-Agenten für Telefon und Support",
+    navLabel: "Voice-AI-Agenten",
     lastmod: "2026-08-25",
     changefreq: "monthly",
     priority: "0.8",
@@ -515,6 +527,7 @@ export const ROUTES = [
     description:
       "KI-Agenten mit klaren Werkzeugrechten, Freigabeschritten und Protokollierung. Mit ehrlicher Einordnung, wann ein normaler Workflow die bessere Lösung ist.",
     h1: "KI-Agenten entwickeln lassen",
+    navLabel: "KI-Agenten entwickeln",
     lastmod: "2026-08-25",
     changefreq: "monthly",
     priority: "0.8",
@@ -530,6 +543,7 @@ export const ROUTES = [
     description:
       "Wie n8n, Zapier und GPT die Recruiting-Prozesse der TOPEOPLE Group automatisiert haben: 80 % kürzere Durchlaufzeiten und rund 90 % Automatisierungsgrad.",
     h1: "Recruiting-Automatisierung mit n8n und GPT",
+    navLabel: "Recruiting-Automatisierung",
     ogType: "article",
     lastmod: "2026-08-25",
     changefreq: "monthly",
@@ -546,6 +560,7 @@ export const ROUTES = [
     description:
       "Microservices-Plattform mit Spring Boot und Angular, DevOps und KI-gestützte SEO-Workflows: 35 % mehr organischer Traffic für Phoenix Parkservice.",
     h1: "Microservices-Plattform und KI-SEO für Phoenix Parkservice",
+    navLabel: "Phoenix Parkservice",
     ogType: "article",
     lastmod: "2026-08-25",
     changefreq: "monthly",
@@ -645,6 +660,16 @@ export function getRouteMeta(path) {
  * shows up the first time anyone looks, rather than pointing at the wrong
  * language.
  */
+/* Optional short label for navigation and the footer sitemap.
+ *
+ * The footer used route.h1, which is a page headline and reads as one: at
+ * 390px the labels ran to 58 characters and every one of them wrapped to two
+ * lines, so the German footer stood 1245px tall on a phone. A headline answers
+ * "what is this page about"; a nav label answers "where does this go". They are
+ * different jobs and only sometimes the same words.
+ *
+ * Optional on purpose. A route without one falls back to its h1, which is right
+ * for the short ones. */
 export const SECTIONS = {
   de: { home: "/", services: "/leistungen", contact: "/kontakt", projects: "/projekte" },
   en: { home: "/en", services: "/en/services", contact: "/en/hire", projects: "/en/projects" },

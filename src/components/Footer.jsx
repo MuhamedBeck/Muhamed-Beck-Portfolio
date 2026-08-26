@@ -13,7 +13,7 @@ import ui from "../i18n/dict/ui";
 const columnFor = (locale, prefix) =>
   ROUTES.filter(
     (route) => route.locale === locale && route.path.startsWith(prefix)
-  ).map((route) => ({ to: route.path, label: route.h1 }));
+  ).map((route) => ({ to: route.path, label: route.navLabel ?? route.h1 }));
 
 const FooterColumn = ({ title, links }) =>
   links.length ? (
@@ -50,12 +50,22 @@ const Footer = () => {
       className="w-full border-t border-hairline bg-ink pt-16"
       style={{ paddingBottom: "max(2rem, env(safe-area-inset-bottom, 20px))" }}>
       <div className="mx-auto max-w-6xl px-4">
-        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-4">
+        {/* The contact block is not a link list and does not want a link
+            list's width. The address is 171px wide and the four equal columns
+            gave it 158 at 390px and 160 at 768px, so it broke across two lines
+            at every size below a wide desktop. Measured, not guessed: the
+            earlier reading of "two lines on desktop too" was the icon's own box
+            being counted as a second line.
+
+            So it spans the row on phones, and from md it gets a track sized to
+            what it actually holds while the three link columns share the rest.
+            Link labels wrap happily; an email address does not. */}
+        <div className="grid grid-cols-2 gap-x-8 gap-y-10 md:grid-cols-[1fr_1fr_1fr_minmax(11rem,auto)]">
           <FooterColumn title={t.services} links={services} />
           <FooterColumn title={t.guides} links={guides} />
           <FooterColumn title={t.projects} links={projects} />
 
-          <div>
+          <div className="col-span-2 md:col-span-1">
             <h2 className="label !text-paper-mute">{t.contact}</h2>
             <ul className="mt-4 space-y-2.5">
               <li>
