@@ -324,6 +324,22 @@ export const ROUTES = [
     priority: "0.8",
   },
   {
+    id: "ratgeber.voiceai",
+    path: "/ratgeber/ki-telefonagent-kosten-recht",
+    locale: "de",
+    group: "ratgeber.voiceai",
+    load: () => import("../components/pages/ratgeber/RatgeberRoute.jsx"),
+    props: { path: "/ratgeber/ki-telefonagent-kosten-recht" },
+    title: "KI-Telefonagent: Kosten, DSGVO und Strafrecht 2026",
+    description:
+      "Was ein KI-Telefonagent je Minute kostet, welche Anbieter wirklich in der EU verarbeiten und warum das Mitschneiden ohne Einwilligung in Deutschland strafbar ist.",
+    h1: "KI-Telefonagenten: Kosten und Rechtslage",
+    ogType: "article",
+    lastmod: "2026-08-26",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
     id: "leistung.n8n",
     path: "/leistungen/n8n-automatisierung",
     locale: "de",

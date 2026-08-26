@@ -416,6 +416,142 @@ export const RATGEBER = [
       { path: "/leistungen/voice-ai-agenten", label: "Voice-AI-Agenten und der Transparenzhinweis" },
     ],
   },
+  {
+    path: "/ratgeber/ki-telefonagent-kosten-recht",
+    kicker: "Voice-AI",
+    h1: "KI-Telefonagenten: Kosten und Rechtslage",
+    published: "2026-08-26",
+    modified: "2026-08-26",
+    lede: "Ein KI-Telefonagent kostet 2026 je nach Anbieter und Ausstattung zwischen 0,05 und 0,31 US-Dollar pro Gesprächsminute, jeweils Listenpreis und ohne Telefonie, am unteren Ende sogar ohne Sprachmodell, Spracherkennung und Sprachausgabe. Was über den Erfolg entscheidet, steht aber auf keiner Preisseite. Retell AI und Vapi verarbeiten nach ihrer eigenen Dokumentation nicht in der EU. Am Telefon liegt die Wortfehlerrate für Deutsch bei 12 bis 23 Prozent statt der rund 5 Prozent aus den Ranglisten. Und wer ein Gespräch ohne Einwilligung aufzeichnet, erfüllt in Deutschland einen Straftatbestand mit bis zu drei Jahren Freiheitsstrafe.",
+    table: {
+      caption: "Listenpreise und EU-Verarbeitung (Stand: August 2026, Preise in US-Dollar)",
+      columns: ["Je Gesprächsminute", "Verarbeitung in der EU"],
+      rows: [
+        {
+          label: "Vapi",
+          cells: [
+            "0,05, aber nur die Orchestrierung. Spracherkennung, Modell, Sprachausgabe und Telefonie kommen dazu",
+            "Nein. Die eigene DSGVO-Dokumentation nennt eine Übermittlung „primarily to the United States“",
+          ],
+        },
+        {
+          label: "Retell AI",
+          cells: [
+            "0,095 bis 0,31, je nach Modell und Zusatzfunktionen. Qualitätssicherung kostet 0,10 extra",
+            "Nein. Die eigene Compliance-Dokumentation sagt: „we do not currently operate services within the European Union“",
+          ],
+        },
+        {
+          label: "ElevenLabs Agents",
+          cells: [
+            "0,08, aber nur der ElevenLabs-Anteil: Sprachmodell und Telefonie kommen zu Anbieterkosten dazu. Auf 0,16 verdoppelt es sich erst, wenn das Limit für gleichzeitige Anrufe überschritten wird",
+            "Nur im Enterprise-Tarif, und garantiert nur die Speicherung. EU-Verarbeitung nur mit Zero Retention Mode über die API",
+          ],
+        },
+        {
+          label: "Bland AI",
+          cells: [
+            "0,14 ohne Grundgebühr, 0,12 ab 299 und 0,11 ab 499 US-Dollar im Monat. Telefonie ist laut eigener FAQ nicht enthalten",
+            "Öffentlich nicht dokumentiert. Vor Vertragsschluss schriftlich bestätigen lassen",
+          ],
+        },
+        {
+          label: "Twilio, nur die Telefonie",
+          cells: [
+            "0,0100 je eingehender Minute auf eine deutsche Ortsrufnummer, auf volle Minuten gerundet",
+            "Region wählbar. Die Telefonie ist ohnehin der kleinste Posten",
+          ],
+        },
+      ],
+    },
+    sections: [
+      {
+        h2: "Was kostet ein KI-Telefonagent pro Minute?",
+        body: [
+          "Zwischen 0,05 und 0,31 US-Dollar je Gesprächsminute, Stand August 2026, und die Spanne kommt nicht von der Qualität, sondern davon, was jeweils im Preis steckt. Kein Anbieter nennt einen Preis, der alles enthält. Bland AI kommt dem am nächsten: 0,14 US-Dollar je Minute ohne Grundgebühr, 0,12 US-Dollar je Minute bei 299 US-Dollar Plattformgebühr im Monat und 0,11 US-Dollar je Minute bei 499 US-Dollar im Monat. Enthalten sind Sprachmodell, Spracherkennung und Sprachausgabe, die Telefonie ausdrücklich nicht. Vapi nennt 0,05 US-Dollar je Minute, das ist allein die Orchestrierung des Gesprächs.",
+          "Retell AI schlüsselt am ehrlichsten auf und zeigt damit, woraus so eine Minute besteht: 0,055 US-Dollar Sprachinfrastruktur, 0,015 für die plattformeigene Stimme oder 0,040 für eine ElevenLabs-Stimme, dazu das Sprachmodell zwischen 0,003 für ein sehr kleines und 0,16 für ein großes. Wissensdatenbank, bessere Rauschunterdrückung und Sicherheitsfilter kosten je 0,005 mehr, das Entfernen personenbezogener Daten 0,01. Der teuerste Schalter steht weiter unten auf derselben Seite: Qualitätssicherung kostet nach den ersten 100 Minuten 0,10 US-Dollar je Minute und kann den Preis eines günstigen Aufbaus damit verdoppeln. Genau diese Auswertung braucht man, um einen produktiven Agenten zu überwachen.",
+          "Der Posten, den fast alle übersehen, ist die Gleichzeitigkeit. Vapi liefert zehn parallele Leitungen mit und berechnet jede weitere mit 10 US-Dollar im Monat, Retell gibt zwanzig frei und nimmt danach 8 US-Dollar je Platz und Monat. ElevenLabs verdoppelt auf 0,16 US-Dollar je Minute, sobald das Limit für gleichzeitige Anrufe überschritten wird, also genau dann, wenn viele gleichzeitig anrufen. Das reine Minutenkontingent zu überziehen kostet dagegen weiterhin 0,08. Das ist ein Fixposten, und er richtet sich nach der Anrufspitze, nicht nach dem Durchschnitt.",
+          "Für ein Gespräch von vier Minuten landet man je nach Aufbau bei grob 0,40 bis 0,60 US-Dollar. Diese Zahl ist bewusst ungenau, denn sie enthält weder die Miete der Rufnummer noch die Gleichzeitigkeit noch die Zusatzfunktionen, und Twilio rundet jede angefangene Minute auf. Die Telefonie selbst ist mit 0,04 US-Dollar für vier eingehende Minuten der kleinste Posten. Wer über Kosten spricht, spricht also über das Sprachmodell, die Zusatzfunktionen und die Gleichzeitigkeit, nicht über die Telefonleitung.",
+        ],
+      },
+      {
+        h2: "Warum wirkt ein KI-Agent langsamer als ein Mensch?",
+        body: [
+          "Weil er tatsächlich langsamer ist, und zwar messbar um das Sechs- bis Neunfache: Ein Mensch antwortet im Gespräch nach rund 200 Millisekunden, ein KI-Telefonagent nach 1.300 bis 1.700. Menschen antworten einander im Gespräch nach durchschnittlich 208 Millisekunden, gemessen an zehn Sprachen auf fünf Kontinenten mit je rund 350 Frage-Antwort-Paaren (Stivers et al., PNAS 2009). Für das Deutsche gibt es eine eigene Messung: In den Gesprächen von 14 nicht-autistischen Muttersprachlern liegt der Median der Sprecherwechsel bei 175 Millisekunden, der häufigste Wert bei 200 (Wehrle et al., PLOS One 2023, 4.744 ausgewertete Wechsel aus einer Stichprobe von 28 Sprechern).",
+          "Der offene Feldbenchmark der Openbenchmarks Labs vom 1. August 2026 hat 432 echte Telefonanrufe zu je vier Gesprächswechseln aufgezeichnet und die Antwortzeiten offline aus den Aufnahmen ausgewertet. Rohdaten und Messskripte sind öffentlich, begutachtet ist die Erhebung nicht. Die Mediane: 1.296 Millisekunden bei Telnyx, 1.424 bei ElevenLabs, 1.520 bei Bland AI, 1.558 bei Vapi und 1.740 bei Retell AI. Im 95. Perzentil, also am schlechten Tag, liegen die Werte zwischen 1.768 und 2.259 Millisekunden. Das sind keine Laborwerte, sondern echte Anrufe, und sie liegen um ein Vielfaches über dem, was ein Anrufer aus menschlichen Gesprächen gewohnt ist.",
+          "Erklären lässt sich das mit einem zweiten Befund der Turn-Taking-Forschung: Die Planung einer Äußerung dauert über 600 Millisekunden, die Pause zwischen den Beiträgen aber nur rund 200 (Levinson und Torreira, Frontiers in Psychology 2015). Sprecher planen also bereits, während der andere noch spricht. Ein Agent, der erst zu arbeiten beginnt, wenn der Anrufer fertig ist, kann diesen Rhythmus strukturell nicht erreichen. Der größte Einzelposten in der Kette ist deshalb meist nicht das Sprachmodell, sondern die Entscheidung, ob der Anrufer wirklich zu Ende gesprochen hat.",
+          "Für die Praxis folgen daraus zwei Dinge. Latenz ist kein Detail, das man später optimiert, sondern das Merkmal, an dem ein Anrufer die Maschine erkennt. Und eine kurze Bestätigung zu Beginn der Antwort hilft mehr als jede Millisekunde Modelloptimierung, weil sie die Wartezeit füllt, statt sie zu verkürzen.",
+        ],
+      },
+      {
+        h2: "Funktioniert die Spracherkennung auf Deutsch zuverlässig?",
+        body: [
+          "Auf sauberem Audio ja, am Telefon deutlich schlechter, und der Unterschied ist größer als die meisten Angebote vermuten lassen. Auf gelesener Sprache aus den öffentlichen Testdatensätzen FLEURS und CoVoST-2 bei 16 Kilohertz erreicht Whisper large-v3 für Deutsch rund 5 Prozent Wortfehlerrate, Microsoft Phi-4 Multimodal etwas weniger (Open ASR Leaderboard, Stand August 2026). Das sind vorgelesene Sätze unter guten, aber nicht studioreinen Bedingungen. Deepgrams eigener deutscher Benchmark über 26 Stunden echtes Audio zeigt für dasselbe Whisper-Modell einen Sprung von 8,4 Prozent auf kuratiertem Material auf 19,9 Prozent auf Produktionsaudio, also mehr als eine Verdopplung.",
+          "Der technische Grund liegt in der Leitung. Twilio Media Streams, die meistgenutzte Telefonie-Anbindung für Sprachagenten, liefert und erwartet ausschließlich 8 Kilohertz im mu-law-Format. Das klassische Telefonband nach G.711 überträgt 300 bis 3.400 Hertz. Alles darüber, also genau der Bereich, in dem Zischlaute und die Unterschiede zwischen ähnlich klingenden Konsonanten liegen, kommt beim Modell nie an. HD-Telefonie ist in deutschen Mobilfunknetzen seit über einem Jahrzehnt ausgerollt, nützt an dieser Stelle aber nichts, wenn die Anbindung selbst auf Schmalband festgelegt ist.",
+          "Im Streaming auf deutschem Produktionsaudio meldet Deepgram im eigenen Benchmark 12,0 Prozent Wortfehlerrate für das hauseigene Modell Nova-3, 14,5 für Soniox, 20,4 für AssemblyAI und 22,8 für ElevenLabs. Die Rangfolge kommt vom Erstplatzierten selbst und ist nicht unabhängig geprüft; belastbar ist an ihr vor allem das, was allen Werten gemeinsam ist, nämlich der Abstand zu den Ranglistenzahlen. Zum Vergleich: Drei menschliche Transkribierende erreichten auf deutschen Oral-History-Interviews unter guten akustischen Bedingungen 8,7 Prozent (Gref et al., 2022). Direkt vergleichbar sind die Zahlen nicht, sie zeigen nur die Größenordnung.",
+          "Dialekt kostet zusätzlich. Auf einem Datensatz mit fränkischer, bayerischer und schwäbischer Sprache fällt Whisper large-v3 von 9 auf 31 Wortfehler je hundert Wörter. Für Schweizerdeutsch liegen die besten feinjustierten Modelle 2026 bei rund 25 Prozent. Wer Anrufer aus dem ganzen deutschsprachigen Raum erwartet, sollte das einplanen.",
+          "Praktisch heißt das: Ein Agent, der ein Anliegen sortiert und weiterleitet, kommt mit diesen Fehlerraten gut zurecht, weil ein falsch verstandenes Wort die Absicht selten verändert. Ein Agent, der einen Nachnamen, eine Straße oder eine Bestellnummer aufnehmen soll, kommt nicht damit zurecht. Für solche Felder braucht es eine Rückbestätigung, ein Buchstabieralphabet oder die Eingabe über die Tastatur, und zwar von Anfang an, nicht als Nachbesserung.",
+        ],
+      },
+      {
+        h2: "Verarbeiten die Anbieter von KI-Telefonagenten in der EU?",
+        body: [
+          "Retell AI und Vapi nicht, ElevenLabs nur im Enterprise-Tarif und auch dort nur eingeschränkt. Das steht jeweils in der eigenen Dokumentation der Anbieter. Retell AI schreibt in den eigenen Compliance-Unterlagen wörtlich: „we do not currently operate services within the European Union.“ Vapis eigene DSGVO-Dokumentation bestätigt eine Übermittlung personenbezogener Daten aus der EU heraus, „primarily to the United States“, abgesichert über Standardvertragsklauseln.",
+          "ElevenLabs bietet eine EU-Region an, aber nur im Enterprise-Tarif, und die Dokumentation grenzt sie ausdrücklich ein: Garantiert ist die Speicherung in der Region, nicht die Verarbeitung. Auf die EU beschränken lässt sich die Verarbeitung nur unter zwei Bedingungen zugleich, nämlich im Zero Retention Mode und über die Programmierschnittstelle. Wer die Oberfläche benutzt, hat sie nicht.",
+          "Das ist keine juristische Feinheit, sondern der Punkt, an dem die meisten Angebote auseinanderfallen. Ein Telefonat mit einem Kunden oder Bewerber enthält regelmäßig personenbezogene Daten. Wer solche Gespräche über einen Anbieter führt, der nach eigener Auskunft nicht in der EU verarbeitet, braucht dafür eine tragfähige Grundlage und muss sie dokumentieren. Das Wort „DSGVO-konform“ auf einer Anbieterseite ist keine.",
+          "Praktisch bleiben drei Wege: einen Anbieter mit tatsächlicher EU-Verarbeitung wählen und sich das schriftlich geben lassen, die Aufbewahrungsdauer auf das Minimum ziehen, wo der Anbieter das erlaubt, oder die Bausteine selbst zusammensetzen und die Verarbeitung dorthin legen, wo man sie haben will. Der dritte Weg kostet Aufwand, ist aber der einzige, bei dem die Antwort nicht vom gebuchten Tarif abhängt.",
+        ],
+      },
+      {
+        h2: "Darf man ein Kundengespräch mit einem KI-Agenten aufzeichnen?",
+        body: [
+          "Nur mit Einwilligung, und der Verstoß ist keine Ordnungswidrigkeit, sondern eine Straftat. § 201 Absatz 1 des Strafgesetzbuchs stellt unter Strafe, wer unbefugt das nichtöffentlich gesprochene Wort eines anderen auf einen Tonträger aufnimmt. Der Strafrahmen liegt bei Freiheitsstrafe bis zu drei Jahren oder Geldstrafe. Das gilt auch für den Gesprächspartner selbst: Wer heimlich mitschneidet, macht sich strafbar, obwohl er am Gespräch beteiligt war.",
+          "Zwei Details, die in der Praxis zählen. Die Tat wird nach § 205 Absatz 1 nur auf Antrag verfolgt, und die Antragsfrist beträgt nach § 77b drei Monate ab Kenntnis von Tat und Täter. Ein verärgerter Anrufer hat also ein Quartal Zeit und muss keine Behörde von einem öffentlichen Interesse überzeugen. Auch der Versuch ist nach § 201 Absatz 4 strafbar.",
+          "Für KI-Systeme verläuft die Grenze an einer technischen Frage. Eine reine Live-Transkription ohne Speicherung des Tons erfüllt den Tatbestand nach der herrschenden Literaturmeinung nicht, weil keine Aufnahme auf einem Tonträger entsteht. Puffert das System das Audio über eine flüchtige Zwischenspeicherung im Arbeitsspeicher hinaus, ist der Tatbestand dagegen regelmäßig eröffnet. Höchstrichterlich geklärt ist das für Streaming-Spracherkennung bislang nicht. Ob ein Agent transkribiert oder aufzeichnet, ist damit keine Frage der Formulierung im Angebot, sondern eine Frage an die Architektur, und sie gehört vor dem Start beantwortet.",
+        ],
+      },
+      {
+        h2: "Reicht ein Hinweis zu Gesprächsbeginn, oder braucht es eine Einwilligung?",
+        body: [
+          "Strafrechtlich womöglich, datenschutzrechtlich nicht. An dieser Stelle laufen die beiden Rechtsgebiete auseinander, und die meisten Umsetzungen bedenken nur eines davon. Für § 201 StGB wird eine stillschweigende Einwilligung für möglich gehalten: Wer vorher klar informiert wird und das Gespräch trotzdem fortsetzt, willigt konkludent ein.",
+          "Die Datenschutzkonferenz der deutschen Aufsichtsbehörden hat in ihrem Beschluss vom 23. März 2018 eine andere Messlatte gesetzt: Die Aufzeichnung von Telefongesprächen ist datenschutzrechtlich in aller Regel nur mit Einwilligung auch des externen Gesprächspartners zulässig, und diese Einwilligung muss aktiv erklärt werden, etwa durch ein gesprochenes Ja oder einen Tastendruck. Weiterreden genügt hier nicht. Nachweisen muss der Verantwortliche sie nach Artikel 7 Absatz 1 DSGVO ohnehin.",
+          "Praktisch bedeutet das eine Ansage, die drei Dinge leistet: Sie sagt, dass ein KI-System spricht, sie sagt, was mit dem Gespräch geschieht, und sie holt eine aktive Bestätigung ein, sofern aufgezeichnet werden soll. Wer nur aufzeichnen will, um später etwas nachlesen zu können, sollte zuerst prüfen, ob eine Zusammenfassung ohne Tonaufnahme denselben Zweck erfüllt. Meistens tut sie das, und die ganze Frage stellt sich dann nicht mehr.",
+        ],
+      },
+      {
+        h2: "Muss der Anrufer erfahren, dass er mit einer KI spricht?",
+        body: [
+          "Ja, und seit dem 2. August 2026 ist das nicht mehr nur eine Frage des Anstands. Artikel 50 der KI-Verordnung verlangt, dass für die betroffene Person erkennbar ist, dass sie mit einem KI-System interagiert. Diese Frist wurde von der Digital-Omnibus-Verordnung ausdrücklich nicht verschoben, anders als die Pflichten für Hochrisiko-Systeme. Der Bußgeldrahmen liegt nach Artikel 99 Absatz 4 bei bis zu 15 Millionen Euro oder 3 Prozent des weltweiten Jahresumsatzes, je nachdem, welcher Betrag höher ist. Für kleine und mittlere Unternehmen einschließlich Start-ups dreht Artikel 99 Absatz 6 das um: Dort gilt der jeweils niedrigere Betrag.",
+          "Normadressat des Artikel 50 Absatz 1 ist der Anbieter des Systems, nicht der Betreiber: Er muss den Agenten so bauen, dass die KI-Natur erkennbar ist. Wer aus zugekauften Bausteinen einen eigenen Agenten zusammensetzt und ihn unter eigenem Namen in Betrieb nimmt, ist nach der Begriffsbestimmung in Artikel 3 Nummer 3 selbst Anbieter und schuldet die Pflicht unmittelbar. Wer dagegen ein fertiges Produkt einkauft, sollte sich die Erfüllung vertraglich zusichern lassen und im eigenen Gesprächsleitfaden verankern, dass der Hinweis tatsächlich fällt.",
+          "Der Aufwand ist ein Satz vor der ersten inhaltlichen Frage, zum Beispiel: „Sie sprechen mit einem KI-Assistenten. Auf Wunsch verbinde ich Sie mit einem Mitarbeiter.“ Dieser Satz erledigt Artikel 50 Absatz 1 und zugleich die häufigste Beschwerde, nämlich das Gefühl, hereingelegt worden zu sein. Er erledigt nicht Artikel 50 Absatz 2: Wer als Anbieter gilt, muss synthetisch erzeugtes Audio zusätzlich maschinenlesbar kennzeichnen.",
+          "Dieser Text ordnet die Rechtslage zum Stand August 2026 ein und ersetzt keine Rechtsberatung. Für die Beurteilung eines konkreten Aufbaus ist anwaltlicher Rat einzuholen.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Was kostet ein KI-Telefonagent im Monat?",
+        a: "Das hängt an zwei Größen: Gesprächsminuten und gleichzeitigen Anrufen. Bei 500 Minuten im Monat und 0,14 US-Dollar je Minute für den KI-Teil sind das rund 70 US-Dollar Nutzung, dazu Telefonie und Rufnummer. Die günstigeren Minutenpreise von 0,12 und 0,11 setzen 299 beziehungsweise 499 US-Dollar Plattformgebühr im Monat voraus und lohnen sich erst bei deutlich höherem Volumen. Die Gleichzeitigkeit ist ein Fixposten: bei Vapi 10 US-Dollar je zusätzlicher Leitung und Monat, bei Retell 8 US-Dollar je Platz über den ersten zwanzig. Die eingehende Minute selbst kostet bei Twilio auf eine deutsche Ortsrufnummer 0,0100 US-Dollar und fällt kaum ins Gewicht.",
+      },
+      {
+        q: "Versteht ein KI-Agent deutsche Nachnamen und Adressen am Telefon?",
+        a: "Nicht zuverlässig genug, um sie ungeprüft zu übernehmen. Auf deutschem Produktionsaudio liegen die im Streaming gemessenen Wortfehlerraten laut Deepgrams eigenem Benchmark zwischen 12 und 23 Prozent, bei Dialekt deutlich darüber. Für ein Anliegen, das nur sortiert und weitergeleitet wird, reicht das. Für Namen, Adressen oder Bestellnummern braucht es eine Rückbestätigung, ein Buchstabieralphabet oder die Eingabe über die Telefontastatur.",
+      },
+      {
+        q: "Ist ein KI-Telefonagent DSGVO-konform?",
+        a: "Das entscheidet der Anbieter, nicht die Technik. Retell AI erklärt in der eigenen Dokumentation, keine Dienste in der EU zu betreiben; Vapi nennt eine Übermittlung „primarily to the United States“. ElevenLabs bietet eine EU-Region nur im Enterprise-Tarif und garantiert dort nur die Speicherung, nicht die Verarbeitung. Wer EU-Verarbeitung braucht, muss sie sich schriftlich bestätigen lassen oder die Bausteine selbst zusammenstellen.",
+      },
+      {
+        q: "Macht man sich strafbar, wenn man Kundengespräche mitschneidet?",
+        a: "Ohne Einwilligung ja. § 201 Absatz 1 StGB stellt die Aufnahme des nichtöffentlich gesprochenen Wortes unter Strafe, mit Freiheitsstrafe bis zu drei Jahren oder Geldstrafe. Verfolgt wird nur auf Antrag nach § 205 Absatz 1, die Frist beträgt drei Monate ab Kenntnis nach § 77b. Eine reine Live-Transkription ohne Tonspeicherung erfüllt den Tatbestand nach der herrschenden Literaturmeinung nicht, eine Pufferung über flüchtigen Arbeitsspeicher hinaus dagegen regelmäßig schon. Höchstrichterlich entschieden ist das für Streaming-Spracherkennung noch nicht.",
+      },
+    ],
+    related: [
+      { path: "/leistungen/voice-ai-agenten", label: "Voice-AI-Agenten für Telefon und Support" },
+      { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was ein n8n Freelancer kostet" },
+    ],
+  },
 ];
 
 export function getRatgeber(path) {
