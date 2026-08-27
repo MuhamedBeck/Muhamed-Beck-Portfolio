@@ -20,7 +20,7 @@ export const PERSON = {
 };
 
 export const CONTACT = {
-  email: "m.nur.beck@hotmail.de",
+  email: "muhamed@muhamedbeck.com",
   // E.164 for tel: hrefs and schema; the display form is separate so the
   // markup and the structured data cannot drift apart.
   phone: "+4917666008485",

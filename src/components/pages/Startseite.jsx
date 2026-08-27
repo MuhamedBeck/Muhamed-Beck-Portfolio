@@ -65,23 +65,27 @@ export const Startseite = () => {
             headline={t.services.headline}
             intro={t.services.intro}
           />
-          <ul className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2">
+          <ul className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2 md:gap-y-12">
             {LEISTUNGEN.map((leistung, index) => (
               <li
                 key={leistung.path}
                 className="stagger border-t border-hairline pt-6"
                 style={{ "--fade-delay": `${(index % 2) * 80}ms` }}>
                 <Link to={leistung.path} className="group block">
+                  {/* Der Pfeil sitzt an der Ueberschrift statt in einer eigenen
+                      Zeile darunter. Vorher stand die Leistung dreimal in
+                      derselben Karte: als Ueberschrift, im Teaser und noch
+                      einmal als Versalien-Zeile mit dem Badge — obwohl die
+                      Ueberschrift bereits der Link auf dieselbe Seite ist.
+                      Mobil kostete diese dritte Zeile rund 58 px je Karte,
+                      bei sieben Karten also einen halben Bildschirm. */}
                   <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
                     {leistung.h1}
+                    <LinkArrow className="ms-2 align-[0.08em] text-[0.6em] text-paper-mute" />
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-paper-soft">
                     {leistung.teaser}
                   </p>
-                  <span className="link-arrow mt-3">
-                    {leistung.badge}
-                    <LinkArrow />
-                  </span>
                 </Link>
               </li>
             ))}
@@ -95,7 +99,7 @@ export const Startseite = () => {
 
         <Section id="projekte">
           <SectionHeader label={t.cases.label} headline={t.cases.headline} />
-          <ul className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2">
+          <ul className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2 md:gap-y-12">
             {PROJEKTE.filter((projekt) => projekt.kind === "mandat").map((projekt, index) => (
               <li
                 key={projekt.path}

@@ -165,7 +165,7 @@ const UeberMich = () => (
           wir im Gespräch.
         </p>
         <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
-          Projekt anfragen
+          Kostenloses Erstgespräch
         </Link>
       </div>
     </Section>

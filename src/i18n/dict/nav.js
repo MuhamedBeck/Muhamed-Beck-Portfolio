@@ -13,7 +13,7 @@ const de = {
     { to: "/projekte", label: "Projekte" },
     { to: "/ueber-mich", label: "Über mich" },
   ],
-  cta: { to: "/kontakt", label: "Projekt anfragen" },
+  cta: { to: "/kontakt", label: "Erstgespräch" },
   footer: {
     services: "Leistungen",
     guides: "Ratgeber",

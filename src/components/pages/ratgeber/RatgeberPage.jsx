@@ -145,7 +145,7 @@ export const RatgeberPage = ({ data }) => (
           eine Einschätzung, ob und wie sich das automatisieren lässt.
         </p>
         <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
-          Projekt anfragen
+          Kostenloses Erstgespräch
         </Link>
       </div>
     </Section>

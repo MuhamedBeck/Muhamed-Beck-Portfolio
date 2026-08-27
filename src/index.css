@@ -35,8 +35,17 @@ html {
      bg-white/10, which invert to invisible on a light ground. */
   --color-surface: rgb(255 255 255 / 0.05);
   --color-surface-strong: rgb(255 255 255 / 0.1);
-  --color-scrollbar: rgb(255 255 255 / 0.16);
-  --color-scrollbar-hover: rgb(255 255 255 / 0.22);
+  /* Der Akzentton, halbdurchsichtig. Die Leiste trug urspruenglich einen
+     Verlauf von Blau ueber Cyan nach Indigo bei 80 bis 90 Prozent Deckkraft
+     und wurde deshalb auf Weiss umgestellt: drei Farben in einem 10-px-Balken
+     ziehen den Blick an den Rand statt auf den Inhalt. Ein einzelner Ton in
+     der Hausfarbe loest das, ohne die Seite wieder bunt zu machen.
+     Die Deckkraft ist nicht frei gewaehlt: gegen den jeweiligen Grund
+     gemessen ergibt 0.65 dunkel 3,81:1 und 0.7 hell 3,49:1. Bei 0.5 hell
+     waren es nur 2,34:1, also unter den 3:1, die WCAG 1.4.11 fuer
+     Bedienelemente verlangt. */
+  --color-scrollbar: rgb(96 165 250 / 0.65);
+  --color-scrollbar-hover: rgb(96 165 250 / 0.9);
 
   /* The light palette lives here as plain values, assigned twice below. Two
      assignment lists are unavoidable in CSS, but keeping the values in one
@@ -59,8 +68,8 @@ html {
   --light-hairline-strong: rgb(0 0 0 / 0.22);
   --light-surface: rgb(0 0 0 / 0.04);
   --light-surface-strong: rgb(0 0 0 / 0.08);
-  --light-scrollbar: rgb(0 0 0 / 0.2);
-  --light-scrollbar-hover: rgb(0 0 0 / 0.32);
+  --light-scrollbar: rgb(29 78 216 / 0.7);
+  --light-scrollbar-hover: rgb(29 78 216 / 0.95);
 
   /* Two faces, two jobs. Space Grotesk is a display face and was carrying 100%
      of the elements on the site, long-form Ratgeber articles included. It now
@@ -904,9 +913,10 @@ dd {
   transition: none;
 }
 
-/* Scrollbar. Deliberately quiet: a bright blue-to-cyan gradient bar down the
-   edge of every page competes with the content for attention, which is the
-   opposite of what the rest of this design is doing. */
+/* Scrollbar in der Akzentfarbe, siehe die Begruendung an den Tokens oben.
+   Auf dem Handy greift das nur teilweise: iOS Safari blendet eine eigene
+   Overlay-Leiste ein, die sich nicht gestalten laesst, Android Chrome folgt
+   scrollbar-color. Am Rechner wirkt es in jedem Fall. */
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;

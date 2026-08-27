@@ -15,7 +15,7 @@ export const CASE_STUDY_COPY = {
     ctaHeadline: "Ähnliche Prozesse in Ihrem Unternehmen?",
     ctaIntro:
       "Schreiben Sie mir, welcher Ablauf bei Ihnen am meisten Zeit kostet. Den Rest klären wir im Gespräch.",
-    ctaButton: "Projekt anfragen",
+    ctaButton: "Kostenloses Erstgespräch",
     ctaHref: "/kontakt",
   },
   en: {

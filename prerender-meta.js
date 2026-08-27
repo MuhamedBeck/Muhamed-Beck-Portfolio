@@ -21,7 +21,7 @@ import {
 import { localeConfig } from "./src/i18n/locales.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
 import { RATGEBER } from "./src/content/ratgeber.de.js";
-import { RATE_MAX, RATE_MIN, RATE_TEXT } from "./src/content/site.js";
+import { CONTACT, RATE_MAX, RATE_MIN, RATE_TEXT } from "./src/content/site.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
 
 // Route components are loaded through dynamic import() so one registry entry can
@@ -32,7 +32,46 @@ await prepare();
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const distDir = join(__dirname, "dist");
-const template = readFileSync(join(distDir, "index.html"), "utf8");
+const rohesTemplate = readFileSync(join(distDir, "index.html"), "utf8");
+
+/**
+ * Kontaktdaten aus site.js in das statische Template schreiben.
+ *
+ * index.html ist eine reine HTML-Datei und kann nichts importieren, also trug
+ * sie die Adresse dreimal als Literal: zweimal im JSON-LD und einmal im
+ * Rückfall für Crawler ohne JavaScript. site.js war damit die einzige Wahrheit
+ * für alles ausser genau den Stellen, die Suchmaschinen und KI-Assistenten
+ * lesen — ein Wechsel der Adresse hätte dort still die alte stehen lassen.
+ *
+ * Ersetzt wird über das Muster, nicht über den alten Wert: sonst stünde die
+ * abzulösende Adresse hier ein viertes Mal. Die Zahlen sind Pflicht, wie jede
+ * andere Ersetzung in dieser Datei — verschwindet eine der Stellen aus
+ * index.html, bricht der Build statt still das Falsche auszuliefern.
+ */
+const kontaktdatenEinsetzen = (html) => {
+  let jsonLd = 0;
+  let mailto = 0;
+
+  const mitEmail = html
+    .replace(/("email":\s*")[^"]*(")/g, (_, vor, nach) => {
+      jsonLd += 1;
+      return vor + CONTACT.email + nach;
+    })
+    .replace(/<a href="mailto:[^"]*">[^<]*<\/a>/g, () => {
+      mailto += 1;
+      return `<a href="mailto:${CONTACT.email}">${CONTACT.email}</a>`;
+    });
+
+  if (jsonLd !== 2 || mailto !== 1) {
+    throw new Error(
+      `prerender: erwartet 2 JSON-LD-Adressen und 1 mailto-Link in index.html, ` +
+        `gefunden ${jsonLd} und ${mailto}. Wurde die Vorlage umgebaut?`
+    );
+  }
+  return mitEmail;
+};
+
+const template = kontaktdatenEinsetzen(rohesTemplate);
 
 // The hero image is referenced only from inside the JS bundle, so the browser
 // cannot discover it until React has rendered. Preloading the hashed file makes

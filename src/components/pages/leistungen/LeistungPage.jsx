@@ -174,7 +174,7 @@ export const LeistungPage = ({ data }) => (
             "Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden eine echte Einschätzung, ob und wie sich das automatisieren lässt."}
         </p>
         <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
-          {data.cta?.button ?? "Projekt anfragen"}
+          {data.cta?.button ?? "Kostenloses Erstgespräch"}
         </Link>
         <p className="mt-5 text-sm text-paper-mute">
           Kostenloses Erstgespräch · Frankfurt und remote in Deutschland, Österreich und

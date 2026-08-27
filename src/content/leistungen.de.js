@@ -263,7 +263,7 @@ export const LEISTUNGEN = [
       headline: "Wo soll KI bei Ihnen wirklich Arbeit abnehmen?",
       intro:
         "Schreiben Sie mir den Anwendungsfall, nicht die Technik. Wenn KI sich dafür nicht rechnet, sage ich das, bevor wir anfangen.",
-      button: "Projekt anfragen",
+      button: "Kostenloses Erstgespräch",
     },
     weiterlesen: [
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },

@@ -14,7 +14,7 @@ const de = {
     label: "Leistungen",
     headline: "Was ich für Sie automatisiere",
     intro:
-      "Von einzelnen Workflows bis zur durchgängigen Prozesskette. Jede Leistung ist eine eigene Seite mit Ablauf, Beispielen und Preisrahmen.",
+      "Von einzelnen Workflows bis zur durchgängigen Prozesskette.",
     all: "Alle Leistungen ansehen",
   },
   cases: {
@@ -83,7 +83,7 @@ const de = {
   cta: {
     headline: "Welcher Prozess kostet Sie am meisten Zeit?",
     text: "Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden eine echte Einschätzung, keine Standardantwort.",
-    button: "Projekt anfragen",
+    button: "Kostenloses Erstgespräch",
   },
 };
 

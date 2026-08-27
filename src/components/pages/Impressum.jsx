@@ -43,6 +43,22 @@ const SECTIONS = [
     ),
   },
   {
+    title: "Umsatzsteuer",
+    body: (
+      <>
+        <p>
+          Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:
+          <br />
+          DE354877279
+        </p>
+        <p className="mt-4">
+          Als Kleinunternehmer im Sinne von § 19 Abs. 1 UStG wird keine
+          Umsatzsteuer berechnet. Alle genannten Preise sind Endpreise.
+        </p>
+      </>
+    ),
+  },
+  {
     title: "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
     body: <p>{ADDRESS}</p>,
   },

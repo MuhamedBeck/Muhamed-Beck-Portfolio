@@ -98,8 +98,8 @@ const Kontakt = () => {
   return (
     <PageShell
       label="Kontakt"
-      headline="Projekt anfragen"
-      intro="Beschreiben Sie kurz, worum es geht. Sie bekommen eine echte Einschätzung, ob und wie sich das automatisieren lässt, keine Standardantwort und kein Verkaufsgespräch.">
+      headline="Kostenloses Erstgespräch"
+      intro="30 Minuten, unverbindlich und ohne Kosten. Beschreiben Sie kurz, worum es geht — Sie bekommen eine echte Einschätzung, ob und wie sich das automatisieren lässt, keine Standardantwort und kein Verkaufsgespräch.">
       <Section className="!pt-0">
         <div className="grid gap-x-14 gap-y-16 md:grid-cols-[1.25fr_1fr]">
           <div>

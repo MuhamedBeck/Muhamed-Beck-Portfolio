@@ -67,7 +67,7 @@ export const ROUTES = [
     description:
       "n8n Experte aus Frankfurt: Workflow-Automatisierung, KI-Agenten und CRM-Anbindung für Unternehmen. 90 bis 135 € pro Stunde nach Absprache. Antwort in 24 Stunden.",
     h1: "Prozesse, die ohne Sie laufen",
-    lastmod: "2026-08-26",
+    lastmod: "2026-08-27",
     changefreq: "weekly",
     priority: "1.0",
   },
@@ -81,7 +81,7 @@ export const ROUTES = [
     description:
       "Automatisierung mit n8n, KI-Agenten, Voice-AI, HubSpot- und ATS-Anbindung sowie Recruiting-Automatisierung. Alle Leistungen mit Ablauf und Preisrahmen.",
     h1: "KI- und Prozessautomatisierung",
-    lastmod: "2026-08-26",
+    lastmod: "2026-08-27",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -110,7 +110,7 @@ export const ROUTES = [
       "AI Automation Manager und Full-Stack-Entwickler aus Frankfurt am Main: Werdegang, Stationen bei TOPEOPLE, Phoenix Parkservice und INFOMOTION, eingesetzter Stack.",
     h1: "Muhamed Nur Beck",
     ogType: "profile",
-    lastmod: "2026-08-26",
+    lastmod: "2026-08-27",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -138,11 +138,11 @@ export const ROUTES = [
     locale: "de",
     group: "contact",
     load: () => import("../components/pages/Kontakt.jsx"),
-    title: "Projekt anfragen | Muhamed Beck",
+    title: "Kostenloses Erstgespräch | Muhamed Beck",
     description:
-      "Automatisierungsprojekt anfragen: E-Mail, Telefon oder LinkedIn. Antwort innerhalb von 24 Stunden, kostenloses Erstgespräch, 90 bis 135 € pro Stunde nach Absprache.",
-    h1: "Projekt anfragen",
-    lastmod: "2026-08-25",
+      "Kostenloses Erstgespräch zu Automatisierung mit n8n und KI: 30 Minuten, unverbindlich. Antwort innerhalb von 24 Stunden, 90 bis 135 € pro Stunde nach Absprache.",
+    h1: "Kostenloses Erstgespräch",
+    lastmod: "2026-08-27",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -157,7 +157,7 @@ export const ROUTES = [
     description:
       "AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG solutions, React, Angular, Spring Boot. Available for freelance work.",
     h1: "Processes that run without you",
-    lastmod: "2026-08-26",
+    lastmod: "2026-08-27",
     changefreq: "weekly",
     priority: "1.0",
   },
@@ -211,7 +211,7 @@ export const ROUTES = [
     description:
       "مدير أتمتة الذكاء الاصطناعي ومطوّر برمجيات متكامل في فرانكفورت. أتمتة العمليات باستخدام n8n، وربط أنظمة CRM وATS، ووكلاء ذكاء اصطناعي. الرد خلال 24 ساعة.",
     h1: "عمليات تعمل من دونك",
-    lastmod: "2026-08-26",
+    lastmod: "2026-08-27",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -628,7 +628,7 @@ export const ROUTES = [
     description:
       "Impressum von Muhamed Nur Beck, AI Automation & Full-Stack Developer aus Frankfurt am Main. Angaben gemäß § 5 DDG.",
     h1: "Impressum",
-    lastmod: "2026-08-25",
+    lastmod: "2026-08-27",
     changefreq: "yearly",
     priority: "0.3",
   },
@@ -645,7 +645,7 @@ export const ROUTES = [
     description:
       "Datenschutzerklärung für muhamedbeck.com: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.",
     h1: "Datenschutzerklärung",
-    lastmod: "2026-08-25",
+    lastmod: "2026-08-27",
     changefreq: "yearly",
     priority: "0.3",
   },

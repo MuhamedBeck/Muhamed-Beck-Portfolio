@@ -62,6 +62,11 @@ export const TechMarquee = () => {
         {items.map(({ Icon, name, color }, i) => (
           <div
             key={i}
+            /* Die zweite Haelfte ist die Kopie, die die Schleife nahtlos macht.
+               Sichtbar gehoert sie dazu, vorgelesen nicht: ohne diese Zeile
+               liest ein Screenreader alle sechzehn Namen zweimal hintereinander,
+               und im vorgerenderten HTML stand die ganze Liste doppelt. */
+            aria-hidden={i >= items.length / 2 ? "true" : undefined}
             className="flex flex-col items-center gap-2 px-8 group cursor-default">
             <Icon
               /* opacity-50 crushed saturated brand colours into the near-black

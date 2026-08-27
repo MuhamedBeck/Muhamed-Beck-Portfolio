@@ -13,7 +13,7 @@ const de = {
   backToHome: "Zurück zur Startseite",
   openMenu: "Menü öffnen",
   closeMenu: "Menü schließen",
-  requestProject: "Projekt anfragen",
+  requestProject: "Kostenloses Erstgespräch",
   replyPromise: "Antwort innerhalb von 24 Stunden · Frankfurt und remote",
   techStack: "Tech-Stack und Werkzeuge",
   linkedinAria: "LinkedIn-Profil",

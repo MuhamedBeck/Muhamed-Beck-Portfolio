@@ -49,6 +49,18 @@ const SECTIONS = [
           Merkmal wird beim Schließen des Browser-Tabs automatisch gelöscht (§ 25 Abs. 2
           Nr. 2 TDDDG).
         </p>
+        <p>
+          Wenn Sie über den Sonne-Mond-Schalter zwischen heller und dunkler Ansicht
+          wechseln, wird Ihre Wahl im localStorage Ihres Browsers unter dem Schlüssel
+          <code className="mx-1">theme</code>
+          gespeichert, damit die Seite beim nächsten Besuch so aussieht, wie Sie sie
+          verlassen haben. Der Wert lautet ausschließlich „light" oder „dark", enthält
+          keinen Personenbezug und verlässt Ihr Gerät nicht. Er bleibt gespeichert, bis
+          Sie ihn über die Einstellungen Ihres Browsers löschen. Da er allein Ihre
+          ausdrückliche Wahl abbildet, ist auch dieser Zugriff nach § 25 Abs. 2 Nr. 2
+          TDDDG einwilligungsfrei. Ohne eine solche Wahl speichert die Website nichts
+          und richtet sich nach der Einstellung Ihres Betriebssystems.
+        </p>
       </>
     ),
   },

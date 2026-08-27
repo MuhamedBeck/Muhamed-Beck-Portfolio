@@ -82,7 +82,7 @@ export const Home = ({ isLoaded = true, services = [] }) => {
               fit a tighter layout would hand LCP to the headline and quietly
               undo the preload in prerender-meta.js. That is why the register
               went into this column instead of the portrait getting smaller. */}
-          <div className="md:col-start-2 md:row-start-1 md:justify-self-end">
+          <div className="justify-self-center md:col-start-2 md:row-start-1 md:justify-self-end">
             <img
               src={profilePicture}
               alt={t.portraitAlt}
@@ -126,12 +126,23 @@ export const Home = ({ isLoaded = true, services = [] }) => {
                 the job the "Leistungen ansehen" link used to do, and does it
                 better, because it names the seven destinations instead of
                 hiding them behind one word. */}
+            {/* Zwei Wege, die sich wirklich unterscheiden: ein Gespraech
+                vereinbaren oder einfach schreiben. Der zweite Knopf des alten
+                Heros zeigte auf dieselbe Seite wie der erste und war deshalb
+                keine Wahl, sondern eine Wiederholung. Der mailto-Weg spart dem,
+                der lieber schreibt, einen Seitenaufruf und ein Formular. */}
             <div
               className="stagger mt-9"
               style={{ "--fade-delay": `${DELAY.actions}ms` }}>
-              <Link to={contactPath} className="btn-ghost btn-accent">
-                {t.ctaPrimary}
-              </Link>
+              <div className="flex flex-wrap items-center gap-x-7 gap-y-3">
+                <Link to={contactPath} className="btn-ghost btn-accent">
+                  {t.ctaPrimary}
+                </Link>
+                <a href={`mailto:${CONTACT.email}`} className="link-arrow">
+                  {t.ctaSchreiben}
+                  <LinkArrow />
+                </a>
+              </div>
               {/* The reply promise belongs under the button, where the decision
                   is made, not at the foot of the hero where it used to sit. */}
               <p className="mt-4 text-xs text-paper-mute">{chrome.replyPromise}</p>

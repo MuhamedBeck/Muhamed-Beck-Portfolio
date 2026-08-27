@@ -15,8 +15,9 @@ const de = {
   intro:
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main. Ich automatisiere Geschäftsprozesse mit n8n, binde CRM- und ATS-Systeme an und bringe KI dorthin, wo sie messbar Arbeit abnimmt.",
   portraitAlt: "Muhamed Nur Beck, AI Automation Manager aus Frankfurt am Main",
-  ctaPrimary: "Projekt anfragen",
+  ctaPrimary: "Kostenloses Erstgespräch",
   ctaSecondary: "Alle Leistungen im Detail",
+  ctaSchreiben: "Oder direkt schreiben",
   introKurz:
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.",
   servicesHeading: "Was Sie beauftragen können",
@@ -42,6 +43,7 @@ const en = {
   portraitAlt: "Muhamed Nur Beck, AI Automation Manager based in Frankfurt, Germany",
   ctaPrimary: "Start a project",
   ctaSecondary: "All services in detail",
+  ctaSchreiben: "Or just write",
   introKurz:
     "I'm Muhamed Nur Beck, AI Automation Manager and full-stack developer in Frankfurt, Germany.",
   servicesHeading: "What you can commission",
@@ -95,6 +97,7 @@ const ar = {
   portraitAlt: "محمد نور بيك، مدير أتمتة الذكاء الاصطناعي في فرانكفورت بألمانيا",
   ctaPrimary: "ابدأ مشروعًا",
   ctaSecondary: "كل الخدمات بالتفصيل",
+  ctaSchreiben: "أو راسلني مباشرة",
   introKurz:
     "أنا محمد نور بيك (Muhamed Nur Beck)، مدير أتمتة الذكاء الاصطناعي ومطوّر برمجيات متكامل في فرانكفورت بألمانيا.",
   servicesHeading: "ما يمكنك طلبه",
