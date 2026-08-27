@@ -140,7 +140,7 @@ export const ROUTES = [
     load: () => import("../components/pages/Kontakt.jsx"),
     title: "Kostenloses Erstgespräch | Muhamed Beck",
     description:
-      "Kostenloses Erstgespräch zu Automatisierung mit n8n und KI: 30 Minuten, unverbindlich. Antwort innerhalb von 24 Stunden, 90 bis 135 € pro Stunde nach Absprache.",
+      "Kostenloses Erstgespräch zu Automatisierung, KI-Agenten oder Webentwicklung: 30 Minuten, unverbindlich. Antwort in 24 Stunden, 90 bis 135 € pro Stunde.",
     h1: "Kostenloses Erstgespräch",
     lastmod: "2026-08-27",
     changefreq: "monthly",

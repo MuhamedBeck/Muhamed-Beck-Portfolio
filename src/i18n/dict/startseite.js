@@ -33,7 +33,7 @@ const de = {
     steps: [
       {
         title: "Erstgespräch",
-        text: "Wir schauen uns Ihre Prozesse an und klären, wo Automatisierung sich rechnet und wo nicht. Kostenlos und unverbindlich.",
+        text: "Wir schauen uns an, worum es geht, und klären, was sich lohnt und was nicht. Kostenlos und unverbindlich.",
       },
       {
         title: "Konzept",
@@ -52,14 +52,14 @@ const de = {
   faq: {
     label: "Häufige Fragen",
     headline: "Was Auftraggeber am häufigsten fragen",
-    all: "Ausführliche Antworten zur n8n-Automatisierung",
+    all: "Ausführliche Antworten im Ratgeber",
     items: [
       {
         q: "Was kostet ein n8n Freelancer?",
         a: "90 bis 135 € pro Stunde, nach Absprache und je nach Projektumfang. Bei klar umrissenem Umfang auch als Festpreis.",
       },
       {
-        q: "Wie lange dauert ein Automatisierungsprojekt?",
+        q: "Wie lange dauert ein Projekt?",
         a: "Ein einzelner Workflow meist wenige Tage, eine Prozesskette über mehrere Systeme wenige Wochen. Der Zeitrahmen steht vor dem Start fest.",
       },
       {

@@ -90,14 +90,14 @@ const UeberMich = () => (
             Daten danach im richtigen System landen.
           </p>
           <p>
-            Der Grund, warum ich fast nur über Automatisierung schreibe, ist banal: Ich
+            Der Grund, warum ich vor allem über Automatisierung schreibe, ist banal: Ich
             mache das jeden Tag. Die Zahlen auf dieser Seite stammen aus Systemen, die
             produktiv laufen, nicht aus Demos. Was ich nicht selbst gebaut habe, verkaufe
             ich auch nicht.
           </p>
           <p>
             Ich spreche Deutsch, Englisch und Arabisch. Anfragen beantworte ich innerhalb
-            von 24 Stunden, und wenn Automatisierung sich in Ihrem Fall nicht rechnet,
+            von 24 Stunden, und wenn sich Ihr Vorhaben nicht rechnet,
             sage ich das im Erstgespräch statt hinterher.
           </p>
           <p className="flex flex-wrap gap-x-6 gap-y-2 pt-2">

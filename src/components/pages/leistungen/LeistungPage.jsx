@@ -173,7 +173,15 @@ export const LeistungPage = ({ data }) => (
           {data.cta?.intro ??
             "Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden eine echte Einschätzung, ob und wie sich das automatisieren lässt."}
         </p>
-        <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
+        {/* Die Leistung reist im Abfrageteil mit, damit das Formular sie
+            vorbelegen kann. Wer neunhundert Woerter ueber n8n gelesen hat,
+            sollte sie nicht im Auswahlfeld erneut suchen muessen — das war der
+            einzige Bruch in einem sonst kurzen Weg, und er sass genau dort, wo
+            die Kaufabsicht am hoechsten ist. Der Wert ist der Pfad-Slug, damit
+            Ziel und Vorbelegung dieselbe Quelle haben. */}
+        <Link
+          to={`/kontakt?leistung=${data.path.split("/").pop()}`}
+          className="btn-ghost btn-accent mt-8">
           {data.cta?.button ?? "Kostenloses Erstgespräch"}
         </Link>
         <p className="mt-5 text-sm text-paper-mute">

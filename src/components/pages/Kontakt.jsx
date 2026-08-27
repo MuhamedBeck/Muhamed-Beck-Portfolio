@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaPhone, FaLinkedin } from "react-icons/fa";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
 import { CONTACT, RATE_TEXT, SOCIAL } from "../../content/site";
 import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
+import { LEISTUNGEN } from "../../content/leistungen.de";
 
 // The direct channels stay alongside the form rather than being replaced by it.
 // Some people will always rather pick up the phone, and a page that only offers
@@ -33,24 +35,36 @@ const CHANNELS = [
   },
 ];
 
-// Mirrors the six services in content/leistungen.de.js, plus a way out for
-// anyone who does not yet know which drawer their problem belongs in.
-const ANFRAGE_ARTEN = [
-  "n8n- und Workflow-Automatisierung",
-  "KI-Automatisierung und LLM-Integration",
-  "HubSpot- und CRM-Integration",
-  "Recruiting-Automatisierung",
-  "Voice-AI und Telefonassistenten",
-  "KI-Agenten entwickeln lassen",
-  "Etwas anderes oder noch unklar",
-];
+// Aus den Leistungen abgeleitet statt danebengepflegt. Die frueher hier
+// stehende Liste war von Hand gefuehrt und hatte sechs Eintraege fuer sieben
+// Leistungen: die Webentwicklung fehlte vollstaendig, wer von dieser Seite kam,
+// konnte sein eigenes Anliegen nicht auswaehlen. Abgeleitet kann das nicht mehr
+// passieren — eine neue Leistung erscheint hier von selbst.
+const SONSTIGES = "Etwas anderes oder noch unklar";
+
+const ARTEN = LEISTUNGEN.map((leistung) => ({
+  slug: leistung.path.split("/").pop(),
+  label: leistung.hero.kurz,
+}));
+
+const ANFRAGE_ARTEN = [...ARTEN.map((art) => art.label), SONSTIGES];
+
+/** Beschriftung zu einem Slug aus dem Abfrageteil, oder leer bei Unbekanntem. */
+const artZuSlug = (slug) => ARTEN.find((art) => art.slug === slug)?.label ?? "";
 
 const Kontakt = () => {
+  // useSearchParams statt window.location: waehrend des Prerenders gibt es kein
+  // window, und ein direkter Zugriff darauf wuerde den Build abbrechen. Ohne
+  // Abfrageteil liefert es einen leeren String, das Feld steht dann wie bisher
+  // auf "Bitte auswaehlen".
+  const [suchParameter] = useSearchParams();
+  const vorbelegt = artZuSlug(suchParameter.get("leistung"));
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
-    service_type: "",
+    service_type: vorbelegt,
     message: "",
   });
   const [sent, setSent] = useState(false);
@@ -99,7 +113,7 @@ const Kontakt = () => {
     <PageShell
       label="Kontakt"
       headline="Kostenloses Erstgespräch"
-      intro="30 Minuten, unverbindlich und ohne Kosten. Beschreiben Sie kurz, worum es geht — Sie bekommen eine echte Einschätzung, ob und wie sich das automatisieren lässt, keine Standardantwort und kein Verkaufsgespräch.">
+      intro="30 Minuten, unverbindlich und ohne Kosten. Beschreiben Sie kurz, worum es geht — Sie bekommen eine echte Einschätzung, ob und wie sich das lösen lässt, keine Standardantwort und kein Verkaufsgespräch.">
       <Section className="!pt-0">
         <div className="grid gap-x-14 gap-y-16 md:grid-cols-[1.25fr_1fr]">
           <div>
@@ -230,7 +244,7 @@ const Kontakt = () => {
                   <p className="mt-3 text-sm leading-relaxed text-paper-mute">
                     Hilfreich, aber kein Pflichtprogramm: welche Systeme im Spiel sind
                     (CRM, ATS, ERP, Shop, interne Tools), ob es einen Zeitrahmen gibt
-                    und ob bei Ihnen schon ein Automatisierungstool läuft.
+                    und womit Sie heute arbeiten.
                   </p>
                 </div>
 
@@ -305,7 +319,7 @@ const Kontakt = () => {
           <div>
             <h2 className="label">Erstgespräch</h2>
             <p className="leading-relaxed text-paper-soft">
-              Kostenlos und unverbindlich. Wenn Automatisierung sich in Ihrem Fall nicht
+              Kostenlos und unverbindlich. Wenn sich das Vorhaben in Ihrem Fall nicht
               rechnet, sage ich das.
             </p>
           </div>
