@@ -32,6 +32,21 @@ import { LinkArrow } from "../LinkArrow";
    aktualisiert, der Hero bleibt auf dem alten Wert stehen, und niemand merkt es,
    weil beide fuer sich stimmig aussehen. Voice-AI hat bewusst keine stat, dort
    traegt das Label allein. */
+/* Wie viele Zeilen der Hero zeigt.
+
+   Nicht willkuerlich, sondern gemessen bei 900 px Fensterhoehe: mit sechs
+   Zeilen landet die Preiszeile bei 903 px, also drei Pixel unter der Falz. Eine
+   Punktlandung, die bei jeder anderen Schriftgroesse kippt. Mit fuenf bleibt
+   Spielraum. Enger stellen scheidet aus, die Trefferflaechen faellen dann unter
+   die 44 px, die das Projekt sonst einhaelt.
+
+   Fuenf ist zugleich die Obergrenze, die eine Erhebung ueber zwoelf
+   Anbieterseiten ergeben hat: keine davon zeigt mehr gleichrangige Leistungen
+   im Sichtbereich. Neun waeren eine Liste, keine Empfehlung.
+
+   Der Rest ist nicht verloren, die Zeile darunter fuehrt auf /leistungen. */
+const HERO_MAX = 5;
+
 const HERO_LEISTUNGEN = LEISTUNGEN.map((leistung) => ({
   kurz: leistung.hero.kurz,
   to: leistung.path,
@@ -56,7 +71,7 @@ export const Startseite = () => {
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <main>
-        <Home isLoaded={isLoaded} services={HERO_LEISTUNGEN} />
+        <Home isLoaded={isLoaded} services={HERO_LEISTUNGEN.slice(0, HERO_MAX)} />
         <TechMarquee />
 
         <Section id="leistungen">

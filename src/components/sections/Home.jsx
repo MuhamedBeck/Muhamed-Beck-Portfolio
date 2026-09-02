@@ -56,7 +56,7 @@ export const Home = ({ isLoaded = true, services = [] }) => {
       {/* max-w-6xl, matching Section: the hero used max-w-3xl, so its left edge
           did not line up with any section below it and the page read as two
           different layouts stacked. */}
-      <div className="mx-auto w-full max-w-6xl py-20">
+      <div className="mx-auto w-full max-w-6xl py-16">
         {/* Three children, one per job, because the mobile order and the desktop
             order disagree.
 
@@ -156,7 +156,7 @@ export const Home = ({ isLoaded = true, services = [] }) => {
               aria-labelledby="hero-leistungen"
               className="stagger md:col-start-2 md:row-start-2"
               style={{ "--fade-delay": `${DELAY.services}ms` }}>
-              <h2 id="hero-leistungen" className="label">
+              <h2 id="hero-leistungen" className="label !mb-4">
                 {t.servicesHeading}
               </h2>
 

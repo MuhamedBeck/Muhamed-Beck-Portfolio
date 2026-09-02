@@ -16,7 +16,7 @@ const de = {
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main. Ich automatisiere Geschäftsprozesse mit n8n, binde CRM- und ATS-Systeme an und bringe KI dorthin, wo sie messbar Arbeit abnimmt.",
   portraitAlt: "Muhamed Nur Beck, AI Automation Manager aus Frankfurt am Main",
   ctaPrimary: "Kostenloses Erstgespräch",
-  ctaSecondary: "Alle Leistungen im Detail",
+  ctaSecondary: "Alle neun Leistungen ansehen",
   ctaSchreiben: "Oder direkt schreiben",
   introKurz:
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.",
