@@ -31,4 +31,20 @@
  */
 
 /** @type {Stimme[]} */
-export const STIMMEN = [];
+export const STIMMEN = [
+  {
+    zitat:
+      "Die Zusammenarbeit war unkompliziert und der Termin hat gehalten. Wichtiger war mir aber, dass Muhamed die richtigen Fragen gestellt hat. Unsere Gäste sind Monteure, die abends von der Baustelle aus eine Unterkunft suchen, häufig auf Polnisch oder Serbisch und selten mit gutem Netz. Genau danach ist die Seite gebaut: fünf Sprachen, neun Standorte, und sie ist sofort da statt nach ein paar Sekunden. Für uns ist das kein technisches Detail, sondern der Unterschied zwischen einer Anfrage und einem Abbruch.",
+    name: "Philip Spielmann",
+    /* "Gesellschafter" und nicht "Geschäftsführer": Eine eGbR hat keine
+       Geschäftsführer, und das Impressum von maflats.de nennt ihn wörtlich
+       "Die Gesellschafter Philip Spielmann und Edward Behrendt (jeder einzeln
+       vertretungsberechtigt)". Wer das Zitat prüfen will, landet genau dort,
+       und eine Bezeichnung, die von der Pflichtangabe des Kunden abweicht,
+       entwertet die Stimme bei genau den Lesern, die sie überzeugen soll. */
+    rolle: "Gesellschafter",
+    firma: "Main-Apartments eGbR (MA-Flats)",
+    projekt: "/projekte/maflats",
+    freigabe: "2026-09-30",
+  },
+];

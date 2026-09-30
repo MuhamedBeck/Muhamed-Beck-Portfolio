@@ -67,7 +67,7 @@ export const ROUTES = [
     description:
       "n8n Experte aus Frankfurt: Workflow-Automatisierung, KI-Agenten und CRM-Anbindung für Unternehmen. 90 bis 135 € pro Stunde nach Absprache. Antwort in 24 Stunden.",
     h1: "Prozesse, die ohne Sie laufen",
-    lastmod: "2026-09-02",
+    lastmod: "2026-09-30",
     changefreq: "weekly",
     priority: "1.0",
   },
@@ -611,7 +611,7 @@ export const ROUTES = [
     h1: "Website-Relaunch für MA-Flats",
     navLabel: "MA-Flats Website",
     ogType: "article",
-    lastmod: "2026-08-26",
+    lastmod: "2026-09-30",
     changefreq: "monthly",
     priority: "0.8",
   },
