@@ -27,6 +27,14 @@ const de = {
     headline: "Kundenprojekte im Detail",
     all: "Alle Projekte ansehen",
   },
+  /* Überschriften für einen Abschnitt, der so lange nicht erscheint, wie keine
+     freigegebene Stimme vorliegt. Sie stehen trotzdem schon hier: Der Text
+     einer Rubrik gehört ins Dictionary, auch wenn die Rubrik heute leer ist,
+     sonst landet er beim Nachtragen hektisch im JSX. */
+  stimmen: {
+    label: "Kundenstimmen",
+    headline: "Was Auftraggeber sagen",
+  },
   approach: {
     label: "Zusammenarbeit",
     headline: "So läuft ein Projekt ab",

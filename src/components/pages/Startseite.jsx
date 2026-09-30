@@ -8,6 +8,7 @@ import { LoadingScreen } from "../LoadingScreen";
 import { useSplashGate } from "../useSplashGate";
 import { Home } from "../sections/Home";
 import { Section, SectionHeader } from "../Section";
+import { Stimmen } from "../Stimmen";
 import { useDict } from "../../i18n";
 import { useRouteMeta } from "../../seo/useRouteMeta";
 import { LEISTUNGEN } from "../../content/leistungen.de";
@@ -111,6 +112,11 @@ export const Startseite = () => {
             </Link>
           </div>
         </Section>
+
+        {/* Steht zwischen dem Angebot und den Projekten, weil genau dort die
+            Frage aufkommt, ob das auch für jemand anderen funktioniert hat.
+            Rendert nichts, solange keine Freigabe vorliegt. */}
+        <Stimmen label={t.stimmen.label} headline={t.stimmen.headline} />
 
         <Section id="projekte">
           <SectionHeader label={t.cases.label} headline={t.cases.headline} />

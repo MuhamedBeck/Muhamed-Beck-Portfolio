@@ -3,6 +3,7 @@ import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
 import { LinkArrow } from "../../LinkArrow";
 import { CASE_STUDY_COPY } from "./caseStudyCopy";
+import { Stimmen } from "../../Stimmen";
 
 /**
  * Case study template.
@@ -134,6 +135,16 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
         </ul>
       </div>
     </Section>
+
+    {/* Die Stimme des Auftraggebers steht direkt hinter den Ergebnissen: Dort
+        hat der Leser gerade gelesen, was gemessen wurde, und die naheliegende
+        Frage ist, wie das für den Kunden war.
+
+        Nur auf Deutsch. stimmen.de.js ist eine deutsche Quelle, und ein
+        deutsches Zitat auf /en oder /ar wäre derselbe Fehler, den Home.jsx mit
+        dem Leistungsregister vermeidet. Ohne Freigabe rendert die Komponente
+        ohnehin nichts. */}
+    {locale === "de" ? <Stimmen projekt={data.path} /> : null}
 
     <Section className="!pt-0">
       <div className="grid gap-x-12 gap-y-4 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">

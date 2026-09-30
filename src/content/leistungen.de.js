@@ -3,7 +3,19 @@
 // The `faq` entries are also emitted as FAQPage JSON-LD by prerender-meta.js.
 
 export const PREIS_TEXT =
-  "90 bis 135 € pro Stunde, nach Absprache und je nach Projektumfang. Für klar umrissene Workflows und Integrationen sind auch Festpreise möglich. Orientierung: Der Median für IT-Freelancer liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.";
+  "90 bis 135 € pro Stunde, nach Absprache und je nach Projektumfang. Für klar umrissene Workflows und Integrationen sind auch Festpreise möglich. Orientierung: Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.";
+
+/* Wo gearbeitet wird, im sichtbaren Text und nicht nur im Schema.
+   prerender-meta.js setzt seit jeher areaServed auf Deutschland, Österreich
+   und die Schweiz. Auf der Seite selbst stand dagegen nur Frankfurt, und die
+   Search Console zeigte dazu 204 Impressionen aus Österreich und 112 aus der
+   Schweiz ohne einen einzigen Klick. Wer aus Wien oder Zürich kommt, liest
+   hier jetzt dasselbe, was Google ohnehin schon weiß.
+
+   Steht neben dem Stundensatz, weil die Anschlussfrage an eine Landesgrenze
+   immer der Preis ist. Pro Leistung überschreibbar wie PREIS_TEXT. */
+export const REICHWEITE_TEXT =
+  "Auftraggeber in Deutschland, Österreich und der Schweiz. Die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch, zum selben Stundensatz.";
 
 export const LEISTUNGEN = [
   {
@@ -45,9 +57,16 @@ export const LEISTUNGEN = [
     },
     teaser:
       "Workflows, die CRM, ATS, E-Mail und interne Tools verbinden, mit Monitoring und Fehlerbehandlung statt Bastellösung.",
-    h1: "n8n Freelancer für Workflow-Automatisierung",
+    h1: "n8n Berater und Entwickler für Workflow-Automatisierung",
     intro:
-      "Ich baue Automatisierungen mit n8n und Zapier, die Ihre Tools verbinden, manuelle Arbeit abschaffen und Prozesse messbar beschleunigen. Als AI Automation Manager und n8n Experte automatisiere ich täglich Recruiting- und Vertriebsprozesse in der Praxis, nicht nur in Demos. Sie bekommen Workflows, die produktiv laufen: mit Monitoring, Fehlerbehandlung und sauberer Dokumentation.",
+      "Ich berate und baue: erst die Frage, welcher Ablauf sich überhaupt lohnt zu automatisieren, dann die Workflows mit n8n und Zapier, die Ihre Tools verbinden und manuelle Arbeit abschaffen. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse in der Praxis, nicht nur in Demos. Anders als bei einer Agentur ist die Person, die berät, auch die, die baut, und sie bleibt es bis zur Übergabe.",
+    /* Der Satz zur Reichweite steht hier und nicht nur im Service-Schema.
+       areaServed nennt seit jeher Deutschland, Österreich und die Schweiz,
+       im sichtbaren Text stand dagegen ausschließlich Frankfurt. Die Search
+       Console zeigte darauf 204 Impressionen aus Österreich und 112 aus der
+       Schweiz, beide ohne einen einzigen Klick: Google wusste es, der Leser
+       nicht. */
+
     szenarien: [
       {
         title: "Tools verbinden",

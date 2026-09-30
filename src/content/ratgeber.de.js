@@ -20,24 +20,39 @@ export const RATGEBER = [
     kicker: "Kosten",
     h1: "Was kostet ein n8n Freelancer?",
     published: "2026-08-07",
-    modified: "2026-08-07",
+    modified: "2026-09-30",
     // The lede is written to be quotable on its own, with no unresolved
     // pronouns and no dependency on a preceding paragraph.
-    lede: "Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer insgesamt liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde. Mein eigener Satz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang.",
+    lede: "Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde; die Erhebung weist Deutschland, Österreich und die Schweiz nicht getrennt aus. Mein eigener Satz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang.",
     // Same four figures the prose states, so the scale and the text cannot
     // disagree. Sources are named in the copy below.
     scale: {
       caption: "Stundensätze im Vergleich (Stand: August 2026)",
       market: { from: 75, to: 147, label: "n8n-Profile bei freelancermap" },
-      median: { value: 95, label: "Median IT-Freelancer, Freelancer-Kompass 2026" },
+      median: { value: 95, label: "Median IT-Freelancer im DACH-Raum, Freelancer-Kompass 2026" },
       own: { from: 90, to: 135, label: "mein Satz, nach Absprache und Projektumfang" },
     },
     sections: [
       {
         h2: "Was kostet ein n8n Freelancer pro Stunde?",
         body: [
-          "Zwischen 75 und 147 € pro Stunde, mit deutlichem Ausschlag nach oben bei Spezialisierung auf KI-Integration. Diese Spanne nennt das Freelancer-Verzeichnis von freelancermap für n8n-Profile (Stand August 2026). Der Median über alle IT-Freelancer in Deutschland liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.",
+          "Zwischen 75 und 147 € pro Stunde, mit deutlichem Ausschlag nach oben bei Spezialisierung auf KI-Integration. Diese Spanne nennt das Freelancer-Verzeichnis von freelancermap für n8n-Profile (Stand August 2026). Der Median über alle IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.",
           "Die Spanne erklärt sich weniger durch das Tool als durch das, was um das Tool herum passiert. Wer ausschließlich Workflows zusammensteckt, liegt am unteren Ende. Wer zusätzlich APIs anbindet, Fehlerbehandlung und Monitoring aufsetzt und DSGVO-Fragen beantworten kann, liegt am oberen.",
+        ],
+      },
+      {
+        h2: "Was kostet ein n8n Freelancer in Österreich und der Schweiz?",
+        body: [
+          "Dieselbe Spanne, soweit sich das belegen lässt. Der Freelancer-Kompass 2026 erhebt den deutschsprachigen Raum als Ganzes und weist den Median von 95 € pro Stunde ausdrücklich nicht nach Ländern getrennt aus. Wer Ihnen einen eigenen österreichischen Mittelwert nennt, hat ihn aus einer anderen Quelle oder geschätzt.",
+          "Aussagekräftiger als die Landesgrenze ist die Aufschlüsselung nach Fachgebiet, die dieselbe Erhebung liefert: SAP und ERP liegen bei 120 €, Data und Analytics bei 100 €, IT-Infrastruktur bei 95 €, Software- und Webentwicklung bei 90 € pro Stunde. Workflow-Automatisierung liegt in der Praxis zwischen den beiden letzten Gruppen, weil sie Entwicklung und Systemintegration verbindet.",
+          "Für die Schweiz werden Sätze in Franken verhandelt und liegen spürbar höher; eine aktuelle Erhebung mit vergleichbarer Methodik gibt es dazu nicht, weshalb hier keine Zahl steht. Mein eigener Satz ändert sich durch den Sitz des Auftraggebers nicht. Der Aufwand für einen Workflow hängt an den beteiligten Systemen, nicht an der Landesgrenze.",
+        ],
+      },
+      {
+        h2: "Was ändert sich bei Auftraggebern aus Österreich oder der Schweiz?",
+        body: [
+          "Am Ablauf wenig: Die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch, abgerechnet wird in Euro. Bei der Umsatzsteuer wird eine Leistung an einen Auftraggeber außerhalb Deutschlands anders behandelt als im Inland; das klären wir vor dem Angebot, damit auf der Rechnung keine Überraschung steht.",
+          "Praktisch wichtiger ist der Datenschutz, und zwar bevor der erste Workflow steht. In Österreich gilt dieselbe DSGVO wie in Deutschland. In der Schweiz gilt das revidierte Datenschutzgesetz, das der DSGVO ähnelt, aber nicht deckungsgleich ist. Sobald eine Automatisierung Bewerber-, Kunden- oder Mitarbeiterdaten verarbeitet oder ein KI-Schritt Daten an ein Sprachmodell übergibt, entscheidet sich an dieser Stelle, wo verarbeitet werden darf und was dokumentiert werden muss.",
         ],
       },
       {
@@ -79,7 +94,15 @@ export const RATGEBER = [
     faq: [
       {
         q: "Was kostet ein n8n Freelancer pro Stunde?",
-        a: "Zwischen 75 und 147 € pro Stunde in Deutschland (freelancermap, Stand August 2026). Der Median für IT-Freelancer insgesamt liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde. Mein Satz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang.",
+        a: "Zwischen 75 und 147 € pro Stunde in Deutschland (freelancermap, Stand August 2026). Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde. Mein Satz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang.",
+      },
+      {
+        q: "Kostet ein n8n Freelancer in Wien oder Zürich mehr als in Deutschland?",
+        a: "Der Freelancer-Kompass 2026 erhebt den deutschsprachigen Raum als Ganzes und weist den Median von 95 € pro Stunde nicht nach Ländern getrennt aus. Für die Schweiz werden Sätze in Franken verhandelt und liegen höher, eine aktuelle Erhebung mit vergleichbarer Methodik gibt es dazu aber nicht. Mein Satz bleibt bei 90 bis 135 €, unabhängig vom Sitz des Auftraggebers.",
+      },
+      {
+        q: "Arbeiten Sie auch für Auftraggeber in Österreich und der Schweiz?",
+        a: "Ja. Die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch, abgerechnet wird in Euro zum selben Stundensatz wie in Deutschland. Zu klären sind vor dem Angebot zwei Dinge: die umsatzsteuerliche Behandlung und, bei Schweizer Auftraggebern, welches Datenschutzrecht für die verarbeiteten Daten gilt.",
       },
       {
         q: "Gibt es Festpreise für n8n-Projekte?",
@@ -95,7 +118,7 @@ export const RATGEBER = [
       },
     ],
     related: [
-      { path: "/leistungen/n8n-automatisierung", label: "n8n Freelancer für Workflow-Automatisierung" },
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Berater und Entwickler für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
     ],
   },
@@ -213,7 +236,7 @@ export const RATGEBER = [
       },
     ],
     related: [
-      { path: "/leistungen/n8n-automatisierung", label: "n8n Freelancer für Workflow-Automatisierung" },
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Berater und Entwickler für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
     ],
   },

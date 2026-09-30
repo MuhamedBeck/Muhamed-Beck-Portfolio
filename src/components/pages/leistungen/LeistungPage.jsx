@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
 import { WorkflowDiagram } from "./WorkflowDiagram";
-import { PREIS_TEXT } from "../../../content/leistungen.de";
+import { PREIS_TEXT, REICHWEITE_TEXT } from "../../../content/leistungen.de";
 import { RATE_TEXT } from "../../../content/site";
 import { LinkArrow } from "../../LinkArrow";
 
@@ -83,7 +83,15 @@ export const LeistungPage = ({ data }) => (
               and the number is not. */}
           <p className="headline-sub mt-4">{RATE_TEXT}</p>
         </div>
-        <p className="leading-relaxed text-paper-soft">{data.preisText ?? PREIS_TEXT}</p>
+        <div>
+          <p className="leading-relaxed text-paper-soft">{data.preisText ?? PREIS_TEXT}</p>
+          {/* Die Reichweite steht unter dem Satz, nicht daneben: Wer aus Wien
+              liest, hat gerade den Preis gesehen und fragt als Nächstes, ob er
+              für ihn überhaupt gilt. */}
+          <p className="mt-4 text-sm leading-relaxed text-paper-mute">
+            {data.reichweiteText ?? REICHWEITE_TEXT}
+          </p>
+        </div>
       </div>
     </Section>
 

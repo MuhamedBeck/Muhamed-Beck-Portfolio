@@ -36,8 +36,9 @@ export const SOCIAL = {
 export const SAME_AS = [SOCIAL.linkedin, SOCIAL.github];
 
 // Wording agreed with the owner and grounded in the Freelancer-Kompass 2026
-// median of 95 EUR/h for German IT freelancers. Used verbatim on landing pages,
-// in llms.txt and in the ProfessionalService priceRange.
+// median of 95 EUR/h for IT freelancers across the DACH region (the survey does
+// not break its figures down by country). Used verbatim on landing pages, in
+// llms.txt and in the ProfessionalService priceRange.
 export const RATE_TEXT = "90 bis 135 € nach Absprache und je nach Projektumfang";
 // English rendering of the same rate. The German string is the one that goes
 // into llms.txt and the ProfessionalService priceRange; this exists so the
