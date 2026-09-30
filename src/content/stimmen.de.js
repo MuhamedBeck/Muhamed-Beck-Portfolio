@@ -28,13 +28,18 @@
  *                             die Stimme auch dort, wo das Projekt beschrieben
  *                             ist.
  * @property {string} freigabe ISO-Datum der schriftlichen Freigabe.
+ * @property {{href: string, label: string}} [beleg] Wohin der Leser klicken
+ *   kann, um die Aussage selbst zu prüfen. Eine Kundenstimme wirkt über
+ *   Nachprüfbarkeit, nicht über Adjektive: Wer den Satz "sie ist sofort da"
+ *   liest und die Seite in einem Klick aufrufen kann, glaubt ihn. Wer nur den
+ *   Satz liest, glaubt ihn nicht.
  */
 
 /** @type {Stimme[]} */
 export const STIMMEN = [
   {
     zitat:
-      "Die Zusammenarbeit war unkompliziert und der Termin hat gehalten. Wichtiger war mir aber, dass Muhamed die richtigen Fragen gestellt hat. Unsere Gäste sind Monteure, die abends von der Baustelle aus eine Unterkunft suchen, häufig auf Polnisch oder Serbisch und selten mit gutem Netz. Genau danach ist die Seite gebaut: fünf Sprachen, neun Standorte, und sie ist sofort da statt nach ein paar Sekunden. Für uns ist das kein technisches Detail, sondern der Unterschied zwischen einer Anfrage und einem Abbruch.",
+      "Ich habe selten jemanden erlebt, der so schnell versteht, worum es im Geschäft eigentlich geht. Muhamed hat nicht über Technik geredet, sondern gefragt, wer unsere Seite überhaupt benutzt: Monteure, die abends von der Baustelle aus eine Unterkunft suchen, häufig auf Polnisch oder Serbisch und selten mit gutem Netz. Für diese Leute war unsere alte Seite unbenutzbar. Die neue läuft in fünf Sprachen, deckt neun Standorte ab und ist sofort da statt nach ein paar Sekunden. Termin gehalten, nichts nachhalten müssen, keine Überraschung auf der Rechnung. Für uns ist das der Unterschied zwischen einer Anfrage und einem Abbruch, und ich würde ihn jederzeit wieder beauftragen.",
     name: "Philip Spielmann",
     /* "Gesellschafter" und nicht "Geschäftsführer": Eine eGbR hat keine
        Geschäftsführer, und das Impressum von maflats.de nennt ihn wörtlich
@@ -45,6 +50,17 @@ export const STIMMEN = [
     rolle: "Gesellschafter",
     firma: "Main-Apartments eGbR (MA-Flats)",
     projekt: "/projekte/maflats",
-    freigabe: "2026-09-30",
+    beleg: { href: "https://maflats.de/", label: "maflats.de ansehen" },
+    /* NOCH NICHT FREIGEGEBEN, deshalb null, und deshalb rendert die Seite
+       diese Stimme nicht.
+
+       Freigegeben ist eine kürzere Fassung vom 30.09.2026. Diese hier ist die
+       stärkere Fassung, die auf Philips Angebot hin entstanden ist, sich
+       ruhig deutlicher loben zu lassen. Ein Angebot ist aber keine Freigabe
+       eines Wortlauts: Was hier steht, hat er so noch nicht gelesen.
+
+       Sobald seine Bestätigung vorliegt, hier das Datum eintragen, etwa
+       freigabe: "2026-10-02". Mehr ist nicht zu tun. */
+    freigabe: null,
   },
 ];
