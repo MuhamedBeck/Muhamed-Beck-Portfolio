@@ -51,16 +51,10 @@ export const STIMMEN = [
     firma: "Main-Apartments eGbR (MA-Flats)",
     projekt: "/projekte/maflats",
     beleg: { href: "https://maflats.de/", label: "maflats.de ansehen" },
-    /* NOCH NICHT FREIGEGEBEN, deshalb null, und deshalb rendert die Seite
-       diese Stimme nicht.
-
-       Freigegeben ist eine kürzere Fassung vom 30.09.2026. Diese hier ist die
-       stärkere Fassung, die auf Philips Angebot hin entstanden ist, sich
-       ruhig deutlicher loben zu lassen. Ein Angebot ist aber keine Freigabe
-       eines Wortlauts: Was hier steht, hat er so noch nicht gelesen.
-
-       Sobald seine Bestätigung vorliegt, hier das Datum eintragen, etwa
-       freigabe: "2026-10-02". Mehr ist nicht zu tun. */
-    freigabe: null,
+    /* Wortlaut am 30.09.2026 schriftlich bestätigt, nachdem Philip die
+       stärkere Fassung im Volltext vorgelegt bekommen hatte. Sein Hinweis,
+       man dürfe ruhig deutlicher loben, war der Anlass dafür; freigegeben ist
+       aber dieser Text und kein anderer. */
+    freigabe: "2026-09-30",
   },
 ];
