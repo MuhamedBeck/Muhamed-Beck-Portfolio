@@ -20,6 +20,7 @@ const de = {
   githubAria: "GitHub-Profil",
   themeToLight: "Zur hellen Ansicht wechseln",
   themeToDark: "Zur dunklen Ansicht wechseln",
+  mailBetreff: "Anfrage über muhamedbeck.com",
 };
 
 const en = {
@@ -35,6 +36,7 @@ const en = {
   githubAria: "GitHub profile",
   themeToLight: "Switch to the light theme",
   themeToDark: "Switch to the dark theme",
+  mailBetreff: "Enquiry via muhamedbeck.com",
 };
 
 /* Arabisch, Hocharabisch (فصحى).
@@ -53,6 +55,7 @@ const en = {
  *   githubAria        Profil auf GitHub
  *   themeToLight      Zur hellen Ansicht wechseln
  *   themeToDark       Zur dunklen Ansicht wechseln
+ *   mailBetreff       Anfrage über muhamedbeck.com
  *
  * Der Mitteltrenner in replyPromise steht zwischen einem lateinischen und einem
  * arabischen Lauf. Er ist ein neutrales Zeichen, und der Bidi-Algorithmus
@@ -70,6 +73,7 @@ const ar = {
   githubAria: "الملف الشخصي على غيت هب",
   themeToLight: "التبديل إلى المظهر الفاتح",
   themeToDark: "التبديل إلى المظهر الداكن",
+  mailBetreff: "استفسار عبر muhamedbeck.com",
 };
 
 export default { de, en, ar };

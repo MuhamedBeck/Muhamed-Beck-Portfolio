@@ -2,7 +2,7 @@ import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useDict, useLocale } from "../i18n";
 import { ROUTES, sectionsFor } from "../routes/registry.js";
-import { CONTACT, PERSON, SOCIAL } from "../content/site";
+import { CONTACT, PERSON, SOCIAL, mailtoHref } from "../content/site";
 import nav from "../i18n/dict/nav";
 import ui from "../i18n/dict/ui";
 
@@ -70,7 +70,7 @@ const Footer = () => {
             <ul className="mt-4 space-y-2.5">
               <li>
                 <a
-                  href={`mailto:${CONTACT.email}`}
+                  href={mailtoHref(chrome.mailBetreff)}
                   className="inline-flex items-center gap-2 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
                   <FaEnvelope className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   {CONTACT.email}

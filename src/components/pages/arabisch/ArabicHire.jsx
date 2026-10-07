@@ -1,7 +1,11 @@
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
-import { CONTACT, SOCIAL } from "../../../content/site";
+import { CONTACT, SOCIAL, mailtoHref } from "../../../content/site";
 import { AR_SEITEN, AR_ABLAUF, AR_KONDITIONEN, AR_CTA } from "../../../content/ar";
+import ui from "../../../i18n/dict/ui";
+
+// Seite gibt es nur auf Arabisch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
+const MAIL_HREF = mailtoHref(ui.ar.mailBetreff);
 
 /**
  * Arabic contact page.
@@ -42,7 +46,7 @@ export const ArabicHire = () => (
                 plus of the phone number and the dots of the address. */}
             <li className="border-t border-hairline py-6">
               <a
-                href={`mailto:${CONTACT.email}`}
+                href={MAIL_HREF}
                 className="text-lg text-paper underline-offset-4 hover:underline">
                 <bdi>{CONTACT.email}</bdi>
               </a>

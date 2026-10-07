@@ -4,7 +4,7 @@ import profilePicture from "../../assets/profilepicture.webp";
 import { useDict, useLocale } from "../../i18n";
 import home from "../../i18n/dict/home";
 import ui from "../../i18n/dict/ui";
-import { CONTACT, SOCIAL } from "../../content/site";
+import { CONTACT, SOCIAL, mailtoHref } from "../../content/site";
 import { LinkArrow } from "../LinkArrow";
 import { sectionsFor } from "../../routes/registry.js";
 
@@ -138,7 +138,7 @@ export const Home = ({ isLoaded = true, services = [] }) => {
                 <Link to={contactPath} className="btn-ghost btn-accent">
                   {t.ctaPrimary}
                 </Link>
-                <a href={`mailto:${CONTACT.email}`} className="link-arrow">
+                <a href={mailtoHref(chrome.mailBetreff)} className="link-arrow">
                   {t.ctaSchreiben}
                   <LinkArrow />
                 </a>
@@ -251,7 +251,7 @@ export const Home = ({ isLoaded = true, services = [] }) => {
             <FaGithub className="h-5 w-5" />
           </a>
           <a
-            href={`mailto:${CONTACT.email}`}
+            href={mailtoHref(chrome.mailBetreff)}
             className="text-paper-soft transition-colors duration-300 hover:text-accent"
             aria-label={t.socials.email}>
             <FaEnvelope className="h-5 w-5" />

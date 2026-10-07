@@ -5,6 +5,17 @@ import { WorkflowDiagram } from "./WorkflowDiagram";
 import { PREIS_TEXT, REICHWEITE_TEXT } from "../../../content/leistungen.de";
 import { RATE_TEXT } from "../../../content/site";
 import { LinkArrow } from "../../LinkArrow";
+import { ANKER_SCHLUSS, AnfrageLeiste, AnfrageStart } from "./AnfrageLeiste";
+
+/* Ziel und Beschriftung der Anfrage, an einer Stelle abgeleitet. Sie stehen
+   jetzt dreimal auf der Seite: unter der Einleitung, in der mobilen Leiste und
+   im Schluss-CTA. Dreimal von Hand geschrieben liefen sie auseinander.
+
+   Die Leistung reist im Abfrageteil mit, damit das Formular sie vorbelegen
+   kann. Der Wert ist der Pfad-Slug, damit Ziel und Vorbelegung dieselbe
+   Quelle haben. */
+const anfrageZiel = (data) => `/kontakt?leistung=${data.path.split("/").pop()}`;
+const anfrageLabel = (data) => data.cta?.button ?? "Kostenloses Erstgespräch";
 
 /**
  * Landing page template for a service.
@@ -17,6 +28,10 @@ import { LinkArrow } from "../../LinkArrow";
  */
 export const LeistungPage = ({ data }) => (
   <PageShell label={data.badge} headline={data.h1} intro={data.intro}>
+    <Section className="!pt-0">
+      <AnfrageStart to={anfrageZiel(data)} label={anfrageLabel(data)} />
+    </Section>
+
     <Section className="!pt-0">
       <div className="grid gap-x-10 gap-y-10 md:grid-cols-3">
         {data.szenarien.map((szenario, index) => (
@@ -173,7 +188,7 @@ export const LeistungPage = ({ data }) => (
           asked about missed calls, not about processes. So the wording comes
           from the service, and the generic version stays as the fallback for
           any page that has not been given its own. */}
-      <div className="max-w-2xl border-t border-hairline pt-12">
+      <div id={ANKER_SCHLUSS} className="max-w-2xl border-t border-hairline pt-12">
         <h2 className="headline-sub">
           {data.cta?.headline ?? "Passt das zu Ihrem Prozess?"}
         </h2>
@@ -181,16 +196,12 @@ export const LeistungPage = ({ data }) => (
           {data.cta?.intro ??
             "Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden eine echte Einschätzung, ob und wie sich das automatisieren lässt."}
         </p>
-        {/* Die Leistung reist im Abfrageteil mit, damit das Formular sie
-            vorbelegen kann. Wer neunhundert Woerter ueber n8n gelesen hat,
-            sollte sie nicht im Auswahlfeld erneut suchen muessen — das war der
-            einzige Bruch in einem sonst kurzen Weg, und er sass genau dort, wo
-            die Kaufabsicht am hoechsten ist. Der Wert ist der Pfad-Slug, damit
-            Ziel und Vorbelegung dieselbe Quelle haben. */}
-        <Link
-          to={`/kontakt?leistung=${data.path.split("/").pop()}`}
-          className="btn-ghost btn-accent mt-8">
-          {data.cta?.button ?? "Kostenloses Erstgespräch"}
+        {/* Wer neunhundert Woerter ueber n8n gelesen hat, sollte die Leistung
+            nicht im Auswahlfeld erneut suchen muessen — das war der einzige
+            Bruch in einem sonst kurzen Weg, und er sass genau dort, wo die
+            Kaufabsicht am hoechsten ist. */}
+        <Link to={anfrageZiel(data)} className="btn-ghost btn-accent mt-8">
+          {anfrageLabel(data)}
         </Link>
         <p className="mt-5 text-sm text-paper-mute">
           Kostenloses Erstgespräch · Frankfurt und remote in Deutschland, Österreich und
@@ -198,5 +209,7 @@ export const LeistungPage = ({ data }) => (
         </p>
       </div>
     </Section>
+
+    <AnfrageLeiste to={anfrageZiel(data)} label={anfrageLabel(data)} />
   </PageShell>
 );

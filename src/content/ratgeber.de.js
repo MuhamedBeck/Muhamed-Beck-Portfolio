@@ -12,8 +12,6 @@
 // House rules: no em dashes, real umlauts, one keyword-bearing h1, and no
 // figure that cannot be traced to a source or to the owner's own CV.
 
-export const STAND = "August 2026";
-
 export const RATGEBER = [
   {
     path: "/ratgeber/n8n-freelancer-kosten",
@@ -238,6 +236,7 @@ export const RATGEBER = [
     related: [
       { path: "/leistungen/n8n-automatisierung", label: "n8n Berater und Entwickler für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+      { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
     ],
   },
   {

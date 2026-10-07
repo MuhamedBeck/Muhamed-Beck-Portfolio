@@ -82,6 +82,9 @@ html {
      Keeping them as tokens stops every component inventing its own curve. */
   --ease-entrance: cubic-bezier(0.455, 0.03, 0.515, 0.955);
   --ease-hover: cubic-bezier(0.075, 0.82, 0.165, 1);
+  /* Für Leisten, die vom Rand hereinfahren: startet sofort und läuft weich aus.
+     Dieselbe Kurve wie bei iOS-Sheets, deshalb fühlt sie sich vertraut an. */
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 /* Light mode.
@@ -1035,5 +1038,44 @@ dd {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
+  }
+}
+
+/* Mobile Anfrage-Leiste auf den Leistungsseiten (AnfrageLeiste.jsx).
+
+   Verborgen liegt sie um ihre eigene Höhe unter dem Rand. Prozent statt Pixel,
+   damit es mit jeder Höhe stimmt, auch mit dem Abstand für die Home-Leiste
+   des iPhones.
+
+   Transition statt Keyframes: Wer schnell hoch- und runterscrollt, schaltet die
+   Leiste mehrmals um. Eine Transition kehrt dann aus der aktuellen Position
+   um, eine Keyframe-Animation finge jedes Mal von vorn an.
+
+   Asymmetrisch: Das Hereinfahren darf 260 ms dauern, das Verschwinden nur
+   180 ms. Beim Weggehen wartet niemand auf die Leiste. */
+.anfrage-leiste {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  transform: translateY(100%);
+  pointer-events: none;
+  transition: transform 180ms var(--ease-drawer);
+}
+
+.anfrage-leiste[data-sichtbar="true"] {
+  transform: translateY(0);
+  pointer-events: auto;
+  transition-duration: 260ms;
+}
+
+/* Reduzierte Bewegung heißt weniger Bewegung, nicht keine Rückmeldung: Die
+   Leiste blendet ein, statt hereinzufahren. */
+@media (prefers-reduced-motion: reduce) {
+  .anfrage-leiste {
+    transform: none;
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+
+  .anfrage-leiste[data-sichtbar="true"] {
+    opacity: 1;
   }
 }

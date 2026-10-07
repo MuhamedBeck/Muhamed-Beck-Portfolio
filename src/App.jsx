@@ -11,9 +11,13 @@ import { Projects } from "./components/sections/Projects";
 import { TechMarquee } from "./components/TechMarquee";
 import { Section } from "./components/Section";
 import { Link } from "react-router-dom";
-import { CONTACT } from "./content/site";
+import { CONTACT, mailtoHref } from "./content/site";
 import Footer from "./components/Footer";
 import { useRouteMeta } from "./seo/useRouteMeta";
+import ui from "./i18n/dict/ui";
+
+// Seite gibt es nur auf Englisch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
+const MAIL_HREF = mailtoHref(ui.en.mailBetreff);
 
 /* Das Register im Hero. Englisch hat keine sieben Einzelseiten, sondern eine
    Sammelseite, deshalb zielt jede Zeile auf ihren Abschnitt dort statt siebenmal
@@ -70,7 +74,7 @@ function App() {
               </Link>
               <p className="mt-6 text-sm text-paper-mute">
                 Or write directly:{" "}
-                <a href={`mailto:${CONTACT.email}`} className="text-accent hover:underline">
+                <a href={MAIL_HREF} className="text-accent hover:underline">
                   {CONTACT.email}
                 </a>{" "}
                 · {CONTACT.phoneDisplay}

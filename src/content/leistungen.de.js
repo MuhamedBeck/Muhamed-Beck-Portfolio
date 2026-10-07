@@ -14,6 +14,11 @@ export const PREIS_TEXT =
 
    Steht neben dem Stundensatz, weil die Anschlussfrage an eine Landesgrenze
    immer der Preis ist. Pro Leistung überschreibbar wie PREIS_TEXT. */
+/* Die Zusage neben dem ersten Anfrage-Knopf jeder Leistungsseite. Der Preis
+   daneben kommt aus RATE_MIN und RATE_MAX in site.js, damit er nicht ein
+   drittes Mal von Hand gepflegt wird. */
+export const ANFRAGE_ZUSAGE = "Kostenloses Erstgespräch · Antwort innerhalb von 24 Stunden";
+
 export const REICHWEITE_TEXT =
   "Auftraggeber in Deutschland, Österreich und der Schweiz. Die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch, zum selben Stundensatz.";
 
@@ -32,6 +37,7 @@ export const LEISTUNGEN = [
     weiterlesen: [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+      { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
     ],
     // Every stage below restates something the leistungen array on this same
     // entry already promises, so the diagram and the copy cannot drift apart.
@@ -164,6 +170,7 @@ export const LEISTUNGEN = [
     weiterlesen: [
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
+      { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
     ],
     flow: {
       caption: "So läuft eine KI-Automatisierung",

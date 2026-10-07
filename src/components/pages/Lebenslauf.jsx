@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
 import profilePicture from "../../assets/profilepicture.webp";
-import { CONTACT, PERSON, SOCIAL } from "../../content/site";
+import { CONTACT, PERSON, SOCIAL, mailtoHref } from "../../content/site";
 import { LinkArrow } from "../LinkArrow";
 import {
   AUSBILDUNG,
@@ -14,6 +14,10 @@ import {
   STATIONEN,
   ZERTIFIKATE,
 } from "../../content/lebenslauf.de";
+import ui from "../../i18n/dict/ui";
+
+// Seite gibt es nur auf Deutsch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
+const MAIL_HREF = mailtoHref(ui.de.mailBetreff);
 
 /**
  * Der Lebenslauf als eigene Seite.
@@ -79,7 +83,7 @@ const Lebenslauf = () => (
       <div className="grid gap-x-12 gap-y-10 md:grid-cols-[1fr_auto] md:items-start">
         <dl className="lebenslauf-kontakt max-w-lg border-b border-hairline">
           <Kontaktzeile begriff="E-Mail">
-            <a href={`mailto:${CONTACT.email}`} className="underline-offset-4 hover:underline">
+            <a href={MAIL_HREF} className="underline-offset-4 hover:underline">
               {CONTACT.email}
             </a>
           </Kontaktzeile>

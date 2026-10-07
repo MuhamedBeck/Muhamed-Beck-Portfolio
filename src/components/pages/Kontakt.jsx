@@ -4,9 +4,13 @@ import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaPhone, FaLinkedin } from "react-icons/fa";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
-import { CONTACT, RATE_TEXT, SOCIAL } from "../../content/site";
+import { CONTACT, RATE_TEXT, SOCIAL, mailtoHref } from "../../content/site";
 import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 import { LEISTUNGEN } from "../../content/leistungen.de";
+import ui from "../../i18n/dict/ui";
+
+// Seite gibt es nur auf Deutsch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
+const MAIL_HREF = mailtoHref(ui.de.mailBetreff);
 
 // The direct channels stay alongside the form rather than being replaced by it.
 // Some people will always rather pick up the phone, and a page that only offers
@@ -16,7 +20,7 @@ const CHANNELS = [
     icon: FaEnvelope,
     label: "E-Mail",
     value: CONTACT.email,
-    href: `mailto:${CONTACT.email}`,
+    href: MAIL_HREF,
     note: "Antwort innerhalb von 24 Stunden, werktags meist deutlich schneller.",
   },
   {
@@ -52,6 +56,27 @@ const ANFRAGE_ARTEN = [...ARTEN.map((art) => art.label), SONSTIGES];
 /** Beschriftung zu einem Slug aus dem Abfrageteil, oder leer bei Unbekanntem. */
 const artZuSlug = (slug) => ARTEN.find((art) => art.slug === slug)?.label ?? "";
 
+/* Woher die Anfrage kommt, freiwillig und vom Absender selbst angegeben.
+
+   Die Seite setzt bewusst keine Statistik und keine Cookies ein, und genau
+   deshalb wusste im Oktober 2026 niemand, woher die ersten beiden Anfragen
+   kamen: Die Search Console zeigte seit dem 18.09. null Klicks aus der Suche,
+   die Mails kamen trotzdem. Eine Frage im Formular beantwortet das ohne
+   jedes Tracking, und eine Antwort des Absenders ist ohnehin genauer als
+   jeder Referrer, weil sie auch Empfehlungen und KI-Assistenten erfasst, die
+   keinen hinterlassen.
+
+   Optional, weil eine Pflichtfrage nach dem Weg hierher die Anfrage selbst
+   kosten kann. */
+const HERKUNFT = [
+  "Google-Suche",
+  "ChatGPT, Perplexity oder anderer KI-Assistent",
+  "LinkedIn",
+  "Empfehlung",
+  "Verzeichnis (freelancermap, GULP …)",
+  "Sonstiges",
+];
+
 const Kontakt = () => {
   // useSearchParams statt window.location: waehrend des Prerenders gibt es kein
   // window, und ein direkter Zugriff darauf wuerde den Build abbrechen. Ohne
@@ -65,6 +90,7 @@ const Kontakt = () => {
     email: "",
     company: "",
     service_type: vorbelegt,
+    herkunft: "",
     message: "",
   });
   const [sent, setSent] = useState(false);
@@ -82,6 +108,7 @@ const Kontakt = () => {
     const combinedMessage = [
       `Art der Anfrage: ${formData.service_type}`,
       formData.company ? `Unternehmen: ${formData.company}` : null,
+      formData.herkunft ? `Gefunden über: ${formData.herkunft}` : null,
       `\nBeschreibung:\n${formData.message}`,
     ]
       .filter(Boolean)
@@ -95,7 +122,14 @@ const Kontakt = () => {
         EMAILJS.publicKey
       );
       setSent(true);
-      setFormData({ name: "", email: "", company: "", service_type: "", message: "" });
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        service_type: "",
+        herkunft: "",
+        message: "",
+      });
     } catch {
       setError(true);
     } finally {
@@ -126,7 +160,7 @@ const Kontakt = () => {
                 Das Formular ist gerade nicht verfügbar. Schreiben Sie mir bitte
                 direkt an{" "}
                 <a
-                  href={`mailto:${CONTACT.email}`}
+                  href={MAIL_HREF}
                   className="text-accent hover:underline">
                   {CONTACT.email}
                 </a>
@@ -139,7 +173,7 @@ const Kontakt = () => {
                   Sie hören innerhalb von 24 Stunden von mir. Keine Antwort erhalten?
                   Dann direkt an{" "}
                   <a
-                    href={`mailto:${CONTACT.email}`}
+                    href={MAIL_HREF}
                     className="text-accent hover:underline">
                     {CONTACT.email}
                   </a>
@@ -227,6 +261,27 @@ const Kontakt = () => {
                 </div>
 
                 <div>
+                  <label className={labelClass} htmlFor="kontakt-herkunft">
+                    Wie sind Sie auf mich aufmerksam geworden? (optional)
+                  </label>
+                  <select
+                    id="kontakt-herkunft"
+                    name="herkunft"
+                    value={formData.herkunft}
+                    onChange={(e) =>
+                      setFormData({ ...formData, herkunft: e.target.value })
+                    }
+                    className={`${inputClass} cursor-pointer`}>
+                    <option value="">Keine Angabe</option>
+                    {HERKUNFT.map((weg) => (
+                      <option key={weg} value={weg}>
+                        {weg}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
                   <label className={labelClass} htmlFor="kontakt-nachricht">
                     Welcher Prozess kostet Sie am meisten Zeit? *
                   </label>
@@ -253,7 +308,7 @@ const Kontakt = () => {
                     Die Anfrage konnte nicht gesendet werden. Schreiben Sie mir bitte
                     direkt an{" "}
                     <a
-                      href={`mailto:${CONTACT.email}`}
+                      href={MAIL_HREF}
                       className="underline hover:text-red-300">
                       {CONTACT.email}
                     </a>

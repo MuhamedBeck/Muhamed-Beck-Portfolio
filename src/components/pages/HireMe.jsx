@@ -2,8 +2,12 @@ import { useState } from "react";
 import emailjs from "@emailjs/browser";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
-import { CONTACT, RATE_TEXT_EN } from "../../content/site";
+import { CONTACT, RATE_TEXT_EN, mailtoHref } from "../../content/site";
 import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
+import ui from "../../i18n/dict/ui";
+
+// Seite gibt es nur auf Englisch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
+const MAIL_HREF = mailtoHref(ui.en.mailBetreff);
 
 /**
  * English project enquiry page.
@@ -217,7 +221,7 @@ export const HireMe = () => {
                 involved and whether there is a deadline. One or two sentences is
                 enough.
               </p>
-              <a href={`mailto:${CONTACT.email}`} className="btn-ghost btn-accent mt-8">
+              <a href={MAIL_HREF} className="btn-ghost btn-accent mt-8">
                 Write an email
               </a>
               <p className="mt-5 text-sm text-paper-mute">
@@ -231,7 +235,7 @@ export const HireMe = () => {
               <p className="mt-4 leading-relaxed text-paper-soft">
                 I&apos;ll get back to you within 24 hours. No reply?{" "}
                 <a
-                  href={`mailto:${CONTACT.email}`}
+                  href={MAIL_HREF}
                   className="text-accent hover:underline">
                   {CONTACT.email}
                 </a>
@@ -329,7 +333,7 @@ export const HireMe = () => {
                 <p className="text-sm text-red-400" role="alert">
                   The request could not be sent. Please email me directly:{" "}
                   <a
-                    href={`mailto:${CONTACT.email}`}
+                    href={MAIL_HREF}
                     className="underline hover:text-red-300">
                     {CONTACT.email}
                   </a>

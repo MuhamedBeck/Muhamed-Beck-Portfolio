@@ -21,7 +21,7 @@ import {
 import { localeConfig } from "./src/i18n/locales.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
 import { RATGEBER } from "./src/content/ratgeber.de.js";
-import { CONTACT, RATE_MAX, RATE_MIN, RATE_TEXT } from "./src/content/site.js";
+import { CONTACT, RATE_MAX, RATE_MIN, RATE_TEXT, SAME_AS } from "./src/content/site.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
 
 // Route components are loaded through dynamic import() so one registry entry can
@@ -71,7 +71,69 @@ const kontaktdatenEinsetzen = (html) => {
   return mitEmail;
 };
 
-const template = kontaktdatenEinsetzen(rohesTemplate);
+/**
+ * sameAs und den Leistungskatalog aus den Quellen ins Template schreiben.
+ *
+ * Beide standen von Hand in index.html und waren still auseinandergelaufen:
+ * Der Katalog nannte im Oktober 2026 sechs von neun Leistungen, denn die drei
+ * neueren waren auf ihren Seiten angekommen, aber nie in dieser Liste. Ein
+ * KI-Assistent, der fragt, was hier angeboten wird, bekam ein Drittel weniger
+ * zur Antwort.
+ *
+ * Gleiche Regel wie oben: Jeder Anker muss genau einmal vorkommen, sonst
+ * bricht der Build. Die BreadcrumbList trägt ebenfalls ein itemListElement,
+ * entsteht aber erst später pro Seite und ist hier noch nicht im Template.
+ */
+const schemaAusQuellenEinsetzen = (html) => {
+  let sameAs = 0;
+  let katalog = 0;
+
+  const katalogEintraege = LEISTUNGEN.map((leistung) => ({
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      "@id": `${SITE_URL}${leistung.path}#service`,
+      name: leistung.h1,
+    },
+  }));
+
+  const ersetzt = html
+    .replace(/("sameAs":\s*)\[[^\]]*\]/g, (_, vor) => {
+      sameAs += 1;
+      return vor + JSON.stringify(SAME_AS);
+    })
+    .replace(/("itemListElement":\s*)\[[^\]]*\]/g, (_, vor) => {
+      katalog += 1;
+      return vor + JSON.stringify(katalogEintraege);
+    });
+
+  if (sameAs !== 1 || katalog !== 1) {
+    throw new Error(
+      `prerender: erwartet je 1 sameAs und 1 Leistungskatalog in index.html, ` +
+        `gefunden ${sameAs} und ${katalog}. Wurde die Vorlage umgebaut?`
+    );
+  }
+  return ersetzt;
+};
+
+/* Jede Fallstudie, die auf eine Leistung verweist, muss auf eine echte zeigen.
+   projekte.de.js wird von check-i18n nicht geprüft, und ein umbenannter Pfad
+   ergäbe sonst einen toten Link genau an der Stelle, die zur Anfrage führt.
+
+   Als Text gelesen statt importiert: projekte.de.js importiert die
+   Screenshots als .webp, und dieses Skript läuft in Node, das damit nichts
+   anfangen kann. */
+const projekteQuelle = readFileSync(join(__dirname, "src/content/projekte.de.js"), "utf8");
+for (const [, ziel] of projekteQuelle.matchAll(/leistung: \{ path: "([^"]+)"/g)) {
+  if (!LEISTUNGEN.some((leistung) => leistung.path === ziel)) {
+    throw new Error(
+      `prerender: Eine Fallstudie verweist auf ${ziel}, ` +
+        `das ist keine Leistung in leistungen.de.js.`
+    );
+  }
+}
+
+const template = schemaAusQuellenEinsetzen(kontaktdatenEinsetzen(rohesTemplate));
 
 // The hero image is referenced only from inside the JS bundle, so the browser
 // cannot discover it until React has rendered. Preloading the hashed file makes

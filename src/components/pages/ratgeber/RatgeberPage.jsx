@@ -1,10 +1,33 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
-import { STAND } from "../../../content/ratgeber.de";
 import { PERSON } from "../../../content/site";
 import { RateScale } from "./RateScale";
 import { LinkArrow } from "../../LinkArrow";
+
+const MONATE = [
+  "Januar", "Februar", "März", "April", "Mai", "Juni",
+  "Juli", "August", "September", "Oktober", "November", "Dezember",
+];
+
+/* "2026-09-30" wird zu "30. September 2026".
+
+   Zerlegt statt über new Date(...).toLocaleDateString: Ein reines Datum wird
+   dort als Mitternacht UTC gelesen und rutscht westlich von Greenwich auf den
+   Vortag, und Server und Browser können je nach ICU-Ausstattung verschieden
+   formatieren. Beides ergäbe eine Hydration-Abweichung im sichtbaren Text. */
+const datumLang = (iso) => {
+  const [jahr, monat, tag] = iso.split("-").map(Number);
+  return `${tag}. ${MONATE[monat - 1]} ${jahr}`;
+};
+
+/* Die erste Leistung unter den weiterführenden Links gibt die Vorbelegung des
+   Formulars vor. Jeder Artikel nennt dort bereits die Leistung, zu der er
+   gehört, es braucht also keine zweite Angabe, die auseinanderlaufen kann. */
+const anfrageZiel = (related) => {
+  const leistung = related.find((item) => item.path.startsWith("/leistungen/"));
+  return leistung ? `/kontakt?leistung=${leistung.path.split("/").pop()}` : "/kontakt";
+};
 
 /**
  * Article template.
@@ -22,15 +45,19 @@ export const RatgeberPage = ({ data }) => (
   <PageShell label={data.kicker} headline={data.h1} intro={data.lede}>
     <Section className="!pt-0">
       <div className="max-w-[68ch]">
-        {/* A visible date, matching datePublished/dateModified in the schema.
-            Freshness is a real ranking and citation input, so it is stated
-            rather than implied, and never faked. */}
+        {/* A visible date, matching dateModified in the schema. Freshness is a
+            real ranking and citation input, so it is stated rather than implied,
+            and never faked.
+
+            Per article, not one shared value. Until October 2026 every article
+            showed "Stand: August 2026" from a single constant, so the cost
+            guide, updated on 30.09., contradicted its own dateModified. */}
         {/* Byline. /ueber-mich carries the CV that every figure in these
             articles traces back to, and had no inbound link from any body text
             at all -- only the navbar. An article that cites its own numbers
             should say whose numbers they are and let the reader check. */}
         <p className="flex flex-wrap items-baseline gap-x-3 gap-y-1 border-t border-hairline pt-5 text-xs tracking-[0.2em] text-paper-mute uppercase">
-          <span>Stand: {STAND}</span>
+          <span>Stand: {datumLang(data.modified)}</span>
           <span aria-hidden="true">·</span>
           <span>
             Von{" "}
@@ -144,7 +171,7 @@ export const RatgeberPage = ({ data }) => (
           Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden
           eine Einschätzung, ob und wie sich das automatisieren lässt.
         </p>
-        <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
+        <Link to={anfrageZiel(data.related)} className="btn-ghost btn-accent mt-8">
           Kostenloses Erstgespräch
         </Link>
       </div>

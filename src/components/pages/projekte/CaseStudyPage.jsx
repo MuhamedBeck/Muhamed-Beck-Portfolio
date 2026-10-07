@@ -15,6 +15,12 @@ import { Stimmen } from "../../Stimmen";
  */
 export const CaseStudyPage = ({ data, locale = "de" }) => {
   const copy = CASE_STUDY_COPY[locale] ?? CASE_STUDY_COPY.de;
+  /* Nur deutsche Mandate tragen eine Leistung; die englischen und arabischen
+     Fallstudien verweisen weiter auf ihre eigene Anfrageseite. */
+  const leistung = locale === "de" ? data.leistung : undefined;
+  const ctaZiel = leistung
+    ? `/kontakt?leistung=${leistung.path.split("/").pop()}`
+    : copy.ctaHref;
 
   return (
   <PageShell label={data.role} headline={data.title} intro={data.subtitle}>
@@ -133,6 +139,15 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
             </li>
           ))}
         </ul>
+        {/* Von der Fallstudie zur Leistung, die sie belegt. Steht unter den
+            Ergebnissen, weil der Leser genau dort entscheidet, ob er das auch
+            für sich will. */}
+        {leistung ? (
+          <Link to={leistung.path} className="link-arrow mt-6 justify-self-start md:col-start-2">
+            Zur Leistung: {leistung.label}
+            <LinkArrow />
+          </Link>
+        ) : null}
       </div>
     </Section>
 
@@ -163,7 +178,7 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
       <div className="max-w-2xl border-t border-hairline pt-12">
         <h2 className="headline-sub">{copy.ctaHeadline}</h2>
         <p className="intro mt-5">{copy.ctaIntro}</p>
-        <Link to={copy.ctaHref} className="btn-ghost btn-accent mt-8">
+        <Link to={ctaZiel} className="btn-ghost btn-accent mt-8">
           {copy.ctaButton}
         </Link>
       </div>

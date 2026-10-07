@@ -10,8 +10,12 @@ import { Home } from "../../sections/Home";
 import { Section, SectionHeader } from "../../Section";
 import { LinkArrow } from "../../LinkArrow";
 import { useRouteMeta } from "../../../seo/useRouteMeta";
-import { CONTACT } from "../../../content/site";
+import { CONTACT, mailtoHref } from "../../../content/site";
 import { AR_UEBER, AR_LEISTUNGEN, AR_CTA } from "../../../content/ar";
+import ui from "../../../i18n/dict/ui";
+
+// Seite gibt es nur auf Arabisch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
+const MAIL_HREF = mailtoHref(ui.ar.mailBetreff);
 
 /**
  * Arabic homepage.
@@ -89,7 +93,7 @@ export const ArabicHome = () => {
               <p className="mt-6 text-sm text-paper-mute">
                 أو راسلني مباشرة:{" "}
                 <bdi>
-                  <a href={`mailto:${CONTACT.email}`} className="text-accent hover:underline">
+                  <a href={MAIL_HREF} className="text-accent hover:underline">
                     {CONTACT.email}
                   </a>
                 </bdi>{" "}

@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import { PageShell } from "../PageShell";
 import { SERVICES } from "../../content/services.en";
 import { Section } from "../Section";
-import { CONTACT, RATE_TEXT_EN } from "../../content/site";
+import { CONTACT, RATE_TEXT_EN, mailtoHref } from "../../content/site";
+import ui from "../../i18n/dict/ui";
+
+// Seite gibt es nur auf Englisch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
+const MAIL_HREF = mailtoHref(ui.en.mailBetreff);
 
 /**
  * English services overview.
@@ -94,7 +98,7 @@ export const Services = () => (
           Or email directly:{" "}
           {/* The old mailto prefilled a German salutation and body on an
               English page. */}
-          <a href={`mailto:${CONTACT.email}`} className="text-accent hover:underline">
+          <a href={MAIL_HREF} className="text-accent hover:underline">
             {CONTACT.email}
           </a>
         </p>

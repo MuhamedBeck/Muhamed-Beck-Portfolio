@@ -7,10 +7,16 @@ import maflatsHell from "../assets/projekte/maflats-hell.webp";
 import maflatsDunkel from "../assets/projekte/maflats-dunkel.webp";
 import maflatsMobil from "../assets/projekte/maflats-mobil.webp";
 
+/* `leistung` (optional, nur Mandate): die Leistungsseite, die dieses Projekt
+   belegt. Die Fallstudie verlinkt dorthin und belegt das Kontaktformular mit
+   genau dieser Leistung vor. Bis Oktober 2026 verlinkte keine Fallstudie auf
+   eine Leistung, obwohl sie deren stärkster Beleg ist. prerender-meta.js prüft,
+   dass jeder Pfad eine echte Leistung ist. */
 export const PROJEKTE = [
   {
     path: "/projekte/maflats",
     kind: "mandat",
+    leistung: { path: "/leistungen/webentwicklung", label: "Webentwicklung und Website-Relaunch" },
     title: "Website-Relaunch für MA-Flats",
     subtitle:
       "Neubau von maflats.de: fünf Sprachen, neun Standorte, ohne eine Zeile ausgeliefertes JavaScript",
@@ -81,6 +87,7 @@ export const PROJEKTE = [
   {
     path: "/projekte/recruiting-automatisierung",
     kind: "mandat",
+    leistung: { path: "/leistungen/recruiting-automatisierung", label: "Recruiting-Automatisierung mit n8n und ATS-Anbindung" },
     title: "Recruiting-Automatisierung mit n8n und GPT",
     subtitle:
       "Sales- und Recruiting-Prozesse der TOPEOPLE Group GmbH, Frankfurt am Main",
@@ -128,6 +135,10 @@ export const PROJEKTE = [
   {
     path: "/projekte/phoenix-parkservice",
     kind: "mandat",
+    /* GEO und SEO statt Webentwicklung, obwohl hier auch eine Plattform gebaut
+       wurde: Die messbare Zahl dieses Mandats ist +35 % organischer Traffic, und
+       die GEO-Seite hatte bis dahin keinen Beleg aus einem Kundenprojekt. */
+    leistung: { path: "/leistungen/geo-seo-optimierung", label: "GEO und SEO: in Google und KI-Assistenten gefunden werden" },
     title: "Buchungsplattform und KI-SEO für Phoenix Parkservice",
     subtitle: "Buchungsplattform und digitale Sichtbarkeit für einen Parkservice-Anbieter",
     role: "Software Engineer & AI-Driven Digital Lead (Freelance), 07/2024 bis 09/2025",

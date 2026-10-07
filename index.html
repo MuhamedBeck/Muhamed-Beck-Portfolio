@@ -116,6 +116,12 @@
        on your own domain is a policy violation), no openingHours or geo
        (service-area business, no premises customers visit).
 
+       Two arrays here are placeholders that prerender-meta.js fills at build
+       time: sameAs comes from SAME_AS in src/content/site.js and the offer
+       catalog's itemListElement from LEISTUNGEN. Both were hand-maintained and
+       drifted (the catalog listed six of nine services). Edit the sources, not
+       these lines.
+
        knowsAbout is kept to substantiated items. A long unfocused list reads as
        keyword stuffing, which the Princeton GEO study found actively reduces
        AI visibility rather than helping it. -->
@@ -140,10 +146,25 @@
             "addressCountry": "DE"
           }
         },
+        "description": "AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main. Automatisiert Geschäftsprozesse mit n8n, KI-Agenten, Voice-AI und CRM-Integration für Unternehmen in Deutschland, Österreich und der Schweiz.",
         "alumniOf": {
           "@type": "CollegeOrUniversity",
           "name": "Frankfurt University of Applied Sciences"
         },
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "name": "M. Sc. Wirtschaftsinformatik",
+            "recognizedBy": { "@type": "CollegeOrUniversity", "name": "Frankfurt University of Applied Sciences" }
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "degree",
+            "name": "B. Sc. International Business Information Systems",
+            "recognizedBy": { "@type": "CollegeOrUniversity", "name": "Frankfurt University of Applied Sciences" }
+          }
+        ],
         "knowsAbout": [
           "n8n", "Zapier", "Make.com", "Workflow Automation", "Prozessautomatisierung",
           "OpenAI", "Azure OpenAI", "Anthropic Claude", "RAG", "LangChain",
@@ -184,6 +205,8 @@
         "provider": { "@id": "https://muhamedbeck.com/#person" },
         "founder": { "@id": "https://muhamedbeck.com/#person" },
         "image": "https://muhamedbeck.com/og-image.jpg",
+        "logo": "https://muhamedbeck.com/MNB_Logo.png",
+        "vatID": "DE354877279",
         "telephone": "+4917666008485",
         "email": "m.nur.beck@hotmail.de",
         "priceRange": "90 bis 135 € nach Absprache und je nach Projektumfang",
@@ -203,14 +226,7 @@
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Leistungen",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://muhamedbeck.com/leistungen/n8n-automatisierung#service", "name": "n8n Workflow-Automatisierung" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://muhamedbeck.com/leistungen/ki-automatisierung-frankfurt#service", "name": "KI-Automatisierung" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://muhamedbeck.com/leistungen/hubspot-integration#service", "name": "HubSpot- und CRM-Integration" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://muhamedbeck.com/leistungen/recruiting-automatisierung#service", "name": "Recruiting-Automatisierung" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://muhamedbeck.com/leistungen/voice-ai-agenten#service", "name": "Voice-AI-Agenten" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "@id": "https://muhamedbeck.com/leistungen/ki-agenten-entwicklung#service", "name": "KI-Agenten-Entwicklung" } }
-          ]
+          "itemListElement": []
         }
       }
     ]

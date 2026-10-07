@@ -27,13 +27,42 @@ export const CONTACT = {
   phoneDisplay: "+49 176 66008485",
 };
 
+/**
+ * mailto-Verweis mit Betreff.
+ *
+ * Der Betreff ist die einzige Herkunftsangabe, die eine Mail von dieser Seite
+ * mitbringt. Die Adresse steht auch auf LinkedIn und in den Verzeichnissen,
+ * und Mails von dort tragen ihn nicht. So lässt sich im Posteingang ohne jedes
+ * Tracking unterscheiden, woher eine Anfrage kam. Im Oktober 2026 kamen die
+ * ersten beiden Anfragen per Mail, und niemand konnte das sagen.
+ *
+ * Bewusst nicht im Impressum und in der Datenschutzerklärung verwendet: Eine
+ * rechtliche Mitteilung ist keine Anfrage.
+ *
+ * @param {string} [betreff] Aus ui.mailBetreff der jeweiligen Sprache.
+ */
+export const mailtoHref = (betreff) =>
+  `mailto:${CONTACT.email}${betreff ? `?subject=${encodeURIComponent(betreff)}` : ""}`;
+
 export const SOCIAL = {
   linkedin: "https://www.linkedin.com/in/muhamed-nur-beck",
   github: "https://www.github.com/MuhamedBeck",
 };
 
 /** Everything a search engine should be able to confirm is the same person. */
-export const SAME_AS = [SOCIAL.linkedin, SOCIAL.github];
+export const SAME_AS = [
+  SOCIAL.linkedin,
+  SOCIAL.github,
+  /* Öffentliches Profil, am 07.10.2026 geprüft: erreichbar ohne Anmeldung und
+     index,follow. Nicht /profile/307578/form, das ist die Bearbeitungsansicht
+     und leitet Fremde zum Login.
+
+     GULP fehlt hier bewusst. Das Profil dort ist öffentlich, zeigt aber keinen
+     Namen (GULP anonymisiert für Nicht-Kunden) und trägt noindex. Ein sameAs
+     soll belegen, dass dort dieselbe Person steht; eine Seite ohne Namen kann
+     das nicht. */
+  "https://www.freelancermap.de/profil/muhamed-nur-beck",
+];
 
 // Wording agreed with the owner and grounded in the Freelancer-Kompass 2026
 // median of 95 EUR/h for IT freelancers across the DACH region (the survey does
