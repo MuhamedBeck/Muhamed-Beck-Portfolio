@@ -118,6 +118,10 @@ export const RATGEBER = [
     related: [
       { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
+      {
+        path: "/leistungen/n8n-automatisierung-oesterreich",
+        label: "n8n Freelancer für Wien und Österreich",
+      },
     ],
   },
   {

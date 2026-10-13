@@ -143,10 +143,21 @@ export const PROJEKTE = [
   {
     path: "/projekte/phoenix-parkservice",
     kind: "mandat",
-    /* GEO und SEO statt Webentwicklung, obwohl hier auch eine Plattform gebaut
-       wurde: Die messbare Zahl dieses Mandats ist +35 % organischer Traffic, und
-       die GEO-Seite hatte bis dahin keinen Beleg aus einem Kundenprojekt. */
-    leistung: { path: "/leistungen/geo-seo-optimierung", label: "GEO und SEO: in Google und KI-Assistenten gefunden werden" },
+    /* Seit dem 13.10.2026 auf die Web-App-Seite statt auf GEO und SEO: Gebaut
+       wurde hier vor allem eine Plattform, und die Web-App-Seite hatte sonst
+       keinen Beleg aus einem Kundenmandat. Die GEO-Seite verlinkt diese
+       Fallstudie weiter unter "Weiterlesen", der Beleg mit +35 % organischem
+       Traffic bleibt von dort erreichbar.
+
+       Die Zeile darunter bleibt einzeilig: prerender-meta.js liest diese
+       Datei als Text und prüft jeden Leistungspfad per Suchmuster, und das
+       greift nur auf diese Form. */
+    leistung: { path: "/leistungen/web-app-entwicklung", label: "Web-App und Buchungssystem entwickeln lassen" },
+    cta: {
+      headline: "Sollen Ihre Buchungen auch über eine eigene Plattform laufen?",
+      intro: `Schreiben Sie mir, wie Buchungen und Abläufe heute bei Ihnen laufen. Web-Apps und Buchungssysteme entwickle ich zum Festpreis ab ${euro(FESTPREIS.webApp)} netto.`,
+      button: "Web-App anfragen",
+    },
     title: "Buchungsplattform und KI-SEO für Phoenix Parkservice",
     subtitle: "Buchungsplattform und digitale Sichtbarkeit für einen Parkservice-Anbieter",
     role: "Software Engineer & AI-Driven Digital Lead (Freelance), 07/2024 bis 09/2025",

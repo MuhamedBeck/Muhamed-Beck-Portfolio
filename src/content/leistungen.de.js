@@ -25,6 +25,12 @@ export const ANFRAGE_ZUSAGE = "Kostenloses Erstgespräch · Antwort innerhalb vo
 export const REICHWEITE_TEXT =
   "Auftraggeber in Deutschland, Österreich und der Schweiz. Die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch, zum selben Stundensatz.";
 
+/* Dieselbe Reichweite für die Leistungen mit Festpreis: Der allgemeine Satz
+   endet auf "zum selben Stundensatz", und das liest sich unter Festpreisen
+   falsch. */
+export const REICHWEITE_FESTPREIS_TEXT =
+  "Auftraggeber in Deutschland, Österreich und der Schweiz. Die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch, zu denselben Preisen.";
+
 export const LEISTUNGEN = [
   {
     path: "/leistungen/n8n-automatisierung",
@@ -41,6 +47,10 @@ export const LEISTUNGEN = [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
+      {
+        path: "/leistungen/n8n-automatisierung-oesterreich",
+        label: "n8n Freelancer für Wien und Österreich",
+      },
     ],
     // Every stage below restates something the leistungen array on this same
     // entry already promises, so the diagram and the copy cannot drift apart.
@@ -177,9 +187,7 @@ export const LEISTUNGEN = [
        Gesamtpreise vergleicht. Die Beträge kommen aus FESTPREIS in site.js. */
     preisKurz: `Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)} netto`,
     preisText: `Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch mit Weiterleitungen und Messung vorher und nachher ab ${euro(FESTPREIS.relaunch)}. Was über den vereinbarten Umfang hinausgeht, etwa weitere Sprachen, Buchung oder Anbindungen, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Laufende Kosten entstehen nur für Domain und Hosting, nicht für die Seite selbst.`,
-    // The shared line ends "zum selben Stundensatz", which reads wrong under fixed prices.
-    reichweiteText:
-      "Auftraggeber in Deutschland, Österreich und der Schweiz. Die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch, zu denselben Preisen.",
+    reichweiteText: REICHWEITE_FESTPREIS_TEXT,
     cta: {
       headline: "Brauchen Sie eine Website, die schnell ist und gefunden wird?",
       intro:
@@ -187,6 +195,10 @@ export const LEISTUNGEN = [
       button: "Website anfragen",
     },
     weiterlesen: [
+      {
+        path: "/leistungen/web-app-entwicklung",
+        label: "Web-App und Buchungssystem entwickeln lassen",
+      },
       {
         path: "/projekte/phoenix-parkservice",
         label: "Phoenix Parkservice: Buchungsplattform und Website",
@@ -307,6 +319,131 @@ export const LEISTUNGEN = [
       {
         q: "Was passiert mit meinen alten Adressen?",
         a: "Sie werden auf die neuen weitergeleitet. Das ist der Punkt, an dem Relaunches am häufigsten Sichtbarkeit verlieren: Wer alte Adressen ins Leere laufen lässt, verliert die Platzierungen, die daran hängen.",
+      },
+      {
+        q: "Arbeiten Sie remote oder vor Ort?",
+        a: "Überwiegend remote, in ganz Deutschland, Österreich und der Schweiz. Vor Ort im Rhein-Main-Gebiet nach Absprache.",
+      },
+    ],
+  },
+  {
+    path: "/leistungen/web-app-entwicklung",
+    /* Eigene Seite für Webanwendungen seit dem 13.10.2026. Wer ein
+       Buchungssystem oder ein Kundenportal sucht, sucht nicht nach "Website",
+       und die Webentwicklungsseite verkauft Firmen-Websites. Beleg ist Phoenix
+       Parkservice, die Plattform aus einem Kundenmandat; die Plattform bei
+       TOPEOPLE steht ausdrücklich als Arbeit beim Arbeitgeber da, nie als
+       Kundenprojekt. */
+    preisKurz: `Web-App ab ${euro(FESTPREIS.webApp)}, Kundenportal ab ${euro(FESTPREIS.portal)} netto`,
+    preisText: `Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}. Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Laufende Kosten entstehen für Hosting und Datenbank; die schätzen wir vor dem Start, nicht danach.`,
+    reichweiteText: REICHWEITE_FESTPREIS_TEXT,
+    cta: {
+      headline: "Welcher Ablauf soll endlich über eine eigene Anwendung laufen?",
+      intro:
+        "Beschreiben Sie, was heute per Telefon, Tabelle oder E-Mail von Hand erledigt wird. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob sich eine eigene Anwendung lohnt oder fertige Software reicht, und welcher Festpreis realistisch ist.",
+      button: "Web-App anfragen",
+    },
+    weiterlesen: [
+      {
+        path: "/projekte/phoenix-parkservice",
+        label: "Phoenix Parkservice: Buchungsplattform und Website",
+      },
+      {
+        path: "/leistungen/webentwicklung",
+        label: "Firmen-Website erstellen lassen und Relaunch",
+      },
+    ],
+    flow: {
+      caption: "So läuft eine Buchung",
+      stages: [
+        { kind: "Auslöser", title: "Ein Kunde bucht",
+          text: "Online im Kundenportal statt per Telefon oder E-Mail, auch außerhalb der Geschäftszeiten." },
+        { kind: "Schritt", title: "Prüfen und reservieren",
+          text: "Verfügbarkeit, Preis und Pflichtangaben werden geprüft, bevor eine Buchung entsteht." },
+        { kind: "Schritt", title: "Das Team sieht alles",
+          text: "Die interne Verwaltung zeigt Buchungen, Status und Aufgaben an einer Stelle." },
+        { kind: "Ziel", title: "Bestätigt und dokumentiert",
+          text: "Bestätigung an den Kunden, Datensatz in der Datenbank, Anbindung an CRM oder Zahlungsanbieter, wo nötig." },
+      ],
+      alongside: "Rollen und Rechte für Kunden, Mitarbeitende und Verwaltung, dazu automatisierte Auslieferung über CI/CD statt von Hand gepflegter Server.",
+    },
+    badge: "Web-Apps & Buchungssysteme",
+    hero: {
+      kurz: "Web-App entwickeln lassen",
+      ankerLabel: "Systeme aus einer Hand",
+    },
+    teaser: `Buchungssysteme, Kundenportale und interne Software als eigene Web-App, ab ${euro(FESTPREIS.webApp)} netto. Mit Rollen, Schnittstellen und Übergabe des Quellcodes.`,
+    h1: "Web-App und Buchungssystem entwickeln lassen",
+    intro:
+      "Wenn Buchungen per Telefon kommen, Termine in Tabellen stehen und jede Änderung drei Leute beschäftigt, lohnt sich oft eine eigene Webanwendung. Manchmal reicht auch fertige Software, und das sage ich vorher. Ich entwickle Buchungssysteme, Kundenportale und interne Software als Web-App: Spring Boot oder Supabase im Hintergrund, Angular oder React im Browser, mit Rollen, Schnittstellen und automatisierter Auslieferung. Für Phoenix Parkservice habe ich so 15 Monate lang Website, Kundenportal und interne Verwaltungssoftware aus einer Hand entwickelt.",
+    szenarien: [
+      {
+        title: "Buchungssystem",
+        text: "Kunden buchen online statt per Telefon, Verfügbarkeiten stimmen, und die Bestätigung geht automatisch hinaus. Bei Phoenix Parkservice laufen Buchungen und Abläufe so über eine eigene Plattform statt über Zuruf.",
+      },
+      {
+        title: "Kundenportal",
+        text: "Ihre Kunden sehen Buchungen, Unterlagen und Status selbst, statt anzurufen. Mit Anmeldung, Rollen und Rechten, damit jeder nur sieht, was ihn betrifft.",
+      },
+      {
+        title: "Interne Software",
+        text: "Was heute in Tabellen und E-Mails verteilt ist, läuft in einer Anwendung für Ihr Team: Aufgaben, Status und Auswertungen an einer Stelle, angebunden an die Systeme, die Sie schon haben.",
+      },
+    ],
+    leistungen: [
+      "Individuelle Web-Apps mit Spring Boot und Angular oder mit React und Supabase",
+      "Buchungs- und Verwaltungslogik mit Verfügbarkeiten, Status und Benachrichtigungen",
+      "Kundenportale mit Anmeldung, Rollen und Rechten",
+      "REST-APIs, Datenbankdesign und Anbindung an CRM, Zahlungsanbieter und bestehende Systeme",
+      "Nutzung auf dem Telefon als Progressive Web App, wo es gebraucht wird",
+      "Automatisierte Auslieferung mit Docker und CI/CD",
+      "Übergabe mit Quellcode, Zugängen und Dokumentation",
+    ],
+    ablauf: [
+      {
+        title: "Abläufe aufnehmen",
+        text: "Wer bucht, wer bearbeitet, wer muss was sehen. Daraus entstehen Rollen, Datenmodell und eine erste Ausbaustufe, kein Pflichtenheft für alles.",
+      },
+      {
+        title: "Festpreis für Stufe eins",
+        text: "Sie bekommen einen Festpreis für die erste Ausbaustufe, die schon im Alltag trägt. Alles Weitere planen wir, wenn sie läuft.",
+      },
+      {
+        title: "Bauen und testen",
+        text: "In sichtbaren Schritten auf einer Vorschauumgebung, getestet an Ihren echten Abläufen statt an Beispieldaten.",
+      },
+      {
+        title: "Betrieb und Übergabe",
+        text: "Automatisierte Auslieferung, Dokumentation und Quellcode bei Ihnen. Weiterentwicklung ist ein Angebot, keine Abhängigkeit.",
+      },
+    ],
+    caseStudy: {
+      stat: "3",
+      statLabel: "Systeme für Phoenix Parkservice: Website, Kundenportal und interne Software",
+      text: "Für Phoenix Parkservice habe ich 15 Monate lang die Buchungs- und Verwaltungssoftware entwickelt, mit Spring Boot im Backend und Angular im Frontend, dazu die Unternehmenswebsite, ausgeliefert über Docker und CI/CD. Ergebnis: Buchungen und Abläufe laufen über eine eigene Plattform statt über Zuruf.",
+      link: "/projekte/phoenix-parkservice",
+      linkText: "Zur Case Study Phoenix Parkservice",
+    },
+    faq: [
+      {
+        q: "Was kostet eine Web-App oder ein Buchungssystem?",
+        a: `Als Festpreis für Unternehmen: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}, jeweils netto zuzüglich Umsatzsteuer. Den genauen Betrag nenne ich, sobald Abläufe, Rollen und Schnittstellen feststehen; Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
+      },
+      {
+        q: "Lohnt sich eine eigene Anwendung oder reicht fertige Software?",
+        a: "Wenn eine fertige Software Ihren Ablauf abbildet, ist sie fast immer günstiger, und dann sage ich das. Eine eigene Anwendung lohnt sich, wenn Ihr Ablauf das ist, was Sie von anderen unterscheidet, oder wenn heute mehrere Werkzeuge nur mit Handarbeit zusammenhalten.",
+      },
+      {
+        q: "Welche Technik setzen Sie ein?",
+        a: "Für größere Plattformen Spring Boot und Java im Backend mit Angular im Frontend, für schlankere Anwendungen React mit Supabase. Ausgeliefert wird mit Docker und CI/CD. Die Wahl richtet sich nach Ihren Anforderungen und danach, was Ihr Team später selbst betreuen kann.",
+      },
+      {
+        q: "Gehört mir der Quellcode?",
+        a: "Ja. Sie bekommen Quellcode, Zugänge und Dokumentation. Die Weiterentwicklung kann ich übernehmen, muss ich aber nicht: Die Anwendung ist so gebaut, dass auch jemand anderes daran weiterarbeiten kann.",
+      },
+      {
+        q: "Wie lange dauert die Entwicklung?",
+        a: "Eine erste Ausbaustufe, die im Alltag trägt, ist je nach Rollen und Schnittstellen in einigen Wochen bis wenigen Monaten fertig. Danach wächst die Anwendung in Stufen mit, statt dass alles auf einmal geplant wird.",
       },
       {
         q: "Arbeiten Sie remote oder vor Ort?",
@@ -790,6 +927,10 @@ export const LEISTUNGEN = [
     weiterlesen: [
       { path: "/leistungen/webentwicklung", label: "Firmen-Website erstellen lassen und Relaunch" },
       { path: "/projekte/maflats", label: "Website-Relaunch für MA-Flats" },
+      {
+        path: "/projekte/phoenix-parkservice",
+        label: "Phoenix Parkservice: 35 % mehr organischer Traffic",
+      },
     ],
     flow: {
       caption: "So entsteht Sichtbarkeit",
@@ -1053,6 +1194,123 @@ export const LEISTUNGEN = [
         a: "Technisch beliebig viele, praktisch begrenzt die Persona-Arbeit. Jedes zusätzliche Profil braucht eine eigene Stimme, sonst entsteht genau der Einheitsbrei, den das System vermeiden soll." },
       { q: "Was passiert, wenn ein Lauf ausfällt?",
         a: "Der Zustand wird über Läufe hinweg mitgeführt, ausgefallene Läufe sind eingeplant. Das Tagesziel bleibt auch dann erreichbar, wenn nur ein Teil der Termine zustande kommt." },
+    ],
+  },
+  {
+    path: "/leistungen/n8n-automatisierung-oesterreich",
+    /* Eigene Seite für Österreich seit dem 13.10.2026. Im August bewusst
+       verworfen, weil eine Domain von sieben Tagen keinen Puffer gegen den
+       Eindruck einer Doorway-Seite hatte, mit Wiedervorlage ab rund 100
+       österreichischen Impressionen im Monat. Im Oktober standen 252
+       Impressionen aus Österreich in drei Monaten, dazu rund 290 auf Suchen
+       mit "Wien", ohne einen einzigen Klick.
+
+       Deshalb eine Seite, und nur eine: ausdrücklich remote, ohne erfundene
+       Kunden, mit Inhalten, die nur für Österreich gelten (Rechnung, DSG,
+       Termine in Wien). Szenarien, Liste und Fragen sind bewusst andere als
+       auf der n8n-Seite. Keine Seiten für weitere Städte.
+
+       Steht als letzte Leistung, damit sie nie unter die fünf auf der
+       Startseite rückt. */
+    preisText: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, für Auftraggeber in Österreich derselbe Satz wie in Deutschland, abgerechnet in Euro. Für Unternehmen mit UID-Nummer stelle ich netto in Rechnung, die Umsatzsteuer schuldet nach dem Reverse-Charge-Verfahren der Auftraggeber. Klar umrissene Workflows und Integrationen gehen auch zum Festpreis.`,
+    reichweiteText:
+      "Der Standort ist Frankfurt am Main. Für Unternehmen in Wien und ganz Österreich läuft die Zusammenarbeit remote, in derselben Zeitzone und auf Deutsch; Termine vor Ort klären wir mit Aufwand und Reise vorher.",
+    cta: {
+      headline: "Welcher Ablauf kostet Ihr Team die meiste Zeit?",
+      intro:
+        "Beschreiben Sie ihn in zwei Sätzen, mit den Systemen, die daran hängen. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob n8n dafür das richtige Werkzeug ist, per E-Mail oder in einem Videotermin.",
+      button: "Workflow anfragen",
+    },
+    weiterlesen: [
+      {
+        path: "/leistungen/n8n-automatisierung",
+        label: "n8n Experte und Spezialist für Workflow-Automatisierung",
+      },
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+      { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
+    ],
+    badge: "n8n für Wien und Österreich · remote",
+    hero: {
+      kurz: "n8n für Österreich (remote)",
+      ankerLabel: "Durchlaufzeit",
+    },
+    teaser:
+      "n8n-Workflows für Unternehmen in Wien und ganz Österreich, remote aus Frankfurt: derselbe Satz, Rechnung in Euro, Datenschutz nach DSGVO wie in Deutschland.",
+    h1: "n8n Freelancer für Wien und Österreich",
+    intro:
+      "Für Unternehmen in Wien und ganz Österreich baue ich Workflow-Automatisierungen mit n8n: Tools verbinden, Abläufe beschleunigen, KI dort einbinden, wo sie messbar Arbeit abnimmt. Mein Standort ist Frankfurt am Main, die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch. Was für Auftraggeber in Österreich anders ist, betrifft vor allem Rechnung und Datenschutz, und genau das steht auf dieser Seite.",
+    szenarien: [
+      {
+        title: "Remote in derselben Zeitzone",
+        text: "Abstimmung per Video, Zugriff auf Ihre Systeme über die üblichen Freigaben, Übergabe dokumentiert. Automatisierung braucht keinen Schreibtisch im selben Büro, wohl aber feste Ansprechzeiten, und die sind dieselben wie bei Ihnen.",
+      },
+      {
+        title: "Rechnung ohne Umwege",
+        text: "Abgerechnet wird in Euro zum selben Satz wie in Deutschland. Für Unternehmen mit österreichischer UID-Nummer stelle ich netto in Rechnung, die Umsatzsteuer läuft über das Reverse-Charge-Verfahren.",
+      },
+      {
+        title: "Datenschutz wie gewohnt",
+        text: "Die DSGVO gilt in Österreich wie in Deutschland, ergänzt um das österreichische Datenschutzgesetz. n8n lässt sich auf Ihrer eigenen Infrastruktur betreiben, sodass Prozessdaten Ihr Unternehmen nicht verlassen.",
+      },
+    ],
+    leistungen: [
+      "n8n-Workflows für Unternehmen in Österreich, self-hosted oder in der Cloud",
+      "Betrieb auf Ihrer Infrastruktur oder bei einem Anbieter mit Rechenzentrum in der EU",
+      "Anbindung Ihrer Systeme über REST-APIs und Webhooks, auch CRM und ATS",
+      "KI-Schritte im Workflow mit EU-Verarbeitung und PII-Filterung",
+      "Abstimmung per Video, Übergabe mit Dokumentation",
+      "Termine vor Ort in Wien nach Absprache",
+    ],
+    ablauf: [
+      {
+        title: "Videotermin",
+        text: "Wir gehen Ihren Ablauf und die beteiligten Systeme durch, kostenlos und ohne Vorbereitung auf Ihrer Seite.",
+      },
+      {
+        title: "Angebot in Euro",
+        text: "Sie bekommen einen Workflow-Entwurf mit Aufwandsschätzung, als Fest- oder Stundenpreis, mit den Angaben, die Ihre Buchhaltung für das Reverse-Charge-Verfahren braucht.",
+      },
+      {
+        title: "Umsetzung remote",
+        text: "Ich baue und teste mit Ihren echten Daten. Zugriffe laufen über Freigaben, die Sie vergeben und jederzeit wieder entziehen können.",
+      },
+      {
+        title: "Übergabe",
+        text: "Dokumentation, Monitoring und Fehlerbehandlung, auf Wunsch mit laufender Betreuung.",
+      },
+    ],
+    caseStudy: {
+      stat: "-80%",
+      statLabel: "Durchlaufzeit im Recruiting, produktiv in Frankfurt",
+      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, habe ich Recruiting- und interne Prozesse mit n8n und Zapier automatisiert; die Durchlaufzeiten sanken um rund 80 Prozent. Referenzen aus Österreich habe ich noch keine, die Werkzeuge und die Arbeitsweise sind dieselben.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Zur Case Study Recruiting-Automatisierung",
+    },
+    faq: [
+      {
+        q: "Arbeiten Sie auch vor Ort in Wien?",
+        a: "Nach Absprache, ja. Automatisierungsprojekte laufen fast vollständig remote, deshalb ist ein Termin vor Ort die Ausnahme. Wenn er sinnvoll ist, etwa zum Start, klären wir Aufwand und Reise vorher.",
+      },
+      {
+        q: "Wie wird für Unternehmen in Österreich abgerechnet?",
+        a: `In Euro, zum selben Satz wie in Deutschland: ${RATE_MIN} bis ${RATE_MAX} € pro Stunde oder als Festpreis. Für Unternehmen mit UID-Nummer stelle ich netto in Rechnung, die Umsatzsteuer schuldet nach dem Reverse-Charge-Verfahren Ihr Unternehmen. Die Rechnung trägt dafür beide UID-Nummern und den entsprechenden Hinweis.`,
+      },
+      {
+        q: "Gilt für Unternehmen in Österreich dieselbe DSGVO?",
+        a: "Ja. Die DSGVO gilt in der ganzen EU unmittelbar, in Österreich ergänzt durch das Datenschutzgesetz, zuständig ist die österreichische Datenschutzbehörde. Für die Automatisierung heißt das dasselbe wie in Deutschland: Daten nur dort verarbeiten, wo es nötig ist, und n8n bei Bedarf auf eigener Infrastruktur betreiben.",
+      },
+      {
+        q: "Gilt der EU AI Act auch in Österreich?",
+        a: "Ja. Er ist eine EU-Verordnung und gilt in Österreich wie in Deutschland. Wo ein KI-System direkt mit Menschen spricht, verlangt Artikel 50 seit August 2026 einen deutlichen Hinweis darauf.",
+      },
+      {
+        q: "Haben Sie Referenzen aus Österreich?",
+        a: "Noch nicht. Meine Belege stammen aus Projekten in Deutschland, vor allem aus dem Recruiting, wo ich Durchlaufzeiten um rund 80 Prozent gesenkt habe. Die Werkzeuge und die Arbeitsweise sind für ein Unternehmen in Wien dieselben.",
+      },
+      {
+        q: "Was kostet ein n8n Freelancer in Österreich?",
+        a: `Belastbare Durchschnittswerte nur für Österreich gibt es nicht: Der Freelancer-Kompass 2026 weist für IT-Freelancer im DACH-Raum einen Median von 95 € pro Stunde aus, ohne nach Ländern zu trennen. Mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} € pro Stunde, unabhängig vom Sitz des Auftraggebers.`,
+      },
     ],
   },
 ];
