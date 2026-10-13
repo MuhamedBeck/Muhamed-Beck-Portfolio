@@ -176,12 +176,18 @@
   </url>
   <url>
     <loc>https://muhamedbeck.com/ratgeber</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://muhamedbeck.com/ratgeber/n8n-freelancer-kosten</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muhamedbeck.com/ratgeber/website-kosten</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -206,6 +212,12 @@
   </url>
   <url>
     <loc>https://muhamedbeck.com/ratgeber/ki-telefonagent-kosten-recht</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://muhamedbeck.com/ratgeber/website-relaunch</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

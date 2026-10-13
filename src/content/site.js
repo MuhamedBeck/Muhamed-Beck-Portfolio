@@ -85,12 +85,19 @@ export const RATE_MAX = 135;
 
 /* Festpreise für Webprojekte, netto für Unternehmen, am 13.10.2026 mit dem
    Inhaber festgelegt. Marktrahmen laut Anbieterseiten, also keine neutrale
-   Erhebung: kleine Firmen-Website beim Freelancer 1.500 bis 5.000 €, bei der
-   Agentur 3.500 bis 12.000 €, KMU-Relaunch 6.000 bis 25.000 €, einfaches
-   Buchungssystem 8.000 bis 20.000 €, Kundenportal ab 25.000 €. Die Preise
-   liegen bewusst auf dem Niveau einer kleinen Agentur, nicht am unteren Rand;
-   was über den Grundumfang hinausgeht, läuft zum Stundensatz. Eine Stelle,
-   damit Leistungsseite, FAQ, Fallstudie und llms.txt nicht auseinanderlaufen. */
+   Erhebung, am selben Tag an den Quellen geprüft:
+   - Firmen-Website: Freelancer 800 bis 5.000 €, Agentur 3.600 bis 18.000 €
+     (RHEINSPACE, Stand 06/2026); Agentur mit 5 bis 10 Seiten 5.000 bis
+     12.000 € (Adfera, Stand 10/2026).
+   - Relaunch mit SEO-Migration: 8.000 bis 20.000 € (Adfera, Stand 10/2026).
+   - Buchungssystem: erste Version ab 10.000 €, mit Schnittstellen ab
+     20.000 € (Shopboostr, 02/2026).
+   - Kundenportal: 25.000 bis 150.000 € (CodeGuides, abgerufen 10/2026).
+   Die Preise liegen bewusst über dem unteren Rand der Freelancer und im
+   unteren Bereich der Agenturen; was über den Grundumfang hinausgeht, läuft
+   zum Stundensatz. Die Quellen stehen ausführlich im Ratgeber
+   /ratgeber/website-kosten. Eine Stelle, damit Leistungsseiten, FAQ,
+   Fallstudien, Ratgeber und llms.txt nicht auseinanderlaufen. */
 export const FESTPREIS = {
   website: 4900,
   relaunch: 6900,

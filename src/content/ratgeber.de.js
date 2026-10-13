@@ -12,6 +12,9 @@
 // House rules: no em dashes, real umlauts, one keyword-bearing h1, and no
 // figure that cannot be traced to a source or to the owner's own CV.
 
+// With the .js extension: prerender-meta.js imports this file under bare node.
+import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "./site.js";
+
 export const RATGEBER = [
   {
     path: "/ratgeber/n8n-freelancer-kosten",
@@ -123,6 +126,138 @@ export const RATGEBER = [
         label: "n8n Freelancer für Wien und Österreich",
       },
     ],
+  },
+  {
+    path: "/ratgeber/website-kosten",
+    kicker: "Kosten",
+    h1: "Was kostet eine Website 2026?",
+    published: "2026-10-13",
+    modified: "2026-10-13",
+    /* Alle Marktzahlen am 13.10.2026 an den Quellen geprüft. Sie stammen von
+       Anbietern, die diese Leistungen selbst verkaufen; der Artikel sagt das
+       ausdrücklich, statt sie als Marktpreis auszugeben. Die eigenen Preise
+       kommen aus FESTPREIS in site.js. */
+    lede: `Eine Firmen-Website kostet 2026 beim Freelancer meist 800 bis 5.000 € und bei einer Agentur 3.600 bis 18.000 €, so die Preisübersicht der Agentur RHEINSPACE (Stand Juni 2026). Ein Relaunch mit SEO-Migration liegt laut der Agentur Adfera bei 8.000 bis 20.000 € (Stand Oktober 2026), ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000 € (Stand Februar 2026). Ich baue Firmen-Websites ab ${euro(FESTPREIS.website)} und Relaunches ab ${euro(FESTPREIS.relaunch)}, jeweils netto.`,
+    table: {
+      caption: "Was Websites und Webanwendungen kosten (Stand: Oktober 2026, netto)",
+      columns: ["Marktspanne laut Anbietern", "Mein Festpreis"],
+      rows: [
+        {
+          label: "Website aus dem Baukasten",
+          cells: ["0 bis 500 € einmalig, dazu 15 bis 50 € im Monat (RHEINSPACE, 06/2026)", "nicht im Angebot"],
+        },
+        {
+          label: "Firmen-Website",
+          cells: ["Freelancer 800 bis 5.000 €, Agentur 3.600 bis 18.000 € (RHEINSPACE, 06/2026)", `ab ${euro(FESTPREIS.website)}`],
+        },
+        {
+          label: "Relaunch mit SEO-Migration",
+          cells: ["8.000 bis 20.000 € (Adfera, 10/2026)", `ab ${euro(FESTPREIS.relaunch)}`],
+        },
+        {
+          label: "Buchungssystem",
+          cells: ["erste Version ab 10.000 €, mit Schnittstellen ab 20.000 € (Shopboostr, 02/2026)", `ab ${euro(FESTPREIS.webApp)}`],
+        },
+        {
+          label: "Kundenportal",
+          cells: ["25.000 bis 150.000 € (CodeGuides, abgerufen 10/2026)", `ab ${euro(FESTPREIS.portal)}`],
+        },
+        {
+          label: "Stundensatz Software- und Webentwicklung",
+          cells: ["Median 90 € (Freelancer-Kompass 2026, 356 Befragte)", `${RATE_MIN} bis ${RATE_MAX} €`],
+        },
+      ],
+    },
+    sections: [
+      {
+        h2: "Was kostet eine Firmen-Website?",
+        body: [
+          "Zwischen 800 und 18.000 €, je nachdem, wer sie baut. Die Agentur RHEINSPACE nennt für Freelancer 800 bis 5.000 € und für Agenturen 3.600 bis 18.000 € einmalig (Stand Juni 2026). Für eine Agentur-Website mit 5 bis 10 Seiten gibt die Erfurter Agentur Adfera 5.000 bis 12.000 € an (Stand Oktober 2026), COOKIE Design aus Soest für eine professionelle Unternehmenswebsite im Mittelstand 8.000 bis 25.000 € (Stand Mai 2026).",
+          "Die Spanne ist so groß, weil unter dem Wort Website sehr Verschiedenes verkauft wird: ein angepasstes Theme mit fünf Seiten oder eine Seite mit eigener Struktur, Mehrsprachigkeit und gemessenen Ladezeiten. Vergleichbar werden zwei Angebote erst, wenn klar ist, was jeweils enthalten ist.",
+          `Mein Festpreis für eine Firmen-Website beginnt bei ${euro(FESTPREIS.website)} netto. Enthalten sind Struktur, Umsetzung, technisches SEO und die Übergabe mit Quelltext und Zugängen; die Texte kommen von Ihnen oder entstehen gemeinsam.`,
+        ],
+      },
+      {
+        h2: "Was kostet ein Website-Relaunch?",
+        body: [
+          "Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026); RHEINSPACE beziffert allein die Migration von Inhalten und Adressen auf 1.000 bis 5.000 € (Stand Juni 2026). Mehr Aufwand als ein Neubau entsteht dort, wo alte Adressen, Inhalte und Platzierungen erhalten bleiben müssen.",
+          `Gespart wird am häufigsten ausgerechnet an dem Posten, an dem die Sichtbarkeit hängt: der Weiterleitung jeder alten Adresse auf ihre neue Entsprechung. Google empfiehlt, solche Weiterleitungen mindestens ein Jahr bestehen zu lassen (Google Search Central, Stand August 2026). Mein Festpreis für einen Relaunch beginnt bei ${euro(FESTPREIS.relaunch)} netto und schließt diese Weiterleitungen ein.`,
+        ],
+      },
+      {
+        h2: "Was kostet eine Website mit Buchungssystem oder Kundenportal?",
+        body: [
+          "Ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000 € als Festpreis für eine erste Version, mittelkomplexe Lösungen liegen bei rund 15.000 €, Plattformen mit Schnittstellen bei 20.000 € und mehr (Stand Februar 2026). Groenewold IT Solutions nennt für Buchungssysteme eine Gesamtspanne von 5.950 bis 83.231 € netto (Stand September 2026).",
+          "Ein Kundenportal kostet laut CodeGuides meist zwischen 25.000 und 150.000 €, ein einfaches Portal 25.000 bis 35.000 € (abgerufen im Oktober 2026). Fertige Buchungswerkzeuge im Abo sind deutlich günstiger: Für Tools wie Calendly oder SimplyBook.me nennt Shopboostr 0 bis 200 € im Monat.",
+          `Eine eigene Anwendung lohnt sich, wenn Ihr Ablauf das ist, was Sie von anderen unterscheidet. Bildet eine fertige Software ihn ab, ist sie fast immer die günstigere Wahl. Meine Festpreise beginnen bei ${euro(FESTPREIS.webApp)} netto für eine Web-App oder ein Buchungssystem und bei ${euro(FESTPREIS.portal)} für ein Kundenportal.`,
+        ],
+      },
+      {
+        h2: "Was ist im Preis enthalten und was nicht?",
+        body: [
+          "Vergleichen lässt sich nur, was gleich viel enthält. Vier Posten fehlen in Angeboten besonders oft oder werden extra berechnet: die Texte, die Weiterleitungen beim Relaunch, weitere Sprachen und die Übergabe des Quelltexts.",
+          "Fragen Sie vor der Beauftragung, ob Sie Quelltext und Zugänge bekommen. Wo das nicht der Fall ist, etwa beim Baukasten, bedeutet ein späterer Wechsel des Anbieters in der Regel einen Neubau.",
+        ],
+      },
+      {
+        h2: "Welche laufenden Kosten kommen dazu?",
+        body: [
+          "Für eine typische WordPress-Website eines mittelständischen Unternehmens nennt RHEINSPACE 80 bis 200 € im Monat für Betrieb und Wartung (Stand Juni 2026). Adfera beziffert die laufenden Kosten insgesamt auf etwa 2.000 bis 8.000 € im Jahr, darin Hosting, Updates und Inhaltsänderungen (Stand Oktober 2026).",
+          "Eine statisch erzeugte Website kommt ohne Datenbank und ohne Plugin-Updates aus; laufende Kosten entstehen dann im Wesentlichen für Domain und Hosting. Deshalb baue ich Firmen-Websites so: Die Ersparnis liegt nicht beim Bau, sondern in den Jahren danach.",
+        ],
+      },
+      {
+        h2: "Freelancer oder Agentur: wo liegt der Unterschied?",
+        body: [
+          `Im Preis vor allem in der Zwischenebene, die bei einer Agentur mitbezahlt wird: Beim Freelancer berät und baut dieselbe Person. Der Freelancer-Kompass 2026 nennt für Software- und Webentwicklung einen Median von 90 € pro Stunde bei 356 Befragten (veröffentlicht von freelancermap im Juli 2026); mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} €.`,
+          "Eine Agentur lohnt sich, wenn mehrere Gewerke parallel laufen müssen, etwa Markenentwicklung, Fotografie und Kampagnen, oder wenn eine vertraglich zugesicherte Verfügbarkeit über Jahre gefordert ist.",
+        ],
+      },
+      {
+        h2: "Wie belastbar sind diese Zahlen?",
+        body: [
+          "Nur begrenzt. Jede Preisspanne in diesem Artikel stammt von einem Anbieter, der die Leistung selbst verkauft; eine neutrale Erhebung über Website-Preise in Deutschland gibt es nicht. Die Spannen taugen deshalb zur Einordnung eines Angebots, nicht als Marktpreis, und genau so stehen sie hier.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Was kostet eine einfache Firmen-Website?",
+        a: `Beim Freelancer meist 800 bis 5.000 €, bei einer Agentur 3.600 bis 18.000 € (RHEINSPACE, Stand Juni 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.website)} netto, mit Struktur, Umsetzung, technischem SEO und Übergabe des Quelltexts.`,
+      },
+      {
+        q: "Was kostet ein Website-Relaunch?",
+        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} netto, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
+      },
+      {
+        q: "Was kostet ein Buchungssystem?",
+        a: `Individuell entwickelt laut Shopboostr ab etwa 10.000 € für eine erste Version und ab 20.000 € mit Schnittstellen (Stand Februar 2026). Fertige Buchungswerkzeuge kosten dort 0 bis 200 € im Monat. Meine Web-Apps und Buchungssysteme beginnen bei ${euro(FESTPREIS.webApp)} netto.`,
+      },
+      {
+        q: "Warum liegen Ihre Preise über denen mancher Freelancer?",
+        a: "Weil darin enthalten ist, was bei günstigen Angeboten oft fehlt: gemessene Ladezeiten, technisches SEO, Weiterleitungen beim Relaunch und die Übergabe des Quelltexts. Wer nur fünf Seiten ohne besondere Anforderungen braucht, ist mit einem Baukasten günstiger bedient, und das sage ich auch so.",
+      },
+      {
+        q: "Welche laufenden Kosten hat eine Website?",
+        a: "Eine statisch erzeugte Website im Wesentlichen nur Domain und Hosting. Für eine WordPress-Website nennt RHEINSPACE dagegen 80 bis 200 € im Monat für Betrieb und Wartung (Stand Juni 2026).",
+      },
+      {
+        q: "Sind die Preise netto?",
+        a: "Ja. Alle Festpreise gelten für Unternehmen und verstehen sich netto zuzüglich Umsatzsteuer.",
+      },
+    ],
+    related: [
+      { path: "/leistungen/webentwicklung", label: "Firmen-Website erstellen lassen und Relaunch" },
+      { path: "/leistungen/web-app-entwicklung", label: "Web-App und Buchungssystem entwickeln lassen" },
+      { path: "/ratgeber/website-relaunch", label: "Website-Relaunch ohne Ranking-Verlust" },
+      { path: "/projekte/maflats", label: "Case Study: Website-Relaunch für MA-Flats" },
+    ],
+    cta: {
+      headline: "Was soll Ihre Website leisten?",
+      intro:
+        "Schreiben Sie mir, was die jetzige Seite nicht kann, oder dass es noch keine gibt. Sie bekommen innerhalb von 24 Stunden eine Einschätzung und einen realistischen Festpreis.",
+      button: "Website anfragen",
+    },
   },
   {
     path: "/ratgeber/n8n-vs-make-vs-zapier",
@@ -577,6 +712,115 @@ export const RATGEBER = [
       { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was ein n8n Freelancer kostet" },
     ],
+  },
+  {
+    path: "/ratgeber/website-relaunch",
+    kicker: "Relaunch",
+    h1: "Website-Relaunch ohne Ranking-Verlust",
+    published: "2026-10-13",
+    modified: "2026-10-13",
+    /* Quelle für alles zu Weiterleitungen und Umzug ist Googles Dokumentation
+       "Site moves with URL changes" (Stand 20.08.2026), am 13.10.2026
+       gelesen. MA-Flats steht nur mit seinen dokumentierten Messwerten da:
+       Ob Platzierungen gehalten wurden, ist nicht gemessen und wird deshalb
+       nicht behauptet. */
+    lede: "Ein Website-Relaunch kostet Platzierungen, wenn alte Adressen ins Leere laufen. Google empfiehlt, jede alte Adresse per dauerhafter Weiterleitung (301 oder 308) direkt auf ihre neue Entsprechung zu leiten und diese Weiterleitungen mindestens ein Jahr bestehen zu lassen (Google Search Central, Stand August 2026). Vorübergehende Schwankungen in den Platzierungen nennt Google dabei normal.",
+    table: {
+      caption: "Checkliste für den Relaunch",
+      columns: ["Wann", "Warum"],
+      rows: [
+        { label: "Alte Seite messen", cells: ["vor dem Bau", "ohne Ausgangswert ist hinterher kein Vergleich möglich"] },
+        { label: "Alle alten Adressen erfassen", cells: ["vor dem Bau", "Sitemap, Search Console und Server-Logs zeigen, was Besucher und Suchmaschinen kennen"] },
+        { label: "Zuordnung alt zu neu festlegen", cells: ["vor der Umstellung", "jede Adresse auf ihre inhaltliche Entsprechung, nicht pauschal auf die Startseite"] },
+        { label: "Dauerhafte Weiterleitungen einrichten", cells: ["am Tag der Umstellung", "301 oder 308, direkt auf das Ziel, ohne Ketten"] },
+        { label: "Neue Sitemap einreichen", cells: ["am Tag der Umstellung", "damit Suchmaschinen die neuen Adressen sofort kennen"] },
+        { label: "Index und Impressionen beobachten", cells: ["in den Wochen danach", "Schwankungen sind normal, ausbleibende Erholung nicht"] },
+        { label: "Weiterleitungen bestehen lassen", cells: ["mindestens ein Jahr", "Empfehlung von Google, besser dauerhaft"] },
+      ],
+    },
+    sections: [
+      {
+        h2: "Warum verlieren Websites nach einem Relaunch Sichtbarkeit?",
+        body: [
+          "Meist, weil alte Adressen nicht weitergeleitet werden. Jede Platzierung hängt an einer Adresse; antwortet sie nach dem Relaunch mit einem Fehler, fängt die neue Seite bei null an, auch wenn der Inhalt derselbe ist.",
+          "Die zweite häufige Ursache ist eine Pauschallösung: alle alten Adressen auf die neue Startseite. Google rät davon ab, viele Seiten auf eine inhaltlich fremde Seite wie die neue Startseite zu leiten, und empfiehlt, jede Adresse auf ihre Entsprechung zu schicken (Google Search Central, Stand August 2026).",
+        ],
+      },
+      {
+        h2: "Welche Adressen muss man vor dem Relaunch erfassen?",
+        body: [
+          "Alle, die Besucher oder Suchmaschinen kennen. Google nennt als Quellen für diese Bestandsaufnahme die Sitemap, die Search Console und die Server-Logs, dazu Bilder, Videos und weitere Dateien, auf die verwiesen wird (Google Search Central, Stand August 2026).",
+          "Aus der Liste entsteht eine Zuordnung: alte Adresse, neue Adresse. Wo es keine Entsprechung mehr gibt, entscheidet man bewusst, ob eine verwandte Seite passt oder ob die Adresse als gelöscht gemeldet wird.",
+        ],
+      },
+      {
+        h2: "301 oder 302: welche Weiterleitung ist die richtige?",
+        body: [
+          "Für einen Relaunch eine dauerhafte, also 301 oder 308. Sie sagt Suchmaschinen, dass die neue Adresse die alte ersetzt. Eine vorübergehende Weiterleitung mit 302 sagt das Gegenteil und gehört nur zu Umleitungen, die wirklich befristet sind.",
+          "Jede alte Adresse sollte direkt auf ihr endgültiges Ziel zeigen. Google empfiehlt, Ketten aus mehreren Weiterleitungen hintereinander zu vermeiden (Google Search Central, Stand August 2026).",
+        ],
+      },
+      {
+        h2: "Wie lange müssen Weiterleitungen bestehen bleiben?",
+        body: [
+          "Mindestens ein Jahr, so Google, und für Besucher am besten dauerhaft (Google Search Central, Stand August 2026). Links von anderen Seiten und gespeicherte Lesezeichen zeigen oft noch Jahre später auf die alten Adressen.",
+        ],
+      },
+      {
+        h2: "Was gehört nach dem Relaunch in die Search Console?",
+        body: [
+          "Die neue Sitemap, und zwar am Tag der Umstellung. Danach beobachtet man über einige Wochen, wie die alten Adressen aus dem Index verschwinden und die neuen hinzukommen. Bei einer kleinen bis mittleren Website kann es laut Google einige Wochen dauern, bis der Großteil der Seiten umgezogen ist (Google Search Central, Stand August 2026).",
+          "Das Werkzeug zur Adressänderung in der Search Console ist nur für einen Wechsel der Domain gedacht. Bleibt die Domain gleich und ändern sich nur die Pfade, braucht es dieses Werkzeug nicht. Bing und weitere Suchmaschinen lassen sich zusätzlich über IndexNow direkt über geänderte Adressen benachrichtigen; Google nimmt daran nicht teil.",
+        ],
+      },
+      {
+        h2: "Woran misst man, ob der Relaunch gelungen ist?",
+        body: [
+          "An einem Vergleich mit denselben Werkzeugen unter denselben Bedingungen, vorher und nachher: Ladezeit mobil unter Drosselung, Zahl der indexierten Adressen und Impressionen in der Search Console. Ohne eine Messung vor der Umstellung bleibt jede Verbesserung eine Behauptung.",
+          "Bei maflats.de lud die alte Startseite rund 6 MB. Die neue liefert keine einzige JavaScript-Datei aus und erreicht unter Slow 4G mit vierfacher CPU-Drosselung einen LCP von 1,35 Sekunden, gemessen am 26.08.2026. Das ist ein Messwert der neuen Seite, keine Aussage über Platzierungen.",
+        ],
+      },
+      {
+        h2: "Was kostet ein Relaunch?",
+        body: [
+          `Mit SEO-Migration laut der Agentur Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} netto und schließt die Zuordnung und Weiterleitung aller alten Adressen ein. Die Spannen für Neubau, Relaunch und Webanwendungen stehen im Ratgeber zu den Kosten einer Website.`,
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Verliert man bei einem Relaunch immer Platzierungen?",
+        a: "Nein. Vorübergehende Schwankungen sind laut Google normal und legen sich mit der Zeit (Google Search Central, Stand August 2026). Dauerhafte Verluste entstehen meist durch fehlende oder pauschale Weiterleitungen.",
+      },
+      {
+        q: "Reicht es, alle alten Seiten auf die Startseite weiterzuleiten?",
+        a: "Nein. Google rät davon ab, viele Seiten auf eine inhaltlich fremde Seite wie die neue Startseite zu leiten. Jede alte Adresse gehört auf ihre Entsprechung.",
+      },
+      {
+        q: "Wie lange dauert es, bis Google die neuen Adressen kennt?",
+        a: "Bei einer kleinen bis mittleren Website kann es laut Google einige Wochen dauern, bis der Großteil der Seiten umgezogen ist; größere Websites brauchen länger (Google Search Central, Stand August 2026).",
+      },
+      {
+        q: "Muss ich die Domain behalten?",
+        a: "Nein, aber ein Domainwechsel ist ein zusätzlicher Umzug. Dann gehören beide Domains in die Search Console, und das Werkzeug zur Adressänderung meldet den Wechsel an Google.",
+      },
+      {
+        q: "Was kostet ein Relaunch mit Weiterleitungen?",
+        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} netto, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
+      },
+    ],
+    related: [
+      { path: "/leistungen/webentwicklung", label: "Firmen-Website erstellen lassen und Relaunch" },
+      { path: "/ratgeber/website-kosten", label: "Was kostet eine Website 2026?" },
+      { path: "/leistungen/geo-seo-optimierung", label: "GEO und SEO: in Google und KI-Assistenten gefunden werden" },
+      { path: "/projekte/maflats", label: "Case Study: Website-Relaunch für MA-Flats" },
+    ],
+    cta: {
+      headline: "Steht bei Ihnen ein Relaunch an?",
+      intro:
+        "Schreiben Sie mir die Adresse Ihrer jetzigen Website. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was beim Umzug zu sichern ist, und einen realistischen Festpreis.",
+      button: "Relaunch anfragen",
+    },
   },
 ];
 

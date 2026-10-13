@@ -195,6 +195,8 @@ export const LEISTUNGEN = [
       button: "Website anfragen",
     },
     weiterlesen: [
+      { path: "/ratgeber/website-kosten", label: "Was kostet eine Website 2026?" },
+      { path: "/ratgeber/website-relaunch", label: "Website-Relaunch ohne Ranking-Verlust" },
       {
         path: "/leistungen/web-app-entwicklung",
         label: "Web-App und Buchungssystem entwickeln lassen",
@@ -202,10 +204,6 @@ export const LEISTUNGEN = [
       {
         path: "/projekte/phoenix-parkservice",
         label: "Phoenix Parkservice: Buchungsplattform und Website",
-      },
-      {
-        path: "/leistungen/geo-seo-optimierung",
-        label: "GEO und SEO: in Google und KI-Assistenten gefunden werden",
       },
     ],
     flow: {
@@ -348,6 +346,7 @@ export const LEISTUNGEN = [
         path: "/projekte/phoenix-parkservice",
         label: "Phoenix Parkservice: Buchungsplattform und Website",
       },
+      { path: "/ratgeber/website-kosten", label: "Was kostet eine Website 2026?" },
       {
         path: "/leistungen/webentwicklung",
         label: "Firmen-Website erstellen lassen und Relaunch",
@@ -931,6 +930,7 @@ export const LEISTUNGEN = [
         path: "/projekte/phoenix-parkservice",
         label: "Phoenix Parkservice: 35 % mehr organischer Traffic",
       },
+      { path: "/ratgeber/website-relaunch", label: "Website-Relaunch ohne Ranking-Verlust" },
     ],
     flow: {
       caption: "So entsteht Sichtbarkeit",

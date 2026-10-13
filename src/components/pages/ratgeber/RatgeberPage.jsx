@@ -165,14 +165,19 @@ export const RatgeberPage = ({ data }) => (
         </ul>
       </div>
 
+      {/* Eigener Schluss je Artikel, wo der allgemeine nicht passt: Er fragt,
+          ob sich etwas automatisieren lässt, und unter einem Artikel über
+          Website-Kosten will das niemand wissen. */}
       <div className="mt-16 max-w-2xl border-t border-hairline pt-12">
-        <h2 className="headline-sub">Konkrete Frage zu Ihrem Prozess?</h2>
+        <h2 className="headline-sub">
+          {data.cta?.headline ?? "Konkrete Frage zu Ihrem Prozess?"}
+        </h2>
         <p className="intro mt-5">
-          Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden
-          eine Einschätzung, ob und wie sich das automatisieren lässt.
+          {data.cta?.intro ??
+            "Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob und wie sich das automatisieren lässt."}
         </p>
         <Link to={anfrageZiel(data.related)} className="btn-ghost btn-accent mt-8">
-          Kostenloses Erstgespräch
+          {data.cta?.button ?? "Kostenloses Erstgespräch"}
         </Link>
       </div>
     </Section>

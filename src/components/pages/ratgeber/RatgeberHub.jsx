@@ -5,7 +5,7 @@ const RatgeberHub = () => (
   <HubPage
     label="Ratgeber"
     headline="Antworten statt Marketing"
-    intro="Was Auftraggeber vor einem Automatisierungsprojekt wissen wollen: Kosten, Toolauswahl und was sich tatsächlich automatisieren lässt. Mit Zahlen und Quellen, nicht mit Versprechen."
+    intro="Was Auftraggeber vor einem Automatisierungs- oder Webprojekt wissen wollen: Kosten, Toolauswahl, Relaunch und was sich tatsächlich automatisieren lässt. Mit Zahlen und Quellen, nicht mit Versprechen."
     items={RATGEBER.map((article) => ({
       path: article.path,
       title: article.h1,
