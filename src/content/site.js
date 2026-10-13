@@ -93,16 +93,17 @@ export const RATE_MAX = 135;
    - Buchungssystem: erste Version ab 10.000 €, mit Schnittstellen ab
      20.000 € (Shopboostr, 02/2026).
    - Kundenportal: 25.000 bis 150.000 € (CodeGuides, abgerufen 10/2026).
-   Die Preise liegen bewusst über dem unteren Rand der Freelancer und im
-   unteren Bereich der Agenturen; was über den Grundumfang hinausgeht, läuft
-   zum Stundensatz. Die Quellen stehen ausführlich im Ratgeber
+   Am selben Tag auf Wunsch des Inhabers um rund 25 % gesenkt (vorher 4.900,
+   6.900, 15.000 und 25.000 €): Die Preise liegen jetzt auf mittlerem
+   Freelancer-Niveau, deutlich über Baukasten-Angeboten und unter Agenturen;
+   was über den Grundumfang hinausgeht, läuft zum Stundensatz. Die Quellen stehen ausführlich im Ratgeber
    /ratgeber/website-kosten. Eine Stelle, damit Leistungsseiten, FAQ,
    Fallstudien, Ratgeber und llms.txt nicht auseinanderlaufen. */
 export const FESTPREIS = {
-  website: 4900,
-  relaunch: 6900,
-  webApp: 15000,
-  portal: 25000,
+  website: 3500,
+  relaunch: 4900,
+  webApp: 9900,
+  portal: 19900,
 };
 
 /** "4.900 €", mit deutschem Tausenderpunkt wie überall auf der Seite. */

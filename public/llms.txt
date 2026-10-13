@@ -18,7 +18,7 @@
 ## Konditionen
 
 - Stundensatz: 90 bis 135 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer im DACH-Raum lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
-- Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: Firmen-Website ab 4.900 €, Relaunch ab 6.900 €, Web-App oder Buchungssystem ab 15.000 €, Kundenportal ab 25.000 €.
+- Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: Firmen-Website ab 3.500 €, Relaunch ab 4.900 €, Web-App oder Buchungssystem ab 9.900 €, Kundenportal ab 19.900 €.
 - Festpreise auch möglich für klar umrissene Workflows und Integrationen.
 - Antwort auf Projektanfragen innerhalb von 24 Stunden: https://muhamedbeck.com/kontakt
 
@@ -40,8 +40,8 @@
 - [KI im Recruiting und der AI Act](https://muhamedbeck.com/ratgeber/ki-recruiting-ai-act): Die Hochrisiko-Pflichten für Recruiting-KI gelten erst ab Dezember 2027. Emotionserkennung im Bewerbungsgespräch ist dagegen seit Februar 2025 verboten.
 - [KI-Telefonagenten: Kosten und Rechtslage](https://muhamedbeck.com/ratgeber/ki-telefonagent-kosten-recht): Was ein KI-Telefonagent je Minute kostet, welche Anbieter in der EU verarbeiten und warum das Mitschneiden ohne Einwilligung in Deutschland strafbar ist.
 - [Website-Relaunch ohne Ranking-Verlust](https://muhamedbeck.com/ratgeber/website-relaunch): Warum Relaunches Sichtbarkeit kosten und wie man es verhindert: alte Adressen erfassen, 301-Weiterleitungen, Sitemap, Search Console und Messung danach.
-- [Firmen-Website erstellen lassen und Relaunch](https://muhamedbeck.com/leistungen/webentwicklung): Firmen-Website ab 4.900 €, Relaunch ab 6.900 € netto: schnell, auffindbar, ohne Baukasten, mit Weiterleitungen gegen Ranking-Verlust. Frankfurt und remote.
-- [Web-App und Buchungssystem entwickeln lassen](https://muhamedbeck.com/leistungen/web-app-entwicklung): Buchungssysteme, Kundenportale und interne Software ab 15.000 € netto: Spring Boot, Angular oder React, mit Rollen, Schnittstellen und eigenem Quellcode.
+- [Firmen-Website erstellen lassen und Relaunch](https://muhamedbeck.com/leistungen/webentwicklung): Firmen-Website ab 3.500 €, Relaunch ab 4.900 € netto: schnell, auffindbar, ohne Baukasten, mit Weiterleitungen gegen Ranking-Verlust. Frankfurt und remote.
+- [Web-App und Buchungssystem entwickeln lassen](https://muhamedbeck.com/leistungen/web-app-entwicklung): Buchungssysteme, Kundenportale und interne Software ab 9.900 € netto: Spring Boot, Angular oder React, mit Rollen, Schnittstellen und eigenem Quellcode.
 - [n8n Experte und Spezialist für Workflow-Automatisierung](https://muhamedbeck.com/leistungen/n8n-automatisierung): n8n Experte und Spezialist für Deutschland, Österreich und die Schweiz: Workflows, API- und CRM-Anbindung, KI-Integration. 90 bis 135 € pro Stunde.
 - [n8n Freelancer für Wien und Österreich](https://muhamedbeck.com/leistungen/n8n-automatisierung-oesterreich): n8n Freelancer für Unternehmen in Wien und ganz Österreich: Workflow-Automatisierung remote, Rechnung in Euro mit Reverse Charge, DSGVO wie in Deutschland.
 - [KI-Automatisierung für Unternehmen in Frankfurt](https://muhamedbeck.com/leistungen/ki-automatisierung-frankfurt): KI- und Prozessautomatisierung für Unternehmen in Frankfurt und Rhein-Main: LLM-Lösungen, RAG, Voice-AI und DSGVO-konforme Guardrails. Remote deutschlandweit.
