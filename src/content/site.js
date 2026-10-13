@@ -46,7 +46,9 @@ export const mailtoHref = (betreff) =>
 
 export const SOCIAL = {
   linkedin: "https://www.linkedin.com/in/muhamed-nur-beck",
-  github: "https://www.github.com/MuhamedBeck",
+  // Without www: github.com answers www.github.com with a 301, which Ahrefs
+  // reported as a link to a redirect on every page.
+  github: "https://github.com/MuhamedBeck",
 };
 
 /** Everything a search engine should be able to confirm is the same person. */

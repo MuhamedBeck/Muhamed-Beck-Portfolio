@@ -61,9 +61,10 @@ for (const route of ROUTES) {
   if (route.title && route.title.length > 65) {
     fail(`${where}: title is ${route.title.length} chars, keep it under 65`);
   }
-  if (route.description && (route.description.length < 70 || route.description.length > 165)) {
+  // 160, not 165: Ahrefs flags anything above 160 as "Meta description too long".
+  if (route.description && (route.description.length < 70 || route.description.length > 160)) {
     fail(
-      `${where}: description is ${route.description.length} chars, aim for 70 to 165`
+      `${where}: description is ${route.description.length} chars, aim for 70 to 160`
     );
   }
 
