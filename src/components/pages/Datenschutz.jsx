@@ -108,23 +108,17 @@ const SECTIONS = [
     ),
   },
   {
-    title: "5. Kontaktformular (EmailJS)",
+    title: "5. Kontaktformular (EmailJS und GitHub)",
     body: (
       <>
         <p>
           Wenn Sie mir über das Kontakt- oder Anfrageformular eine Nachricht senden,
           werden die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, ggf. Firma, Art
-          der Anfrage und Nachrichtentext) zur Bearbeitung Ihrer Anfrage verarbeitet.
-          Für den technischen Versand nutze ich den Dienst EmailJS (emailjs.com). Ihre
-          Angaben werden dabei über die Server von EmailJS an mein E-Mail-Postfach
-          übermittelt; dabei kann eine Datenverarbeitung außerhalb der EU stattfinden.
-        </p>
-        <p>
-          Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung bzw. Durchführung
-          vorvertraglicher Maßnahmen) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
-          Interesse an der Bearbeitung von Anfragen). Ihre Daten werden gelöscht, sobald
-          sie für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich sind und keine
-          gesetzlichen Aufbewahrungspflichten entgegenstehen. Weitere Informationen:{" "}
+          der Anfrage, wie Sie auf mich aufmerksam wurden, und Nachrichtentext) zur
+          Bearbeitung Ihrer Anfrage verarbeitet. Für den technischen Versand nutze ich
+          den Dienst EmailJS (emailjs.com). Ihre Angaben werden dabei über die Server von
+          EmailJS an mein E-Mail-Postfach übermittelt; dabei kann eine Datenverarbeitung
+          außerhalb der EU stattfinden. Weitere Informationen:{" "}
           <a
             href="https://www.emailjs.com/legal/privacy-policy/"
             target="_blank"
@@ -132,6 +126,29 @@ const SECTIONS = [
             className={EXT_LINK}>
             emailjs.com/legal/privacy-policy
           </a>
+        </p>
+        <p>
+          Zusätzlich speichere ich jede Anfrage als Datei in einem nicht öffentlichen
+          Repository bei GitHub (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco,
+          CA 94107, USA), damit sie auch dann vollständig vorliegt, wenn eine E-Mail nicht
+          ankommt, und ich Anfragen geordnet bearbeiten kann. Gespeichert werden dieselben
+          Angaben wie oben, nicht aber Ihre IP-Adresse. Die Übermittlung läuft über die
+          Infrastruktur von Cloudflare (Ziffer 3); auch bei GitHub kann eine
+          Datenverarbeitung außerhalb der EU stattfinden. Weitere Informationen:{" "}
+          <a
+            href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={EXT_LINK}>
+            docs.github.com/de/site-policy/privacy-policies
+          </a>
+        </p>
+        <p>
+          Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Anbahnung bzw. Durchführung
+          vorvertraglicher Maßnahmen) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+          Interesse an der Bearbeitung von Anfragen). Ihre Daten werden an beiden Orten
+          gelöscht, sobald sie für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich
+          sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
         </p>
       </>
     ),
@@ -210,7 +227,7 @@ export const Datenschutz = () => (
   <LegalPage
     label="Rechtliches"
     headline="Datenschutzerklärung"
-    intro="Stand: Juli 2026"
+    intro="Stand: Oktober 2026"
     sections={SECTIONS}
   />
 );

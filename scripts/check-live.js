@@ -144,6 +144,14 @@ const probe = async () => {
     if (absent.length) fail("Sitemap", `${absent.length} route(s) missing: ${absent.map((r) => r.path).join(", ")}`);
   }
 
+  // 5. The request archive (worker/anfrage.js). A GET must reach the Worker,
+  //    which answers 405. A 404 means the deploy went out without the Worker:
+  //    the mail still arrives, but nothing lands in MuhamedBeck/anfragen.
+  const archiv = await get("/api/anfrage");
+  if (archiv.status !== 405) {
+    fail("Anfrage-Archiv", `/api/anfrage answered HTTP ${archiv.status}, expected 405 from the Worker`);
+  }
+
   return failures;
 };
 
@@ -168,5 +176,5 @@ if (failures.length) {
 
 console.log(
   `check-live: ${BASE} OK - both contact forms render, ${ROUTES.length} routes answer 200, ` +
-    "IndexNow key and sitemap in place"
+    "IndexNow key, sitemap and request archive in place"
 );

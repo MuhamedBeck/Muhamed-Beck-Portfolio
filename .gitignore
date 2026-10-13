@@ -45,3 +45,6 @@ dist-ssr/
 # Rohaufnahmen der Screenshots. Was ausgeliefert wird, liegt komprimiert in
 # src/assets/projekte/; die PNGs davor gehoeren nicht ins Repository.
 .screenshots/
+
+# Local secrets for `wrangler dev` (GITHUB_TOKEN). Never commit.
+.dev.vars

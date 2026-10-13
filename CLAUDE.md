@@ -78,6 +78,13 @@ Build, `scripts/check-live.js` prüft danach die echte Auslieferung, und
 `.github/workflows/kontaktformular.yml` wiederholt diese Prüfung alle zwei
 Stunden — ein Fehlschlag dort schickt GitHub per Mail.
 
+Der Worker (`worker/`) läuft nur für `/api/*` und speichert jede
+Formular-Anfrage zusätzlich zur Mail als Datei im privaten Repository
+`MuhamedBeck/anfragen`. Er braucht das Secret `GITHUB_TOKEN` (Fine-grained,
+nur dieses Repository, "Contents: Read and write"), gesetzt mit
+`npx wrangler secret put GITHUB_TOKEN`. Anfragen dort niemals in ein
+öffentliches Repository kopieren.
+
 Nach dem Deploy neuer oder geänderter Seiten:
 
 ```bash
@@ -132,6 +139,7 @@ keine Umschreibungen wie `ae`/`oe`/`ue`.
 ## 8. Vor jedem Push
 
 - [ ] `npm run lint` ohne neue Fehler
+- [ ] `npm test` grün (Worker für das Anfrage-Archiv)
 - [ ] `npm run build` grün (die volle Kette, siehe §2)
 - [ ] Nach dem Deploy `npm run check:live` grün — beide Formulare müssen rendern
 - [ ] Bei neuen Routen: `dist/<route>/index.html` enthält den richtigen Titel

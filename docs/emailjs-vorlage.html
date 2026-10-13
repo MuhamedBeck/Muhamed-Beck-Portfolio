@@ -1,0 +1,89 @@
+<!--
+  EmailJS-Vorlage für Anfragen über muhamedbeck.com.
+
+  Warum es diese Datei gibt: Die frühere Vorlage war der EmailJS-Standard
+  ("Contact Us") mit Emoji-Symbol und einer Tabelle ohne Breitenangabe. Die
+  Nachricht stand dort in einer schmalen Tabellenzelle und brach nach wenigen
+  Wörtern um, obwohl in der Zeile noch Platz war. Diese Vorlage nutzt die
+  volle Breite (bis 640 px) und kommt ohne Emojis aus.
+
+  Einrichten (einmalig, im EmailJS-Dashboard):
+    1. Email Templates -> die Vorlage aus VITE_TEMPLATE_ID öffnen
+    2. Content -> "Edit Content" -> Code-Ansicht, alles ersetzen durch diese Datei
+    3. Subject:  Anfrage: {{leistung}} von {{name}}
+    4. Reply To: {{email}}      (dann geht "Antworten" direkt an den Absender)
+    5. From Name: muhamedbeck.com
+    6. Speichern, dann über das Formular eine Testanfrage schicken
+
+  Variablen (gesendet von Kontakt.jsx und HireMe.jsx):
+    {{name}} {{email}} {{leistung}} {{unternehmen}} {{herkunft}} {{formular}}
+    {{beschreibung}}  der Nachrichtentext, Zeilenumbrüche bleiben erhalten
+  Leere optionale Felder kommen als "nicht angegeben" an.
+
+  Zwei geschweifte Klammern, nicht drei: EmailJS entwertet so jedes HTML in der
+  Eingabe. Drei Klammern würden es ungeprüft einsetzen, und dann könnte jeder,
+  der den öffentlichen Schlüssel aus dem Browser liest, beliebiges HTML in
+  dieses Postfach schicken.
+
+  Die alte Variable {{message}} wird weiter mitgesendet (alles in einem Feld),
+  damit die alte Vorlage bis zum Austausch funktioniert. Diese Vorlage braucht
+  sie nicht.
+-->
+<div style="margin:0;padding:0;background-color:#f4f4f5;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f4f5;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:640px;background-color:#ffffff;border:1px solid #e4e4e7;border-radius:8px;">
+          <tr>
+            <td style="padding:28px 32px 0 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+              <p style="margin:0;font-size:11px;line-height:1.4;letter-spacing:0.14em;text-transform:uppercase;color:#71717a;">Neue Anfrage über muhamedbeck.com</p>
+              <h1 style="margin:12px 0 0 0;font-size:22px;line-height:1.3;font-weight:600;color:#18181b;">{{leistung}}</h1>
+              <p style="margin:6px 0 0 0;font-size:15px;line-height:1.5;color:#52525b;">von {{name}}</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:24px 32px 0 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%;border-top:1px solid #e4e4e7;">
+                <tr>
+                  <td width="140" style="padding:12px 0;border-bottom:1px solid #f4f4f5;font-size:13px;color:#71717a;vertical-align:top;">Name</td>
+                  <td style="padding:12px 0;border-bottom:1px solid #f4f4f5;font-size:14px;color:#18181b;vertical-align:top;">{{name}}</td>
+                </tr>
+                <tr>
+                  <td width="140" style="padding:12px 0;border-bottom:1px solid #f4f4f5;font-size:13px;color:#71717a;vertical-align:top;">E-Mail</td>
+                  <td style="padding:12px 0;border-bottom:1px solid #f4f4f5;font-size:14px;vertical-align:top;word-break:break-word;"><a href="mailto:{{email}}" style="color:#1d4ed8;text-decoration:none;">{{email}}</a></td>
+                </tr>
+                <tr>
+                  <td width="140" style="padding:12px 0;border-bottom:1px solid #f4f4f5;font-size:13px;color:#71717a;vertical-align:top;">Unternehmen</td>
+                  <td style="padding:12px 0;border-bottom:1px solid #f4f4f5;font-size:14px;color:#18181b;vertical-align:top;">{{unternehmen}}</td>
+                </tr>
+                <tr>
+                  <td width="140" style="padding:12px 0;border-bottom:1px solid #f4f4f5;font-size:13px;color:#71717a;vertical-align:top;">Gefunden über</td>
+                  <td style="padding:12px 0;border-bottom:1px solid #f4f4f5;font-size:14px;color:#18181b;vertical-align:top;">{{herkunft}}</td>
+                </tr>
+                <tr>
+                  <td width="140" style="padding:12px 0;font-size:13px;color:#71717a;vertical-align:top;">Formular</td>
+                  <td style="padding:12px 0;font-size:14px;color:#18181b;vertical-align:top;">{{formular}}</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:28px 32px 0 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+              <p style="margin:0 0 12px 0;font-size:11px;line-height:1.4;letter-spacing:0.14em;text-transform:uppercase;color:#71717a;">Nachricht</p>
+              <div style="border-left:3px solid #1d4ed8;padding:2px 0 2px 16px;font-size:15px;line-height:1.65;color:#18181b;word-break:break-word;">{{beschreibung}}</div>
+            </td>
+          </tr>
+
+          <tr>
+            <td style="padding:28px 32px 28px 32px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+              <a href="mailto:{{email}}" style="display:inline-block;padding:11px 20px;background-color:#18181b;color:#ffffff;text-decoration:none;border-radius:6px;font-size:14px;font-weight:600;">Antworten</a>
+              <p style="margin:20px 0 0 0;font-size:12px;line-height:1.5;color:#a1a1aa;">Gesendet über das Formular auf muhamedbeck.com. Eine Kopie liegt im privaten Repository MuhamedBeck/anfragen.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -122,8 +122,11 @@ cp .env.example .env
 | `VITE_TEMPLATE_ID` | Email Templates -> your template |
 | `VITE_PUBLIC_KEY` | Account -> General |
 
-The template has to use `{{name}}`, `{{email}}` and `{{message}}`, because that
-is what both forms send.
+The template is versioned in `docs/emailjs-vorlage.html`; paste it into the
+EmailJS template editor (setup steps are in the file). Both forms send
+`{{name}}`, `{{email}}`, `{{beschreibung}}`, `{{leistung}}`, `{{unternehmen}}`,
+`{{herkunft}}` and `{{formular}}`, plus `{{message}}` with everything in one
+field for templates that predate the file.
 
 Vite inlines these at **build** time, so adding them to `.env` after a build
 does nothing: run `npm run build` again.
@@ -142,6 +145,11 @@ Cloudflare Workers Static Assets, configured in `wrangler.jsonc`:
 - `not_found_handling: "404-page"` so unknown paths get a real 404 rather than a soft one
 - `public/_headers` carries the security headers and immutable caching
 - `public/_redirects` carries the 301s
+- `worker/index.js` runs only for `/api/*` (`run_worker_first`). `POST /api/anfrage`
+  stores every form request as a Markdown file in the private repo
+  `MuhamedBeck/anfragen`, next to the EmailJS mail. It needs the secret
+  `GITHUB_TOKEN`, a fine-grained token with "Contents: Read and write" on that
+  repo only: `npx wrangler secret put GITHUB_TOKEN`. Tests: `npm test`.
 
 ```bash
 npm run build

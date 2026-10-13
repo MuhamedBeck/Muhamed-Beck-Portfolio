@@ -8,8 +8,27 @@
   // addresses that Google could crawl and index.
   "workers_dev": false,
   "preview_urls": false,
+
+  // The only server code: POST /api/anfrage stores form requests as Markdown
+  // files in the private repo below (worker/anfrage.js). The GitHub token is a
+  // Worker secret, set with `npx wrangler secret put GITHUB_TOKEN`, never here.
+  "main": "worker/index.js",
+  "vars": {
+    "ANFRAGEN_REPO": "MuhamedBeck/anfragen"
+  },
+  // Worker logs in the dashboard, so a failed save is visible after the fact.
+  "observability": {
+    "enabled": true
+  },
+
   "assets": {
     "directory": "./dist",
+    "binding": "ASSETS",
+
+    // The Worker runs first only for /api/*. Every other request keeps the
+    // asset-first path it had before the Worker existed, including _headers,
+    // _redirects and the 404 page.
+    "run_worker_first": ["/api/*"],
 
     // The build writes each route as dist/<route>/index.html, while the
     // sitemap and every canonical tag use the form without a trailing slash.

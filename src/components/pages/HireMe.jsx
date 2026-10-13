@@ -5,6 +5,8 @@ import { Section } from "../Section";
 import { CONTACT, RATE_TEXT_EN, mailtoHref } from "../../content/site";
 import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 import ui from "../../i18n/dict/ui";
+import { Honeypot } from "../Honeypot";
+import { anfrageArchivieren, istBot, oderNichtAngegeben } from "../../services/anfrage";
 
 // Seite gibt es nur auf Englisch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
 const MAIL_HREF = mailtoHref(ui.en.mailBetreff);
@@ -98,6 +100,11 @@ export const HireMe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Same bot trap as /kontakt: the confirmation shows, nothing is sent.
+    if (istBot(e.currentTarget)) {
+      setSent(true);
+      return;
+    }
     setLoading(true);
     setError(false);
 
@@ -109,11 +116,30 @@ export const HireMe = () => {
       .filter(Boolean)
       .join("\n");
 
+    // Second route, not awaited: a file in the private request repository.
+    anfrageArchivieren({
+      formular: "hire-en",
+      name: formData.name,
+      email: formData.email,
+      unternehmen: formData.company,
+      leistung: formData.service_type,
+      nachricht: formData.message,
+    });
+
     try {
       await emailjs.send(
         EMAILJS.serviceId,
         EMAILJS.templateId,
-        { name: formData.name, email: formData.email, message: combinedMessage },
+        {
+          name: formData.name,
+          email: formData.email,
+          message: combinedMessage,
+          beschreibung: formData.message,
+          leistung: oderNichtAngegeben(formData.service_type),
+          unternehmen: oderNichtAngegeben(formData.company),
+          herkunft: oderNichtAngegeben(""),
+          formular: "Englisches Formular, muhamedbeck.com/en/hire",
+        },
         EMAILJS.publicKey
       );
       setSent(true);
@@ -243,6 +269,7 @@ export const HireMe = () => {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+              <Honeypot />
               <div className="grid gap-6 sm:grid-cols-2">
                 <div>
                   <label className={labelClass} htmlFor="hire-name">

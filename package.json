@@ -8,6 +8,7 @@
     "build": "node scripts/check-env.js && node scripts/check-i18n.js && node generate-sitemap.js && vite build && vite build --ssr src/entry-server.jsx --outDir dist-ssr && node prerender-meta.js",
     "deploy": "npm run build && wrangler deploy && node scripts/check-live.js",
     "lint": "eslint .",
+    "test": "node --test worker/",
     "preview": "vite preview",
     "sitemap": "node generate-sitemap.js",
     "check:i18n": "node scripts/check-i18n.js",

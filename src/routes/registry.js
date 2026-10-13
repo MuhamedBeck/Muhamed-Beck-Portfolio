@@ -748,7 +748,7 @@ export const ROUTES = [
     description:
       "Datenschutzerklärung für muhamedbeck.com: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.",
     h1: "Datenschutzerklärung",
-    lastmod: "2026-08-27",
+    lastmod: "2026-10-13",
     changefreq: "yearly",
     priority: "0.3",
   },

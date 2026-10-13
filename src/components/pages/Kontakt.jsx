@@ -8,6 +8,8 @@ import { CONTACT, RATE_TEXT, SOCIAL, mailtoHref } from "../../content/site";
 import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 import { LEISTUNGEN } from "../../content/leistungen.de";
 import ui from "../../i18n/dict/ui";
+import { Honeypot } from "../Honeypot";
+import { anfrageArchivieren, istBot, oderNichtAngegeben } from "../../services/anfrage";
 
 // Seite gibt es nur auf Deutsch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
 const MAIL_HREF = mailtoHref(ui.de.mailBetreff);
@@ -99,12 +101,18 @@ const Kontakt = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Bots füllen das unsichtbare Feld aus. Sie sehen dieselbe Bestätigung wie
+    // ein Mensch, aber es geht weder eine Mail noch eine Datei hinaus.
+    if (istBot(e.currentTarget)) {
+      setSent(true);
+      return;
+    }
     setLoading(true);
     setError(false);
 
-    // Company and enquiry type ride along inside the message body, so the
-    // EmailJS template keeps its three variables and does not need editing
-    // every time this form gains a field.
+    // Everything in one field for the original EmailJS template, which only
+    // knows {{name}}, {{email}} and {{message}}. The template in
+    // docs/emailjs-vorlage.html reads the separate fields below instead.
     const combinedMessage = [
       `Art der Anfrage: ${formData.service_type}`,
       formData.company ? `Unternehmen: ${formData.company}` : null,
@@ -114,11 +122,31 @@ const Kontakt = () => {
       .filter(Boolean)
       .join("\n");
 
+    // Zweiter Weg, ohne darauf zu warten: Datei im privaten Repository.
+    anfrageArchivieren({
+      formular: "kontakt",
+      name: formData.name,
+      email: formData.email,
+      unternehmen: formData.company,
+      leistung: formData.service_type,
+      herkunft: formData.herkunft,
+      nachricht: formData.message,
+    });
+
     try {
       await emailjs.send(
         EMAILJS.serviceId,
         EMAILJS.templateId,
-        { name: formData.name, email: formData.email, message: combinedMessage },
+        {
+          name: formData.name,
+          email: formData.email,
+          message: combinedMessage,
+          beschreibung: formData.message,
+          leistung: oderNichtAngegeben(formData.service_type),
+          unternehmen: oderNichtAngegeben(formData.company),
+          herkunft: oderNichtAngegeben(formData.herkunft),
+          formular: "Kontaktformular, muhamedbeck.com/kontakt",
+        },
         EMAILJS.publicKey
       );
       setSent(true);
@@ -182,6 +210,7 @@ const Kontakt = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="mt-6 space-y-6">
+                <Honeypot />
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label className={labelClass} htmlFor="kontakt-name">
