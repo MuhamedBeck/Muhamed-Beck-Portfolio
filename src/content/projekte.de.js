@@ -6,6 +6,7 @@
 import maflatsHell from "../assets/projekte/maflats-hell.webp";
 import maflatsDunkel from "../assets/projekte/maflats-dunkel.webp";
 import maflatsMobil from "../assets/projekte/maflats-mobil.webp";
+import { FESTPREIS, euro } from "./site.js";
 
 /* `leistung` (optional, nur Mandate): die Leistungsseite, die dieses Projekt
    belegt. Die Fallstudie verlinkt dorthin und belegt das Kontaktformular mit
@@ -16,7 +17,14 @@ export const PROJEKTE = [
   {
     path: "/projekte/maflats",
     kind: "mandat",
-    leistung: { path: "/leistungen/webentwicklung", label: "Webentwicklung und Website-Relaunch" },
+    leistung: { path: "/leistungen/webentwicklung", label: "Firmen-Website erstellen lassen und Relaunch" },
+    /* Eigener Schluss: Der allgemeine fragt nach "ähnlichen Prozessen", und
+       wer gerade diese Website gesehen hat, will eine Website. */
+    cta: {
+      headline: "Soll Ihre Website auch so schnell sein?",
+      intro: `Schreiben Sie mir, was Ihre jetzige Seite nicht leistet, oder dass es noch keine gibt. Firmen-Websites baue ich zum Festpreis ab ${euro(FESTPREIS.website)} netto.`,
+      button: "Website anfragen",
+    },
     title: "Website-Relaunch für MA-Flats",
     subtitle:
       "Neubau von maflats.de: fünf Sprachen, neun Standorte, ohne eine Zeile ausgeliefertes JavaScript",

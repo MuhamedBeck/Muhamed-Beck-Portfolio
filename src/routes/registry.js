@@ -16,6 +16,9 @@
 // Every `load` resolves to a module shaped `{ default: Component }`, so the
 // client can hand it straight to React.lazy and the SSR pass can read `.default`.
 
+// With the .js extension: node scripts import this registry directly.
+import { FESTPREIS, euro } from "../content/site.js";
+
 export const SITE_URL = "https://muhamedbeck.com";
 
 export const DEFAULT_ROBOTS =
@@ -65,7 +68,7 @@ export const ROUTES = [
       import("../components/pages/Startseite.jsx").then((m) => ({ default: m.Startseite })),
     title: "n8n Freelancer & KI-Automatisierung Frankfurt | Muhamed Beck",
     description:
-      "n8n Experte aus Frankfurt: Workflow-Automatisierung, KI-Agenten und CRM-Anbindung für Firmen. 90 bis 135 € pro Stunde nach Absprache. Antwort in 24 Stunden.",
+      "n8n Freelancer aus Frankfurt: Workflow-Automatisierung, KI-Agenten, Websites und Web-Apps für Firmen. 90 bis 135 € pro Stunde. Antwort in 24 Stunden.",
     h1: "Prozesse, die ohne Sie laufen",
     lastmod: "2026-10-13",
     changefreq: "weekly",
@@ -77,11 +80,12 @@ export const ROUTES = [
     locale: "de",
     group: "services",
     load: () => import("../components/pages/LeistungenHub.jsx"),
-    title: "Leistungen: KI- und Prozessautomatisierung | Muhamed Beck",
+    title: "Leistungen: KI-Automatisierung und Webentwicklung | Muhamed Beck",
     description:
-      "Automatisierung mit n8n, KI-Agenten, Voice-AI, HubSpot- und ATS-Anbindung sowie Recruiting-Automatisierung. Alle Leistungen mit Ablauf und Preisrahmen.",
-    h1: "KI- und Prozessautomatisierung",
-    lastmod: "2026-09-02",
+      "n8n-Workflows, KI-Agenten, Voice-AI und CRM-Anbindung, dazu Websites, Relaunches und Web-Apps. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.",
+    // Must match the headline in LeistungenHub.jsx; prerender-meta.js checks it.
+    h1: "KI-Automatisierung und Webentwicklung",
+    lastmod: "2026-10-13",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -142,7 +146,7 @@ export const ROUTES = [
     description:
       "Kostenloses Erstgespräch zu Automatisierung, KI-Agenten oder Webentwicklung: 30 Minuten, unverbindlich. Antwort in 24 Stunden, 90 bis 135 € pro Stunde.",
     h1: "Kostenloses Erstgespräch",
-    lastmod: "2026-10-07",
+    lastmod: "2026-10-13",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -378,7 +382,7 @@ export const ROUTES = [
     props: { path: "/ratgeber/n8n-freelancer-kosten" },
     title: "Was kostet ein n8n Freelancer? Stundensätze 2026",
     description:
-      "n8n Freelancer kosten 75 bis 147 € pro Stunde, der IT-Median im DACH-Raum liegt bei 95 €. Dazu Festpreis oder Stundensatz, Folgekosten, Sätze in Österreich.",
+      "n8n Freelancer kosten 75 bis 147 € pro Stunde, der IT-Median im DACH-Raum liegt bei 95 €. Dazu Festpreis, Folgekosten und was für Österreich gilt.",
     h1: "Was kostet ein n8n Freelancer?",
     navLabel: "Was ein n8n Freelancer kostet",
     ogType: "article",
@@ -399,7 +403,7 @@ export const ROUTES = [
     h1: "n8n, Make und Zapier im Vergleich",
     navLabel: "n8n, Make und Zapier",
     ogType: "article",
-    lastmod: "2026-10-07",
+    lastmod: "2026-10-13",
     changefreq: "monthly",
     priority: "0.7",
   },
@@ -461,12 +465,13 @@ export const ROUTES = [
     group: "leistung.web",
     load: () => import("../components/pages/leistungen/LeistungRoute.jsx"),
     props: { path: "/leistungen/webentwicklung" },
-    title: "Webentwicklung Frankfurt: Website-Relaunch | Muhamed Beck",
-    description:
-      "Schnelle, auffindbare Webseiten ohne Baukasten: statisch erzeugt, mehrsprachig, mit gemessenen Ladezeiten. Relaunch und Neubau aus Frankfurt am Main.",
-    h1: "Webentwicklung und Website-Relaunch",
-    navLabel: "Webentwicklung",
-    lastmod: "2026-10-07",
+    // "Website erstellen lassen" is how buyers search; "Webentwicklung" is how
+    // developers describe it. The path stays, it is indexed.
+    title: "Website erstellen lassen in Frankfurt & Relaunch | Muhamed Beck",
+    description: `Firmen-Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)} netto: schnell, auffindbar, ohne Baukasten, mit Weiterleitungen gegen Ranking-Verlust. Frankfurt und remote.`,
+    h1: "Firmen-Website erstellen lassen und Relaunch",
+    navLabel: "Website erstellen lassen",
+    lastmod: "2026-10-13",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -477,12 +482,12 @@ export const ROUTES = [
     group: "leistung.n8n",
     load: () => import("../components/pages/leistungen/LeistungRoute.jsx"),
     props: { path: "/leistungen/n8n-automatisierung" },
-    title: "n8n Berater und Entwickler für Automatisierung | Muhamed Beck",
+    title: "n8n Experte und Spezialist für Automatisierung | Muhamed Beck",
     description:
-      "n8n Berater und Entwickler für Deutschland, Österreich und die Schweiz: Prozessautomatisierung, API- und CRM-Anbindung, KI-Integration. 90 bis 135 € pro Stunde.",
-    h1: "n8n Berater und Entwickler für Workflow-Automatisierung",
+      "n8n Experte und Spezialist für Deutschland, Österreich und die Schweiz: Workflows, API- und CRM-Anbindung, KI-Integration. 90 bis 135 € pro Stunde.",
+    h1: "n8n Experte und Spezialist für Workflow-Automatisierung",
     navLabel: "n8n-Automatisierung",
-    lastmod: "2026-10-07",
+    lastmod: "2026-10-13",
     changefreq: "monthly",
     priority: "0.9",
   },
@@ -546,7 +551,7 @@ export const ROUTES = [
       "Voice-AI-Agenten für Telefon und Support: Twilio, Speech-to-Text und Text-to-Speech, CRM-Anbindung und Transparenzhinweis nach EU AI Act Artikel 50.",
     h1: "Voice-AI-Agenten für Telefon und Support",
     navLabel: "Voice-AI-Agenten",
-    lastmod: "2026-10-07",
+    lastmod: "2026-10-13",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -578,7 +583,7 @@ export const ROUTES = [
       "Gefunden werden in Google und in KI-Assistenten wie ChatGPT: technisches Audit, strukturierte Daten, llms.txt und Inhalte, gemessen vor und nach der Arbeit.",
     h1: "GEO und SEO: in Google und KI-Assistenten gefunden werden",
     navLabel: "GEO & SEO",
-    lastmod: "2026-10-07",
+    lastmod: "2026-10-13",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -611,7 +616,7 @@ export const ROUTES = [
     h1: "Website-Relaunch für MA-Flats",
     navLabel: "MA-Flats Website",
     ogType: "article",
-    lastmod: "2026-10-07",
+    lastmod: "2026-10-13",
     changefreq: "monthly",
     priority: "0.8",
   },

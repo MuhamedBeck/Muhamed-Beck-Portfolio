@@ -8,20 +8,28 @@
 //
 // Numbers are from the CV and must not be embellished. TOPEOPLE Group GmbH is
 // the employer, never a client.
+//
+// Websites stand in the label, the intro and the price line since 13.10.2026.
+// Until then nothing above the fold said that this person builds them, and in
+// seven weeks the web development page earned one impression and no inquiry.
+
+// With the .js extension: check-i18n imports this file under bare node.
+import { FESTPREIS, euro } from "../../content/site.js";
 
 const de = {
-  label: "n8n, KI-Agenten und Prozessautomatisierung",
+  label: "n8n, KI-Automatisierung und Webentwicklung",
   h1: "Prozesse, die ohne Sie laufen",
   intro:
-    "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main. Ich automatisiere Geschäftsprozesse mit n8n, binde CRM- und ATS-Systeme an und bringe KI dorthin, wo sie messbar Arbeit abnimmt.",
+    "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main. Ich automatisiere Geschäftsprozesse mit n8n, binde CRM- und ATS-Systeme an, bringe KI dorthin, wo sie messbar Arbeit abnimmt, und baue Websites, die schnell laden und gefunden werden.",
   portraitAlt: "Muhamed Nur Beck, AI Automation Manager aus Frankfurt am Main",
   ctaPrimary: "Kostenloses Erstgespräch",
-  ctaSecondary: "Alle neun Leistungen ansehen",
+  // No count: it said "neun" and would have been wrong with the next page.
+  ctaSecondary: "Alle Leistungen ansehen",
   ctaSchreiben: "Oder direkt schreiben",
   introKurz:
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.",
   servicesHeading: "Was Sie beauftragen können",
-  preisZeile: "90 bis 135 € pro Stunde nach Absprache. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.",
+  preisZeile: `90 bis 135 € pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)} netto. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.`,
   stats: [
     { value: "80 %", label: "kürzere Durchlaufzeiten im Recruiting" },
     { value: "90 %", label: "der Candidate Operations automatisiert" },

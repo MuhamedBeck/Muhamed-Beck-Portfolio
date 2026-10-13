@@ -20,8 +20,11 @@ export const ANKER_SCHLUSS = "anfrage-schluss";
  * @param {object} props
  * @param {string} props.to    Ziel mit vorbelegter Leistung.
  * @param {string} props.label Beschriftung, dieselbe wie im Schluss-CTA.
+ * @param {string} [props.preis] Preiszeile der Leistung. Ohne sie steht der
+ *   Stundensatz da; Webprojekte nennen hier ihren Festpreis, weil wer eine
+ *   Website kauft, Gesamtpreise vergleicht und keine Stundensätze.
  */
-export const AnfrageStart = ({ to, label }) => (
+export const AnfrageStart = ({ to, label, preis }) => (
   <div
     id={ANKER_START}
     className="flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-hairline pt-8">
@@ -29,7 +32,7 @@ export const AnfrageStart = ({ to, label }) => (
       {label}
     </Link>
     <p className="text-sm leading-relaxed text-paper-mute">
-      {RATE_MIN} bis {RATE_MAX} € pro Stunde · {ANFRAGE_ZUSAGE}
+      {preis ?? `${RATE_MIN} bis ${RATE_MAX} € pro Stunde`} · {ANFRAGE_ZUSAGE}
     </p>
   </div>
 );

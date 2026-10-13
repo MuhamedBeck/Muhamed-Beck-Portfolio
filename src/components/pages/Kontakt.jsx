@@ -147,7 +147,7 @@ const Kontakt = () => {
     <PageShell
       label="Kontakt"
       headline="Kostenloses Erstgespräch"
-      intro="30 Minuten, unverbindlich und ohne Kosten. Beschreiben Sie kurz, worum es geht — Sie bekommen eine echte Einschätzung, ob und wie sich das lösen lässt, keine Standardantwort und kein Verkaufsgespräch.">
+      intro="30 Minuten, unverbindlich und ohne Kosten. Beschreiben Sie kurz, worum es geht. Sie bekommen eine echte Einschätzung, ob und wie sich das lösen lässt, keine Standardantwort und kein Verkaufsgespräch.">
       <Section className="!pt-0">
         <div className="grid gap-x-14 gap-y-16 md:grid-cols-[1.25fr_1fr]">
           <div>
@@ -282,8 +282,11 @@ const Kontakt = () => {
                 </div>
 
                 <div>
+                  {/* Neutral statt "Welcher Prozess kostet Sie am meisten
+                      Zeit?": Die Frage passte nur zur Automatisierung, und wer
+                      eine Website anfragen wollte, fand sich darin nicht. */}
                   <label className={labelClass} htmlFor="kontakt-nachricht">
-                    Welcher Prozess kostet Sie am meisten Zeit? *
+                    Beschreiben Sie kurz Ihr Vorhaben *
                   </label>
                   <textarea
                     id="kontakt-nachricht"
@@ -297,9 +300,9 @@ const Kontakt = () => {
                     className={`${inputClass} resize-none`}
                   />
                   <p className="mt-3 text-sm leading-relaxed text-paper-mute">
-                    Hilfreich, aber kein Pflichtprogramm: welche Systeme im Spiel sind
-                    (CRM, ATS, ERP, Shop, interne Tools), ob es einen Zeitrahmen gibt
-                    und womit Sie heute arbeiten.
+                    Hilfreich, aber kein Pflichtprogramm: die Adresse Ihrer jetzigen
+                    Website, welche Systeme im Spiel sind (CRM, ATS, ERP, Shop, interne
+                    Tools), ob es einen Zeitrahmen gibt und womit Sie heute arbeiten.
                   </p>
                 </div>
 

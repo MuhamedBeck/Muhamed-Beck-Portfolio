@@ -82,3 +82,21 @@ export const RATE_TEXT_EN = "90 to 135 € by agreement, depending on project sc
 // translations drift.
 export const RATE_MIN = 90;
 export const RATE_MAX = 135;
+
+/* Festpreise für Webprojekte, netto für Unternehmen, am 13.10.2026 mit dem
+   Inhaber festgelegt. Marktrahmen laut Anbieterseiten, also keine neutrale
+   Erhebung: kleine Firmen-Website beim Freelancer 1.500 bis 5.000 €, bei der
+   Agentur 3.500 bis 12.000 €, KMU-Relaunch 6.000 bis 25.000 €, einfaches
+   Buchungssystem 8.000 bis 20.000 €, Kundenportal ab 25.000 €. Die Preise
+   liegen bewusst auf dem Niveau einer kleinen Agentur, nicht am unteren Rand;
+   was über den Grundumfang hinausgeht, läuft zum Stundensatz. Eine Stelle,
+   damit Leistungsseite, FAQ, Fallstudie und llms.txt nicht auseinanderlaufen. */
+export const FESTPREIS = {
+  website: 4900,
+  relaunch: 6900,
+  webApp: 15000,
+  portal: 25000,
+};
+
+/** "4.900 €", mit deutschem Tausenderpunkt wie überall auf der Seite. */
+export const euro = (betrag) => `${betrag.toLocaleString("de-DE")} €`;

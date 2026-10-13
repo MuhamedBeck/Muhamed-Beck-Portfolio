@@ -23,7 +23,7 @@ const de = {
     imprint: "Impressum",
     privacy: "Datenschutz",
     rights: "Alle Rechte vorbehalten.",
-    tagline: "KI- und Prozessautomatisierung aus Frankfurt am Main.",
+    tagline: "KI-Automatisierung und Webentwicklung aus Frankfurt am Main.",
   },
 };
 

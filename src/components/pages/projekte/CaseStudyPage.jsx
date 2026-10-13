@@ -174,12 +174,16 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
       </div>
     </Section>
 
+    {/* Eigener Schluss je Fallstudie, wo der allgemeine nicht passt: Unter
+        einem Website-Relaunch fragte er nach "ähnlichen Prozessen", und wer
+        gerade eine schnelle Website gesehen hat, will keine Prozesse
+        automatisieren lassen, sondern eine solche Website. */}
     <Section className="!pt-0">
       <div className="max-w-2xl border-t border-hairline pt-12">
-        <h2 className="headline-sub">{copy.ctaHeadline}</h2>
-        <p className="intro mt-5">{copy.ctaIntro}</p>
+        <h2 className="headline-sub">{data.cta?.headline ?? copy.ctaHeadline}</h2>
+        <p className="intro mt-5">{data.cta?.intro ?? copy.ctaIntro}</p>
         <Link to={ctaZiel} className="btn-ghost btn-accent mt-8">
-          {copy.ctaButton}
+          {data.cta?.button ?? copy.ctaButton}
         </Link>
       </div>
     </Section>

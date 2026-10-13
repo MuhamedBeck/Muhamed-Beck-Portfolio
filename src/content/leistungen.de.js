@@ -2,6 +2,9 @@
 // Facts and metrics come from the owner's CV; do not invent numbers.
 // The `faq` entries are also emitted as FAQPage JSON-LD by prerender-meta.js.
 
+// With the .js extension: prerender-meta.js imports this file under bare node.
+import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "./site.js";
+
 export const PREIS_TEXT =
   "90 bis 135 € pro Stunde, nach Absprache und je nach Projektumfang. Für klar umrissene Workflows und Integrationen sind auch Festpreise möglich. Orientierung: Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.";
 
@@ -63,7 +66,12 @@ export const LEISTUNGEN = [
     },
     teaser:
       "Workflows, die CRM, ATS, E-Mail und interne Tools verbinden, mit Monitoring und Fehlerbehandlung statt Bastellösung.",
-    h1: "n8n Berater und Entwickler für Workflow-Automatisierung",
+    /* "Experte und Spezialist" statt "Berater und Entwickler": So wird
+       gesucht. Search Console bis 13.10.2026: "n8n spezialist" 98 und
+       "n8n experte" 23 Impressionen, "n8n berater" 3. "Freelancer" trägt die
+       Startseite im Titel, damit die beiden nicht um dieselbe Anfrage
+       konkurrieren. */
+    h1: "n8n Experte und Spezialist für Workflow-Automatisierung",
     intro:
       "Ich berate und baue: erst die Frage, welcher Ablauf sich überhaupt lohnt zu automatisieren, dann die Workflows mit n8n und Zapier, die Ihre Tools verbinden und manuelle Arbeit abschaffen. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse in der Praxis, nicht nur in Demos. Anders als bei einer Agentur ist die Person, die berät, auch die, die baut, und sie bleibt es bis zur Übergabe.",
     /* Der Satz zur Reichweite steht hier und nicht nur im Service-Schema.
@@ -153,6 +161,156 @@ export const LEISTUNGEN = [
       {
         q: "Bleiben unsere Prozessdaten in der EU?",
         a: "Ja, wenn Sie das brauchen. n8n lässt sich self-hosted auf Ihrer eigenen Infrastruktur oder bei einem Anbieter mit Rechenzentrum in Deutschland oder der EU betreiben, sodass keine Prozessdaten das Unternehmen verlassen. Für KI-Schritte lassen sich Modelle mit EU-Verarbeitung einsetzen, etwa Azure OpenAI mit EU-Region, mit PII-Filterung vor dem Modellaufruf. Wo KI-Systeme direkt mit Menschen sprechen, gilt seit August 2026 die Transparenzpflicht aus Artikel 50 des EU AI Act, in Deutschland und Österreich gleichermaßen.",
+      },
+    ],
+  },
+  {
+    path: "/leistungen/webentwicklung",
+    /* Zweite Stelle, direkt nach n8n, seit dem 13.10.2026. Vorher stand die
+       Seite auf Platz sechs, außerhalb der fünf Leistungen, die die Startseite
+       oben zeigt. Die Search Console verzeichnete für sie in sieben Wochen
+       eine einzige Impression, und keine Anfrage betraf eine Website: Wer
+       Websites verkaufen will, muss auf der ersten Seite sagen, dass er sie
+       baut.
+
+       Festpreise statt nur Stundensatz, weil wer eine Website kauft,
+       Gesamtpreise vergleicht. Die Beträge kommen aus FESTPREIS in site.js. */
+    preisKurz: `Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)} netto`,
+    preisText: `Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch mit Weiterleitungen und Messung vorher und nachher ab ${euro(FESTPREIS.relaunch)}. Was über den vereinbarten Umfang hinausgeht, etwa weitere Sprachen, Buchung oder Anbindungen, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Laufende Kosten entstehen nur für Domain und Hosting, nicht für die Seite selbst.`,
+    // The shared line ends "zum selben Stundensatz", which reads wrong under fixed prices.
+    reichweiteText:
+      "Auftraggeber in Deutschland, Österreich und der Schweiz. Die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch, zu denselben Preisen.",
+    cta: {
+      headline: "Brauchen Sie eine Website, die schnell ist und gefunden wird?",
+      intro:
+        "Schreiben Sie mir, was die jetzige Seite nicht leistet, oder dass es noch keine gibt. Sie bekommen innerhalb von 24 Stunden eine ehrliche Einschätzung, ob sich ein Neubau lohnt und welcher Festpreis dafür realistisch ist.",
+      button: "Website anfragen",
+    },
+    weiterlesen: [
+      {
+        path: "/projekte/phoenix-parkservice",
+        label: "Phoenix Parkservice: Buchungsplattform und Website",
+      },
+      {
+        path: "/leistungen/geo-seo-optimierung",
+        label: "GEO und SEO: in Google und KI-Assistenten gefunden werden",
+      },
+    ],
+    flow: {
+      caption: "So entsteht eine Website",
+      stages: [
+        {
+          kind: "Auslöser",
+          title: "Die alte Seite bremst",
+          text: "Zu langsam, nicht auffindbar, nicht pflegbar, oder alles zusammen. Meist merkt man es an den ausbleibenden Anfragen, nicht an der Technik.",
+        },
+        {
+          kind: "Schritt",
+          title: "Struktur vor Gestaltung",
+          text: "Welche Seiten es gibt, wonach gesucht wird und was auf jeder Seite passieren soll. Erst danach wird etwas gebaut.",
+        },
+        {
+          kind: "Schritt",
+          title: "Bauen und messen",
+          text: "Statisch erzeugtes HTML statt eines Frameworks, das im Browser mitläuft. Gemessen wird während des Bauens, nicht danach.",
+        },
+        {
+          kind: "Ziel",
+          title: "Übergabe mit Dokumentation",
+          text: "Sie bekommen den Quelltext, die Zugänge und eine Anleitung. Weiterbetreuung ist ein Angebot, keine Abhängigkeit.",
+        },
+      ],
+      alongside:
+        "Mehrsprachigkeit, strukturierte Daten für Suchmaschinen und ein Kontaktweg, der auch ohne Formular funktioniert.",
+    },
+    badge: "Webentwicklung & Relaunch",
+    hero: {
+      kurz: "Website erstellen lassen",
+      ankerLabel: "Ladezeit mobil",
+    },
+    teaser: `Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)} netto: schnell, auffindbar, ohne Baukasten, mit Messwerten statt Versprechen.`,
+    h1: "Firmen-Website erstellen lassen und Relaunch",
+    intro: `Eine Website soll gefunden werden, schnell laden und Anfragen bringen. Ich baue Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)} netto so, dass diese drei Dinge messbar sind, und übergebe sie so, dass Sie nicht an mir hängen. Als Full-Stack-Entwickler baue ich auch, was über Seiten hinausgeht: Formulare, Terminbuchung und die Anbindung an Ihr CRM.`,
+    szenarien: [
+      {
+        title: "Neue Firmen-Website",
+        text: "Für Unternehmen, die noch keine Website haben oder nur eine Visitenkarte: klare Struktur, schnelle Ladezeit auf dem Telefon und ein Kontaktweg, über den Anfragen auch ankommen.",
+      },
+      {
+        title: "Relaunch ohne Ranking-Verlust",
+        text: "Seiten aus Baukästen laden oft mehrere Megabyte, die alte Startseite von maflats.de rund 6 MB. Der Neubau bringt dieselben Inhalte auf einen Bruchteil, und jede alte Adresse wird weitergeleitet, damit die Platzierungen daran nicht verloren gehen.",
+      },
+      {
+        title: "Branchenseiten mit Standorten und Sprachen",
+        text: "Bei maflats.de entstehen neun Standortseiten in fünf Sprachen aus einer Datenquelle. Eine neue Stadt ist ein Eintrag statt einer neuen Seite, und eine fehlende Übersetzung bricht den Build, statt still deutschen Text auszuliefern.",
+      },
+    ],
+    leistungen: [
+      "Neubau und Relaunch von Firmen-Websites, statisch erzeugt, etwa mit Astro",
+      "Mehrsprachigkeit mit geprüfter Vollständigkeit der Übersetzungen",
+      "Technisches SEO: Titel, Beschreibungen, strukturierte Daten, Sitemap, hreflang",
+      "Weiterleitung aller alten Adressen beim Relaunch",
+      "Barrierefreiheit und Kernwerte: Tastaturbedienung, Kontraste, Ladezeit, Layoutstabilität",
+      "Formulare, Terminbuchung und Anbindung an CRM oder bestehende Systeme",
+      "Übergabe mit Quelltext, Zugängen und Dokumentation",
+    ],
+    ablauf: [
+      {
+        title: "Bestandsaufnahme",
+        text: "Was ist da, was wird gesucht, was fehlt. Danach bekommen Sie einen Festpreis für den vereinbarten Umfang. Bei einem Relaunch wird die alte Seite vorher gemessen, damit der Vergleich hinterher belastbar ist.",
+      },
+      {
+        title: "Struktur und Inhalte",
+        text: "Seitenstruktur, Adressen und Texte. Die Inhalte kommen von Ihnen oder entstehen gemeinsam, aber sie stehen vor der Gestaltung.",
+      },
+      {
+        title: "Bauen",
+        text: "In sichtbaren Schritten, mit einer Vorschauadresse, die Sie jederzeit ansehen können.",
+      },
+      {
+        title: "Umstellung und Übergabe",
+        text: "Alte Adressen werden weitergeleitet, damit nichts verloren geht. Danach Quelltext, Zugänge und Dokumentation.",
+      },
+    ],
+    caseStudy: {
+      /* Die Ladezeit statt der Null ausgelieferter JavaScript-Dateien: Die Null
+         ist der technisch stärkere Wert, aber ein Käufer kann mit ihr nichts
+         anfangen. Die Messbedingung steht im Label, weil ungedrosselt 132 ms
+         gemessen wurden und eine Zahl ohne Bedingung keine ist. */
+      stat: "1,35 s",
+      statLabel: "Ladezeit mobil bei maflats.de, als LCP unter Slow 4G mit vierfacher CPU-Drosselung gemessen",
+      text: "Für MA-Flats habe ich maflats.de vollständig neu gebaut: fünf Sprachen, neun Standorte, keine einzige ausgelieferte JavaScript-Datei und 100 Punkte für Barrierefreiheit. Vorher lud die Startseite rund 6 MB.",
+      link: "/projekte/maflats",
+      linkText: "Zur Case Study MA-Flats",
+    },
+    faq: [
+      {
+        q: "Was kostet eine Website?",
+        a: `Als Festpreis für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch ab ${euro(FESTPREIS.relaunch)}, jeweils netto zuzüglich Umsatzsteuer. Enthalten sind Struktur, Umsetzung, technisches SEO, beim Relaunch die Weiterleitungen und am Ende die Übergabe. Den genauen Betrag nenne ich nach dem Erstgespräch, sobald Umfang, Sprachen und Anbindungen feststehen; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
+      },
+      {
+        q: "Wie lange dauert es, bis die neue Website online ist?",
+        a: "Eine Firmen-Website mit klarer Struktur ist meist in wenigen Wochen online, sobald die Inhalte stehen. maflats.de mit fünf Sprachen und neun Standorten ist im Juli und August 2026 entstanden.",
+      },
+      {
+        q: "Bauen Sie auch Web-Apps oder Buchungssysteme?",
+        a: `Ja. Für Phoenix Parkservice habe ich eine Buchungs- und Verwaltungssoftware mit Spring Boot und Angular entwickelt, dazu Kundenportal und Website. Webanwendungen und Buchungssysteme beginnen bei ${euro(FESTPREIS.webApp)} netto, Kundenportale mit Schnittstellen bei ${euro(FESTPREIS.portal)}.`,
+      },
+      {
+        q: "Warum keine Baukastenlösung oder WordPress?",
+        a: "Beides kann richtig sein, wenn Sie täglich selbst Inhalte pflegen. Für eine Unternehmensseite, die sich selten ändert, zahlen Sie damit dauerhaft mit Ladezeit und Wartungsaufwand für Flexibilität, die Sie nicht nutzen. Statisch erzeugtes HTML hat keine Datenbank, kein Plugin-Update und keine Angriffsfläche dieser Art.",
+      },
+      {
+        q: "Kann ich die Inhalte danach selbst ändern?",
+        a: "Ja. Texte liegen in klar benannten Dateien, nicht im Quelltext der Seiten. Für Änderungen, die über Text hinausgehen, gibt es die Dokumentation, und Sie können jederzeit jemand anderen damit beauftragen.",
+      },
+      {
+        q: "Was passiert mit meinen alten Adressen?",
+        a: "Sie werden auf die neuen weitergeleitet. Das ist der Punkt, an dem Relaunches am häufigsten Sichtbarkeit verlieren: Wer alte Adressen ins Leere laufen lässt, verliert die Platzierungen, die daran hängen.",
+      },
+      {
+        q: "Arbeiten Sie remote oder vor Ort?",
+        a: "Überwiegend remote, in ganz Deutschland, Österreich und der Schweiz. Vor Ort im Rhein-Main-Gebiet nach Absprache.",
       },
     ],
   },
@@ -284,13 +442,19 @@ export const LEISTUNGEN = [
         "Sagen Sie mir, wann das Telefon klingelt und niemand rangeht. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob ein Sprachassistent das auffängt und was er im Monat wirklich kostet.",
       button: "Telefonassistent anfragen",
     },
+    /* Der Ratgeber zu KI-Telefonagenten zuerst: Der preisText oben verweist
+       auf ihn, und bis Oktober 2026 verlinkte ihn keine einzige Seite aus dem
+       Inhalt heraus. */
     weiterlesen: [
+      {
+        path: "/ratgeber/ki-telefonagent-kosten-recht",
+        label: "KI-Telefonagent: Kosten und Rechtslage",
+      },
       { path: "/ratgeber/ki-recruiting-ai-act", label: "Was der AI Act für KI-Telefonie verlangt" },
       {
         path: "/ratgeber/recruiting-mit-n8n-automatisieren",
         label: "Recruiting mit n8n automatisieren",
       },
-      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
     ],
     flow: {
       caption: "So läuft ein Anruf",
@@ -616,130 +780,6 @@ export const LEISTUNGEN = [
     ],
   },
   {
-    path: "/leistungen/webentwicklung",
-    preisText:
-      "90 bis 135 € pro Stunde nach Absprache. Für eine Webseite steht der Umfang meist vorher fest, deshalb ist hier häufiger ein Festpreis sinnvoll als bei laufenden Automatisierungen. Laufende Kosten entstehen nur für Domain und Hosting, nicht für die Seite selbst.",
-    /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
-       Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
-       und die ist auf jeder der sieben Seiten eine andere. */
-    cta: {
-      headline: "Brauchen Sie eine Webseite, die schnell ist und gefunden wird?",
-      intro:
-        "Schreiben Sie mir, was die jetzige Seite nicht leistet, oder dass es noch keine gibt. Sie bekommen innerhalb von 24 Stunden eine ehrliche Einschätzung, ob sich ein Neubau lohnt und was er kosten würde.",
-      button: "Webseite anfragen",
-    },
-    weiterlesen: [
-      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
-    ],
-    flow: {
-      caption: "So entsteht eine Seite",
-      stages: [
-        {
-          kind: "Auslöser",
-          title: "Die alte Seite bremst",
-          text: "Zu langsam, nicht auffindbar, nicht pflegbar, oder alles zusammen. Meist merkt man es an den ausbleibenden Anfragen, nicht an der Technik.",
-        },
-        {
-          kind: "Schritt",
-          title: "Struktur vor Gestaltung",
-          text: "Welche Seiten es gibt, wonach gesucht wird und was auf jeder Seite passieren soll. Erst danach wird etwas gebaut.",
-        },
-        {
-          kind: "Schritt",
-          title: "Bauen und messen",
-          text: "Statisch erzeugtes HTML statt eines Frameworks, das im Browser mitläuft. Gemessen wird während des Bauens, nicht danach.",
-        },
-        {
-          kind: "Ziel",
-          title: "Übergabe mit Dokumentation",
-          text: "Sie bekommen den Quelltext, die Zugänge und eine Anleitung. Weiterbetreuung ist ein Angebot, keine Abhängigkeit.",
-        },
-      ],
-      alongside:
-        "Mehrsprachigkeit, strukturierte Daten für Suchmaschinen und ein Kontaktweg, der auch ohne Formular funktioniert.",
-    },
-    badge: "Webentwicklung & Relaunch",
-    hero: {
-      kurz: "Webentwicklung und Relaunch",
-      ankerLabel: "ausgelieferte JS-Dateien",
-    },
-    teaser:
-      "Schnelle, auffindbare Webseiten ohne Baukasten. Statisch erzeugt, mehrsprachig wenn nötig, und mit Messwerten statt Versprechen.",
-    h1: "Webentwicklung und Website-Relaunch",
-    intro:
-      "Eine Webseite ist kein Selbstzweck: Sie soll gefunden werden, schnell laden und Anfragen erzeugen. Ich baue sie so, dass diese drei Dinge messbar sind, und übergebe sie so, dass Sie nicht an mir hängen.",
-    szenarien: [
-      {
-        title: "Relaunch statt Baukasten",
-        text: "Bestehende Seiten aus Baukästen laden häufig mehrere Megabyte und sind auf dem Telefon kaum benutzbar. Ein Neubau als statisch erzeugte Seite bringt dieselben Inhalte auf einen Bruchteil der Datenmenge.",
-      },
-      {
-        title: "Mehrsprachige Seiten",
-        text: "Eine Sprache mehr ist kein Kopieren, sondern eine Struktur. Übersetzungen werden so geprüft, dass eine fehlende Zeile den Build bricht statt still deutschen Text auszuliefern.",
-      },
-      {
-        title: "Auffindbarkeit von Anfang an",
-        text: "Titel, Beschreibungen, strukturierte Daten, saubere Adressen und ein hreflang-Verbund, der in beide Richtungen stimmt. Nachträglich ist das teurer als beim Bauen.",
-      },
-    ],
-    leistungen: [
-      "Neubau und Relaunch von Unternehmensseiten, statisch erzeugt",
-      "Mehrsprachigkeit mit geprüfter Vollständigkeit der Übersetzungen",
-      "Technisches SEO: Titel, Beschreibungen, strukturierte Daten, Sitemap, hreflang",
-      "Barrierefreiheit: Tastaturbedienung, Kontraste, reduzierte Bewegung",
-      "Kernwerte im Blick: Ladezeit, Layoutstabilität, Reaktionszeit",
-      "Anbindung an bestehende Systeme, Formulare und Terminbuchung",
-      "Übergabe mit Quelltext, Zugängen und Dokumentation",
-    ],
-    ablauf: [
-      {
-        title: "Bestandsaufnahme",
-        text: "Was ist da, was wird gesucht, was fehlt. Bei einem Relaunch wird die alte Seite vorher gemessen, damit der Vergleich hinterher belastbar ist.",
-      },
-      {
-        title: "Struktur und Inhalte",
-        text: "Seitenstruktur, Adressen und Texte. Die Inhalte kommen von Ihnen oder entstehen gemeinsam, aber sie stehen vor der Gestaltung.",
-      },
-      {
-        title: "Bauen",
-        text: "In sichtbaren Schritten, mit einer Vorschauadresse, die Sie jederzeit ansehen können.",
-      },
-      {
-        title: "Umstellung und Übergabe",
-        text: "Alte Adressen werden weitergeleitet, damit nichts verloren geht. Danach Quelltext, Zugänge und Dokumentation.",
-      },
-    ],
-    caseStudy: {
-      stat: "0",
-      statLabel: "ausgelieferte JavaScript-Dateien bei maflats.de",
-      text: "Für MA-Flats habe ich maflats.de vollständig neu gebaut: fünf Sprachen, neun Standorte, 1,35 Sekunden LCP unter gedrosselter Verbindung und 100 Punkte für Barrierefreiheit.",
-      link: "/projekte/maflats",
-      linkText: "Zur Case Study MA-Flats",
-    },
-    faq: [
-      {
-        q: "Was kostet eine neue Webseite?",
-        a: "Das hängt am Umfang, nicht an der Seitenzahl. Eine einsprachige Unternehmensseite mit klarer Struktur liegt meist im Bereich weniger Wochen, eine mehrsprachige Seite mit vielen Standortseiten darüber. Abgerechnet wird zu 90 bis 135 € pro Stunde oder als Festpreis, wenn der Umfang vorher steht.",
-      },
-      {
-        q: "Warum keine Baukastenlösung oder WordPress?",
-        a: "Beides kann richtig sein, wenn Sie täglich selbst Inhalte pflegen. Für eine Unternehmensseite, die sich selten ändert, zahlen Sie damit dauerhaft mit Ladezeit und Wartungsaufwand für Flexibilität, die Sie nicht nutzen. Statisch erzeugtes HTML hat keine Datenbank, kein Plugin-Update und keine Angriffsfläche dieser Art.",
-      },
-      {
-        q: "Kann ich die Inhalte danach selbst ändern?",
-        a: "Ja. Texte liegen in klar benannten Dateien, nicht im Quelltext der Seiten. Für Änderungen, die über Text hinausgehen, gibt es die Dokumentation, und Sie können jederzeit jemand anderen damit beauftragen.",
-      },
-      {
-        q: "Was passiert mit meinen alten Adressen?",
-        a: "Sie werden auf die neuen weitergeleitet. Das ist der Punkt, an dem Relaunches am häufigsten Sichtbarkeit verlieren: Wer alte Adressen ins Leere laufen lässt, verliert die Platzierungen, die daran hängen.",
-      },
-      {
-        q: "Arbeiten Sie remote oder vor Ort?",
-        a: "Überwiegend remote, in ganz Deutschland, Österreich und der Schweiz. Vor Ort im Rhein-Main-Gebiet nach Absprache.",
-      },
-    ],
-  },
-  {
     path: "/leistungen/geo-seo-optimierung",
     cta: {
       headline: "Werden Sie gefunden, wenn jemand Ihr Problem beschreibt?",
@@ -748,7 +788,7 @@ export const LEISTUNGEN = [
       button: "Sichtbarkeit prüfen lassen",
     },
     weiterlesen: [
-      { path: "/leistungen/webentwicklung", label: "Webentwicklung und Relaunch" },
+      { path: "/leistungen/webentwicklung", label: "Firmen-Website erstellen lassen und Relaunch" },
       { path: "/projekte/maflats", label: "Website-Relaunch für MA-Flats" },
     ],
     flow: {

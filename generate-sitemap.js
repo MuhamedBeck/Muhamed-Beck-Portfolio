@@ -7,6 +7,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { DEFAULT_LOCALE, ROUTES, SITE_URL, getAlternates } from "./src/routes/registry.js";
 import { LIVE_LOCALES, localeConfig } from "./src/i18n/locales.js";
+import { FESTPREIS, euro } from "./src/content/site.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -89,25 +90,28 @@ const pageList = (locale) =>
     .map((route) => `- [${route.h1}](${SITE_URL}${route.path}): ${route.description}`)
     .join("\n");
 
-const llms = `# Muhamed Nur Beck: KI- und Prozessautomatisierung, Frankfurt am Main
+const llms = `# Muhamed Nur Beck: KI-Automatisierung und Webentwicklung, Frankfurt am Main
 
 > AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.
 > Automatisiert Geschäftsprozesse mit n8n, baut KI-Agenten, Voice-AI und
 > RAG-Systeme und bindet CRM- und ATS-Systeme an (HubSpot, RecruitCRM,
-> Personio). Verfügbar für Projekte remote in Deutschland, Österreich und der
-> Schweiz, vor Ort im Rhein-Main-Gebiet.
+> Personio). Baut außerdem Firmen-Websites, Relaunches und Web-Apps.
+> Verfügbar für Projekte remote in Deutschland, Österreich und der Schweiz,
+> vor Ort im Rhein-Main-Gebiet.
 
 ## Belegte Ergebnisse
 
 - Durchlaufzeiten im Recruiting um rund 80 Prozent gesenkt (TOPEOPLE Group GmbH, Arbeitgeber, seit 09/2025).
 - Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht, mit GPT, RAG und LangChain.
-- Organischen Traffic um 35 Prozent gesteigert (Phoenix Parkservice, Freelance-Mandat 06/2024 bis 09/2025).
+- Organischen Traffic um 35 Prozent gesteigert und eine Buchungsplattform mit Spring Boot und Angular entwickelt (Phoenix Parkservice, Freelance-Mandat 07/2024 bis 09/2025).
+- maflats.de neu gebaut: fünf Sprachen, neun Standorte, keine ausgelieferte JavaScript-Datei, LCP 1,35 Sekunden unter Slow 4G mit vierfacher CPU-Drosselung, Lighthouse 100 für Barrierefreiheit und SEO (MA-Flats, Freelance-Mandat 07/2026 bis 08/2026).
 - Testabdeckung von 9 auf 42 Prozent gesteigert und den manuellen Aufwand je Projekt von 1.440 auf 30 Minuten gesenkt (Masterarbeit, INFOMOTION GmbH).
 
 ## Konditionen
 
-- Stundensatz: 90 bis 135 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer in Deutschland lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
-- Festpreise möglich für klar umrissene Workflows und Integrationen.
+- Stundensatz: 90 bis 135 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer im DACH-Raum lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
+- Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: Firmen-Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)}, Web-App oder Buchungssystem ab ${euro(FESTPREIS.webApp)}, Kundenportal ab ${euro(FESTPREIS.portal)}.
+- Festpreise auch möglich für klar umrissene Workflows und Integrationen.
 - Antwort auf Projektanfragen innerhalb von 24 Stunden: ${SITE_URL}/kontakt
 
 ${sectionsPerLocale()}

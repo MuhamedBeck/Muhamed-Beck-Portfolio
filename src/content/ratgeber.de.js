@@ -116,7 +116,7 @@ export const RATGEBER = [
       },
     ],
     related: [
-      { path: "/leistungen/n8n-automatisierung", label: "n8n Berater und Entwickler für Workflow-Automatisierung" },
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
     ],
   },
@@ -234,7 +234,7 @@ export const RATGEBER = [
       },
     ],
     related: [
-      { path: "/leistungen/n8n-automatisierung", label: "n8n Berater und Entwickler für Workflow-Automatisierung" },
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
     ],

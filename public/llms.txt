@@ -1,28 +1,31 @@
-# Muhamed Nur Beck: KI- und Prozessautomatisierung, Frankfurt am Main
+# Muhamed Nur Beck: KI-Automatisierung und Webentwicklung, Frankfurt am Main
 
 > AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.
 > Automatisiert Geschäftsprozesse mit n8n, baut KI-Agenten, Voice-AI und
 > RAG-Systeme und bindet CRM- und ATS-Systeme an (HubSpot, RecruitCRM,
-> Personio). Verfügbar für Projekte remote in Deutschland, Österreich und der
-> Schweiz, vor Ort im Rhein-Main-Gebiet.
+> Personio). Baut außerdem Firmen-Websites, Relaunches und Web-Apps.
+> Verfügbar für Projekte remote in Deutschland, Österreich und der Schweiz,
+> vor Ort im Rhein-Main-Gebiet.
 
 ## Belegte Ergebnisse
 
 - Durchlaufzeiten im Recruiting um rund 80 Prozent gesenkt (TOPEOPLE Group GmbH, Arbeitgeber, seit 09/2025).
 - Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht, mit GPT, RAG und LangChain.
-- Organischen Traffic um 35 Prozent gesteigert (Phoenix Parkservice, Freelance-Mandat 06/2024 bis 09/2025).
+- Organischen Traffic um 35 Prozent gesteigert und eine Buchungsplattform mit Spring Boot und Angular entwickelt (Phoenix Parkservice, Freelance-Mandat 07/2024 bis 09/2025).
+- maflats.de neu gebaut: fünf Sprachen, neun Standorte, keine ausgelieferte JavaScript-Datei, LCP 1,35 Sekunden unter Slow 4G mit vierfacher CPU-Drosselung, Lighthouse 100 für Barrierefreiheit und SEO (MA-Flats, Freelance-Mandat 07/2026 bis 08/2026).
 - Testabdeckung von 9 auf 42 Prozent gesteigert und den manuellen Aufwand je Projekt von 1.440 auf 30 Minuten gesenkt (Masterarbeit, INFOMOTION GmbH).
 
 ## Konditionen
 
-- Stundensatz: 90 bis 135 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer in Deutschland lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
-- Festpreise möglich für klar umrissene Workflows und Integrationen.
+- Stundensatz: 90 bis 135 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer im DACH-Raum lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
+- Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: Firmen-Website ab 4.900 €, Relaunch ab 6.900 €, Web-App oder Buchungssystem ab 15.000 €, Kundenportal ab 25.000 €.
+- Festpreise auch möglich für klar umrissene Workflows und Integrationen.
 - Antwort auf Projektanfragen innerhalb von 24 Stunden: https://muhamedbeck.com/kontakt
 
 ## Deutsch
 
-- [Prozesse, die ohne Sie laufen](https://muhamedbeck.com/): n8n Experte aus Frankfurt: Workflow-Automatisierung, KI-Agenten und CRM-Anbindung für Firmen. 90 bis 135 € pro Stunde nach Absprache. Antwort in 24 Stunden.
-- [KI- und Prozessautomatisierung](https://muhamedbeck.com/leistungen): Automatisierung mit n8n, KI-Agenten, Voice-AI, HubSpot- und ATS-Anbindung sowie Recruiting-Automatisierung. Alle Leistungen mit Ablauf und Preisrahmen.
+- [Prozesse, die ohne Sie laufen](https://muhamedbeck.com/): n8n Freelancer aus Frankfurt: Workflow-Automatisierung, KI-Agenten, Websites und Web-Apps für Firmen. 90 bis 135 € pro Stunde. Antwort in 24 Stunden.
+- [KI-Automatisierung und Webentwicklung](https://muhamedbeck.com/leistungen): n8n-Workflows, KI-Agenten, Voice-AI und CRM-Anbindung, dazu Websites, Relaunches und Web-Apps. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.
 - [Was ich gebaut habe](https://muhamedbeck.com/projekte): Kundenprojekte im Detail: Website-Relaunch für MA-Flats, Recruiting-Automatisierung mit n8n und GPT, dazu zwei Abschlussarbeiten zu LLM und Augmented Reality.
 - [Muhamed Nur Beck](https://muhamedbeck.com/ueber-mich): AI Automation Manager und Full-Stack-Entwickler aus Frankfurt: Werdegang, Stationen bei TOPEOPLE, Phoenix Parkservice und INFOMOTION, eingesetzter Stack.
 - [Muhamed Nur Beck](https://muhamedbeck.com/lebenslauf): Lebenslauf von Muhamed Nur Beck: AI Automation Manager in Frankfurt. Stationen, Ausbildung, Kenntnisse und Sprachen auf einer Seite, als PDF druckbar.
@@ -30,13 +33,13 @@
 - [Unit-Tests automatisch erzeugen mit einem LLM](https://muhamedbeck.com/projekte/llm-unit-test-automatisierung): Maven-Plugin, das Unit-Tests für Spring Boot mit einem LLM erzeugt: Testabdeckung von 9 auf 42 % laut JaCoCo, Kosten je Testsuite von 566 € auf 2,13 €.
 - [SAP-BusinessObjects-Berichte in Augmented Reality](https://muhamedbeck.com/projekte/ar-datenvisualisierung): AR-Visualisierung von SAP-BusinessObjects-Berichten im Browser, mit einer Befragung von 81 Personen in deutschen Unternehmen zu den Hürden der Einführung.
 - [Antworten statt Marketing](https://muhamedbeck.com/ratgeber): Was ein n8n Freelancer kostet, wie n8n, Make und Zapier sich unterscheiden und was sich im Recruiting automatisieren lässt. Mit Zahlen und Quellen.
-- [Was kostet ein n8n Freelancer?](https://muhamedbeck.com/ratgeber/n8n-freelancer-kosten): n8n Freelancer kosten 75 bis 147 € pro Stunde, der IT-Median im DACH-Raum liegt bei 95 €. Dazu Festpreis oder Stundensatz, Folgekosten, Sätze in Österreich.
+- [Was kostet ein n8n Freelancer?](https://muhamedbeck.com/ratgeber/n8n-freelancer-kosten): n8n Freelancer kosten 75 bis 147 € pro Stunde, der IT-Median im DACH-Raum liegt bei 95 €. Dazu Festpreis, Folgekosten und was für Österreich gilt.
 - [n8n, Make und Zapier im Vergleich](https://muhamedbeck.com/ratgeber/n8n-vs-make-vs-zapier): Der wichtigste Unterschied ist die Abrechnung: n8n zählt eine Workflow-Ausführung, Make jede Operation. Dazu DSGVO, Self-Hosting und die passende Toolwahl.
 - [Recruiting mit n8n automatisieren](https://muhamedbeck.com/ratgeber/recruiting-mit-n8n-automatisieren): Welche Recruiting-Schritte sich automatisieren lassen, womit man anfängt, wie ATS und CRM angebunden werden und was bei Bewerberdaten und DSGVO zu beachten ist.
 - [KI im Recruiting und der AI Act](https://muhamedbeck.com/ratgeber/ki-recruiting-ai-act): Die Hochrisiko-Pflichten für Recruiting-KI gelten erst ab Dezember 2027. Emotionserkennung im Bewerbungsgespräch ist dagegen seit Februar 2025 verboten.
 - [KI-Telefonagenten: Kosten und Rechtslage](https://muhamedbeck.com/ratgeber/ki-telefonagent-kosten-recht): Was ein KI-Telefonagent je Minute kostet, welche Anbieter in der EU verarbeiten und warum das Mitschneiden ohne Einwilligung in Deutschland strafbar ist.
-- [Webentwicklung und Website-Relaunch](https://muhamedbeck.com/leistungen/webentwicklung): Schnelle, auffindbare Webseiten ohne Baukasten: statisch erzeugt, mehrsprachig, mit gemessenen Ladezeiten. Relaunch und Neubau aus Frankfurt am Main.
-- [n8n Berater und Entwickler für Workflow-Automatisierung](https://muhamedbeck.com/leistungen/n8n-automatisierung): n8n Berater und Entwickler für Deutschland, Österreich und die Schweiz: Prozessautomatisierung, API- und CRM-Anbindung, KI-Integration. 90 bis 135 € pro Stunde.
+- [Firmen-Website erstellen lassen und Relaunch](https://muhamedbeck.com/leistungen/webentwicklung): Firmen-Website ab 4.900 €, Relaunch ab 6.900 € netto: schnell, auffindbar, ohne Baukasten, mit Weiterleitungen gegen Ranking-Verlust. Frankfurt und remote.
+- [n8n Experte und Spezialist für Workflow-Automatisierung](https://muhamedbeck.com/leistungen/n8n-automatisierung): n8n Experte und Spezialist für Deutschland, Österreich und die Schweiz: Workflows, API- und CRM-Anbindung, KI-Integration. 90 bis 135 € pro Stunde.
 - [KI-Automatisierung für Unternehmen in Frankfurt](https://muhamedbeck.com/leistungen/ki-automatisierung-frankfurt): KI- und Prozessautomatisierung für Unternehmen in Frankfurt und Rhein-Main: LLM-Lösungen, RAG, Voice-AI und DSGVO-konforme Guardrails. Remote deutschlandweit.
 - [HubSpot Integration und CRM-Automatisierung](https://muhamedbeck.com/leistungen/hubspot-integration): HubSpot und CRM-Integrationen vom Freelancer: REST-APIs, Webhooks, OAuth2 und Datenabgleich zwischen ATS, CRM und internen Tools. Aus Frankfurt, auch remote.
 - [Recruiting-Automatisierung mit n8n und ATS-Anbindung](https://muhamedbeck.com/leistungen/recruiting-automatisierung): Bewerbungseingang, Screening, Terminierung und Statuspflege automatisieren: n8n mit RecruitCRM, Personio und HubSpot. 80 % kürzere Durchlaufzeiten.

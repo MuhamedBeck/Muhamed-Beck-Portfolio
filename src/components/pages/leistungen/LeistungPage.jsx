@@ -5,6 +5,7 @@ import { WorkflowDiagram } from "./WorkflowDiagram";
 import { PREIS_TEXT, REICHWEITE_TEXT } from "../../../content/leistungen.de";
 import { RATE_TEXT } from "../../../content/site";
 import { LinkArrow } from "../../LinkArrow";
+import { Stimmen } from "../../Stimmen";
 import { ANKER_SCHLUSS, AnfrageLeiste, AnfrageStart } from "./AnfrageLeiste";
 
 /* Ziel und Beschriftung der Anfrage, an einer Stelle abgeleitet. Sie stehen
@@ -29,7 +30,11 @@ const anfrageLabel = (data) => data.cta?.button ?? "Kostenloses Erstgespräch";
 export const LeistungPage = ({ data }) => (
   <PageShell label={data.badge} headline={data.h1} intro={data.intro}>
     <Section className="!pt-0">
-      <AnfrageStart to={anfrageZiel(data)} label={anfrageLabel(data)} />
+      <AnfrageStart
+        to={anfrageZiel(data)}
+        label={anfrageLabel(data)}
+        preis={data.preisKurz}
+      />
     </Section>
 
     <Section className="!pt-0">
@@ -89,14 +94,18 @@ export const LeistungPage = ({ data }) => (
     <Section className="!pt-0">
       <div className="grid gap-x-12 gap-y-6 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
         <div>
-          <h2 className="label">Stundensatz</h2>
           {/* The rate itself is one source, so this page, the FAQ, llms.txt and
               the ProfessionalService priceRange cannot drift apart. What the
-              rate means differs per service though: a website is often a fixed
-              price, a voice agent carries a per-minute cost the hourly rate
-              says nothing about. So the explanation beside it is overridable
-              and the number is not. */}
-          <p className="headline-sub mt-4">{RATE_TEXT}</p>
+              rate means differs per service though: a voice agent carries a
+              per-minute cost the hourly rate says nothing about. So the
+              explanation beside it is overridable and the number is not.
+
+              The one exception is a service sold at a fixed price. Someone
+              buying a website compares totals, so that page leads with
+              preisKurz, built from FESTPREIS in site.js, and names the hourly
+              rate in its preisText for whatever goes beyond the base scope. */}
+          <h2 className="label">{data.preisKurz ? "Festpreise" : "Stundensatz"}</h2>
+          <p className="headline-sub mt-4">{data.preisKurz ?? RATE_TEXT}</p>
         </div>
         <div>
           <p className="leading-relaxed text-paper-soft">{data.preisText ?? PREIS_TEXT}</p>
@@ -140,6 +149,13 @@ export const LeistungPage = ({ data }) => (
         </div>
       </div>
     </Section>
+
+    {/* Die Stimme des Auftraggebers zum Projekt, das diese Leistung belegt,
+        direkt unter dem Ergebnis. Bis Oktober 2026 stand das einzige
+        freigegebene Zitat, das über eine Website, auf der Startseite und in
+        der Fallstudie, aber nicht auf der Seite, die Websites verkauft. Ohne
+        freigegebene Stimme zum Projekt rendert die Komponente nichts. */}
+    <Stimmen projekt={data.caseStudy.link} />
 
     {/* Visible text and the FAQPage JSON-LD read from this same array, so the
         two can never disagree. */}

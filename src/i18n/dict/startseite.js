@@ -12,9 +12,12 @@
 const de = {
   services: {
     label: "Leistungen",
-    headline: "Was ich für Sie automatisiere",
+    /* "Was ich für Sie automatisiere" stand über allen Karten, auch über der
+       Webentwicklung, und sagte damit jedem, der eine Website sucht, er sei
+       hier falsch. */
+    headline: "Was ich für Sie baue und automatisiere",
     intro:
-      "Von einzelnen Workflows bis zur durchgängigen Prozesskette.",
+      "Von einzelnen Workflows über die Firmen-Website bis zur eigenen Web-App.",
     all: "Alle Leistungen ansehen",
   },
   cases: {
@@ -60,7 +63,8 @@ const de = {
   faq: {
     label: "Häufige Fragen",
     headline: "Was Auftraggeber am häufigsten fragen",
-    all: "Ausführliche Antworten im Ratgeber",
+    // The link goes to the n8n service page, so the label says that, not "Ratgeber".
+    all: "Ausführliche Antworten zur n8n-Automatisierung",
     items: [
       {
         q: "Was kostet ein n8n Freelancer?",
@@ -89,7 +93,8 @@ const de = {
     ],
   },
   cta: {
-    headline: "Welcher Prozess kostet Sie am meisten Zeit?",
+    // Both pillars: the old question only fitted automation.
+    headline: "Ein Prozess, der Zeit frisst, oder eine Website, die keine Anfragen bringt?",
     text: "Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden eine echte Einschätzung, keine Standardantwort.",
     button: "Kostenloses Erstgespräch",
   },
