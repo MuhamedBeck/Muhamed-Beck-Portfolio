@@ -76,6 +76,9 @@ export const TechMarquee = () => {
                  reads through the scale and the label brightening. */
               className="tech-mark w-7 h-7 transition-all duration-300 opacity-90 group-hover:opacity-100 group-hover:scale-110"
               style={{ color }}
+              // Decorative: the name is the text right below. Lighthouse flagged
+              // these role="img" SVGs as images without a text alternative.
+              aria-hidden="true"
             />
             <span className="text-[11px] text-paper-soft group-hover:text-paper transition-colors duration-300 whitespace-nowrap">
               {name}
