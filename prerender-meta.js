@@ -87,6 +87,7 @@ const kontaktdatenEinsetzen = (html) => {
 const schemaAusQuellenEinsetzen = (html) => {
   let sameAs = 0;
   let katalog = 0;
+  let preis = 0;
 
   const katalogEintraege = LEISTUNGEN.map((leistung) => ({
     "@type": "Offer",
@@ -105,12 +106,18 @@ const schemaAusQuellenEinsetzen = (html) => {
     .replace(/("itemListElement":\s*)\[[^\]]*\]/g, (_, vor) => {
       katalog += 1;
       return vor + JSON.stringify(katalogEintraege);
+    })
+    // Der Stundensatz kommt aus site.js wie überall sonst; von Hand gepflegt
+    // lief er hier beim Senken der Preise am 26.10.2026 als einzige Stelle mit.
+    .replace(/("priceRange":\s*)"[^"]*"/g, (_, vor) => {
+      preis += 1;
+      return vor + JSON.stringify(RATE_TEXT);
     });
 
-  if (sameAs !== 1 || katalog !== 1) {
+  if (sameAs !== 1 || katalog !== 1 || preis !== 1) {
     throw new Error(
-      `prerender: erwartet je 1 sameAs und 1 Leistungskatalog in index.html, ` +
-        `gefunden ${sameAs} und ${katalog}. Wurde die Vorlage umgebaut?`
+      `prerender: erwartet je 1 sameAs, 1 Leistungskatalog und 1 priceRange in index.html, ` +
+        `gefunden ${sameAs}, ${katalog} und ${preis}. Wurde die Vorlage umgebaut?`
     );
   }
   return ersetzt;

@@ -27,6 +27,9 @@
  *             und auf KI an den Stellen, an denen sie ein messbares Ergebnis
  *             liefert. Ich arbeite von Frankfurt aus, remote mit Kunden in
  *             Europa und im arabischen Raum. */
+// With the .js extension, like every content module node scripts may load.
+import { RATE_MAX, RATE_MIN } from "./site.js";
+
 export const AR_UEBER = {
   kicker: "ما الذي أقوم به",
   headline: "أتمتة تختصر العمل فعلًا",
@@ -86,7 +89,7 @@ export const AR_LEISTUNGEN = [
 ];
 
 /* Rückübersetzung:
- *   rate      90 bis 135 € pro Stunde nach Absprache und je nach Projektumfang
+ *   rate      RATE_MIN bis RATE_MAX € pro Stunde nach Absprache und je nach Projektumfang
  *   rateNote  Abrechnung in Euro. Für Kunden außerhalb der Eurozone remote und
  *             per Fernzugriff.
  *   ablauf    1 Sie beschreiben den Prozess — Zwei oder drei Sätze genügen.
@@ -99,7 +102,7 @@ export const AR_LEISTUNGEN = [
  *             4 Bauen und übergeben — Mit Dokumentation, und mit Wartung, wenn
  *               Sie sie wollen. */
 export const AR_KONDITIONEN = {
-  rate: "من 90 إلى 135 يورو في الساعة، بحسب الاتفاق وحجم المشروع",
+  rate: `من ${RATE_MIN} إلى ${RATE_MAX} يورو في الساعة، بحسب الاتفاق وحجم المشروع`,
   rateNote:
     "الفوترة باليورو. للعملاء خارج منطقة اليورو يتم العمل عن بُعد وعبر وصول آمن إلى الأنظمة.",
 };

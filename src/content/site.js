@@ -66,22 +66,24 @@ export const SAME_AS = [
   "https://www.freelancermap.de/profil/muhamed-nur-beck",
 ];
 
-// Wording agreed with the owner and grounded in the Freelancer-Kompass 2026
-// median of 95 EUR/h for IT freelancers across the DACH region (the survey does
-// not break its figures down by country). Used verbatim on landing pages, in
-// llms.txt and in the ProfessionalService priceRange.
-export const RATE_TEXT = "90 bis 135 € nach Absprache und je nach Projektumfang";
-// English rendering of the same rate. The German string is the one that goes
-// into llms.txt and the ProfessionalService priceRange; this exists so the
-// English pages do not print a German sentence at a reader.
-export const RATE_TEXT_EN = "90 to 135 € by agreement, depending on project scope";
+// The hourly rate, in one place. Every page, FAQ, guide, llms.txt and the
+// ProfessionalService priceRange (injected by prerender-meta.js) reads these
+// two numbers; before 26.10.2026 the range stood as text in some thirty places.
+// 90 to 135 € until 26.10.2026, lowered at the owner's request. The
+// Freelancer-Kompass 2026 puts the DACH median for IT freelancers at 95 € and
+// for software and web at 90 €; 80 to 120 € sits around both.
+export const RATE_MIN = 80;
+export const RATE_MAX = 120;
+
+export const RATE_TEXT = `${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang`;
+// English rendering of the same rate, so the English pages do not print a
+// German sentence at a reader.
+export const RATE_TEXT_EN = `${RATE_MIN} to ${RATE_MAX} € by agreement, depending on project scope`;
 // Arabic deliberately does not get a third suffix here. Its rate sentence lives
 // with the rest of its page copy in src/content/ar.js, the way the Arabic case
 // studies live in projects.ar.js: a suffix per locale stops scaling at three,
 // and a translated sentence sitting far from the page that renders it is how
 // translations drift.
-export const RATE_MIN = 90;
-export const RATE_MAX = 135;
 
 /* Festpreise für Webprojekte, netto für Unternehmen, am 13.10.2026 mit dem
    Inhaber festgelegt. Marktrahmen laut Anbieterseiten, also keine neutrale
@@ -93,17 +95,21 @@ export const RATE_MAX = 135;
    - Buchungssystem: erste Version ab 10.000 €, mit Schnittstellen ab
      20.000 € (Shopboostr, 02/2026).
    - Kundenportal: 25.000 bis 150.000 € (CodeGuides, abgerufen 10/2026).
-   Am selben Tag auf Wunsch des Inhabers um rund 25 % gesenkt (vorher 4.900,
-   6.900, 15.000 und 25.000 €): Die Preise liegen jetzt auf mittlerem
-   Freelancer-Niveau, deutlich über Baukasten-Angeboten und unter Agenturen;
-   was über den Grundumfang hinausgeht, läuft zum Stundensatz. Die Quellen stehen ausführlich im Ratgeber
-   /ratgeber/website-kosten. Eine Stelle, damit Leistungsseiten, FAQ,
-   Fallstudien, Ratgeber und llms.txt nicht auseinanderlaufen. */
+   Seitdem zweimal auf Wunsch des Inhabers gesenkt: am 13.10.2026 von 4.900,
+   6.900, 15.000 und 25.000 € um rund 25 %, am 26.10.2026 noch einmal um rund
+   20 % auf die Werte unten. Dazu kam die Überarbeitung einer bestehenden
+   Website als günstiger Einstieg. Die Preise liegen damit im Bereich der
+   Freelancer, über Baukasten-Angeboten und unter Agenturen; was über den
+   Grundumfang hinausgeht, läuft zum Stundensatz. Die Quellen stehen
+   ausführlich im Ratgeber /ratgeber/website-kosten. Eine Stelle, damit
+   Leistungsseiten, FAQ, Fallstudien, Ratgeber und llms.txt nicht
+   auseinanderlaufen. */
 export const FESTPREIS = {
-  website: 3500,
-  relaunch: 4900,
-  webApp: 9900,
-  portal: 19900,
+  update: 990,
+  website: 2900,
+  relaunch: 3900,
+  webApp: 7900,
+  portal: 14900,
 };
 
 /** "4.900 €", mit deutschem Tausenderpunkt wie überall auf der Seite. */

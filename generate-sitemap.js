@@ -7,7 +7,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { DEFAULT_LOCALE, ROUTES, SITE_URL, getAlternates } from "./src/routes/registry.js";
 import { LIVE_LOCALES, localeConfig } from "./src/i18n/locales.js";
-import { FESTPREIS, euro } from "./src/content/site.js";
+import { FESTPREIS, RATE_TEXT, euro } from "./src/content/site.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -109,8 +109,8 @@ const llms = `# Muhamed Nur Beck: KI-Automatisierung und Webentwicklung, Frankfu
 
 ## Konditionen
 
-- Stundensatz: 90 bis 135 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer im DACH-Raum lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
-- Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: Firmen-Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)}, Web-App oder Buchungssystem ab ${euro(FESTPREIS.webApp)}, Kundenportal ab ${euro(FESTPREIS.portal)}.
+- Stundensatz: ${RATE_TEXT}. Marktkontext: Der Median für IT-Freelancer im DACH-Raum lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
+- Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: Website überarbeiten ab ${euro(FESTPREIS.update)}, Firmen-Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)}, Web-App oder Buchungssystem ab ${euro(FESTPREIS.webApp)}, Kundenportal ab ${euro(FESTPREIS.portal)}.
 - Festpreise auch möglich für klar umrissene Workflows und Integrationen.
 - Antwort auf Projektanfragen innerhalb von 24 Stunden: ${SITE_URL}/kontakt
 

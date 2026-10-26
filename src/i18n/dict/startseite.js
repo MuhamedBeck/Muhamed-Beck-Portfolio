@@ -9,6 +9,9 @@
 // systems index passages, not pages: a paragraph that only makes sense after
 // the two above it cannot be quoted.
 
+// With the .js extension: check-i18n imports this file under bare node.
+import { RATE_MAX, RATE_MIN } from "../../content/site.js";
+
 const de = {
   services: {
     label: "Leistungen",
@@ -68,7 +71,7 @@ const de = {
     items: [
       {
         q: "Was kostet ein n8n Freelancer?",
-        a: "90 bis 135 € pro Stunde, nach Absprache und je nach Projektumfang. Bei klar umrissenem Umfang auch als Festpreis.",
+        a: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Bei klar umrissenem Umfang auch als Festpreis.`,
       },
       {
         q: "Wie lange dauert ein Projekt?",
@@ -146,7 +149,7 @@ const en = {
     items: [
       {
         q: "What does an n8n freelancer cost?",
-        a: "90 to 135 € per hour, by agreement and depending on project scope. A fixed price is possible where the scope is clearly drawn.",
+        a: `${RATE_MIN} to ${RATE_MAX} € per hour, by agreement and depending on project scope. A fixed price is possible where the scope is clearly drawn.`,
       },
       {
         q: "How long does an automation project take?",

@@ -14,7 +14,7 @@
 // seven weeks the web development page earned one impression and no inquiry.
 
 // With the .js extension: check-i18n imports this file under bare node.
-import { FESTPREIS, euro } from "../../content/site.js";
+import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "../../content/site.js";
 
 const de = {
   label: "n8n, KI-Automatisierung und Webentwicklung",
@@ -29,7 +29,7 @@ const de = {
   introKurz:
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.",
   servicesHeading: "Was Sie beauftragen können",
-  preisZeile: `90 bis 135 € pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)} netto. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.`,
+  preisZeile: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)}, Überarbeitungen ab ${euro(FESTPREIS.update)} netto. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.`,
   stats: [
     { value: "80 %", label: "kürzere Durchlaufzeiten im Recruiting" },
     { value: "90 %", label: "der Candidate Operations automatisiert" },
@@ -55,7 +55,7 @@ const en = {
   introKurz:
     "I'm Muhamed Nur Beck, AI Automation Manager and full-stack developer in Frankfurt, Germany.",
   servicesHeading: "What you can commission",
-  preisZeile: "90 to 135 € per hour by agreement. Every service with process, examples and price range.",
+  preisZeile: `${RATE_MIN} to ${RATE_MAX} € per hour by agreement. Every service with process, examples and price range.`,
   stats: [
     { value: "80 %", label: "shorter recruiting cycle times" },
     { value: "90 %", label: "of candidate operations automated" },
@@ -112,7 +112,7 @@ const ar = {
   /* Der Preis ohne Leerzeichen vor dem Prozent- beziehungsweise Eurozeichen,
      aus demselben Grund wie bei stats: neutrale Zeichen kippen im arabischen
      Lauf an die falsche Seite der Zahl. */
-  preisZeile: "من 90 إلى 135 يورو للساعة حسب الاتفاق. كل خدمة مع سير العمل والأمثلة ونطاق السعر.",
+  preisZeile: `من ${RATE_MIN} إلى ${RATE_MAX} يورو للساعة حسب الاتفاق. كل خدمة مع سير العمل والأمثلة ونطاق السعر.`,
   stats: [
     /* Written without the space the German and English versions use. The
        percent sign is bidi-neutral, so "80 %" renders as "% 80" in an Arabic

@@ -24,14 +24,14 @@ export const RATGEBER = [
     modified: "2026-09-30",
     // The lede is written to be quotable on its own, with no unresolved
     // pronouns and no dependency on a preceding paragraph.
-    lede: "Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde; die Erhebung weist Deutschland, Österreich und die Schweiz nicht getrennt aus. Mein eigener Satz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang.",
+    lede: `Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde; die Erhebung weist Deutschland, Österreich und die Schweiz nicht getrennt aus. Mein eigener Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang.`,
     // Same four figures the prose states, so the scale and the text cannot
     // disagree. Sources are named in the copy below.
     scale: {
       caption: "Stundensätze im Vergleich (Stand: August 2026)",
       market: { from: 75, to: 147, label: "n8n-Profile bei freelancermap" },
       median: { value: 95, label: "Median IT-Freelancer im DACH-Raum, Freelancer-Kompass 2026" },
-      own: { from: 90, to: 135, label: "mein Satz, nach Absprache und Projektumfang" },
+      own: { from: RATE_MIN, to: RATE_MAX, label: "mein Satz, nach Absprache und Projektumfang" },
     },
     sections: [
       {
@@ -66,7 +66,7 @@ export const RATGEBER = [
       {
         h2: "Was kostet ein typisches Automatisierungsprojekt insgesamt?",
         body: [
-          "Ein einzelner Workflow liegt meist im Bereich weniger Arbeitstage, eine durchgängige Prozesskette mit CRM- oder ATS-Anbindung im Bereich weniger Wochen. Bei 90 bis 135 € pro Stunde ergibt das für einen abgegrenzten Workflow typischerweise einen vierstelligen Betrag, für eine mehrstufige Integration einen niedrigen fünfstelligen.",
+          `Ein einzelner Workflow liegt meist im Bereich weniger Arbeitstage, eine durchgängige Prozesskette mit CRM- oder ATS-Anbindung im Bereich weniger Wochen. Bei ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ergibt das für einen abgegrenzten Workflow typischerweise einen vierstelligen Betrag, für eine mehrstufige Integration einen niedrigen fünfstelligen.`,
           "Belastbarer wird die Zahl erst nach einem Blick auf die konkreten Systeme. Ob ein Zielsystem eine dokumentierte REST-API hat oder nur einen CSV-Export per E-Mail, macht beim Aufwand den Unterschied zwischen zwei Tagen und zwei Wochen.",
         ],
       },
@@ -95,11 +95,11 @@ export const RATGEBER = [
     faq: [
       {
         q: "Was kostet ein n8n Freelancer pro Stunde?",
-        a: "Zwischen 75 und 147 € pro Stunde in Deutschland (freelancermap, Stand August 2026). Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde. Mein Satz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang.",
+        a: `Zwischen 75 und 147 € pro Stunde in Deutschland (freelancermap, Stand August 2026). Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde. Mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang.`,
       },
       {
         q: "Kostet ein n8n Freelancer in Wien oder Zürich mehr als in Deutschland?",
-        a: "Der Freelancer-Kompass 2026 erhebt den deutschsprachigen Raum als Ganzes und weist den Median von 95 € pro Stunde nicht nach Ländern getrennt aus. Für die Schweiz werden Sätze in Franken verhandelt und liegen höher, eine aktuelle Erhebung mit vergleichbarer Methodik gibt es dazu aber nicht. Mein Satz bleibt bei 90 bis 135 €, unabhängig vom Sitz des Auftraggebers.",
+        a: `Der Freelancer-Kompass 2026 erhebt den deutschsprachigen Raum als Ganzes und weist den Median von 95 € pro Stunde nicht nach Ländern getrennt aus. Für die Schweiz werden Sätze in Franken verhandelt und liegen höher, eine aktuelle Erhebung mit vergleichbarer Methodik gibt es dazu aber nicht. Mein Satz bleibt bei ${RATE_MIN} bis ${RATE_MAX} €, unabhängig vom Sitz des Auftraggebers.`,
       },
       {
         q: "Arbeiten Sie auch für Auftraggeber in Österreich und der Schweiz?",
@@ -123,7 +123,7 @@ export const RATGEBER = [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       {
         path: "/leistungen/n8n-automatisierung-oesterreich",
-        label: "n8n Freelancer für Wien und Österreich",
+        label: "n8n Freelancer und Beratung für Wien und Österreich",
       },
     ],
   },
@@ -226,6 +226,10 @@ export const RATGEBER = [
         a: `Beim Freelancer meist 800 bis 5.000 €, bei einer Agentur 3.600 bis 18.000 € (RHEINSPACE, Stand Juni 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.website)} netto, mit Struktur, Umsetzung, technischem SEO und Übergabe des Quelltexts.`,
       },
       {
+        q: "Was kostet es, eine bestehende Website zu überarbeiten?",
+        a: `Wenn Struktur und Technik tragen und vor allem Design, Ladezeit oder Inhalte veraltet sind, reicht oft eine Überarbeitung statt eines Neubaus. Bei mir beginnt sie bei ${euro(FESTPREIS.update)} netto als Festpreis für einen vorher vereinbarten Umfang.`,
+      },
+      {
         q: "Was kostet ein Website-Relaunch?",
         a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} netto, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
       },
@@ -248,6 +252,7 @@ export const RATGEBER = [
     ],
     related: [
       { path: "/leistungen/webentwicklung", label: "Firmen-Website erstellen lassen und Relaunch" },
+      { path: "/leistungen/website-ueberarbeiten", label: "Website überarbeiten und modernisieren lassen" },
       { path: "/leistungen/web-app-entwicklung", label: "Web-App und Buchungssystem entwickeln lassen" },
       { path: "/ratgeber/website-relaunch", label: "Website-Relaunch ohne Ranking-Verlust" },
       { path: "/projekte/maflats", label: "Case Study: Website-Relaunch für MA-Flats" },

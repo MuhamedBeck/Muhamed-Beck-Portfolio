@@ -2,7 +2,7 @@
  * Hourly-rate scale.
  *
  * The cost article carried four sourced figures in prose (a 75 to 147 € market
- * range, a 95 € median, and the owner's own 90 to 135 €) and no way to see how
+ * range, a 95 € median, and the owner's own rate range) and no way to see how
  * they relate. A reader comparing quotes wants to know where a number sits in
  * the band, which is a question a sentence answers slowly and a scale answers
  * at a glance.

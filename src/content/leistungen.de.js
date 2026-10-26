@@ -6,7 +6,7 @@
 import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "./site.js";
 
 export const PREIS_TEXT =
-  "90 bis 135 € pro Stunde, nach Absprache und je nach Projektumfang. Für klar umrissene Workflows und Integrationen sind auch Festpreise möglich. Orientierung: Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.";
+  `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Für klar umrissene Workflows und Integrationen sind auch Festpreise möglich. Orientierung: Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.`;
 
 /* Wo gearbeitet wird, im sichtbaren Text und nicht nur im Schema.
    prerender-meta.js setzt seit jeher areaServed auf Deutschland, Österreich
@@ -49,7 +49,7 @@ export const LEISTUNGEN = [
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
       {
         path: "/leistungen/n8n-automatisierung-oesterreich",
-        label: "n8n Freelancer für Wien und Österreich",
+        label: "n8n Freelancer und Beratung für Wien und Österreich",
       },
     ],
     // Every stage below restates something the leistungen array on this same
@@ -142,7 +142,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet eine n8n-Automatisierung?",
-        a: "Mein Stundensatz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang. Kleine Workflows sind oft in wenigen Stunden umgesetzt, komplexe Integrationen mit mehreren Systemen kalkuliere ich nach einem kostenlosen Erstgespräch transparent als Fest- oder Stundenpreis.",
+        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang. Kleine Workflows sind oft in wenigen Stunden umgesetzt, komplexe Integrationen mit mehreren Systemen kalkuliere ich nach einem kostenlosen Erstgespräch transparent als Fest- oder Stundenpreis.`,
       },
       {
         q: "n8n oder Zapier: was passt besser zu meinem Unternehmen?",
@@ -195,6 +195,10 @@ export const LEISTUNGEN = [
       button: "Website anfragen",
     },
     weiterlesen: [
+      {
+        path: "/leistungen/website-ueberarbeiten",
+        label: "Website überarbeiten und modernisieren lassen",
+      },
       { path: "/ratgeber/website-kosten", label: "Was kostet eine Website 2026?" },
       { path: "/ratgeber/website-relaunch", label: "Website-Relaunch ohne Ranking-Verlust" },
       {
@@ -317,6 +321,141 @@ export const LEISTUNGEN = [
       {
         q: "Was passiert mit meinen alten Adressen?",
         a: "Sie werden auf die neuen weitergeleitet. Das ist der Punkt, an dem Relaunches am häufigsten Sichtbarkeit verlieren: Wer alte Adressen ins Leere laufen lässt, verliert die Platzierungen, die daran hängen.",
+      },
+      {
+        q: "Arbeiten Sie remote oder vor Ort?",
+        a: "Überwiegend remote, in ganz Deutschland, Österreich und der Schweiz. Vor Ort im Rhein-Main-Gebiet nach Absprache.",
+      },
+    ],
+  },
+  {
+    path: "/leistungen/website-ueberarbeiten",
+    /* Eigene Seite seit dem 26.10.2026: der günstige Einstieg für kleinere
+       Web-Aufträge. Wer eine Website hat, die alt aussieht, langsam lädt oder
+       veraltete Inhalte zeigt, sucht nach "Website überarbeiten lassen" und
+       nicht nach einem Neubau. Bis dahin verkaufte die Seite nur Neubau und
+       Relaunch ab einigen Tausend Euro. */
+    preisKurz: `Überarbeitung ab ${euro(FESTPREIS.update)} netto`,
+    preisText: `Festpreis für Unternehmen, netto zuzüglich Umsatzsteuer: Kleinere Überarbeitungen mit vorher vereinbartem Umfang beginnen bei ${euro(FESTPREIS.update)}. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab oder biete sie ebenfalls als Festpreis an. Lohnt sich eine Überarbeitung nicht, sage ich das, bevor Sie Geld ausgeben.`,
+    reichweiteText: REICHWEITE_FESTPREIS_TEXT,
+    cta: {
+      headline: "Soll Ihre Website wieder zeitgemäß aussehen und schneller laden?",
+      intro:
+        "Schicken Sie mir die Adresse Ihrer Website und sagen Sie kurz, was Sie stört. Sie bekommen innerhalb von 24 Stunden eine ehrliche Einschätzung: gezielte Überarbeitung oder doch ein Neubau, und was es kostet.",
+      button: "Überarbeitung anfragen",
+    },
+    weiterlesen: [
+      {
+        path: "/leistungen/webentwicklung",
+        label: "Firmen-Website erstellen lassen und Relaunch",
+      },
+      { path: "/ratgeber/website-kosten", label: "Was kostet eine Website 2026?" },
+      { path: "/ratgeber/website-relaunch", label: "Website-Relaunch ohne Ranking-Verlust" },
+    ],
+    flow: {
+      caption: "So läuft eine Überarbeitung",
+      stages: [
+        {
+          kind: "Auslöser",
+          title: "Die Seite passt nicht mehr",
+          text: "Sie sieht alt aus, lädt auf dem Telefon langsam oder zeigt Leistungen und Preise von gestern.",
+        },
+        {
+          kind: "Schritt",
+          title: "Website-Check",
+          text: "Ladezeit mobil, Darstellung, Inhalte, Technik und Auffindbarkeit. Daraus eine kurze Liste, was am meisten bringt.",
+        },
+        {
+          kind: "Schritt",
+          title: "Gezielt umsetzen",
+          text: "In der bestehenden Seite, wo das System es zulässt, mit einer Vorschau, bevor etwas live geht.",
+        },
+        {
+          kind: "Ziel",
+          title: "Nachgemessen",
+          text: "Dieselben Messungen wie vorher, damit Sie sehen, was sich verbessert hat.",
+        },
+      ],
+      alongside:
+        "Kein Neubau aus Prinzip: Wo die bestehende Seite trägt, wird sie verbessert. Wo die Technik selbst das Problem ist, sage ich das vorher.",
+    },
+    badge: "Website überarbeiten & modernisieren",
+    hero: {
+      kurz: "Website überarbeiten lassen",
+      ankerLabel: "organischer Traffic",
+    },
+    teaser: `Bestehende Websites modernisieren, aktualisieren und schneller machen, ab ${euro(FESTPREIS.update)} netto, ohne gleich alles neu zu bauen.`,
+    h1: "Website überarbeiten und modernisieren lassen",
+    intro:
+      "Nicht jede Website braucht einen Neubau. Oft reichen ein aufgefrischtes Design, schnellere Ladezeiten, eine saubere Ansicht auf dem Telefon und aktuelle Inhalte, damit sie wieder Anfragen bringt. Ich sehe mir Ihre Seite an, sage ehrlich, ob eine Überarbeitung reicht oder ein Neubau günstiger ist, und setze dann um, was am meisten bringt.",
+    szenarien: [
+      {
+        title: "Das Design ist in die Jahre gekommen",
+        text: "Die Seite passt nicht mehr zu Ihrem Unternehmen. Aufgefrischte Schriften, Farben, Abstände und eine klare Struktur machen den ersten Eindruck wieder gut, ohne dass alles neu entstehen muss.",
+      },
+      {
+        title: "Langsam und auf dem Telefon schwer lesbar",
+        text: "Wer vom Telefon kommt, wartet nicht lange. Bilder, Code und Mobilansicht werden so verbessert, dass die Seite schnell lädt und sich gut bedienen lässt.",
+      },
+      {
+        title: "Inhalte und Angebote sind veraltet",
+        text: "Neue Leistungen, Preise, Ansprechpartner oder Standorte, sauber eingepflegt, dazu ein Kontaktweg, der Anfragen zuverlässig ankommen lässt.",
+      },
+    ],
+    leistungen: [
+      "Design auffrischen: Schriften, Farben, Abstände und Seitenaufbau",
+      "Ladezeit verbessern: Bilder, Code und Auslieferung",
+      "Mobilansicht und Barrierefreiheit verbessern",
+      "Texte, Leistungen, Preise und Kontaktwege aktualisieren",
+      "Technisches SEO: Titel, Beschreibungen, strukturierte Daten",
+      "Kontaktformular und Anfrageweg prüfen und reparieren",
+      "Messung vorher und nachher, damit die Verbesserung belegbar ist",
+    ],
+    ablauf: [
+      {
+        title: "Website-Check",
+        text: "Ich sehe mir Ihre Seite an: Ladezeit mobil, Darstellung, Inhalte, Technik und Auffindbarkeit. Sie bekommen eine kurze Liste, was am meisten bringt.",
+      },
+      {
+        title: "Festpreis",
+        text: `Für den vereinbarten Umfang bekommen Sie einen Festpreis. Kleinere Überarbeitungen beginnen bei ${euro(FESTPREIS.update)} netto.`,
+      },
+      {
+        title: "Umsetzen",
+        text: "In Ihrer bestehenden Seite, wo das sinnvoll ist, mit einer Vorschau, bevor etwas live geht.",
+      },
+      {
+        title: "Nachmessen",
+        text: "Dieselben Messungen wie vorher, damit Sie sehen, was sich verbessert hat. Adressen bleiben erhalten oder werden weitergeleitet.",
+      },
+    ],
+    caseStudy: {
+      stat: "+35%",
+      statLabel: "organischer Traffic in drei Monaten bei Phoenix Parkservice, gemessen in der Google Search Console",
+      text: "Für Phoenix Parkservice habe ich die Unternehmenswebsite neu aufgebaut und technisch optimiert und die SEO-Arbeit mit n8n systematisiert. Der organische Traffic stieg innerhalb von drei Monaten um 35 Prozent.",
+      link: "/projekte/phoenix-parkservice",
+      linkText: "Zur Case Study Phoenix Parkservice",
+    },
+    faq: [
+      {
+        q: "Was kostet es, eine Website überarbeiten zu lassen?",
+        a: `Kleinere Überarbeitungen beginnen bei ${euro(FESTPREIS.update)} netto, als Festpreis für einen vorher vereinbarten Umfang. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab oder biete sie ebenfalls als Festpreis an. Den genauen Betrag nenne ich nach einem Blick auf Ihre Seite.`,
+      },
+      {
+        q: "Überarbeitung oder Neubau: Was lohnt sich?",
+        a: "Eine Überarbeitung lohnt sich, wenn Struktur und Technik der Seite tragen und vor allem Design, Inhalte oder Ladezeit hinterherhinken. Ist die Technik selbst das Problem, etwa ein Baukasten, der mehrere Megabyte lädt, ist ein Neubau oft günstiger als jede Reparatur. Das sage ich nach dem ersten Blick, bevor Sie Geld ausgeben.",
+      },
+      {
+        q: "Funktioniert das auch mit WordPress oder einem Baukasten?",
+        a: "Meist ja. Ich arbeite an der bestehenden Seite, wenn das System es zulässt. Manche Baukästen setzen enge Grenzen; dann sage ich vorher offen, was dort möglich ist und ob sich ein Neubau mehr lohnt.",
+      },
+      {
+        q: "Wie schnell ist eine Überarbeitung fertig?",
+        a: "Kleinere Überarbeitungen sind oft in wenigen Tagen erledigt, umfangreichere in wenigen Wochen. Den Zeitplan stimmen wir vor dem Start ab.",
+      },
+      {
+        q: "Bleiben meine Google-Platzierungen erhalten?",
+        a: "Darauf achte ich. Adressen bleiben, wo es geht, gleich; wo sie sich ändern, leite ich sie dauerhaft weiter, damit die Platzierungen daran nicht verloren gehen.",
       },
       {
         q: "Arbeiten Sie remote oder vor Ort?",
@@ -541,7 +680,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet KI-Automatisierung?",
-        a: "Mein Stundensatz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang. Ein Prototyp für einen klar umrissenen Use Case ist oft überschaubar; den konkreten Rahmen besprechen wir in einem kostenlosen Erstgespräch.",
+        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang. Ein Prototyp für einen klar umrissenen Use Case ist oft überschaubar; den konkreten Rahmen besprechen wir in einem kostenlosen Erstgespräch.`,
       },
       {
         q: "Ist der Einsatz von GPT und Co. DSGVO-konform möglich?",
@@ -568,7 +707,7 @@ export const LEISTUNGEN = [
   {
     path: "/leistungen/voice-ai-agenten",
     preisText:
-      "90 bis 135 € pro Stunde für die Umsetzung. Anders als bei den übrigen Leistungen kommen laufende Kosten dazu: Sprachagenten werden je Gesprächsminute abgerechnet, dazu Telefonie und Rufnummer. Was das konkret bedeutet, steht im Ratgeber zu KI-Telefonagenten.",
+      `${RATE_MIN} bis ${RATE_MAX} € pro Stunde für die Umsetzung. Anders als bei den übrigen Leistungen kommen laufende Kosten dazu: Sprachagenten werden je Gesprächsminute abgerechnet, dazu Telefonie und Rufnummer. Was das konkret bedeutet, steht im Ratgeber zu KI-Telefonagenten.`,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
        Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
        und die ist auf jeder der sieben Seiten eine andere. */
@@ -682,7 +821,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Was kostet ein KI-Telefonagent?",
-        a: "Die Umsetzung rechne ich mit 90 bis 135 € pro Stunde nach Absprache und je nach Projektumfang ab. Dazu kommen laufende Kosten für Telefonie und Sprachmodelle, die sich pro Gesprächsminute bemessen. Beides schätzen wir vor dem Start anhand Ihres tatsächlichen Anrufaufkommens.",
+        a: `Die Umsetzung rechne ich mit ${RATE_MIN} bis ${RATE_MAX} € pro Stunde nach Absprache und je nach Projektumfang ab. Dazu kommen laufende Kosten für Telefonie und Sprachmodelle, die sich pro Gesprächsminute bemessen. Beides schätzen wir vor dem Start anhand Ihres tatsächlichen Anrufaufkommens.`,
       },
       {
         q: "Bleiben die Gesprächsdaten in der EU?",
@@ -693,7 +832,7 @@ export const LEISTUNGEN = [
   {
     path: "/leistungen/ki-agenten-entwicklung",
     preisText:
-      "90 bis 135 € pro Stunde für die Entwicklung. Dazu kommen laufende Modellkosten je Anfrage, die vom eingesetzten Modell und vom Umfang der Eingaben abhängen. Beides wird vorher abgeschätzt, damit der Betrieb später keine Überraschung ist.",
+      `${RATE_MIN} bis ${RATE_MAX} € pro Stunde für die Entwicklung. Dazu kommen laufende Modellkosten je Anfrage, die vom eingesetzten Modell und vom Umfang der Eingaben abhängen. Beides wird vorher abgeschätzt, damit der Betrieb später keine Überraschung ist.`,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
        Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
        und die ist auf jeder der sieben Seiten eine andere. */
@@ -798,7 +937,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Was kostet die Entwicklung eines KI-Agenten?",
-        a: "90 bis 135 € pro Stunde nach Absprache und je nach Projektumfang, dazu die laufenden Modellkosten. Der ehrliche Hinweis vorweg: Für viele Aufgaben ist ein normaler Workflow die günstigere und stabilere Lösung. Das prüfen wir im Erstgespräch, bevor Sie in einen Agenten investieren.",
+        a: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde nach Absprache und je nach Projektumfang, dazu die laufenden Modellkosten. Der ehrliche Hinweis vorweg: Für viele Aufgaben ist ein normaler Workflow die günstigere und stabilere Lösung. Das prüfen wir im Erstgespräch, bevor Sie in einen Agenten investieren.`,
       },
     ],
   },
@@ -895,7 +1034,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet eine HubSpot-Integration?",
-        a: "Mein Stundensatz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang. Eine einzelne Anbindung ist oft in wenigen Tagen umgesetzt; komplexe bidirektionale Synchronisationen kalkuliere ich nach einem kostenlosen Erstgespräch.",
+        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang. Eine einzelne Anbindung ist oft in wenigen Tagen umgesetzt; komplexe bidirektionale Synchronisationen kalkuliere ich nach einem kostenlosen Erstgespräch.`,
       },
       {
         q: "Welche Systeme haben Sie bereits an HubSpot angebunden?",
@@ -987,7 +1126,7 @@ export const LEISTUNGEN = [
       linkText: "Die Fallstudie im Detail",
     },
     preisText:
-      "90 bis 135 € pro Stunde nach Absprache. Ein Audit hat einen absehbaren Umfang und lässt sich deshalb gut als Festpreis abbilden; die anschließende Umsetzung hängt davon ab, was der Befund ergibt. Laufende Kosten entstehen keine.",
+      `${RATE_MIN} bis ${RATE_MAX} € pro Stunde nach Absprache. Ein Audit hat einen absehbaren Umfang und lässt sich deshalb gut als Festpreis abbilden; die anschließende Umsetzung hängt davon ab, was der Befund ergibt. Laufende Kosten entstehen keine.`,
     faq: [
       { q: "Was ist GEO und wie unterscheidet es sich von SEO?",
         a: "SEO zielt auf Platzierungen in Suchergebnissen, GEO darauf, in den Antworten von KI-Assistenten vorzukommen. Die technischen Grundlagen überschneiden sich stark, die inhaltlichen weniger: Sprachmodelle zitieren belegte, eindeutig zuordenbare Aussagen, während Suchmaschinen auch Seiten belohnen, die eine Frage nur anreißen." },
@@ -1107,7 +1246,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Was kostet Recruiting-Automatisierung?",
-        a: "Mein Stundensatz liegt bei 90 bis 135 € nach Absprache und je nach Projektumfang. Ein einzelner Workflow, etwa der automatisierte Bewerbungseingang, ist meist in wenigen Tagen produktiv. Eine durchgängige Kette über den ganzen Funnel dauert je nach Systemlandschaft einige Wochen.",
+        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang. Ein einzelner Workflow, etwa der automatisierte Bewerbungseingang, ist meist in wenigen Tagen produktiv. Eine durchgängige Kette über den ganzen Funnel dauert je nach Systemlandschaft einige Wochen.`,
       },
       {
         q: "Wie messe ich, ob sich das gelohnt hat?",
@@ -1182,7 +1321,7 @@ export const LEISTUNGEN = [
       linkText: "Was die KI-Verordnung verlangt",
     },
     preisText:
-      "90 bis 135 € pro Stunde für den Aufbau. Der Umfang hängt vor allem an der Zahl der Profile und daran, wie klar die Personas schon sind. Laufende Kosten entstehen für die eingesetzten Sprachmodelle, abgerechnet je Beitrag; das lässt sich vorher abschätzen.",
+      `${RATE_MIN} bis ${RATE_MAX} € pro Stunde für den Aufbau. Der Umfang hängt vor allem an der Zahl der Profile und daran, wie klar die Personas schon sind. Laufende Kosten entstehen für die eingesetzten Sprachmodelle, abgerechnet je Beitrag; das lässt sich vorher abschätzen.`,
     faq: [
       { q: "Ist das mit den Regeln von LinkedIn vereinbar?",
         a: "Das hängt davon ab, was automatisiert wird. Inhalte vorbereiten, planen und veröffentlichen ist unkritisch, dafür gibt es offizielle Schnittstellen. Alles, was darüber hinaus im Namen eines Kontos handelt, sollte man bewusst entscheiden und eng begrenzen. Wir klären das vor dem Aufbau, nicht danach." },
@@ -1236,9 +1375,9 @@ export const LEISTUNGEN = [
     },
     teaser:
       "n8n-Workflows für Unternehmen in Wien und ganz Österreich, remote aus Frankfurt: derselbe Satz, Rechnung in Euro, Datenschutz nach DSGVO wie in Deutschland.",
-    h1: "n8n Freelancer für Wien und Österreich",
+    h1: "n8n Freelancer und Beratung für Wien und Österreich",
     intro:
-      "Für Unternehmen in Wien und ganz Österreich baue ich Workflow-Automatisierungen mit n8n: Tools verbinden, Abläufe beschleunigen, KI dort einbinden, wo sie messbar Arbeit abnimmt. Mein Standort ist Frankfurt am Main, die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch. Was für Auftraggeber in Österreich anders ist, betrifft vor allem Rechnung und Datenschutz, und genau das steht auf dieser Seite.",
+      "Für Unternehmen in Wien und ganz Österreich berate ich zu n8n und baue Workflow-Automatisierungen: Tools verbinden, Abläufe beschleunigen, KI dort einbinden, wo sie messbar Arbeit abnimmt. Mein Standort ist Frankfurt am Main, die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch. Was für Auftraggeber in Österreich anders ist, betrifft vor allem Rechnung und Datenschutz, und genau das steht auf dieser Seite.",
     szenarien: [
       {
         title: "Remote in derselben Zeitzone",
@@ -1302,6 +1441,10 @@ export const LEISTUNGEN = [
       {
         q: "Gilt der EU AI Act auch in Österreich?",
         a: "Ja. Er ist eine EU-Verordnung und gilt in Österreich wie in Deutschland. Wo ein KI-System direkt mit Menschen spricht, verlangt Artikel 50 seit August 2026 einen deutlichen Hinweis darauf.",
+      },
+      {
+        q: "Bieten Sie auch reine n8n-Beratung an, ohne Umsetzung?",
+        a: `Ja. Manche Unternehmen brauchen zuerst eine Einschätzung: welcher Ablauf sich lohnt, ob n8n das richtige Werkzeug ist und was Betrieb und Wartung kosten. Die Beratung rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab; das Erstgespräch ist kostenlos.`,
       },
       {
         q: "Haben Sie Referenzen aus Österreich?",
