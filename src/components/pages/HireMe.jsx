@@ -6,6 +6,7 @@ import { CONTACT, RATE_TEXT_EN, mailtoHref } from "../../content/site";
 import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 import ui from "../../i18n/dict/ui";
 import { Honeypot } from "../Honeypot";
+import { Bestaetigung, SendeKnopf } from "../AnfrageStatus";
 import { anfrageArchivieren, istBot, oderNichtAngegeben } from "../../services/anfrage";
 
 // Seite gibt es nur auf Englisch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
@@ -256,17 +257,14 @@ export const HireMe = () => {
               </p>
             </div>
           ) : sent ? (
-            <div className="mt-8" role="status">
-              <p className="intro">Request sent.</p>
-              <p className="mt-4 leading-relaxed text-paper-soft">
-                I&apos;ll get back to you within 24 hours. No reply?{" "}
-                <a
-                  href={MAIL_HREF}
-                  className="text-accent hover:underline">
-                  {CONTACT.email}
-                </a>
-              </p>
-            </div>
+            <Bestaetigung titel="Your request has arrived.">
+              I&apos;ll get back to you within 24 hours. No reply?{" "}
+              <a
+                href={MAIL_HREF}
+                className="text-accent hover:underline">
+                {CONTACT.email}
+              </a>
+            </Bestaetigung>
           ) : (
             <form onSubmit={handleSubmit} className="mt-8 space-y-6">
               <Honeypot />
@@ -367,9 +365,9 @@ export const HireMe = () => {
                 </p>
               )}
 
-              <button type="submit" disabled={loading} className="btn-ghost btn-accent">
-                {loading ? "Sending" : "Send request"}
-              </button>
+              <SendeKnopf laedt={loading} ladeText="Sending">
+                Send request
+              </SendeKnopf>
 
               <p className="text-sm text-paper-mute">
                 Free first call · Reply within 24 hours · Frankfurt and remote

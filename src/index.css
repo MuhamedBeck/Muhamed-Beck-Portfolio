@@ -1079,3 +1079,130 @@ dd {
     opacity: 1;
   }
 }
+
+/* Senden und Bestätigung der Anfrageformulare (components/AnfrageStatus.jsx).
+
+   Ein seltener Moment, einmal pro Besuch, deshalb darf er etwas zeigen. Aber
+   ruhig: eine schmale Linie, solange gesendet wird, danach eine Karte, die
+   kurz von unten einblendet, und ein Häkchen, das sich zeichnet. Bewegt
+   werden nur transform, opacity und stroke-dashoffset.
+
+   Außerhalb der Ebenen mit Absicht: .btn-ghost steht in @layer components,
+   und nur so gewinnt die Transition hier gegen die dortige. */
+.btn-senden {
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-color 0.3s var(--ease-hover),
+    color 0.3s var(--ease-hover),
+    border-color 0.3s var(--ease-hover),
+    transform 160ms var(--ease-hover);
+}
+
+/* Der Druck soll sich anfühlen, als hätte die Seite ihn gehört. */
+.btn-senden:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+/* Während des Sendens kein Farbwechsel beim Darüberfahren: Die Linie nimmt
+   die Textfarbe an und wäre sonst kurz blau auf durchsichtigem Grund. */
+.btn-senden:disabled,
+.btn-senden:disabled:hover {
+  cursor: progress;
+  background-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.sende-linie {
+  position: absolute;
+  inset: auto 0 0;
+  height: 2px;
+  overflow: hidden;
+}
+
+.sende-linie::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: currentColor;
+  opacity: 0.7;
+  /* Gleichmäßige Dauerbewegung, deshalb linear. */
+  animation: sende-linie 1.1s linear infinite;
+}
+
+@keyframes sende-linie {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+.bestaetigung {
+  animation: bestaetigung-ein 360ms var(--ease-hover) both;
+}
+
+.bestaetigung-haken circle,
+.bestaetigung-haken path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.bestaetigung-haken circle {
+  animation: haken-zeichnen 420ms var(--ease-hover) 80ms both;
+}
+
+.bestaetigung-haken path {
+  animation: haken-zeichnen 300ms var(--ease-hover) 380ms both;
+}
+
+@keyframes bestaetigung-ein {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes haken-zeichnen {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Weniger Bewegung heißt hier: nur einblenden, nichts gleitet oder zeichnet
+   sich. Das Häkchen steht sofort fertig da, die Linie im Knopf ruht. */
+@media (prefers-reduced-motion: reduce) {
+  .btn-senden:active:not(:disabled) {
+    transform: none;
+  }
+
+  .sende-linie::after {
+    width: 100%;
+    animation: none;
+  }
+
+  .bestaetigung {
+    animation: bestaetigung-blende 200ms ease both;
+  }
+
+  .bestaetigung-haken circle,
+  .bestaetigung-haken path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes bestaetigung-blende {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

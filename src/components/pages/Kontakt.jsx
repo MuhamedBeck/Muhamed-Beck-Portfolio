@@ -9,6 +9,7 @@ import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 import { LEISTUNGEN } from "../../content/leistungen.de";
 import ui from "../../i18n/dict/ui";
 import { Honeypot } from "../Honeypot";
+import { Bestaetigung, SendeKnopf } from "../AnfrageStatus";
 import { anfrageArchivieren, istBot, oderNichtAngegeben } from "../../services/anfrage";
 
 // Seite gibt es nur auf Deutsch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
@@ -195,19 +196,16 @@ const Kontakt = () => {
                 .
               </p>
             ) : sent ? (
-              <div className="mt-6" role="status">
-                <p className="intro">Anfrage ist raus.</p>
-                <p className="mt-4 leading-relaxed text-paper-soft">
-                  Sie hören innerhalb von 24 Stunden von mir. Keine Antwort erhalten?
-                  Dann direkt an{" "}
-                  <a
-                    href={MAIL_HREF}
-                    className="text-accent hover:underline">
-                    {CONTACT.email}
-                  </a>
-                  .
-                </p>
-              </div>
+              <Bestaetigung titel="Ihre Anfrage ist angekommen.">
+                Sie hören innerhalb von 24 Stunden von mir. Keine Antwort erhalten?
+                Dann direkt an{" "}
+                <a
+                  href={MAIL_HREF}
+                  className="text-accent hover:underline">
+                  {CONTACT.email}
+                </a>
+                .
+              </Bestaetigung>
             ) : (
               <form onSubmit={handleSubmit} className="mt-6 space-y-6">
                 <Honeypot />
@@ -348,9 +346,9 @@ const Kontakt = () => {
                   </p>
                 )}
 
-                <button type="submit" disabled={loading} className="btn-ghost btn-accent">
-                  {loading ? "Wird gesendet" : "Anfrage senden"}
-                </button>
+                <SendeKnopf laedt={loading} ladeText="Wird gesendet">
+                  Anfrage senden
+                </SendeKnopf>
 
                 <p className="text-sm text-paper-mute">
                   Kostenloses Erstgespräch · Antwort innerhalb von 24 Stunden ·
