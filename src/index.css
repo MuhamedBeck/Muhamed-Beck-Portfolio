@@ -307,6 +307,29 @@ td,
   border-radius: 2px;
 }
 
+/* Karten, die als Ganzes klickbar sind, aber nur über ihren Titel verlinken.
+
+   Bis zum 26.10.2026 war jede Karte samt Teaser und Kennzahlen ein einziges
+   <a>. Google liest den Linktext als Angabe, worum es auf der Zielseite geht,
+   und bekam so 150 Zeichen Fließtext statt "Website überarbeiten lassen";
+   Seobility meldete 29 Seiten mit zu langem Linktext. Jetzt ist nur der Titel
+   der Link, und seine ::after-Fläche spannt sich über die Karte, die dafür
+   position: relative trägt. Klickbar bleibt die ganze Karte, und der
+   Fokusring liegt um die Karte statt nur um den Titel. */
+.karten-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.karten-link:focus-visible {
+  outline: none;
+}
+.karten-link:focus-visible::after {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
 /* Body copy: prevents a single word stranded on the last line. The headline
    classes already set text-wrap: balance; this is the paragraph counterpart,
    and it replaces every manual <br> the copy would otherwise need. */

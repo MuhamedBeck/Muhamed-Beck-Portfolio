@@ -4,7 +4,7 @@ import { PROJEKTE } from "../../content/projekte.de";
 const ProjekteHub = () => (
   <HubPage
     label="Projekte"
-    headline="Was ich gebaut habe"
+    headline="Projekte und Case Studies"
     /* Keine Anzahl im Text. Sie stand hier als "Zwei" und die Liste zeigte
        vier, weil der Satz beim Anlegen jeder weiteren Fallstudie vergessen
        wurde. Eine Zahl, die von der Länge eines Arrays abhängt, gehört

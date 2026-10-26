@@ -80,7 +80,7 @@ export const ROUTES = [
     locale: "de",
     group: "services",
     load: () => import("../components/pages/LeistungenHub.jsx"),
-    title: "Leistungen: KI-Automatisierung und Webentwicklung | Muhamed Beck",
+    title: "Leistungen: KI-Automatisierung und Webentwicklung",
     description:
       "n8n-Workflows, KI-Agenten, Voice-AI und CRM-Anbindung, dazu Websites, Relaunches und Web-Apps. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.",
     // Must match the headline in LeistungenHub.jsx; prerender-meta.js checks it.
@@ -97,9 +97,9 @@ export const ROUTES = [
     load: () => import("../components/pages/ProjekteHub.jsx"),
     title: "Projekte und Case Studies | Muhamed Beck",
     description:
-      "Kundenprojekte im Detail: Website-Relaunch für MA-Flats, Recruiting-Automatisierung mit n8n und GPT, dazu zwei Abschlussarbeiten zu LLM und Augmented Reality.",
-    h1: "Was ich gebaut habe",
-    lastmod: "2026-08-26",
+      "Case Studies: Website-Relaunch für MA-Flats, Buchungsplattform für Phoenix Parkservice, Recruiting-Automatisierung mit n8n, dazu zwei Abschlussarbeiten.",
+    h1: "Projekte und Case Studies",
+    lastmod: "2026-10-26",
     changefreq: "monthly",
     priority: "0.7",
   },
@@ -111,10 +111,10 @@ export const ROUTES = [
     load: () => import("../components/pages/UeberMich.jsx"),
     title: "Über mich: Muhamed Nur Beck, Frankfurt | Muhamed Beck",
     description:
-      "AI Automation Manager und Full-Stack-Entwickler aus Frankfurt: Werdegang, Stationen bei TOPEOPLE, Phoenix Parkservice und INFOMOTION, eingesetzter Stack.",
+      "AI Automation Manager und Full-Stack-Entwickler aus Frankfurt: Werdegang und Stationen bei TOPEOPLE, Phoenix Parkservice und INFOMOTION.",
     h1: "Muhamed Nur Beck",
     ogType: "profile",
-    lastmod: "2026-10-13",
+    lastmod: "2026-10-26",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -157,7 +157,7 @@ export const ROUTES = [
     group: "home",
     heroPreload: true,
     load: () => import("../App.jsx"),
-    title: "Muhamed Beck | AI Automation & Full-Stack Developer, Frankfurt",
+    title: "Muhamed Beck, AI Automation & Full-Stack Developer Frankfurt",
     description:
       "AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG, React, Angular, Spring Boot. Available for freelance work.",
     h1: "Processes that run without you",
@@ -174,7 +174,7 @@ export const ROUTES = [
       import("../components/pages/Services.jsx").then((m) => ({ default: m.Services })),
     title: "AI Automation & Web Development Services | Muhamed Beck",
     description:
-      "AI workflow automation with n8n & Zapier, web development with React, Angular & Spring Boot, CRM integrations and technical SEO. By Muhamed Beck, Frankfurt.",
+      "AI workflow automation with n8n & Zapier, web development with React, Angular & Spring Boot, CRM integrations and technical SEO, from Frankfurt.",
     h1: "AI automation and web development",
     lastmod: "2026-10-26",
     changefreq: "monthly",
@@ -187,7 +187,7 @@ export const ROUTES = [
     group: "contact",
     load: () =>
       import("../components/pages/HireMe.jsx").then((m) => ({ default: m.HireMe })),
-    title: "Hire Muhamed Beck | AI Automation & Web Development Frankfurt",
+    title: "Hire Muhamed Beck | AI Automation & Web Development",
     description:
       "Request AI automation, web development or CRM integration and get a personal reply within 24 hours from Muhamed Beck, freelance developer in Frankfurt.",
     h1: "Start a project",
@@ -313,13 +313,13 @@ export const ROUTES = [
     group: "project.ar",
     load: () => import("../components/pages/projekte/CaseStudyRoute.jsx"),
     props: { path: "/projekte/ar-datenvisualisierung" },
-    title: "SAP-Berichte in Augmented Reality: Bachelorarbeit | Muhamed Beck",
+    title: "SAP-Berichte in Augmented Reality: Bachelorarbeit",
     description:
-      "AR-Visualisierung von SAP-BusinessObjects-Berichten im Browser, mit einer Befragung von 81 Personen in deutschen Unternehmen zu den Hürden der Einführung.",
+      "AR-Visualisierung von SAP-BusinessObjects-Berichten im Browser, mit einer Befragung von 81 Personen aus Unternehmen zu den Hürden der Einführung.",
     h1: "SAP-BusinessObjects-Berichte in Augmented Reality",
     navLabel: "SAP-Berichte in AR",
     ogType: "article",
-    lastmod: "2026-08-26",
+    lastmod: "2026-10-26",
     changefreq: "monthly",
     priority: "0.7",
   },
@@ -332,12 +332,12 @@ export const ROUTES = [
       import("../components/pages/projekte/CaseStudyEnRoute.jsx").then((m) => ({
         default: () => m.default({ path: "/en/projects/ar-data-visualization" }),
       })),
-    title: "AR Data Visualization with SAP BusinessObjects | Muhamed Beck",
+    title: "AR Data Visualization with SAP BusinessObjects",
     description:
       "Case study on visualizing SAP BusinessObjects data in Augmented Reality: concept, architecture and implementation by Muhamed Beck.",
     h1: "AR data visualisation",
     ogType: "article",
-    lastmod: "2026-08-26",
+    lastmod: "2026-10-26",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -368,7 +368,7 @@ export const ROUTES = [
     title: "Ratgeber: Automatisierung, KI und Websites | Muhamed Beck",
     description:
       "Was ein n8n Freelancer und eine Website kosten, n8n, Make und Zapier im Vergleich, Recruiting-Automatisierung und Relaunch. Mit Zahlen und Quellen.",
-    h1: "Antworten statt Marketing",
+    h1: "Ratgeber zu Automatisierung, KI und Websites",
     lastmod: "2026-10-26",
     changefreq: "weekly",
     priority: "0.7",
@@ -397,7 +397,7 @@ export const ROUTES = [
     group: "ratgeber.website-kosten",
     load: () => import("../components/pages/ratgeber/RatgeberRoute.jsx"),
     props: { path: "/ratgeber/website-kosten" },
-    title: "Was kostet eine Website 2026? Firmen-Website, Relaunch, Web-App",
+    title: "Was kostet eine Website 2026? Firmen-Website und Relaunch",
     description:
       "Firmen-Website beim Freelancer 800 bis 5.000 €, bei der Agentur 3.600 bis 18.000 €, Relaunch 8.000 bis 20.000 €, Buchungssystem ab 10.000 €. Mit Quellen.",
     h1: "Was kostet eine Website 2026?",
@@ -416,11 +416,11 @@ export const ROUTES = [
     props: { path: "/ratgeber/n8n-vs-make-vs-zapier" },
     title: "n8n, Make und Zapier im Vergleich 2026",
     description:
-      "Der wichtigste Unterschied ist die Abrechnung: n8n zählt eine Workflow-Ausführung, Make jede Operation. Dazu DSGVO, Self-Hosting und die passende Toolwahl.",
+      "Der wichtigste Unterschied ist die Abrechnung: n8n zählt Workflow-Ausführungen, Make jede Operation. Dazu DSGVO, Self-Hosting und die Toolwahl.",
     h1: "n8n, Make und Zapier im Vergleich",
     navLabel: "n8n, Make und Zapier",
     ogType: "article",
-    lastmod: "2026-10-13",
+    lastmod: "2026-10-26",
     changefreq: "monthly",
     priority: "0.7",
   },
@@ -433,11 +433,11 @@ export const ROUTES = [
     props: { path: "/ratgeber/recruiting-mit-n8n-automatisieren" },
     title: "Recruiting mit n8n automatisieren: Anleitung 2026",
     description:
-      "Welche Recruiting-Schritte sich automatisieren lassen, womit man anfängt, wie ATS und CRM angebunden werden und was bei Bewerberdaten und DSGVO zu beachten ist.",
+      "Welche Recruiting-Schritte sich automatisieren lassen, womit man anfängt, wie ATS und CRM angebunden werden und was die DSGVO verlangt.",
     h1: "Recruiting mit n8n automatisieren",
     navLabel: "Recruiting mit n8n",
     ogType: "article",
-    lastmod: "2026-10-07",
+    lastmod: "2026-10-26",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -484,7 +484,7 @@ export const ROUTES = [
     props: { path: "/ratgeber/website-relaunch" },
     title: "Website-Relaunch ohne Ranking-Verlust: Anleitung 2026",
     description:
-      "Warum Relaunches Sichtbarkeit kosten und wie man es verhindert: alte Adressen erfassen, 301-Weiterleitungen, Sitemap, Search Console und Messung danach.",
+      "Warum Relaunches Sichtbarkeit kosten und wie man es verhindert: alte Adressen erfassen, 301-Weiterleitungen, Sitemap, Search Console, Messung.",
     h1: "Website-Relaunch ohne Ranking-Verlust",
     navLabel: "Relaunch ohne Ranking-Verlust",
     ogType: "article",
@@ -501,7 +501,7 @@ export const ROUTES = [
     props: { path: "/leistungen/webentwicklung" },
     // "Website erstellen lassen" is how buyers search; "Webentwicklung" is how
     // developers describe it. The path stays, it is indexed.
-    title: "Website erstellen lassen in Frankfurt & Relaunch | Muhamed Beck",
+    title: "Website erstellen lassen in Frankfurt & Relaunch",
     description: `Firmen-Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)} netto: schnell, auffindbar, ohne Baukasten, mit Weiterleitungen gegen Ranking-Verlust. Frankfurt und remote.`,
     h1: "Firmen-Website erstellen lassen und Relaunch",
     navLabel: "Website erstellen lassen",
@@ -517,7 +517,7 @@ export const ROUTES = [
     load: () => import("../components/pages/leistungen/LeistungRoute.jsx"),
     props: { path: "/leistungen/website-ueberarbeiten" },
     title: "Website überarbeiten & modernisieren lassen | Muhamed Beck",
-    description: `Bestehende Website überarbeiten lassen ab ${euro(FESTPREIS.update)} netto: modernes Design, schnellere Ladezeit, gut lesbar auf dem Telefon, aktuelle Inhalte. Frankfurt und remote.`,
+    description: `Bestehende Website überarbeiten lassen ab ${euro(FESTPREIS.update)} netto: modernes Design, schnellere Ladezeit, gut lesbar auf dem Telefon, aktuelle Inhalte.`,
     h1: "Website überarbeiten und modernisieren lassen",
     navLabel: "Website überarbeiten",
     lastmod: "2026-10-26",
@@ -531,7 +531,7 @@ export const ROUTES = [
     group: "leistung.web-app",
     load: () => import("../components/pages/leistungen/LeistungRoute.jsx"),
     props: { path: "/leistungen/web-app-entwicklung" },
-    title: "Web-App & Buchungssystem entwickeln lassen | Muhamed Beck",
+    title: "Web-App & Buchungssystem entwickeln lassen",
     description: `Buchungssysteme, Kundenportale und interne Software ab ${euro(FESTPREIS.webApp)} netto: Spring Boot, Angular oder React, mit Rollen, Schnittstellen und eigenem Quellcode.`,
     h1: "Web-App und Buchungssystem entwickeln lassen",
     navLabel: "Web-App-Entwicklung",
@@ -565,9 +565,9 @@ export const ROUTES = [
     props: { path: "/leistungen/n8n-automatisierung-oesterreich" },
     // "Beratung" since 26.10.2026: Search Console showed "n8n beratung/berater
     // österreich/wien" with some 127 impressions, and the word was nowhere on the page.
-    title: "n8n Freelancer & Beratung für Wien und Österreich | Muhamed Beck",
+    title: "n8n Freelancer & Beratung für Wien und Österreich",
     description:
-      "n8n Beratung und Umsetzung für Unternehmen in Wien und ganz Österreich: Workflow-Automatisierung remote, Rechnung in Euro mit Reverse Charge, DSGVO wie hier.",
+      "n8n Beratung und Umsetzung für Unternehmen in Wien und Österreich: Workflow-Automatisierung remote, Rechnung in Euro mit Reverse Charge.",
     h1: "n8n Freelancer und Beratung für Wien und Österreich",
     navLabel: "n8n für Österreich",
     lastmod: "2026-10-26",
@@ -583,7 +583,7 @@ export const ROUTES = [
     props: { path: "/leistungen/ki-automatisierung-frankfurt" },
     title: "KI-Automatisierung in Frankfurt | Muhamed Beck",
     description:
-      "KI- und Prozessautomatisierung für Unternehmen in Frankfurt und Rhein-Main: LLM-Lösungen, RAG, Voice-AI und DSGVO-konforme Guardrails. Remote deutschlandweit.",
+      "KI- und Prozessautomatisierung für Unternehmen in Frankfurt und Rhein-Main: LLM-Lösungen, RAG und Voice-AI, DSGVO-konform. Auch remote.",
     h1: "KI-Automatisierung für Unternehmen in Frankfurt",
     navLabel: "KI-Automatisierung Frankfurt",
     lastmod: "2026-10-26",
@@ -599,7 +599,7 @@ export const ROUTES = [
     props: { path: "/leistungen/hubspot-integration" },
     title: "HubSpot Integration & CRM-Automatisierung | Muhamed Beck",
     description:
-      "HubSpot und CRM-Integrationen vom Freelancer: REST-APIs, Webhooks, OAuth2 und Datenabgleich zwischen ATS, CRM und internen Tools. Aus Frankfurt, auch remote.",
+      "HubSpot und CRM-Integrationen vom Freelancer: REST-APIs, Webhooks, OAuth2 und Datenabgleich zwischen ATS, CRM und internen Tools.",
     h1: "HubSpot Integration und CRM-Automatisierung",
     navLabel: "HubSpot-Integration",
     lastmod: "2026-10-26",
@@ -661,7 +661,7 @@ export const ROUTES = [
     group: "leistung.geo-seo",
     load: () => import("../components/pages/leistungen/LeistungRoute.jsx"),
     props: { path: "/leistungen/geo-seo-optimierung" },
-    title: "GEO und SEO: in KI-Assistenten gefunden werden | Muhamed Beck",
+    title: "GEO und SEO: in KI-Assistenten gefunden werden",
     description:
       "Gefunden werden in Google und in KI-Assistenten wie ChatGPT: technisches Audit, strukturierte Daten, llms.txt und Inhalte, gemessen vor und nach der Arbeit.",
     h1: "GEO und SEO: in Google und KI-Assistenten gefunden werden",
@@ -679,7 +679,7 @@ export const ROUTES = [
     props: { path: "/leistungen/linkedin-automatisierung" },
     title: "LinkedIn-Automatisierung für Unternehmen | Muhamed Beck",
     description:
-      "Mehrere LinkedIn-Profile mit eigener Persona, geplanten Themen und korrekt gekennzeichneten KI-Beiträgen. Aufbau, Probelauf mit Freigabe und Bericht je Lauf.",
+      "Mehrere LinkedIn-Profile mit eigener Persona, geplanten Themen und gekennzeichneten KI-Beiträgen. Aufbau, Probelauf mit Freigabe, Bericht je Lauf.",
     h1: "LinkedIn-Automatisierung für Unternehmen und Teams",
     navLabel: "LinkedIn-Automatisierung",
     lastmod: "2026-10-26",
@@ -710,13 +710,13 @@ export const ROUTES = [
     group: "projekt.recruiting",
     load: () => import("../components/pages/projekte/CaseStudyRoute.jsx"),
     props: { path: "/projekte/recruiting-automatisierung" },
-    title: "Case Study: Recruiting-Automatisierung mit n8n | Muhamed Beck",
+    title: "Case Study: Recruiting-Automatisierung mit n8n",
     description:
-      "Wie n8n, Zapier und GPT die Recruiting-Prozesse der TOPEOPLE Group automatisiert haben: 80 % kürzere Durchlaufzeiten und rund 90 % Automatisierungsgrad.",
+      "Wie n8n, Zapier und GPT das Recruiting der TOPEOPLE Group automatisiert haben: 80 % kürzere Durchlaufzeiten, rund 90 % Automatisierungsgrad.",
     h1: "Recruiting-Automatisierung mit n8n und GPT",
     navLabel: "Recruiting-Automatisierung",
     ogType: "article",
-    lastmod: "2026-10-07",
+    lastmod: "2026-10-26",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -727,9 +727,9 @@ export const ROUTES = [
     group: "projekt.phoenix",
     load: () => import("../components/pages/projekte/CaseStudyRoute.jsx"),
     props: { path: "/projekte/phoenix-parkservice" },
-    title: "Phoenix Parkservice: Buchungsplattform und KI-SEO | Muhamed Beck",
+    title: "Phoenix Parkservice: Buchungsplattform und KI-SEO",
     description:
-      "Buchungs- und Verwaltungssoftware mit Spring Boot und Angular, dazu KI-gestützte SEO-Automatisierung mit n8n: 35 % mehr organischer Traffic in drei Monaten.",
+      "Buchungs- und Verwaltungssoftware mit Spring Boot und Angular, dazu KI-SEO mit n8n: 35 % mehr organischer Traffic in drei Monaten.",
     h1: "Buchungsplattform und KI-SEO für Phoenix Parkservice",
     navLabel: "Phoenix Parkservice",
     ogType: "article",
@@ -748,7 +748,7 @@ export const ROUTES = [
     description:
       "Impressum von Muhamed Nur Beck, AI Automation & Full-Stack Developer aus Frankfurt am Main. Angaben gemäß § 5 DDG.",
     h1: "Impressum",
-    lastmod: "2026-08-27",
+    lastmod: "2026-10-26",
     changefreq: "yearly",
     priority: "0.3",
   },

@@ -83,7 +83,7 @@ export const LEISTUNGEN = [
        konkurrieren. */
     h1: "n8n Experte und Spezialist für Workflow-Automatisierung",
     intro:
-      "Ich berate und baue: erst die Frage, welcher Ablauf sich überhaupt lohnt zu automatisieren, dann die Workflows mit n8n und Zapier, die Ihre Tools verbinden und manuelle Arbeit abschaffen. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse in der Praxis, nicht nur in Demos. Anders als bei einer Agentur ist die Person, die berät, auch die, die baut, und sie bleibt es bis zur Übergabe.",
+      "Ich berate und baue als n8n Experte: erst die Frage, welcher Ablauf sich überhaupt lohnt zu automatisieren, dann die Workflow-Automatisierung mit n8n und Zapier, die Ihre Tools verbindet und manuelle Arbeit abschafft. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse in der Praxis, nicht nur in Demos. Anders als bei einer Agentur ist die Person, die berät, auch die, die baut, und sie bleibt es bis zur Übergabe.",
     /* Der Satz zur Reichweite steht hier und nicht nur im Service-Schema.
        areaServed nennt seit jeher Deutschland, Österreich und die Schweiz,
        im sichtbaren Text stand dagegen ausschließlich Frankfurt. Die Search
@@ -362,7 +362,7 @@ export const LEISTUNGEN = [
         },
         {
           kind: "Schritt",
-          title: "Website-Check",
+          title: "Bestandsaufnahme",
           text: "Ladezeit mobil, Darstellung, Inhalte, Technik und Auffindbarkeit. Daraus eine kurze Liste, was am meisten bringt.",
         },
         {
@@ -853,7 +853,7 @@ export const LEISTUNGEN = [
           text: "Eine mehrstufige Aufgabe, die sonst jemand von Hand durchklicken müsste." },
         { kind: "Schritt", title: "Werkzeuge mit Grenzen",
           text: "Zugriff über APIs auf klar abgegrenzte Werkzeuge, Vollzugriff ist nicht der Standardfall." },
-        { kind: "Schritt", title: "Mensch an der richtigen Stelle",
+        { kind: "Schritt", title: "Freigabe durch einen Menschen",
           text: "Freigabeschritt überall dort, wo eine Entscheidung finanzielle oder rechtliche Wirkung hat." },
         { kind: "Ziel", title: "Vorgang abgeschlossen",
           text: "Ergebnis im Zielsystem, jeder Schritt davor nachvollziehbar protokolliert." },
@@ -982,7 +982,7 @@ export const LEISTUNGEN = [
       "HubSpot, RecruitCRM und Personio sauber angebunden: REST, Webhooks, OAuth2, Rate-Limit- und Retry-Strategien.",
     h1: "HubSpot Integration und CRM-Automatisierung",
     intro:
-      "Ich verbinde HubSpot mit Ihren übrigen Systemen: ATS, Recruiting-Tools, interne Datenbanken oder Websites. Leads, Kandidaten und Deals fließen automatisch dorthin, wo sie gebraucht werden, ohne Doppeleingaben und ohne veraltete Datenstände. Aus der Praxis: Ich betreue produktive HubSpot- und RecruitCRM-Integrationen mit API-Management, Workflow-Automatisierung und Daten-Synchronisation.",
+      "Ich verbinde HubSpot mit Ihren übrigen Systemen: ATS, Recruiting-Tools, interne Datenbanken oder Websites. Leads, Kandidaten und Deals fließen automatisch dorthin, wo sie gebraucht werden: CRM-Automatisierung ohne Doppeleingaben und ohne veraltete Datenstände. Aus der Praxis: Ich betreue produktive HubSpot- und RecruitCRM-Integrationen mit API-Management, Workflow-Automatisierung und Daten-Synchronisation.",
     szenarien: [
       {
         title: "Daten-Synchronisation",
@@ -1182,7 +1182,7 @@ export const LEISTUNGEN = [
       "Bewerbungseingang, Screening, Terminierung und Statuspflege automatisiert. Der Bereich, in dem ich täglich arbeite.",
     h1: "Recruiting-Automatisierung mit n8n und ATS-Anbindung",
     intro:
-      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager habe ich Durchlaufzeiten um rund 80 Prozent gesenkt und die Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht. Bewerbungseingang, Vorqualifizierung, Terminierung und Statuspflege laufen dabei ohne manuelle Zwischenschritte, angebunden an RecruitCRM, Personio oder HubSpot.",
+      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager habe ich Durchlaufzeiten um rund 80 Prozent gesenkt und die Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht. Bewerbungseingang, Vorqualifizierung, Terminierung und Statuspflege laufen dabei ohne manuelle Zwischenschritte, über die ATS-Anbindung an RecruitCRM oder Personio und an HubSpot.",
     szenarien: [
       {
         title: "Bewerbungen ohne Copy-and-paste",
@@ -1289,7 +1289,7 @@ export const LEISTUNGEN = [
       "Mehrere Profile mit eigener Persona, geplanten Themen und KI-Beiträgen, die als solche gekennzeichnet sind.",
     h1: "LinkedIn-Automatisierung für Unternehmen und Teams",
     intro:
-      "Wer mehrere LinkedIn-Profile bespielt, verbringt damit schnell mehrere Stunden pro Woche, und trotzdem klingen am Ende alle gleich. Ich baue Systeme, die das tragen: je Profil eine eigene Persona mit Tonfall und Zielgruppe, Themen nach Redaktionsplan statt aus dem Bauch, Beiträge und Bilder mit ordentlicher KI-Kennzeichnung, dazu ein Protokoll über jeden Lauf. Kontrolle bleibt bei Ihnen, das System schlägt vor und dokumentiert.",
+      "Wer im Unternehmen mehrere LinkedIn-Profile bespielt, etwa für Geschäftsführung, Vertrieb und Teams, verbringt damit schnell mehrere Stunden pro Woche, und trotzdem klingen am Ende alle gleich. Ich baue Systeme, die das tragen: je Profil eine eigene Persona mit Tonfall und Zielgruppe, Themen nach Redaktionsplan statt aus dem Bauch, Beiträge und Bilder mit ordentlicher KI-Kennzeichnung, dazu ein Protokoll über jeden Lauf. Kontrolle bleibt bei Ihnen, das System schlägt vor und dokumentiert.",
     szenarien: [
       { title: "Mehrere Profile, eine Handschrift",
         text: "Wenn Vertrieb, Recruiting und Geschäftsführung dasselbe posten, merkt es die Zielgruppe. Je Profil eine eigene Persona löst das, ohne dass jemand dreimal schreibt." },

@@ -320,8 +320,24 @@ const articleNode = (route, article) => ({
   description: article.lede,
   datePublished: article.published,
   dateModified: article.modified,
-  author: { "@id": PERSON_ID },
-  publisher: { "@id": BUSINESS_ID },
+  // Type and name inline, not only the @id. The full Person and
+  // ProfessionalService nodes sit in index.html's own JSON-LD block, and a
+  // parser that does not join @ids across blocks saw an author without a name
+  // and a publisher without a type: Seobility rated all seven articles
+  // "critical" for exactly that (26.10.2026). The shared @id still merges the
+  // two descriptions for any parser that does join them.
+  author: {
+    "@type": "Person",
+    "@id": PERSON_ID,
+    name: "Muhamed Nur Beck",
+    url: `${SITE_URL}/ueber-mich`,
+  },
+  publisher: {
+    "@type": "ProfessionalService",
+    "@id": BUSINESS_ID,
+    name: "Muhamed Nur Beck",
+    url: SITE_URL,
+  },
   inLanguage: localeConfig(route.locale).intlLocale,
   articleSection: article.kicker,
   image: `${SITE_URL}/og-image.jpg`,

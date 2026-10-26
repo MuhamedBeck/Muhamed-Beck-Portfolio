@@ -21,7 +21,8 @@ const PROJECTS = [
     title: "Phoenix Parkservice",
     text: "Booking and administration software for a parking operator, built with Spring Boot and Angular, plus AI-supported SEO automation with n8n. Organic traffic rose 35 percent in three months.",
     stack: "Spring Boot, Angular, Docker, CI/CD, n8n",
-    href: "https://www.phoenixparkservice.de",
+    // Without "www": the www host does not resolve (Seobility, 26.10.2026).
+    href: "https://phoenixparkservice.de",
     linkText: "phoenixparkservice.de",
     external: true,
   },
@@ -62,11 +63,28 @@ export const Projects = () => (
     <Section>
       <h2 className="label">Selected work</h2>
       <ul className="mt-8">
-        {PROJECTS.map((project) => {
-          const inner = (
-            <>
+        {/* The whole row stays the click target, but only the title is the
+            link (.karten-link stretches it), so the anchor text names the
+            project instead of carrying the full description. */}
+        {PROJECTS.map((project) => (
+          <li key={project.title}>
+            <div className="group relative border-t border-hairline py-8 transition-transform duration-300 hover:translate-x-2 md:grid md:grid-cols-[1fr_1.2fr] md:gap-x-12">
               <div>
-                <h3 className="headline-sub">{project.title}</h3>
+                <h3 className="headline-sub">
+                  {project.external ? (
+                    <a
+                      href={project.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="karten-link">
+                      {project.title}
+                    </a>
+                  ) : (
+                    <Link to={project.href} className="karten-link">
+                      {project.title}
+                    </Link>
+                  )}
+                </h3>
                 <p className="mt-3 text-sm text-paper-mute">{project.stack}</p>
               </div>
               <div className="mt-4 md:mt-0">
@@ -78,28 +96,9 @@ export const Projects = () => (
                   <LinkArrow />
                 </span>
               </div>
-            </>
-          );
-          const rowClass =
-            "group block border-t border-hairline py-8 transition-transform duration-300 hover:translate-x-2 md:grid md:grid-cols-[1fr_1.2fr] md:gap-x-12";
-          return (
-            <li key={project.title}>
-              {project.external ? (
-                <a
-                  href={project.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={rowClass}>
-                  {inner}
-                </a>
-              ) : (
-                <Link to={project.href} className={rowClass}>
-                  {inner}
-                </Link>
-              )}
-            </li>
-          );
-        })}
+            </div>
+          </li>
+        ))}
       </ul>
     </Section>
   </div>

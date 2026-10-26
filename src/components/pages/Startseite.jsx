@@ -85,24 +85,25 @@ export const Startseite = () => {
             {LEISTUNGEN.map((leistung, index) => (
               <li
                 key={leistung.path}
-                className="stagger border-t border-hairline pt-6"
+                className="stagger group relative border-t border-hairline pt-6"
                 style={{ "--fade-delay": `${(index % 2) * 80}ms` }}>
-                <Link to={leistung.path} className="group block">
-                  {/* Der Pfeil sitzt an der Ueberschrift statt in einer eigenen
-                      Zeile darunter. Vorher stand die Leistung dreimal in
-                      derselben Karte: als Ueberschrift, im Teaser und noch
-                      einmal als Versalien-Zeile mit dem Badge — obwohl die
-                      Ueberschrift bereits der Link auf dieselbe Seite ist.
-                      Mobil kostete diese dritte Zeile rund 58 px je Karte,
-                      bei sieben Karten also einen halben Bildschirm. */}
-                  <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
+                {/* Der Pfeil sitzt an der Ueberschrift statt in einer eigenen
+                    Zeile darunter. Vorher stand die Leistung dreimal in
+                    derselben Karte: als Ueberschrift, im Teaser und noch
+                    einmal als Versalien-Zeile mit dem Badge — obwohl die
+                    Ueberschrift bereits der Link auf dieselbe Seite ist.
+                    Mobil kostete diese dritte Zeile rund 58 px je Karte,
+                    bei sieben Karten also einen halben Bildschirm.
+                    Nur die Ueberschrift ist der Link (siehe .karten-link). */}
+                <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
+                  <Link to={leistung.path} className="karten-link">
                     {leistung.h1}
-                    <LinkArrow className="ms-2 align-[0.08em] text-[0.6em] text-paper-mute" />
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-paper-soft">
-                    {leistung.teaser}
-                  </p>
-                </Link>
+                  </Link>
+                  <LinkArrow className="ms-2 align-[0.08em] text-[0.6em] text-paper-mute" />
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-paper-soft">
+                  {leistung.teaser}
+                </p>
               </li>
             ))}
           </ul>
@@ -124,24 +125,24 @@ export const Startseite = () => {
             {PROJEKTE.filter((projekt) => projekt.kind === "mandat").map((projekt, index) => (
               <li
                 key={projekt.path}
-                className="stagger border-t border-hairline pt-6"
+                className="stagger group relative border-t border-hairline pt-6"
                 style={{ "--fade-delay": `${index * 80}ms` }}>
-                <Link to={projekt.path} className="group block">
-                  <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
+                <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
+                  <Link to={projekt.path} className="karten-link">
                     {projekt.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-paper-mute">{projekt.subtitle}</p>
-                  <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
-                    {projekt.stats.map((stat) => (
-                      <div key={stat.label}>
-                        <dd className="text-2xl font-light tabular-nums text-paper">
-                          {stat.value}
-                        </dd>
-                        <dt className="mt-1 text-xs text-paper-mute">{stat.label}</dt>
-                      </div>
-                    ))}
-                  </dl>
-                </Link>
+                  </Link>
+                </h3>
+                <p className="mt-3 text-sm text-paper-mute">{projekt.subtitle}</p>
+                <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
+                  {projekt.stats.map((stat) => (
+                    <div key={stat.label}>
+                      <dd className="text-2xl font-light tabular-nums text-paper">
+                        {stat.value}
+                      </dd>
+                      <dt className="mt-1 text-xs text-paper-mute">{stat.label}</dt>
+                    </div>
+                  ))}
+                </dl>
               </li>
             ))}
           </ul>

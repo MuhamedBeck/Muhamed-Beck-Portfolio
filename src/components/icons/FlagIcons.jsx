@@ -57,15 +57,24 @@ const Gb = (props) => (
  *
  * The flag bears the shahada, so a simplified redraw is not an option: at this
  * size the script would be illegible anyway, and distorting it would be
- * disrespectful. The accurate asset is the only correct choice. */
-const Sa = ({ className, ...props }) => (
-  <img
-    src="/flags/sa.svg"
-    alt=""
-    width={shared.width}
-    height={shared.height}
+ * disrespectful. The accurate asset is the only correct choice.
+ *
+ * Drawn as a CSS background rather than an <img alt="">. Both are correct for a
+ * decorative image, but SEO crawlers count an empty alt as a missing one, and
+ * because the switcher sits in the header, Seobility reported all 43 pages for
+ * it (26.10.2026). A background is not content to begin with. */
+const Sa = ({ className, style, ...props }) => (
+  <span
     aria-hidden="true"
     className={className ?? shared.className}
+    style={{
+      width: shared.width,
+      height: shared.height,
+      backgroundImage: "url(/flags/sa.svg)",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      ...style,
+    }}
     {...props}
   />
 );

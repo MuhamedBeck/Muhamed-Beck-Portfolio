@@ -23,13 +23,15 @@ export const HubPage = ({ label, headline, intro, items, children }) => (
             className="stagger border-t border-hairline"
             style={{ "--fade-delay": `${Math.min(index, 5) * 60}ms` }}>
             {/* The whole row is the target, and it shifts right on hover, which
-                reads as an editorial index rather than a grid of cards. */}
-            <Link
-              to={item.path}
-              className="group block py-8 transition-transform duration-300 hover:translate-x-2 md:grid md:grid-cols-[1fr_1.2fr] md:gap-x-12">
+                reads as an editorial index rather than a grid of cards. Only
+                the title is the link (.karten-link stretches it over the row),
+                so the anchor text is the page's topic, not the whole teaser. */}
+            <div className="group relative py-8 transition-transform duration-300 hover:translate-x-2 md:grid md:grid-cols-[1fr_1.2fr] md:gap-x-12">
               <div>
                 <h2 className="headline-sub underline-offset-[0.18em] group-hover:underline">
-                  {item.title}
+                  <Link to={item.path} className="karten-link">
+                    {item.title}
+                  </Link>
                 </h2>
                 {item.meta ? (
                   <p className="mt-3 text-xs tracking-[0.2em] text-accent uppercase">
@@ -41,7 +43,7 @@ export const HubPage = ({ label, headline, intro, items, children }) => (
                 <p className="flex-1 leading-relaxed text-paper-soft">{item.text}</p>
                 <LinkArrow className="mt-1 text-paper-mute opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
-            </Link>
+            </div>
           </li>
         ))}
       </ul>

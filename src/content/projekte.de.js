@@ -65,7 +65,7 @@ export const PROJEKTE = [
     ],
     liveUrl: { href: "https://maflats.de/", label: "maflats.de ansehen" },
     ausgangslage:
-      "Die bestehende Seite lief auf einem Baukasten und lud auf der Startseite rund 6 MB, davon fast 5 MB Hintergrundbilder. Für eine Vermietung, deren Anfragen überwiegend vom Telefon kommen, ist das die falsche Grundlage: Wer auf dem Bau steht und eine Unterkunft sucht, wartet nicht. Dazu kam die Sprachfrage, denn ein erheblicher Teil der Monteure spricht Polnisch, Slowenisch oder Serbisch.",
+      "Vor dem Website-Relaunch lief die Seite auf einem Baukasten und lud auf der Startseite rund 6 MB, davon fast 5 MB Hintergrundbilder. Für eine Vermietung, deren Anfragen überwiegend vom Telefon kommen, ist das die falsche Grundlage: Wer auf dem Bau steht und eine Unterkunft sucht, wartet nicht. Dazu kam die Sprachfrage, denn ein erheblicher Teil der Monteure spricht Polnisch, Slowenisch oder Serbisch.",
     loesung: [
       "Vollständiger Neubau als statisch erzeugte Seite mit Astro und Tailwind. Jede Seite ist fertiges HTML, es läuft kein Framework im Browser mit.",
       "Fünf Sprachen mit typgeprüfter Vollständigkeit: Die deutsche Fassung ist der Vertrag, jedes fehlende Feld in einer Übersetzung bricht den Build statt still deutschen Text auszuliefern.",
@@ -167,7 +167,7 @@ export const PROJEKTE = [
       { value: "3", label: "Systeme", note: "Website, Kundenportal, interne Software" },
     ],
     ausgangslage:
-      "Phoenix Parkservice brauchte eine tragfähige technische Plattform und mehr digitale Sichtbarkeit: Buchungen und Abläufe sollten über eine moderne Web-Plattform laufen, gleichzeitig sollten mehr Kunden das Angebot über Google finden.",
+      "Phoenix Parkservice brauchte eine tragfähige technische Plattform und mehr digitale Sichtbarkeit: Buchungen und Abläufe sollten über eine moderne Web-Plattform laufen, gleichzeitig sollten mehr Kunden das Angebot über Google finden. Der Weg dorthin: eine eigene Buchungsplattform und KI-SEO, also Suchmaschinenoptimierung, bei der n8n Recherche, Texte und Veröffentlichung automatisiert.",
     loesung: [
       "Buchungs- und Verwaltungssoftware für Kunden und Mitarbeitende entwickelt: Spring Boot im Backend, Angular im Frontend, dazu REST-APIs und Datenbankdesign.",
       "Unternehmenswebsite neu aufgebaut und technisch optimiert.",

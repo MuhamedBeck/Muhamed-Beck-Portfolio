@@ -4,7 +4,7 @@ import { RATGEBER } from "../../../content/ratgeber.de";
 const RatgeberHub = () => (
   <HubPage
     label="Ratgeber"
-    headline="Antworten statt Marketing"
+    headline="Ratgeber zu Automatisierung, KI und Websites"
     intro="Was Auftraggeber vor einem Automatisierungs- oder Webprojekt wissen wollen: Kosten, Toolauswahl, Relaunch und was sich tatsächlich automatisieren lässt. Mit Zahlen und Quellen, nicht mit Versprechen."
     items={RATGEBER.map((article) => ({
       path: article.path,

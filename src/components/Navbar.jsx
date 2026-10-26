@@ -18,9 +18,12 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex h-16 items-center justify-between">
           <Link to={homePath} className="flex items-center" aria-label={chrome.backToHome}>
+            {/* The alt is the brand, not a translation: screen readers announce
+                the link's aria-label, and crawlers read the alt as the anchor
+                text of the link home, which an empty alt left blank. */}
             <img
               src={mnbLogo}
-              alt=""
+              alt="Muhamed Beck"
               width="500"
               height="500"
               className="site-logo h-11 w-auto"

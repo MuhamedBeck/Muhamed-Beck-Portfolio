@@ -42,7 +42,13 @@ export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
             onClick={close}
             className="flex items-center"
             aria-label={chrome.backToHome}>
-            <img src={mnbLogo} alt="" width="500" height="500" className="site-logo h-8 w-auto" />
+            <img
+              src={mnbLogo}
+              alt="Muhamed Beck"
+              width="500"
+              height="500"
+              className="site-logo h-8 w-auto"
+            />
           </Link>
           <button
             type="button"

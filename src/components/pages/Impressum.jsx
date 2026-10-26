@@ -27,7 +27,7 @@ const SECTIONS = [
     ),
   },
   {
-    title: "Kontakt",
+    title: "Kontaktdaten",
     body: (
       <p>
         Telefon:{" "}

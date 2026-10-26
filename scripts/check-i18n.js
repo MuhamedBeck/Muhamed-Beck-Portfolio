@@ -11,6 +11,14 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROUTES, getHome } from "../src/routes/registry.js";
 import { DEFAULT_LOCALE, LIVE_LOCALES, LOCALES } from "../src/i18n/locales.js";
+import {
+  DESCRIPTION_FONT_PX,
+  DESCRIPTION_MAX_PX,
+  TITLE_FONT_PX,
+  TITLE_MAX_PX,
+  estimatePixelWidth,
+  isMeasurable,
+} from "./snippet-width.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -66,6 +74,19 @@ for (const route of ROUTES) {
     fail(
       `${where}: description is ${route.description.length} chars, aim for 70 to 160`
     );
+  }
+  // Characters are only a proxy: Google cuts by pixel width, and twelve titles
+  // under 65 characters were still too wide. See snippet-width.js.
+  for (const [field, fontSize, maxWidth] of [
+    ["title", TITLE_FONT_PX, TITLE_MAX_PX],
+    ["description", DESCRIPTION_FONT_PX, DESCRIPTION_MAX_PX],
+  ]) {
+    const text = route[field];
+    if (!text || !isMeasurable(text)) continue;
+    const width = estimatePixelWidth(text, fontSize);
+    if (width > maxWidth) {
+      fail(`${where}: ${field} is about ${width} px wide, search results show about ${maxWidth}`);
+    }
   }
 
   // House rule: no em dashes in copy that ships.
