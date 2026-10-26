@@ -713,7 +713,7 @@ export const RATGEBER = [
       },
     ],
     related: [
-      { path: "/leistungen/voice-ai-agenten", label: "Voice-AI-Agenten für Telefon und Support" },
+      { path: "/leistungen/voice-ai-agenten", label: "KI-Telefonassistent und Voice-AI-Agenten für Unternehmen" },
       { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was ein n8n Freelancer kostet" },
     ],

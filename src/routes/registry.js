@@ -471,7 +471,7 @@ export const ROUTES = [
     h1: "KI-Telefonagenten: Kosten und Rechtslage",
     navLabel: "KI-Telefonagenten",
     ogType: "article",
-    lastmod: "2026-10-13",
+    lastmod: "2026-10-26",
     changefreq: "monthly",
     priority: "0.8",
   },
@@ -501,7 +501,7 @@ export const ROUTES = [
     props: { path: "/leistungen/webentwicklung" },
     // "Website erstellen lassen" is how buyers search; "Webentwicklung" is how
     // developers describe it. The path stays, it is indexed.
-    title: "Website erstellen lassen in Frankfurt & Relaunch",
+    title: "Website erstellen lassen in Frankfurt: Webdesign & Relaunch",
     description: `Firmen-Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)} netto: schnell, auffindbar, ohne Baukasten, mit Weiterleitungen gegen Ranking-Verlust. Frankfurt und remote.`,
     h1: "Firmen-Website erstellen lassen und Relaunch",
     navLabel: "Website erstellen lassen",
@@ -631,9 +631,9 @@ export const ROUTES = [
     props: { path: "/leistungen/voice-ai-agenten" },
     title: "KI-Telefonassistent und Voice-AI-Agenten | Muhamed Beck",
     description:
-      "Voice-AI-Agenten für Telefon und Support: Twilio, Speech-to-Text und Text-to-Speech, CRM-Anbindung und Transparenzhinweis nach EU AI Act Artikel 50.",
-    h1: "Voice-AI-Agenten für Telefon und Support",
-    navLabel: "Voice-AI-Agenten",
+      "KI-Telefonassistent für Unternehmen: Voice-AI mit Twilio, Speech-to-Text und Text-to-Speech, CRM-Anbindung und Transparenzhinweis nach EU AI Act.",
+    h1: "KI-Telefonassistent und Voice-AI-Agenten für Unternehmen",
+    navLabel: "KI-Telefonassistent",
     lastmod: "2026-10-26",
     changefreq: "monthly",
     priority: "0.8",

@@ -244,7 +244,7 @@ export const LEISTUNGEN = [
     },
     teaser: `Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)} netto: schnell, auffindbar, ohne Baukasten, mit Messwerten statt Versprechen.`,
     h1: "Firmen-Website erstellen lassen und Relaunch",
-    intro: `Eine Website soll gefunden werden, schnell laden und Anfragen bringen. Ich baue Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)} netto so, dass diese drei Dinge messbar sind, und übergebe sie so, dass Sie nicht an mir hängen. Als Full-Stack-Entwickler baue ich auch, was über Seiten hinausgeht: Formulare, Terminbuchung und die Anbindung an Ihr CRM.`,
+    intro: `Eine Website soll gefunden werden, schnell laden und Anfragen bringen. Ich baue Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)} netto, vom Webdesign bis zur Technik aus einer Hand, so, dass diese drei Dinge messbar sind, und übergebe sie so, dass Sie nicht an mir hängen. Als Full-Stack-Entwickler baue ich auch, was über Seiten hinausgeht: Formulare, Terminbuchung und die Anbindung an Ihr CRM.`,
     szenarien: [
       {
         title: "Neue Firmen-Website",
@@ -301,6 +301,14 @@ export const LEISTUNGEN = [
       {
         q: "Was kostet eine Website?",
         a: `Als Festpreis für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch ab ${euro(FESTPREIS.relaunch)}, jeweils netto zuzüglich Umsatzsteuer. Enthalten sind Struktur, Umsetzung, technisches SEO, beim Relaunch die Weiterleitungen und am Ende die Übergabe. Den genauen Betrag nenne ich nach dem Erstgespräch, sobald Umfang, Sprachen und Anbindungen feststehen; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
+      },
+      {
+        /* Seit 26.10.2026: "Webdesign" kam auf der ganzen Website nicht vor,
+           obwohl "webdesigner frankfurt" 1.000 Suchen im Monat hat (Seobility)
+           und das Google-Unternehmensprofil die Kategorie "Website designer"
+           trägt. */
+        q: "Sind Sie Webdesigner oder Webentwickler?",
+        a: "Beides. Ich gestalte die Website und setze sie technisch selbst um, deshalb gibt es keine Übergabe zwischen Webdesigner und Entwickler, bei der Details verloren gehen. Für Unternehmen in Frankfurt und im Rhein-Main-Gebiet auch mit Terminen vor Ort.",
       },
       {
         q: "Wie lange dauert es, bis die neue Website online ist?",
@@ -695,6 +703,13 @@ export const LEISTUNGEN = [
         a: "Nein. Frankfurt und das Rhein-Main-Gebiet sind mein Standort, vor Ort bin ich dort schnell verfügbar. Remote betreue ich Projekte in ganz Deutschland und international.",
       },
       {
+        /* "ki agentur" hat 1.000 Suchen im Monat (Seobility, 26.10.2026); wer
+           eine Agentur sucht, soll den Freelancer als ehrliche Alternative
+           finden, ohne dass die Seite sich als Agentur ausgibt. */
+        q: "Sind Sie eine KI-Agentur?",
+        a: "Nein, ich arbeite als Freelancer. Für Sie heißt das: Wer berät, setzt auch selbst um, ohne Projektleitung dazwischen und ohne Agenturaufschlag. Braucht ein Vorhaben ein ganzes Team, sage ich das im Erstgespräch offen.",
+      },
+      {
         q: "Wie schnell sehe ich erste Ergebnisse?",
         a: "Mit einem fokussierten Prototyp meist innerhalb weniger Wochen. Ich arbeite iterativ: erst ein Use Case produktiv, dann skalieren.",
       },
@@ -752,7 +767,7 @@ export const LEISTUNGEN = [
     },
     teaser:
       "Sprachagenten, die Anrufe annehmen, qualifizieren und ins CRM schreiben. Mit Twilio, Speech-to-Text und Text-to-Speech.",
-    h1: "Voice-AI-Agenten für Telefon und Support",
+    h1: "KI-Telefonassistent und Voice-AI-Agenten für Unternehmen",
     intro:
       "Ein KI-Telefonassistent nimmt Anrufe an, versteht das Anliegen, beantwortet wiederkehrende Fragen und übergibt an einen Menschen, sobald es nötig wird. Ich habe solche Agenten für Support- und Bewerberkommunikation produktiv gebaut, auf Basis von Twilio und WebRTC mit Speech-to-Text und Text-to-Speech. Der Anspruch dabei ist nicht, den Menschen zu imitieren, sondern die Anrufe abzufangen, die sonst niemand annimmt.",
     szenarien: [
