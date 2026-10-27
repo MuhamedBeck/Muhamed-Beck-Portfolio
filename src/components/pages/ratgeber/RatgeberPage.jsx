@@ -88,41 +88,64 @@ export const RatgeberPage = ({ data }) => (
 
     <Section className="!pt-0">
       {/* Optional comparison table. A comparison article without one makes the
-          reader rebuild the table in their head from the prose. The wrapper
-          scrolls on its own so a wide table never makes the page scroll
-          sideways. */}
+          reader rebuild the table in their head from the prose.
+
+          From md up it is a real table whose wrapper scrolls on its own, so a
+          wide table never makes the page scroll sideways. Below md every row
+          becomes a card with the column name above each value: at 390 px the
+          42rem table used to hide its second column until the reader swiped
+          each row sideways. The explicit roles keep the table semantics for
+          screen readers once display: block dissolves them, and the visible
+          column names in the cards are aria-hidden because the column headers
+          are announced anyway. */}
       {data.table ? (
         <figure className="mt-14">
-          <div className="-mx-4 overflow-x-auto px-4">
-            <table className="w-full min-w-[42rem] border-collapse text-start">
-              <caption className="label mb-6 text-start">{data.table.caption}</caption>
-              <thead>
-                <tr>
-                  <th scope="col" className="w-[13rem] pb-4 text-sm font-normal text-paper-mute">
+          <div className="md:-mx-4 md:overflow-x-auto md:px-4">
+            <table
+              role="table"
+              className="w-full border-collapse text-start max-md:block md:min-w-[42rem]">
+              <caption className="label mb-6 text-start max-md:block">{data.table.caption}</caption>
+              <thead role="rowgroup" className="max-md:sr-only">
+                <tr role="row">
+                  <th
+                    role="columnheader"
+                    scope="col"
+                    className="w-[13rem] pb-4 text-start text-sm font-normal text-paper-mute">
                     <span className="sr-only">Kriterium</span>
                   </th>
                   {data.table.columns.map((column) => (
                     <th
                       key={column}
+                      role="columnheader"
                       scope="col"
-                      className="pb-4 ps-6 text-lg font-normal text-paper">
+                      className="pb-4 ps-6 text-start text-lg font-normal text-paper">
                       {column}
                     </th>
                   ))}
                 </tr>
               </thead>
-              <tbody>
+              <tbody role="rowgroup" className="max-md:block">
                 {data.table.rows.map((row) => (
-                  <tr key={row.label} className="border-t border-hairline align-top">
+                  <tr
+                    key={row.label}
+                    role="row"
+                    className="border-t border-hairline align-top max-md:mt-4 max-md:block max-md:rounded-lg max-md:border max-md:bg-surface max-md:p-5">
                     <th
+                      role="rowheader"
                       scope="row"
-                      className="py-5 pe-6 text-sm font-normal leading-snug text-paper-dim">
+                      className="py-5 pe-6 text-start text-sm font-normal leading-snug text-paper-dim max-md:block max-md:p-0 max-md:text-base max-md:text-paper">
                       {row.label}
                     </th>
                     {row.cells.map((cell, index) => (
                       <td
                         key={data.table.columns[index]}
-                        className="py-5 ps-6 leading-relaxed text-paper-soft">
+                        role="cell"
+                        className="py-5 ps-6 leading-relaxed text-paper-soft max-md:mt-4 max-md:block max-md:p-0">
+                        <span
+                          aria-hidden="true"
+                          className="mb-1 block text-[0.7rem] tracking-[0.18em] text-paper-mute uppercase md:hidden">
+                          {data.table.columns[index]}
+                        </span>
                         {cell}
                       </td>
                     ))}
