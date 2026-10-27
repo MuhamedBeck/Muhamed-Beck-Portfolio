@@ -13,7 +13,7 @@
 // figure that cannot be traced to a source or to the owner's own CV.
 
 // With the .js extension: prerender-meta.js imports this file under bare node.
-import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "./site.js";
+import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, UST_KURZ, euro } from "./site.js";
 
 export const RATGEBER = [
   {
@@ -120,6 +120,7 @@ export const RATGEBER = [
     ],
     related: [
       { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
+      { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       {
         path: "/leistungen/n8n-automatisierung-oesterreich",
@@ -128,18 +129,159 @@ export const RATGEBER = [
     ],
   },
   {
+    path: "/ratgeber/n8n-kosten",
+    kicker: "Kosten",
+    h1: "Was kostet n8n?",
+    published: "2026-10-27",
+    modified: "2026-10-27",
+    /* Seit 27.10.2026. Zielt auf "n8n kosten", "n8n preise" und "n8n kostenlos"
+       (zusammen rund 1.200 Suchen im Monat laut Seobility) und grenzt sich vom
+       Honorar-Ratgeber /ratgeber/n8n-freelancer-kosten ab: hier die Software
+       und ihr Betrieb, dort das Honorar.
+
+       Tarife und Lizenz am 27.10.2026 an n8n.io und am Lizenztext auf GitHub
+       geprüft, die Billomat-Aussage an dessen Preisseite. Die Beispiele
+       stammen aus Angeboten des Inhabers vom Oktober 2026: eigene Beträge
+       bewusst gerundet, keine Namen, keine Kundenzitate, keine Details, an
+       denen ein Kunde zu erkennen wäre. Kosten Dritter stehen genau da. */
+    lede: "n8n selbst kostet wenig: In der Cloud beginnt es laut n8n bei 20 € im Monat für 2.500 Ausführungen, die Community Edition zum Selbsthosten ist kostenlos (Stand Oktober 2026). Teurer als die Software ist fast immer die Umsetzung. Eine Rechnungsprüfung mit KI lag in einem meiner Angebote bei rund 5.000 € einmalig und 30 bis 55 € im Monat für die beteiligten Anbieter.",
+    table: {
+      caption: "n8n-Tarife laut n8n.io (Stand: Oktober 2026, bei jährlicher Abrechnung)",
+      columns: ["Preis pro Monat", "Ausführungen pro Monat", "Betrieb"],
+      rows: [
+        { label: "Starter", cells: ["20 €", "2.500", "Cloud von n8n"] },
+        { label: "Pro", cells: ["50 €", "10.000", "Cloud von n8n"] },
+        { label: "Business", cells: ["667 €", "40.000", "nur selbst gehostet"] },
+        { label: "Enterprise", cells: ["auf Anfrage", "individuell", "Cloud oder selbst gehostet"] },
+        { label: "Community Edition", cells: ["keine Lizenzgebühr", "nur durch den eigenen Server begrenzt", "selbst gehostet"] },
+      ],
+    },
+    sections: [
+      {
+        h2: "Was kostet n8n im Monat?",
+        body: [
+          "Zwischen 0 und 50 € für die meisten kleinen und mittleren Unternehmen. Laut der Preisseite von n8n kostet der Cloud-Tarif Starter 20 € im Monat für 2.500 Ausführungen und der Tarif Pro 50 € für 10.000 Ausführungen, jeweils bei jährlicher Abrechnung (Stand Oktober 2026). Die Community Edition, die man auf einem eigenen Server betreibt, kostet keine Lizenzgebühr.",
+          "Der Tarif Business für 667 € im Monat und Enterprise auf Anfrage richten sich an Unternehmen, die n8n selbst betreiben und Funktionen wie Single Sign-on oder eine Versionsverwaltung über Git brauchen. Unbegrenzt viele Workflows und Nutzer enthalten laut n8n alle Tarife.",
+        ],
+      },
+      {
+        h2: "Was zählt bei n8n als Ausführung?",
+        body: [
+          "Ein kompletter Durchlauf eines Workflows, egal wie viele Schritte er hat. So beschreibt es n8n auf seiner Preisseite (Stand Oktober 2026), und darin liegt der wichtigste Unterschied zu Make, das jede einzelne Operation zählt.",
+          "Wie viele Ausführungen ein Ablauf braucht, hängt vor allem davon ab, wie er startet. Eine Rechnungsprüfung, die einmal täglich um 22 Uhr alle neuen Rechnungen des Tages abarbeitet, braucht rund 30 Ausführungen im Monat. Startet dieselbe Prüfung für jede Rechnung einzeln, braucht sie so viele, wie Rechnungen eingehen. Für die meisten kleinen Unternehmen reicht deshalb der Tarif Starter.",
+        ],
+      },
+      {
+        h2: "Ist n8n kostenlos?",
+        body: [
+          "Die Software ja, der Betrieb nicht. Die Community Edition steht unter der Sustainable Use License: Sie darf kostenlos für eigene interne Geschäftszwecke sowie privat oder nicht kommerziell genutzt werden (Lizenztext im GitHub-Repository von n8n, abgerufen im Oktober 2026). Nicht erlaubt ist, n8n gegen Geld als Dienst für Dritte anzubieten, und einige Funktionen für größere Unternehmen brauchen zusätzlich eine Enterprise-Lizenz.",
+          "Kostenlos heißt dabei nur: keine Lizenzgebühr. Wer selbst betreibt, bezahlt den Server und vor allem die Zeit für Updates, Datensicherung, Überwachung und Absicherung. Diese Arbeit fällt jeden Monat an, auch wenn kein neuer Workflow entsteht.",
+        ],
+      },
+      {
+        h2: "n8n Cloud oder selbst hosten: was ist günstiger?",
+        body: [
+          "Für die meisten kleinen und mittleren Unternehmen n8n Cloud, obwohl sie eine Monatsgebühr kostet. Updates, Sicherungen und Absicherung eines eigenen Servers kosten Arbeitszeit, und die übersteigt die 20 bis 50 € einer Cloud-Lizenz schnell.",
+          "In meinen Projekten lege ich das n8n-Konto deshalb fast immer in der Cloud an, auf den Namen des Kunden. Der Kunde zahlt den Anbieter direkt, und alle Konten gehören ihm, auch wenn wir später nicht mehr zusammenarbeiten.",
+          "Selbst hosten lohnt sich, wenn ohnehin ein eigener Rechner im Unternehmen läuft, der Kunde das ausdrücklich will oder Daten das Haus nicht verlassen sollen. In einem meiner Angebote lief das System auf dem eigenen Rechner des Kunden: n8n Community Edition plus Datenbank, mit Fernzugriff, automatischem Neustart nach einem Stromausfall und täglicher Datensicherung. Laufende Lizenzkosten entstehen dann kaum.",
+        ],
+      },
+      {
+        h2: "Was kosten KI-Schritte in n8n?",
+        body: [
+          "KI-Modelle rechnen nicht pro Monat ab, sondern pro Verarbeitung, also nach Textmenge oder Seitenzahl. In meinem Angebot für eine Rechnungsprüfung lagen n8n und das KI-Auslesen der Rechnungen über Mistral zusammen bei rund 30 bis 55 € im Monat, je nach Zahl der Rechnungen.",
+          "Mistral ist ein Anbieter aus Paris mit Verarbeitung in europäischen Rechenzentren. Die Nutzung der Daten zum Training lässt sich im Konto abschalten; laut Mistral werden die Inhalte dann nicht zum Training verwendet. Für Unternehmen, die keine Daten in die USA geben wollen, ist das oft der entscheidende Punkt.",
+        ],
+      },
+      {
+        h2: "Welche Kosten übersieht man bei n8n leicht?",
+        body: [
+          "Vor allem die der anderen Programme. Viele Werkzeuge öffnen ihre Schnittstelle erst in einem höheren Tarif, die Rechnungssoftware Billomat etwa laut ihrer Preisseite erst ab dem Tarif Business (Stand Oktober 2026). Das gehört vor dem Projekt geklärt, weil es die laufenden Kosten stärker verändern kann als n8n selbst.",
+          "Dazu kommen kleinere Posten: ein eigenes Benutzerkonto für die Automatisierung, etwa ein Microsoft-365-Benutzer für ein eigenes Postfach (in meinem Angebot rund 7 € im Monat), und die Wartung. Workflows brechen, wenn sich Schnittstellen oder Abläufe ändern. Ich rechne Wartung nach Aufwand ab oder als monatliche Pauschale, in einem Angebot ab 120 € im Monat, je nach Umfang.",
+        ],
+      },
+      {
+        h2: "Was kostet eine n8n-Automatisierung insgesamt?",
+        body: [
+          "Ein einzelner Workflow kostet in der Umsetzung meist einen vierstelligen Betrag, die laufenden Kosten liegen dann oft unter 100 € im Monat. Drei Beispiele aus meinen Angeboten vom Oktober 2026 zeigen die Spanne; Namen und erkennbare Details sind weggelassen, die eigenen Beträge gerundet.",
+          "Rechnungsprüfung für einen Händler: Eine KI liest eingehende Rechnungen aus, feste Regeln prüfen Menge und Preis gegen Wareneingang und Einkaufspreisliste, auch bei Rabatten, abweichenden Artikelnummern, Teillieferungen und Gutschriften. Fällt die Automatisierung aus, bleiben die Rechnungen liegen und werden wie bisher geprüft. Festpreis rund 5.000 €, dazu 30 bis 55 € im Monat an die Anbieter, Umsetzung in 5 bis 8 Wochen einschließlich 2 Wochen Testbetrieb, Fehlerbehebung 12 Monate inklusive.",
+          "Akquise-Datenbank für ein Start-up: Kontakte, Status und automatisches Nachfassen per E-Mail, auf dem eigenen Rechner des Kunden mit der kostenlosen Community Edition. Erste Ausbaustufe unter 2.000 €, Umsetzung in etwa 4 Wochen, kaum laufende Kosten; eine KI, die eingehende Antworten vorsortiert, kam als Option für wenige hundert Euro dazu.",
+          "Abrechnung für einen Dienstleister: Am Anfang stand ein großes Vorhaben, ein KI-System für das ganze Unternehmen. Begonnen wird mit einem klar abgegrenzten Teil, hier der monatlichen Abrechnung aus geprüften Stundenzetteln mit Freigabe vor dem Versand. So zeigt sich der Nutzen, bevor mehr Geld fließt.",
+        ],
+      },
+      {
+        h2: "Warum kostet eine Automatisierung mehr als die Software?",
+        body: [
+          "Weil die Arbeit in den Ausnahmen steckt, nicht im Normalfall. Häufig scheitert ein Projekt an der Erwartung, n8n sei kostenlos und die Automatisierung deshalb billig. Eine Rechnung, die genau zum Wareneingang passt, ist schnell automatisiert. Aufwand machen Rabatte auf den Listenpreis, Artikelnummern, die beim Lieferanten anders heißen, Sammelrechnungen, Gutschriften und Fracht, dazu ein Test mit echten Belegen und ein sicherer Weg für den Fall, dass etwas ausfällt.",
+        ],
+      },
+      {
+        h2: "Wie fängt man mit kleinem Budget an?",
+        body: [
+          "Mit einem Ausschnitt statt dem ganzen Ablauf. Bei der Rechnungsprüfung wäre ein Start mit dem wichtigsten Lieferanten unter 1.500 € möglich gewesen; jeder weitere Lieferant kostet danach deutlich weniger, weil die Technik dann schon steht.",
+          "So entsteht der Nutzen früh, und die Entscheidung über den nächsten Schritt fällt auf Grundlage echter Zahlen statt einer Schätzung.",
+        ],
+      },
+      {
+        h2: "Was bestimmt den Preis einer n8n-Automatisierung?",
+        body: [
+          "Vor allem die Antworten auf fünf Fragen, die ich vor jedem Festpreis stelle. In welcher Form kommen die Daten an, als PDF, als Scan oder strukturiert? Wo liegen sie, und wie heißen die Dateien? Wie viele Vorgänge gibt es im Monat? Welche Tarife haben die beteiligten Programme, und haben sie eine Schnittstelle? Wer gibt frei, bevor etwas nach außen geht?",
+          `Danach steht ein Festpreis für den vereinbarten Umfang; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. ${UST_HINWEIS}`,
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Ist n8n kostenlos?",
+        a: "Die Community Edition ja: Sie darf für eigene interne Geschäftszwecke ohne Lizenzgebühr genutzt werden (Sustainable Use License). Kosten entstehen trotzdem für Server und Wartung. n8n Cloud beginnt laut n8n bei 20 € im Monat (Stand Oktober 2026).",
+      },
+      {
+        q: "Was kostet n8n Cloud?",
+        a: "Laut n8n.io 20 € im Monat im Tarif Starter mit 2.500 Ausführungen und 50 € im Tarif Pro mit 10.000 Ausführungen, jeweils bei jährlicher Abrechnung (Stand Oktober 2026).",
+      },
+      {
+        q: "Was ist günstiger, n8n Cloud oder selbst hosten?",
+        a: "Für die meisten kleinen und mittleren Unternehmen die Cloud, weil Updates, Sicherungen und Absicherung eines eigenen Servers mehr Arbeitszeit kosten als die Lizenz. Selbst hosten lohnt sich, wenn ein eigener Rechner ohnehin läuft oder Daten das Haus nicht verlassen sollen.",
+      },
+      {
+        q: "Wie viele Ausführungen brauche ich?",
+        a: "So viele, wie Ihre Workflows starten. Ein Ablauf, der einmal täglich alle neuen Vorgänge abarbeitet, braucht rund 30 Ausführungen im Monat; das passt in den kleinsten Cloud-Tarif mit 2.500.",
+      },
+      {
+        q: "Was kostet eine n8n-Automatisierung insgesamt?",
+        a: `Ein einzelner Workflow meist einen vierstelligen Betrag in der Umsetzung, dazu laufende Kosten von oft unter 100 € im Monat. In meinen Angeboten reichte die Spanne von unter 2.000 € für eine erste Ausbaustufe bis rund 5.000 € für eine Rechnungsprüfung mit KI. ${UST_HINWEIS}`,
+      },
+      {
+        q: "Wer zahlt die laufenden Kosten?",
+        a: "Der Kunde, direkt an die Anbieter. Ich lege die Konten auf den Namen des Unternehmens an, der Kunde hinterlegt nur seine Zahlungsart, und alle Konten gehören ihm.",
+      },
+    ],
+    related: [
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+      { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
+      { path: "/leistungen/n8n-automatisierung-oesterreich", label: "n8n Freelancer und Beratung für Wien und Österreich" },
+    ],
+    cta: {
+      headline: "Was soll bei Ihnen automatisch laufen?",
+      intro:
+        "Beschreiben Sie kurz den Ablauf, der Zeit kostet. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob sich n8n lohnt, mit einmaligen und laufenden Kosten.",
+      button: "n8n-Automatisierung anfragen",
+    },
+  },
+  {
     path: "/ratgeber/website-kosten",
     kicker: "Kosten",
     h1: "Was kostet eine Website 2026?",
     published: "2026-10-13",
-    modified: "2026-10-13",
+    modified: "2026-10-27",
     /* Alle Marktzahlen am 13.10.2026 an den Quellen geprüft. Sie stammen von
        Anbietern, die diese Leistungen selbst verkaufen; der Artikel sagt das
        ausdrücklich, statt sie als Marktpreis auszugeben. Die eigenen Preise
        kommen aus FESTPREIS in site.js. */
-    lede: `Eine Firmen-Website kostet 2026 beim Freelancer meist 800 bis 5.000 € und bei einer Agentur 3.600 bis 18.000 €, so die Preisübersicht der Agentur RHEINSPACE (Stand Juni 2026). Ein Relaunch mit SEO-Migration liegt laut der Agentur Adfera bei 8.000 bis 20.000 € (Stand Oktober 2026), ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000 € (Stand Februar 2026). Ich baue Firmen-Websites ab ${euro(FESTPREIS.website)} und Relaunches ab ${euro(FESTPREIS.relaunch)}, jeweils netto.`,
+    lede: `Eine Firmen-Website kostet 2026 beim Freelancer meist 800 bis 5.000 € und bei einer Agentur 3.600 bis 18.000 €, so die Preisübersicht der Agentur RHEINSPACE (Stand Juni 2026). Ein Relaunch mit SEO-Migration liegt laut der Agentur Adfera bei 8.000 bis 20.000 € (Stand Oktober 2026), ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000 € (Stand Februar 2026). Ich baue Firmen-Websites ab ${euro(FESTPREIS.website)} und Relaunches ab ${euro(FESTPREIS.relaunch)}. ${UST_HINWEIS}`,
     table: {
-      caption: "Was Websites und Webanwendungen kosten (Stand: Oktober 2026, netto)",
+      caption: `Was Websites und Webanwendungen kosten (Stand: Oktober 2026; meine Festpreise: ${UST_KURZ})`,
       columns: ["Marktspanne laut Anbietern", "Mein Festpreis"],
       rows: [
         {
@@ -174,14 +316,14 @@ export const RATGEBER = [
         body: [
           "Zwischen 800 und 18.000 €, je nachdem, wer sie baut. Die Agentur RHEINSPACE nennt für Freelancer 800 bis 5.000 € und für Agenturen 3.600 bis 18.000 € einmalig (Stand Juni 2026). Für eine Agentur-Website mit 5 bis 10 Seiten gibt die Erfurter Agentur Adfera 5.000 bis 12.000 € an (Stand Oktober 2026), COOKIE Design aus Soest für eine professionelle Unternehmenswebsite im Mittelstand 8.000 bis 25.000 € (Stand Mai 2026).",
           "Die Spanne ist so groß, weil unter dem Wort Website sehr Verschiedenes verkauft wird: ein angepasstes Theme mit fünf Seiten oder eine Seite mit eigener Struktur, Mehrsprachigkeit und gemessenen Ladezeiten. Vergleichbar werden zwei Angebote erst, wenn klar ist, was jeweils enthalten ist.",
-          `Mein Festpreis für eine Firmen-Website beginnt bei ${euro(FESTPREIS.website)} netto. Enthalten sind Struktur, Umsetzung, technisches SEO und die Übergabe mit Quelltext und Zugängen; die Texte kommen von Ihnen oder entstehen gemeinsam.`,
+          `Mein Festpreis für eine Firmen-Website beginnt bei ${euro(FESTPREIS.website)}. Enthalten sind Struktur, Umsetzung, technisches SEO und die Übergabe mit Quelltext und Zugängen; die Texte kommen von Ihnen oder entstehen gemeinsam.`,
         ],
       },
       {
         h2: "Was kostet ein Website-Relaunch?",
         body: [
           "Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026); RHEINSPACE beziffert allein die Migration von Inhalten und Adressen auf 1.000 bis 5.000 € (Stand Juni 2026). Mehr Aufwand als ein Neubau entsteht dort, wo alte Adressen, Inhalte und Platzierungen erhalten bleiben müssen.",
-          `Gespart wird am häufigsten ausgerechnet an dem Posten, an dem die Sichtbarkeit hängt: der Weiterleitung jeder alten Adresse auf ihre neue Entsprechung. Google empfiehlt, solche Weiterleitungen mindestens ein Jahr bestehen zu lassen (Google Search Central, Stand August 2026). Mein Festpreis für einen Relaunch beginnt bei ${euro(FESTPREIS.relaunch)} netto und schließt diese Weiterleitungen ein.`,
+          `Gespart wird am häufigsten ausgerechnet an dem Posten, an dem die Sichtbarkeit hängt: der Weiterleitung jeder alten Adresse auf ihre neue Entsprechung. Google empfiehlt, solche Weiterleitungen mindestens ein Jahr bestehen zu lassen (Google Search Central, Stand August 2026). Mein Festpreis für einen Relaunch beginnt bei ${euro(FESTPREIS.relaunch)} und schließt diese Weiterleitungen ein.`,
         ],
       },
       {
@@ -189,7 +331,7 @@ export const RATGEBER = [
         body: [
           "Ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000 € als Festpreis für eine erste Version, mittelkomplexe Lösungen liegen bei rund 15.000 €, Plattformen mit Schnittstellen bei 20.000 € und mehr (Stand Februar 2026). Groenewold IT Solutions nennt für Buchungssysteme eine Gesamtspanne von 5.950 bis 83.231 € netto (Stand September 2026).",
           "Ein Kundenportal kostet laut CodeGuides meist zwischen 25.000 und 150.000 €, ein einfaches Portal 25.000 bis 35.000 € (abgerufen im Oktober 2026). Fertige Buchungswerkzeuge im Abo sind deutlich günstiger: Für Tools wie Calendly oder SimplyBook.me nennt Shopboostr 0 bis 200 € im Monat.",
-          `Eine eigene Anwendung lohnt sich, wenn Ihr Ablauf das ist, was Sie von anderen unterscheidet. Bildet eine fertige Software ihn ab, ist sie fast immer die günstigere Wahl. Meine Festpreise beginnen bei ${euro(FESTPREIS.webApp)} netto für eine Web-App oder ein Buchungssystem und bei ${euro(FESTPREIS.portal)} für ein Kundenportal.`,
+          `Eine eigene Anwendung lohnt sich, wenn Ihr Ablauf das ist, was Sie von anderen unterscheidet. Bildet eine fertige Software ihn ab, ist sie fast immer die günstigere Wahl. Meine Festpreise beginnen bei ${euro(FESTPREIS.webApp)} für eine Web-App oder ein Buchungssystem und bei ${euro(FESTPREIS.portal)} für ein Kundenportal.`,
         ],
       },
       {
@@ -223,19 +365,19 @@ export const RATGEBER = [
     faq: [
       {
         q: "Was kostet eine einfache Firmen-Website?",
-        a: `Beim Freelancer meist 800 bis 5.000 €, bei einer Agentur 3.600 bis 18.000 € (RHEINSPACE, Stand Juni 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.website)} netto, mit Struktur, Umsetzung, technischem SEO und Übergabe des Quelltexts.`,
+        a: `Beim Freelancer meist 800 bis 5.000 €, bei einer Agentur 3.600 bis 18.000 € (RHEINSPACE, Stand Juni 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.website)}, mit Struktur, Umsetzung, technischem SEO und Übergabe des Quelltexts.`,
       },
       {
         q: "Was kostet es, eine bestehende Website zu überarbeiten?",
-        a: `Wenn Struktur und Technik tragen und vor allem Design, Ladezeit oder Inhalte veraltet sind, reicht oft eine Überarbeitung statt eines Neubaus. Bei mir beginnt sie bei ${euro(FESTPREIS.update)} netto als Festpreis für einen vorher vereinbarten Umfang.`,
+        a: `Wenn Struktur und Technik tragen und vor allem Design, Ladezeit oder Inhalte veraltet sind, reicht oft eine Überarbeitung statt eines Neubaus. Bei mir beginnt sie bei ${euro(FESTPREIS.update)} als Festpreis für einen vorher vereinbarten Umfang.`,
       },
       {
         q: "Was kostet ein Website-Relaunch?",
-        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} netto, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
+        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)}, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
       },
       {
         q: "Was kostet ein Buchungssystem?",
-        a: `Individuell entwickelt laut Shopboostr ab etwa 10.000 € für eine erste Version und ab 20.000 € mit Schnittstellen (Stand Februar 2026). Fertige Buchungswerkzeuge kosten dort 0 bis 200 € im Monat. Meine Web-Apps und Buchungssysteme beginnen bei ${euro(FESTPREIS.webApp)} netto.`,
+        a: `Individuell entwickelt laut Shopboostr ab etwa 10.000 € für eine erste Version und ab 20.000 € mit Schnittstellen (Stand Februar 2026). Fertige Buchungswerkzeuge kosten dort 0 bis 200 € im Monat. Meine Web-Apps und Buchungssysteme beginnen bei ${euro(FESTPREIS.webApp)}.`,
       },
       {
         q: "Warum liegen Ihre Preise über denen mancher Freelancer?",
@@ -246,8 +388,8 @@ export const RATGEBER = [
         a: "Eine statisch erzeugte Website im Wesentlichen nur Domain und Hosting. Für eine WordPress-Website nennt RHEINSPACE dagegen 80 bis 200 € im Monat für Betrieb und Wartung (Stand Juni 2026).",
       },
       {
-        q: "Sind die Preise netto?",
-        a: "Ja. Alle Festpreise gelten für Unternehmen und verstehen sich netto zuzüglich Umsatzsteuer.",
+        q: "Kommt zu Ihren Preisen noch Umsatzsteuer dazu?",
+        a: `Nein. ${UST_HINWEIS}`,
       },
     ],
     related: [
@@ -262,6 +404,165 @@ export const RATGEBER = [
       intro:
         "Schreiben Sie mir, was die jetzige Seite nicht kann, oder dass es noch keine gibt. Sie bekommen innerhalb von 24 Stunden eine Einschätzung und einen realistischen Festpreis.",
       button: "Website anfragen",
+    },
+  },
+  {
+    path: "/ratgeber/barrierefreie-website",
+    kicker: "Recht",
+    h1: "Barrierefreie Website: Was das BFSG verlangt",
+    published: "2026-10-27",
+    modified: "2026-10-27",
+    /* Seit 27.10.2026. Zielt auf "bfsg", "barrierefreiheit website",
+       "barrierefreie website pflicht", "bfsg wer ist betroffen", die Test- und
+       Checklisten-Suchen und "38 bfsg" (zusammen mehr als 7.000 Suchen im
+       Monat laut Seobility) und führt zu "Website überarbeiten".
+
+       Jede Rechtsaussage stammt aus dem Gesetzestext (gesetze-im-internet.de,
+       am 27.10.2026 gelesen): § 1 Abs. 2 bis 4, § 2 Nr. 16, 17 und 26, § 3
+       Abs. 1 und 3, § 37 und § 38. Viele Seiten im Netz lesen § 38 als
+       allgemeine Schonfrist bis 2030 für bestehende Websites; der Wortlaut
+       gibt das nicht her, und der Abschnitt dazu sagt das ausdrücklich.
+       Keine Rechtsberatung, und der Ratgeber sagt auch das. */
+    lede: "Barrierefrei sein muss eine Website nach dem Barrierefreiheitsstärkungsgesetz (BFSG) seit dem 28. Juni 2025, wenn Verbraucher über sie einen Vertrag abschließen können, etwa in einem Onlineshop oder bei einer Online-Buchung. Ausgenommen sind Kleinstunternehmen, die Dienstleistungen erbringen, also weniger als zehn Beschäftigte und höchstens 2 Millionen Euro Jahresumsatz oder Jahresbilanzsumme (§ 2 Nr. 17 und § 3 Abs. 3 BFSG). Reine Firmen- und Informationsseiten ohne Vertragsabschluss fallen in der Regel nicht darunter.",
+    table: {
+      caption: "Selbsttest in zehn Schritten (ersetzt keine vollständige Prüfung nach WCAG 2.1)",
+      columns: ["So testen Sie es", "Bestanden, wenn"],
+      rows: [
+        {
+          label: "Tastatur",
+          cells: ["Maus beiseitelegen und die Seite nur mit Tab, Umschalt und Tab, Enter und Leertaste bedienen.", "Jedes Menü, jeder Link und jedes Formular ist erreichbar, in einer sinnvollen Reihenfolge."],
+        },
+        {
+          label: "Sichtbarer Fokus",
+          cells: ["Mit Tab durch die Seite gehen und auf die Markierung achten.", "Das gerade aktive Element ist deutlich hervorgehoben, auch auf farbigen Flächen."],
+        },
+        {
+          label: "Vergrößerung",
+          cells: ["Im Browser auf 200 % vergrößern.", "Alle Texte bleiben lesbar und alle Funktionen bedienbar, nichts wird abgeschnitten."],
+        },
+        {
+          label: "Kontrast",
+          cells: ["Texte und Schaltflächen mit einem Kontrastprüfer messen, etwa in den Entwicklerwerkzeugen von Chrome.", "Normaler Text erreicht mindestens 4,5 zu 1, großer Text mindestens 3 zu 1."],
+        },
+        {
+          label: "Alternativtexte",
+          cells: ["Bilder mit einer Browser-Erweiterung wie WAVE prüfen.", "Bilder mit Inhalt haben einen beschreibenden Alternativtext, reine Dekoration einen leeren."],
+        },
+        {
+          label: "Überschriften",
+          cells: ["Die Gliederung der Seite mit einer Erweiterung anzeigen lassen.", "Genau eine Hauptüberschrift, darunter eine logische Abfolge ohne übersprungene Ebenen."],
+        },
+        {
+          label: "Formulare",
+          cells: ["Jedes Feld ansehen, auch nach einem absichtlich falschen Absenden.", "Jedes Feld hat eine sichtbare Beschriftung, Fehler werden in Worten erklärt, nicht nur rot markiert."],
+        },
+        {
+          label: "Linktexte",
+          cells: ["Die Links der Seite ohne Zusammenhang lesen.", "Jeder Link sagt, wohin er führt; kein „hier“ oder „mehr“ allein."],
+        },
+        {
+          label: "Bewegung",
+          cells: ["Animationen und automatisch laufende Inhalte ansehen.", "Nichts blinkt mehr als dreimal pro Sekunde, und automatisch laufende Inhalte lassen sich anhalten."],
+        },
+        {
+          label: "Screenreader",
+          cells: ["Mit dem eingebauten Screenreader testen, etwa VoiceOver auf dem Mac oder NVDA unter Windows.", "Inhalte werden in sinnvoller Reihenfolge vorgelesen, Schaltflächen haben verständliche Namen."],
+        },
+      ],
+    },
+    sections: [
+      {
+        h2: "Für wen gilt das BFSG bei Websites?",
+        body: [
+          "Für Unternehmen, die Verbrauchern über ihre Website oder App einen Vertragsabschluss ermöglichen. Das Gesetz spricht von Dienstleistungen im elektronischen Geschäftsverkehr und meint damit Dienste über Websites und mobile Anwendungen, die auf individuelle Anfrage eines Verbrauchers im Hinblick auf den Abschluss eines Verbrauchervertrags erbracht werden (§ 2 Nr. 26 BFSG). Typische Fälle sind Onlineshops, Online-Buchungen und Bestellformulare.",
+          "Verbraucher ist jede natürliche Person, die überwiegend nicht für ihre gewerbliche oder selbständige berufliche Tätigkeit handelt (§ 2 Nr. 16 BFSG). Die Pflicht für Dienstleistungen gilt ausdrücklich für Dienstleistungen, die für Verbraucher erbracht werden (§ 1 Abs. 3 BFSG). Wer ausschließlich an Unternehmen verkauft, ist mit diesem Angebot nicht betroffen; wer auch an Verbraucher verkauft, schon.",
+        ],
+      },
+      {
+        h2: "Welche Ausnahmen gibt es beim BFSG?",
+        body: [
+          "Die wichtigste gilt für Kleinstunternehmen, die Dienstleistungen anbieten oder erbringen: Für sie gilt die Pflicht zur Barrierefreiheit nicht (§ 3 Abs. 3 BFSG). Kleinstunternehmen sind Unternehmen mit weniger als zehn Beschäftigten und höchstens 2 Millionen Euro Jahresumsatz oder Jahresbilanzsumme (§ 2 Nr. 17 BFSG).",
+          "Diese Ausnahme gilt nur für Dienstleistungen, nicht für Produkte. Wer Produkte im Sinne des Gesetzes in Verkehr bringt, etwa Computer, Selbstbedienungsterminals oder E-Book-Lesegeräte, muss deren Anforderungen auch als Kleinstunternehmen erfüllen (§ 1 Abs. 2 BFSG).",
+          "Für einzelne Inhalte auf Websites gelten weitere Ausnahmen: Audio- und Videoaufnahmen sowie Dateien von Büroanwendungen, die vor dem 28. Juni 2025 veröffentlicht wurden, Online-Karten unter bestimmten Bedingungen, Inhalte Dritter, die das Unternehmen weder finanziert noch entwickelt noch kontrolliert, und Archive, die nicht mehr aktualisiert werden (§ 1 Abs. 4 BFSG).",
+        ],
+      },
+      {
+        h2: "Gibt es nach § 38 BFSG eine Übergangsfrist bis 2030?",
+        body: [
+          "Nicht für Websites im Allgemeinen. § 38 BFSG erlaubt bis längstens 27. Juni 2030 zweierlei: Dienstleistungen weiter mit Produkten zu erbringen, die schon vor dem 28. Juni 2025 rechtmäßig eingesetzt wurden, und vor diesem Tag geschlossene Verträge über Dienstleistungen unverändert fortzuführen. Selbstbedienungsterminals dürfen bis zum Ende ihrer wirtschaftlichen Nutzungsdauer weiterlaufen, höchstens 15 Jahre.",
+          "Eine pauschale Schonfrist für bestehende Onlineshops oder Buchungsseiten steht dort nicht, auch wenn sie im Netz oft so dargestellt wird. Wer sich für sein Angebot auf § 38 berufen will, sollte das rechtlich prüfen lassen.",
+        ],
+      },
+      {
+        h2: "Was bedeutet barrierefrei bei einer Website?",
+        body: [
+          "Dass Menschen mit Behinderungen die Website in der allgemein üblichen Weise, ohne besondere Erschwernis und grundsätzlich ohne fremde Hilfe finden, zugänglich machen und nutzen können; so beschreibt es § 3 Abs. 1 BFSG. Die konkreten Anforderungen stehen in der Verordnung zum Gesetz.",
+          "Als technischer Maßstab hat sich die europäische Norm EN 301 549 durchgesetzt, die für Websites die Web Content Accessibility Guidelines (WCAG) 2.1 auf Stufe AA übernimmt. In der Praxis heißt das: Alles ist per Tastatur bedienbar, Texte haben ausreichenden Kontrast, Bilder haben Alternativtexte, Formulare sind beschriftet, und die Seite funktioniert auch vergrößert und mit Screenreader.",
+        ],
+      },
+      {
+        h2: "Wie teste ich meine Website auf Barrierefreiheit?",
+        body: [
+          "Mit den zehn Prüfungen in der Tabelle unten, die ohne Fachwissen machbar sind. Ein Selbsttest findet die häufigsten Fehler, ersetzt aber keine vollständige Prüfung nach WCAG 2.1, weil sich viele Anforderungen nur von Hand beurteilen lassen.",
+          "Automatische Prüfwerkzeuge wie Lighthouse in Chrome oder WAVE geben einen schnellen Überblick. Sie erkennen etwa schwache Kontraste und fehlende Alternativtexte, können aber nicht beurteilen, ob ein Alternativtext das Bild sinnvoll beschreibt oder ob die Bedienung per Tastatur logisch abläuft.",
+        ],
+      },
+      {
+        h2: "Was droht bei Verstößen gegen das BFSG?",
+        body: [
+          "Ein Bußgeld bis 100.000 €, wenn eine Dienstleistung angeboten wird, die die Anforderungen nicht erfüllt, und bis 10.000 € bei anderen Verstößen, etwa fehlenden oder falschen Informationen (§ 37 BFSG). Die Beträge sind Obergrenzen; die tatsächliche Höhe legt die zuständige Behörde im Einzelfall fest.",
+        ],
+      },
+      {
+        h2: "Was kostet es, eine Website barrierefrei zu machen?",
+        body: [
+          `Das hängt davon ab, wie die Seite gebaut ist. Fehlende Alternativtexte, schwache Kontraste und unbeschriftete Formulare lassen sich meist in einer Überarbeitung beheben, ein Baukasten mit festen Vorlagen setzt dagegen enge Grenzen. Bei mir läuft das als Überarbeitung, als Festpreis ab ${euro(FESTPREIS.update)} für einen vorher vereinbarten Umfang. ${UST_HINWEIS}`,
+          "Ich habe Kundenwebsites bereits auf Barrierefreiheit geprüft und angepasst, etwa Kontraste, Tastaturbedienung und die Ausgabe für Screenreader. Die von mir neu gebaute Website maflats.de erreicht in Lighthouse mobil 100 Punkte für Barrierefreiheit; ein solcher automatischer Wert deckt allerdings nur einen Teil der Anforderungen ab und ersetzt keine Prüfung von Hand.",
+          "Dieser Ratgeber gibt den Gesetzestext wieder und ist keine Rechtsberatung. Ob Ihr Angebot unter das BFSG fällt, klären im Zweifel ein Anwalt oder die Bundesfachstelle Barrierefreiheit, die Kleinstunternehmen zu diesen Fragen berät.",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Muss meine Website barrierefrei sein?",
+        a: "Nach dem BFSG dann, wenn Verbraucher über sie einen Vertrag abschließen können, etwa in einem Onlineshop oder einer Online-Buchung, und Ihr Unternehmen kein Kleinstunternehmen ist, also mindestens zehn Beschäftigte oder mehr als 2 Millionen Euro Jahresumsatz und Jahresbilanzsumme hat. Reine Informationsseiten fallen in der Regel nicht darunter.",
+      },
+      {
+        q: "Gilt das BFSG auch für B2B-Websites?",
+        a: "Für Dienstleistungen, die sich ausschließlich an Unternehmen richten, nicht: Das Gesetz bezieht die Pflicht auf Dienstleistungen für Verbraucher (§ 1 Abs. 3 BFSG). Wer an Unternehmen und Verbraucher verkauft, ist betroffen.",
+      },
+      {
+        q: "Bin ich als kleines Unternehmen ausgenommen?",
+        a: "Als Kleinstunternehmen mit Dienstleistungen ja: weniger als zehn Beschäftigte und höchstens 2 Millionen Euro Jahresumsatz oder Jahresbilanzsumme (§ 2 Nr. 17 und § 3 Abs. 3 BFSG). Für Produkte gilt die Ausnahme nicht.",
+      },
+      {
+        q: "Was regelt § 38 BFSG?",
+        a: "Übergangsbestimmungen: Bis längstens 27. Juni 2030 dürfen Dienstleistungen weiter mit Produkten erbracht werden, die schon vor dem 28. Juni 2025 rechtmäßig eingesetzt wurden, und vor diesem Tag geschlossene Verträge laufen unverändert weiter. Eine allgemeine Schonfrist für bestehende Websites enthält § 38 nicht.",
+      },
+      {
+        q: "Welche Strafen drohen nach dem BFSG?",
+        a: "Ein Bußgeld bis 100.000 € für eine Dienstleistung, die die Anforderungen nicht erfüllt, und bis 10.000 € für andere Verstöße (§ 37 BFSG).",
+      },
+      {
+        q: "Reicht ein Barrierefreiheits-Plugin?",
+        a: "In der Regel nicht. Werkzeuge, die sich per Skript über eine Seite legen, beheben keine Fehler im Aufbau der Seite, etwa fehlende Beschriftungen, eine unlogische Reihenfolge oder Bilder ohne Beschreibung.",
+      },
+      {
+        q: "Was kostet es, eine Website barrierefrei zu machen?",
+        a: `Bei einer bestehenden Seite hängt es davon ab, wie sie gebaut ist. Bei mir läuft die Anpassung als Überarbeitung, als Festpreis ab ${euro(FESTPREIS.update)} für einen vorher vereinbarten Umfang. ${UST_HINWEIS}`,
+      },
+    ],
+    related: [
+      { path: "/leistungen/website-ueberarbeiten", label: "Website überarbeiten und modernisieren lassen" },
+      { path: "/leistungen/webentwicklung", label: "Firmen-Website erstellen lassen und Relaunch" },
+      { path: "/ratgeber/website-kosten", label: "Was kostet eine Website 2026?" },
+      { path: "/projekte/maflats", label: "Case Study: Website-Relaunch für MA-Flats" },
+    ],
+    cta: {
+      headline: "Soll Ihre Website barrierefrei werden?",
+      intro:
+        "Schicken Sie mir die Adresse Ihrer Website. Sie bekommen innerhalb von 24 Stunden eine ehrliche Einschätzung, was an der Seite fehlt und was eine Überarbeitung kostet.",
+      button: "Website prüfen lassen",
     },
   },
   {
@@ -723,7 +1024,7 @@ export const RATGEBER = [
     kicker: "Relaunch",
     h1: "Website-Relaunch ohne Ranking-Verlust",
     published: "2026-10-13",
-    modified: "2026-10-13",
+    modified: "2026-10-27",
     /* Quelle für alles zu Weiterleitungen und Umzug ist Googles Dokumentation
        "Site moves with URL changes" (Stand 20.08.2026), am 13.10.2026
        gelesen. MA-Flats steht nur mit seinen dokumentierten Messwerten da:
@@ -788,7 +1089,7 @@ export const RATGEBER = [
       {
         h2: "Was kostet ein Relaunch?",
         body: [
-          `Mit SEO-Migration laut der Agentur Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} netto und schließt die Zuordnung und Weiterleitung aller alten Adressen ein. Die Spannen für Neubau, Relaunch und Webanwendungen stehen im Ratgeber zu den Kosten einer Website.`,
+          `Mit SEO-Migration laut der Agentur Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} und schließt die Zuordnung und Weiterleitung aller alten Adressen ein. Die Spannen für Neubau, Relaunch und Webanwendungen stehen im Ratgeber zu den Kosten einer Website.`,
         ],
       },
     ],
@@ -811,7 +1112,7 @@ export const RATGEBER = [
       },
       {
         q: "Was kostet ein Relaunch mit Weiterleitungen?",
-        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} netto, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
+        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)}, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
       },
     ],
     related: [

@@ -7,7 +7,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { DEFAULT_LOCALE, ROUTES, SITE_URL, getAlternates } from "./src/routes/registry.js";
 import { LIVE_LOCALES, localeConfig } from "./src/i18n/locales.js";
-import { FESTPREIS, RATE_TEXT, euro } from "./src/content/site.js";
+import { FESTPREIS, RATE_TEXT, UST_HINWEIS, euro } from "./src/content/site.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -103,14 +103,14 @@ const llms = `# Muhamed Nur Beck: KI-Automatisierung und Webentwicklung, Frankfu
 
 - Durchlaufzeiten im Recruiting um rund 80 Prozent gesenkt (TOPEOPLE Group GmbH, Arbeitgeber, seit 09/2025).
 - Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht, mit GPT, RAG und LangChain.
-- Organischen Traffic um 35 Prozent gesteigert und eine Buchungsplattform mit Spring Boot und Angular entwickelt (Phoenix Parkservice, Freelance-Mandat 07/2024 bis 09/2025).
+- Eigene Website und Buchungsplattform mit Spring Boot und Angular entwickelt; nach dem Start der SEO-Automatisierung mit n8n lag der organische Traffic drei Monate lang 35 Prozent über den drei Monaten davor (Phoenix Parkservice, Freelance-Mandat 07/2024 bis 09/2025).
 - maflats.de neu gebaut: fünf Sprachen, neun Standorte, keine ausgelieferte JavaScript-Datei, LCP 1,35 Sekunden unter Slow 4G mit vierfacher CPU-Drosselung, Lighthouse 100 für Barrierefreiheit und SEO (MA-Flats, Freelance-Mandat 07/2026 bis 08/2026).
 - Testabdeckung von 9 auf 42 Prozent gesteigert und den manuellen Aufwand je Projekt von 1.440 auf 30 Minuten gesenkt (Masterarbeit, INFOMOTION GmbH).
 
 ## Konditionen
 
 - Stundensatz: ${RATE_TEXT}. Marktkontext: Der Median für IT-Freelancer im DACH-Raum lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
-- Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: Website überarbeiten ab ${euro(FESTPREIS.update)}, Firmen-Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)}, Web-App oder Buchungssystem ab ${euro(FESTPREIS.webApp)}, Kundenportal ab ${euro(FESTPREIS.portal)}.
+- Festpreise für Unternehmen: Website überarbeiten ab ${euro(FESTPREIS.update)}, Firmen-Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)}, Web-App oder Buchungssystem ab ${euro(FESTPREIS.webApp)}, Kundenportal ab ${euro(FESTPREIS.portal)}. ${UST_HINWEIS}
 - Festpreise auch möglich für klar umrissene Workflows und Integrationen.
 - Antwort auf Projektanfragen innerhalb von 24 Stunden: ${SITE_URL}/kontakt
 

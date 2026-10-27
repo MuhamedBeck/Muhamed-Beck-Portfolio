@@ -3,7 +3,7 @@
 // The `faq` entries are also emitted as FAQPage JSON-LD by prerender-meta.js.
 
 // With the .js extension: prerender-meta.js imports this file under bare node.
-import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "./site.js";
+import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, euro } from "./site.js";
 
 export const PREIS_TEXT =
   `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Für klar umrissene Workflows und Integrationen sind auch Festpreise möglich. Orientierung: Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.`;
@@ -46,6 +46,7 @@ export const LEISTUNGEN = [
     weiterlesen: [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+      { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
       {
         path: "/leistungen/n8n-automatisierung-oesterreich",
@@ -185,8 +186,8 @@ export const LEISTUNGEN = [
 
        Festpreise statt nur Stundensatz, weil wer eine Website kauft,
        Gesamtpreise vergleicht. Die Beträge kommen aus FESTPREIS in site.js. */
-    preisKurz: `Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)} netto`,
-    preisText: `Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch mit Weiterleitungen und Messung vorher und nachher ab ${euro(FESTPREIS.relaunch)}. Was über den vereinbarten Umfang hinausgeht, etwa weitere Sprachen, Buchung oder Anbindungen, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Laufende Kosten entstehen nur für Domain und Hosting, nicht für die Seite selbst.`,
+    preisKurz: `Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)}`,
+    preisText: `Festpreise für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch mit Weiterleitungen und Messung vorher und nachher ab ${euro(FESTPREIS.relaunch)}. Was über den vereinbarten Umfang hinausgeht, etwa weitere Sprachen, Buchung oder Anbindungen, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Laufende Kosten entstehen nur für Domain und Hosting, nicht für die Seite selbst. ${UST_HINWEIS}`,
     reichweiteText: REICHWEITE_FESTPREIS_TEXT,
     cta: {
       headline: "Brauchen Sie eine Website, die schnell ist und gefunden wird?",
@@ -242,9 +243,9 @@ export const LEISTUNGEN = [
       kurz: "Website erstellen lassen",
       ankerLabel: "Ladezeit mobil",
     },
-    teaser: `Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)} netto: schnell, auffindbar, ohne Baukasten, mit Messwerten statt Versprechen.`,
+    teaser: `Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)}: schnell, auffindbar, ohne Baukasten, mit Messwerten statt Versprechen.`,
     h1: "Firmen-Website erstellen lassen und Relaunch",
-    intro: `Eine Website soll gefunden werden, schnell laden und Anfragen bringen. Ich baue Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)} netto, vom Webdesign bis zur Technik aus einer Hand, so, dass diese drei Dinge messbar sind, und übergebe sie so, dass Sie nicht an mir hängen. Als Full-Stack-Entwickler baue ich auch, was über Seiten hinausgeht: Formulare, Terminbuchung und die Anbindung an Ihr CRM.`,
+    intro: `Eine Website soll gefunden werden, schnell laden und Anfragen bringen. Ich baue Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)}, vom Webdesign bis zur Technik aus einer Hand, so, dass diese drei Dinge messbar sind, und übergebe sie so, dass Sie nicht an mir hängen. Als Full-Stack-Entwickler baue ich auch, was über Seiten hinausgeht: Formulare, Terminbuchung und die Anbindung an Ihr CRM.`,
     szenarien: [
       {
         title: "Neue Firmen-Website",
@@ -300,7 +301,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet eine Website?",
-        a: `Als Festpreis für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch ab ${euro(FESTPREIS.relaunch)}, jeweils netto zuzüglich Umsatzsteuer. Enthalten sind Struktur, Umsetzung, technisches SEO, beim Relaunch die Weiterleitungen und am Ende die Übergabe. Den genauen Betrag nenne ich nach dem Erstgespräch, sobald Umfang, Sprachen und Anbindungen feststehen; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
+        a: `Als Festpreis für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch ab ${euro(FESTPREIS.relaunch)}. ${UST_HINWEIS} Enthalten sind Struktur, Umsetzung, technisches SEO, beim Relaunch die Weiterleitungen und am Ende die Übergabe. Den genauen Betrag nenne ich nach dem Erstgespräch, sobald Umfang, Sprachen und Anbindungen feststehen; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
       },
       {
         /* Seit 26.10.2026: "Webdesign" kam auf der ganzen Website nicht vor,
@@ -316,7 +317,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Bauen Sie auch Web-Apps oder Buchungssysteme?",
-        a: `Ja. Für Phoenix Parkservice habe ich eine Buchungs- und Verwaltungssoftware mit Spring Boot und Angular entwickelt, dazu Kundenportal und Website. Webanwendungen und Buchungssysteme beginnen bei ${euro(FESTPREIS.webApp)} netto, Kundenportale mit Schnittstellen bei ${euro(FESTPREIS.portal)}.`,
+        a: `Ja. Für Phoenix Parkservice habe ich eine Buchungs- und Verwaltungssoftware mit Spring Boot und Angular entwickelt, dazu Kundenportal und Website. Webanwendungen und Buchungssysteme beginnen bei ${euro(FESTPREIS.webApp)}, Kundenportale mit Schnittstellen bei ${euro(FESTPREIS.portal)}.`,
       },
       {
         q: "Warum keine Baukastenlösung oder WordPress?",
@@ -343,8 +344,8 @@ export const LEISTUNGEN = [
        veraltete Inhalte zeigt, sucht nach "Website überarbeiten lassen" und
        nicht nach einem Neubau. Bis dahin verkaufte die Seite nur Neubau und
        Relaunch ab einigen Tausend Euro. */
-    preisKurz: `Überarbeitung ab ${euro(FESTPREIS.update)} netto`,
-    preisText: `Festpreis für Unternehmen, netto zuzüglich Umsatzsteuer: Kleinere Überarbeitungen mit vorher vereinbartem Umfang beginnen bei ${euro(FESTPREIS.update)}. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab oder biete sie ebenfalls als Festpreis an. Lohnt sich eine Überarbeitung nicht, sage ich das, bevor Sie Geld ausgeben.`,
+    preisKurz: `Überarbeitung ab ${euro(FESTPREIS.update)}`,
+    preisText: `Festpreis für Unternehmen: Kleinere Überarbeitungen mit vorher vereinbartem Umfang beginnen bei ${euro(FESTPREIS.update)}. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab oder biete sie ebenfalls als Festpreis an. Lohnt sich eine Überarbeitung nicht, sage ich das, bevor Sie Geld ausgeben. ${UST_HINWEIS}`,
     reichweiteText: REICHWEITE_FESTPREIS_TEXT,
     cta: {
       headline: "Soll Ihre Website wieder zeitgemäß aussehen und schneller laden?",
@@ -358,6 +359,7 @@ export const LEISTUNGEN = [
         label: "Firmen-Website erstellen lassen und Relaunch",
       },
       { path: "/ratgeber/website-kosten", label: "Was kostet eine Website 2026?" },
+      { path: "/ratgeber/barrierefreie-website", label: "Barrierefreie Website: Was das BFSG verlangt" },
       { path: "/ratgeber/website-relaunch", label: "Website-Relaunch ohne Ranking-Verlust" },
     ],
     flow: {
@@ -392,7 +394,7 @@ export const LEISTUNGEN = [
       kurz: "Website überarbeiten lassen",
       ankerLabel: "organischer Traffic",
     },
-    teaser: `Bestehende Websites modernisieren, aktualisieren und schneller machen, ab ${euro(FESTPREIS.update)} netto, ohne gleich alles neu zu bauen.`,
+    teaser: `Bestehende Websites modernisieren, aktualisieren und schneller machen, ab ${euro(FESTPREIS.update)}, ohne gleich alles neu zu bauen.`,
     h1: "Website überarbeiten und modernisieren lassen",
     intro:
       "Nicht jede Website braucht einen Neubau. Oft reichen ein aufgefrischtes Design, schnellere Ladezeiten, eine saubere Ansicht auf dem Telefon und aktuelle Inhalte, damit sie wieder Anfragen bringt. Ich sehe mir Ihre Seite an, sage ehrlich, ob eine Überarbeitung reicht oder ein Neubau günstiger ist, und setze dann um, was am meisten bringt.",
@@ -426,7 +428,7 @@ export const LEISTUNGEN = [
       },
       {
         title: "Festpreis",
-        text: `Für den vereinbarten Umfang bekommen Sie einen Festpreis. Kleinere Überarbeitungen beginnen bei ${euro(FESTPREIS.update)} netto.`,
+        text: `Für den vereinbarten Umfang bekommen Sie einen Festpreis. Kleinere Überarbeitungen beginnen bei ${euro(FESTPREIS.update)}.`,
       },
       {
         title: "Umsetzen",
@@ -437,17 +439,21 @@ export const LEISTUNGEN = [
         text: "Dieselben Messungen wie vorher, damit Sie sehen, was sich verbessert hat. Adressen bleiben erhalten oder werden weitergeleitet.",
       },
     ],
+    /* Seit 27.10.2026 MA-Flats statt Phoenix: Phoenix hatte vorher keine
+       eigene Website, dort war es ein Neubau und keine Überarbeitung. Bei
+       MA-Flats wurde eine bestehende Seite ersetzt, und die 100 Punkte für
+       Barrierefreiheit passen zum BFSG-Ratgeber, der hierher verlinkt. */
     caseStudy: {
-      stat: "+35%",
-      statLabel: "organischer Traffic in drei Monaten bei Phoenix Parkservice, gemessen in der Google Search Console",
-      text: "Für Phoenix Parkservice habe ich die Unternehmenswebsite neu aufgebaut und technisch optimiert und die SEO-Arbeit mit n8n systematisiert. Der organische Traffic stieg innerhalb von drei Monaten um 35 Prozent.",
-      link: "/projekte/phoenix-parkservice",
-      linkText: "Zur Case Study Phoenix Parkservice",
+      stat: "100",
+      statLabel: "Punkte für Barrierefreiheit in Lighthouse mobil nach dem Neubau von maflats.de",
+      text: "Die alte Seite von MA-Flats lief auf einem Baukasten und lud auf der Startseite rund 6 MB. Nach dem Neubau lädt der größte sichtbare Inhalt mobil in 1,35 Sekunden (LCP, Slow 4G mit vierfacher CPU-Drosselung), und Lighthouse vergibt 100 Punkte für Barrierefreiheit und für SEO.",
+      link: "/projekte/maflats",
+      linkText: "Zur Case Study MA-Flats",
     },
     faq: [
       {
         q: "Was kostet es, eine Website überarbeiten zu lassen?",
-        a: `Kleinere Überarbeitungen beginnen bei ${euro(FESTPREIS.update)} netto, als Festpreis für einen vorher vereinbarten Umfang. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab oder biete sie ebenfalls als Festpreis an. Den genauen Betrag nenne ich nach einem Blick auf Ihre Seite.`,
+        a: `Kleinere Überarbeitungen beginnen bei ${euro(FESTPREIS.update)}, als Festpreis für einen vorher vereinbarten Umfang. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab oder biete sie ebenfalls als Festpreis an. Den genauen Betrag nenne ich nach einem Blick auf Ihre Seite.`,
       },
       {
         q: "Überarbeitung oder Neubau: Was lohnt sich?",
@@ -479,8 +485,8 @@ export const LEISTUNGEN = [
        Parkservice, die Plattform aus einem Kundenmandat; die Plattform bei
        TOPEOPLE steht ausdrücklich als Arbeit beim Arbeitgeber da, nie als
        Kundenprojekt. */
-    preisKurz: `Web-App ab ${euro(FESTPREIS.webApp)}, Kundenportal ab ${euro(FESTPREIS.portal)} netto`,
-    preisText: `Festpreise für Unternehmen, netto zuzüglich Umsatzsteuer: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}. Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Laufende Kosten entstehen für Hosting und Datenbank; die schätzen wir vor dem Start, nicht danach.`,
+    preisKurz: `Web-App ab ${euro(FESTPREIS.webApp)}, Kundenportal ab ${euro(FESTPREIS.portal)}`,
+    preisText: `Festpreise für Unternehmen: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}. Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Laufende Kosten entstehen für Hosting und Datenbank; die schätzen wir vor dem Start, nicht danach. ${UST_HINWEIS}`,
     reichweiteText: REICHWEITE_FESTPREIS_TEXT,
     cta: {
       headline: "Welcher Ablauf soll endlich über eine eigene Anwendung laufen?",
@@ -518,14 +524,14 @@ export const LEISTUNGEN = [
       kurz: "Web-App entwickeln lassen",
       ankerLabel: "Systeme aus einer Hand",
     },
-    teaser: `Buchungssysteme, Kundenportale und interne Software als eigene Web-App, ab ${euro(FESTPREIS.webApp)} netto. Mit Rollen, Schnittstellen und Übergabe des Quellcodes.`,
+    teaser: `Buchungssysteme, Kundenportale und interne Software als eigene Web-App, ab ${euro(FESTPREIS.webApp)}. Mit Rollen, Schnittstellen und Übergabe des Quellcodes.`,
     h1: "Web-App und Buchungssystem entwickeln lassen",
     intro:
       "Wenn Buchungen per Telefon kommen, Termine in Tabellen stehen und jede Änderung drei Leute beschäftigt, lohnt sich oft eine eigene Webanwendung. Manchmal reicht auch fertige Software, und das sage ich vorher. Ich entwickle Buchungssysteme, Kundenportale und interne Software als Web-App: Spring Boot oder Supabase im Hintergrund, Angular oder React im Browser, mit Rollen, Schnittstellen und automatisierter Auslieferung. Für Phoenix Parkservice habe ich so 15 Monate lang Website, Kundenportal und interne Verwaltungssoftware aus einer Hand entwickelt.",
     szenarien: [
       {
         title: "Buchungssystem",
-        text: "Kunden buchen online statt per Telefon, Verfügbarkeiten stimmen, und die Bestätigung geht automatisch hinaus. Bei Phoenix Parkservice laufen Buchungen und Abläufe so über eine eigene Plattform statt über Zuruf.",
+        text: "Kunden buchen online statt per Telefon, Verfügbarkeiten stimmen, und die Bestätigung geht automatisch hinaus. Bei Phoenix Parkservice liefen Buchungen so über eine eigene Plattform, statt nur über das Portal eines Dritten.",
       },
       {
         title: "Kundenportal",
@@ -566,14 +572,14 @@ export const LEISTUNGEN = [
     caseStudy: {
       stat: "3",
       statLabel: "Systeme für Phoenix Parkservice: Website, Kundenportal und interne Software",
-      text: "Für Phoenix Parkservice habe ich 15 Monate lang die Buchungs- und Verwaltungssoftware entwickelt, mit Spring Boot im Backend und Angular im Frontend, dazu die Unternehmenswebsite, ausgeliefert über Docker und CI/CD. Ergebnis: Buchungen und Abläufe laufen über eine eigene Plattform statt über Zuruf.",
+      text: "Für Phoenix Parkservice habe ich 15 Monate lang die Buchungs- und Verwaltungssoftware entwickelt, mit Spring Boot im Backend und Angular im Frontend, dazu die erste eigene Website des Unternehmens, ausgeliefert über Docker und CI/CD. Vorher kamen alle Buchungen über das Portal eines Dritten; danach buchten Kunden direkt, mit Online-Zahlung, Kundenkonto und einer Tagesübersicht für das Team.",
       link: "/projekte/phoenix-parkservice",
       linkText: "Zur Case Study Phoenix Parkservice",
     },
     faq: [
       {
         q: "Was kostet eine Web-App oder ein Buchungssystem?",
-        a: `Als Festpreis für Unternehmen: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}, jeweils netto zuzüglich Umsatzsteuer. Den genauen Betrag nenne ich, sobald Abläufe, Rollen und Schnittstellen feststehen; Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
+        a: `Als Festpreis für Unternehmen: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}. ${UST_HINWEIS} Den genauen Betrag nenne ich, sobald Abläufe, Rollen und Schnittstellen feststehen; Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
       },
       {
         q: "Lohnt sich eine eigene Anwendung oder reicht fertige Software?",

@@ -22,7 +22,7 @@ export const PROJEKTE = [
        wer gerade diese Website gesehen hat, will eine Website. */
     cta: {
       headline: "Soll Ihre Website auch so schnell sein?",
-      intro: `Schreiben Sie mir, was Ihre jetzige Seite nicht leistet, oder dass es noch keine gibt. Firmen-Websites baue ich zum Festpreis ab ${euro(FESTPREIS.website)} netto.`,
+      intro: `Schreiben Sie mir, was Ihre jetzige Seite nicht leistet, oder dass es noch keine gibt. Firmen-Websites baue ich zum Festpreis ab ${euro(FESTPREIS.website)}.`,
       button: "Website anfragen",
     },
     title: "Website-Relaunch für MA-Flats",
@@ -155,40 +155,54 @@ export const PROJEKTE = [
     leistung: { path: "/leistungen/web-app-entwicklung", label: "Web-App und Buchungssystem entwickeln lassen" },
     cta: {
       headline: "Sollen Ihre Buchungen auch über eine eigene Plattform laufen?",
-      intro: `Schreiben Sie mir, wie Buchungen und Abläufe heute bei Ihnen laufen. Web-Apps und Buchungssysteme entwickle ich zum Festpreis ab ${euro(FESTPREIS.webApp)} netto.`,
+      intro: `Schreiben Sie mir, wie Buchungen und Abläufe heute bei Ihnen laufen. Web-Apps und Buchungssysteme entwickle ich zum Festpreis ab ${euro(FESTPREIS.webApp)}.`,
       button: "Web-App anfragen",
     },
     title: "Buchungsplattform und KI-SEO für Phoenix Parkservice",
-    subtitle: "Buchungsplattform und digitale Sichtbarkeit für einen Parkservice-Anbieter",
+    subtitle: "Eigene Website und Buchungssystem für einen Valet-Parkservice am Frankfurter Flughafen",
     role: "Software Engineer & AI-Driven Digital Lead (Freelance), 07/2024 bis 09/2025",
+    /* Inhalt am 27.10.2026 mit dem Inhaber überarbeitet. Alles bezieht sich
+       auf die Projektzeit 07/2024 bis 09/2025 und steht in der Vergangenheit:
+       keine heutigen Rankings, keine Screenshots der Live-Seite, kein
+       Live-Link. Die 35 % vergleichen die drei Monate nach dem Start der
+       SEO-Automatisierung mit den drei Monaten davor, als die neue Website
+       schon lief. Die frühere Aussage "statt über Zuruf" war falsch: Vorher
+       liefen die Buchungen über das Portal eines Dritten. */
     stats: [
-      { value: "+35%", label: "Organischer Traffic", note: "in drei Monaten, gemessen in der Google Search Console" },
-      { value: "15", label: "Monate", note: "leitende Entwicklung" },
-      { value: "3", label: "Systeme", note: "Website, Kundenportal, interne Software" },
+      { value: "+35%", label: "Organischer Traffic", note: "drei Monate nach dem Start der SEO-Automatisierung gegenüber den drei Monaten davor, Google Search Console" },
+      { value: "15", label: "Monate", note: "leitende Entwicklung, 07/2024 bis 09/2025" },
+      { value: "3", label: "Systeme", note: "Website, Kundenkonto, Mitarbeiterbereich" },
     ],
     ausgangslage:
-      "Phoenix Parkservice brauchte eine tragfähige technische Plattform und mehr digitale Sichtbarkeit: Buchungen und Abläufe sollten über eine moderne Web-Plattform laufen, gleichzeitig sollten mehr Kunden das Angebot über Google finden. Der Weg dorthin: eine eigene Buchungsplattform und KI-SEO, also Suchmaschinenoptimierung, bei der n8n Recherche, Texte und Veröffentlichung automatisiert.",
+      "Phoenix Parkservice bietet Valet-Parken am Frankfurter Flughafen an: Kunden geben ihr Auto am Flughafen ab und bekommen es bei der Rückkehr dort zurück. Eine eigene Website hatte das Unternehmen nicht, Buchungen kamen ausschließlich über das Portal eines Dritten. Gebraucht wurden deshalb zwei Dinge: ein eigener Buchungsweg mit eigenem Überblick über Kunden und Termine, und Sichtbarkeit bei Google, damit Kunden direkt buchen. Der Weg dorthin war eine eigene Website mit Buchungssystem und KI-SEO, also Suchmaschinenoptimierung, bei der n8n Recherche, Texte und Veröffentlichung automatisiert.",
     loesung: [
-      "Buchungs- und Verwaltungssoftware für Kunden und Mitarbeitende entwickelt: Spring Boot im Backend, Angular im Frontend, dazu REST-APIs und Datenbankdesign.",
-      "Unternehmenswebsite neu aufgebaut und technisch optimiert.",
-      "KI-gestützte SEO-Automatisierung mit n8n aufgesetzt: Content-Erstellung, Keyword-Recherche und Veröffentlichung automatisiert.",
-      "Google Ads, Analytics und Tag Manager eingerichtet und ausgewertet.",
+      "Website und Buchungssystem selbst entwickelt: Spring Boot im Backend, Angular im Frontend, REST-Schnittstellen und eigenes Datenbankdesign.",
+      "Buchung als Gast oder mit Kundenkonto, mit Reisedaten, Telefon- und Flugnummer; der Preis ergab sich automatisch aus der Parkdauer.",
+      "Online-Zahlung über Mollie mit PayPal und Kreditkarte, Erstattungen bei Stornierung eingeschlossen, dazu eine Bestätigung per E-Mail oder SMS.",
+      "Kundenkonto, in dem Kunden ihre Buchung selbst ändern oder stornieren konnten.",
+      "Anbindung einer Flugdaten-Schnittstelle: Zur Rückflugnummer sah das Team die aktuelle Landezeit, damit die Rückgabe zur tatsächlichen Ankunft passte.",
+      "Mitarbeiterbereich mit allen Buchungen und einer Tagesübersicht, wie viele Kunden an welchem Tag kommen, für Geschäftsführung und Team.",
+      "KI-gestützte SEO- und GEO-Arbeit mit n8n: Keyword-Recherche, Texte und Veröffentlichung automatisiert; dazu Google Ads, Analytics und Tag Manager eingerichtet und ausgewertet.",
       "Auslieferung und Betrieb mit Docker und CI/CD-Pipelines.",
     ],
     ergebnisse: [
-      "Organischer Traffic innerhalb von drei Monaten um 35 Prozent gesteigert, gemessen in der Google Search Console",
-      "Buchungen und Abläufe laufen über eine eigene Plattform statt über Zuruf",
-      "Auslieferung automatisiert statt von Hand gepflegter Server",
+      "Ein eigener Buchungsweg: Kunden buchten direkt bei Phoenix, nicht mehr nur über das Portal eines Dritten",
+      "Organischer Traffic in den drei Monaten nach dem Start der SEO-Automatisierung 35 Prozent höher als in den drei Monaten davor, gemessen in der Google Search Console",
+      "Geschäftsführung und Team sahen täglich, wer kommt und wann der jeweilige Rückflug landet",
+      "Änderungen und Stornierungen erledigten Kunden selbst im Kundenkonto, Zahlung und Erstattung liefen über Mollie",
       "SEO-Arbeit durch n8n-Workflows systematisiert statt punktuell betrieben",
+      "Auslieferung automatisiert statt von Hand gepflegter Server",
     ],
     stack: [
       "Spring Boot",
       "Angular",
       "Java",
       "REST",
+      "Mollie",
       "Docker",
       "CI/CD",
       "n8n",
+      "Google Ads",
       "Google Analytics",
       "Google Tag Manager",
     ],

@@ -29,7 +29,7 @@ const de = {
   introKurz:
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.",
   servicesHeading: "Was Sie beauftragen können",
-  preisZeile: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)}, Überarbeitungen ab ${euro(FESTPREIS.update)} netto. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.`,
+  preisZeile: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)}, Überarbeitungen ab ${euro(FESTPREIS.update)}. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.`,
   stats: [
     { value: "80 %", label: "kürzere Durchlaufzeiten im Recruiting" },
     { value: "90 %", label: "der Candidate Operations automatisiert" },

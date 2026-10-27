@@ -19,12 +19,12 @@ import { LinkArrow } from "../LinkArrow";
 const PROJECTS = [
   {
     title: "Phoenix Parkservice",
-    text: "Booking and administration software for a parking operator, built with Spring Boot and Angular, plus AI-supported SEO automation with n8n. Organic traffic rose 35 percent in three months.",
+    text: "Website and booking system for a valet parking service at Frankfurt Airport, built with Spring Boot and Angular, plus AI-supported SEO automation with n8n: organic traffic rose 35 percent in the three months after it started.",
     stack: "Spring Boot, Angular, Docker, CI/CD, n8n",
-    // Without "www": the www host does not resolve (Seobility, 26.10.2026).
-    href: "https://phoenixparkservice.de",
-    linkText: "phoenixparkservice.de",
-    external: true,
+    // The case study rather than the live site: it describes the engagement
+    // itself, while the live site is outside this portfolio's control.
+    href: "/projekte/phoenix-parkservice",
+    linkText: "Case study (in German)",
   },
   {
     title: "LLM unit test automation",

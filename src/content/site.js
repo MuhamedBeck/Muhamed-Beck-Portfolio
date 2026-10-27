@@ -85,7 +85,23 @@ export const RATE_TEXT_EN = `${RATE_MIN} to ${RATE_MAX} € by agreement, depend
 // and a translated sentence sitting far from the page that renders it is how
 // translations drift.
 
-/* Festpreise für Webprojekte, netto für Unternehmen, am 13.10.2026 mit dem
+/* Umsatzsteuer: Der Inhaber ist Kleinunternehmer nach § 19 UStG und berechnet
+   keine Umsatzsteuer; jeder Preis auf der Website ist ein Endpreis. Das
+   Impressum sagte das schon immer, die Preisangaben aber sprachen vom
+   13.10. bis 27.10.2026 von "netto zuzüglich Umsatzsteuer" und
+   widersprachen ihm. Alle Preisangaben lesen deshalb von hier, statt den
+   Satz zu wiederholen.
+
+   Fällt die Kleinunternehmerregel weg (Umsatz über der Grenze), sind genau
+   diese beiden Konstanten zu ändern, etwa auf "zuzüglich 19 % Umsatzsteuer",
+   und die Stellen zu prüfen, die einen Preis ohne Zusatz nennen; die Suche
+   nach UST_ zeigt alle. */
+export const UST_HINWEIS =
+  "Als Kleinunternehmer nach § 19 UStG berechne ich keine Umsatzsteuer, alle Preise sind Endpreise.";
+/** Kurzform für Tabellen- und Bildunterschriften. */
+export const UST_KURZ = "Endpreise ohne Umsatzsteuer, Kleinunternehmer";
+
+/* Festpreise für Webprojekte, für Unternehmen, am 13.10.2026 mit dem
    Inhaber festgelegt. Marktrahmen laut Anbieterseiten, also keine neutrale
    Erhebung, am selben Tag an den Quellen geprüft:
    - Firmen-Website: Freelancer 800 bis 5.000 €, Agentur 3.600 bis 18.000 €
