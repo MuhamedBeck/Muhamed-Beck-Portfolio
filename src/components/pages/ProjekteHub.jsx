@@ -9,7 +9,7 @@ const ProjekteHub = () => (
        vier, weil der Satz beim Anlegen jeder weiteren Fallstudie vergessen
        wurde. Eine Zahl, die von der Länge eines Arrays abhängt, gehört
        nicht in Prosa. */
-    intro="Kundenprojekte und Abschlussarbeiten im Detail, mit Ausgangslage, Lösung und den Zahlen dahinter."
+    intro="Case Studies aus Praxisprojekten und Abschlussarbeiten, jeweils mit Ausgangslage, Lösung und den Zahlen dahinter."
     items={PROJEKTE.map((projekt) => ({
       path: projekt.path,
       title: projekt.title,

@@ -127,11 +127,17 @@ export const RATGEBER = [
         label: "n8n Freelancer und Beratung für Wien und Österreich",
       },
     ],
+    cta: {
+      headline: "Wie viele Stunden braucht Ihr Workflow?",
+      intro:
+        "Beschreiben Sie mir den Ablauf, den Sie automatisieren wollen, und welche Programme beteiligt sind. Sie bekommen innerhalb von 24 Stunden eine Einschätzung des Aufwands und was er zu meinem Stundensatz kostet.",
+      button: "n8n-Automatisierung anfragen",
+    },
   },
   {
     path: "/ratgeber/n8n-kosten",
     kicker: "Kosten",
-    h1: "Was kostet n8n?",
+    h1: "Was kostet n8n? Lizenz, Betrieb und Umsetzung",
     published: "2026-10-27",
     modified: "2026-10-27",
     /* Seit 27.10.2026. Zielt auf "n8n kosten", "n8n preise" und "n8n kostenlos"
@@ -496,7 +502,7 @@ export const RATGEBER = [
       {
         h2: "Was bedeutet barrierefrei bei einer Website?",
         body: [
-          "Dass Menschen mit Behinderungen die Website in der allgemein üblichen Weise, ohne besondere Erschwernis und grundsätzlich ohne fremde Hilfe finden, zugänglich machen und nutzen können; so beschreibt es § 3 Abs. 1 BFSG. Die konkreten Anforderungen stehen in der Verordnung zum Gesetz.",
+          "Dass Menschen mit Behinderungen die Website in der allgemein üblichen Weise, ohne besondere Erschwernis und grundsätzlich ohne fremde Hilfe finden, zugänglich machen und nutzen können; so beschreibt es § 3 Abs. 1 BFSG. Was das BFSG im Einzelnen verlangt, steht in der Verordnung zum Gesetz.",
           "Als technischer Maßstab hat sich die europäische Norm EN 301 549 durchgesetzt, die für Websites die Web Content Accessibility Guidelines (WCAG) 2.1 auf Stufe AA übernimmt. In der Praxis heißt das: Alles ist per Tastatur bedienbar, Texte haben ausreichenden Kontrast, Bilder haben Alternativtexte, Formulare sind beschriftet, und die Seite funktioniert auch vergrößert und mit Screenreader.",
         ],
       },
@@ -683,6 +689,12 @@ export const RATGEBER = [
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
     ],
+    cta: {
+      headline: "Welches Werkzeug passt zu Ihrem Ablauf?",
+      intro:
+        "Schreiben Sie mir, welche Programme verbunden werden sollen und wie oft der Ablauf im Monat läuft. Sie bekommen innerhalb von 24 Stunden eine Empfehlung mit Begründung, welches der drei Werkzeuge zu Ihnen passt.",
+      button: "Empfehlung anfragen",
+    },
   },
   {
     path: "/ratgeber/recruiting-mit-n8n-automatisieren",
@@ -752,6 +764,12 @@ export const RATGEBER = [
       { path: "/leistungen/hubspot-integration", label: "HubSpot- und CRM-Anbindung" },
       { path: "/projekte/recruiting-automatisierung", label: "Case Study: Recruiting-Automatisierung" },
     ],
+    cta: {
+      headline: "Womit sollten Sie anfangen?",
+      intro:
+        "Eine Anleitung ersetzt nicht den Blick auf Ihre eigenen Abläufe. Schreiben Sie mir, wie eine Bewerbung bei Ihnen heute vom Eingang bis zur Zusage läuft: Sie bekommen innerhalb von 24 Stunden eine Einschätzung, welcher Schritt sich zuerst lohnt.",
+      button: "Recruiting-Automatisierung anfragen",
+    },
   },
   {
     path: "/ratgeber/ki-recruiting-ai-act",
@@ -882,6 +900,12 @@ export const RATGEBER = [
       { path: "/ratgeber/recruiting-mit-n8n-automatisieren", label: "Recruiting mit n8n automatisieren" },
       { path: "/leistungen/voice-ai-agenten", label: "Voice-AI-Agenten und der Transparenzhinweis" },
     ],
+    cta: {
+      headline: "Wollen Sie KI im Recruiting einsetzen?",
+      intro:
+        "Schreiben Sie mir, wofür: Vorsortierung, Terminabsprache oder Kommunikation mit Bewerbern. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, wie sich das umsetzen lässt, ohne dass ein Modell über Bewerber entscheidet.",
+      button: "Recruiting-Automatisierung anfragen",
+    },
   },
   {
     path: "/ratgeber/ki-telefonagent-kosten-recht",
@@ -1018,6 +1042,12 @@ export const RATGEBER = [
       { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was ein n8n Freelancer kostet" },
     ],
+    cta: {
+      headline: "Was würde ein Telefonassistent bei Ihnen kosten?",
+      intro:
+        "Sagen Sie mir, wie viele Anrufe im Monat ankommen und wie lange ein Gespräch ungefähr dauert. Sie bekommen innerhalb von 24 Stunden eine Einschätzung der laufenden Kosten pro Monat und des einmaligen Aufwands.",
+      button: "Telefonassistent anfragen",
+    },
   },
   {
     path: "/ratgeber/website-relaunch",
@@ -1124,7 +1154,7 @@ export const RATGEBER = [
     cta: {
       headline: "Steht bei Ihnen ein Relaunch an?",
       intro:
-        "Schreiben Sie mir die Adresse Ihrer jetzigen Website. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was beim Umzug zu sichern ist, und einen realistischen Festpreis.",
+        "Diese Anleitung deckt den üblichen Ablauf ab, jede Website hat aber eigene Sonderfälle. Schreiben Sie mir die Adresse Ihrer jetzigen Website: Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was beim Umzug zu sichern ist, und einen realistischen Festpreis.",
       button: "Relaunch anfragen",
     },
   },

@@ -96,6 +96,13 @@ export const PROJEKTE = [
     path: "/projekte/recruiting-automatisierung",
     kind: "mandat",
     leistung: { path: "/leistungen/recruiting-automatisierung", label: "Recruiting-Automatisierung mit n8n und ATS-Anbindung" },
+    /* Eigener Schluss: Der allgemeine stand gleichlautend unter drei
+       Fallstudien, und wer diese gelesen hat, fragt nach Recruiting. */
+    cta: {
+      headline: "Soll Ihr Recruiting auch so laufen?",
+      intro: "Diese Case Study zeigt den Aufbau bei meinem Arbeitgeber. Schreiben Sie mir, mit welchem ATS und welchen Programmen Sie arbeiten: Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was sich davon auf Ihr Recruiting übertragen lässt.",
+      button: "Recruiting-Automatisierung anfragen",
+    },
     title: "Recruiting-Automatisierung mit n8n und GPT",
     subtitle:
       "Sales- und Recruiting-Prozesse der TOPEOPLE Group GmbH, Frankfurt am Main",
@@ -174,7 +181,7 @@ export const PROJEKTE = [
       { value: "3", label: "Systeme", note: "Website, Kundenkonto, Mitarbeiterbereich" },
     ],
     ausgangslage:
-      "Phoenix Parkservice bietet Valet-Parken am Frankfurter Flughafen an: Kunden geben ihr Auto am Flughafen ab und bekommen es bei der Rückkehr dort zurück. Eine eigene Website hatte das Unternehmen nicht, Buchungen kamen ausschließlich über das Portal eines Dritten. Gebraucht wurden deshalb zwei Dinge: ein eigener Buchungsweg mit eigenem Überblick über Kunden und Termine, und Sichtbarkeit bei Google, damit Kunden direkt buchen. Der Weg dorthin war eine eigene Website mit Buchungssystem und KI-SEO, also Suchmaschinenoptimierung, bei der n8n Recherche, Texte und Veröffentlichung automatisiert.",
+      "Phoenix Parkservice bietet Valet-Parken am Frankfurter Flughafen an: Kunden geben ihr Auto am Flughafen ab und bekommen es bei der Rückkehr dort zurück. Eine eigene Website hatte das Unternehmen nicht, Buchungen kamen ausschließlich über das Portal eines Dritten. Gebraucht wurden deshalb zwei Dinge: ein eigener Buchungsweg mit eigenem Überblick über Kunden und Termine, und Sichtbarkeit bei Google, damit Kunden direkt buchen. Der Weg dorthin war eine eigene Buchungsplattform aus Website und Buchungssystem, dazu KI-SEO, also Suchmaschinenoptimierung, bei der n8n Recherche, Texte und Veröffentlichung automatisiert.",
     loesung: [
       "Website und Buchungssystem selbst entwickelt: Spring Boot im Backend, Angular im Frontend, REST-Schnittstellen und eigenes Datenbankdesign.",
       "Buchung als Gast oder mit Kundenkonto, mit Reisedaten, Telefon- und Flugnummer; der Preis ergab sich automatisch aus der Parkdauer.",
@@ -212,7 +219,7 @@ export const PROJEKTE = [
     kind: "abschlussarbeit",
     title: "Unit-Tests automatisch erzeugen mit einem LLM",
     subtitle:
-      "Masterarbeit bei der INFOMOTION GmbH: ein Maven-Plugin, das Unit-Tests für Java-Spring-Boot-Projekte schreibt",
+      "Masterarbeit bei der INFOMOTION GmbH: ein Maven-Plugin, mit dem sich Unit-Tests für Java-Spring-Boot-Projekte automatisch erzeugen lassen",
     role: "Masterarbeit und Full-Stack Developer, 02/2022 bis 10/2024",
     stats: [
       { value: "9 → 42 %", label: "Testabdeckung", note: "mit JaCoCo gemessen" },
@@ -251,7 +258,7 @@ export const PROJEKTE = [
     kind: "abschlussarbeit",
     title: "SAP-BusinessObjects-Berichte in Augmented Reality",
     subtitle:
-      "Bachelorarbeit bei der INFOMOTION GmbH, mit einer Befragung von 81 Personen in deutschen Unternehmen",
+      "Bachelorarbeit bei der INFOMOTION GmbH: SAP-BusinessObjects-Berichte als 3D-Diagramme im Browser, dazu eine Befragung von 81 Personen in deutschen Unternehmen",
     role: "Bachelorarbeit, 2022",
     stats: [
       { value: "81", label: "Befragte", note: "in deutschen Unternehmen" },
