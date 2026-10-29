@@ -32,7 +32,12 @@ import { LinkArrow } from "../LinkArrow";
    Zahl, die an zwei Stellen gepflegt wird, driftet: die Fallstudie wird
    aktualisiert, der Hero bleibt auf dem alten Wert stehen, und niemand merkt es,
    weil beide fuer sich stimmig aussehen. Voice-AI hat bewusst keine stat, dort
-   traegt das Label allein. */
+   traegt das Label allein.
+
+   Das Label selbst ist NICHT abgeleitet: Wer caseStudy.stat austauscht, muss
+   hero.ankerLabel derselben Leistung mit anpassen. Genau das ist am 27.10.2026
+   passiert, als "Website überarbeiten" von Phoenix (+35 %) auf MA-Flats (100)
+   umzog; zwei Tage stand hier "100 organischer Traffic". */
 /* Wie viele Zeilen der Hero zeigt.
 
    Nicht willkuerlich, sondern gemessen bei 900 px Fensterhoehe: mit sechs

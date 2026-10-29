@@ -392,7 +392,10 @@ export const LEISTUNGEN = [
     badge: "Website überarbeiten & modernisieren",
     hero: {
       kurz: "Website überarbeiten lassen",
-      ankerLabel: "organischer Traffic",
+      /* Gehört zu caseStudy.stat weiter unten ("100"). Stand vom 27.10. bis
+         29.10.2026 noch auf "organischer Traffic" vom alten Phoenix-Beleg, und
+         die Startseite zeigte "100 organischer Traffic". */
+      ankerLabel: "Punkte Barrierefreiheit",
     },
     teaser: `Bestehende Websites modernisieren, aktualisieren und schneller machen, ab ${euro(FESTPREIS.update)}, ohne gleich alles neu zu bauen.`,
     h1: "Website überarbeiten und modernisieren lassen",
