@@ -21,7 +21,7 @@ export const RATGEBER = [
     kicker: "Kosten",
     h1: "Was kostet ein n8n Freelancer?",
     published: "2026-08-07",
-    modified: "2026-09-30",
+    modified: "2026-10-29",
     // The lede is written to be quotable on its own, with no unresolved
     // pronouns and no dependency on a preceding paragraph.
     lede: `Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde; die Erhebung weist Deutschland, Österreich und die Schweiz nicht getrennt aus. Mein eigener Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang.`,
@@ -81,7 +81,7 @@ export const RATGEBER = [
         h2: "Woran erkenne ich, ob sich die Investition lohnt?",
         body: [
           "Daran, dass Sie vor dem Start gemessen haben, wie lange der Prozess heute dauert und wie oft er anfällt. Ohne diese Ausgangsmessung ist jede Prozentzahl hinterher nicht überprüfbar.",
-          "Als Größenordnung aus der eigenen Praxis: In den von mir automatisierten Recruiting-Prozessen sanken die Durchlaufzeiten um rund 80 Prozent, und die Candidate Operations erreichten etwa 90 Prozent Automatisierungsgrad. Das sind Werte aus produktiv laufenden Systemen, keine Modellrechnung. Übertragbar sind sie nur dort, wo der Prozess ähnlich stark von manueller Datenübertragung geprägt war.",
+          "Ein Beispiel aus der eigenen Praxis: Bei meinem Arbeitgeber rief früher ein Recruiter jeden neuen Kandidaten selbst an, meist am selben Tag. Heute ruft eine KI-Assistentin wenige Minuten nach dem Eingang an, und GPT wertet rund 1.900 dieser Anrufe im Monat automatisch aus. Das sind Werte aus produktiv laufenden Systemen, keine Modellrechnung. Übertragbar sind sie nur dort, wo ein Prozess ähnlich oft anfällt und ähnlich viel Handarbeit kostet.",
         ],
       },
       {
@@ -701,8 +701,8 @@ export const RATGEBER = [
     kicker: "Recruiting",
     h1: "Recruiting mit n8n automatisieren",
     published: "2026-08-07",
-    modified: "2026-08-07",
-    lede: "Im Recruiting lassen sich Bewerbungseingang, Datenpflege, Terminierung und Statuskommunikation automatisieren, die Auswahlentscheidung nicht. In den von mir automatisierten Prozessen sanken die Durchlaufzeiten um rund 80 Prozent, und die Candidate Operations erreichten etwa 90 Prozent Automatisierungsgrad.",
+    modified: "2026-10-29",
+    lede: "Im Recruiting lassen sich Bewerbungseingang, Datenpflege, Terminierung und Statuskommunikation automatisieren, die Auswahlentscheidung nicht. In den von mir automatisierten Prozessen ruft eine KI-Assistentin neue Bewerber wenige Minuten nach dem Eingang an, statt wie früher am selben Tag, und GPT wertet rund 1.900 Anrufe im Monat aus.",
     sections: [
       {
         h2: "Welche Recruiting-Schritte lassen sich automatisieren?",
@@ -735,8 +735,8 @@ export const RATGEBER = [
       {
         h2: "Was bringt die Automatisierung messbar?",
         body: [
-          "In den Prozessen, die ich bei meinem Arbeitgeber TOPEOPLE Group GmbH automatisiert habe, sanken die Durchlaufzeiten um rund 80 Prozent, und der Automatisierungsgrad der Candidate Operations erreichte etwa 90 Prozent. Beides sind Werte aus produktiv laufenden Systemen.",
-          "Diese Zahlen sind nicht beliebig übertragbar. Sie stammen aus Prozessen, die vorher stark von manueller Datenübertragung geprägt waren. Wo bereits ein gut gepflegtes ATS mit sauberen Schnittstellen läuft, fällt der Effekt kleiner aus, weil weniger Handarbeit übrig ist.",
+          "Bei meinem Arbeitgeber TOPEOPLE Group GmbH ruft eine KI-Assistentin neue Bewerber wenige Minuten nach dem Eingang an, vorher geschah das meist am selben Tag. GPT wertet rund 1.900 dieser Anrufe im Monat aus, rund 300 Vorstellungsmails im Monat entstehen als Entwurf, den ein Recruiter freigibt, und 500 bis 1.500 Absagen gehen automatisch hinaus. Das sind Werte aus produktiv laufenden Systemen, Stand Oktober 2026.",
+          "Diese Zahlen sind nicht beliebig übertragbar, denn sie hängen am Volumen: Bei rund 1.400 neuen Kandidaten im Monat lohnt sich jeder automatisierte Schritt schnell. Wo wenige Bewerbungen eingehen oder bereits ein gut gepflegtes ATS mit sauberen Schnittstellen läuft, fällt der Effekt kleiner aus, weil weniger Handarbeit übrig ist.",
         ],
       },
     ],

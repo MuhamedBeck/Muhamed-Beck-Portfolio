@@ -71,10 +71,10 @@ const STEPS = [
 ];
 
 // Same figures as the German pages, and carrying the same provenance line. A
-// bare "80%" on a freelance page is indistinguishable from an invented one.
+// bare figure on a freelance page is indistinguishable from an invented one.
 const RESULTS = [
-  { value: "80 %", label: "shorter recruiting cycle times" },
-  { value: "90 %", label: "of candidate operations automated" },
+  { value: "1,900", label: "AI phone calls a month, evaluated automatically" },
+  { value: "54", label: "users on the CRM platform whose development I lead" },
   { value: "35 %", label: "more organic traffic" },
 ];
 
@@ -228,9 +228,9 @@ export const HireMe = () => {
             ))}
           </dl>
           <p className="mt-8 max-w-[68ch] text-sm leading-relaxed text-paper-mute">
-            All figures come from systems running in production, not from demos.
-            TOPEOPLE Group GmbH is my employer; Phoenix Parkservice was a freelance
-            engagement.
+            All figures come from systems running in production, not from demos,
+            as of October 2026. TOPEOPLE Group GmbH is my employer; Phoenix
+            Parkservice was a freelance engagement.
           </p>
         </div>
       </Section>

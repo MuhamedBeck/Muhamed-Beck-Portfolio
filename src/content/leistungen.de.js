@@ -72,7 +72,7 @@ export const LEISTUNGEN = [
     badge: "n8n & Zapier Spezialist",
     hero: {
       kurz: "n8n- und Workflow-Automatisierung",
-      ankerLabel: "Durchlaufzeit",
+      ankerLabel: "aktive Workflows",
       auszeichnung: "Schwerpunkt",
     },
     teaser:
@@ -134,9 +134,9 @@ export const LEISTUNGEN = [
       },
     ],
     caseStudy: {
-      stat: "-80%",
-      statLabel: "Durchlaufzeit im Recruiting",
-      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, habe ich Recruiting- und interne Prozesse mit n8n und Zapier automatisiert. Die Durchlaufzeiten sanken um rund 80 Prozent.",
+      stat: "60+",
+      statLabel: "aktive n8n-Workflows bei meinem Arbeitgeber",
+      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, laufen über 60 aktive n8n-Workflows mit über 40.000 Ausführungen im Monat. Darunter eine KI-Assistentin, die neue Bewerber wenige Minuten nach dem Eingang anruft; rund 1.900 dieser Anrufe im Monat wertet GPT automatisch aus, Stand Oktober 2026.",
       link: "/projekte/recruiting-automatisierung",
       linkText: "Zur Case Study Recruiting-Automatisierung",
     },
@@ -499,6 +499,10 @@ export const LEISTUNGEN = [
         path: "/projekte/phoenix-parkservice",
         label: "Phoenix Parkservice: Buchungsplattform und Website",
       },
+      {
+        path: "/projekte/crm-plattform-personalberatung",
+        label: "Eigene CRM-Plattform für eine Personalberatung",
+      },
       { path: "/ratgeber/website-kosten", label: "Was kostet eine Website 2026?" },
       {
         path: "/leistungen/webentwicklung",
@@ -636,13 +640,13 @@ export const LEISTUNGEN = [
     badge: "KI & LLM Spezialist · Frankfurt",
     hero: {
       kurz: "KI-Automatisierung",
-      ankerLabel: "Automatisierungsgrad",
+      ankerLabel: "KI-Anrufe im Monat",
     },
     teaser:
       "GPT- und LLM-Lösungen, RAG-Systeme und Voice-AI, die Prozesse übernehmen statt nur zu demonstrieren. DSGVO-konform aufgesetzt.",
     h1: "KI-Automatisierung für Unternehmen in Frankfurt",
     intro:
-      "Ich entwickle KI-Lösungen, die echte Geschäftsprozesse übernehmen: GPT- und LLM-Integrationen, RAG-Systeme, Voice-AI-Agenten und automatisierte Abläufe. Als AI Automation Manager bei einem Frankfurter Unternehmen habe ich den Automatisierungsgrad der Candidate Operations auf rund 90 Prozent gehoben. Dieselbe Praxis bringe ich in Ihr Projekt, DSGVO-konform und mit sauberen Guardrails.",
+      "Ich entwickle KI-Lösungen, die echte Geschäftsprozesse übernehmen: GPT- und LLM-Integrationen, RAG-Systeme, Voice-AI-Agenten und automatisierte Abläufe. Als AI Automation Manager bei einem Frankfurter Unternehmen habe ich eine KI-Telefonvorqualifizierung aufgebaut, die rund 1.900 Anrufe im Monat automatisch auswertet. Dieselbe Praxis bringe ich in Ihr Projekt, DSGVO-konform und mit sauberen Guardrails.",
     szenarien: [
       {
         title: "LLM-Lösungen mit Substanz",
@@ -685,9 +689,9 @@ export const LEISTUNGEN = [
       },
     ],
     caseStudy: {
-      stat: "~90%",
-      statLabel: "Automatisierungsgrad Candidate Operations",
-      text: "Mit GPT- und LLM-Lösungen (OpenAI, Azure, RAG, LangChain) habe ich die Candidate Operations eines Frankfurter Personaldienstleisters auf rund 90 Prozent Automatisierungsgrad gebracht, inklusive Voice-AI für die Bewerberkommunikation.",
+      stat: "1.900",
+      statLabel: "KI-Anrufe im Monat, automatisch ausgewertet",
+      text: "Bei meinem Arbeitgeber, einer Frankfurter Personalberatung, ruft eine KI-Assistentin neue Bewerber wenige Minuten nach dem Eingang an. GPT wertet jedes Gespräch aus und schreibt das Ergebnis ins ATS, rund 1.900 Anrufe im Monat mit unter 1 Prozent fehlgeschlagenen Läufen.",
       link: "/projekte/recruiting-automatisierung",
       linkText: "Zur Case Study Recruiting-Automatisierung",
     },
@@ -884,7 +888,7 @@ export const LEISTUNGEN = [
     badge: "KI-Agenten für Unternehmen",
     hero: {
       kurz: "KI-Agenten entwickeln lassen",
-      ankerLabel: "Candidate Operations",
+      ankerLabel: "KI-Entwürfe mit Freigabe",
     },
     teaser:
       "Agenten, die mehrstufige Aufgaben übernehmen, mit klaren Grenzen, Protokoll und einem Menschen an den richtigen Stellen.",
@@ -933,9 +937,9 @@ export const LEISTUNGEN = [
       },
     ],
     caseStudy: {
-      stat: "90 %",
-      statLabel: "der Candidate Operations automatisiert",
-      text: "In den Candidate Operations habe ich GPT-gestützte Abläufe mit RAG und LangChain produktiv gebracht und den Automatisierungsgrad auf rund 90 Prozent gehoben, mit Guardrails für personenbezogene Daten.",
+      stat: "~300",
+      statLabel: "KI-Entwürfe im Monat, freigegeben von Menschen",
+      text: "Bei meinem Arbeitgeber schreibt GPT aus dem Qualifizierungsformular des Recruiters die Vorstellungsmail an den Kunden, rund 300 im Monat. Sie liegt mit Lebenslauf als Entwurf in Outlook und geht erst hinaus, wenn ein Mensch sie freigibt. Gehalt, Geburtsdatum und Kontaktdaten des Kandidaten bleiben dabei außen vor.",
       link: "/projekte/recruiting-automatisierung",
       linkText: "Zur Case Study Recruiting-Automatisierung",
     },
@@ -1197,13 +1201,13 @@ export const LEISTUNGEN = [
     badge: "Recruiting & ATS Automatisierung",
     hero: {
       kurz: "Recruiting-Automatisierung",
-      ankerLabel: "kürzere Durchlaufzeit",
+      ankerLabel: "KI-Anrufe im Monat",
     },
     teaser:
       "Bewerbungseingang, Screening, Terminierung und Statuspflege automatisiert. Der Bereich, in dem ich täglich arbeite.",
     h1: "Recruiting-Automatisierung mit n8n und ATS-Anbindung",
     intro:
-      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager habe ich Durchlaufzeiten um rund 80 Prozent gesenkt und die Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht. Bewerbungseingang, Vorqualifizierung, Terminierung und Statuspflege laufen dabei ohne manuelle Zwischenschritte, über die ATS-Anbindung an RecruitCRM oder Personio und an HubSpot.",
+      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager habe ich eine KI-Telefonvorqualifizierung aufgebaut, die neue Bewerber wenige Minuten nach dem Eingang anruft und rund 1.900 Anrufe im Monat automatisch auswertet. Bewerbungseingang, Vorqualifizierung, Vorstellung und Absage laufen ohne Copy-and-paste, über die ATS-Anbindung an RecruitCRM oder Personio und an HubSpot; freigegeben wird dort, wo ein Mensch entscheiden soll.",
     szenarien: [
       {
         title: "Bewerbungen ohne Copy-and-paste",
@@ -1246,9 +1250,9 @@ export const LEISTUNGEN = [
       },
     ],
     caseStudy: {
-      stat: "80 %",
-      statLabel: "kürzere Durchlaufzeiten im Recruiting",
-      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, habe ich Recruiting- und Vertriebsprozesse mit n8n, Zapier und GPT automatisiert. Die Durchlaufzeiten in den automatisierten Prozessen sanken um rund 80 Prozent.",
+      stat: "1.900",
+      statLabel: "KI-Anrufe im Monat, automatisch ausgewertet",
+      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, ruft eine KI-Assistentin neue Bewerber wenige Minuten nach dem Eingang an, vorher geschah das meist am selben Tag. Dazu kommen rund 300 Vorstellungsmails im Monat als fertiger Entwurf zur Freigabe und 500 bis 1.500 automatische Absagen.",
       link: "/projekte/recruiting-automatisierung",
       linkText: "Zur Case Study Recruiting-Automatisierung",
     },
@@ -1392,7 +1396,7 @@ export const LEISTUNGEN = [
     badge: "n8n für Wien und Österreich · remote",
     hero: {
       kurz: "n8n für Österreich (remote)",
-      ankerLabel: "Durchlaufzeit",
+      ankerLabel: "aktive Workflows",
     },
     teaser:
       "n8n-Workflows für Unternehmen in Wien und ganz Österreich, remote aus Frankfurt: derselbe Satz, Rechnung in Euro, Datenschutz nach DSGVO wie in Deutschland.",
@@ -1440,9 +1444,9 @@ export const LEISTUNGEN = [
       },
     ],
     caseStudy: {
-      stat: "-80%",
-      statLabel: "Durchlaufzeit im Recruiting, produktiv in Frankfurt",
-      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, habe ich Recruiting- und interne Prozesse mit n8n und Zapier automatisiert; die Durchlaufzeiten sanken um rund 80 Prozent. Referenzen aus Österreich habe ich noch keine, die Werkzeuge und die Arbeitsweise sind dieselben.",
+      stat: "60+",
+      statLabel: "aktive n8n-Workflows, produktiv in Frankfurt",
+      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, laufen über 60 aktive n8n-Workflows mit über 40.000 Ausführungen im Monat, vom Bewerbungseingang bis zur KI-Telefonvorqualifizierung. Referenzen aus Österreich habe ich noch keine, die Werkzeuge und die Arbeitsweise sind dieselben.",
       link: "/projekte/recruiting-automatisierung",
       linkText: "Zur Case Study Recruiting-Automatisierung",
     },
@@ -1469,7 +1473,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Haben Sie Referenzen aus Österreich?",
-        a: "Noch nicht. Meine Belege stammen aus Projekten in Deutschland, vor allem aus dem Recruiting, wo ich Durchlaufzeiten um rund 80 Prozent gesenkt habe. Die Werkzeuge und die Arbeitsweise sind für ein Unternehmen in Wien dieselben.",
+        a: "Noch nicht. Meine Belege stammen aus Projekten in Deutschland, vor allem aus dem Recruiting, wo eine von mir aufgebaute KI-Telefonvorqualifizierung rund 1.900 Anrufe im Monat auswertet. Die Werkzeuge und die Arbeitsweise sind für ein Unternehmen in Wien dieselben.",
       },
       {
         q: "Was kostet ein n8n Freelancer in Österreich?",

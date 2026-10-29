@@ -20,17 +20,25 @@
  * neben dem Studium. Sortiert wird nach Enddatum, laufende Tätigkeiten zuerst.
  */
 
-export const LEBENSLAUF_STAND = "August 2026";
+/* Oktober 2026: Die Angaben zur TOPEOPLE-Plattform am 28.10.2026 gegen das
+   Repository geprüft. Sie ist JavaScript (JSX), nicht TypeScript, liegt auf
+   GitHub, nicht GitLab, und hat inzwischen 17 Rollen statt neun. Die Tests
+   laufen nicht bei jedem Push in einer CI, deshalb steht dort keine CI mehr.
+   Die frühere Angabe von 80 % kürzerer Durchlaufzeit hatte keine Messung
+   dahinter und ist ersetzt. Der Voice-AI-Punkt ist auf die zwei Teile
+   aufgeteilt, die nachweislich seine sind: die KI-Telefonvorqualifizierung
+   in n8n und die Telefonie im Browser. */
+export const LEBENSLAUF_STAND = "Oktober 2026";
 
 export const KURZPROFIL = [
-  "Ich baue Software, die Arbeit abschafft. Bei der TOPEOPLE Group GmbH habe ich eine interne Sales- und Recruiting-Plattform entwickelt, die HubSpot, RecruitCRM und Personio ablöst: 19 Fachbereiche, rund 600 Row-Level-Security-Policies über 438 Tabellen, über 80 geplante Jobs für Datenkonsistenz und knapp 600 automatisierte Tests. Heute arbeiten mehr als 50 Kolleginnen und Kollegen täglich damit.",
-  "Parallel automatisiere ich die Prozesse drumherum mit n8n und Zapier, vom Lead-Eingang über die KI-gestützte Qualifizierung per Voice-Agent bis zur fertigen Kandidatenakte. Der Weg vom Lead bis zum qualifizierten Profil ist dadurch rund 80 Prozent kürzer geworden.",
+  "Ich baue Software, die Arbeit abschafft. Bei der TOPEOPLE Group GmbH leite ich seit März 2026 die Entwicklung einer internen Sales- und Recruiting-Plattform, die HubSpot bereits abgelöst hat und als Nächstes RecruitCRM und Personio ablösen soll: 19 Fachbereiche, 17 Rollen auf Row-Level-Security, über 90 geplante Jobs für Datenkonsistenz und automatisierte Tests mit Vitest und Playwright. Heute arbeiten 54 Kolleginnen und Kollegen damit.",
+  "Parallel automatisiere ich die Prozesse drumherum mit n8n und Zapier, vom Bewerbungseingang über die telefonische Vorqualifizierung durch eine KI-Assistentin bis zur Vorstellung beim Kunden. Neue Kandidaten bekommen ihren ersten Anruf jetzt wenige Minuten nach dem Eingang statt am selben Tag, und rund 1.900 dieser Anrufe im Monat wertet GPT automatisch aus.",
   "Davor die Masterarbeit bei INFOMOTION über ein LLM-basiertes Maven-Plugin, das Unit-Tests automatisch erzeugt. In drei Kundenprojekten stieg die Testabdeckung von durchschnittlich 9 auf 42 Prozent, der manuelle Aufwand sank von 1.440 auf 30 Minuten pro Projekt.",
 ];
 
 export const KENNZAHLEN = [
-  { wert: "80 %", label: "kürzere Durchlaufzeit vom Lead zum qualifizierten Profil" },
-  { wert: "50+", label: "tägliche Nutzer der von mir gebauten Plattform" },
+  { wert: "1.900", label: "KI-Anrufe im Monat, automatisch ausgewertet" },
+  { wert: "54", label: "Nutzer der Plattform, deren Entwicklung ich leite" },
   { wert: "9 → 42 %", label: "Testabdeckung durch das Maven-Plugin, mit JaCoCo gemessen" },
   { wert: "3", label: "Sprachen auf Verhandlungsniveau oder darüber" },
 ];
@@ -44,22 +52,24 @@ export const STATIONEN = [
     ort: "Frankfurt am Main",
     art: "Festanstellung",
     zusammenfassung:
-      "Entwicklung und Betrieb der internen Sales- und Recruiting-Plattform, dazu die Automatisierung der Recruiting-Prozesse.",
+      "Lead-Entwickler der internen Sales- und Recruiting-Plattform seit 03/2026, dazu die Automatisierung der Recruiting-Prozesse.",
     gruppen: [
       {
         titel: "Plattform",
         punkte: [
-          "Interne SaaS-Plattform (React 19, TypeScript, Vercel Serverless, Supabase/PostgreSQL), die HubSpot, RecruitCRM und Personio ablöst: 19 Fachbereiche, über 50 tägliche Nutzer, produktiv im Tagesgeschäft",
-          "Mandantenfähiges Rollenmodell mit neun Rollen auf Row-Level-Security: rund 600 Policies über 438 Tabellen, dazu Audit-Logging",
-          "Über 80 geplante Jobs für Datenkonsistenz: Abgleich gegen Fremdsysteme, SLA-Eskalation, automatisches Zusammenführen von Dubletten",
-          "Rund 580 automatisierte Tests (Vitest, Playwright, axe-core) in der CI, Auslieferung über GitLab CI/CD und Vercel",
+          "Interne SaaS-Plattform (React 19, JavaScript, Vercel Serverless, Supabase/PostgreSQL) für Vertrieb, Account Management und Recruiting: HubSpot abgelöst und gekündigt, RecruitCRM und Personio als nächste Schritte geplant; 19 Fachbereiche, 54 Nutzer, produktiv im Tagesgeschäft",
+          "Mandantenfähiges Rollenmodell mit 17 Rollen auf Row-Level-Security, dazu Audit-Logging",
+          "Über 90 geplante Jobs für Datenkonsistenz: Abgleich gegen Fremdsysteme, SLA-Eskalation, automatisches Zusammenführen von Dubletten",
+          "Telefonie im Browser mit Twilio Voice SDK (WebRTC) und Live-Transkription über Deepgram; rund 10.000 Anrufe im Monat werden automatisch im ATS protokolliert",
+          "Automatisierte Tests mit Vitest und Playwright, darunter über 200 End-to-End-Tests und Prüfungen auf Barrierefreiheit mit axe-core; Auslieferung über GitHub und Vercel",
         ],
       },
       {
         titel: "KI und Automatisierung",
         punkte: [
-          "Recruiting- und interne Prozesse mit n8n und Zapier automatisiert, vom Lead-Eingang bis zur fertigen Kandidatenakte; Durchlaufzeit rund 80 Prozent kürzer",
-          "Voice-AI-Agent für Erstkontakt und Qualifizierung mit Twilio Voice SDK (WebRTC), Deepgram, ElevenLabs und OpenAI, samt Transkription und Auswertung",
+          "Recruiting-Prozesse mit n8n und Zapier automatisiert, vom Bewerbungseingang bis zur Vorstellung beim Kunden: über 60 aktive Workflows mit über 40.000 Ausführungen im Monat",
+          "KI-Telefonvorqualifizierung neuer Bewerber mit Twilio, ElevenLabs und OpenAI: erster Anruf wenige Minuten nach dem Eingang, rund 1.900 automatisch ausgewertete Anrufe im Monat",
+          "Vorstellungsmails an Kunden mit GPT, rund 300 im Monat, als Entwurf in Outlook, verschickt erst nach Freigabe durch den Recruiter",
           "Eigener MCP-Server (Model Context Protocol) für kontrollierten KI-Zugriff auf Plattformdaten",
           "Multi-Agent-Workflows für Entwicklung, Datenmigration und Betrieb",
           "LLM-gestützte Dokumentenverarbeitung: Lebenslauf-Import aus PDF und DOCX inklusive OCR, strukturierte Extraktion, automatische Profilerstellung",

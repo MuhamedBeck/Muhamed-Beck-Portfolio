@@ -26,8 +26,8 @@ export const SERVICES = [
       "Monitoring, error handling, rate-limit and retry strategies",
     ],
     result: {
-      value: "80 %",
-      text: "shorter recruiting cycle times in the processes I automated at TOPEOPLE Group GmbH, my employer.",
+      value: "1,900",
+      text: "AI phone calls a month, evaluated automatically by the recruiting workflows I built in n8n at TOPEOPLE Group GmbH, my employer.",
     },
   },
   {

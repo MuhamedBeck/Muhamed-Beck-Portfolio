@@ -101,8 +101,8 @@ const llms = `# Muhamed Nur Beck: KI-Automatisierung und Webentwicklung, Frankfu
 
 ## Belegte Ergebnisse
 
-- Durchlaufzeiten im Recruiting um rund 80 Prozent gesenkt (TOPEOPLE Group GmbH, Arbeitgeber, seit 09/2025).
-- Candidate Operations auf etwa 90 Prozent Automatisierungsgrad gebracht, mit GPT, RAG und LangChain.
+- KI-Telefonvorqualifizierung mit n8n: Neue Bewerber werden wenige Minuten nach dem Eingang angerufen statt wie früher am selben Tag, rund 1.900 Anrufe im Monat wertet GPT automatisch aus (TOPEOPLE Group GmbH, Arbeitgeber, seit 09/2025, Stand Oktober 2026).
+- Lead-Entwickler der internen CRM-Plattform der TOPEOPLE Group seit 03/2026: 54 Nutzer, HubSpot abgelöst und gekündigt, rund 10.000 Anrufe im Monat automatisch im ATS protokolliert.
 - Eigene Website und Buchungsplattform mit Spring Boot und Angular entwickelt; nach dem Start der SEO-Automatisierung mit n8n lag der organische Traffic drei Monate lang 35 Prozent über den drei Monaten davor (Phoenix Parkservice, Freelance-Mandat 07/2024 bis 09/2025).
 - maflats.de neu gebaut: fünf Sprachen, neun Standorte, keine ausgelieferte JavaScript-Datei, LCP 1,35 Sekunden unter Slow 4G mit vierfacher CPU-Drosselung, Lighthouse 100 für Barrierefreiheit und SEO (MA-Flats, Freelance-Mandat 07/2026 bis 08/2026).
 - Testabdeckung von 9 auf 42 Prozent gesteigert und den manuellen Aufwand je Projekt von 1.440 auf 30 Minuten gesenkt (Masterarbeit, INFOMOTION GmbH).

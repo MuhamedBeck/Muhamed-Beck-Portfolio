@@ -1,4 +1,6 @@
-// German case study content. Facts and metrics come from the owner's CV.
+// German case study content. Facts and metrics come from the owner's CV; for
+// the two TOPEOPLE studies they come from the systems themselves (n8n, ATS,
+// app repository, read 28.10.2026) and were cleared by the owner.
 
 // `kind` separates paid engagements from the two theses. The homepage shows
 // only the engagements, because someone evaluating a supplier is asking what
@@ -103,48 +105,117 @@ export const PROJEKTE = [
       intro: "Diese Case Study zeigt den Aufbau bei meinem Arbeitgeber. Schreiben Sie mir, mit welchem ATS und welchen Programmen Sie arbeiten: Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was sich davon auf Ihr Recruiting übertragen lässt.",
       button: "Recruiting-Automatisierung anfragen",
     },
-    title: "Recruiting-Automatisierung mit n8n und GPT",
+    title: "Recruiting-Automatisierung mit n8n und KI-Telefonie",
     subtitle:
-      "Sales- und Recruiting-Prozesse der TOPEOPLE Group GmbH, Frankfurt am Main",
+      "Bewerbungseingang, telefonische Vorqualifizierung und Vorstellung beim Kunden für die TOPEOPLE Group GmbH, eine Personalberatung in Frankfurt am Main",
     role: "AI Automation Manager, seit 09/2025",
+    /* Am 29.10.2026 neu gefasst, mit Zahlen vom 28.10.2026 aus beiden
+       n8n-Instanzen und dem ATS, vom Inhaber freigegeben. Die früheren Werte
+       (-80 % Durchlaufzeit, ~90 % Automatisierungsgrad) hatten keine Messung
+       dahinter und sind auf der ganzen Seite ersetzt. Mengen sind Monatswerte.
+       Die Ausführungen sind aus rund 17 Tagen Aufbewahrung hochgerechnet und
+       deshalb abgerundet, ebenso die Zahl der aktiven Workflows. Die Plattform
+       hat seitdem eine eigene Fallstudie. */
     stats: [
-      { value: "-80%", label: "Durchlaufzeit", note: "in Recruiting-Prozessen" },
-      { value: "~90%", label: "Automatisierungsgrad", note: "Candidate Operations" },
-      { value: "9", label: "Rollen-Modell", note: "Multi-Tenant-SaaS mit RLS" },
+      { value: "1.900", label: "KI-Anrufe im Monat", note: "automatisch ausgewertet, unter 1 % fehlgeschlagene Läufe" },
+      { value: "~300", label: "Vorstellungen im Monat", note: "als fertiger Entwurf, verschickt erst nach Freigabe" },
+      { value: "60+", label: "aktive n8n-Workflows", note: "über 40.000 Ausführungen im Monat" },
     ],
     ausgangslage:
-      "Recruiting- und Vertriebsprozesse liefen über mehrere getrennte Systeme: CRM, ATS, E-Mail und interne Tools. Kandidaten- und Lead-Daten wurden manuell übertragen, Durchlaufzeiten waren lang und wertvolle Zeit floss in wiederkehrende Routineaufgaben statt in Gespräche mit Kandidaten und Kunden.",
+      "Die TOPEOPLE Group ist eine Personalberatung in Frankfurt am Main, und jeden Monat kommen rund 1.400 neue Kandidaten in ihr ATS. Vor der Automatisierung rief ein Recruiter jeden davon selbst an, meist am selben Tag, und auch die Schritte danach liefen von Hand: die Antworten ins ATS übertragen, den Lebenslauf ins Firmenlayout bringen, die Vorstellung an den Kunden schreiben, absagen. Bei diesem Volumen frisst die Routine genau die Zeit, die ein Recruiter für die Gespräche braucht, die nur ein Mensch führen kann.",
     loesung: [
-      "Recruiting- und interne Prozesse mit n8n und Zapier automatisiert, angebunden über Webhooks und REST-APIs.",
-      "GPT- und LLM-Lösungen (OpenAI, Azure, RAG, LangChain) für die Candidate Operations entwickelt: Anreicherung, Klassifizierung und Kommunikation.",
-      "Voice-AI-Agenten mit Twilio/WebRTC und Speech-to-Text/Text-to-Speech für die Support- und Bewerberkommunikation umgesetzt.",
-      "ATS- und CRM-Integrationen gebaut und ausgerollt (HubSpot, RecruitCRM, Personio), dazu Stripe, Slack, Calendly und DocuSeal, mit OAuth2/JWT, Monitoring und Fehlerbehandlung.",
-      "HubSpot und RecruitCRM dauerhaft synchronisiert: Leads, Kandidaten und Deals, abgesichert durch Rate-Limit- und Retry-Strategien.",
-      "Eine interne Sales- und Recruiting-Plattform als SaaS (PWA) end-to-end gebaut: React 19, Supabase, Vercel und Twilio, multi-tenant mit Row Level Security und einem 9-Rollen-Modell.",
-      "LLM-Guardrails etabliert: PII/DSGVO-Schutz, RBAC, Audit-Logging und Evaluation, dazu KPI- und ROI-Tracking (Time-to-Hire, SLA).",
+      "Telefonische Vorqualifizierung durch eine KI-Assistentin: Ein n8n-Workflow prüft zwischen 7 und 21 Uhr alle vier Minuten, ob neue Kandidaten im ATS sind, und startet den Anruf über Twilio mit einer Stimme von ElevenLabs. Wer nicht abnimmt, bekommt bis zu fünf weitere Versuche.",
+      "GPT wertet jedes Gespräch aus und schreibt das Ergebnis direkt zum Kandidaten ins ATS.",
+      "Aus dem Qualifizierungsformular des Recruiters entstehen rund 30 Felder im ATS und daraus die Vorstellungsmail an den Kunden. GPT schreibt sie, sie liegt mit Lebenslauf als Entwurf in Outlook und geht erst hinaus, wenn ein Mensch sie freigegeben hat.",
+      "Datenschutz im Prompt: Gehalt, Geburtsdatum und Kontaktdaten des Kandidaten gelangen nicht in die Vorstellung an den Kunden.",
+      "Lebenslauf im Firmenlayout als PDF oder Word per Klick, dank Texterkennung auch aus eingescannten Unterlagen.",
+      "Bewerbungen über die Website landen mit Dublettenprüfung im ATS und werden reihum auf die Recruiter verteilt.",
+      "Absagen gehen automatisch hinaus, je nach Stellenlage 500 bis 1.500 im Monat.",
+      "Fehlerbehandlung in drei Stufen: 27 Fehler-Auslöser melden sich sofort in Slack, ein nächtlicher Abgleich prüft die Daten gegen das ATS, und einmal pro Woche kommt eine Fehlerübersicht.",
     ],
     ergebnisse: [
-      "Durchlaufzeiten in den automatisierten Prozessen um rund 80 Prozent reduziert",
-      "Automatisierungsgrad der Candidate Operations auf rund 90 Prozent erhöht",
-      "Bewerber- und Supportkommunikation durch Voice-AI-Agenten entlastet, mit verbesserter Zufriedenheit",
-      "Stabiler Datenaustausch zwischen allen Systemen ohne manuelle Doppeleingaben",
-      "Messbarer Nutzen durch KPI- und ROI-Tracking statt Bauchgefühl",
+      "Neue Kandidaten bekommen zwischen 7 und 21 Uhr wenige Minuten nach dem Eingang ihren ersten Anruf; vorher geschah das meist am selben Tag",
+      "Rund 1.900 KI-Anrufe im Monat werden automatisch ausgewertet, mit unter 1 Prozent fehlgeschlagenen Läufen",
+      "Rund 300 Vorstellungsmails im Monat entstehen als fertiger Entwurf mit Lebenslauf; was an den Kunden geht, entscheidet weiterhin der Recruiter",
+      "500 bis 1.500 Absagen im Monat ohne Handarbeit",
+      "Über 60 aktive Workflows mit über 40.000 Ausführungen im Monat",
+      "Die eigene CRM-Plattform, deren Entwicklung ich seit 03/2026 leite, übernimmt diese Abläufe nach und nach; dazu gibt es eine eigene Fallstudie",
     ],
     stack: [
       "n8n",
-      "Zapier",
       "OpenAI",
-      "Azure OpenAI",
-      "LangChain",
+      "ElevenLabs",
+      "Twilio",
+      "RecruitCRM",
+      "Microsoft Outlook",
+      "Slack",
+      "Texterkennung (OCR)",
+    ],
+  },
+  {
+    path: "/projekte/crm-plattform-personalberatung",
+    kind: "mandat",
+    /* Seit dem 29.10.2026 eine eigene Fallstudie. Vorher war die Plattform ein
+       Punkt der Recruiting-Fallstudie, samt TypeScript und GitLab, die es in
+       diesem Projekt nie gab: Die App ist JavaScript (JSX) und liegt auf
+       GitHub. Zahlen vom 28.10.2026 aus dem Repository, die 54 Nutzer vom
+       Inhaber. Gebaut wird im Team; was Kollegen gebaut haben, steht hier
+       nicht als seine Arbeit. RecruitCRM und Personio abzulösen ist ein Plan
+       und steht deshalb als Plan da, nicht als Ergebnis.
+
+       Die Zeile darunter bleibt einzeilig, aus demselben Grund wie bei Phoenix. */
+    leistung: { path: "/leistungen/web-app-entwicklung", label: "Web-App und Buchungssystem entwickeln lassen" },
+    cta: {
+      headline: "Arbeiten Ihre Teams auch in mehreren Programmen nebeneinander?",
+      intro: `Diese Case Study zeigt eine Plattform, die ich bei meinem Arbeitgeber im Team entwickle. Schreiben Sie mir, welche Programme bei Ihnen nebeneinander laufen und wo Daten doppelt gepflegt werden. Web-Apps entwickle ich zum Festpreis ab ${euro(FESTPREIS.webApp)}, Kundenportale ab ${euro(FESTPREIS.portal)}.`,
+      button: "Web-App anfragen",
+    },
+    title: "Eigene CRM-Plattform für eine Personalberatung",
+    subtitle:
+      "Interne Web-App der TOPEOPLE Group GmbH für Vertrieb, Account Management und Recruiting, Frankfurt am Main",
+    role: "Lead-Entwickler im Team, seit 03/2026",
+    stats: [
+      { value: "54", label: "Nutzer im Unternehmen", note: "Stand Oktober 2026" },
+      { value: "16.000", label: "Leads aus HubSpot übernommen", note: "HubSpot ist seitdem abgelöst und gekündigt" },
+      /* Ohne Tilde: "~10.000" ist bei 640 px breiter als seine Spalte. */
+      { value: "10.000", label: "Anrufe im Monat", note: "rund, automatisch beim Kontakt im ATS protokolliert" },
+    ],
+    ausgangslage:
+      "Bei der TOPEOPLE Group arbeitete jede Abteilung in ihrem eigenen Programm: der Vertrieb in HubSpot, die Personalabteilung in Personio, die Recruiter in RecruitCRM. Jedes System kostete eigene Lizenzen, keines war mit den anderen verbunden, und Abläufe, die es so nur in diesem Unternehmen gibt, ließen sich in keinem davon abbilden. Dazu kam der Wunsch, KI direkt in die tägliche Arbeit einzubauen. Das Ziel war ein Ort für alles, statt die Daten über mehrere Systeme zu verstreuen.",
+    loesung: [
+      "Eine eigene Web-App für das ganze Unternehmen, seit März 2026 im Team entwickelt; die Entwicklung leite ich. React 19 und Vite im Frontend, Supabase mit PostgreSQL als Datenbank, Serverfunktionen bei Vercel in Frankfurt. Auf dem Telefon lässt sie sich wie eine App installieren.",
+      "Vertrieb: Anruflisten mit Lead-Scoring und Angebote mit elektronischer Unterschrift über DocuSeal. Die 16.000 Leads aus HubSpot habe ich in die Plattform übernommen, danach wurde HubSpot gekündigt.",
+      "Account Management mit einem eingebauten KI-Assistenten auf Basis von OpenAI.",
+      "Telefonie im Browser über Twilio, mit Live-Transkription. Jedes Gespräch wird automatisch beim Kandidaten oder Kontakt im ATS protokolliert, über eine Warteschlange, damit bei einem Ausfall kein Eintrag verloren geht.",
+      "Eine Chrome-Erweiterung im Chrome Web Store, die Kandidaten und Vertriebskontakte per Klick aus LinkedIn, XING, Firmenseiten und Stellenanzeigen in die Plattform übernimmt.",
+      "Kohorte, ein eigener Bereich für das Trainee-Programm des Unternehmens.",
+      "Ein Sales-Board für das 85-Zoll-Display im Büro, als App für Samsungs Signage-System Tizen.",
+      "Betrieb: Rechte je Rolle direkt in der Datenbank über Row Level Security, mit 17 Rollen von der Administration bis zu Kunden und Kandidaten in ihren Portalen; dazu über 90 geplante Hintergrundjobs, eine nächtliche Datenbanksicherung und automatisierte Tests mit Vitest und Playwright.",
+      "Weitere Module wie Matching, Wiki und Team-Chat sind im Team entstanden. Die Punkte oben habe ich gebaut oder als Lead-Entwickler verantwortet.",
+    ],
+    ergebnisse: [
+      "54 Nutzer im Unternehmen, Stand Oktober 2026; die Teams ziehen Schritt für Schritt in die Plattform um",
+      "HubSpot ist abgelöst und gekündigt, die 16.000 Leads sind übernommen",
+      "Rund 10.000 Anrufe im Monat stehen ohne Nacharbeit beim richtigen Kontakt im ATS",
+      "Kandidaten und Kontakte kommen per Klick aus LinkedIn, XING und Stellenanzeigen in die Plattform",
+      "Die Recruiting-Workflows aus n8n ziehen nach und nach in die Plattform um. Als Nächstes soll RecruitCRM abgelöst werden, als letzter Schritt Personio; das ist der Plan, Stand Oktober 2026",
+    ],
+    stack: [
       "React 19",
-      "TypeScript",
+      "Vite",
+      "JavaScript",
       "Supabase",
+      "PostgreSQL",
       "Vercel",
       "Twilio",
-      "HubSpot",
-      "RecruitCRM",
-      "Personio",
-      "GitLab CI/CD",
+      "Deepgram",
+      "OpenAI",
+      "Microsoft Graph",
+      "DocuSeal",
+      "Vitest",
+      "Playwright",
+      "Chrome-Erweiterung",
+      "Tizen",
     ],
   },
   {
