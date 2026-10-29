@@ -9,6 +9,23 @@ import maflatsHell from "../assets/projekte/maflats-hell.webp";
 import maflatsDunkel from "../assets/projekte/maflats-dunkel.webp";
 import maflatsMobil from "../assets/projekte/maflats-mobil.webp";
 import { FESTPREIS, euro } from "./site.js";
+import { WORKFLOW_PHOENIX, WORKFLOW_VORQUALIFIZIERUNG } from "./workflows.de.js";
+import { LIGHTHOUSE_MAFLATS } from "./grafiken.de.js";
+
+/* Der Umzug der TOPEOPLE Group in die eigene Plattform, als Bild in der
+   Fallstudie und auf der Projektkarte der Startseite. Eine Quelle für beide,
+   damit der Stand (HubSpot abgelöst, der Rest geplant) nicht auseinanderläuft. */
+const UMZUG_PLATTFORM = {
+  label: "Vom Nebeneinander zur eigenen Plattform",
+  beschreibung:
+    "HubSpot für den Vertrieb ist abgelöst und läuft in der eigenen Plattform. RecruitCRM für das Recruiting soll als Nächstes folgen, Personio für die Personalabteilung zuletzt. Die Plattform hat 54 Nutzer, Stand Oktober 2026.",
+  quellen: [
+    { name: "HubSpot", bereich: "Vertrieb", status: "abgelöst", ton: "erfolg" },
+    { name: "RecruitCRM", bereich: "Recruiting", status: "als Nächstes", ton: "warm" },
+    { name: "Personio", bereich: "Personal", status: "zuletzt", ton: "leise" },
+  ],
+  ziel: { name: "Eigene Plattform", sub: "54 Nutzer, Stand Oktober 2026" },
+};
 
 /* `leistung` (optional, nur Mandate): die Leistungsseite, die dieses Projekt
    belegt. Die Fallstudie verlinkt dorthin und belegt das Kontaktformular mit
@@ -27,6 +44,15 @@ export const PROJEKTE = [
       intro: `Schreiben Sie mir, was Ihre jetzige Seite nicht leistet, oder dass es noch keine gibt. Firmen-Websites baue ich zum Festpreis ab ${euro(FESTPREIS.website)}.`,
       button: "Website anfragen",
     },
+    /* Kartenbild auf der Startseite (seit dem Entwurf vom 29.10.2026): je
+       Kundenprojekt etwas Echtes zum Ansehen statt nur Titel und Zahlen. */
+    karte: {
+      art: "bild",
+      src: maflatsHell,
+      width: 1600,
+      height: 1000,
+      alt: "Startseite von maflats.de in der hellen Ansicht",
+    },
     title: "Website-Relaunch für MA-Flats",
     subtitle:
       "Neubau von maflats.de: fünf Sprachen, neun Standorte, ohne eine Zeile ausgeliefertes JavaScript",
@@ -40,6 +66,11 @@ export const PROJEKTE = [
       { value: "1,35 s", label: "LCP", note: "Slow 4G, vierfache CPU-Drosselung" },
       { value: "100", label: "Barrierefreiheit", note: "Lighthouse, mobil" },
     ],
+    bild: {
+      art: "lighthouse",
+      label: "Gemessen mit Lighthouse",
+      daten: LIGHTHOUSE_MAFLATS,
+    },
     screenshots: [
       {
         src: maflatsHell,
@@ -105,6 +136,11 @@ export const PROJEKTE = [
       intro: "Diese Case Study zeigt den Aufbau bei meinem Arbeitgeber. Schreiben Sie mir, mit welchem ATS und welchen Programmen Sie arbeiten: Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was sich davon auf Ihr Recruiting übertragen lässt.",
       button: "Recruiting-Automatisierung anfragen",
     },
+    karte: {
+      art: "workflow",
+      workflow: WORKFLOW_VORQUALIFIZIERUNG,
+      ausschnitt: { klein: { bis: 2 }, gross: { bis: 3 } },
+    },
     title: "Recruiting-Automatisierung mit n8n und KI-Telefonie",
     subtitle:
       "Bewerbungseingang, telefonische Vorqualifizierung und Vorstellung beim Kunden für die TOPEOPLE Group GmbH, eine Personalberatung in Frankfurt am Main",
@@ -121,6 +157,21 @@ export const PROJEKTE = [
       { value: "~300", label: "Vorstellungen im Monat", note: "als fertiger Entwurf, verschickt erst nach Freigabe" },
       { value: "60+", label: "aktive n8n-Workflows", note: "über 40.000 Ausführungen im Monat" },
     ],
+    /* Entwurf 29.10.2026: die Fallstudie hatte kein einziges Bild. Der
+       Workflow aus content/workflows.de.js, dazu der wichtigste Vorher-Heute-
+       Unterschied als Grafik über der Ergebnisliste. */
+    bild: {
+      art: "workflow",
+      label: "Der Workflow in n8n",
+      workflow: WORKFLOW_VORQUALIFIZIERUNG,
+      text: "Vereinfacht: Hilfsknoten zwischen den Schritten sind zusammengefasst. Mengen pro Monat, Stand Oktober 2026.",
+    },
+    vergleich: {
+      titel: "Erster Anruf nach einer Bewerbung",
+      vorher: { label: "Vorher", text: "meist am selben Tag, von Hand" },
+      heute: { label: "Heute", text: "nach wenigen Minuten, automatisch, zwischen 7 und 21 Uhr" },
+      achse: ["Bewerbung geht ein", "Ende des Arbeitstags"],
+    },
     ausgangslage:
       "Die TOPEOPLE Group ist eine Personalberatung in Frankfurt am Main, und jeden Monat kommen rund 1.400 neue Kandidaten in ihr ATS. Vor der Automatisierung rief ein Recruiter jeden davon selbst an, meist am selben Tag, und auch die Schritte danach liefen von Hand: die Antworten ins ATS übertragen, den Lebenslauf ins Firmenlayout bringen, die Vorstellung an den Kunden schreiben, absagen. Bei diesem Volumen frisst die Routine genau die Zeit, die ein Recruiter für die Gespräche braucht, die nur ein Mensch führen kann.",
     loesung: [
@@ -133,12 +184,14 @@ export const PROJEKTE = [
       "Absagen gehen automatisch hinaus, je nach Stellenlage 500 bis 1.500 im Monat.",
       "Fehlerbehandlung in drei Stufen: 27 Fehler-Auslöser melden sich sofort in Slack, ein nächtlicher Abgleich prüft die Daten gegen das ATS, und einmal pro Woche kommt eine Fehlerübersicht.",
     ],
+    /* Ergebnisse mit Zahl als Objekt (groß und farbig im Raster), der Rest als
+       Satz. Die Zahlen ergänzen die Kennzahlen oben, statt sie zu wiederholen. */
     ergebnisse: [
+      { wert: "< 1 %", text: "fehlgeschlagene Läufe bei rund 1.900 ausgewerteten KI-Anrufen im Monat", ton: "erfolg" },
+      { wert: "300", text: "Vorstellungsmails im Monat als fertiger Entwurf; was an den Kunden geht, entscheidet weiterhin der Recruiter", ton: "akzent" },
+      { wert: "500+", text: "Absagen im Monat, je nach Stellenlage bis 1.500, ohne Handarbeit verschickt", ton: "cyan" },
+      { wert: "40.000+", text: "Ausführungen im Monat in über 60 aktiven Workflows", ton: "warm" },
       "Neue Kandidaten bekommen zwischen 7 und 21 Uhr wenige Minuten nach dem Eingang ihren ersten Anruf; vorher geschah das meist am selben Tag",
-      "Rund 1.900 KI-Anrufe im Monat werden automatisch ausgewertet, mit unter 1 Prozent fehlgeschlagenen Läufen",
-      "Rund 300 Vorstellungsmails im Monat entstehen als fertiger Entwurf mit Lebenslauf; was an den Kunden geht, entscheidet weiterhin der Recruiter",
-      "500 bis 1.500 Absagen im Monat ohne Handarbeit",
-      "Über 60 aktive Workflows mit über 40.000 Ausführungen im Monat",
       "Die eigene CRM-Plattform, deren Entwicklung ich seit 03/2026 leite, übernimmt diese Abläufe nach und nach; dazu gibt es eine eigene Fallstudie",
     ],
     stack: [
@@ -170,6 +223,7 @@ export const PROJEKTE = [
       intro: `Diese Case Study zeigt eine Plattform, die ich bei meinem Arbeitgeber im Team entwickle. Schreiben Sie mir, welche Programme bei Ihnen nebeneinander laufen und wo Daten doppelt gepflegt werden. Web-Apps entwickle ich zum Festpreis ab ${euro(FESTPREIS.webApp)}, Kundenportale ab ${euro(FESTPREIS.portal)}.`,
       button: "Web-App anfragen",
     },
+    karte: { art: "plattform", daten: UMZUG_PLATTFORM },
     title: "Eigene CRM-Plattform für eine Personalberatung",
     subtitle:
       "Interne Web-App der TOPEOPLE Group GmbH für Vertrieb, Account Management und Recruiting, Frankfurt am Main",
@@ -180,6 +234,12 @@ export const PROJEKTE = [
       /* Ohne Tilde: "~10.000" ist bei 640 px breiter als seine Spalte. */
       { value: "10.000", label: "Anrufe im Monat", note: "rund, automatisch beim Kontakt im ATS protokolliert" },
     ],
+    bild: {
+      art: "plattform",
+      label: "Der Umzug in eine Plattform",
+      text: "Stand Oktober 2026. Abgelöst ist HubSpot; RecruitCRM und Personio abzulösen ist der Plan.",
+      daten: UMZUG_PLATTFORM,
+    },
     ausgangslage:
       "Bei der TOPEOPLE Group arbeitete jede Abteilung in ihrem eigenen Programm: der Vertrieb in HubSpot, die Personalabteilung in Personio, die Recruiter in RecruitCRM. Jedes System kostete eigene Lizenzen, keines war mit den anderen verbunden, und Abläufe, die es so nur in diesem Unternehmen gibt, ließen sich in keinem davon abbilden. Dazu kam der Wunsch, KI direkt in die tägliche Arbeit einzubauen. Das Ziel war ein Ort für alles, statt die Daten über mehrere Systeme zu verstreuen.",
     loesung: [
@@ -194,10 +254,13 @@ export const PROJEKTE = [
       "Weitere Module wie Matching, Wiki und Team-Chat sind im Team entstanden. Die Punkte oben habe ich gebaut oder als Lead-Entwickler verantwortet.",
     ],
     ergebnisse: [
+      { wert: "17", text: "Rollen, jede mit eigenen Rechten direkt in der Datenbank", ton: "akzent" },
+      { wert: "90+", text: "geplante Hintergrundjobs halten die Daten zwischen den Systemen gleich", ton: "cyan" },
+      { wert: "1 Klick", text: "holt Kandidaten und Kontakte aus LinkedIn, XING und Stellenanzeigen in die Plattform", ton: "warm" },
+      { wert: "0 €", text: "Lizenzkosten für HubSpot, seit die Plattform den Vertrieb trägt", ton: "erfolg" },
       "54 Nutzer im Unternehmen, Stand Oktober 2026; die Teams ziehen Schritt für Schritt in die Plattform um",
       "HubSpot ist abgelöst und gekündigt, die 16.000 Leads sind übernommen",
       "Rund 10.000 Anrufe im Monat stehen ohne Nacharbeit beim richtigen Kontakt im ATS",
-      "Kandidaten und Kontakte kommen per Klick aus LinkedIn, XING und Stellenanzeigen in die Plattform",
       "Die Recruiting-Workflows aus n8n ziehen nach und nach in die Plattform um. Als Nächstes soll RecruitCRM abgelöst werden, als letzter Schritt Personio; das ist der Plan, Stand Oktober 2026",
     ],
     stack: [
@@ -236,6 +299,11 @@ export const PROJEKTE = [
       intro: `Schreiben Sie mir, wie Buchungen und Abläufe heute bei Ihnen laufen. Web-Apps und Buchungssysteme entwickle ich zum Festpreis ab ${euro(FESTPREIS.webApp)}.`,
       button: "Web-App anfragen",
     },
+    karte: {
+      art: "workflow",
+      workflow: WORKFLOW_PHOENIX,
+      ausschnitt: { klein: { ab: 2 }, gross: { ab: 1 } },
+    },
     title: "Buchungsplattform und KI-SEO für Phoenix Parkservice",
     subtitle: "Eigene Website und Buchungssystem für einen Valet-Parkservice am Frankfurter Flughafen",
     role: "Software Engineer & AI-Driven Digital Lead (Freelance), 07/2024 bis 09/2025",
@@ -251,6 +319,12 @@ export const PROJEKTE = [
       { value: "15", label: "Monate", note: "leitende Entwicklung, 07/2024 bis 09/2025" },
       { value: "3", label: "Systeme", note: "Website, Kundenkonto, Mitarbeiterbereich" },
     ],
+    bild: {
+      art: "workflow",
+      label: "Der Buchungsablauf",
+      workflow: WORKFLOW_PHOENIX,
+      text: "Vereinfacht, Stand der Projektzeit 07/2024 bis 09/2025.",
+    },
     ausgangslage:
       "Phoenix Parkservice bietet Valet-Parken am Frankfurter Flughafen an: Kunden geben ihr Auto am Flughafen ab und bekommen es bei der Rückkehr dort zurück. Eine eigene Website hatte das Unternehmen nicht, Buchungen kamen ausschließlich über das Portal eines Dritten. Gebraucht wurden deshalb zwei Dinge: ein eigener Buchungsweg mit eigenem Überblick über Kunden und Termine, und Sichtbarkeit bei Google, damit Kunden direkt buchen. Der Weg dorthin war eine eigene Buchungsplattform aus Website und Buchungssystem, dazu KI-SEO, also Suchmaschinenoptimierung, bei der n8n Recherche, Texte und Veröffentlichung automatisiert.",
     loesung: [
@@ -297,6 +371,19 @@ export const PROJEKTE = [
       { value: "1.440 → 30 min", label: "Schreibaufwand", note: "je Projekt, gegenüber manueller Entwicklung" },
       { value: "2,13 €", label: "pro Testsuite", note: "statt rund 566 € Entwicklerzeit" },
     ],
+    bild: {
+      art: "balken",
+      label: "Vorher und nachher",
+      daten: {
+        art: "vergleich",
+        zeilen: [
+          { label: "Testabdeckung", max: 100, vorher: { wert: 9, text: "9 %" }, nachher: { wert: 42, text: "42 %" } },
+          { label: "Schreibaufwand je Projekt", vorher: { wert: 1440, text: "1.440 min" }, nachher: { wert: 30, text: "30 min" } },
+          { label: "Kosten je Testsuite", vorher: { wert: 566, text: "rund 566 €" }, nachher: { wert: 2.13, text: "2,13 €" } },
+        ],
+        quelle: "Gemessen in drei Kundenprojekten: Testabdeckung mit JaCoCo, Aufwand gegenüber manueller Entwicklung, Kosten als Entwicklerzeit gegenüber API-Kosten.",
+      },
+    },
     ausgangslage:
       "Unit-Tests für Spring-Boot-Services zu schreiben ist wiederkehrende Arbeit, die Teams aufschieben, weshalb die Abdeckung über die Zeit sinkt. Vorhandene Generatoren erzeugten strukturell gültige, inhaltlich aber leere Tests, und keiner davon griff in den Maven-Build ein, den das Team ohnehin ausführte. Eine Literaturrecherche zu Testwerkzeugen und LLM-Anwendungen in der Softwaretechnik fand keinen Ansatz, der Abdeckungsanalyse, Testerzeugung und Build-Lebenszyklus für Java Spring Boot zusammenbringt.",
     loesung: [
@@ -336,6 +423,20 @@ export const PROJEKTE = [
       { value: "59%", label: "fehlendes Wissen", note: "meistgenannte Hürde" },
       { value: "50+", label: "Bilder pro Sekunde", note: "im Browser gerendert" },
     ],
+    bild: {
+      art: "balken",
+      label: "Was Unternehmen bremst",
+      daten: {
+        art: "liste",
+        max: 100,
+        titel: "Meistgenannte Hürden für AR im Reporting",
+        zeilen: [
+          { label: "Fehlendes Wissen", wert: 59, text: "59 %", ton: "warm" },
+          { label: "Fehlende Anwendungsfälle", wert: 41, text: "41 %", ton: "akzent" },
+        ],
+        quelle: "Befragung von 81 Personen in deutschen Unternehmen, Bachelorarbeit 2022.",
+      },
+    },
     ausgangslage:
       "Business-Intelligence-Berichte werden auf flachen Bildschirmen gelesen, was begrenzt, wie viele Dimensionen gleichzeitig darstellbar sind. Augmented Reality war im Unternehmenskontext schon erprobt, aber nicht in Verbindung mit einem Reporting-System, und es gab keine Erhebung dazu, ob Unternehmen so etwas überhaupt einsetzen würden. Offen waren also zwei Fragen: ob browserbasierte AR gegen eine Live-SAP-Quelle technisch trägt, und was Organisationen davon abhält.",
     loesung: [

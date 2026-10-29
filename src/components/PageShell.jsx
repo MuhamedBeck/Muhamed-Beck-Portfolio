@@ -12,9 +12,10 @@ import { Section, SectionHeader } from "./Section";
  * Centralising it also guarantees the <main> landmark is present, which several
  * pages were missing.
  */
-export const PageShell = ({ label, headline, intro, children }) => {
+export const PageShell = ({ label, headline, intro, aside, children }) => {
   useRouteMeta();
   const [menuOpen, setMenuOpen] = useState(false);
+  const header = <SectionHeader as="h1" label={label} headline={headline} intro={intro} />;
 
   return (
     <div className="min-h-[100dvh] text-paper bg-ink">
@@ -36,8 +37,21 @@ export const PageShell = ({ label, headline, intro, children }) => {
         <Section className="!pt-28 !pb-14 md:!pb-20">
           {/* as="h1": this is the page title, not a section heading. Every page
               that renders through PageShell depends on this for its only
-              top-level heading. */}
-          <SectionHeader as="h1" label={label} headline={headline} intro={intro} />
+              top-level heading.
+
+              `aside` (optional) fills the right half of the header, which on
+              every page without it stays empty from lg up. Below lg it follows
+              the intro. Pages that pass nothing render exactly as before. */}
+          {aside ? (
+            <div className="grid items-center gap-x-14 gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)]">
+              {header}
+              <div className="stagger" style={{ "--fade-delay": "320ms" }}>
+                {aside}
+              </div>
+            </div>
+          ) : (
+            header
+          )}
         </Section>
         {children}
       </main>

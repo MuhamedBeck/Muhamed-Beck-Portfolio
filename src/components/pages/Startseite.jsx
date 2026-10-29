@@ -13,6 +13,7 @@ import { useDict } from "../../i18n";
 import { useRouteMeta } from "../../seo/useRouteMeta";
 import { LEISTUNGEN } from "../../content/leistungen.de";
 import { PROJEKTE } from "../../content/projekte.de";
+import { Grafik } from "../Grafik";
 import startseite from "../../i18n/dict/startseite";
 import { LinkArrow } from "../LinkArrow";
 
@@ -126,25 +127,39 @@ export const Startseite = () => {
 
         <Section id="projekte">
           <SectionHeader label={t.cases.label} headline={t.cases.headline} />
-          <ul className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2 md:gap-y-12">
+          <ul className="mt-14 grid gap-x-10 gap-y-14 md:grid-cols-2 md:gap-y-16">
             {PROJEKTE.filter((projekt) => projekt.kind === "mandat").map((projekt, index) => (
               <li
                 key={projekt.path}
                 className="stagger group relative border-t border-hairline pt-6"
                 style={{ "--fade-delay": `${index * 80}ms` }}>
+                {/* Something real to look at per project: the screenshot, the
+                    workflow or the migration. Same frame on every card from md
+                    up, with the picture on its lower edge, so the titles of two
+                    cards side by side line up although the pictures differ in
+                    shape. The runs start one after another, not in unison. */}
+                {projekt.karte ? (
+                  <div className="mb-7 md:flex md:aspect-[16/10] md:items-end">
+                    <div className="w-full">
+                      <Grafik bild={projekt.karte} verzoegerung={0.2 + index * 0.35} />
+                    </div>
+                  </div>
+                ) : null}
                 <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
                   <Link to={projekt.path} className="karten-link">
                     {projekt.title}
                   </Link>
                 </h3>
                 <p className="mt-3 text-sm text-paper-mute">{projekt.subtitle}</p>
+                {/* Term before description, as a <dl> requires; the figure is
+                    moved up visually with flex order. */}
                 <dl className="mt-6 flex flex-wrap gap-x-10 gap-y-4">
                   {projekt.stats.map((stat) => (
-                    <div key={stat.label}>
-                      <dd className="text-2xl font-light tabular-nums text-paper">
+                    <div key={stat.label} className="flex flex-col">
+                      <dt className="order-2 mt-1 text-xs text-paper-mute">{stat.label}</dt>
+                      <dd className="order-1 text-2xl font-light tabular-nums text-paper">
                         {stat.value}
                       </dd>
-                      <dt className="mt-1 text-xs text-paper-mute">{stat.label}</dt>
                     </div>
                   ))}
                 </dl>

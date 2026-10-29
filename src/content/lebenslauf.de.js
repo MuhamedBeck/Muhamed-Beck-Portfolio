@@ -248,6 +248,12 @@ export const AUSBILDUNG = [
   },
 ];
 
+/* Kenntnisse in zwei Schichten, seit dem 29.10.2026: oben die Werkzeuge mit
+   ihrem Zeichen, damit man auf einen Blick sieht, womit gearbeitet wird, darunter
+   die Methoden und Details, für die es kein Zeichen gibt. Ein Werkzeug ist ein
+   Schlüssel in MARKEN (src/components/icons/marken.js), dort stehen Name und
+   Zeichen; `{ marke, name }` überschreibt den Namen, wo der Lebenslauf mehr sagt
+   als der Markenname. Jedes Werkzeug steht genau einmal, oben oder im Text. */
 export const KENNTNISSE = [
   {
     titel: "Schwerpunkte",
@@ -255,39 +261,58 @@ export const KENNTNISSE = [
   },
   {
     titel: "KI und LLM",
+    werkzeuge: [
+      { marke: "openai", name: "OpenAI API" },
+      { marke: "anthropic", name: "Anthropic API" },
+      "langchain",
+      "mcp",
+    ],
     inhalt:
-      "OpenAI und Anthropic API, Prompt Engineering, RAG, LangChain, eigene MCP-Server, Multi-Agent-Workflows, Kosten- und Latenzoptimierung",
+      "Prompt Engineering, RAG, eigene MCP-Server, Multi-Agent-Workflows, Kosten- und Latenzoptimierung",
   },
   {
     titel: "Automatisierung",
+    werkzeuge: ["n8n", "zapier"],
     inhalt:
-      "n8n inklusive Custom-Code-Nodes, Error-Workflows und Self-Hosting, Zapier, Webhooks mit Retry- und Idempotenz-Logik",
+      "Custom-Code-Nodes, Error-Workflows und Self-Hosting in n8n, Webhooks mit Retry- und Idempotenz-Logik",
   },
   {
     titel: "Frontend",
-    inhalt: "React 19, TypeScript, Angular, HTML und CSS",
+    werkzeuge: [{ marke: "react", name: "React 19" }, "typescript", "angular", "html", "css"],
   },
   {
     titel: "Backend",
-    inhalt: "Java, Spring Boot, Node.js, REST, OAuth2 und JWT, Microservices",
+    werkzeuge: ["java", "springboot", "nodejs"],
+    inhalt: "REST, OAuth2 und JWT, Microservices",
   },
   {
     titel: "Daten und Betrieb",
-    inhalt:
-      "Supabase, PostgreSQL, SQL und NoSQL, Elasticsearch und Kibana, Docker, Kubernetes und Helm, GitLab CI/CD, Vercel, Azure, Monitoring",
+    werkzeuge: [
+      "supabase",
+      "postgresql",
+      "elasticsearch",
+      "kibana",
+      "docker",
+      "kubernetes",
+      "helm",
+      { marke: "gitlab", name: "GitLab CI/CD" },
+      "vercel",
+      "azure",
+    ],
+    inhalt: "SQL und NoSQL, Monitoring",
   },
   {
     titel: "Voice-AI",
-    inhalt:
-      "Twilio Voice SDK (WebRTC), Deepgram, ElevenLabs, Transkription und Auswertung von Gesprächen",
+    werkzeuge: [{ marke: "twilio", name: "Twilio Voice SDK" }, "deepgram", "elevenlabs"],
+    inhalt: "Telefonie im Browser über WebRTC, Transkription und Auswertung von Gesprächen",
   },
   {
     titel: "Integrationen",
-    inhalt: "HubSpot, RecruitCRM, Personio, Stripe, Slack, Calendly, DocuSeal",
+    werkzeuge: ["hubspot", "recruitcrm", "personio", "stripe", "slack", "calendly", "docuseal"],
   },
   {
     titel: "SEO und Analytics",
-    inhalt: "Google Ads, Google Analytics, Google Tag Manager, KNIME",
+    werkzeuge: ["googleads", "googleanalytics", "googletagmanager", "knime"],
   },
 ];
 
@@ -302,3 +327,50 @@ export const ZERTIFIKATE = [
   "Machine Learning Operations (MLOps) für generative KI",
   "SAP BusinessObjects Web Intelligence, Grundlagen",
 ];
+
+/* Der Werdegang als Zeitachse (Werdegang.jsx), auf /lebenslauf und
+   /ueber-mich. Aus STATIONEN und AUSBILDUNG abgeleitet statt danebengeschrieben,
+   damit kein Datum zweimal gepflegt wird; nur die Einordnung kommt dazu. Die
+   frühesten Nebenjobs vor 2018 und das Abitur fehlen bewusst: Sie würden die
+   Achse um Jahre strecken, ohne etwas über die Arbeit von heute zu sagen. */
+const ART_DER_STATION = {
+  "TOPEOPLE Group GmbH": "anstellung",
+  "Phoenix Parkservice": "freiberuflich",
+  "INFOMOTION GmbH": "studentisch",
+  "Red Reply": "studentisch",
+  "Deutsche Bank": "studentisch",
+  "Frankfurt University of Applied Sciences": "studentisch",
+  "Skalli GmbH": "nebenher",
+  "Avis Budget Group": "nebenher",
+};
+
+const MONATE = [
+  "Januar", "Februar", "März", "April", "Mai", "Juni",
+  "Juli", "August", "September", "Oktober", "November", "Dezember",
+];
+const [standMonat, standJahr] = LEBENSLAUF_STAND.split(" ");
+
+/* "heute" in der Zeitachse ist der Monat dieses Stands, nicht das Tagesdatum. */
+export const WERDEGANG_STAND = { monat: MONATE.indexOf(standMonat) + 1, jahr: Number(standJahr) };
+
+const beginn = (eintrag) => {
+  const [monat, jahr] = eintrag.von.split("/").map(Number);
+  return jahr * 12 + monat;
+};
+
+export const WERDEGANG = [
+  ...STATIONEN.filter((station) => ART_DER_STATION[station.firma]).map((station) => ({
+    ort: station.firma,
+    label: station.rolle,
+    von: station.von,
+    bis: station.bis,
+    kategorie: ART_DER_STATION[station.firma],
+  })),
+  ...AUSBILDUNG.filter((eintrag) => eintrag.abschluss !== "Abitur").map((eintrag) => ({
+    ort: eintrag.abschluss,
+    label: eintrag.ort,
+    von: eintrag.von,
+    bis: eintrag.bis,
+    kategorie: "studium",
+  })),
+].sort((a, b) => beginn(b) - beginn(a));

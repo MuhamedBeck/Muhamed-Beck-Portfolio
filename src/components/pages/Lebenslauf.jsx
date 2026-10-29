@@ -12,9 +12,17 @@ import {
   LEBENSLAUF_STAND,
   SPRACHEN,
   STATIONEN,
+  WERDEGANG,
+  WERDEGANG_STAND,
   ZERTIFIKATE,
 } from "../../content/lebenslauf.de";
+import { Werdegang } from "../Werdegang";
+import { Werkzeuge } from "../Werkzeuge";
 import ui from "../../i18n/dict/ui";
+
+/* Farben der Kennzahlen, der Reihe nach, wie im Ergebnisraster der
+   Fallstudien: Sie trennen die Zahlen, sie werten sie nicht. */
+const ZAHLFARBE = ["text-accent", "text-success", "text-accent-dim", "text-warm"];
 
 // Seite gibt es nur auf Deutsch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
 const MAIL_HREF = mailtoHref(ui.de.mailBetreff);
@@ -136,11 +144,18 @@ const Lebenslauf = () => (
             ))}
           </div>
 
+          {/* Term before description, as a <dl> requires; the figure moves up
+              visually with flex order. */}
           <dl className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-            {KENNZAHLEN.map((zahl) => (
-              <div key={zahl.label}>
-                <dd className="text-3xl font-light tabular-nums text-paper">{zahl.wert}</dd>
-                <dt className="mt-2 text-sm leading-snug text-paper-mute">{zahl.label}</dt>
+            {KENNZAHLEN.map((zahl, index) => (
+              <div key={zahl.label} className="flex flex-col">
+                <dt className="order-2 mt-2 text-sm leading-snug text-paper-mute">{zahl.label}</dt>
+                <dd
+                  className={`order-1 font-display text-4xl font-light tabular-nums ${
+                    ZAHLFARBE[index % ZAHLFARBE.length]
+                  }`}>
+                  {zahl.wert}
+                </dd>
               </div>
             ))}
           </dl>
@@ -152,6 +167,12 @@ const Lebenslauf = () => (
               neben der Hauptbeschäftigung läuft und INFOMOTION neben dem Studium
               lief; die Spalte "Art" sagt deshalb bei jeder Station, worum es sich
               handelt, statt es dem Leser als Widerspruch zu überlassen. */}
+          {/* The same path at a glance, above the detail. Not printed: browsers
+              drop background colours when printing, and the bars would come
+              out empty; the list underneath carries every date anyway. */}
+          <div className="mb-14 print:hidden">
+            <Werdegang eintraege={WERDEGANG} stand={WERDEGANG_STAND} />
+          </div>
           <ol className="space-y-10">
             {STATIONEN.map((station) => (
               <li key={`${station.firma}-${station.von}`} className="lebenslauf-station">
@@ -208,11 +229,24 @@ const Lebenslauf = () => (
         </Block>
 
         <Block titel="Kenntnisse">
-          <dl className="grid gap-x-10 gap-y-6 sm:grid-cols-2">
+          {/* Die Werkzeuge mit ihrem Zeichen zuerst, damit man auf einen Blick
+              sieht, womit gearbeitet wird; Methoden ohne Zeichen darunter.
+              Spalten statt Raster: Die Felder sind mit den Zeichen sehr
+              verschieden hoch, und ein Raster ließ neben jedem kurzen Feld eine
+              Lücke, so hoch wie das lange daneben. */}
+          <dl className="gap-x-10 sm:columns-2">
             {KENNTNISSE.map((feld) => (
-              <div key={feld.titel}>
+              <div key={feld.titel} className="mb-8 break-inside-avoid last:mb-0">
                 <dt className="text-sm text-paper">{feld.titel}</dt>
-                <dd className="mt-1 text-sm leading-relaxed text-paper-mute">{feld.inhalt}</dd>
+                <dd className="mt-3">
+                  {feld.werkzeuge ? <Werkzeuge werkzeuge={feld.werkzeuge} /> : null}
+                  {feld.inhalt ? (
+                    <p
+                      className={`text-sm leading-relaxed text-paper-mute ${feld.werkzeuge ? "mt-3" : ""}`}>
+                      {feld.inhalt}
+                    </p>
+                  ) : null}
+                </dd>
               </div>
             ))}
           </dl>

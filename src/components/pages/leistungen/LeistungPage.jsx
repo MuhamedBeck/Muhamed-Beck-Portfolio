@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
 import { WorkflowDiagram } from "./WorkflowDiagram";
+import { Grafik } from "../../Grafik";
+import { FaqListe } from "../../FaqListe";
 import { PREIS_TEXT, REICHWEITE_TEXT } from "../../../content/leistungen.de";
 import { RATE_TEXT } from "../../../content/site";
 import { LinkArrow } from "../../LinkArrow";
@@ -27,8 +29,33 @@ const anfrageLabel = (data) => data.cta?.button ?? "Kostenloses Erstgespräch";
  * raise. Price sits before proof on purpose, because it is the question people
  * leave over.
  */
+/* Ein Bild im Seitenkopf statt der leeren rechten Hälfte: ein echter Workflow
+   oder echte Messwerte, je nach Leistung, mit Herkunft und Verweis darunter. */
+const HeroBild = ({ data }) => (
+  <figure className="m-0">
+    <Grafik bild={data} imKopf />
+    <figcaption className="mt-4 max-w-[52ch] text-sm leading-relaxed text-paper-mute">
+      {data.text}
+      {data.link ? (
+        <>
+          {" "}
+          <Link
+            to={data.link}
+            className="text-paper-soft underline decoration-hairline-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent">
+            {data.linkText}
+          </Link>
+        </>
+      ) : null}
+    </figcaption>
+  </figure>
+);
+
 export const LeistungPage = ({ data }) => (
-  <PageShell label={data.badge} headline={data.h1} intro={data.intro}>
+  <PageShell
+    label={data.badge}
+    headline={data.h1}
+    intro={data.intro}
+    aside={data.heroBild ? <HeroBild data={data.heroBild} /> : undefined}>
     <Section className="!pt-0">
       <AnfrageStart
         to={anfrageZiel(data)}
@@ -158,19 +185,15 @@ export const LeistungPage = ({ data }) => (
     <Stimmen projekt={data.caseStudy.link} />
 
     {/* Visible text and the FAQPage JSON-LD read from this same array, so the
-        two can never disagree. */}
+        two can never disagree.
+
+        Collapsed since the draft of 29.10.2026: eight fully open answers were
+        about a screen of uninterrupted text on every service page. The answers
+        stay in the HTML, so search engines and in-page search still find them;
+        only the reader decides what to open. */}
     <Section className="!pt-0">
       <h2 className="label">Häufige Fragen</h2>
-      <dl className="mt-8 max-w-4xl">
-        {data.faq.map((item) => (
-          <div
-            key={item.q}
-            className="border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
-            <dt className="text-lg leading-snug font-normal text-paper">{item.q}</dt>
-            <dd className="mt-3 leading-relaxed text-paper-soft md:mt-0">{item.a}</dd>
-          </div>
-        ))}
-      </dl>
+      <FaqListe fragen={data.faq} />
     </Section>
 
     {/* The guides linked out to the service pages; nothing linked back. Six

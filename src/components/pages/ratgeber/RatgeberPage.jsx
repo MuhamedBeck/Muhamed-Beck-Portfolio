@@ -4,6 +4,19 @@ import { Section } from "../../Section";
 import { PERSON } from "../../../content/site";
 import { RateScale } from "./RateScale";
 import { LinkArrow } from "../../LinkArrow";
+import { Grafik } from "../../Grafik";
+import { Tabelle } from "../../Tabelle";
+import { FaqListe } from "../../FaqListe";
+import { Inhalt } from "./Inhalt";
+import { anker } from "./anker";
+
+/* Lesezeit aus allem, was gelesen wird: Einleitung, Abschnitte, Antworten. Bei
+   rund 200 Wörtern pro Minute, wie sie für Sachtext üblich sind. */
+const lesezeit = (data) => {
+  const texte = [data.lede, ...data.sections.flatMap((s) => s.body), ...data.faq.map((f) => f.a)];
+  const woerter = texte.join(" ").split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(woerter / 200));
+};
 
 const MONATE = [
   "Januar", "Februar", "März", "April", "Mai", "Juni",
@@ -44,6 +57,9 @@ const anfrageZiel = (related) => {
 export const RatgeberPage = ({ data }) => (
   <PageShell label={data.kicker} headline={data.h1} intro={data.lede}>
     <Section className="!pt-0">
+      {/* Text column beside the table of contents from lg up; the column was
+          empty there and the guides run to twelve screens. */}
+      <div className="lg:grid lg:grid-cols-[minmax(0,68ch)_minmax(0,1fr)] lg:gap-x-16">
       <div className="max-w-[68ch]">
         {/* A visible date, matching dateModified in the schema. Freshness is a
             real ranking and citation input, so it is stated rather than implied,
@@ -67,16 +83,46 @@ export const RatgeberPage = ({ data }) => (
           </span>
         </p>
 
+        <div className="lg:hidden">
+          <Inhalt abschnitte={data.sections} minuten={lesezeit(data)} aufklappbar />
+        </div>
+
         {data.sections.map((section) => (
           <section key={section.h2} className="mt-14">
-            <h2 className="headline-sub">{section.h2}</h2>
-            {section.body.map((paragraph) => (
+            <h2 id={anker(section.h2)} className="headline-sub scroll-mt-28">
+              {section.h2}
+            </h2>
+            {section.body.slice(0, section.bildNach ?? section.body.length).map((paragraph) => (
+              <p key={paragraph} className="mt-5 leading-relaxed text-paper-soft">
+                {paragraph}
+              </p>
+            ))}
+            {/* A figure where the section's content is easier seen than read:
+                a workflow, a decision tree, bars, price ranges, a table, a
+                timeline, a checklist or a sentence to copy. After the
+                paragraphs by default; `bildNach` puts it after that many, so a
+                closing note such as "keine Rechtsberatung" can follow it. */}
+            {section.bild ? (
+              <figure className="mt-10">
+                <Grafik bild={section.bild} />
+                {section.bild.text ? (
+                  <figcaption className="mt-4 text-sm leading-relaxed text-paper-mute">
+                    {section.bild.text}
+                  </figcaption>
+                ) : null}
+              </figure>
+            ) : null}
+            {section.body.slice(section.bildNach ?? section.body.length).map((paragraph) => (
               <p key={paragraph} className="mt-5 leading-relaxed text-paper-soft">
                 {paragraph}
               </p>
             ))}
           </section>
         ))}
+      </div>
+      <aside className="hidden lg:block">
+        <Inhalt abschnitte={data.sections} minuten={lesezeit(data)} />
+      </aside>
       </div>
     </Section>
 
@@ -100,60 +146,7 @@ export const RatgeberPage = ({ data }) => (
           are announced anyway. */}
       {data.table ? (
         <figure className="mt-14">
-          <div className="md:-mx-4 md:overflow-x-auto md:px-4">
-            <table
-              role="table"
-              className="w-full border-collapse text-start max-md:block md:min-w-[42rem]">
-              <caption className="label mb-6 text-start max-md:block">{data.table.caption}</caption>
-              <thead role="rowgroup" className="max-md:sr-only">
-                <tr role="row">
-                  <th
-                    role="columnheader"
-                    scope="col"
-                    className="w-[13rem] pb-4 text-start text-sm font-normal text-paper-mute">
-                    <span className="sr-only">Kriterium</span>
-                  </th>
-                  {data.table.columns.map((column) => (
-                    <th
-                      key={column}
-                      role="columnheader"
-                      scope="col"
-                      className="pb-4 ps-6 text-start text-lg font-normal text-paper">
-                      {column}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody role="rowgroup" className="max-md:block">
-                {data.table.rows.map((row) => (
-                  <tr
-                    key={row.label}
-                    role="row"
-                    className="border-t border-hairline align-top max-md:mt-4 max-md:block max-md:rounded-lg max-md:border max-md:bg-surface max-md:p-5">
-                    <th
-                      role="rowheader"
-                      scope="row"
-                      className="py-5 pe-6 text-start text-sm font-normal leading-snug text-paper-dim max-md:block max-md:p-0 max-md:text-base max-md:text-paper">
-                      {row.label}
-                    </th>
-                    {row.cells.map((cell, index) => (
-                      <td
-                        key={data.table.columns[index]}
-                        role="cell"
-                        className="py-5 ps-6 leading-relaxed text-paper-soft max-md:mt-4 max-md:block max-md:p-0">
-                        <span
-                          aria-hidden="true"
-                          className="mb-1 block text-[0.7rem] tracking-[0.18em] text-paper-mute uppercase md:hidden">
-                          {data.table.columns[index]}
-                        </span>
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <Tabelle daten={data.table} />
         </figure>
       ) : null}
     </Section>
@@ -161,16 +154,7 @@ export const RatgeberPage = ({ data }) => (
     {/* Visible FAQ and the FAQPage JSON-LD read from the same array. */}
     <Section className="!pt-0">
       <h2 className="label">Häufige Fragen</h2>
-      <dl className="mt-8 max-w-4xl">
-        {data.faq.map((item) => (
-          <div
-            key={item.q}
-            className="border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12">
-            <dt className="text-lg leading-snug font-normal text-paper">{item.q}</dt>
-            <dd className="mt-3 leading-relaxed text-paper-soft md:mt-0">{item.a}</dd>
-          </div>
-        ))}
-      </dl>
+      <FaqListe fragen={data.faq} />
     </Section>
 
     <Section className="!pt-0">

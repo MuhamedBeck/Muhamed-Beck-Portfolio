@@ -46,6 +46,13 @@ html {
      Bedienelemente verlangt. */
   --color-scrollbar: rgb(96 165 250 / 0.65);
   --color-scrollbar-hover: rgb(96 165 250 / 0.9);
+  /* Zwei Farben mit Bedeutung, seit dem 29.10.2026, weil die Seite in Grau und
+     einem Blau zu trocken wirkte. Grün heißt erledigt, wie die Häkchen im
+     n8n-Editor; Amber hebt eine Zahl hervor. Beide nur für Grafiken und
+     Kennzahlen, nie für Fließtext. Gemessen gegen den Grund: dunkel 11,36:1
+     und 11,86:1, hell 4,81:1 und 4,81:1. */
+  --color-success: #4ade80;
+  --color-warm: #fbbf24;
 
   /* The light palette lives here as plain values, assigned twice below. Two
      assignment lists are unavoidable in CSS, but keeping the values in one
@@ -70,6 +77,8 @@ html {
   --light-surface-strong: rgb(0 0 0 / 0.08);
   --light-scrollbar: rgb(29 78 216 / 0.7);
   --light-scrollbar-hover: rgb(29 78 216 / 0.95);
+  --light-success: #15803d;
+  --light-warm: #b45309;
 
   /* Two faces, two jobs. Space Grotesk is a display face and was carrying 100%
      of the elements on the site, long-form Ratgeber articles included. It now
@@ -122,6 +131,8 @@ html {
     --color-surface-strong: var(--light-surface-strong);
     --color-scrollbar: var(--light-scrollbar);
     --color-scrollbar-hover: var(--light-scrollbar-hover);
+    --color-success: var(--light-success);
+    --color-warm: var(--light-warm);
   }
 }
 
@@ -142,6 +153,8 @@ html {
   --color-surface-strong: var(--light-surface-strong);
   --color-scrollbar: var(--light-scrollbar);
   --color-scrollbar-hover: var(--light-scrollbar-hover);
+  --color-success: var(--light-success);
+  --color-warm: var(--light-warm);
 }
 
 /* Space Grotesk, self-hosted (GDPR: no requests to Google servers) */
@@ -236,7 +249,13 @@ body {
   font-family: var(--font-text);
   background: var(--color-ink);
   color: var(--color-paper);
+  /* clip, not hidden: hidden turns body into a scroll container of its own,
+     and position: sticky then sticks to an element that never scrolls. The
+     table of contents in the guides was the first sticky element on the site
+     and showed it (29.10.2026). hidden stays as the fallback for browsers
+     without clip, where nothing worse happens than before. */
   overflow-x: hidden;
+  overflow-x: clip;
   scroll-behavior: smooth;
   /* Use min-height + dvh: adjusts dynamically as browser chrome shows/hides */
   min-height: 100vh;
@@ -375,7 +394,9 @@ dd {
 }
 
 #root {
+  /* clip for the same reason as on html and body above. */
   overflow-x: hidden;
+  overflow-x: clip;
   cursor: default;
   min-height: 100vh;
   min-height: 100dvh;
@@ -819,6 +840,288 @@ dd {
   }
 }
 
+/* Workflow-Grafik (WorkflowCanvas.jsx): eine Ausführung, einmal, sobald der
+   Abschnitt sichtbar wird. Dieselbe Mechanik wie .stagger: .js setzt den
+   Ausgangszustand vor dem ersten Bild, .is-ready startet den Lauf, und der
+   Failsafe sowie reduzierte Bewegung zeigen sofort den Endzustand.
+
+   Der Endzustand ist der fertige Lauf: Verbindungen in Akzentfarbe, an jedem
+   Knoten ein Häkchen. Ohne JavaScript sieht man genau den. */
+.wf-haken {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.js .wf-kante {
+  stroke-dashoffset: 1;
+}
+
+.js .wf-haken {
+  opacity: 0;
+}
+
+.is-ready .wf-kante {
+  animation: wf-kante 0.42s var(--ease-entrance) var(--wf-delay, 0s) both;
+}
+
+.is-ready .wf-knoten {
+  animation: wf-knoten 0.7s ease-out var(--wf-delay, 0s) both;
+}
+
+.is-ready .wf-haken {
+  animation: wf-haken 0.32s var(--ease-entrance) calc(var(--wf-delay, 0s) + 0.18s) both;
+}
+
+@keyframes wf-kante {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Der Rahmen leuchtet kurz auf, während die Daten durch den Knoten laufen, und
+   kehrt dann zur Haarlinie zurück: sieben dauerhaft blaue Rahmen wären Lärm. */
+@keyframes wf-knoten {
+  0%,
+  100% {
+    stroke: var(--color-hairline-strong);
+  }
+  35% {
+    stroke: var(--color-accent);
+  }
+}
+
+@keyframes wf-haken {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+:root.entrance-timeout .wf-kante,
+:root.entrance-timeout .wf-knoten,
+:root.entrance-timeout .wf-haken {
+  animation: none;
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .wf-kante {
+    stroke-dashoffset: 0;
+  }
+
+  .js .wf-haken {
+    opacity: 1;
+  }
+
+  .is-ready .wf-kante,
+  .is-ready .wf-knoten,
+  .is-ready .wf-haken {
+    animation: none;
+  }
+}
+
+/* Einblenden statt Zeichnen, für gestrichelte Linien und Beschriftungen, die
+   der Strich-Trick von .wf-kante nicht erfasst (PlattformBild). */
+.js .wf-ein {
+  opacity: 0;
+}
+
+.is-ready .wf-ein {
+  animation: wf-ein 0.5s var(--ease-entrance) var(--wf-delay, 0s) both;
+}
+
+@keyframes wf-ein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Lighthouse-Ringe (LighthouseRinge.jsx): der Ring füllt sich bis zum Wert,
+   die Zahl zählt mit. Die Zahl ist ein registrierter Integer, damit der
+   Browser zwischen 0 und dem Wert in ganzen Schritten zählt; wo @property
+   fehlt, springt sie einfach auf den Wert. Der Endzustand steht ohne .js. */
+@property --lh-zahl {
+  syntax: "<integer>";
+  inherits: false;
+  initial-value: 0;
+}
+
+.lh-ring {
+  stroke-dashoffset: var(--lh-rest);
+}
+
+.lh-zahl {
+  --lh-zahl: var(--lh-ziel);
+  counter-reset: lh-zahl var(--lh-zahl);
+}
+
+.lh-zahl::after {
+  content: counter(lh-zahl);
+}
+
+.js .lh-ring {
+  stroke-dashoffset: 100;
+}
+
+.js .lh-zahl {
+  --lh-zahl: 0;
+}
+
+.is-ready .lh-ring {
+  animation: lh-ring 1.3s var(--ease-entrance) var(--wf-delay, 0s) both;
+}
+
+.is-ready .lh-zahl {
+  animation: lh-zahl 1.3s var(--ease-entrance) var(--wf-delay, 0s) both;
+}
+
+@keyframes lh-ring {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: var(--lh-rest);
+  }
+}
+
+@keyframes lh-zahl {
+  from {
+    --lh-zahl: 0;
+  }
+  to {
+    --lh-zahl: var(--lh-ziel);
+  }
+}
+
+:root.entrance-timeout .wf-ein,
+:root.entrance-timeout .lh-ring,
+:root.entrance-timeout .lh-zahl {
+  animation: none;
+  opacity: 1;
+  stroke-dashoffset: var(--lh-rest);
+  --lh-zahl: var(--lh-ziel);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .wf-ein {
+    opacity: 1;
+  }
+
+  .js .lh-ring {
+    stroke-dashoffset: var(--lh-rest);
+  }
+
+  .js .lh-zahl {
+    --lh-zahl: var(--lh-ziel);
+  }
+
+  .is-ready .wf-ein,
+  .is-ready .lh-ring,
+  .is-ready .lh-zahl {
+    animation: none;
+  }
+}
+
+/* Balken (Balken.jsx, Spannen.jsx): wachsen einmal von ihrer Startkante aus,
+   sobald der Abschnitt sichtbar wird. Über transform statt width, damit der
+   Browser dafür nicht das Layout neu rechnen muss. */
+.bv-balken {
+  transform-origin: left center;
+}
+
+[dir="rtl"] .bv-balken {
+  transform-origin: right center;
+}
+
+.js .bv-balken {
+  transform: scaleX(0);
+}
+
+.is-ready .bv-balken {
+  animation: bv-wachsen 0.9s var(--ease-entrance) var(--wf-delay, 0s) both;
+}
+
+@keyframes bv-wachsen {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: none;
+  }
+}
+
+:root.entrance-timeout .bv-balken {
+  animation: none;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .bv-balken {
+    transform: none;
+  }
+
+  .is-ready .bv-balken {
+    animation: none;
+  }
+}
+
+/* Häufige Fragen zum Aufklappen (LeistungPage). Die Antworten bleiben im HTML,
+   Suchmaschinen lesen sie weiter, aber zugeklappt fällt auf der n8n-Seite rund
+   ein Bildschirm Fließtext weg. Das Pluszeichen dreht sich zum Kreuz. */
+.faq summary {
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-zeichen {
+  transition: transform 0.2s var(--ease-entrance);
+}
+
+.faq[open] .faq-zeichen {
+  transform: rotate(45deg);
+}
+
+/* Die Höhe gleitet, wo der Browser das kann; anderswo springt die Antwort auf,
+   was auch in Ordnung ist. */
+@supports (interpolate-size: allow-keywords) {
+  .faq {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.25s var(--ease-entrance),
+      content-visibility 0.25s allow-discrete;
+  }
+
+  .faq[open]::details-content {
+    height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-zeichen,
+  .faq::details-content {
+    transition: none;
+  }
+}
+
 /* Language switcher: flag plus a small chevron, with the remaining flags
    opening directly underneath without a box. Trigger and menu items share the
    2.75rem .lang-switch__column, so every flag lines up to the pixel. */
@@ -1025,6 +1328,13 @@ dd {
 
   .lebenslauf-nur-druck {
     display: block;
+  }
+
+  /* Paper is a light ground whatever theme was on screen, so the brand marks
+     get the same darkening as in the light theme. Without it the React mark
+     prints at 1,6:1 on white. */
+  .tech-mark {
+    filter: brightness(0.6) saturate(1.25);
   }
 
   /* Der Rahmen der Seite bringt oben 7rem Abstand für die fixierte Navigation

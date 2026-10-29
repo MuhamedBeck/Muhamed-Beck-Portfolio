@@ -2,11 +2,11 @@
 // That package pulls in transitive directory imports Node's ESM loader rejects,
 // which breaks build-time rendering, and it cost ~18 kB in the client bundle
 // for this single icon.
-export const N8nIcon = ({ className, style, ...rest }) => (
+export const N8nIcon = ({ className, style, size = "1em", ...rest }) => (
   <svg
     viewBox="0 0 24 24"
-    width="1em"
-    height="1em"
+    width={size}
+    height={size}
     fill="currentColor"
     className={className}
     style={style}

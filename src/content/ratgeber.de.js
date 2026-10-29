@@ -14,6 +14,7 @@
 
 // With the .js extension: prerender-meta.js imports this file under bare node.
 import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, UST_KURZ, euro } from "./site.js";
+import { ENTSCHEIDUNG_BFSG, ENTSCHEIDUNG_WERKZEUG, WORKFLOW_BEWERBUNG } from "./workflows.de.js";
 
 export const RATGEBER = [
   {
@@ -139,7 +140,7 @@ export const RATGEBER = [
     kicker: "Kosten",
     h1: "Was kostet n8n? Lizenz, Betrieb und Umsetzung",
     published: "2026-10-27",
-    modified: "2026-10-27",
+    modified: "2026-10-29",
     /* Seit 27.10.2026. Zielt auf "n8n kosten", "n8n preise" und "n8n kostenlos"
        (zusammen rund 1.200 Suchen im Monat laut Seobility) und grenzt sich vom
        Honorar-Ratgeber /ratgeber/n8n-freelancer-kosten ab: hier die Software
@@ -214,6 +215,18 @@ export const RATGEBER = [
           "Akquise-Datenbank für ein Start-up: Kontakte, Status und automatisches Nachfassen per E-Mail, auf dem eigenen Rechner des Kunden mit der kostenlosen Community Edition. Erste Ausbaustufe unter 2.000 €, Umsetzung in etwa 4 Wochen, kaum laufende Kosten; eine KI, die eingehende Antworten vorsortiert, kam als Option für wenige hundert Euro dazu.",
           "Abrechnung für einen Dienstleister: Am Anfang stand ein großes Vorhaben, ein KI-System für das ganze Unternehmen. Begonnen wird mit einem klar abgegrenzten Teil, hier der monatlichen Abrechnung aus geprüften Stundenzetteln mit Freigabe vor dem Versand. So zeigt sich der Nutzen, bevor mehr Geld fließt.",
         ],
+        bild: {
+          art: "balken",
+          daten: {
+            art: "liste",
+            titel: "Rechnungsprüfung aus einem Angebot: das erste Jahr",
+            zeilen: [
+              { label: "Umsetzung, einmalig", wert: 5000, text: "rund 5.000 €", ton: "akzent" },
+              { label: "n8n und KI, zwölf Monate", von: 360, wert: 660, text: "360 bis 660 €", ton: "cyan" },
+            ],
+            quelle: "Festpreis gerundet. Laufend 30 bis 55 € im Monat an die Anbieter, hier mal zwölf.",
+          },
+        },
       },
       {
         h2: "Warum kostet eine Automatisierung mehr als die Software?",
@@ -280,7 +293,7 @@ export const RATGEBER = [
     kicker: "Kosten",
     h1: "Was kostet eine Website 2026?",
     published: "2026-10-13",
-    modified: "2026-10-27",
+    modified: "2026-10-29",
     /* Alle Marktzahlen am 13.10.2026 an den Quellen geprüft. Sie stammen von
        Anbietern, die diese Leistungen selbst verkaufen; der Artikel sagt das
        ausdrücklich, statt sie als Marktpreis auszugeben. Die eigenen Preise
@@ -324,6 +337,39 @@ export const RATGEBER = [
           "Die Spanne ist so groß, weil unter dem Wort Website sehr Verschiedenes verkauft wird: ein angepasstes Theme mit fünf Seiten oder eine Seite mit eigener Struktur, Mehrsprachigkeit und gemessenen Ladezeiten. Vergleichbar werden zwei Angebote erst, wenn klar ist, was jeweils enthalten ist.",
           `Mein Festpreis für eine Firmen-Website beginnt bei ${euro(FESTPREIS.website)}. Enthalten sind Struktur, Umsetzung, technisches SEO und die Übergabe mit Quelltext und Zugängen; die Texte kommen von Ihnen oder entstehen gemeinsam.`,
         ],
+        bild: {
+          art: "spannen",
+          daten: {
+            titel: "Marktpreise und meine Festpreise",
+            zeilen: [
+              {
+                label: "Firmen-Website",
+                max: 20000,
+                maxText: euro(20000),
+                baender: [
+                  { von: 800, bis: 5000, text: "Freelancer 800 bis 5.000 €", ton: "leise" },
+                  { von: 3600, bis: 18000, text: "Agentur 3.600 bis 18.000 €", ton: "cyan" },
+                ],
+                marke: { wert: FESTPREIS.website, text: `mein Festpreis ab ${euro(FESTPREIS.website)}` },
+              },
+              {
+                label: "Relaunch mit SEO-Migration",
+                max: 20000,
+                maxText: euro(20000),
+                baender: [{ von: 8000, bis: 20000, text: "Markt 8.000 bis 20.000 €", ton: "leise" }],
+                marke: { wert: FESTPREIS.relaunch, text: `mein Festpreis ab ${euro(FESTPREIS.relaunch)}` },
+              },
+              {
+                label: "Kundenportal",
+                max: 150000,
+                maxText: euro(150000),
+                baender: [{ von: 25000, bis: 150000, text: "Markt 25.000 bis 150.000 €", ton: "leise" }],
+                marke: { wert: FESTPREIS.portal, text: `mein Festpreis ab ${euro(FESTPREIS.portal)}` },
+              },
+            ],
+            quelle: "Marktspannen: RHEINSPACE 06/2026, Adfera 10/2026, CodeGuides abgerufen 10/2026. Jede Zeile hat ihre eigene Skala.",
+          },
+        },
       },
       {
         h2: "Was kostet ein Website-Relaunch?",
@@ -417,7 +463,7 @@ export const RATGEBER = [
     kicker: "Recht",
     h1: "Barrierefreie Website: Was das BFSG verlangt",
     published: "2026-10-27",
-    modified: "2026-10-27",
+    modified: "2026-10-29",
     /* Seit 27.10.2026. Zielt auf "bfsg", "barrierefreiheit website",
        "barrierefreie website pflicht", "bfsg wer ist betroffen", die Test- und
        Checklisten-Suchen und "38 bfsg" (zusammen mehr als 7.000 Suchen im
@@ -483,6 +529,11 @@ export const RATGEBER = [
           "Für Unternehmen, die Verbrauchern über ihre Website oder App einen Vertragsabschluss ermöglichen. Das Gesetz spricht von Dienstleistungen im elektronischen Geschäftsverkehr und meint damit Dienste über Websites und mobile Anwendungen, die auf individuelle Anfrage eines Verbrauchers im Hinblick auf den Abschluss eines Verbrauchervertrags erbracht werden (§ 2 Nr. 26 BFSG). Typische Fälle sind Onlineshops, Online-Buchungen und Bestellformulare.",
           "Verbraucher ist jede natürliche Person, die überwiegend nicht für ihre gewerbliche oder selbständige berufliche Tätigkeit handelt (§ 2 Nr. 16 BFSG). Die Pflicht für Dienstleistungen gilt ausdrücklich für Dienstleistungen, die für Verbraucher erbracht werden (§ 1 Abs. 3 BFSG). Wer ausschließlich an Unternehmen verkauft, ist mit diesem Angebot nicht betroffen; wer auch an Verbraucher verkauft, schon.",
         ],
+        bild: {
+          art: "workflow",
+          workflow: ENTSCHEIDUNG_BFSG,
+          text: "Vereinfacht und nur für Websites: Für Produkte im Sinne des Gesetzes gelten eigene Regeln, und die Ausnahme für Kleinstunternehmen gilt nur für Dienstleistungen. Keine Rechtsberatung.",
+        },
       },
       {
         h2: "Welche Ausnahmen gibt es beim BFSG?",
@@ -576,7 +627,7 @@ export const RATGEBER = [
     kicker: "Toolauswahl",
     h1: "n8n, Make und Zapier im Vergleich",
     published: "2026-08-07",
-    modified: "2026-08-07",
+    modified: "2026-10-29",
     lede: "Zapier ist am schnellsten eingerichtet, Make ist am visuellsten, n8n ist am flexibelsten und als einziges der drei self-hosted betreibbar. Der praktisch wichtigste Unterschied ist die Abrechnung: n8n zählt eine Workflow-Ausführung, Make zählt jede einzelne Operation darin.",
     // A comparison article about three tools with no comparison table was the
     // most obvious content gap on the site. Every row below restates something
@@ -585,7 +636,11 @@ export const RATGEBER = [
     // which the article never states outright.
     table: {
       caption: "n8n, Make und Zapier im direkten Vergleich (Stand: August 2026)",
-      columns: ["n8n", "Make", "Zapier"],
+      columns: [
+        { text: "n8n", marke: "n8n" },
+        { text: "Make", marke: "make" },
+        { text: "Zapier", marke: "zapier" },
+      ],
       rows: [
         {
           label: "Abrechnung",
@@ -640,6 +695,30 @@ export const RATGEBER = [
           "Das Abrechnungsmodell, nicht der Funktionsumfang. n8n zählt eine Ausführung pro Workflow-Durchlauf, unabhängig davon, wie viele Schritte durchlaufen werden. Make zählt jede einzelne Operation. Bei einem Workflow mit zwanzig Schritten bedeutet derselbe Durchlauf bei n8n eine Einheit und bei Make zwanzig.",
           "Für einfache Zwei-Schritt-Verknüpfungen spielt das keine Rolle. Für vielschrittige Workflows mit hohem Volumen entscheidet es die monatliche Rechnung.",
         ],
+        bild: {
+          art: "balken",
+          daten: {
+            art: "liste",
+            titel: "Abgerechnete Einheiten für einen Durchlauf mit zwanzig Schritten",
+            zeilen: [
+              {
+                label: "n8n",
+                marke: "n8n",
+                wert: 1,
+                text: "1 Ausführung",
+                ton: "erfolg",
+              },
+              {
+                label: "Make",
+                marke: "make",
+                wert: 20,
+                text: "20 Operationen",
+                ton: "warm",
+              },
+            ],
+            quelle: "Nach den Abrechnungsmodellen, Stand August 2026. Zapier rechnet je Aktionsschritt ab.",
+          },
+        },
       },
       {
         h2: "Wann ist Zapier die richtige Wahl?",
@@ -661,6 +740,11 @@ export const RATGEBER = [
           "Wenn der visuelle Aufbau im Vordergrund steht und die Workflows eher breit als tief sind. Make zeigt Datenflüsse als Szenario-Diagramm, was das Nachvollziehen für nicht-technische Beteiligte erleichtert.",
           "Bei tiefen, vielschrittigen Workflows kehrt sich der Vorteil um: Das Diagramm wird unübersichtlich, und das Operations-basierte Abrechnungsmodell wird teuer.",
         ],
+        bild: {
+          art: "workflow",
+          workflow: ENTSCHEIDUNG_WERKZEUG,
+          text: "Vereinfacht, nach den drei Abschnitten zu Zapier, n8n und Make.",
+        },
       },
       {
         h2: "Kann ich später wechseln?",
@@ -717,6 +801,11 @@ export const RATGEBER = [
           "Der Bewerbungseingang, weil er täglich anfällt, immer gleich abläuft und heute fast überall aus manueller Datenübertragung besteht. Er ist damit der Schritt mit dem besten Verhältnis aus Aufwand und Wirkung.",
           "Der zweitbeste Kandidat ist meist die Terminierung. Sie kostet wenig Zeit pro Vorgang, aber viel Aufmerksamkeit, weil sie über mehrere Tage in Fragmenten stattfindet.",
         ],
+        bild: {
+          art: "workflow",
+          workflow: WORKFLOW_BEWERBUNG,
+          text: "So sieht der Bewerbungseingang bei meinem Arbeitgeber aus: ein echter n8n-Workflow, rund 50 Bewerbungen im Monat.",
+        },
       },
       {
         h2: "Wie werden ATS und CRM angebunden?",
@@ -776,7 +865,7 @@ export const RATGEBER = [
     kicker: "Recht",
     h1: "KI im Recruiting und der AI Act",
     published: "2026-08-25",
-    modified: "2026-08-25",
+    modified: "2026-10-29",
     lede: "Die Hochrisiko-Pflichten des AI Act für KI in der Bewerberauswahl gelten erst ab dem 2. Dezember 2027. Die Verordnung (EU) 2026/1744, veröffentlicht am 24. Juli 2026, hat die ursprüngliche Frist des 2. August 2026 um sechzehn Monate verschoben. Wer daraus schließt, KI im Recruiting sei bis dahin unreguliert, irrt an der teuersten Stelle: Emotionserkennung im Bewerbungsverfahren ist seit dem 2. Februar 2025 verboten, und der Bußgeldrahmen dafür beträgt bis zu 35 Millionen Euro oder 7 Prozent des weltweiten Jahresumsatzes.",
     table: {
       caption: "Welche Norm im Recruiting wann greift (Stand: August 2026)",
@@ -813,51 +902,253 @@ export const RATGEBER = [
         h2: "Gelten die AI-Act-Pflichten für Recruiting-KI schon?",
         body: [
           "Nein, die Pflichten für eigenständige Hochrisiko-KI-Systeme nach Anhang III Nummer 4, also für KI in Beschäftigung und Personalmanagement, gelten erst ab dem 2. Dezember 2027. Rechtsgrundlage der Verschiebung ist die Verordnung (EU) 2026/1744, die Digital-Omnibus-Verordnung zur KI, veröffentlicht am 24. Juli 2026 und in Kraft seit dem 27. Juli 2026. Ursprünglich war der 2. August 2026 vorgesehen.",
-          "Verschoben wurde der komplette Pflichtenkatalog für Hochrisiko-Systeme: Risikomanagement, Datenqualität, technische Dokumentation, Protokollierung, menschliche Aufsicht und Konformitätsbewertung. Das sind die Artikel 6 bis 27 der KI-Verordnung. Für die zweite Gruppe von Hochrisiko-Systemen, KI als Sicherheitsbauteil in ohnehin regulierten Produkten wie Maschinen oder Medizinprodukten, gilt sogar erst der 2. August 2028. Fürs Recruiting spielt diese Gruppe keine Rolle.",
-          "Für Sie heißt das vor allem eines: Prüfen Sie bei jeder Checkliste, jedem Fachbeitrag und jeder Beraterfolie zuerst das Standdatum. Alles, was vor August 2026 entstanden ist, nennt für das Recruiting noch die alte Frist. Die vielzitierte Übersicht auf artificialintelligenceact.eu trug im Sommer 2026 noch den Stand vom 1. August 2024. Verbindlich sind ohnehin nur die im Amtsblatt veröffentlichten Fassungen; die praktische konsolidierte Fassung bei EUR-Lex trägt selbst den Hinweis, dass sie allein Informationszwecken dient.",
+          "Verschoben wurde der komplette Pflichtenkatalog für Hochrisiko-Systeme, die Artikel 6 bis 27 der KI-Verordnung: Risikomanagement, Datenqualität, technische Dokumentation, Protokollierung, menschliche Aufsicht und Konformitätsbewertung.",
+          "Prüfen Sie deshalb bei jeder Checkliste und jedem Fachbeitrag zuerst das Standdatum: Alles, was vor August 2026 entstanden ist, nennt für das Recruiting noch die alte Frist. Verbindlich sind ohnehin nur die im Amtsblatt veröffentlichten Fassungen.",
         ],
+        bild: {
+          art: "meilensteine",
+          daten: {
+            titel: "Was wann gilt, Stand August 2026",
+            punkte: [
+              {
+                datum: "02.02.2025",
+                status: "gilt",
+                titel: "Verbote gelten",
+                text: "Darunter Emotionserkennung im Bewerbungsverfahren und biometrische Kategorisierung (Art. 5).",
+              },
+              {
+                datum: "27.07.2026",
+                status: "gilt",
+                titel: "Digital Omnibus in Kraft",
+                text: "Die Verordnung (EU) 2026/1744 verschiebt die Hochrisiko-Pflichten.",
+              },
+              {
+                datum: "29.07.2026",
+                status: "gilt",
+                titel: "Bundesnetzagentur zuständig",
+                text: "Das KI-MIG benennt sie als Marktüberwachungsbehörde.",
+              },
+              {
+                datum: "02.08.2026",
+                status: "gilt",
+                titel: "KI muss sich zu erkennen geben",
+                text: "Transparenzpflicht nach Art. 50, ausdrücklich nicht verschoben.",
+              },
+              {
+                datum: "02.12.2027",
+                status: "folgt",
+                titel: "Hochrisiko-Pflichten für Recruiting-KI",
+                text: "Anhang III Nr. 4, die Artikel 6 bis 27.",
+              },
+              {
+                datum: "02.08.2028",
+                status: "folgt",
+                titel: "KI in regulierten Produkten",
+                text: "Anhang I, etwa Maschinen und Medizinprodukte; fürs Recruiting ohne Bedeutung.",
+              },
+            ],
+          },
+        },
       },
       {
         h2: "Was ist im Bewerbungsverfahren schon heute verboten?",
         body: [
           "Emotionserkennung ist verboten, und zwar seit dem 2. Februar 2025. Artikel 5 Absatz 1 Buchstabe f der KI-Verordnung untersagt den Einsatz von KI-Systemen, die Emotionen einer natürlichen Person am Arbeitsplatz ableiten. Das steht im selben Katalog wie Social Scoring: Diese Praktiken werden nicht reguliert, sondern untersagt.",
-          "Dass ein Bewerbungsverfahren als Arbeitsplatz zählt, ist nach Auffassung der Europäischen Kommission geklärt. Sie hat das in ihren Leitlinien zu verbotenen KI-Praktiken, C(2025) 5052 final vom 29. Juli 2025, ausdrücklich festgehalten: Der Arbeitsplatz umfasst auch das Auswahl- und Einstellungsverfahren, weil zwischen Unternehmen und Bewerbern dasselbe Machtungleichgewicht besteht wie im laufenden Arbeitsverhältnis (Randnummer 254). Als Standardfall nennen dieselben Leitlinien wörtlich: „Der Einsatz von Emotionserkennungssystemen während des Einstellungsverfahrens ist verboten.“ Auch die Probezeit ist genannt. Diese Leitlinien binden Gerichte nicht, das sagen sie selbst; verbindlich auslegen kann die Verordnung nur der Europäische Gerichtshof. Sie sind aber der Maßstab, an dem sich die Aufsichtsbehörden orientieren.",
-          "Die beiden Ausnahmen sind eng. Medizinische Zwecke meinen nach Randnummer 257 CE-gekennzeichnete Medizinprodukte, nicht die allgemeine Erfassung von Wohlbefinden oder Stresspegeln. Sicherheitsgründe meinen nach Randnummer 258 den Schutz von Leben und Gesundheit, nicht den Schutz von Eigentum vor Diebstahl oder Betrug. Klarstellend heißt es in Erwägungsgrund 18, also in der amtlichen Begründung im Vorspann der Verordnung, dass körperliche Zustände wie Schmerz oder Müdigkeit keine Emotionen sind. Ein System, das im Video-Interview allein Sprechpausen zählt, misst deshalb noch keine Emotion; eines, das daraus auf Nervosität schließt, sehr wohl.",
+          "Dass das Bewerbungsverfahren als Arbeitsplatz zählt, hält die Europäische Kommission in ihren Leitlinien zu verbotenen KI-Praktiken, C(2025) 5052 final vom 29. Juli 2025, ausdrücklich fest (Randnummer 254): „Der Einsatz von Emotionserkennungssystemen während des Einstellungsverfahrens ist verboten.“ Die Leitlinien binden Gerichte nicht, verbindlich auslegen kann die Verordnung nur der Europäische Gerichtshof; sie sind aber der Maßstab, an dem sich die Aufsichtsbehörden orientieren.",
         ],
+        bild: {
+          art: "tabelle",
+          daten: {
+            caption: "Was im Bewerbungsverfahren verboten ist und was nicht (Stand August 2026)",
+            columns: [
+              "Bewertung",
+              "Grundlage",
+            ],
+            rows: [
+              {
+                label: "Gefühle aus Mimik oder Stimme ableiten, etwa im Video-Interview",
+                cells: [
+                  {
+                    text: "verboten seit 02.02.2025",
+                    ton: "warm",
+                  },
+                  "Art. 5 Abs. 1 lit. f; Leitlinien Rn. 254",
+                ],
+              },
+              {
+                label: "Aus Bild und Ton auf Ethnie, Religion, Gewerkschaft oder sexuelle Orientierung schließen",
+                cells: [
+                  {
+                    text: "verboten",
+                    ton: "warm",
+                  },
+                  "Art. 5 Abs. 1 lit. g",
+                ],
+              },
+              {
+                label: "Stimmung aus geschriebenem Text ableiten",
+                cells: [
+                  {
+                    text: "nicht von diesem Verbot erfasst, andere Regeln gelten",
+                    ton: "leise",
+                  },
+                  "Leitlinien Rn. 250 und 251",
+                ],
+              },
+              {
+                label: "Nur Sprechpausen zählen, ohne auf Gefühle zu schließen",
+                cells: [
+                  {
+                    text: "keine Emotionserkennung",
+                    ton: "erfolg",
+                  },
+                  "Erwägungsgrund 18",
+                ],
+              },
+              {
+                label: "Medizinprodukte mit CE-Kennzeichnung, Schutz von Leben und Gesundheit",
+                cells: [
+                  {
+                    text: "enge Ausnahme",
+                    ton: "leise",
+                  },
+                  "Leitlinien Rn. 257 und 258",
+                ],
+              },
+            ],
+          },
+        },
       },
       {
         h2: "Fällt die Auswertung von Video-Interviews darunter?",
         body: [
           "Die Auswertung von Mimik und Stimme fällt unter das Verbot, die reine Textanalyse nicht. Die Grenze verläuft an den biometrischen Daten: Artikel 3 Nummer 39 der KI-Verordnung, anwendbar seit dem 2. Februar 2025, setzt für ein Emotionserkennungssystem biometrische Daten voraus. Die Kommission legt das Verbot entsprechend aus, obwohl der Wortlaut des Artikel 5 Absatz 1 Buchstabe f diese Definition nicht ausdrücklich in Bezug nimmt (Randnummern 244 und 245 der Leitlinien). Wer aus Gesichtsausdruck oder Stimmlage auf Motivation, Belastbarkeit oder Persönlichkeit schließt, arbeitet mit biometrischen Daten und ist erfasst.",
-          "Ein System, das Stimmungen aus geschriebenem Text ableitet, also die klassische Stimmungsanalyse einer Bewerbung, arbeitet nicht mit biometrischen Daten und fällt deshalb nicht unter dieses Verbot (Randnummern 250 und 251). Unbedenklich ist es damit nicht: Sobald es Bewerber bewertet oder in eine Rangfolge bringt, greifen die übrigen Regeln dieses Artikels.",
-          "Ein zweites Verbot liegt daneben und wird oft übersehen. Artikel 5 Absatz 1 Buchstabe g untersagt die biometrische Kategorisierung, mit der aus biometrischen Daten auf Ethnie, politische Einstellung, Gewerkschaftszugehörigkeit, religiöse oder weltanschauliche Überzeugung, Sexualleben oder sexuelle Orientierung geschlossen wird. Ein Video-Interview liefert genau die Datenbasis für solche Rückschlüsse. Fragen Sie Ihren Anbieter deshalb schriftlich, welche Merkmale sein System aus Bild und Ton ableitet, und lassen Sie sich bestätigen, dass keine dieser Kategorien darunter ist.",
-          "Die Begründung des Gesetzgebers steht in Erwägungsgrund 44 und ist ungewöhnlich deutlich: Es bestehen ernsthafte Bedenken hinsichtlich der wissenschaftlichen Grundlage von Systemen, die Emotionen erkennen sollen, weil Emotionsausdruck zwischen Kulturen, Situationen und sogar bei derselben Person erheblich variiert. Das Verbot beruht also nicht auf einem Datenschutzargument, sondern auf dem Zweifel, dass die Technik überhaupt misst, was sie zu messen vorgibt.",
+          "Die klassische Stimmungsanalyse einer schriftlichen Bewerbung arbeitet nicht mit biometrischen Daten und fällt deshalb nicht unter dieses Verbot (Randnummern 250 und 251). Unbedenklich ist sie damit nicht: Sobald sie Bewerber bewertet oder in eine Rangfolge bringt, greifen die übrigen Regeln.",
+          "Daneben untersagt Artikel 5 Absatz 1 Buchstabe g die biometrische Kategorisierung, also Rückschlüsse aus biometrischen Daten auf Ethnie, politische Einstellung, Gewerkschaftszugehörigkeit, religiöse oder weltanschauliche Überzeugung, Sexualleben oder sexuelle Orientierung. Ein Video-Interview liefert genau die Datenbasis dafür. Lassen Sie sich vom Anbieter schriftlich bestätigen, welche Merkmale sein System aus Bild und Ton ableitet und dass keine dieser Kategorien darunter ist.",
+          "Begründet hat der Gesetzgeber das Verbot in Erwägungsgrund 44 mit ernsthaften Zweifeln an der wissenschaftlichen Grundlage solcher Systeme, weil Emotionsausdruck zwischen Kulturen, Situationen und sogar bei derselben Person erheblich variiert.",
         ],
       },
       {
         h2: "Haftet der Arbeitgeber auch bei zugekaufter Software?",
         body: [
           "Ja, der Arbeitgeber haftet auch bei zugekaufter Software. Randnummer 243 der Kommissionsleitlinien C(2025) 5052 final vom 29. Juli 2025 stellt klar, dass das Verbot Anbieter und Betreiber gleichermaßen trifft, jeweils in ihrem Verantwortungsbereich. Wer ein fertiges Emotionserkennungstool im Bewerbungsverfahren einsetzt, ist selbst Adressat und kann sich nicht darauf berufen, das System nicht entwickelt zu haben.",
-          "Der Bußgeldrahmen für Verstöße gegen Artikel 5 liegt nach Artikel 99 Absatz 3 bei bis zu 35 Millionen Euro oder 7 Prozent des weltweiten Jahresumsatzes, je nachdem, welcher Betrag höher ist. Das ist die höchste Stufe der Verordnung, deutlich über den bis zu 15 Millionen Euro oder 3 Prozent für Verstöße gegen Betreiber- und Transparenzpflichten.",
-          "Für kleine und mittlere Unternehmen einschließlich Start-ups kehrt Artikel 99 Absatz 6 die Rechnung um: Dort gilt der jeweils niedrigere der beiden Werte, und zwar für alle drei Bußgeldstufen. Die Digital-Omnibus-Verordnung hat mit einem neuen Absatz 6a eine ähnliche, aber engere Deckelung für kleine Midcap-Unternehmen ergänzt, also für Unternehmen, die aus der KMU-Definition herausgewachsen sind. Diese Deckelung greift nur bei den Bußgeldern nach Absatz 4 und 5. Für Verstöße gegen die Verbote des Artikel 5 bleibt es dort beim höheren Wert.",
+          "Für Verstöße gegen Artikel 5 liegt der Bußgeldrahmen nach Artikel 99 Absatz 3 bei bis zu 35 Millionen Euro oder 7 Prozent des weltweiten Jahresumsatzes, je nachdem, welcher Betrag höher ist; das ist die höchste Stufe der Verordnung. Für kleine und mittlere Unternehmen einschließlich Start-ups gilt nach Artikel 99 Absatz 6 der jeweils niedrigere Wert. Die engere Deckelung für kleine Midcap-Unternehmen aus dem neuen Absatz 6a greift bei Verstößen gegen Artikel 5 nicht.",
           "Unabhängig davon greift das Allgemeine Gleichbehandlungsgesetz (AGG). Auch eine diskriminierende Vorauswahl durch zugekaufte Software befreit den Arbeitgeber nicht von der Haftung gegenüber der abgelehnten Person. Die Auslagerung verlagert das Risiko technisch, nicht rechtlich.",
         ],
+        bildNach: 2,
+        bild: {
+          art: "balken",
+          daten: {
+            art: "liste",
+            titel: "Höchstbußgelder im Vergleich, in Millionen Euro",
+            zeilen: [
+              {
+                label: "Verbotene Praktiken, Art. 5",
+                wert: 35,
+                text: "35 Mio. € oder 7 %",
+                ton: "warm",
+              },
+              {
+                label: "Betreiber- und Transparenzpflichten",
+                wert: 15,
+                text: "15 Mio. € oder 3 %",
+                ton: "akzent",
+              },
+              {
+                label: "Verweigerte Erklärung nach Art. 86, § 15 KI-MIG",
+                wert: 0.05,
+                text: "50.000 €",
+                ton: "cyan",
+              },
+            ],
+            quelle: "Art. 99 Abs. 3 und 4 KI-Verordnung, jeweils der höhere Betrag; § 15 KI-MIG. Für kleine und mittlere Unternehmen gilt nach Art. 99 Abs. 6 der niedrigere Betrag.",
+          },
+        },
       },
       {
         h2: "Muss man Bewerber informieren, wenn eine KI mit ihnen spricht?",
         body: [
           "Ja, seit dem 2. August 2026 muss für die betroffene Person erkennbar sein, dass sie mit einem KI-System spricht. Das verlangt Artikel 50 der KI-Verordnung. Diese Frist wurde vom Digital Omnibus ausdrücklich nicht verschoben, wie die Europäische Kommission in ihren FAQ vom Juli 2026 bestätigt hat. Der Bußgeldrahmen liegt nach Artikel 99 Absatz 4 Buchstabe g bei bis zu 15 Millionen Euro oder 3 Prozent des weltweiten Jahresumsatzes.",
-          "Normadressat des Artikel 50 Absatz 1 ist der Anbieter des Systems, nicht der Betreiber, und die Pflicht entfällt, wenn die KI-Natur ohnehin offensichtlich ist. Für Arbeitgeber ist das trotzdem kein Freibrief: Wer ein zugekauftes System unter eigenem Namen einsetzt oder es wesentlich verändert, gilt nach Artikel 25 Absatz 1 selbst als Anbieter und haftet dann unmittelbar. Praktisch heißt das, den Hinweis vertraglich vom Anbieter zu verlangen und im eigenen Gesprächsleitfaden zu verankern.",
-          "Praktisch ist das der billigste Teil der ganzen Verordnung: ein Satz zu Gesprächsbeginn, vor der ersten inhaltlichen Frage. Zum Beispiel: „Sie sprechen mit einem KI-Assistenten. Auf Wunsch verbinde ich Sie mit einem Mitarbeiter.“ Teuer wird es nur, wenn er fehlt.",
+          "Normadressat des Artikel 50 Absatz 1 ist der Anbieter des Systems, und die Pflicht entfällt, wenn die KI-Natur ohnehin offensichtlich ist. Wer ein zugekauftes System unter eigenem Namen einsetzt oder wesentlich verändert, gilt nach Artikel 25 Absatz 1 aber selbst als Anbieter. Verlangen Sie den Hinweis deshalb vertraglich vom Anbieter und verankern Sie ihn im eigenen Gesprächsleitfaden.",
+          "Praktisch ist das der billigste Teil der ganzen Verordnung: ein Satz zu Gesprächsbeginn, vor der ersten inhaltlichen Frage. Teuer wird es nur, wenn er fehlt.",
         ],
+        bild: {
+          art: "mustersatz",
+          daten: {
+            teile: [
+              {
+                text: "Sie sprechen mit einem KI-Assistenten.",
+                ton: "warm",
+                notiz: "Die Pflicht: erkennbar machen, dass eine KI spricht. Art. 50 Abs. 1 KI-Verordnung, seit dem 2. August 2026.",
+              },
+              {
+                text: "Auf Wunsch verbinde ich Sie mit einem Mitarbeiter.",
+                ton: "erfolg",
+                notiz: "Der Ausweg: Wer lieber mit einem Menschen spricht, wird verbunden.",
+              },
+            ],
+          },
+        },
       },
       {
         h2: "Was gilt im Recruiting unabhängig vom AI Act?",
         body: [
-          "Das meiste gilt schon lange. Artikel 22 DSGVO verbietet seit dem 25. Mai 2018 die ausschließlich automatisierte Entscheidung mit rechtlicher oder ähnlich erheblicher Wirkung. Erlaubt ist sie nur in drei Fällen: wenn sie für einen Vertrag erforderlich ist, wenn eine Rechtsvorschrift sie zulässt oder wenn die betroffene Person ausdrücklich eingewilligt hat. Eine vollautomatisch erzeugte Absage ohne menschliche Beteiligung ist damit seit Jahren angreifbar. Der Europäische Gerichtshof hat am 7. Dezember 2023 in der Sache C-634/21 zu SCHUFA entschieden, dass schon die Erstellung eines Scores eine automatisierte Entscheidung sein kann, wenn dieser Wert das Ergebnis maßgeblich bestimmt. Für ein Bewerber-Ranking ist das die entscheidende Aussage.",
-          "Das Allgemeine Gleichbehandlungsgesetz gilt seit dem 18. August 2006. Zwei Vorschriften sind für algorithmische Vorauswahl entscheidend. § 3 Absatz 2 erfasst die mittelbare Benachteiligung: ein Kriterium, das neutral aussieht, eine geschützte Gruppe aber systematisch schlechter stellt. Noch wichtiger ist § 22. Trägt eine abgelehnte Person Indizien für eine Benachteiligung vor, muss der Arbeitgeber beweisen, dass keine vorlag. Wer nicht erklären kann, wie sein Modell zu seiner Reihenfolge kommt, führt diesen Beweis nicht. Die Entschädigung nach § 15 Absatz 2 ist auf drei Monatsgehälter begrenzt, wenn die Person auch bei fehlerfreier Auswahl nicht eingestellt worden wäre, sonst gibt es keine Obergrenze. Geltend zu machen ist der Anspruch nach § 15 Absatz 4 binnen zwei Monaten ab Zugang der Absage.",
-          "Wo ein Betriebsrat besteht, kommen drei Pflichten zusammen. Erstens kann ein KI-gestütztes Auswahlverfahren eine technische Einrichtung nach § 87 Absatz 1 Nummer 6 BetrVG sein, dann muss der Betriebsrat zustimmen. Das folgt allerdings nicht schon daraus, dass Bewerber bewertet werden: Die Vorschrift schützt Arbeitnehmer, und Bewerber sind noch keine. Mitbestimmungspflichtig wird das System, sobald es objektiv geeignet ist, auch Verhalten oder Leistung der eigenen Beschäftigten zu erfassen, etwa weil Recruiter darin protokolliert werden. Zweitens ist der Betriebsrat nach § 90 Absatz 1 Nummer 3 über die Planung von Arbeitsverfahren zu unterrichten und zu beraten, und zwar rechtzeitig. Drittens stellt § 95 Absatz 2a ausdrücklich klar, dass Auswahlrichtlinien auch dann zustimmungspflichtig sind, wenn bei ihrer Aufstellung künstliche Intelligenz zum Einsatz kommt.",
+          "Das meiste gilt schon lange: die DSGVO seit dem 25. Mai 2018, das Allgemeine Gleichbehandlungsgesetz seit dem 18. August 2006 und, wo ein Betriebsrat besteht, das Betriebsverfassungsgesetz. Eine vollautomatisch erzeugte Absage ohne menschliche Beteiligung ist damit seit Jahren angreifbar, und wer nicht erklären kann, wie sein Modell zu seiner Reihenfolge kommt, führt den Entlastungsbeweis nach § 22 AGG nicht.",
+          "Beim Betriebsrat lohnt ein genauer Blick: Mitbestimmungspflichtig nach § 87 Absatz 1 Nummer 6 BetrVG wird ein Auswahlsystem nicht schon, weil es Bewerber bewertet, denn Bewerber sind noch keine Arbeitnehmer. Es wird es, sobald es objektiv geeignet ist, auch Verhalten oder Leistung der eigenen Beschäftigten zu erfassen, etwa weil Recruiter darin protokolliert werden.",
         ],
+        bild: {
+          art: "tabelle",
+          daten: {
+            caption: "Regeln, die für KI im Recruiting schon heute gelten",
+            columns: [
+              "Was daraus folgt",
+            ],
+            rows: [
+              {
+                label: "Art. 22 DSGVO, seit 25.05.2018",
+                cells: [
+                  "Keine ausschließlich automatisierte Entscheidung mit erheblicher Wirkung, außer bei Vertrag, Rechtsvorschrift oder ausdrücklicher Einwilligung. Schon ein Score kann eine solche Entscheidung sein, wenn er das Ergebnis maßgeblich bestimmt (EuGH, C-634/21, 7. Dezember 2023).",
+                ],
+              },
+              {
+                label: "§ 3 Abs. 2 AGG",
+                cells: [
+                  "Mittelbare Benachteiligung: Ein neutral wirkendes Kriterium darf eine geschützte Gruppe nicht systematisch schlechter stellen.",
+                ],
+              },
+              {
+                label: "§ 22 AGG",
+                cells: [
+                  "Trägt eine abgelehnte Person Indizien vor, muss der Arbeitgeber beweisen, dass keine Benachteiligung vorlag.",
+                ],
+              },
+              {
+                label: "§ 15 AGG",
+                cells: [
+                  "Entschädigung bis zu drei Monatsgehältern, wenn die Person ohnehin nicht eingestellt worden wäre, sonst ohne Obergrenze; geltend zu machen binnen zwei Monaten ab Zugang der Absage.",
+                ],
+              },
+              {
+                label: "§ 87 Abs. 1 Nr. 6 BetrVG",
+                cells: [
+                  "Zustimmung des Betriebsrats, sobald das System auch Verhalten oder Leistung der Beschäftigten erfassen kann.",
+                ],
+              },
+              {
+                label: "§ 90 Abs. 1 Nr. 3 BetrVG",
+                cells: [
+                  "Rechtzeitige Unterrichtung und Beratung über die Planung des Verfahrens.",
+                ],
+              },
+              {
+                label: "§ 95 Abs. 2a BetrVG",
+                cells: [
+                  "Auswahlrichtlinien sind zustimmungspflichtig, auch wenn bei ihrer Aufstellung KI zum Einsatz kommt.",
+                ],
+              },
+            ],
+          },
+        },
       },
       {
         h2: "Wer beaufsichtigt das in Deutschland?",
@@ -870,11 +1161,39 @@ export const RATGEBER = [
       {
         h2: "Was sollten Arbeitgeber bis Dezember 2027 vorbereiten?",
         body: [
-          "Eine Bestandsaufnahme zuerst. In den meisten Recruiting-Prozessen laufen mehr Modelle mit, als die Beteiligten wissen: der eingebaute Abgleich im Bewerbermanagementsystem, eine automatische Rangfolge im Jobportal, eine Vorqualifizierung im Chat. Die Frage ist nicht, ob KI im Einsatz ist, sondern welche Entscheidung sie trifft und wer sie danach noch prüft.",
-          "Danach gilt eine einfache Reihenfolge. Alles, was im Beschäftigungskontext Emotionen aus Gesicht oder Stimme ableitet, gehört heute abgeschaltet und nicht erst 2027; im Bewerbungsverfahren gilt das ausnahmslos. Jede Absage braucht eine menschliche Entscheidung, die diesen Namen verdient, also mit Kenntnis des Falls und der Befugnis, das Modell zu überstimmen. Wer Bewerber automatisch in eine Rangfolge bringt, sollte festhalten, welche Merkmale diese Rangfolge bestimmt haben: Genau danach fragt § 22 AGG, in Kraft seit dem 18. August 2006, sobald eine abgelehnte Person Indizien für eine Benachteiligung vorträgt. Und der Betriebsrat gehört an den Anfang des Projekts, nicht an sein Ende.",
+          "Eine Bestandsaufnahme zuerst, denn in den meisten Recruiting-Prozessen laufen mehr Modelle mit, als die Beteiligten wissen. Die Frage ist nicht, ob KI im Einsatz ist, sondern welche Entscheidung sie trifft und wer sie danach noch prüft.",
           "Wer das bis Ende 2027 stehen hat, muss im Dezember 2027 nicht umbauen, sondern nur dokumentieren. Das ist der Unterschied zwischen einer Frist und einem Problem.",
           "Dieser Text ordnet die Rechtslage zum Stand August 2026 ein und ersetzt keine Rechtsberatung. Für die verbindliche Beurteilung eines konkreten Auswahlverfahrens ist anwaltlicher Rat einzuholen.",
         ],
+        bildNach: 1,
+        bild: {
+          art: "schritte",
+          daten: {
+            titel: "In dieser Reihenfolge",
+            schritte: [
+              {
+                titel: "Bestandsaufnahme",
+                text: "Abgleich im Bewerbermanagement, Rangfolge im Jobportal, Vorqualifizierung im Chat: Welches Modell entscheidet was, und wer prüft danach?",
+              },
+              {
+                titel: "Emotionserkennung abschalten, heute",
+                text: "Alles, was im Bewerbungsverfahren Gefühle aus Gesicht oder Stimme ableitet, ist schon verboten, ausnahmslos.",
+              },
+              {
+                titel: "Jede Absage entscheidet ein Mensch",
+                text: "Mit Kenntnis des Falls und der Befugnis, das Modell zu überstimmen.",
+              },
+              {
+                titel: "Merkmale der Rangfolge festhalten",
+                text: "Genau danach fragt § 22 AGG, sobald eine abgelehnte Person Indizien vorträgt.",
+              },
+              {
+                titel: "Betriebsrat an den Anfang",
+                text: "Nicht ans Ende des Projekts.",
+              },
+            ],
+          },
+        },
       },
     ],
     faq: [
@@ -912,7 +1231,7 @@ export const RATGEBER = [
     kicker: "Voice-AI",
     h1: "KI-Telefonagenten: Kosten und Rechtslage",
     published: "2026-08-26",
-    modified: "2026-08-26",
+    modified: "2026-10-29",
     lede: "Ein KI-Telefonagent kostet 2026 je nach Anbieter und Ausstattung zwischen 0,05 und 0,31 US-Dollar pro Gesprächsminute, jeweils Listenpreis und ohne Telefonie, am unteren Ende sogar ohne Sprachmodell, Spracherkennung und Sprachausgabe. Was über den Erfolg entscheidet, steht aber auf keiner Preisseite. Retell AI und Vapi verarbeiten nach ihrer eigenen Dokumentation nicht in der EU. Am Telefon liegt die Wortfehlerrate für Deutsch bei 12 bis 23 Prozent statt der rund 5 Prozent aus den Ranglisten. Und wer ein Gespräch ohne Einwilligung aufzeichnet, erfüllt in Deutschland einen Straftatbestand mit bis zu drei Jahren Freiheitsstrafe.",
     table: {
       caption: "Listenpreise und EU-Verarbeitung (Stand: August 2026, Preise in US-Dollar)",
@@ -959,11 +1278,64 @@ export const RATGEBER = [
       {
         h2: "Was kostet ein KI-Telefonagent pro Minute?",
         body: [
-          "Zwischen 0,05 und 0,31 US-Dollar je Gesprächsminute, Stand August 2026, und die Spanne kommt nicht von der Qualität, sondern davon, was jeweils im Preis steckt. Kein Anbieter nennt einen Preis, der alles enthält. Bland AI kommt dem am nächsten: 0,14 US-Dollar je Minute ohne Grundgebühr, 0,12 US-Dollar je Minute bei 299 US-Dollar Plattformgebühr im Monat und 0,11 US-Dollar je Minute bei 499 US-Dollar im Monat. Enthalten sind Sprachmodell, Spracherkennung und Sprachausgabe, die Telefonie ausdrücklich nicht. Vapi nennt 0,05 US-Dollar je Minute, das ist allein die Orchestrierung des Gesprächs.",
-          "Retell AI schlüsselt am ehrlichsten auf und zeigt damit, woraus so eine Minute besteht: 0,055 US-Dollar Sprachinfrastruktur, 0,015 für die plattformeigene Stimme oder 0,040 für eine ElevenLabs-Stimme, dazu das Sprachmodell zwischen 0,003 für ein sehr kleines und 0,16 für ein großes. Wissensdatenbank, bessere Rauschunterdrückung und Sicherheitsfilter kosten je 0,005 mehr, das Entfernen personenbezogener Daten 0,01. Der teuerste Schalter steht weiter unten auf derselben Seite: Qualitätssicherung kostet nach den ersten 100 Minuten 0,10 US-Dollar je Minute und kann den Preis eines günstigen Aufbaus damit verdoppeln. Genau diese Auswertung braucht man, um einen produktiven Agenten zu überwachen.",
-          "Der Posten, den fast alle übersehen, ist die Gleichzeitigkeit. Vapi liefert zehn parallele Leitungen mit und berechnet jede weitere mit 10 US-Dollar im Monat, Retell gibt zwanzig frei und nimmt danach 8 US-Dollar je Platz und Monat. ElevenLabs verdoppelt auf 0,16 US-Dollar je Minute, sobald das Limit für gleichzeitige Anrufe überschritten wird, also genau dann, wenn viele gleichzeitig anrufen. Das reine Minutenkontingent zu überziehen kostet dagegen weiterhin 0,08. Das ist ein Fixposten, und er richtet sich nach der Anrufspitze, nicht nach dem Durchschnitt.",
-          "Für ein Gespräch von vier Minuten landet man je nach Aufbau bei grob 0,40 bis 0,60 US-Dollar. Diese Zahl ist bewusst ungenau, denn sie enthält weder die Miete der Rufnummer noch die Gleichzeitigkeit noch die Zusatzfunktionen, und Twilio rundet jede angefangene Minute auf. Die Telefonie selbst ist mit 0,04 US-Dollar für vier eingehende Minuten der kleinste Posten. Wer über Kosten spricht, spricht also über das Sprachmodell, die Zusatzfunktionen und die Gleichzeitigkeit, nicht über die Telefonleitung.",
+          "Zwischen 0,05 und 0,31 US-Dollar je Gesprächsminute, Stand August 2026, und die Spanne kommt nicht von der Qualität, sondern davon, was jeweils im Preis steckt. Kein Anbieter nennt einen Preis, der alles enthält.",
+          "Der Posten, den fast alle übersehen, ist die Gleichzeitigkeit: Parallele Leitungen kosten ab einer bestimmten Zahl extra, und bei ElevenLabs verdoppelt sich der Minutenpreis, sobald das Limit gleichzeitiger Anrufe überschritten wird. Dieser Fixposten richtet sich nach der Anrufspitze, nicht nach dem Durchschnitt.",
+          "Für ein Gespräch von vier Minuten landet man je nach Aufbau bei grob 0,40 bis 0,60 US-Dollar, ohne Rufnummer, Gleichzeitigkeit und Zusatzfunktionen. Die Telefonie selbst ist mit 0,04 US-Dollar für vier eingehende Minuten der kleinste Posten; wer über Kosten spricht, spricht über Sprachmodell, Zusatzfunktionen und Gleichzeitigkeit.",
         ],
+        bildNach: 1,
+        bild: {
+          art: "tabelle",
+          daten: {
+            caption: "Was eine Minute kostet und was darin steckt (US-Dollar, Stand August 2026)",
+            columns: [
+              "je Minute",
+              "enthalten",
+              "kommt dazu",
+            ],
+            rows: [
+              {
+                label: "Bland AI",
+                cells: [
+                  "0,14; mit 299 Grundgebühr im Monat 0,12, mit 499 im Monat 0,11",
+                  "Sprachmodell, Spracherkennung, Sprachausgabe",
+                  "Telefonie",
+                ],
+              },
+              {
+                label: "Vapi",
+                cells: [
+                  "0,05",
+                  "nur die Orchestrierung des Gesprächs",
+                  "Modell, Stimme und Telefonie; ab der elften parallelen Leitung je 10 im Monat",
+                ],
+              },
+              {
+                label: "Retell AI",
+                cells: [
+                  "0,055 Infrastruktur, Stimme 0,015 oder 0,040, Modell 0,003 bis 0,16",
+                  "aufgeschlüsselt nach Bausteinen",
+                  "Zusatzfunktionen 0,005 bis 0,01, Qualitätssicherung 0,10 nach den ersten 100 Minuten; ab dem 21. Platz je 8 im Monat",
+                ],
+              },
+              {
+                label: "ElevenLabs",
+                cells: [
+                  "0,08 über dem Minutenkontingent",
+                  "das Minutenkontingent des Tarifs",
+                  "0,16, sobald das Limit gleichzeitiger Anrufe überschritten ist",
+                ],
+              },
+              {
+                label: "Telefonie über Twilio",
+                cells: [
+                  "rund 0,01 eingehend",
+                  "die Leitung",
+                  "Miete der Rufnummer; jede angefangene Minute wird aufgerundet",
+                ],
+              },
+            ],
+          },
+        },
       },
       {
         h2: "Warum wirkt ein KI-Agent langsamer als ein Mensch?",
@@ -973,6 +1345,22 @@ export const RATGEBER = [
           "Erklären lässt sich das mit einem zweiten Befund der Turn-Taking-Forschung: Die Planung einer Äußerung dauert über 600 Millisekunden, die Pause zwischen den Beiträgen aber nur rund 200 (Levinson und Torreira, Frontiers in Psychology 2015). Sprecher planen also bereits, während der andere noch spricht. Ein Agent, der erst zu arbeiten beginnt, wenn der Anrufer fertig ist, kann diesen Rhythmus strukturell nicht erreichen. Der größte Einzelposten in der Kette ist deshalb meist nicht das Sprachmodell, sondern die Entscheidung, ob der Anrufer wirklich zu Ende gesprochen hat.",
           "Für die Praxis folgen daraus zwei Dinge. Latenz ist kein Detail, das man später optimiert, sondern das Merkmal, an dem ein Anrufer die Maschine erkennt. Und eine kurze Bestätigung zu Beginn der Antwort hilft mehr als jede Millisekunde Modelloptimierung, weil sie die Wartezeit füllt, statt sie zu verkürzen.",
         ],
+        bild: {
+          art: "balken",
+          daten: {
+            art: "liste",
+            titel: "Antwortzeit im Gespräch, Median",
+            zeilen: [
+              { label: "Mensch", wert: 208, text: "208 ms", ton: "erfolg" },
+              { label: "Telnyx", wert: 1296, text: "1.296 ms", ton: "warm" },
+              { label: "ElevenLabs", wert: 1424, text: "1.424 ms", ton: "warm" },
+              { label: "Bland AI", wert: 1520, text: "1.520 ms", ton: "warm" },
+              { label: "Vapi", wert: 1558, text: "1.558 ms", ton: "warm" },
+              { label: "Retell AI", wert: 1740, text: "1.740 ms", ton: "warm" },
+            ],
+            quelle: "Mensch: Stivers et al., PNAS 2009, zehn Sprachen. KI-Telefonagenten: Openbenchmarks Labs, 432 echte Anrufe, 1. August 2026, nicht begutachtet.",
+          },
+        },
       },
       {
         h2: "Funktioniert die Spracherkennung auf Deutsch zuverlässig?",
@@ -983,23 +1371,144 @@ export const RATGEBER = [
           "Dialekt kostet zusätzlich. Auf einem Datensatz mit fränkischer, bayerischer und schwäbischer Sprache fällt Whisper large-v3 von 9 auf 31 Wortfehler je hundert Wörter. Für Schweizerdeutsch liegen die besten feinjustierten Modelle 2026 bei rund 25 Prozent. Wer Anrufer aus dem ganzen deutschsprachigen Raum erwartet, sollte das einplanen.",
           "Praktisch heißt das: Ein Agent, der ein Anliegen sortiert und weiterleitet, kommt mit diesen Fehlerraten gut zurecht, weil ein falsch verstandenes Wort die Absicht selten verändert. Ein Agent, der einen Nachnamen, eine Straße oder eine Bestellnummer aufnehmen soll, kommt nicht damit zurecht. Für solche Felder braucht es eine Rückbestätigung, ein Buchstabieralphabet oder die Eingabe über die Tastatur, und zwar von Anfang an, nicht als Nachbesserung.",
         ],
+        bild: {
+          art: "balken",
+          daten: {
+            art: "liste",
+            /* Anteile auf voller Skala: 19,9 % als voller Balken läse sich
+               wie 100 %. Ein Fünftel gefüllt heißt: jedes fünfte Wort falsch. */
+            max: 100,
+            titel: "Wortfehlerrate von Whisper large-v3 auf Deutsch",
+            zeilen: [
+              { label: "Vorgelesene Sätze", wert: 5, text: "rund 5 %", ton: "erfolg" },
+              { label: "Kuratiertes Audio", wert: 8.4, text: "8,4 %", ton: "akzent" },
+              { label: "Echtes Produktionsaudio", wert: 19.9, text: "19,9 %", ton: "warm" },
+            ],
+            quelle: "Vorgelesen: Open ASR Leaderboard, FLEURS und CoVoST-2, Stand August 2026. Kuratiert und Produktion: Benchmark von Deepgram über 26 Stunden deutsches Audio, vom Anbieter selbst.",
+          },
+        },
       },
       {
         h2: "Verarbeiten die Anbieter von KI-Telefonagenten in der EU?",
         body: [
-          "Retell AI und Vapi nicht, ElevenLabs nur im Enterprise-Tarif und auch dort nur eingeschränkt. Das steht jeweils in der eigenen Dokumentation der Anbieter. Retell AI schreibt in den eigenen Compliance-Unterlagen wörtlich: „we do not currently operate services within the European Union.“ Vapis eigene DSGVO-Dokumentation bestätigt eine Übermittlung personenbezogener Daten aus der EU heraus, „primarily to the United States“, abgesichert über Standardvertragsklauseln.",
-          "ElevenLabs bietet eine EU-Region an, aber nur im Enterprise-Tarif, und die Dokumentation grenzt sie ausdrücklich ein: Garantiert ist die Speicherung in der Region, nicht die Verarbeitung. Auf die EU beschränken lässt sich die Verarbeitung nur unter zwei Bedingungen zugleich, nämlich im Zero Retention Mode und über die Programmierschnittstelle. Wer die Oberfläche benutzt, hat sie nicht.",
-          "Das ist keine juristische Feinheit, sondern der Punkt, an dem die meisten Angebote auseinanderfallen. Ein Telefonat mit einem Kunden oder Bewerber enthält regelmäßig personenbezogene Daten. Wer solche Gespräche über einen Anbieter führt, der nach eigener Auskunft nicht in der EU verarbeitet, braucht dafür eine tragfähige Grundlage und muss sie dokumentieren. Das Wort „DSGVO-konform“ auf einer Anbieterseite ist keine.",
-          "Praktisch bleiben drei Wege: einen Anbieter mit tatsächlicher EU-Verarbeitung wählen und sich das schriftlich geben lassen, die Aufbewahrungsdauer auf das Minimum ziehen, wo der Anbieter das erlaubt, oder die Bausteine selbst zusammensetzen und die Verarbeitung dorthin legen, wo man sie haben will. Der dritte Weg kostet Aufwand, ist aber der einzige, bei dem die Antwort nicht vom gebuchten Tarif abhängt.",
+          "Retell AI und Vapi nicht, ElevenLabs nur im Enterprise-Tarif und auch dort nur eingeschränkt. Das steht jeweils in der eigenen Dokumentation der Anbieter.",
+          "Das ist der Punkt, an dem die meisten Angebote auseinanderfallen. Ein Telefonat mit einem Kunden oder Bewerber enthält regelmäßig personenbezogene Daten, und wer es über einen Anbieter führt, der nach eigener Auskunft nicht in der EU verarbeitet, braucht dafür eine tragfähige, dokumentierte Grundlage. Das Wort „DSGVO-konform“ auf einer Anbieterseite ist keine.",
+          "Praktisch bleiben drei Wege: ein Anbieter mit tatsächlicher EU-Verarbeitung, schriftlich bestätigt; die Aufbewahrungsdauer auf das Minimum ziehen, wo der Anbieter das erlaubt; oder die Bausteine selbst zusammensetzen und die Verarbeitung dorthin legen, wo man sie haben will. Nur beim dritten hängt die Antwort nicht vom gebuchten Tarif ab.",
         ],
+        bildNach: 1,
+        bild: {
+          art: "tabelle",
+          daten: {
+            caption: "Verarbeitung in der EU laut Dokumentation der Anbieter (Stand August 2026)",
+            columns: [
+              "in der EU?",
+              "was die Dokumentation sagt",
+            ],
+            rows: [
+              {
+                label: "Retell AI",
+                cells: [
+                  {
+                    text: "nein",
+                    ton: "warm",
+                  },
+                  "„we do not currently operate services within the European Union“",
+                ],
+              },
+              {
+                label: "Vapi",
+                cells: [
+                  {
+                    text: "nein",
+                    ton: "warm",
+                  },
+                  "Übermittlung „primarily to the United States“, abgesichert über Standardvertragsklauseln",
+                ],
+              },
+              {
+                label: "ElevenLabs",
+                cells: [
+                  {
+                    text: "nur Enterprise, eingeschränkt",
+                    ton: "leise",
+                  },
+                  "Speicherung in der EU-Region garantiert, Verarbeitung nur im Zero Retention Mode über die Programmierschnittstelle",
+                ],
+              },
+            ],
+          },
+        },
       },
       {
         h2: "Darf man ein Kundengespräch mit einem KI-Agenten aufzeichnen?",
         body: [
           "Nur mit Einwilligung, und der Verstoß ist keine Ordnungswidrigkeit, sondern eine Straftat. § 201 Absatz 1 des Strafgesetzbuchs stellt unter Strafe, wer unbefugt das nichtöffentlich gesprochene Wort eines anderen auf einen Tonträger aufnimmt. Der Strafrahmen liegt bei Freiheitsstrafe bis zu drei Jahren oder Geldstrafe. Das gilt auch für den Gesprächspartner selbst: Wer heimlich mitschneidet, macht sich strafbar, obwohl er am Gespräch beteiligt war.",
-          "Zwei Details, die in der Praxis zählen. Die Tat wird nach § 205 Absatz 1 nur auf Antrag verfolgt, und die Antragsfrist beträgt nach § 77b drei Monate ab Kenntnis von Tat und Täter. Ein verärgerter Anrufer hat also ein Quartal Zeit und muss keine Behörde von einem öffentlichen Interesse überzeugen. Auch der Versuch ist nach § 201 Absatz 4 strafbar.",
-          "Für KI-Systeme verläuft die Grenze an einer technischen Frage. Eine reine Live-Transkription ohne Speicherung des Tons erfüllt den Tatbestand nach der herrschenden Literaturmeinung nicht, weil keine Aufnahme auf einem Tonträger entsteht. Puffert das System das Audio über eine flüchtige Zwischenspeicherung im Arbeitsspeicher hinaus, ist der Tatbestand dagegen regelmäßig eröffnet. Höchstrichterlich geklärt ist das für Streaming-Spracherkennung bislang nicht. Ob ein Agent transkribiert oder aufzeichnet, ist damit keine Frage der Formulierung im Angebot, sondern eine Frage an die Architektur, und sie gehört vor dem Start beantwortet.",
+          "Verfolgt wird die Tat nach § 205 Absatz 1 nur auf Antrag, und die Antragsfrist beträgt nach § 77b drei Monate ab Kenntnis von Tat und Täter. Auch der Versuch ist nach § 201 Absatz 4 strafbar.",
+          "Für KI-Systeme verläuft die Grenze an einer technischen Frage. Eine reine Live-Transkription ohne Speicherung des Tons erfüllt den Tatbestand nach herrschender Literaturmeinung nicht, weil keine Aufnahme auf einem Tonträger entsteht; puffert das System das Audio über eine flüchtige Zwischenspeicherung hinaus, ist er regelmäßig eröffnet. Höchstrichterlich geklärt ist das für Streaming-Spracherkennung bislang nicht. Ob ein Agent transkribiert oder aufzeichnet, ist deshalb eine Frage an die Architektur, und sie gehört vor dem Start beantwortet.",
         ],
+        bildNach: 1,
+        bild: {
+          art: "tabelle",
+          daten: {
+            caption: "Rechtslage auf einen Blick (Stand August 2026, keine Rechtsberatung)",
+            columns: [
+              "Kurzantwort",
+              "Grundlage",
+            ],
+            rows: [
+              {
+                label: "Gespräch ohne Einwilligung aufzeichnen",
+                cells: [
+                  {
+                    text: "Straftat, bis drei Jahre Freiheitsstrafe oder Geldstrafe",
+                    ton: "warm",
+                  },
+                  "§ 201 StGB; Antrag binnen drei Monaten, § 205 und § 77b",
+                ],
+              },
+              {
+                label: "Nur live transkribieren, ohne den Ton zu speichern",
+                cells: [
+                  {
+                    text: "nach herrschender Meinung keine Aufnahme, höchstrichterlich ungeklärt",
+                    ton: "leise",
+                  },
+                  "§ 201 StGB",
+                ],
+              },
+              {
+                label: "Hinweis zu Beginn, der Anrufer spricht weiter",
+                cells: [
+                  {
+                    text: "strafrechtlich womöglich genug, datenschutzrechtlich nicht",
+                    ton: "leise",
+                  },
+                  "Beschluss der Datenschutzkonferenz vom 23.03.2018",
+                ],
+              },
+              {
+                label: "Aktives Ja oder Tastendruck vor der Aufzeichnung",
+                cells: [
+                  {
+                    text: "der tragfähige Weg, nachweisbar festhalten",
+                    ton: "erfolg",
+                  },
+                  "Art. 7 Abs. 1 DSGVO",
+                ],
+              },
+              {
+                label: "Die KI gibt sich zu erkennen",
+                cells: [
+                  {
+                    text: "Pflicht seit 02.08.2026",
+                    ton: "warm",
+                  },
+                  "Art. 50 KI-Verordnung, Bußgeld bis 15 Mio. € oder 3 %",
+                ],
+              },
+            ],
+          },
+        },
       },
       {
         h2: "Reicht ein Hinweis zu Gesprächsbeginn, oder braucht es eine Einwilligung?",
@@ -1012,11 +1521,29 @@ export const RATGEBER = [
       {
         h2: "Muss der Anrufer erfahren, dass er mit einer KI spricht?",
         body: [
-          "Ja, und seit dem 2. August 2026 ist das nicht mehr nur eine Frage des Anstands. Artikel 50 der KI-Verordnung verlangt, dass für die betroffene Person erkennbar ist, dass sie mit einem KI-System interagiert. Diese Frist wurde von der Digital-Omnibus-Verordnung ausdrücklich nicht verschoben, anders als die Pflichten für Hochrisiko-Systeme. Der Bußgeldrahmen liegt nach Artikel 99 Absatz 4 bei bis zu 15 Millionen Euro oder 3 Prozent des weltweiten Jahresumsatzes, je nachdem, welcher Betrag höher ist. Für kleine und mittlere Unternehmen einschließlich Start-ups dreht Artikel 99 Absatz 6 das um: Dort gilt der jeweils niedrigere Betrag.",
-          "Normadressat des Artikel 50 Absatz 1 ist der Anbieter des Systems, nicht der Betreiber: Er muss den Agenten so bauen, dass die KI-Natur erkennbar ist. Wer aus zugekauften Bausteinen einen eigenen Agenten zusammensetzt und ihn unter eigenem Namen in Betrieb nimmt, ist nach der Begriffsbestimmung in Artikel 3 Nummer 3 selbst Anbieter und schuldet die Pflicht unmittelbar. Wer dagegen ein fertiges Produkt einkauft, sollte sich die Erfüllung vertraglich zusichern lassen und im eigenen Gesprächsleitfaden verankern, dass der Hinweis tatsächlich fällt.",
-          "Der Aufwand ist ein Satz vor der ersten inhaltlichen Frage, zum Beispiel: „Sie sprechen mit einem KI-Assistenten. Auf Wunsch verbinde ich Sie mit einem Mitarbeiter.“ Dieser Satz erledigt Artikel 50 Absatz 1 und zugleich die häufigste Beschwerde, nämlich das Gefühl, hereingelegt worden zu sein. Er erledigt nicht Artikel 50 Absatz 2: Wer als Anbieter gilt, muss synthetisch erzeugtes Audio zusätzlich maschinenlesbar kennzeichnen.",
+          "Ja, und seit dem 2. August 2026 ist das nicht mehr nur eine Frage des Anstands. Artikel 50 der KI-Verordnung verlangt, dass für die betroffene Person erkennbar ist, dass sie mit einem KI-System interagiert; die Digital-Omnibus-Verordnung hat diese Frist ausdrücklich nicht verschoben. Der Bußgeldrahmen liegt nach Artikel 99 Absatz 4 bei bis zu 15 Millionen Euro oder 3 Prozent des weltweiten Jahresumsatzes, für kleine und mittlere Unternehmen nach Absatz 6 beim jeweils niedrigeren Betrag.",
+          "Normadressat des Artikel 50 Absatz 1 ist der Anbieter. Wer aus zugekauften Bausteinen einen eigenen Agenten zusammensetzt und unter eigenem Namen betreibt, ist nach Artikel 3 Nummer 3 selbst Anbieter; wer ein fertiges Produkt einkauft, sollte sich die Erfüllung vertraglich zusichern lassen und den Hinweis im eigenen Gesprächsleitfaden verankern.",
+          "Der Aufwand ist ein Satz vor der ersten inhaltlichen Frage. Er erledigt Artikel 50 Absatz 1 und zugleich die häufigste Beschwerde, das Gefühl, hereingelegt worden zu sein. Nicht erledigt ist damit Artikel 50 Absatz 2: Wer als Anbieter gilt, muss synthetisch erzeugtes Audio zusätzlich maschinenlesbar kennzeichnen.",
           "Dieser Text ordnet die Rechtslage zum Stand August 2026 ein und ersetzt keine Rechtsberatung. Für die Beurteilung eines konkreten Aufbaus ist anwaltlicher Rat einzuholen.",
         ],
+        bildNach: 3,
+        bild: {
+          art: "mustersatz",
+          daten: {
+            teile: [
+              {
+                text: "Sie sprechen mit einem KI-Assistenten.",
+                ton: "warm",
+                notiz: "Die Pflicht: erkennbar machen, dass eine KI spricht. Art. 50 Abs. 1 KI-Verordnung, seit dem 2. August 2026.",
+              },
+              {
+                text: "Auf Wunsch verbinde ich Sie mit einem Mitarbeiter.",
+                ton: "erfolg",
+                notiz: "Der Ausweg: Wer lieber mit einem Menschen spricht, wird verbunden.",
+              },
+            ],
+          },
+        },
       },
     ],
     faq: [
@@ -1054,7 +1581,7 @@ export const RATGEBER = [
     kicker: "Relaunch",
     h1: "Website-Relaunch ohne Ranking-Verlust",
     published: "2026-10-13",
-    modified: "2026-10-27",
+    modified: "2026-10-29",
     /* Quelle für alles zu Weiterleitungen und Umzug ist Googles Dokumentation
        "Site moves with URL changes" (Stand 20.08.2026), am 13.10.2026
        gelesen. MA-Flats steht nur mit seinen dokumentierten Messwerten da:
@@ -1095,6 +1622,68 @@ export const RATGEBER = [
           "Für einen Relaunch eine dauerhafte, also 301 oder 308. Sie sagt Suchmaschinen, dass die neue Adresse die alte ersetzt. Eine vorübergehende Weiterleitung mit 302 sagt das Gegenteil und gehört nur zu Umleitungen, die wirklich befristet sind.",
           "Jede alte Adresse sollte direkt auf ihr endgültiges Ziel zeigen. Google empfiehlt, Ketten aus mehreren Weiterleitungen hintereinander zu vermeiden (Google Search Central, Stand August 2026).",
         ],
+        bild: {
+          art: "tabelle",
+          daten: {
+            caption: "Weiterleitungen beim Relaunch",
+            columns: [
+              "Bewertung",
+              "Warum",
+            ],
+            rows: [
+              {
+                label: "Jede alte Adresse per 301 oder 308 auf ihre Entsprechung",
+                cells: [
+                  {
+                    text: "richtig",
+                    ton: "erfolg",
+                  },
+                  "Die neue Adresse ersetzt die alte, die Platzierung zieht mit.",
+                ],
+              },
+              {
+                label: "Alle alten Adressen auf die neue Startseite",
+                cells: [
+                  {
+                    text: "vermeiden",
+                    ton: "warm",
+                  },
+                  "Google rät von inhaltlich fremden Zielen ab.",
+                ],
+              },
+              {
+                label: "Alte Adresse über eine Zwischenstation ans Ziel",
+                cells: [
+                  {
+                    text: "vermeiden",
+                    ton: "warm",
+                  },
+                  "Google empfiehlt, Ketten aus mehreren Weiterleitungen zu vermeiden.",
+                ],
+              },
+              {
+                label: "302 bei einem dauerhaften Umzug",
+                cells: [
+                  {
+                    text: "falsch",
+                    ton: "warm",
+                  },
+                  "Eine 302 sagt Suchmaschinen: nur vorübergehend.",
+                ],
+              },
+              {
+                label: "Keine Weiterleitung, die alte Adresse meldet einen Fehler",
+                cells: [
+                  {
+                    text: "teuerster Fehler",
+                    ton: "warm",
+                  },
+                  "Die neue Seite fängt bei null an, auch mit demselben Inhalt.",
+                ],
+              },
+            ],
+          },
+        },
       },
       {
         h2: "Wie lange müssen Weiterleitungen bestehen bleiben?",

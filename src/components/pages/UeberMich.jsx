@@ -4,6 +4,9 @@ import { Section } from "../Section";
 import profilePicture from "../../assets/profilepicture.webp";
 import { PERSON, SOCIAL } from "../../content/site";
 import { LinkArrow } from "../LinkArrow";
+import { WERDEGANG, WERDEGANG_STAND } from "../../content/lebenslauf.de";
+import { Werdegang } from "../Werdegang";
+import { Werkzeuge } from "../Werkzeuge";
 
 // The site had no About page in German at all, which is the single biggest
 // structural gap it had. This is where the Person entity lives: an assistant
@@ -45,22 +48,53 @@ const STATIONS = [
   },
 ];
 
+/* Werkzeuge mit ihrem Zeichen, wie im Lebenslauf; `items` nur noch für das,
+   wofür es kein Zeichen gibt. Dieselben Werkzeuge wie vorher, nur sichtbar. */
 const SKILLS = [
   {
     title: "Automatisierung",
-    items: "n8n, Zapier, Make, Webhooks, REST, OAuth2, Rate-Limit- und Retry-Strategien",
+    werkzeuge: ["n8n", "zapier", "make"],
+    items: "Webhooks, REST, OAuth2, Rate-Limit- und Retry-Strategien",
   },
   {
     title: "KI und LLM",
-    items: "OpenAI, Azure OpenAI, Anthropic Claude, RAG, LangChain, Prompt Engineering, Voice-AI mit Twilio und WebRTC",
+    werkzeuge: [
+      "openai",
+      { marke: "azure", name: "Azure OpenAI" },
+      { marke: "anthropic", name: "Anthropic Claude" },
+      "langchain",
+      "twilio",
+    ],
+    items: "RAG, Prompt Engineering, Voice-AI über WebRTC",
   },
   {
     title: "Systeme",
-    items: "HubSpot, RecruitCRM, Personio, Stripe, Slack, Calendly, DocuSeal, Supabase, Elasticsearch",
+    werkzeuge: [
+      "hubspot",
+      "recruitcrm",
+      "personio",
+      "stripe",
+      "slack",
+      "calendly",
+      "docuseal",
+      "supabase",
+      "elasticsearch",
+    ],
   },
   {
     title: "Entwicklung",
-    items: "React, Angular, TypeScript, Java, Spring Boot, Python, Node.js, Docker, Kubernetes, GitLab CI/CD",
+    werkzeuge: [
+      "react",
+      "angular",
+      "typescript",
+      "java",
+      "springboot",
+      "python",
+      "nodejs",
+      "docker",
+      "kubernetes",
+      { marke: "gitlab", name: "GitLab CI/CD" },
+    ],
   },
 ];
 
@@ -125,6 +159,10 @@ const UeberMich = () => (
 
     <Section className="!pt-0">
       <h2 className="label">Stationen</h2>
+      {/* The path at a glance before the five stations in words. */}
+      <div className="mt-8 mb-14">
+        <Werdegang eintraege={WERDEGANG} stand={WERDEGANG_STAND} />
+      </div>
       <ol className="mt-8">
         {STATIONS.map((station) => (
           <li
@@ -151,7 +189,12 @@ const UeberMich = () => (
         {SKILLS.map((skill) => (
           <div key={skill.title} className="border-t border-hairline pt-5">
             <dt className="text-lg font-normal text-paper">{skill.title}</dt>
-            <dd className="mt-2 leading-relaxed text-paper-soft">{skill.items}</dd>
+            <dd className="mt-4">
+              <Werkzeuge werkzeuge={skill.werkzeuge} gross />
+              {skill.items ? (
+                <p className="mt-4 leading-relaxed text-paper-mute">{skill.items}</p>
+              ) : null}
+            </dd>
           </div>
         ))}
       </dl>

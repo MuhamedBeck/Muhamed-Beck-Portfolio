@@ -4,6 +4,32 @@ import { Section } from "../../Section";
 import { LinkArrow } from "../../LinkArrow";
 import { CASE_STUDY_COPY } from "./caseStudyCopy";
 import { Stimmen } from "../../Stimmen";
+import { Grafik } from "../../Grafik";
+import { Zeitvergleich } from "../../Zeitvergleich";
+
+/* Ergebnisse mit Zahl stehen groß und farbig im Raster, der Rest als Liste
+   darunter. Die Farben tragen keine Wertung, sie trennen nur die Zahlen
+   voneinander, damit vier große Ziffern nicht wie eine Tabelle wirken. */
+const TON_TEXT = {
+  akzent: "text-accent",
+  cyan: "text-accent-dim",
+  erfolg: "text-success",
+  warm: "text-warm",
+};
+const TON_BALKEN = {
+  akzent: "bg-accent",
+  cyan: "bg-accent-dim",
+  erfolg: "bg-success",
+  warm: "bg-warm",
+};
+
+/* "Stichwort: Erklärung" wird zu fettem Stichwort und normalem Rest, damit
+   sich die Lösungsliste überfliegen lässt. Nur bei einem kurzen Stichwort am
+   Anfang, sonst bleibt der Satz, wie er ist. */
+const leitwort = (text) => {
+  const stelle = text.indexOf(": ");
+  return stelle > 0 && stelle <= 60 ? [text.slice(0, stelle), text.slice(stelle + 2)] : [null, text];
+};
 
 /**
  * Case study template.
@@ -45,6 +71,25 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
         ))}
       </dl>
     </Section>
+
+    {/* A picture of the work itself: the workflow, the measured scores or the
+        migration, chosen by bild.art. Same slot as the screenshots below and
+        for the same reason: right after the figures, before the story. */}
+    {data.bild ? (
+      <Section className="!pt-0">
+        <figure className="m-0 border-t border-hairline pt-8">
+          <h2 className="label">{data.bild.label}</h2>
+          <div className="mt-8">
+            <Grafik bild={data.bild} />
+          </div>
+          {data.bild.text ? (
+            <figcaption className="mt-4 max-w-[62ch] text-sm leading-relaxed text-paper-mute">
+              {data.bild.text}
+            </figcaption>
+          ) : null}
+        </figure>
+      </Section>
+    ) : null}
 
     {/* Screenshots, for the case studies that are about something you can see.
         Guarded: most entries have no images and must not render an empty band.
@@ -114,14 +159,25 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
       <div className="grid gap-x-12 gap-y-4 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
         <h2 className="label">{copy.solution}</h2>
         <ul className="max-w-[62ch]">
-          {data.loesung.map((item) => (
-            <li key={item} className="flex items-start gap-3 py-2 text-paper-soft">
-              <span aria-hidden="true" className="mt-1.5 text-xs text-accent">
-                ✓
-              </span>
-              <span className="leading-relaxed">{item}</span>
-            </li>
-          ))}
+          {data.loesung.map((item) => {
+            const [lead, rest] = leitwort(item);
+            return (
+              <li key={item} className="flex items-start gap-3 py-2 text-paper-soft">
+                <span aria-hidden="true" className="mt-1.5 text-xs text-accent">
+                  ✓
+                </span>
+                <span className="leading-relaxed">
+                  {lead ? (
+                    <>
+                      <strong className="font-medium text-paper">{lead}:</strong> {rest}
+                    </>
+                  ) : (
+                    rest
+                  )}
+                </span>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </Section>
@@ -129,16 +185,52 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
     <Section className="!pt-0">
       <div className="grid gap-x-12 gap-y-4 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">
         <h2 className="label">{copy.results}</h2>
-        <ul className="max-w-[62ch]">
-          {data.ergebnisse.map((item) => (
-            <li key={item} className="flex items-start gap-3 py-2 text-paper-soft">
-              <span aria-hidden="true" className="mt-1.5 text-xs text-accent">
-                ✓
-              </span>
-              <span className="leading-relaxed">{item}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="max-w-[62ch]">
+          {/* A picture of the main result before the list that spells it out. */}
+          {data.vergleich ? (
+            <div className="mb-10">
+              <Zeitvergleich data={data.vergleich} />
+            </div>
+          ) : null}
+          {data.ergebnisse.some((item) => typeof item === "object") ? (
+            <dl className="mb-10 grid gap-x-10 gap-y-10 sm:grid-cols-2">
+              {data.ergebnisse
+                .filter((item) => typeof item === "object")
+                .map((item, index) => (
+                  <div
+                    key={item.text}
+                    className="stagger flex flex-col"
+                    style={{ "--fade-delay": `${index * 90}ms` }}>
+                    {/* Only <dt> and <dd> may sit in a <dl> group, so the
+                        coloured bar lives inside the <dd> it belongs to. */}
+                    <dt className="order-2 mt-3 max-w-[32ch] text-sm leading-relaxed text-paper-soft">
+                      {item.text}
+                    </dt>
+                    <dd
+                      className={`order-1 font-display text-5xl font-light tracking-tight tabular-nums ${TON_TEXT[item.ton]}`}>
+                      <span
+                        aria-hidden="true"
+                        className={`mb-4 block h-1 w-10 rounded-full ${TON_BALKEN[item.ton]}`}
+                      />
+                      {item.wert}
+                    </dd>
+                  </div>
+                ))}
+            </dl>
+          ) : null}
+          <ul>
+            {data.ergebnisse
+              .filter((item) => typeof item === "string")
+              .map((item) => (
+                <li key={item} className="flex items-start gap-3 py-2 text-paper-soft">
+                  <span aria-hidden="true" className="mt-1.5 text-xs text-accent">
+                    ✓
+                  </span>
+                  <span className="leading-relaxed">{item}</span>
+                </li>
+              ))}
+          </ul>
+        </div>
         {/* Von der Fallstudie zur Leistung, die sie belegt. Steht unter den
             Ergebnissen, weil der Leser genau dort entscheidet, ob er das auch
             für sich will. */}

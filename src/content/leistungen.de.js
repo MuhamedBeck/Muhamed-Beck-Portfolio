@@ -4,6 +4,16 @@
 
 // With the .js extension: prerender-meta.js imports this file under bare node.
 import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, euro } from "./site.js";
+import {
+  WORKFLOW_BEWERBUNG,
+  WORKFLOW_HUBSPOT,
+  WORKFLOW_LEBENSLAUF,
+  WORKFLOW_LINKEDIN,
+  WORKFLOW_PHOENIX,
+  WORKFLOW_VORQUALIFIZIERUNG,
+  WORKFLOW_VORSTELLUNG,
+} from "./workflows.de.js";
+import { LIGHTHOUSE_MAFLATS } from "./grafiken.de.js";
 
 export const PREIS_TEXT =
   `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Für klar umrissene Workflows und Integrationen sind auch Festpreise möglich. Orientierung: Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.`;
@@ -70,6 +80,17 @@ export const LEISTUNGEN = [
       alongside: "Monitoring, Fehlerbehandlung sowie Rate-Limit- und Retry-Strategien. Ein Workflow, der nachts still ausfällt, ist keiner.",
     },
     badge: "n8n & Zapier Spezialist",
+    /* Seit dem Entwurf vom 29.10.2026 trägt jede Leistung ein Bild in der
+       rechten Hälfte des Seitenkopfs (heroBild, gezeichnet von Grafik.jsx):
+       einen echten Workflow oder echte Messwerte, nie eine Illustration. */
+    heroBild: {
+      art: "workflow",
+      workflow: WORKFLOW_VORQUALIFIZIERUNG,
+      ausschnitt: { klein: { bis: 2 }, gross: { bis: 3 } },
+      text: "Ausschnitt aus einem echten Workflow: die KI-Vorqualifizierung neuer Bewerber bei meinem Arbeitgeber, rund 1.900 Anrufe im Monat.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Ganzer Workflow in der Fallstudie",
+    },
     hero: {
       kurz: "n8n- und Workflow-Automatisierung",
       ankerLabel: "aktive Workflows",
@@ -239,6 +260,13 @@ export const LEISTUNGEN = [
         "Mehrsprachigkeit, strukturierte Daten für Suchmaschinen und ein Kontaktweg, der auch ohne Formular funktioniert.",
     },
     badge: "Webentwicklung & Relaunch",
+    heroBild: {
+      art: "lighthouse",
+      daten: LIGHTHOUSE_MAFLATS,
+      text: "Eine Website, die ich neu gebaut habe.",
+      link: "/projekte/maflats",
+      linkText: "Zur Fallstudie MA-Flats",
+    },
     hero: {
       kurz: "Website erstellen lassen",
       ankerLabel: "Ladezeit mobil",
@@ -390,6 +418,13 @@ export const LEISTUNGEN = [
         "Kein Neubau aus Prinzip: Wo die bestehende Seite trägt, wird sie verbessert. Wo die Technik selbst das Problem ist, sage ich das vorher.",
     },
     badge: "Website überarbeiten & modernisieren",
+    heroBild: {
+      art: "lighthouse",
+      daten: LIGHTHOUSE_MAFLATS,
+      text: "maflats.de nach dem Neubau der alten Baukasten-Seite.",
+      link: "/projekte/maflats",
+      linkText: "Zur Fallstudie MA-Flats",
+    },
     hero: {
       kurz: "Website überarbeiten lassen",
       /* Gehört zu caseStudy.stat weiter unten ("100"). Stand vom 27.10. bis
@@ -527,6 +562,14 @@ export const LEISTUNGEN = [
       alongside: "Rollen und Rechte für Kunden, Mitarbeitende und Verwaltung, dazu automatisierte Auslieferung über CI/CD statt von Hand gepflegter Server.",
     },
     badge: "Web-Apps & Buchungssysteme",
+    heroBild: {
+      art: "workflow",
+      workflow: WORKFLOW_PHOENIX,
+      ausschnitt: { klein: { ab: 2 }, gross: { ab: 1 } },
+      text: "Der Buchungsablauf, den ich für Phoenix Parkservice gebaut habe, vereinfacht.",
+      link: "/projekte/phoenix-parkservice",
+      linkText: "Zur Fallstudie",
+    },
     hero: {
       kurz: "Web-App entwickeln lassen",
       ankerLabel: "Systeme aus einer Hand",
@@ -641,6 +684,14 @@ export const LEISTUNGEN = [
       alongside: "PII- und DSGVO-Schutz, RBAC, Audit-Logging und Evaluation gegen einen festen Testsatz. Dazu KPI- und ROI-Tracking, damit der Nutzen messbar bleibt.",
     },
     badge: "KI & LLM Spezialist · Frankfurt",
+    heroBild: {
+      art: "workflow",
+      workflow: WORKFLOW_LEBENSLAUF,
+      ausschnitt: { klein: { ab: 2 }, gross: { ab: 1 } },
+      text: "Ausschnitt aus einem echten Workflow bei meinem Arbeitgeber: Lebensläufe lesen, auch eingescannte, die Angaben mit GPT ordnen und im Firmenlayout zurück ins ATS legen.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Mehr in der Fallstudie",
+    },
     hero: {
       kurz: "KI-Automatisierung",
       ankerLabel: "KI-Anrufe im Monat",
@@ -774,9 +825,17 @@ export const LEISTUNGEN = [
       alongside: "Ein Transparenzhinweis zu Gesprächsbeginn nach EU AI Act Artikel 50, dazu Auswertung der Gesprächsverläufe zur laufenden Verbesserung.",
     },
     badge: "Voice-AI & Telefonassistenten",
+    heroBild: {
+      art: "workflow",
+      workflow: WORKFLOW_VORQUALIFIZIERUNG,
+      ausschnitt: { klein: { ab: 1, bis: 3 }, gross: { ab: 1, bis: 4 } },
+      text: "Ausschnitt aus einem echten Workflow: Die KI-Assistentin ruft neue Bewerber an, GPT wertet das Gespräch aus, rund 1.900 Mal im Monat.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Ganzer Workflow in der Fallstudie",
+    },
     hero: {
       kurz: "Voice-AI-Telefonassistenten",
-      ankerLabel: "auch außerhalb der Bürozeiten",
+      ankerLabel: "KI-Anrufe im Monat",
     },
     teaser:
       "Sprachagenten, die Anrufe annehmen, qualifizieren und ins CRM schreiben. Mit Twilio, Speech-to-Text und Text-to-Speech.",
@@ -825,12 +884,12 @@ export const LEISTUNGEN = [
       },
     ],
     caseStudy: {
-      // No stat: customer satisfaction improved because calls that used to ring
-      // out got answered, but that was never measured against a baseline, and
-      // an unmeasured figure in a text-5xl slot reads as one that was.
-      statLabel:
-        "Anrufe außerhalb der Bürozeiten werden angenommen statt ins Leere zu laufen",
-      text: "In der Support- und Bewerberkommunikation habe ich Voice-AI-Agenten mit Twilio und WebRTC produktiv gebracht. Die Kundenzufriedenheit verbesserte sich, weil Anrufe angenommen wurden, die vorher ins Leere liefen.",
+      /* Bis 29.10.2026 stand hier eine bessere Kundenzufriedenheit durch
+         angenommene Anrufe außerhalb der Bürozeiten, ohne Messung und ohne
+         Beleg in den Systemen. Belegt ist die KI-Vorqualifizierung. */
+      stat: "1.900",
+      statLabel: "KI-Anrufe im Monat, automatisch ausgewertet",
+      text: "Bei der TOPEOPLE Group GmbH, meinem Arbeitgeber, ruft eine KI-Assistentin neue Bewerber wenige Minuten nach dem Eingang an, über Twilio mit einer Stimme von ElevenLabs. GPT wertet jedes Gespräch aus und schreibt das Ergebnis ins ATS, rund 1.900 Anrufe im Monat mit unter 1 Prozent fehlgeschlagenen Läufen.",
       link: "/projekte/recruiting-automatisierung",
       linkText: "Zur Case Study Recruiting-Automatisierung",
     },
@@ -889,6 +948,14 @@ export const LEISTUNGEN = [
       alongside: "Evaluation gegen einen festen Testsatz statt Bauchgefühl, dazu Kostenkontrolle und Abbruchbedingungen gegen endlose Schleifen.",
     },
     badge: "KI-Agenten für Unternehmen",
+    heroBild: {
+      art: "workflow",
+      workflow: WORKFLOW_VORSTELLUNG,
+      ausschnitt: { klein: { ab: 3 }, gross: { ab: 2 } },
+      text: "Ausschnitt aus einem echten Workflow: GPT schreibt die Vorstellung beim Kunden, verschickt wird erst nach Freigabe durch einen Menschen, rund 300 Mal im Monat.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Mehr in der Fallstudie",
+    },
     hero: {
       kurz: "KI-Agenten entwickeln lassen",
       ankerLabel: "KI-Entwürfe mit Freigabe",
@@ -1002,9 +1069,16 @@ export const LEISTUNGEN = [
       alongside: "OAuth2 und JWT für die Authentifizierung, dazu Rate-Limit- und Retry-Strategien mit Monitoring. APIs antworten nicht immer, und genau dann entscheidet sich, ob Daten verloren gehen.",
     },
     badge: "HubSpot & CRM Integrationen",
+    heroBild: {
+      art: "workflow",
+      workflow: WORKFLOW_HUBSPOT,
+      text: "So lief der Abgleich zwischen HubSpot und RecruitCRM bei meinem Arbeitgeber, bis die eigene Plattform HubSpot abgelöst hat. Vereinfacht.",
+      link: "/projekte/crm-plattform-personalberatung",
+      linkText: "Zur Fallstudie CRM-Plattform",
+    },
     hero: {
       kurz: "HubSpot- und CRM-Integration",
-      ankerLabel: "Datenaustausch",
+      ankerLabel: "Leads übernommen",
     },
     teaser:
       "HubSpot, RecruitCRM und Personio sauber angebunden: REST, Webhooks, OAuth2, Rate-Limit- und Retry-Strategien.",
@@ -1053,11 +1127,14 @@ export const LEISTUNGEN = [
       },
     ],
     caseStudy: {
-      stat: "24/7",
-      statLabel: "automatischer Datenaustausch statt Handarbeit",
-      text: "Als AI Automation Manager bei der TOPEOPLE Group GmbH halte ich HubSpot und RecruitCRM permanent synchron: Leads, Kandidaten und Deals fließen automatisch, abgesichert durch Rate-Limit- und Retry-Strategien sowie Monitoring.",
-      link: "/projekte/recruiting-automatisierung",
-      linkText: "Zur Case Study Recruiting-Automatisierung",
+      /* Bis 29.10.2026 im Präsens ("halte ich HubSpot und RecruitCRM
+         permanent synchron"), obwohl HubSpot da schon abgelöst und gekündigt
+         war. Jetzt in der Vergangenheit, mit dem Umzug als belegter Zahl. */
+      stat: "16.000",
+      statLabel: "Leads aus HubSpot in die eigene Plattform übernommen",
+      text: "Bei der TOPEOPLE Group GmbH, meinem Arbeitgeber, habe ich HubSpot und RecruitCRM synchron gehalten: Leads, Kandidaten und Deals flossen automatisch, abgesichert durch Rate-Limit- und Retry-Strategien. Als die eigene Plattform den Vertrieb übernahm, habe ich die 16.000 Leads aus HubSpot dorthin übertragen; HubSpot ist seitdem gekündigt.",
+      link: "/projekte/crm-plattform-personalberatung",
+      linkText: "Zur Case Study CRM-Plattform",
     },
     faq: [
       {
@@ -1114,6 +1191,13 @@ export const LEISTUNGEN = [
       alongside: "Gemessen wird vorher und nachher, mit denselben Werkzeugen unter denselben Bedingungen. Eine Zahl ohne Messbedingung ist keine.",
     },
     badge: "GEO & SEO Optimierung",
+    heroBild: {
+      art: "lighthouse",
+      daten: LIGHTHOUSE_MAFLATS,
+      text: "SEO und Barrierefreiheit je 100 Punkte, an einer Website, die ich neu gebaut habe.",
+      link: "/projekte/maflats",
+      linkText: "Zur Fallstudie MA-Flats",
+    },
     hero: {
       kurz: "GEO- und SEO-Optimierung",
       ankerLabel: "SEO-Wertung bei maflats.de",
@@ -1202,6 +1286,13 @@ export const LEISTUNGEN = [
       alongside: "Ein DSGVO-Konzept für Bewerberdaten mit Löschfristen, Rollen und Audit-Logging. Bewerberdaten sind der Fall, in dem Datenschutz nicht verhandelbar ist.",
     },
     badge: "Recruiting & ATS Automatisierung",
+    heroBild: {
+      art: "workflow",
+      workflow: WORKFLOW_BEWERBUNG,
+      text: "Echter Workflow bei meinem Arbeitgeber: Bewerbungen über die Website, mit Dublettenprüfung und Verteilung auf die Recruiter, rund 50 im Monat.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Mehr in der Fallstudie",
+    },
     hero: {
       kurz: "Recruiting-Automatisierung",
       ankerLabel: "KI-Anrufe im Monat",
@@ -1309,6 +1400,14 @@ export const LEISTUNGEN = [
       alongside: "Grenzen sind Teil des Aufbaus: Tageslimits, Themenfilter und Sperrlisten. Ein System ohne Bremse produziert früher oder später etwas, das niemand so gesagt hätte.",
     },
     badge: "LinkedIn-Automatisierung",
+    heroBild: {
+      art: "workflow",
+      workflow: WORKFLOW_LINKEDIN,
+      ausschnitt: { klein: { ab: 3 }, gross: { ab: 2 } },
+      text: "So läuft ein Beitrag: Ohne Kennzeichnung als KI-Inhalt geht nichts hinaus.",
+      link: "/ratgeber/ki-recruiting-ai-act",
+      linkText: "Was die KI-Verordnung verlangt",
+    },
     hero: {
       kurz: "LinkedIn-Automatisierung",
       ankerLabel: "Kennzeichnung nach IPTC-Standard",
@@ -1397,6 +1496,14 @@ export const LEISTUNGEN = [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
     ],
     badge: "n8n für Wien und Österreich · remote",
+    heroBild: {
+      art: "workflow",
+      workflow: WORKFLOW_VORQUALIFIZIERUNG,
+      ausschnitt: { klein: { bis: 2 }, gross: { bis: 3 } },
+      text: "Ausschnitt aus einem echten Workflow: die KI-Vorqualifizierung neuer Bewerber bei meinem Arbeitgeber in Frankfurt, rund 1.900 Anrufe im Monat.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Ganzer Workflow in der Fallstudie",
+    },
     hero: {
       kurz: "n8n für Österreich (remote)",
       ankerLabel: "aktive Workflows",
