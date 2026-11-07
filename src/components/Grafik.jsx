@@ -45,12 +45,15 @@ export const Grafik = ({ bild, imKopf = false, verzoegerung }) => {
       return <Schritte daten={bild.daten} />;
     case "mustersatz":
       return <Mustersatz daten={bild.daten} />;
-    /* A real screenshot. Lazy, because no figure on the site sits above the
-       fold that the LCP depends on. */
+    /* A real screenshot or photo. Lazy, because no figure on the site sits
+       above the fold that the LCP depends on. Photos bring a smaller second
+       width in srcSet, so a phone does not download the 1600 px file. */
     case "bild":
       return (
         <img
           src={bild.src}
+          srcSet={bild.srcSet}
+          sizes={bild.sizes}
           width={bild.width}
           height={bild.height}
           alt={bild.alt}

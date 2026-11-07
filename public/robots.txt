@@ -1,6 +1,11 @@
 # robots.txt for https://muhamedbeck.com
 
 User-agent: *
+# Content Signals (contentsignals.org): was automatisierte Systeme mit den
+# Inhalten tun duerfen. Alle drei erlaubt, weil die Seite gefunden und in
+# KI-Antworten zitiert werden soll; ai-train=yes passt zu den ausdruecklich
+# erlaubten Trainings-Crawlern weiter unten (Entscheidung vom 07.11.2026).
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 # KI-/Antwortmaschinen ausdruecklich erlaubt (Stand 2026-08-24).

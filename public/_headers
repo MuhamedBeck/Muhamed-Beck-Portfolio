@@ -11,12 +11,15 @@
 # Comments must stay at column 0. Inside an indented rule block a line is parsed
 # as a header, not as a comment.
 
+# Link: tells agents and crawlers where the machine-readable overviews are,
+# without parsing the HTML first (checked by Cloudflare's agent readiness scan).
 /*
   X-Content-Type-Options: nosniff
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Link: </llms.txt>; rel="describedby"; type="text/plain", </sitemap.xml>; rel="sitemap"; type="application/xml"
 
 # Hashed filenames, so the content behind a URL never changes.
 /assets/*
@@ -28,3 +31,33 @@
 # Flag artwork. Content behind these URLs never changes either.
 /flags/*
   Cache-Control: public, max-age=31536000, immutable
+
+# Photos with a version in the file name (src/content/fotos.de.js): a new crop
+# gets a new name, so the content behind a URL never changes.
+/bilder/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Markdown version of every page (scripts/markdown.js), for AI agents. Served
+# directly and, for "Accept: text/markdown", under the page's own address via
+# a URL rewrite rule in the Cloudflare zone. The canonical points to the HTML
+# page so search engines do not index the Markdown as a duplicate. One rule
+# per depth: a placeholder never matches a slash, so the rules cannot overlap.
+/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Link: <https://muhamedbeck.com/>; rel="canonical"
+  Vary: Accept
+
+/:a/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Link: <https://muhamedbeck.com/:a>; rel="canonical"
+  Vary: Accept
+
+/:a/:b/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Link: <https://muhamedbeck.com/:a/:b>; rel="canonical"
+  Vary: Accept
+
+/:a/:b/:c/index.md
+  Content-Type: text/markdown; charset=utf-8
+  Link: <https://muhamedbeck.com/:a/:b/:c>; rel="canonical"
+  Vary: Accept

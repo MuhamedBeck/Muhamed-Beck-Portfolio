@@ -17,7 +17,11 @@ export const Schritte = ({ daten }) => (
         <li
           key={schritt.titel}
           className="grid grid-cols-[2rem_minmax(0,1fr)] items-baseline gap-x-3 border-t border-hairline py-4 sm:grid-cols-[2.75rem_minmax(0,1fr)]">
-          <span className="font-display text-xl leading-none text-accent tabular-nums sm:text-2xl">
+          {/* The <ol> already numbers the steps for screen readers; the
+              visible digit would be read a second time. */}
+          <span
+            aria-hidden="true"
+            className="font-display text-xl leading-none text-accent tabular-nums sm:text-2xl">
             {index + 1}
           </span>
           <div>

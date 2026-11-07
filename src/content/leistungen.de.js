@@ -17,6 +17,7 @@ import {
   WORKFLOW_VORSTELLUNG,
 } from "./workflows.de.js";
 import { LIGHTHOUSE_MAFLATS, SPANNE_FIRMENWEBSITE, SPANNE_RELAUNCH } from "./grafiken.de.js";
+import { FOTO_ENTWURF, FOTO_KI_ASSISTENTEN, FOTO_WORKSHOP } from "./fotos.de.js";
 
 /* Seit dem 07.11.2026 mit dem Rahmen für ein ganzes Projekt, nicht nur dem
    Stundensatz: Wer nur den Satz liest, muss die Summe raten. Der Rahmen steht
@@ -304,6 +305,11 @@ export const LEISTUNGEN = [
       },
     ],
     abbildungen: [
+      {
+        titel: "Erst Struktur und Inhalte, dann die Gestaltung",
+        bild: FOTO_ENTWURF,
+        text: `Jede Website beginnt als Skizze: welche Seiten es gibt, was darauf steht und wohin ein Besucher klicken soll. ${FOTO_ENTWURF.nachweis}`,
+      },
       {
         titel: "Welche Lösung passt zu Ihrer Homepage?",
         bild: { art: "workflow", workflow: ENTSCHEIDUNG_WEBSITE },
@@ -871,6 +877,11 @@ export const LEISTUNGEN = [
     ],
     abbildungen: [
       {
+        titel: "Am Anfang steht der Ablauf, nicht das Werkzeug",
+        bild: FOTO_WORKSHOP,
+        text: `Zuerst sammeln wir die Abläufe, die oft vorkommen und Zeit kosten; erst danach geht es um Modelle und Programme. ${FOTO_WORKSHOP.nachweis}`,
+      },
+      {
         titel: "Wofür KI im Unternehmen taugt, und wofür nicht",
         bild: {
           art: "tabelle",
@@ -1418,6 +1429,11 @@ export const LEISTUNGEN = [
        10.07.2026), Bing Webmaster Blog (10.02.2026), Search-Console-Blog
        (03.06.2026), Doku von OpenAI, Perplexity und Anthropic. */
     abbildungen: [
+      {
+        titel: "Gefragt wird nicht mehr nur Google",
+        bild: FOTO_KI_ASSISTENTEN,
+        text: `Gemini, Claude, ChatGPT: Viele Fragen landen heute zuerst bei einem KI-Assistenten, und der antwortet mit wenigen Quellen statt mit zehn Links. ${FOTO_KI_ASSISTENTEN.nachweis}`,
+      },
       {
         titel: "SEO und GEO im Vergleich",
         bild: {

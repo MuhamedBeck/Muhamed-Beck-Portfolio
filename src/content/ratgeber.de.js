@@ -16,6 +16,7 @@
 
 // With the .js extension: prerender-meta.js imports this file under bare node.
 import { SPANNE_FIRMENWEBSITE, SPANNE_RELAUNCH } from "./grafiken.de.js";
+import { FOTO_SERVER } from "./fotos.de.js";
 import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, UST_KURZ, euro } from "./site.js";
 import {
   ARCHITEKTUR_N8N,
@@ -430,6 +431,8 @@ export const RATGEBER = [
           "Vor jedem Update mit einer vollständigen Sicherung: der Datenbank und dem Ordner .n8n mit dem Schlüssel, bei Binärdaten im Dateisystem auch diesen. Der Export von Workflows und Zugangsdaten allein reicht laut n8n nicht, weil Nutzer, Ausführungen und Einstellungen fehlen (n8n-Dokumentation, Stand Oktober 2026).",
           "Aktualisiert wird mit docker compose pull und einem Neustart, auf eine feste Versionsnummer und erst nach einem Blick in die Release Notes. Die Sicherung gehört außerhalb des Servers, sonst ist sie mit ihm weg.",
         ],
+        bildNach: 1,
+        bild: { ...FOTO_SERVER, text: FOTO_SERVER.nachweis },
       },
       {
         h2: "Darf man n8n selbst gehostet kommerziell nutzen?",
