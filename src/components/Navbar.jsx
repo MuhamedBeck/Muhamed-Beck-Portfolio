@@ -4,6 +4,7 @@ import { useDict, useLocale } from "../i18n";
 import { sectionsFor } from "../routes/registry.js";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import { MENUE_ID, MENUE_KNOPF_ID } from "./MobileMenu";
 import nav from "../i18n/dict/nav";
 import ui from "../i18n/dict/ui";
 
@@ -15,6 +16,12 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
 
   return (
     <nav className="fixed top-0 z-40 w-full border-b border-hairline bg-ink/85 backdrop-blur-lg">
+      {/* First stop for the Tab key: past the navigation straight to the page.
+          The text had been in the dictionary since August 2026, but nothing
+          rendered it. */}
+      <a href="#inhalt" className="skip-link">
+        {chrome.skipToContent}
+      </a>
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex h-16 items-center justify-between">
           <Link to={homePath} className="flex items-center" aria-label={chrome.backToHome}>
@@ -35,7 +42,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
               <Link
                 key={item.to}
                 to={item.to}
-                className="text-xs tracking-[0.18em] text-paper-soft uppercase transition-colors duration-300 hover:text-paper">
+                className="-my-3 py-3 text-xs tracking-[0.18em] text-paper-soft uppercase transition-colors duration-300 hover:text-paper">
                 {item.label}
               </Link>
             ))}
@@ -53,11 +60,13 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
           <div className="flex items-center md:hidden">
             <ThemeSwitcher />
             <button
+              id={MENUE_KNOPF_ID}
               type="button"
               className="flex h-11 w-11 items-center justify-center text-paper-dim"
               onClick={() => setMenuOpen((previous) => !previous)}
               aria-label={menuOpen ? chrome.closeMenu : chrome.openMenu}
-              aria-expanded={menuOpen}>
+              aria-expanded={menuOpen}
+              aria-controls={MENUE_ID}>
               <svg
                 width="20"
                 height="14"

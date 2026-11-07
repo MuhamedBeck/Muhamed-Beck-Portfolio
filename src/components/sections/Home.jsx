@@ -174,7 +174,7 @@ export const Home = ({ isLoaded = true, services = [] }) => {
                       <span className="text-paper underline-offset-4 group-hover:underline">
                         {leistung.kurz}
                         {leistung.auszeichnung ? (
-                          <span className="ms-2 align-[0.1em] text-[0.65rem] uppercase tracking-[0.2em] text-accent">
+                          <span className="ms-2 align-[0.1em] text-xs uppercase tracking-[0.2em] text-accent">
                             {leistung.auszeichnung}
                           </span>
                         ) : null}
@@ -232,13 +232,13 @@ export const Home = ({ isLoaded = true, services = [] }) => {
             commission anything, and above the fold they competed with the one
             button that is. */}
         <div
-          className="stagger mt-10 flex items-center gap-7"
+          className="stagger mt-10 -ms-3 flex items-center gap-2"
           style={{ "--fade-delay": `${DELAY.socials}ms` }}>
           <a
             href={SOCIAL.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-paper-soft transition-colors duration-300 hover:text-accent"
+            className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-accent"
             aria-label={t.socials.linkedin}>
             <FaLinkedin className="h-5 w-5" />
           </a>
@@ -246,13 +246,13 @@ export const Home = ({ isLoaded = true, services = [] }) => {
             href={SOCIAL.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-paper-soft transition-colors duration-300 hover:text-accent"
+            className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-accent"
             aria-label={t.socials.github}>
             <FaGithub className="h-5 w-5" />
           </a>
           <a
             href={mailtoHref(chrome.mailBetreff)}
-            className="text-paper-soft transition-colors duration-300 hover:text-accent"
+            className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-accent"
             aria-label={t.socials.email}>
             <FaEnvelope className="h-5 w-5" />
           </a>

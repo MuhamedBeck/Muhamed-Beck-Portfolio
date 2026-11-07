@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { sperreScrollen } from "./scrollSperre";
 
 /**
  * Decides whether the first-visit splash screen runs, and locks scrolling while
@@ -34,13 +35,11 @@ export function useSplashGate() {
     }
   }, [hasVisitedBefore]);
 
-  // Hold the page still underneath the overlay, and always hand scrolling back
-  // on unmount so a route change cannot strand the body in overflow: hidden.
+  // Hold the page still underneath the overlay. The lock is released on
+  // unmount too, so a route change cannot strand the page unscrollable.
   useEffect(() => {
-    document.body.style.overflow = isLoaded ? "auto" : "hidden";
-    return () => {
-      document.body.style.overflow = "auto";
-    };
+    if (isLoaded) return undefined;
+    return sperreScrollen();
   }, [isLoaded]);
 
   return { showSplash, isLoaded, onSplashDone: () => setIsLoaded(true) };

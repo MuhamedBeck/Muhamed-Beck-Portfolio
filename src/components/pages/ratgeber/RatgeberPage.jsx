@@ -77,7 +77,7 @@ export const RatgeberPage = ({ data }) => (
           <span aria-hidden="true">·</span>
           <span>
             Von{" "}
-            <Link to="/ueber-mich" className="text-accent underline-offset-4 hover:underline">
+            <Link to="/ueber-mich" className="-my-2 inline-block py-2 text-accent underline-offset-4 hover:underline">
               {PERSON.name}
             </Link>
           </span>

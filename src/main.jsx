@@ -1,4 +1,4 @@
-import { StrictMode, Suspense, lazy, useEffect } from "react";
+import { StrictMode, Suspense, lazy, useLayoutEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
@@ -38,10 +38,53 @@ const LAZY = new Map(
 
 const NotFound = lazy(() => import("./components/NotFound.jsx"));
 
+// Back and forward start at the top as well, like every other page change.
+// Left to itself the browser restores the old scroll position on its own, a
+// moment after React has already jumped to the top, and the two fought: on a
+// phone the homepage came back at 552 px after being left at 2600 px
+// (measured 07.11.2026), neither where the visitor was nor at the start. The
+// owner wants the start, so the browser is told not to restore anything.
+if ("scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
+/* html carries scroll-behavior: smooth for the in-page anchors of the guides.
+   A page change must not inherit it: sliding up through the old page reads as
+   a glitch, and on a phone the slide was still running when the next page
+   painted. */
+const ohneGleiten = (springen) => {
+  const root = document.documentElement;
+  const vorher = root.style.scrollBehavior;
+  root.style.scrollBehavior = "auto";
+  // Reading the computed value makes the browser apply the inline style now.
+  // Without it Chrome scrolled with the stale "smooth" after a back
+  // navigation, and the page visibly slid up from where it had been.
+  void getComputedStyle(root).scrollBehavior;
+  springen();
+  root.style.scrollBehavior = vorher;
+};
+
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
+  // Before paint, so the new page never shows for a frame at the old offset.
+  useLayoutEffect(() => {
+    ohneGleiten(() => window.scrollTo(0, 0));
+
+    // A link into a section of another page (/en/services#slug) lands on that
+    // section once it exists; the page may still be loading its chunk. Read
+    // from window rather than useLocation: an anchor change on the same page
+    // (the table of contents) must not trigger this effect at all.
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return undefined;
+    const beginn = performance.now();
+    let timer;
+    const suchen = () => {
+      const ziel = document.getElementById(id);
+      if (ziel) ohneGleiten(() => ziel.scrollIntoView({ block: "start" }));
+      else if (performance.now() - beginn < 2000) timer = window.setTimeout(suchen, 50);
+    };
+    suchen();
+    return () => window.clearTimeout(timer);
   }, [pathname]);
   return null;
 }

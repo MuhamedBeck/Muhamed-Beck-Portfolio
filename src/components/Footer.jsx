@@ -24,7 +24,7 @@ const FooterColumn = ({ title, links }) =>
           <li key={link.to}>
             <Link
               to={link.to}
-              className="text-sm leading-snug text-paper-soft transition-colors duration-300 hover:text-paper">
+              className="-my-1.5 inline-block py-1.5 text-sm leading-snug text-paper-soft transition-colors duration-300 hover:text-paper">
               {link.label}
             </Link>
           </li>
@@ -71,7 +71,7 @@ const Footer = () => {
               <li>
                 <a
                   href={mailtoHref(chrome.mailBetreff)}
-                  className="inline-flex items-center gap-2 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
+                  className="-my-1.5 inline-flex items-center gap-2 py-1.5 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
                   <FaEnvelope className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   {CONTACT.email}
                 </a>
@@ -79,19 +79,21 @@ const Footer = () => {
               <li>
                 <a
                   href={`tel:${CONTACT.phone}`}
-                  className="inline-flex items-center gap-2 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
+                  className="-my-1.5 inline-flex items-center gap-2 py-1.5 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
                   <FaPhone className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   {CONTACT.phoneDisplay}
                 </a>
               </li>
             </ul>
 
-            <div className="mt-5 flex items-center gap-4">
+            {/* 44 px per icon, pulled back by the padding so the first icon
+                still lines up with the column. They were 16 px targets. */}
+            <div className="mt-3 -ms-3.5 flex items-center">
               <a
                 href={SOCIAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-soft transition-colors duration-300 hover:text-paper"
+                className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-paper"
                 aria-label={chrome.linkedinAria}>
                 <FaLinkedin className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -99,7 +101,7 @@ const Footer = () => {
                 href={SOCIAL.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-paper-soft transition-colors duration-300 hover:text-paper"
+                className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-paper"
                 aria-label={chrome.githubAria}>
                 <FaGithub className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -118,10 +120,10 @@ const Footer = () => {
             {/* Legal pages stay German regardless of interface language: they
                 are the legally binding text and a translation would only add
                 exposure. */}
-            <Link to="/impressum" className="transition-colors hover:text-paper-dim">
+            <Link to="/impressum" className="-my-2 py-2 transition-colors hover:text-paper-dim">
               {t.imprint}
             </Link>
-            <Link to="/datenschutz" className="transition-colors hover:text-paper-dim">
+            <Link to="/datenschutz" className="-my-2 py-2 transition-colors hover:text-paper-dim">
               {t.privacy}
             </Link>
           </div>

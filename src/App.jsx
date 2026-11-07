@@ -51,7 +51,7 @@ function App() {
         style={{ overflow: isLoaded ? "visible" : "hidden" }}>
         <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <main>
+        <main id="inhalt" tabIndex={-1}>
           <Home isLoaded={isLoaded} services={HERO_SERVICES} />
           <TechMarquee />
           <About />

@@ -99,7 +99,7 @@ export const Tabelle = ({ daten, ersteSpalte = "Kriterium" }) => (
                 className="py-5 ps-6 leading-relaxed text-paper-soft max-md:mt-4 max-md:block max-md:p-0">
                 <span
                   aria-hidden="true"
-                  className="mb-1 block text-[0.7rem] tracking-[0.18em] text-paper-mute uppercase md:hidden">
+                  className="mb-1 block text-xs tracking-[0.18em] text-paper-mute uppercase md:hidden">
                   <Spaltenkopf column={daten.columns[index]} size={12} />
                 </span>
                 <Zelle inhalt={cell} />

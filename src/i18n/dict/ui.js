@@ -13,6 +13,7 @@ const de = {
   backToHome: "Zurück zur Startseite",
   openMenu: "Menü öffnen",
   closeMenu: "Menü schließen",
+  menu: "Menü",
   requestProject: "Kostenloses Erstgespräch",
   replyPromise: "Antwort innerhalb von 24 Stunden · Frankfurt und remote",
   techStack: "Tech-Stack und Werkzeuge",
@@ -29,6 +30,7 @@ const en = {
   backToHome: "Back to home",
   openMenu: "Open menu",
   closeMenu: "Close menu",
+  menu: "Menu",
   requestProject: "Start a project",
   replyPromise: "Reply within 24 hours · Frankfurt and remote",
   techStack: "Tech stack and tools",
@@ -48,6 +50,7 @@ const en = {
  *   backToHome        Zurück zur Startseite
  *   openMenu          Menü öffnen
  *   closeMenu         Menü schließen
+ *   menu              Menü
  *   requestProject    Ein Projekt starten
  *   replyPromise      Antwort innerhalb von 24 Stunden · Frankfurt und remote
  *   techStack         Technologien und Werkzeuge
@@ -66,6 +69,7 @@ const ar = {
   backToHome: "العودة إلى الصفحة الرئيسية",
   openMenu: "فتح القائمة",
   closeMenu: "إغلاق القائمة",
+  menu: "القائمة",
   requestProject: "ابدأ مشروعًا",
   replyPromise: "رد خلال 24 ساعة · فرانكفورت وعن بُعد",
   techStack: "التقنيات والأدوات",

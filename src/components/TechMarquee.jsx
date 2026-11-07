@@ -80,7 +80,7 @@ export const TechMarquee = () => {
               // these role="img" SVGs as images without a text alternative.
               aria-hidden="true"
             />
-            <span className="text-[11px] text-paper-soft group-hover:text-paper transition-colors duration-300 whitespace-nowrap">
+            <span className="text-xs text-paper-soft group-hover:text-paper transition-colors duration-300 whitespace-nowrap">
               {name}
             </span>
           </div>

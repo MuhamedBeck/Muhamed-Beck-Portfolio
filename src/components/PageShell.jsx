@@ -22,7 +22,7 @@ export const PageShell = ({ label, headline, intro, aside, children }) => {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
-      <main>
+      <main id="inhalt" tabIndex={-1}>
         {/* pt-28 clears the fixed 64px navbar.
 
             The bottom padding has to live here. The original plan was for the

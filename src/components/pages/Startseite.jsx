@@ -77,7 +77,7 @@ export const Startseite = () => {
       <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
-      <main>
+      <main id="inhalt" tabIndex={-1}>
         <Home isLoaded={isLoaded} services={HERO_LEISTUNGEN.slice(0, HERO_MAX)} />
         <TechMarquee />
 
