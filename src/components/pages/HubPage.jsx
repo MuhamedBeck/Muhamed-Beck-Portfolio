@@ -41,7 +41,9 @@ export const HubPage = ({ label, headline, intro, items, children }) => (
               </div>
               <div className="mt-4 flex items-start gap-4 md:mt-0">
                 <p className="flex-1 leading-relaxed text-paper-soft">{item.text}</p>
-                <LinkArrow className="mt-1 text-paper-mute opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                {/* Visible from the start on touch screens, which have no hover:
+                    on a phone nothing showed that a row leads anywhere. */}
+                <LinkArrow className="mt-1 text-paper-mute transition-opacity duration-300 group-hover:opacity-100 [@media(hover:hover)]:opacity-0" />
               </div>
             </div>
           </li>

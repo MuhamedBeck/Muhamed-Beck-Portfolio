@@ -164,7 +164,7 @@ export const HireMe = () => {
   // and the previous placeholders were "Max Mustermann" and "ACME GmbH", which
   // is the German spelling of John Doe at Acme Corp.
   const inputClass =
-    "w-full rounded-lg border border-hairline-strong bg-surface px-4 py-3 text-paper transition focus:border-accent";
+    "w-full rounded-lg border border-paper-mute/70 bg-surface px-4 py-3 text-paper transition focus:border-accent";
   const labelClass = "mb-2 block text-sm text-paper-mute";
 
   return (
@@ -299,6 +299,8 @@ export const HireMe = () => {
                   <input
                     id="hire-email"
                     type="email"
+                    pattern={"[^@\\s]+@[^@\\s]+\\.[^@\\s]+"}
+                    title="Please enter a complete email address, e.g. name@company.com"
                     name="email"
                     required
                     autoComplete="email"
@@ -350,7 +352,7 @@ export const HireMe = () => {
 
               <div>
                 <label className={labelClass} htmlFor="hire-message">
-                  Which process costs you the most time? *
+                  What should be built or automated? *
                 </label>
                 <textarea
                   id="hire-message"

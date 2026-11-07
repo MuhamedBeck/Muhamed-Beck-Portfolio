@@ -31,7 +31,7 @@ export const Services = () => (
         <div
           key={service.title}
           id={service.slug}
-          className={`scroll-mt-28 border-t border-hairline pt-8 ${index > 0 ? "mt-16" : ""}`}>
+          className={`scroll-mt-8 border-t border-hairline pt-8 ${index > 0 ? "mt-16" : ""}`}>
           <div className="grid gap-x-12 gap-y-6 md:grid-cols-[1fr_1.4fr]">
             <div>
               <h2 className="headline-sub">{service.title}</h2>

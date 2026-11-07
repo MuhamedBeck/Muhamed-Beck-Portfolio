@@ -179,7 +179,7 @@ const Kontakt = () => {
   // No placeholders: every field has a real label, and a placeholder that
   // disappears on typing is not a label.
   const inputClass =
-    "w-full rounded-lg border border-hairline-strong bg-surface px-4 py-3 text-paper transition focus:border-accent";
+    "w-full rounded-lg border border-paper-mute/70 bg-surface px-4 py-3 text-paper transition focus:border-accent";
   const labelClass = "mb-2 block text-sm text-paper-mute";
 
   return (
@@ -257,6 +257,10 @@ const Kontakt = () => {
                     <input
                       id="kontakt-email"
                       type="email"
+                      // type="email" alone accepted "max@firma", and such a request
+                      // cannot be answered.
+                      pattern={"[^@\\s]+@[^@\\s]+\\.[^@\\s]+"}
+                      title="Bitte eine vollständige E-Mail-Adresse, z. B. name@firma.de"
                       name="email"
                       required
                       autoComplete="email"

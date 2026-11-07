@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import mnbLogo from "../assets/MNB_Logo.webp";
 import { useDict, useLocale } from "../i18n";
 import { sectionsFor } from "../routes/registry.js";
@@ -40,13 +40,15 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
           {/* Narrower gaps up to lg: between 768 and about 860 px "Über mich"
               broke onto two lines. */}
           <div className="hidden items-center gap-5 md:flex lg:gap-8">
+            {/* NavLink sets aria-current on the section the visitor is in,
+                which the navigation showed nowhere. */}
             {t.primary.map((item) => (
-              <Link
+              <NavLink
                 key={item.to}
                 to={item.to}
-                className="-my-3 py-3 text-xs tracking-[0.18em] whitespace-nowrap text-paper-soft uppercase transition-colors duration-300 hover:text-paper">
+                className="-my-3 py-3 text-xs tracking-[0.18em] whitespace-nowrap text-paper-soft uppercase transition-colors duration-300 hover:text-paper aria-[current=page]:text-paper">
                 {item.label}
-              </Link>
+              </NavLink>
             ))}
             <Link to={t.cta.to} className="btn-ghost !min-h-0 !py-2.5">
               {t.cta.label}

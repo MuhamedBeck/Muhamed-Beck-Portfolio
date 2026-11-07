@@ -89,7 +89,7 @@ export const RatgeberPage = ({ data }) => (
 
         {data.sections.map((section) => (
           <section key={section.h2} className="mt-14">
-            <h2 id={anker(section.h2)} className="headline-sub scroll-mt-28">
+            <h2 id={anker(section.h2)} className="headline-sub scroll-mt-8">
               {section.h2}
             </h2>
             {section.body.slice(0, section.bildNach ?? section.body.length).map((paragraph) => (

@@ -1,5 +1,8 @@
 html {
   scroll-behavior: smooth;
+  /* Keeps whatever the Tab key reaches clear of the fixed navbar (64 px).
+     Anchors add their own scroll-mt-8 on top, 112 px in all, as before. */
+  scroll-padding-top: 5rem;
 }
 
 @import "tailwindcss";

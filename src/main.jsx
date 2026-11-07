@@ -47,6 +47,22 @@ const LOADERS = new Map(
   })
 );
 
+/* Start loading a page while the pointer rests on its link or a finger
+   touches it, not only after the click: on a phone the page used to appear
+   only once its chunk had come down, with no sign in between. Straight
+   through route.load(), not LOADERS, so that a failed preload never triggers
+   the reload above; the module cache serves the later import either way. */
+const vorladen = (ereignis) => {
+  const link = ereignis.target?.closest?.('a[href^="/"]');
+  if (!link) return;
+  const pfad = new URL(link.href).pathname.replace(/(.)\/+$/, "$1");
+  const route = ROUTES.find((r) => r.path === pfad);
+  if (route && !EAGER[route.id]) route.load().catch(() => {});
+};
+document.addEventListener("pointerover", vorladen, { passive: true });
+document.addEventListener("touchstart", vorladen, { passive: true });
+document.addEventListener("focusin", vorladen);
+
 // lazy() is called once, at module scope. Calling it during render would return
 // a fresh component type on every navigation and remount the page each time.
 const LAZY = new Map(

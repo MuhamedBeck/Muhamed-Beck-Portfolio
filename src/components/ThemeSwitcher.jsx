@@ -66,12 +66,12 @@ export const ThemeSwitcher = ({ className = "" }) => {
       // No storage: the choice still applies to this page view.
     }
     // The browser paints its own chrome from this, so it has to move too.
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) {
-      meta.content = getComputedStyle(document.documentElement)
-        .getPropertyValue(neu === "light" ? "--light-ink" : "--color-ink")
-        .trim() || (neu === "light" ? "#fafafb" : "#0a0a0a");
-    }
+    // Both tags: each carries a media query for the system setting, so
+    // changing only the first one did nothing whenever the system was light.
+    const farbe = neu === "light" ? "#fafafb" : "#0a0a0a";
+    document.querySelectorAll('meta[name="theme-color"]').forEach((meta) => {
+      meta.content = farbe;
+    });
     // No setState: the MutationObserver above sees the attribute change and
     // re-renders from the document, which is the single source of truth.
   };
