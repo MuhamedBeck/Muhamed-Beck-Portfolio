@@ -15,7 +15,8 @@ const BUCHUNG = {
   triggerEvent: "BOOKING_CREATED",
   createdAt: "2026-11-07T15:00:00.000Z",
   payload: {
-    title: "30 Minuten Termin zwischen Muhamed Nur Beck und Erika Muster",
+    title: "Kostenloses Erstgespräch between Muhamed Nur Beck and Erika Muster",
+    eventTitle: "Kostenloses Erstgespräch",
     type: "30min",
     startTime: "2026-11-10T17:00:00Z",
     endTime: "2026-11-10T17:30:00Z",
@@ -25,6 +26,7 @@ const BUCHUNG = {
       name: { label: "your_name", value: "Erika Muster", isHidden: false },
       email: { label: "email_address", value: "erika_muster@firma.de", isHidden: false },
       notes: { label: "additional_notes", value: "Wir wollen Rechnungen automatisch prüfen.", isHidden: false },
+      title: { label: "what_is_this_meeting_about", value: "Rechnungsprüfung automatisieren", isHidden: false },
       worum: { label: "Worum geht es?", value: "n8n-Automatisierung", isHidden: false },
       location: { label: "location", value: { optionValue: "", value: "integrations:daily" }, isHidden: false },
     },
@@ -72,6 +74,9 @@ test("buchungLesen holt Gast, Zeit, Notiz und eigene Fragen", () => {
   assert.equal(b.email, "erika_muster@firma.de");
   assert.equal(b.zeitzone, "Europe/Berlin");
   assert.equal(b.notiz, "Wir wollen Rechnungen automatisch prüfen.");
+  // Die Pflichtfrage "Worum geht es?" schickt Cal.com im Standardfeld title.
+  assert.equal(b.thema, "Rechnungsprüfung automatisieren");
+  assert.equal(b.titel, "Kostenloses Erstgespräch");
   assert.deepEqual(b.weitere, [{ frage: "Worum geht es?", antwort: "n8n-Automatisierung" }]);
   assert.equal(b.start.toISOString(), "2026-11-10T17:00:00.000Z");
 });
@@ -81,6 +86,8 @@ test("terminAlsMarkdown enthält kein Video-Passwort und keine Organisator-Adres
   assert.match(md, /status: "gebucht"/);
   assert.match(md, /Erika Muster/);
   assert.match(md, /Di\., 10\.11\.2026, 18:00/);
+  assert.match(md, /\*\*Worum geht es:\*\* Rechnungsprüfung automatisieren/);
+  assert.match(md, /\*\*Termintyp:\*\* Kostenloses Erstgespräch\n/);
   assert.doesNotMatch(md, /GEHEIMES-PASSWORT|cal\.video|privat@example\.com|VCALENDAR/);
 });
 

@@ -100,7 +100,10 @@ export function buchungLesen(ereignis) {
     status: EREIGNISSE[ereignis?.triggerEvent],
     uid: String(p.uid ?? "").slice(0, 100),
     vorherigeUid: String(p.rescheduleUid ?? "").slice(0, 100),
-    titel: String(p.title ?? "").slice(0, 300),
+    // Name des Termintyps; title ist der Satz "… between … and …".
+    titel: String(p.eventTitle || p.title || "").slice(0, 300),
+    // Die Frage "Worum geht es in diesem Termin?" steht im Standardfeld title.
+    thema: alsText(antworten.title).slice(0, 2000),
     art: String(p.type ?? "").slice(0, 100),
     start: datum(p.startTime),
     ende: datum(p.endTime),
@@ -142,6 +145,7 @@ export function terminAlsMarkdown(b, eingang) {
     `- **E-Mail:** ${angabe(b.email)}`,
     `- **Termin:** ${zeit(b.start)}`,
     `- **Zeitzone des Gastes:** ${angabe(b.zeitzone)}`,
+    ...(b.thema ? [`- **Worum geht es:** ${einzeilig(b.thema)}`] : []),
     `- **Termintyp:** ${angabe(b.titel || b.art)}`,
     `- **Eingang:** ${BERLIN.format(eingang)} (Berlin)`,
   ];
