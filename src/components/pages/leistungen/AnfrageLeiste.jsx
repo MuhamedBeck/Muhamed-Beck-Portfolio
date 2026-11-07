@@ -88,7 +88,7 @@ export const AnfrageLeiste = ({ to, label }) => {
 
   return (
     <div
-      className="anfrage-leiste fixed inset-x-0 bottom-0 z-40 border-t border-hairline bg-ink/85 px-4 pt-3 backdrop-blur-lg md:hidden"
+      className="anfrage-leiste fixed inset-x-0 bottom-0 z-30 border-t border-hairline bg-ink/85 px-4 pt-3 backdrop-blur-lg md:hidden"
       data-sichtbar={sichtbar}
       inert={!sichtbar}>
       <Link to={to} className="btn-ghost btn-accent w-full">

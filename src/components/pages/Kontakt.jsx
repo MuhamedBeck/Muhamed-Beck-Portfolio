@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { FaEnvelope, FaPhone, FaLinkedin } from "react-icons/fa";
 import { PageShell } from "../PageShell";
@@ -80,6 +80,12 @@ const HERKUNFT = [
   "Sonstiges",
 ];
 
+/* Was schon getippt ist, übersteht einen Abstecher auf eine andere Seite,
+   etwa zur Datenschutzerklärung, und das Zurück. Vorher war das Formular
+   danach leer. Nur im Speicher dieser Seitenansicht, ohne Storage und ohne
+   Cookie: Nach dem Neuladen oder dem Absenden ist es weg. */
+let entwurf = null;
+
 const Kontakt = () => {
   // useSearchParams statt window.location: waehrend des Prerenders gibt es kein
   // window, und ein direkter Zugriff darauf wuerde den Build abbrechen. Ohne
@@ -88,14 +94,18 @@ const Kontakt = () => {
   const [suchParameter] = useSearchParams();
   const vorbelegt = artZuSlug(suchParameter.get("leistung"));
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState(() => ({
     name: "",
     email: "",
     company: "",
-    service_type: vorbelegt,
     herkunft: "",
     message: "",
-  });
+    ...entwurf,
+    service_type: vorbelegt || entwurf?.service_type || "",
+  }));
+  useEffect(() => {
+    entwurf = formData;
+  }, [formData]);
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -169,7 +179,7 @@ const Kontakt = () => {
   // No placeholders: every field has a real label, and a placeholder that
   // disappears on typing is not a label.
   const inputClass =
-    "w-full rounded-lg border border-hairline bg-surface px-4 py-3 text-paper transition focus:border-blue-500 focus:bg-blue-500/5";
+    "w-full rounded-lg border border-hairline-strong bg-surface px-4 py-3 text-paper transition focus:border-accent";
   const labelClass = "mb-2 block text-sm text-paper-mute";
 
   return (
@@ -181,6 +191,19 @@ const Kontakt = () => {
         <div className="grid gap-x-14 gap-y-16 md:grid-cols-[1.25fr_1fr]">
           <div>
             <h2 className="label">Anfrage senden</h2>
+            {/* Auf dem Handy stehen Telefon und Mail sonst erst unter dem
+                ganzen Formular (rund 1.700 px tief). Wer lieber anruft, soll
+                das sofort können; am Desktop steht beides rechts daneben. */}
+            <p className="mt-4 text-sm text-paper-soft md:hidden">
+              Lieber direkt?{" "}
+              <a href={`tel:${CONTACT.phone}`} className="text-accent underline-offset-4 hover:underline">
+                Anrufen: {CONTACT.phoneDisplay}
+              </a>{" "}
+              ·{" "}
+              <a href={MAIL_HREF} className="text-accent underline-offset-4 hover:underline">
+                E-Mail schreiben
+              </a>
+            </p>
 
             {!EMAILJS_IS_CONFIGURED ? (
               /* No EmailJS credentials in this build, so a form could only
@@ -334,12 +357,12 @@ const Kontakt = () => {
                 </div>
 
                 {error && (
-                  <p className="text-sm text-red-400" role="alert">
+                  <p className="text-sm text-danger" role="alert">
                     Die Anfrage konnte nicht gesendet werden. Schreiben Sie mir bitte
                     direkt an{" "}
                     <a
                       href={MAIL_HREF}
-                      className="underline hover:text-red-300">
+                      className="underline underline-offset-2">
                       {CONTACT.email}
                     </a>
                     .
@@ -353,6 +376,14 @@ const Kontakt = () => {
                 <p className="text-sm text-paper-mute">
                   Kostenloses Erstgespräch · Antwort innerhalb von 24 Stunden ·
                   Frankfurt und remote
+                </p>
+                <p className="text-sm text-paper-mute">
+                  Ihre Angaben nutze ich nur, um Ihre Anfrage zu beantworten. Mehr
+                  dazu in der{" "}
+                  <Link to="/datenschutz" className="underline underline-offset-2 hover:text-paper">
+                    Datenschutzerklärung
+                  </Link>
+                  .
                 </p>
               </form>
             )}

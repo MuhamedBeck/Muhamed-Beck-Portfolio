@@ -77,7 +77,10 @@ function App() {
                 <a href={MAIL_HREF} className="text-accent hover:underline">
                   {CONTACT.email}
                 </a>{" "}
-                · {CONTACT.phoneDisplay}
+                ·{" "}
+                <a href={`tel:${CONTACT.phone}`} className="text-accent hover:underline">
+                  {CONTACT.phoneDisplay}
+                </a>
               </p>
             </div>
           </Section>

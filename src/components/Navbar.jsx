@@ -15,7 +15,7 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
   const homePath = sectionsFor(locale).home;
 
   return (
-    <nav className="fixed top-0 z-40 w-full border-b border-hairline bg-ink/85 backdrop-blur-lg">
+    <nav className="site-nav fixed top-0 z-40 w-full border-b border-hairline bg-ink/85 backdrop-blur-lg">
       {/* First stop for the Tab key: past the navigation straight to the page.
           The text had been in the dictionary since August 2026, but nothing
           rendered it. */}
@@ -37,12 +37,14 @@ export const Navbar = ({ menuOpen, setMenuOpen }) => {
             />
           </Link>
 
-          <div className="hidden items-center gap-8 md:flex">
+          {/* Narrower gaps up to lg: between 768 and about 860 px "Über mich"
+              broke onto two lines. */}
+          <div className="hidden items-center gap-5 md:flex lg:gap-8">
             {t.primary.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className="-my-3 py-3 text-xs tracking-[0.18em] text-paper-soft uppercase transition-colors duration-300 hover:text-paper">
+                className="-my-3 py-3 text-xs tracking-[0.18em] whitespace-nowrap text-paper-soft uppercase transition-colors duration-300 hover:text-paper">
                 {item.label}
               </Link>
             ))}

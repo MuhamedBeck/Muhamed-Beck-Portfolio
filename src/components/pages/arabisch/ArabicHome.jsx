@@ -97,7 +97,12 @@ export const ArabicHome = () => {
                     {CONTACT.email}
                   </a>
                 </bdi>{" "}
-                · <bdi>{CONTACT.phoneDisplay}</bdi>
+                ·{" "}
+                <bdi>
+                  <a href={`tel:${CONTACT.phone}`} className="text-accent hover:underline">
+                    {CONTACT.phoneDisplay}
+                  </a>
+                </bdi>
               </p>
             </div>
           </Section>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
@@ -87,14 +87,22 @@ const SERVICE_OPTIONS = [
   "Other, or not sure yet",
 ];
 
+/* What has been typed survives a trip to another page and back, as on
+   /kontakt. In memory only, gone after a reload or once sent. */
+let entwurf = null;
+
 export const HireMe = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState(() => ({
     name: "",
     email: "",
     company: "",
     service_type: "",
     message: "",
-  });
+    ...entwurf,
+  }));
+  useEffect(() => {
+    entwurf = formData;
+  }, [formData]);
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -156,7 +164,7 @@ export const HireMe = () => {
   // and the previous placeholders were "Max Mustermann" and "ACME GmbH", which
   // is the German spelling of John Doe at Acme Corp.
   const inputClass =
-    "w-full rounded-lg border border-hairline bg-surface px-4 py-3 text-paper transition focus:border-blue-500 focus:bg-blue-500/5";
+    "w-full rounded-lg border border-hairline-strong bg-surface px-4 py-3 text-paper transition focus:border-accent";
   const labelClass = "mb-2 block text-sm text-paper-mute";
 
   return (
@@ -278,6 +286,7 @@ export const HireMe = () => {
                     type="text"
                     name="name"
                     required
+                    autoComplete="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className={inputClass}
@@ -292,6 +301,7 @@ export const HireMe = () => {
                     type="email"
                     name="email"
                     required
+                    autoComplete="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className={inputClass}
@@ -307,6 +317,7 @@ export const HireMe = () => {
                   id="hire-company"
                   type="text"
                   name="company"
+                  autoComplete="organization"
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   className={inputClass}
@@ -355,11 +366,11 @@ export const HireMe = () => {
               </div>
 
               {error && (
-                <p className="text-sm text-red-400" role="alert">
+                <p className="text-sm text-danger" role="alert">
                   The request could not be sent. Please email me directly:{" "}
                   <a
                     href={MAIL_HREF}
-                    className="underline hover:text-red-300">
+                    className="underline underline-offset-2">
                     {CONTACT.email}
                   </a>
                 </p>
@@ -371,6 +382,18 @@ export const HireMe = () => {
 
               <p className="text-sm text-paper-mute">
                 Free first call · Reply within 24 hours · Frankfurt and remote
+              </p>
+              {/* This page had no phone number and no address at all. */}
+              <p className="text-sm text-paper-mute">
+                Prefer to call or write?{" "}
+                <a href={`tel:${CONTACT.phone}`} className="text-accent underline-offset-4 hover:underline">
+                  {CONTACT.phoneDisplay}
+                </a>{" "}
+                ·{" "}
+                <a href={MAIL_HREF} className="text-accent underline-offset-4 hover:underline">
+                  {CONTACT.email}
+                </a>
+                . Your details are used only to answer your request.
               </p>
             </form>
           )}

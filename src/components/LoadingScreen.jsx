@@ -75,7 +75,7 @@ export const LoadingScreen = ({ onComplete }) => {
 
   return (
     <div
-      className={`loading-screen-safe z-50 bg-ink text-white flex flex-col items-center justify-center transition-opacity duration-[400ms] ${
+      className={`loading-screen-safe z-50 bg-splash text-white flex flex-col items-center justify-center transition-opacity duration-[400ms] ${
         fadeOut ? "opacity-0" : "opacity-100"
       }`}
       style={{

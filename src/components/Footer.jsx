@@ -73,7 +73,9 @@ const Footer = () => {
                   href={mailtoHref(chrome.mailBetreff)}
                   className="-my-1.5 inline-flex items-center gap-2 py-1.5 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
                   <FaEnvelope className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                  {CONTACT.email}
+                  {/* bdi: in an Arabic run the address and the number are Latin
+                      islands, and the "+" of the number jumped to its end. */}
+                  <bdi>{CONTACT.email}</bdi>
                 </a>
               </li>
               <li>
@@ -81,7 +83,7 @@ const Footer = () => {
                   href={`tel:${CONTACT.phone}`}
                   className="-my-1.5 inline-flex items-center gap-2 py-1.5 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
                   <FaPhone className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-                  {CONTACT.phoneDisplay}
+                  <bdi dir="ltr">{CONTACT.phoneDisplay}</bdi>
                 </a>
               </li>
             </ul>

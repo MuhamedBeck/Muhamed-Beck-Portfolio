@@ -34,7 +34,8 @@ export const PageShell = ({ label, headline, intro, aside, children }) => {
 
             Deliberately shorter than a full section rhythm (py-16/py-28): this
             is the gap after a page title, not a gap between two sections. */}
-        <Section className="!pt-28 !pb-14 md:!pb-20">
+        {/* kopf-sofort: the title stands from the first paint (see index.css). */}
+        <Section className="kopf-sofort !pt-28 !pb-14 md:!pb-20">
           {/* as="h1": this is the page title, not a section heading. Every page
               that renders through PageShell depends on this for its only
               top-level heading.

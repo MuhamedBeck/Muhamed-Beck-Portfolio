@@ -53,6 +53,14 @@ html {
      und 11,86:1, hell 4,81:1 und 4,81:1. */
   --color-success: #4ade80;
   --color-warm: #fbbf24;
+  /* Fehlermeldungen in Formularen. Waren text-red-400 fest im JSX und lagen
+     im Hellmodus bei 2,75:1. Gemessen gegen den Grund: dunkel #f87171 6,46:1,
+     hell #b91c1c 6,24:1. */
+  --color-danger: #f87171;
+  /* Der Splash bleibt in beiden Ansichten dunkel (siehe CLAUDE.md §6). Er
+     stand auf bg-ink, das im Hellmodus hell wird, unter weißer Schrift, und
+     war dort unlesbar. Dieser Ton wird nie umgestellt. */
+  --color-splash: #0a0a0a;
 
   /* The light palette lives here as plain values, assigned twice below. Two
      assignment lists are unavoidable in CSS, but keeping the values in one
@@ -79,6 +87,7 @@ html {
   --light-scrollbar-hover: rgb(29 78 216 / 0.95);
   --light-success: #15803d;
   --light-warm: #b45309;
+  --light-danger: #b91c1c;
 
   /* Two faces, two jobs. Space Grotesk is a display face and was carrying 100%
      of the elements on the site, long-form Ratgeber articles included. It now
@@ -133,6 +142,7 @@ html {
     --color-scrollbar-hover: var(--light-scrollbar-hover);
     --color-success: var(--light-success);
     --color-warm: var(--light-warm);
+    --color-danger: var(--light-danger);
   }
 }
 
@@ -155,6 +165,7 @@ html {
   --color-scrollbar-hover: var(--light-scrollbar-hover);
   --color-success: var(--light-success);
   --color-warm: var(--light-warm);
+  --color-danger: var(--light-danger);
 }
 
 /* Space Grotesk, self-hosted (GDPR: no requests to Google servers) */
@@ -323,7 +334,6 @@ td,
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
 /* "Zum Inhalt springen": invisible until the Tab key reaches it, then pinned
@@ -454,6 +464,15 @@ dd {
 
   .animate-marquee:hover {
     animation-play-state: paused;
+  }
+
+  /* Endless motion for anyone who asked the system for less of it was the one
+     animation on the site without that exit (WCAG 2.2.2). The strip then
+     stands still on its first logos. */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation: none;
+    }
   }
 
   .animation-delay-300 {
@@ -747,6 +766,22 @@ dd {
 
 .is-ready .stagger {
   animation: stagger-in 0.7s var(--ease-entrance) var(--fade-delay, 0s) both;
+}
+
+/* The title block of every subpage stands from the first paint.
+
+   Its entrance waited for the bundle like everything else, and on a phone
+   (Slow 4G, CPU at a quarter) the heading of a service page appeared only
+   2.4 s after the request, 0.9 s after the first paint, measured on
+   07.11.2026. That is where visitors from search land, and an empty space
+   where the heading belongs is the first thing they saw. Further down the
+   page the scroll reveal stays; the homepage keeps its own hero sequence.
+   :root raises the specificity above the .is-ready rules without !important. */
+:root .kopf-sofort .stagger,
+:root .kopf-sofort .reveal-line > span {
+  opacity: 1;
+  transform: none;
+  animation: none;
 }
 
 /* The wordmark on a light ground.
@@ -1343,8 +1378,15 @@ dd {
   }
 
   /* Navigation, Menü, Fußzeile und die Weiter-Links tragen auf Papier nichts
-     bei: anklicken kann man sie nicht, und sie kosten eine halbe Seite. */
-  header,
+     bei: anklicken kann man sie nicht, und sie kosten eine halbe Seite.
+
+     Bis zum 07.11.2026 stand hier `header` statt der Navigation. Die
+     Navigation ist aber ein <nav>, und ein <header> ist der Seitenkopf aus
+     SectionHeader: Gedruckt fehlte so der Name über dem Lebenslauf, und die
+     fixierte Leiste lag auf jeder Seite über dem Text. */
+  .site-nav,
+  .skip-link,
+  #menue,
   footer,
   .lebenslauf-nur-bildschirm {
     display: none !important;

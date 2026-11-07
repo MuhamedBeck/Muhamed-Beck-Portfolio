@@ -25,7 +25,9 @@ function useSwitchTargets() {
   return LIVE_LOCALES.map((locale) => ({
     locale,
     ...localeConfig(locale),
-    path: twins.get(locale) ?? getHome(locale)?.path ?? "/",
+    // The active language stays on this page. It led to that language's
+    // homepage, so tapping "Deutsch" on a German guide left the guide.
+    path: locale === current ? pathname : (twins.get(locale) ?? getHome(locale)?.path ?? "/"),
     isCurrent: locale === current,
   }));
 }

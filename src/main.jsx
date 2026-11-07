@@ -1,9 +1,10 @@
-import { StrictMode, Suspense, lazy, useLayoutEffect } from "react";
+import { StrictMode, Suspense, lazy, useLayoutEffect, useRef } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Startseite } from "./components/pages/Startseite.jsx";
 import { ROUTES } from "./routes/registry.js";
+import { Fehlergrenze } from "./components/Fehlergrenze.jsx";
 
 // Routes come from src/routes/registry.js so this file and src/entry-server.jsx
 // can never disagree about which pages exist.
@@ -18,12 +19,31 @@ const EAGER = {
   "home.de": Startseite,
 };
 
+/* After a deploy the hashed chunks of the previous build are gone, so a tab
+   opened before it could not load its next page and React was left with a
+   blank screen. The page is then loaded afresh from the server, which serves
+   the new build. Once only: a document that is itself the result of a reload
+   does not reload again, so an offline phone cannot end up in a loop, and
+   Fehlergrenze takes over. */
+const nachDeployNeuLaden = () => {
+  const navigation = performance.getEntriesByType?.("navigation")?.[0];
+  if (navigation?.type === "reload") return;
+  window.location.reload();
+};
+
 // One memoised loader per route, so the entry preload and lazy() cannot end up
-// on two separate promise chains over the same module.
+// on two separate promise chains over the same module. A failed load is
+// forgotten rather than memoised, so a later attempt can still succeed.
 const LOADERS = new Map(
   ROUTES.map((route) => {
     let promise;
-    return [route.id, () => (promise ??= route.load())];
+    const laden = () =>
+      route.load().catch((fehler) => {
+        promise = undefined;
+        nachDeployNeuLaden();
+        throw fehler;
+      });
+    return [route.id, () => (promise ??= laden())];
   })
 );
 
@@ -66,9 +86,17 @@ const ohneGleiten = (springen) => {
 
 function ScrollToTop() {
   const { pathname } = useLocation();
+  const ersterAufruf = useRef(true);
   // Before paint, so the new page never shows for a frame at the old offset.
   useLayoutEffect(() => {
     ohneGleiten(() => window.scrollTo(0, 0));
+
+    // After a page change, focus goes to the new page's main landmark. It
+    // stayed on the link that was clicked, which no longer exists, so a
+    // screen reader announced nothing and the next Tab started from the top
+    // of the document. Not on the first load: there the browser decides.
+    if (ersterAufruf.current) ersterAufruf.current = false;
+    else document.getElementById("inhalt")?.focus({ preventScroll: true });
 
     // A link into a section of another page (/en/services#slug) lands on that
     // section once it exists; the page may still be loading its chunk. Read
@@ -88,6 +116,11 @@ function ScrollToTop() {
   }, [pathname]);
   return null;
 }
+
+// The error boundary forgets its error when the address changes.
+const FehlergrenzeAmOrt = ({ children }) => (
+  <Fehlergrenze ort={useLocation().pathname}>{children}</Fehlergrenze>
+);
 
 // Matches the page background so a chunk load never flashes white.
 const RouteFallback = () => <div className="min-h-[100dvh] bg-ink" />;
@@ -134,6 +167,7 @@ const boot = async () => {
     <StrictMode>
       <BrowserRouter>
         <ScrollToTop />
+        <FehlergrenzeAmOrt>
         <Suspense fallback={<RouteFallback />}>
           <Routes>
             {ROUTES.map((route) => {
@@ -152,6 +186,7 @@ const boot = async () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        </FehlergrenzeAmOrt>
       </BrowserRouter>
     </StrictMode>
   );
