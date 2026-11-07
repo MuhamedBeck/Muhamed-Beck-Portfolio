@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
 import profilePicture from "../../assets/profilepicture.webp";
-import { PERSON, SOCIAL } from "../../content/site";
+import { FESTPREIS, PERSON, RATE_MAX, RATE_MIN, SOCIAL, UST_KURZ, euro } from "../../content/site";
 import { LinkArrow } from "../LinkArrow";
 import { WERDEGANG, WERDEGANG_STAND } from "../../content/lebenslauf.de";
 import { Werdegang } from "../Werdegang";
@@ -134,6 +134,23 @@ const UeberMich = () => (
             von 24 Stunden, und wenn sich Ihr Vorhaben nicht rechnet,
             sage ich das im Erstgespräch statt hinterher.
           </p>
+          {/* What can be booked, right after the introduction. This page gets
+              most of the clicks from search (11 of 24 from August to November
+              2026, nearly all for his name), and until 07.11.2026 its only
+              request button sat at the very end, below CV and skills. */}
+          <p className="text-paper">
+            Freiberuflich buchbar für n8n-Automatisierung, KI-Agenten und Websites:{" "}
+            {RATE_MIN} bis {RATE_MAX} € pro Stunde, Websites zum Festpreis ab{" "}
+            {euro(FESTPREIS.website)}, Überarbeitungen ab {euro(FESTPREIS.update)}. {UST_KURZ}.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
+            <Link to="/kontakt" className="btn-ghost btn-accent">
+              Kostenloses Erstgespräch
+            </Link>
+            <Link to="/leistungen" className="link-arrow">
+              Alle Leistungen <LinkArrow />
+            </Link>
+          </div>
           <p className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
             <Link to="/lebenslauf" className="link-arrow">
               Vollständiger Lebenslauf <LinkArrow />

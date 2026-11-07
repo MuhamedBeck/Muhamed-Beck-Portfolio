@@ -2,9 +2,12 @@
 // the two TOPEOPLE studies they come from the systems themselves (n8n, ATS,
 // app repository, read 28.10.2026) and were cleared by the owner.
 
-// `kind` separates paid engagements from the two theses. The homepage shows
-// only the engagements, because someone evaluating a supplier is asking what
-// was delivered for a client; /projekte shows everything.
+// `kind` separates freelance engagements ("mandat") from work in his
+// employment at TOPEOPLE ("anstellung") and from the two theses. Until
+// 07.11.2026 the two TOPEOPLE studies were filed as "mandat" and the homepage
+// listed them under "Kundenprojekte", which broke the one rule about the
+// employer: it is never presented as a client. The homepage shows engagements
+// and employment work, each saying which it is; /projekte shows everything.
 import maflatsHell from "../assets/projekte/maflats-hell.webp";
 import maflatsDunkel from "../assets/projekte/maflats-dunkel.webp";
 import maflatsMobil from "../assets/projekte/maflats-mobil.webp";
@@ -127,7 +130,7 @@ export const PROJEKTE = [
   },
   {
     path: "/projekte/recruiting-automatisierung",
-    kind: "mandat",
+    kind: "anstellung",
     leistung: { path: "/leistungen/recruiting-automatisierung", label: "Recruiting-Automatisierung mit n8n und ATS-Anbindung" },
     /* Eigener Schluss: Der allgemeine stand gleichlautend unter drei
        Fallstudien, und wer diese gelesen hat, fragt nach Recruiting. */
@@ -143,8 +146,8 @@ export const PROJEKTE = [
     },
     title: "Recruiting-Automatisierung mit n8n und KI-Telefonie",
     subtitle:
-      "Bewerbungseingang, telefonische Vorqualifizierung und Vorstellung beim Kunden für die TOPEOPLE Group GmbH, eine Personalberatung in Frankfurt am Main",
-    role: "AI Automation Manager, seit 09/2025",
+      "Bei meinem Arbeitgeber, der TOPEOPLE Group GmbH, einer Personalberatung in Frankfurt am Main: Bewerbungseingang, telefonische Vorqualifizierung und Vorstellung beim Kunden",
+    role: "AI Automation Manager in Festanstellung, seit 09/2025",
     /* Am 29.10.2026 neu gefasst, mit Zahlen vom 28.10.2026 aus beiden
        n8n-Instanzen und dem ATS, vom Inhaber freigegeben. Die früheren Werte
        (-80 % Durchlaufzeit, ~90 % Automatisierungsgrad) hatten keine Messung
@@ -207,7 +210,7 @@ export const PROJEKTE = [
   },
   {
     path: "/projekte/crm-plattform-personalberatung",
-    kind: "mandat",
+    kind: "anstellung",
     /* Seit dem 29.10.2026 eine eigene Fallstudie. Vorher war die Plattform ein
        Punkt der Recruiting-Fallstudie, samt TypeScript und GitLab, die es in
        diesem Projekt nie gab: Die App ist JavaScript (JSX) und liegt auf
@@ -226,8 +229,8 @@ export const PROJEKTE = [
     karte: { art: "plattform", daten: UMZUG_PLATTFORM },
     title: "Eigene CRM-Plattform für eine Personalberatung",
     subtitle:
-      "Interne Web-App der TOPEOPLE Group GmbH für Vertrieb, Account Management und Recruiting, Frankfurt am Main",
-    role: "Lead-Entwickler im Team, seit 03/2026",
+      "Interne Web-App meines Arbeitgebers, der TOPEOPLE Group GmbH, für Vertrieb, Account Management und Recruiting, Frankfurt am Main",
+    role: "Lead-Entwickler im Team, in Festanstellung, seit 03/2026",
     stats: [
       { value: "54", label: "Nutzer im Unternehmen", note: "Stand Oktober 2026" },
       { value: "16.000", label: "Leads aus HubSpot übernommen", note: "HubSpot ist seitdem abgelöst und gekündigt" },

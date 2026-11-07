@@ -128,7 +128,13 @@ export const Startseite = () => {
         <Section id="projekte">
           <SectionHeader label={t.cases.label} headline={t.cases.headline} />
           <ul className="mt-14 grid gap-x-10 gap-y-14 md:grid-cols-2 md:gap-y-16">
-            {PROJEKTE.filter((projekt) => projekt.kind === "mandat").map((projekt, index) => (
+            {/* Freelance engagements first, then the work in his employment;
+                the subtitle of each says which it is. The theses stay on
+                /projekte. */}
+            {[
+              ...PROJEKTE.filter((projekt) => projekt.kind === "mandat"),
+              ...PROJEKTE.filter((projekt) => projekt.kind === "anstellung"),
+            ].map((projekt, index) => (
               <li
                 key={projekt.path}
                 className="stagger group relative border-t border-hairline pt-6"

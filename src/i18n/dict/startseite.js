@@ -30,7 +30,7 @@ const de = {
        Routenbeschreibung und diese Überschrift wurden alle beim Anlegen einer
        Fallstudie vergessen. Eine Zahl, die von der Länge eines Arrays abhängt,
        gehört nicht in Prosa. */
-    headline: "Kundenprojekte im Detail",
+    headline: "Projekte im Detail: als Freelancer und in meiner Festanstellung",
     all: "Alle Projekte ansehen",
   },
   /* Überschriften für einen Abschnitt, der so lange nicht erscheint, wie keine

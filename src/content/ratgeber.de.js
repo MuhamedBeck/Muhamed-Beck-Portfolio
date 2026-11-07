@@ -22,10 +22,10 @@ export const RATGEBER = [
     kicker: "Kosten",
     h1: "Was kostet ein n8n Freelancer?",
     published: "2026-08-07",
-    modified: "2026-10-29",
+    modified: "2026-11-07",
     // The lede is written to be quotable on its own, with no unresolved
     // pronouns and no dependency on a preceding paragraph.
-    lede: `Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde; die Erhebung weist Deutschland, Österreich und die Schweiz nicht getrennt aus. Mein eigener Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang.`,
+    lede: `Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde; die Erhebung weist Deutschland, Österreich und die Schweiz nicht getrennt aus. Muhamed Nur Beck, Autor dieses Ratgebers, arbeitet als n8n Freelancer in Frankfurt zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang.`,
     // Same four figures the prose states, so the scale and the text cannot
     // disagree. Sources are named in the copy below.
     scale: {
@@ -74,7 +74,7 @@ export const RATGEBER = [
       {
         h2: "Welche laufenden Kosten kommen zum Honorar dazu?",
         body: [
-          "Die Lizenz- und Betriebskosten der Automatisierung selbst, die getrennt vom Honorar anfallen. n8n Cloud beginnt bei etwa 20 € pro Monat. Die Community Edition ist self-hosted kostenlos, verursacht dafür Hosting- und Wartungsaufwand. Kommen KI-Schritte dazu, rechnen sich Modellkosten pro Verarbeitung, nicht pro Monat.",
+          "Die Lizenz- und Betriebskosten der Software, die getrennt vom Honorar anfallen: n8n Cloud beginnt bei 20 € im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „Was kostet n8n?“.",
           "Der wichtigste Kostenhebel ist dabei das Abrechnungsmodell des Tools: n8n zählt eine Workflow-Ausführung unabhängig davon, wie viele Schritte sie durchläuft, Make zählt jede einzelne Operation. Bei vielschrittigen Workflows mit hohem Volumen ist der Unterschied erheblich.",
         ],
       },
@@ -112,7 +112,7 @@ export const RATGEBER = [
       },
       {
         q: "Was kostet n8n selbst?",
-        a: "n8n Cloud beginnt bei etwa 20 € pro Monat. Die Community Edition ist self-hosted kostenlos, verursacht dafür Hosting- und Wartungsaufwand. Anders als Make zählt n8n eine Workflow-Ausführung unabhängig von der Zahl der Schritte, was bei vielschrittigen Workflows deutlich günstiger ist.",
+        a: "Die Lizenz- und Betriebskosten fallen getrennt vom Honorar an: n8n Cloud beginnt bei 20 € im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „Was kostet n8n?“.",
       },
       {
         q: "Wie schnell amortisiert sich eine Automatisierung?",
@@ -140,7 +140,7 @@ export const RATGEBER = [
     kicker: "Kosten",
     h1: "Was kostet n8n? Lizenz, Betrieb und Umsetzung",
     published: "2026-10-27",
-    modified: "2026-10-29",
+    modified: "2026-11-07",
     /* Seit 27.10.2026. Zielt auf "n8n kosten", "n8n preise" und "n8n kostenlos"
        (zusammen rund 1.200 Suchen im Monat laut Seobility) und grenzt sich vom
        Honorar-Ratgeber /ratgeber/n8n-freelancer-kosten ab: hier die Software
@@ -189,7 +189,7 @@ export const RATGEBER = [
         h2: "n8n Cloud oder selbst hosten: was ist günstiger?",
         body: [
           "Für die meisten kleinen und mittleren Unternehmen n8n Cloud, obwohl sie eine Monatsgebühr kostet. Updates, Sicherungen und Absicherung eines eigenen Servers kosten Arbeitszeit, und die übersteigt die 20 bis 50 € einer Cloud-Lizenz schnell.",
-          "In meinen Projekten lege ich das n8n-Konto deshalb fast immer in der Cloud an, auf den Namen des Kunden. Der Kunde zahlt den Anbieter direkt, und alle Konten gehören ihm, auch wenn wir später nicht mehr zusammenarbeiten.",
+          "In meinen Angeboten sehe ich das n8n-Konto deshalb fast immer in der Cloud vor, auf den Namen des Kunden. Der Kunde zahlt den Anbieter direkt, und alle Konten gehören ihm, auch wenn wir später nicht mehr zusammenarbeiten.",
           "Selbst hosten lohnt sich, wenn ohnehin ein eigener Rechner im Unternehmen läuft, der Kunde das ausdrücklich will oder Daten das Haus nicht verlassen sollen. In einem meiner Angebote lief das System auf dem eigenen Rechner des Kunden: n8n Community Edition plus Datenbank, mit Fernzugriff, automatischem Neustart nach einem Stromausfall und täglicher Datensicherung. Laufende Lizenzkosten entstehen dann kaum.",
         ],
       },

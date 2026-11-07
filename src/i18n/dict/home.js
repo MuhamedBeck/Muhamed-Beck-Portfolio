@@ -33,8 +33,8 @@ const de = {
   servicesHeading: "Was Sie beauftragen können",
   preisZeile: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)}, Überarbeitungen ab ${euro(FESTPREIS.update)}. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.`,
   stats: [
-    { value: "1.900", label: "KI-Anrufe im Monat, automatisch ausgewertet" },
-    { value: "54", label: "Nutzer der Plattform, deren Entwicklung ich leite" },
+    { value: "1.900", label: "KI-Anrufe im Monat bei meinem Arbeitgeber, automatisch ausgewertet" },
+    { value: "54", label: "Nutzer der Plattform meines Arbeitgebers, deren Entwicklung ich leite" },
   ],
   statsNote:
     "Alle Werte stammen aus produktiv laufenden Systemen, nicht aus Demos, Stand Oktober 2026. TOPEOPLE Group GmbH ist mein Arbeitgeber, Phoenix Parkservice war ein Freelance-Mandat.",
@@ -59,8 +59,8 @@ const en = {
   servicesHeading: "What you can commission",
   preisZeile: `${RATE_MIN} to ${RATE_MAX} € per hour by agreement. Every service with process, examples and price range.`,
   stats: [
-    { value: "1,900", label: "AI phone calls a month, evaluated automatically" },
-    { value: "54", label: "users on the platform whose development I lead" },
+    { value: "1,900", label: "AI phone calls a month at my employer, evaluated automatically" },
+    { value: "54", label: "users on my employer's platform, whose development I lead" },
   ],
   statsNote:
     "All figures come from systems running in production, not from demos, as of October 2026. TOPEOPLE Group GmbH is my employer; Phoenix Parkservice was a freelance engagement.",
@@ -92,8 +92,9 @@ const en = {
  *   portraitAlt Muhamed Nur Beck, AI Automation Manager in Frankfurt
  *   ctaPrimary  Ein Projekt starten
  *   ctaSecondary Leistungen ansehen
- *   stats       1.900 KI-Anrufe im Monat, automatisch ausgewertet ·
- *               54 Nutzer der Plattform, deren Entwicklung ich leite
+ *   stats       1.900 KI-Anrufe im Monat bei meinem Arbeitgeber, automatisch
+ *               ausgewertet · 54 Nutzer der Plattform meines Arbeitgebers, deren
+ *               Entwicklung ich leite
  *   statsNote   Alle Zahlen stammen aus produktiv laufenden Systemen, nicht aus
  *               Demos, nach dem Stand von Oktober 2026. TOPEOPLE Group GmbH ist
  *               mein Arbeitgeber, Phoenix Parkservice war ein Freelance-Mandat.
@@ -119,8 +120,8 @@ const ar = {
        the space the German and English versions use: the percent sign is
        bidi-neutral, so "80 %" renders as "% 80" in an Arabic run, which reads
        as a different number entirely to anyone scanning. */
-    { value: "1,900", label: "مكالمة بالذكاء الاصطناعي شهريًا، تُقيَّم تلقائيًا" },
-    { value: "54", label: "مستخدمًا للمنصة التي أقود تطويرها" },
+    { value: "1,900", label: "مكالمة بالذكاء الاصطناعي شهريًا لدى جهة عملي، تُقيَّم تلقائيًا" },
+    { value: "54", label: "مستخدمًا لمنصة جهة عملي التي أقود تطويرها" },
   ],
   statsNote:
     "جميع الأرقام مأخوذة من أنظمة تعمل في بيئة الإنتاج، لا من عروض توضيحية، بحسب بيانات أكتوبر 2026. شركة TOPEOPLE Group GmbH هي جهة عملي، ومشروع Phoenix Parkservice كان تكليفًا مستقلًا.",

@@ -15,8 +15,12 @@ import {
 } from "./workflows.de.js";
 import { LIGHTHOUSE_MAFLATS } from "./grafiken.de.js";
 
+/* Seit dem 07.11.2026 mit dem Rahmen für ein ganzes Projekt, nicht nur dem
+   Stundensatz: Wer nur den Satz liest, muss die Summe raten. Der Rahmen steht
+   so schon in den Ratgebern (n8n-Freelancer-Kosten, n8n-Kosten); der Median
+   des Freelancer-Kompass bleibt dort. */
 export const PREIS_TEXT =
-  `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Für klar umrissene Workflows und Integrationen sind auch Festpreise möglich. Orientierung: Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.`;
+  `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Ein einzelner Workflow kostet in der Umsetzung meist einen vierstelligen Betrag, eine Prozesskette über mehrere Systeme einen niedrigen fünfstelligen; bei klar umrissenem Umfang als Festpreis. Laufend kommen oft unter 100 € im Monat dazu, die Sie direkt an die Anbieter zahlen. ${UST_HINWEIS}`;
 
 /* Wo gearbeitet wird, im sichtbaren Text und nicht nur im Schema.
    prerender-meta.js setzt seit jeher areaServed auf Deutschland, Österreich
@@ -57,6 +61,7 @@ export const LEISTUNGEN = [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
+      { path: "/projekte/phoenix-parkservice", label: "Fallstudie Phoenix Parkservice: KI-SEO mit n8n" },
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
       {
         path: "/leistungen/n8n-automatisierung-oesterreich",
@@ -157,7 +162,7 @@ export const LEISTUNGEN = [
     caseStudy: {
       stat: "60+",
       statLabel: "aktive n8n-Workflows bei meinem Arbeitgeber",
-      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, laufen über 60 aktive n8n-Workflows mit über 40.000 Ausführungen im Monat. Darunter eine KI-Assistentin, die neue Bewerber wenige Minuten nach dem Eingang anruft; rund 1.900 dieser Anrufe im Monat wertet GPT automatisch aus, Stand Oktober 2026.",
+      text: "Bei der TOPEOPLE Group GmbH in Frankfurt, meinem Arbeitgeber, laufen über 60 aktive n8n-Workflows mit über 40.000 Ausführungen im Monat. Darunter eine KI-Assistentin, die neue Bewerber wenige Minuten nach dem Eingang anruft; rund 1.900 dieser Anrufe im Monat wertet GPT automatisch aus, Stand Oktober 2026. Als Freelancer habe ich 2024/25 für Phoenix Parkservice Keyword-Recherche, Texte und Veröffentlichung mit n8n automatisiert; der organische Traffic lag in den drei Monaten nach dem Start 35 Prozent über den drei Monaten davor, gemessen in der Google Search Console.",
       link: "/projekte/recruiting-automatisierung",
       linkText: "Zur Case Study Recruiting-Automatisierung",
     },
@@ -700,7 +705,7 @@ export const LEISTUNGEN = [
       "GPT- und LLM-Lösungen, RAG-Systeme und Voice-AI, die Prozesse übernehmen statt nur zu demonstrieren. DSGVO-konform aufgesetzt.",
     h1: "KI-Automatisierung für Unternehmen in Frankfurt",
     intro:
-      "Ich entwickle KI-Lösungen, die echte Geschäftsprozesse übernehmen: GPT- und LLM-Integrationen, RAG-Systeme, Voice-AI-Agenten und automatisierte Abläufe. Als AI Automation Manager bei einem Frankfurter Unternehmen habe ich eine KI-Telefonvorqualifizierung aufgebaut, die rund 1.900 Anrufe im Monat automatisch auswertet. Dieselbe Praxis bringe ich in Ihr Projekt, DSGVO-konform und mit sauberen Guardrails.",
+      "Ich entwickle KI-Lösungen, die echte Geschäftsprozesse übernehmen: GPT- und LLM-Integrationen, RAG-Systeme, Voice-AI-Agenten und automatisierte Abläufe. Als AI Automation Manager bei meinem Arbeitgeber in Frankfurt arbeite ich an einer KI-Telefonvorqualifizierung, die rund 1.900 Anrufe im Monat automatisch auswertet. Dieselbe Praxis bringe ich in Ihr Projekt, DSGVO-konform und mit sauberen Guardrails.",
     szenarien: [
       {
         title: "LLM-Lösungen mit Substanz",
@@ -841,7 +846,7 @@ export const LEISTUNGEN = [
       "Sprachagenten, die Anrufe annehmen, qualifizieren und ins CRM schreiben. Mit Twilio, Speech-to-Text und Text-to-Speech.",
     h1: "KI-Telefonassistent und Voice-AI-Agenten für Unternehmen",
     intro:
-      "Ein KI-Telefonassistent nimmt Anrufe für Ihr Unternehmen an, versteht das Anliegen, beantwortet wiederkehrende Fragen und übergibt an einen Menschen, sobald es nötig wird. Ich habe solche Agenten für Support- und Bewerberkommunikation produktiv gebaut, auf Basis von Twilio und WebRTC mit Speech-to-Text und Text-to-Speech. Der Anspruch dabei ist nicht, den Menschen zu imitieren, sondern die Anrufe abzufangen, die sonst niemand annimmt.",
+      "Ein KI-Telefonassistent, auch Voice Agent oder Call Agent genannt, nimmt Anrufe für Ihr Unternehmen an, versteht das Anliegen, beantwortet wiederkehrende Fragen und übergibt an einen Menschen, sobald es nötig wird. Bei meinem Arbeitgeber arbeite ich an einer KI-Telefonvorqualifizierung für Bewerber mit Twilio, ElevenLabs und OpenAI, rund 1.900 automatisch ausgewertete Anrufe im Monat, und an der Telefonie im Browser über WebRTC. Der Anspruch dabei ist nicht, den Menschen zu imitieren, sondern die Anrufe abzufangen, die sonst niemand annimmt.",
     szenarien: [
       {
         title: "Anrufe außerhalb der Bürozeiten",
@@ -1084,7 +1089,7 @@ export const LEISTUNGEN = [
       "HubSpot, RecruitCRM und Personio sauber angebunden: REST, Webhooks, OAuth2, Rate-Limit- und Retry-Strategien.",
     h1: "HubSpot Integration und CRM-Automatisierung",
     intro:
-      "Ich verbinde HubSpot mit Ihren übrigen Systemen: ATS, Recruiting-Tools, interne Datenbanken oder Websites. Leads, Kandidaten und Deals fließen automatisch dorthin, wo sie gebraucht werden: CRM-Automatisierung ohne Doppeleingaben und ohne veraltete Datenstände. Aus der Praxis: Ich betreue produktive HubSpot- und RecruitCRM-Integrationen mit API-Management, Workflow-Automatisierung und Daten-Synchronisation.",
+      "Ich verbinde HubSpot mit Ihren übrigen Systemen: ATS, Recruiting-Tools, interne Datenbanken oder Websites. Leads, Kandidaten und Deals fließen automatisch dorthin, wo sie gebraucht werden: CRM-Automatisierung ohne Doppeleingaben und ohne veraltete Datenstände. Aus der Praxis: Bei meinem Arbeitgeber habe ich den HubSpot-Import der eigenen Plattform gebaut, die HubSpot abgelöst hat; übernommen wurden dabei 16.000 Leads.",
     szenarien: [
       {
         title: "Daten-Synchronisation",
@@ -1301,7 +1306,7 @@ export const LEISTUNGEN = [
       "Bewerbungseingang, Screening, Terminierung und Statuspflege automatisiert. Der Bereich, in dem ich täglich arbeite.",
     h1: "Recruiting-Automatisierung mit n8n und ATS-Anbindung",
     intro:
-      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager habe ich eine KI-Telefonvorqualifizierung aufgebaut, die neue Bewerber wenige Minuten nach dem Eingang anruft und rund 1.900 Anrufe im Monat automatisch auswertet. Bewerbungseingang, Vorqualifizierung, Vorstellung und Absage laufen ohne Copy-and-paste, über die ATS-Anbindung an RecruitCRM oder Personio und an HubSpot; freigegeben wird dort, wo ein Mensch entscheiden soll.",
+      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager arbeite ich bei meinem Arbeitgeber an einer KI-Telefonvorqualifizierung, die neue Bewerber wenige Minuten nach dem Eingang anruft und rund 1.900 Anrufe im Monat automatisch auswertet. Bewerbungseingang, Vorqualifizierung, Vorstellung und Absage lassen sich über die ATS-Anbindung an RecruitCRM oder Personio und an HubSpot ohne Copy-and-paste verbinden; freigegeben wird dort, wo ein Mensch entscheiden soll.",
     szenarien: [
       {
         title: "Bewerbungen ohne Copy-and-paste",
@@ -1583,7 +1588,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Haben Sie Referenzen aus Österreich?",
-        a: "Noch nicht. Meine Belege stammen aus Projekten in Deutschland, vor allem aus dem Recruiting, wo eine von mir aufgebaute KI-Telefonvorqualifizierung rund 1.900 Anrufe im Monat auswertet. Die Werkzeuge und die Arbeitsweise sind für ein Unternehmen in Wien dieselben.",
+        a: "Noch nicht. Meine Belege stammen aus Deutschland, vor allem aus dem Recruiting bei meinem Arbeitgeber, wo eine KI-Telefonvorqualifizierung, an der ich arbeite, rund 1.900 Anrufe im Monat auswertet. Die Werkzeuge und die Arbeitsweise sind für ein Unternehmen in Wien dieselben.",
       },
       {
         q: "Was kostet ein n8n Freelancer in Österreich?",
