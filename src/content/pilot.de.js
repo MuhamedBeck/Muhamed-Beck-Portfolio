@@ -34,5 +34,7 @@ export const PILOT = {
     "Weitere Workflows und laufende Wartung; die vereinbaren wir danach nach Aufwand oder als eigenes Angebot",
   ],
   dauer: "Dauer: meist zwei bis vier Wochen, je nachdem, wie schnell Zugänge und Testdaten da sind.",
+  // Vom Inhaber am 07.11.2026 festgelegt.
+  zahlung: "Zahlung: 30 % bei Auftrag, 70 % nach Ihrer Abnahme.",
   ust: UST_KURZ,
 };

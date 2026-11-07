@@ -298,6 +298,12 @@
   
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+  <!-- Cloudflare Web Analytics, seit 07.11.2026: cookielos, beschrieben in
+       Ziffer 4 der Datenschutzerklärung. Von Hand eingebunden, weil Cloudflare
+       das Skript in Seiten eines Workers nicht selbst einsetzt; die automatische
+       Einbindung ist in der Zone deshalb aus, damit nie doppelt gezählt wird.
+       Der Token ist eine öffentliche Kennung der Messung, kein Geheimnis. -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "ed0dd0e9f450468cb400e8fb49a70911"}'></script>
 </body>
 
 </html>

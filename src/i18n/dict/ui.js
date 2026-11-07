@@ -7,6 +7,8 @@
 // Both locales live in one file on purpose: with two languages, seeing them
 // side by side makes a missing or drifting translation obvious in review.
 
+import { FESTPREIS, euro } from "../../content/site.js";
+
 const de = {
   languageSwitcher: "Sprache wählen",
   skipToContent: "Zum Inhalt springen",
@@ -15,7 +17,10 @@ const de = {
   closeMenu: "Menü schließen",
   menu: "Menü",
   requestProject: "Kostenloses Erstgespräch",
-  replyPromise: "Antwort innerhalb von 24 Stunden · Frankfurt und remote",
+  /* Seit 07.11.2026 mit dem Pilot: ChatGPT ruft die Startseite am häufigsten
+     ab (Cloudflare, Oktober 2026), und dort stand der Einstieg mit Preis erst
+     weit unten. Nur auf Deutsch, die anderen Sprachen bieten ihn nicht an. */
+  replyPromise: `Einstieg: Pilot zum Festpreis von ${euro(FESTPREIS.pilot)} · Antwort in 24 Stunden · Frankfurt und remote`,
   techStack: "Tech-Stack und Werkzeuge",
   linkedinAria: "LinkedIn-Profil",
   githubAria: "GitHub-Profil",

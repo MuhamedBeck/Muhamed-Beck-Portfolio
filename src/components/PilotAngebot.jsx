@@ -49,7 +49,7 @@ export const PilotAngebot = () => (
           ))}
         </ul>
         <p className="mt-6 text-sm leading-relaxed text-paper-mute">
-          {PILOT.dauer} {PILOT.ust}.
+          {PILOT.dauer} {PILOT.zahlung} {PILOT.ust}.
         </p>
       </div>
     </div>

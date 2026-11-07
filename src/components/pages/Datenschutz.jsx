@@ -97,14 +97,33 @@ const SECTIONS = [
     ),
   },
   {
-    title: "4. Reichweitenmessung",
+    /* Seit 07.11.2026, auf Entscheidung des Inhabers: Cloudflare Web
+       Analytics ohne Banner. Er wurde darauf hingewiesen, dass ein Teil der
+       Fachleute auch für cookielose Messung eine Einwilligung nach § 25 TDDDG
+       verlangt; gerichtlich geklärt ist das für diesen Dienst nicht. */
+    title: "4. Reichweitenmessung (Cloudflare Web Analytics)",
     body: (
-      <p>
-        Diese Website setzt keine Analyse- oder Reichweitenmessungsdienste ein. Es
-        findet keine Auswertung Ihres Nutzungsverhaltens statt, weder durch eigene noch
-        durch fremde Werkzeuge. Über die unter Ziffer 3 genannten technischen
-        Zugriffsdaten hinaus werden beim bloßen Besuch der Website keine Daten erhoben.
-      </p>
+      <>
+        <p>
+          Um zu verstehen, welche Seiten gelesen werden und über welche Wege Besucher
+          auf diese Website kommen, nutze ich Cloudflare Web Analytics, einen Dienst
+          der unter Ziffer 3 genannten Cloudflare, Inc. Beim Laden einer Seite
+          übermittelt ein Skript von static.cloudflareinsights.com die aufgerufene
+          Adresse, die verweisende Seite, Browser, Betriebssystem, Gerätetyp, das
+          ungefähre Land und die Ladezeiten der Seite an Cloudflare.
+        </p>
+        <p>
+          Der Dienst setzt keine Cookies, speichert nichts in Ihrem Browser und
+          erstellt keine Profile; Ihre IP-Adresse wird nicht genutzt, um Sie
+          wiederzuerkennen. Ich sehe nur zusammengefasste Zahlen, keine einzelnen
+          Besucher. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes
+          Interesse daran, die Website zu verbessern). Auftragsverarbeitung und
+          Standardvertragsklauseln aus Ziffer 3 gelten auch hierfür. Wenn Sie die
+          Messung verhindern möchten, blockieren Sie Skripte von
+          static.cloudflareinsights.com in Ihrem Browser; die Website funktioniert
+          dann ohne Einschränkung weiter.
+        </p>
+      </>
     ),
   },
   {
@@ -227,7 +246,7 @@ export const Datenschutz = () => (
   <LegalPage
     label="Rechtliches"
     headline="Datenschutzerklärung"
-    intro="Stand: Oktober 2026"
+    intro="Stand: November 2026"
     sections={SECTIONS}
   />
 );
