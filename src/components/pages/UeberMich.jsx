@@ -140,8 +140,9 @@ const UeberMich = () => (
               request button sat at the very end, below CV and skills. */}
           <p className="text-paper">
             Freiberuflich buchbar für n8n-Automatisierung, KI-Agenten und Websites:{" "}
-            {RATE_MIN} bis {RATE_MAX} € pro Stunde, Websites zum Festpreis ab{" "}
-            {euro(FESTPREIS.website)}, Überarbeitungen ab {euro(FESTPREIS.update)}. {UST_KURZ}.
+            {RATE_MIN} bis {RATE_MAX} € pro Stunde, ein erster Workflow als Pilot zum Festpreis von{" "}
+            {euro(FESTPREIS.pilot)}, Websites ab {euro(FESTPREIS.website)}, Überarbeitungen ab{" "}
+            {euro(FESTPREIS.update)}. {UST_KURZ}.
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
             <Link to="/kontakt" className="btn-ghost btn-accent">

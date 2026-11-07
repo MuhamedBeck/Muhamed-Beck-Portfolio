@@ -8,6 +8,7 @@ import { PREIS_TEXT, REICHWEITE_TEXT } from "../../../content/leistungen.de";
 import { RATE_TEXT } from "../../../content/site";
 import { LinkArrow } from "../../LinkArrow";
 import { Stimmen } from "../../Stimmen";
+import { PilotAngebot } from "../../PilotAngebot";
 import { ANKER_SCHLUSS, AnfrageLeiste, AnfrageStart } from "./AnfrageLeiste";
 
 /* Ziel und Beschriftung der Anfrage, an einer Stelle abgeleitet. Sie stehen
@@ -84,6 +85,25 @@ export const LeistungPage = ({ data }) => (
       </Section>
     ) : null}
 
+    {/* Figures in the body of the page, each under its own heading: a chart,
+        a table, a decision tree. Until 07.11.2026 a service page could carry
+        a single picture in its header, and everything else was prose. */}
+    {(data.abbildungen ?? []).map((abbildung) => (
+      <Section key={abbildung.titel} className="!pt-0">
+        <figure className="m-0 border-t border-hairline pt-8">
+          <h2 className="headline-sub max-w-[32ch]">{abbildung.titel}</h2>
+          <div className="mt-8">
+            <Grafik bild={abbildung.bild} />
+          </div>
+          {abbildung.text ? (
+            <figcaption className="mt-4 max-w-[68ch] text-sm leading-relaxed text-paper-mute">
+              {abbildung.text}
+            </figcaption>
+          ) : null}
+        </figure>
+      </Section>
+    ))}
+
     <Section className="!pt-0">
       <h2 className="label">Leistungen im Überblick</h2>
       <ul className="mt-8 grid gap-x-12 md:grid-cols-2">
@@ -117,6 +137,12 @@ export const LeistungPage = ({ data }) => (
         ))}
       </ol>
     </Section>
+
+    {data.pilot ? (
+      <Section className="!pt-0">
+        <PilotAngebot />
+      </Section>
+    ) : null}
 
     <Section className="!pt-0">
       <div className="grid gap-x-12 gap-y-6 border-t border-hairline pt-8 md:grid-cols-[1fr_1.4fr]">

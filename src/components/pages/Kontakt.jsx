@@ -7,6 +7,7 @@ import { Section } from "../Section";
 import { CONTACT, RATE_TEXT, SOCIAL, mailtoHref } from "../../content/site";
 import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 import { LEISTUNGEN } from "../../content/leistungen.de";
+import { PILOT } from "../../content/pilot.de";
 import ui from "../../i18n/dict/ui";
 import { Honeypot } from "../Honeypot";
 import { Bestaetigung, SendeKnopf } from "../AnfrageStatus";
@@ -49,10 +50,15 @@ const CHANNELS = [
 // passieren — eine neue Leistung erscheint hier von selbst.
 const SONSTIGES = "Etwas anderes oder noch unklar";
 
-const ARTEN = LEISTUNGEN.map((leistung) => ({
-  slug: leistung.path.split("/").pop(),
-  label: leistung.hero.kurz,
-}));
+// Der Pilot zuerst: Er ist das Angebot mit Preis, und ?leistung=pilot belegt
+// ihn vor, wenn jemand von "Pilot anfragen" kommt.
+const ARTEN = [
+  { slug: PILOT.slug, label: PILOT.kontaktLabel },
+  ...LEISTUNGEN.map((leistung) => ({
+    slug: leistung.path.split("/").pop(),
+    label: leistung.hero.kurz,
+  })),
+];
 
 const ANFRAGE_ARTEN = [...ARTEN.map((art) => art.label), SONSTIGES];
 
@@ -428,6 +434,9 @@ const Kontakt = () => {
           <div>
             <h2 className="label">Konditionen</h2>
             <p className="leading-relaxed text-paper-soft">{RATE_TEXT}</p>
+            <p className="mt-3 leading-relaxed text-paper-soft">
+              Einstieg: {PILOT.kurz}.
+            </p>
           </div>
           <div>
             <h2 className="label">Arbeitsweise</h2>

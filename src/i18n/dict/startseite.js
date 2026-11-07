@@ -10,7 +10,7 @@
 // the two above it cannot be quoted.
 
 // With the .js extension: check-i18n imports this file under bare node.
-import { RATE_MAX, RATE_MIN } from "../../content/site.js";
+import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "../../content/site.js";
 
 const de = {
   services: {
@@ -71,7 +71,7 @@ const de = {
     items: [
       {
         q: "Was kostet ein n8n Freelancer?",
-        a: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Bei klar umrissenem Umfang auch als Festpreis.`,
+        a: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Zum Einstieg gibt es einen Workflow als Pilot zum Festpreis von ${euro(FESTPREIS.pilot)}, mit Test an echten Daten, Übergabe und 30 Tagen Fehlerbehebung.`,
       },
       {
         q: "Wie lange dauert ein Projekt?",

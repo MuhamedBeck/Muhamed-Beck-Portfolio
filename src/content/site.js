@@ -126,6 +126,17 @@ export const FESTPREIS = {
   relaunch: 3900,
   webApp: 7900,
   portal: 14900,
+  /* Der bezahlte Einstieg in eine Automatisierung, vom Inhaber am 07.11.2026
+     beauftragt ("mit einem sinnvollen Preis"). Ein abgegrenzter Workflow mit
+     bis zu zwei Systemen, Test, Übergabe und 30 Tagen Fehlerbehebung, also
+     12 bis 18 Stunden zu 80 bis 120 €. Einordnung, an 13 Preisseiten in DACH
+     am 07.11.2026 geprüft: der erste Workflow ohne KI ab 500 bis 1.490 €, mit
+     KI-Schritt 1.800 bis 2.500 €, fast alle netto. Als Endpreis kostet der
+     Pilot einen Kunden mit Vorsteuerabzug so viel wie 1.490 € netto
+     anderswo. Der KI-Schritt bleibt deshalb auf eine Aufgabe begrenzt, und
+     der eigene Ratgeber nennt für eine Stufe mit einem Lieferanten schon
+     "unter 1.500 €". Umfang in pilot.de.js. */
+  pilot: 1490,
 };
 
 /** "4.900 €", mit deutschem Tausenderpunkt wie überall auf der Seite. */

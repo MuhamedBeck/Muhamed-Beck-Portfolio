@@ -14,6 +14,8 @@
    Ohne JSX, mit .js-Endung: leistungen.de.js importiert diese Datei, und die
    wird von den Build-Skripten unter Node gelesen. */
 
+import { FESTPREIS, euro } from "./site.js";
+
 export const WORKFLOW_VORQUALIFIZIERUNG = {
   titel: "KI-Vorqualifizierung",
   /* Für Screenreader: die Grafik als Satz. */
@@ -250,5 +252,181 @@ export const ENTSCHEIDUNG_WERKZEUG = {
     { von: "umfang", nach: "einfach", ausgang: "nein" },
     { von: "einfach", nach: "zapier", ausgang: "ja" },
     { von: "einfach", nach: "make", ausgang: "nein" },
+  ],
+};
+
+/* Der Ablauf des Automatisierungs-Piloten, als Bild auf den Seiten, die ihn
+   anbieten. Kein n8n-Workflow, deshalb ohne Schalter; die Abnahme ist ein
+   Mensch (gestrichelt), sie bekommt kein Häkchen von der Automatik. */
+export const WORKFLOW_PILOT = {
+  titel: "Ablauf des Piloten",
+  fenster: "app",
+  beschreibung:
+    "Ablauf des Automatisierungs-Piloten: kostenloses Erstgespräch, Prozessaufnahme mit Ziel und Messgröße, Umsetzung eines Workflows, Test mit echten Daten, Abnahme durch den Kunden, Übergabe mit Dokumentation und danach 30 Tage Fehlerbehebung.",
+  knoten: [
+    { id: "gespraech", art: "ausloeser", icon: "telefon", label: "Erstgespräch", sub: "kostenlos", spalte: 0, zeile: 0 },
+    { id: "aufnahme", icon: "liste", label: "Aufnahme", sub: "Ziel, Messgröße", spalte: 1, zeile: 0 },
+    { id: "umsetzung", icon: "funken", label: "Umsetzung", sub: "ein Workflow", spalte: 2, zeile: 0 },
+    { id: "test", icon: "checkbox", label: "Test", sub: "echte Daten", spalte: 3, zeile: 0 },
+    { id: "abnahme", art: "mensch", icon: "person-ok", label: "Abnahme", sub: "durch Sie", spalte: 4, zeile: 0 },
+    { id: "uebergabe", icon: "schild", label: "Übergabe", sub: "30 Tage Support", spalte: 5, zeile: 0 },
+  ],
+  kanten: [
+    { von: "gespraech", nach: "aufnahme" },
+    { von: "aufnahme", nach: "umsetzung" },
+    { von: "umsetzung", nach: "test" },
+    { von: "test", nach: "abnahme" },
+    { von: "abnahme", nach: "uebergabe" },
+  ],
+};
+
+/* KI-Beratung: die Prüfung, die im Erstgespräch zuerst kommt. KI lohnt sich
+   dort, wo ein Ablauf oft vorkommt, keine festen Regeln hat und ein Fehler
+   abgefangen wird; mit festen Regeln ist ein Workflow ohne KI billiger und
+   verlässlicher. Aus der eigenen Praxis (Entwürfe mit Freigabe, Auslesen von
+   Dokumenten), kein Lehrbuch. */
+export const ENTSCHEIDUNG_KI = {
+  titel: "Lohnt sich KI für diesen Ablauf?",
+  art: "entscheidung",
+  fenster: "app",
+  beschreibung:
+    "Entscheidungshilfe für KI im Unternehmen. Kommt der Ablauf selten vor, lohnt sich eine Automatisierung kaum. Kommt er oft vor und lässt er sich mit festen Regeln lösen, reicht ein Workflow ohne KI, der billiger und gleichbleibend ist. Braucht er Urteil, etwa bei frei formulierten Texten, passt ein KI-Pilot, wenn ein Mensch das Ergebnis prüft oder ein Fehler wenig kostet; sonst wird zuerst die Freigabe durch einen Menschen geplant.",
+  knoten: [
+    { id: "ablauf", art: "ausloeser", icon: "liste", label: "Ihr Ablauf", sub: "z. B. Anfragen sortieren", spalte: 0, zeile: 0 },
+    { id: "oft", art: "weiche", icon: "uhr", label: "Kommt oft vor?", sub: "jede Woche", spalte: 1, zeile: 0 },
+    { id: "selten", icon: "sanduhr", ton: "leise", label: "Lohnt sich kaum", sub: "erst später", spalte: 2, zeile: 1.1 },
+    { id: "regeln", art: "weiche", icon: "weiche", label: "Feste Regeln?", sub: "immer gleich lösbar", spalte: 2, zeile: 0 },
+    /* Kurz gehalten: Auf dem Telefon steht dieser Zweig links neben dem
+       Hauptstrang, und "Workflow ohne KI" lief dort in den nächsten Knoten. */
+    { id: "ohneki", icon: "verteilen", ton: "erfolg", label: "Ohne KI", sub: "normaler Workflow", spalte: 3, zeile: -1.1 },
+    { id: "mensch", art: "weiche", icon: "person-ok", label: "Prüft ein Mensch?", sub: "oder Fehler kosten wenig", spalte: 3, zeile: 0 },
+    { id: "pilot", icon: "funken", ton: "erfolg", label: "KI-Pilot", sub: "zum Festpreis", spalte: 4, zeile: -0.6 },
+    { id: "freigabe", icon: "schild", ton: "warm", label: "Erst Freigabe planen", sub: "dann Pilot", spalte: 4, zeile: 0.6 },
+  ],
+  kanten: [
+    { von: "ablauf", nach: "oft" },
+    { von: "oft", nach: "regeln", ausgang: "ja" },
+    { von: "oft", nach: "selten", ausgang: "nein" },
+    { von: "regeln", nach: "ohneki", ausgang: "ja" },
+    { von: "regeln", nach: "mensch", ausgang: "nein" },
+    { von: "mensch", nach: "pilot", ausgang: "ja" },
+    { von: "mensch", nach: "freigabe", ausgang: "nein" },
+  ],
+};
+
+/* Homepage erstellen lassen: welches Angebot passt. Wer täglich selbst
+   Inhalte pflegt, ist mit Baukasten oder CMS oft besser bedient, das steht
+   so auch in der FAQ der Seite. Preise aus FESTPREIS in site.js. */
+export const ENTSCHEIDUNG_WEBSITE = {
+  titel: "Welche Lösung passt zu Ihrer Website?",
+  art: "entscheidung",
+  fenster: "app",
+  beschreibung: `Entscheidungshilfe für eine Website. Wer täglich selbst Inhalte pflegt, etwa Shop, Blog oder Neuigkeiten, ist mit einem Baukasten oder Content-Management-System oft günstiger bedient. Braucht die Website eigene Abläufe wie Buchung oder ein Kundenportal, passt eine Web-App ab ${euro(FESTPREIS.webApp)}. Gibt es schon eine Website, passt eine Überarbeitung ab ${euro(FESTPREIS.update)} oder ein Relaunch ab ${euro(FESTPREIS.relaunch)}. Sonst eine neue Website zum Festpreis ab ${euro(FESTPREIS.website)}.`,
+  knoten: [
+    { id: "vorhaben", art: "ausloeser", icon: "globus", label: "Ihr Vorhaben", sub: "Homepage, Website", spalte: 0, zeile: 0 },
+    { id: "pflege", art: "weiche", icon: "stift", label: "Täglich pflegen?", sub: "Shop, Blog, News", spalte: 1, zeile: 0 },
+    { id: "baukasten", icon: "vorlage", ton: "leise", label: "Baukasten oder CMS", sub: "dort oft günstiger", spalte: 2, zeile: 1.1 },
+    { id: "funktion", art: "weiche", icon: "kalender", label: "Buchung, Portal?", sub: "eigene Abläufe", spalte: 2, zeile: 0 },
+    { id: "app", icon: "rechner", ton: "erfolg", label: "Web-App", sub: `ab ${euro(FESTPREIS.webApp)}`, spalte: 3, zeile: -1.1 },
+    { id: "vorhanden", art: "weiche", icon: "aktualisieren", label: "Schon eine Seite?", spalte: 3, zeile: 0 },
+    { id: "ueberarbeiten", icon: "aktualisieren", ton: "erfolg", label: "Überarbeiten", sub: `ab ${euro(FESTPREIS.update)}`, spalte: 4, zeile: -0.6 },
+    { id: "neu", icon: "globus", ton: "erfolg", label: "Neue Website", sub: `ab ${euro(FESTPREIS.website)}`, spalte: 4, zeile: 0.6 },
+  ],
+  kanten: [
+    { von: "vorhaben", nach: "pflege" },
+    { von: "pflege", nach: "baukasten", ausgang: "ja" },
+    { von: "pflege", nach: "funktion", ausgang: "nein" },
+    { von: "funktion", nach: "app", ausgang: "ja" },
+    { von: "funktion", nach: "vorhanden", ausgang: "nein" },
+    { von: "vorhanden", nach: "ueberarbeiten", ausgang: "ja" },
+    { von: "vorhanden", nach: "neu", ausgang: "nein" },
+  ],
+};
+
+/* GEO: warum eine KI-Antwort eine Seite nicht nennt. Drei Hürden in der
+   Reihenfolge, in der sie wirken: Zugang für die Crawler, Aufnahme in einen
+   Suchindex, ein Absatz, der die Frage für sich beantwortet. An jeder setzt
+   die Arbeit an. Die Belege stehen im Text der Seite.
+
+   Beschriftungen kurz: Auf dem Telefon stehen die Zweige neben dem
+   Hauptstrang, und ein langes Wort läuft dort in den Nachbarknoten. */
+export const ENTSCHEIDUNG_GEO = {
+  titel: "Warum nennt die KI Ihre Seite nicht?",
+  art: "entscheidung",
+  fenster: "app",
+  beschreibung:
+    "Vereinfachter Weg einer Kundenfrage in einem KI-Assistenten. Sperren robots.txt oder ein Bot-Schutz die Crawler aus, kann die Seite nicht gelesen werden. Fehlt sie im Suchindex, den der Assistent abfragt, etwa bei Google, Bing oder Perplexity, wird sie nicht gefunden. Beantwortet kein Absatz die Frage klar, mit Zahl und Quelle, zitiert die Antwort andere Seiten, oft die von Wettbewerbern. Erst wenn alle drei Hürden genommen sind, nennt die Antwort die Seite mit Link.",
+  knoten: [
+    { id: "frage", art: "ausloeser", icon: "personen", label: "Kundenfrage", sub: "im KI-Assistenten", spalte: 0, zeile: 0 },
+    { id: "zugang", art: "weiche", icon: "schild", label: "Crawler erlaubt?", sub: "robots.txt, Bot-Schutz", spalte: 1, zeile: 0 },
+    { id: "gesperrt", icon: "stopp", ton: "leise", label: "Nicht lesbar", sub: "fällt heraus", spalte: 2, zeile: 1.1 },
+    { id: "index", art: "weiche", icon: "datenbank", label: "Im Suchindex?", sub: "des Anbieters", spalte: 2, zeile: 0 },
+    { id: "fehlt", icon: "sanduhr", ton: "leise", label: "Nicht gefunden", sub: "fällt heraus", spalte: 3, zeile: 1.1 },
+    { id: "antwort", art: "weiche", icon: "scan", label: "Klare Antwort?", sub: "Zahl mit Quelle", spalte: 3, zeile: 0 },
+    { id: "zitiert", icon: "funken", ton: "erfolg", label: "Genannt", sub: "mit Link zu Ihnen", spalte: 4, zeile: -0.6 },
+    { id: "andere", icon: "personen", ton: "warm", label: "Andere genannt", sub: "oft Wettbewerber", spalte: 4, zeile: 0.6 },
+  ],
+  kanten: [
+    { von: "frage", nach: "zugang" },
+    { von: "zugang", nach: "index", ausgang: "ja" },
+    { von: "zugang", nach: "gesperrt", ausgang: "nein" },
+    { von: "index", nach: "antwort", ausgang: "ja" },
+    { von: "index", nach: "fehlt", ausgang: "nein" },
+    { von: "antwort", nach: "zitiert", ausgang: "ja" },
+    { von: "antwort", nach: "andere", ausgang: "nein" },
+  ],
+};
+
+/* n8n selbst gehostet: die Bausteine eines sauberen Betriebs. Kein
+   Kundensystem, sondern der Aufbau, den die n8n-Dokumentation für den
+   Betrieb mit Docker beschreibt, auf das Nötige verkürzt. Die Sicherung
+   nennt den Schlüssel ausdrücklich: Ohne ihn sind gesicherte Zugangsdaten
+   nicht mehr zu entschlüsseln. */
+export const ARCHITEKTUR_N8N = {
+  titel: "n8n selbst gehostet: die Bausteine",
+  fenster: "app",
+  beschreibung:
+    "Aufbau einer selbst gehosteten n8n-Instanz: Aufrufe von Webhooks und aus dem Browser kommen über das Internet an einen Reverse Proxy, der HTTPS mit Zertifikat bereitstellt. Dahinter läuft n8n in einem Docker-Container und speichert Workflows, Ausführungen und verschlüsselte Zugangsdaten in einer PostgreSQL-Datenbank. Eine tägliche Sicherung umfasst die Datenbank und den Verschlüsselungsschlüssel.",
+  knoten: [
+    { id: "aufruf", art: "ausloeser", icon: "globus", label: "Aufrufe", sub: "Webhooks, Browser", spalte: 0, zeile: 0 },
+    { id: "proxy", icon: "schild", label: "Reverse Proxy", sub: "HTTPS, Zertifikat", spalte: 1, zeile: 0 },
+    { id: "n8n", marke: "n8n", label: "n8n", sub: "im Docker-Container", spalte: 2, zeile: 0 },
+    { id: "db", icon: "datenbank", label: "PostgreSQL", sub: "Workflows, Zugänge", spalte: 3, zeile: 0 },
+    { id: "sicherung", icon: "kopie", label: "Sicherung", sub: "Datenbank, Schlüssel", spalte: 4, zeile: 0 },
+  ],
+  kanten: [
+    { von: "aufruf", nach: "proxy" },
+    { von: "proxy", nach: "n8n" },
+    { von: "n8n", nach: "db" },
+    { von: "db", nach: "sicherung" },
+  ],
+};
+
+/* Cloud oder selbst hosten, so wie es im Ratgeber zu den n8n-Kosten steht:
+   für die meisten kleinen Unternehmen die Cloud; selbst hosten, wenn Daten
+   das Haus nicht verlassen dürfen, und dann mit jemandem, der den Server
+   pflegt. Der Cloud-Preis kommt aus N8N_CLOUD_AB, damit er mit dem Ratgeber
+   gleich bleibt. */
+export const N8N_CLOUD_AB = 20;
+
+export const ENTSCHEIDUNG_HOSTING = {
+  titel: "n8n Cloud oder selbst hosten?",
+  art: "entscheidung",
+  fenster: "app",
+  beschreibung: `Entscheidungshilfe für den Betrieb von n8n. Dürfen die Daten das eigene Haus nicht verlassen, wird n8n selbst gehostet, und jemand muss Updates und Sicherungen übernehmen. Sonst entscheidet die eigene IT: Ist sie vorhanden, geht beides, die Cloud ist aber bequemer. Fehlt sie, ist n8n Cloud ab ${N8N_CLOUD_AB} € im Monat die einfachere Wahl.`,
+  knoten: [
+    { id: "vorhaben", art: "ausloeser", icon: "liste", label: "Ihr Vorhaben", sub: "n8n einführen", spalte: 0, zeile: 0 },
+    { id: "daten", art: "weiche", icon: "schild", label: "Daten im Haus?", sub: "Vorgabe, Branche", spalte: 1, zeile: 0 },
+    { id: "selbst", marke: "n8n", label: "Selbst hosten", sub: "plus Wartung", spalte: 2, zeile: -1.1 },
+    { id: "it", art: "weiche", icon: "personen", label: "Eigene IT?", sub: "Updates, Backups", spalte: 2, zeile: 0 },
+    { id: "beides", icon: "tauschen", ton: "leise", label: "Beides geht", sub: "Cloud bequemer", spalte: 3, zeile: -0.6 },
+    { id: "cloud", marke: "n8n", label: "n8n Cloud", sub: `ab ${N8N_CLOUD_AB} € im Monat`, spalte: 3, zeile: 0.6 },
+  ],
+  kanten: [
+    { von: "vorhaben", nach: "daten" },
+    { von: "daten", nach: "selbst", ausgang: "ja" },
+    { von: "daten", nach: "it", ausgang: "nein" },
+    { von: "it", nach: "beides", ausgang: "ja" },
+    { von: "it", nach: "cloud", ausgang: "nein" },
   ],
 };

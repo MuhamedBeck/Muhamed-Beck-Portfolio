@@ -1,20 +1,30 @@
 // Ratgeber articles.
 //
 // These exist to be quoted. The Princeton/IIT-Delhi GEO study (Aggarwal et al.,
-// KDD 2024) tested nine tactics across 10,000 queries and found adding
-// statistics raised citation rate by roughly 41% and direct quotation from
-// named sources by roughly 28%, while keyword stuffing actively reduced
-// visibility. So every section here opens with a self-contained answer and
-// carries a number with its source and date in the same sentence, because a
-// retrieval system indexes passages and a chunk boundary can separate a figure
-// from the sentence that qualifies it.
+// KDD 2024, Table 1) tested nine tactics on 1,000 test queries and measured a
+// source's share of the generated answer: quotations from credible sources
+// +41%, statistics +31%, fluency +28%, citing sources +27%, keyword stuffing
+// -8% (Position-Adjusted Word Count, baseline 19.3). Corrected 07.11.2026; an
+// earlier note credited the 41% to statistics. A 2023 lab setup with
+// GPT-3.5, not a promise about today's engines. So every section here opens
+// with a self-contained answer and carries a number with its source and date
+// in the same sentence, because a retrieval system indexes passages and a
+// chunk boundary can separate a figure from the sentence that qualifies it.
 //
 // House rules: no em dashes, real umlauts, one keyword-bearing h1, and no
 // figure that cannot be traced to a source or to the owner's own CV.
 
 // With the .js extension: prerender-meta.js imports this file under bare node.
+import { SPANNE_FIRMENWEBSITE, SPANNE_RELAUNCH } from "./grafiken.de.js";
 import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, UST_KURZ, euro } from "./site.js";
-import { ENTSCHEIDUNG_BFSG, ENTSCHEIDUNG_WERKZEUG, WORKFLOW_BEWERBUNG } from "./workflows.de.js";
+import {
+  ARCHITEKTUR_N8N,
+  ENTSCHEIDUNG_BFSG,
+  ENTSCHEIDUNG_HOSTING,
+  ENTSCHEIDUNG_WERKZEUG,
+  N8N_CLOUD_AB,
+  WORKFLOW_BEWERBUNG,
+} from "./workflows.de.js";
 
 export const RATGEBER = [
   {
@@ -62,6 +72,7 @@ export const RATGEBER = [
         body: [
           "Festpreis bei klar umrissenem Umfang, Stundensatz bei allem anderen. Ein einzelner Workflow mit definierten Ein- und Ausgängen lässt sich seriös als Festpreis kalkulieren. Eine Prozesskette über mehrere Systeme, bei der erst während der Umsetzung sichtbar wird, welche API sich wie verhält, lässt sich das nicht.",
           "Der ehrliche Hinweis dazu: Ein Festpreis auf unklarem Umfang ist für beide Seiten schlecht. Der Auftragnehmer kalkuliert einen Risikoaufschlag ein, den der Auftraggeber bezahlt, oder er kalkuliert ihn nicht ein und liefert unter Druck.",
+          `Ein Beispiel für einen solchen klar umrissenen Umfang ist mein Einstiegsangebot: ein Workflow mit bis zu zwei angebundenen Systemen als Pilot zum Festpreis von ${euro(FESTPREIS.pilot)}, mit Test an echten Daten, Übergabe und 30 Tagen Fehlerbehebung. ${UST_HINWEIS}`,
         ],
       },
       {
@@ -277,6 +288,7 @@ export const RATGEBER = [
     ],
     related: [
       { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
+      { path: "/ratgeber/n8n-selbst-hosten", label: "n8n selbst hosten: Docker, Server und Kosten" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/leistungen/n8n-automatisierung-oesterreich", label: "n8n Freelancer und Beratung für Wien und Österreich" },
@@ -289,16 +301,194 @@ export const RATGEBER = [
     },
   },
   {
+    path: "/ratgeber/n8n-selbst-hosten",
+    kicker: "Betrieb",
+    h1: "n8n selbst hosten: Installation mit Docker, Server und Kosten",
+    published: "2026-11-07",
+    modified: "2026-11-07",
+    /* Seit 07.11.2026. Zielt auf "n8n self hosting" (880 Suchen im Monat),
+       "n8n installieren" und "n8n hosting" (je 590), "n8n docker" (480) und
+       "hetzner n8n" (320) laut Seobility, google.de.
+
+       Jede Angabe am 07.11.2026 an der Primärquelle geprüft: n8n-Dokumentation
+       (Seiten vom 28.10. und 03.11.2026), n8n-Blog zu 2.0, Lizenztext und
+       Lizenz-FAQ, Preisseiten von n8n, netcup, IONOS und Hetzner. Die
+       Serverpreise ändern sich; Hetzner hat 2026 erhöht und nimmt neue
+       Cloud-Kunden nur eingeschränkt an. Wenig Fließtext, die Grafiken tragen;
+       jede Zahl aus einer Grafik steht trotzdem auch im Text, weil Google und
+       Bing Bilder nur als Ergänzung zum Text werten. */
+    lede: `n8n selbst zu hosten heißt, die kostenlose Community Edition auf einem eigenen Server zu betreiben, laut n8n am besten mit Docker (n8n-Dokumentation, Stand Oktober 2026). Ein Server mit 2 Kernen und 4 GB Arbeitsspeicher kostet in Deutschland ab 8,26 € im Monat (netcup, November 2026). Teurer ist die Pflege mit Updates und Sicherungen, und n8n selbst rät allen ohne Servererfahrung zur Cloud ab ${N8N_CLOUD_AB} € im Monat.`,
+    sections: [
+      {
+        h2: "Was braucht man, um n8n selbst zu hosten?",
+        body: [
+          "Einen Server mit Docker, eine Domain mit HTTPS und für den Dauerbetrieb eine PostgreSQL-Datenbank. Für n8n allein nennt n8n in seiner Anleitung für Hetzner einen Server mit 2 Kernen und 2 GB Arbeitsspeicher; wer den n8n Assistant mit seiner Code-Sandbox mitinstalliert, braucht mindestens 4 GB (n8n-Dokumentation, Stand Oktober 2026).",
+        ],
+        bild: {
+          art: "workflow",
+          workflow: ARCHITEKTUR_N8N,
+          text: "Vereinfacht. Der Reverse Proxy, etwa Caddy oder Traefik, stellt das Zertifikat bereit; n8n selbst lauscht intern auf Port 5678.",
+        },
+      },
+      {
+        h2: "Lohnt es sich, n8n selbst zu hosten?",
+        body: [
+          "Für die meisten kleinen Unternehmen nicht. n8n empfiehlt das Selbsthosten nur erfahrenen Nutzern, weil Fehler zu Datenverlust, Sicherheitslücken und Ausfällen führen können, und rät allen ohne Erfahrung mit Servern zu n8n Cloud, deren Daten laut n8n in Frankfurt liegen (n8n-Dokumentation, Stand Oktober 2026).",
+          "Selbst hosten lohnt sich, wenn Daten das Haus nicht verlassen dürfen oder eine eigene IT den Server ohnehin pflegt. Ein Vorteil bleibt dabei: Die Community Edition kennt keine Obergrenze für Ausführungen.",
+        ],
+        bild: {
+          art: "workflow",
+          workflow: ENTSCHEIDUNG_HOSTING,
+          text: "Aus meiner Praxis, vereinfacht.",
+        },
+      },
+      {
+        h2: "Was kostet n8n selbst gehostet?",
+        body: [
+          "Die Lizenz nichts, der Server ab 8,26 € im Monat. So viel kostet bei netcup ein VPS mit 2 Kernen und 4 GB Arbeitsspeicher bei 12 Monaten Laufzeit; bei IONOS sind es regulär 12 €, bei Hetzner 23,79 €, jeweils inklusive Mehrwertsteuer (Preisseiten am 7. November 2026). Hetzner hat seine Preise 2026 erhöht und nimmt neue Cloud-Kunden nur eingeschränkt an; Anleitungen mit 4 oder 5 € im Monat sind überholt.",
+          "Den größten Posten zeigt keine Preisliste: die Zeit für Updates, Sicherungen und Kontrolle. n8n veröffentlicht fast jede Woche eine neue Version und rät Selbsthostern, mindestens einmal im Monat zu aktualisieren (n8n-Dokumentation, Stand Oktober 2026).",
+        ],
+        bild: {
+          art: "balken",
+          daten: {
+            art: "liste",
+            titel: "Monatliche Kosten im Vergleich",
+            zeilen: [
+              { label: "Server bei netcup, 2 Kerne, 4 GB", wert: 8.26, text: "8,26 €", ton: "cyan" },
+              { label: "Server bei IONOS, 2 Kerne, 4 GB", wert: 12, text: "12 €", ton: "cyan" },
+              { label: "Server bei Hetzner, 2 Kerne, 4 GB", wert: 23.79, text: "23,79 €", ton: "cyan" },
+              { label: "n8n Cloud Starter, 2.500 Ausführungen", marke: "n8n", wert: N8N_CLOUD_AB, text: `${N8N_CLOUD_AB} €`, ton: "akzent" },
+              { label: "n8n Cloud Pro, 10.000 Ausführungen", marke: "n8n", wert: 50, text: "50 €", ton: "akzent" },
+              { label: "Eine Stunde Pflege im Monat", von: RATE_MIN, wert: RATE_MAX, text: `${RATE_MIN} bis ${RATE_MAX} €`, ton: "warm" },
+            ],
+            quelle: "Preise laut Anbieter am 07.11.2026. Server inklusive MwSt., netcup bei 12 Monaten Laufzeit, IONOS ohne Aktionspreis. n8n Cloud bei jährlicher Zahlung, monatlich 24 und 60 €. Die Pflegestunde ist eine Annahme zu meinem Stundensatz.",
+          },
+        },
+      },
+      {
+        h2: "Wie installiert man n8n mit Docker?",
+        body: [
+          "Seit n8n 2.35 vom August 2026 mit einem einzigen Befehl: curl -fsSL https://get.n8n.io | sh richtet n8n per Docker Compose ein, legt die Schlüssel in einer .env-Datei an und startet mit der eingebauten SQLite-Datenbank (n8n-Dokumentation, Stand Oktober 2026). Ab n8n 3.0 gibt es n8n nur noch als Docker-Image; Installationen über npm werden nicht mehr unterstützt.",
+        ],
+        bild: {
+          art: "schritte",
+          daten: {
+            titel: "Der Weg zum eigenen n8n",
+            schritte: [
+              { titel: "Server mieten", text: "2 Kerne, 4 GB, Standort in der EU. Von außen nur Webzugriff und SSH erlauben." },
+              { titel: "Docker installieren", text: "Mit dem Compose-Plugin, das der Einzeiler voraussetzt." },
+              { titel: "n8n starten", text: "Per Einzeiler oder eigener compose.yml, mit fester Versionsnummer statt „stable“." },
+              { titel: "PostgreSQL anbinden", text: "DB_TYPE=postgresdb. SQLite reicht laut n8n zum Ausprobieren, nicht für den Dauerbetrieb." },
+              { titel: "HTTPS und Adresse", text: "Reverse Proxy mit Zertifikat, dazu N8N_WEBHOOK_URL und N8N_PROXY_HOPS=1." },
+              { titel: "Sicherung einrichten", text: "Täglich Datenbank und Ordner .n8n mit dem Schlüssel, außerhalb des Servers." },
+            ],
+          },
+        },
+      },
+      {
+        h2: "Welche Einstellungen sind beim Selbsthosten wichtig?",
+        body: [
+          "Fünf, und jede verursacht ohne Pflege einen typischen Fehler. Am folgenreichsten ist der Schlüssel: n8n erzeugt ihn beim ersten Start, legt ihn im Ordner .n8n ab und verschlüsselt damit alle gespeicherten Zugangsdaten. Ohne ihn lässt sich eine wiederhergestellte Datenbank nicht mehr entschlüsseln (n8n-Dokumentation, Stand Oktober 2026).",
+        ],
+        bild: {
+          art: "tabelle",
+          daten: {
+            caption: "Fünf Einstellungen, die man kennen muss",
+            columns: ["Wofür", "Fehlt sie oder stimmt sie nicht"],
+            rows: [
+              { label: "N8N_ENCRYPTION_KEY", cells: ["verschlüsselt alle Zugangsdaten; n8n erzeugt ihn beim ersten Start", "eine wiederhergestellte Datenbank lässt sich nicht entschlüsseln"] },
+              { label: "N8N_WEBHOOK_URL", cells: ["die öffentliche Adresse hinter dem Reverse Proxy, seit 2.35 statt WEBHOOK_URL", "Webhook-Adressen zeigen http:// oder :5678, externe Dienste erreichen n8n nicht"] },
+              { label: "GENERIC_TIMEZONE", cells: ["die Zeitzone der Zeitpläne, für Deutschland Europe/Berlin", "es gilt New Yorker Zeit: ein Zeitplan für 9 Uhr läuft um 15 Uhr"] },
+              { label: "DB_TYPE", cells: ["postgresdb für PostgreSQL statt der SQLite-Datei", "SQLite reicht laut n8n nur zum Ausprobieren"] },
+              { label: "EXECUTIONS_DATA_PRUNE", cells: ["löscht alte Ausführungen, standardmäßig nach 14 Tagen", "abgeschaltet läuft die Festplatte voll; bei SQLite gibt erst VACUUM Platz frei"] },
+            ],
+          },
+        },
+      },
+      {
+        h2: "Was hat sich mit n8n 2.0 für Selbsthoster geändert?",
+        body: [
+          "Die Standards sind strenger geworden. Seit n8n 2.0 vom 8. Dezember 2025 laufen Code-Nodes in abgeschotteten Task Runnern, Umgebungsvariablen sind im Code-Node gesperrt, und Änderungen gehen erst mit „Veröffentlichen“ live statt schon beim Speichern. Welche Workflows ein Update betrifft, zeigt vorab der Migration Report in den Einstellungen (n8n-Blog vom 8. Dezember 2025).",
+        ],
+        bild: {
+          art: "meilensteine",
+          daten: {
+            titel: "Was sich für Selbsthoster geändert hat, Stand November 2026",
+            punkte: [
+              { datum: "08.12.2025", status: "gilt", titel: "n8n 2.0", text: "Code-Nodes in Task Runnern, Umgebungsvariablen im Code-Node gesperrt, Execute Command aus, MySQL und MariaDB entfallen." },
+              { datum: "August 2026", status: "gilt", titel: "n8n 2.35", text: "Installation per Einzeiler; WEBHOOK_URL heißt jetzt N8N_WEBHOOK_URL." },
+              { datum: "20.10.2026", status: "gilt", titel: "n8n 2.45", text: "Zeitpläne überstehen Neustarts und werden nachgeholt." },
+              { datum: "Termin offen", status: "folgt", titel: "n8n 3.0 als stabile Version", text: "Seit 27.10.2026 als Vorabversion: nur noch Docker statt npm, Schlüsselrotation an, ungeprüfte Community-Nodes aus. Stabil ist bis dahin die Reihe 2.x." },
+            ],
+            quelle: "n8n-Blog, Release Notes und Breaking-Changes-Seiten, abgerufen am 07.11.2026.",
+          },
+        },
+      },
+      {
+        h2: "Wie sichert und aktualisiert man n8n?",
+        body: [
+          "Vor jedem Update mit einer vollständigen Sicherung: der Datenbank und dem Ordner .n8n mit dem Schlüssel, bei Binärdaten im Dateisystem auch diesen. Der Export von Workflows und Zugangsdaten allein reicht laut n8n nicht, weil Nutzer, Ausführungen und Einstellungen fehlen (n8n-Dokumentation, Stand Oktober 2026).",
+          "Aktualisiert wird mit docker compose pull und einem Neustart, auf eine feste Versionsnummer und erst nach einem Blick in die Release Notes. Die Sicherung gehört außerhalb des Servers, sonst ist sie mit ihm weg.",
+        ],
+      },
+      {
+        h2: "Darf man n8n selbst gehostet kommerziell nutzen?",
+        body: [
+          "Für eigene interne Geschäftszwecke ja, ohne Lizenzgebühr: Die Community Edition steht unter der Sustainable Use License (Lizenztext im n8n-Repository, abgerufen im November 2026). Ein Dienstleister darf n8n laut der Lizenz-FAQ von n8n auf dem Server seines Kunden einrichten und warten und dafür Geld nehmen. Nicht erlaubt ist, n8n als Dienst zu betreiben, in dem Kunden selbst Workflows bauen.",
+          "Projekte, Single Sign-on, Git-Versionierung und Umgebungen fehlen in der Community Edition. Selbst gehostet gibt es sie ab dem Tarif Business für 667 € im Monat bei jährlicher Zahlung, teils erst in Enterprise (n8n.io, November 2026).",
+        ],
+      },
+    ],
+    faq: [
+      {
+        q: "Ist n8n selbst gehostet kostenlos?",
+        a: "Die Lizenz ja, für eigene interne Geschäftszwecke. Es kosten der Server, ab 8,26 € im Monat bei netcup (November 2026), und die Zeit für Updates und Sicherungen.",
+      },
+      {
+        q: "Wie viel Arbeitsspeicher braucht n8n?",
+        a: "Für n8n allein nennt n8n 2 GB bei 2 Kernen, mit dem n8n Assistant und seiner Code-Sandbox mindestens 4 GB (n8n-Dokumentation, Stand Oktober 2026). Mehr brauchen große Datenmengen, Binärdateien und viele gleichzeitige Ausführungen.",
+      },
+      {
+        q: "SQLite oder PostgreSQL?",
+        a: "SQLite zum Ausprobieren, PostgreSQL für den Dauerbetrieb, so empfiehlt es n8n; unterstützt sind die Versionen 16 bis 18. MySQL und MariaDB gehen seit n8n 2.0 nicht mehr, und beim Wechsel zieht n8n bestehende Daten nicht automatisch um.",
+      },
+      {
+        q: "Was passiert, wenn der Encryption Key verloren geht?",
+        a: "Dann lassen sich die gespeicherten Zugangsdaten nicht mehr entschlüsseln, auch nicht aus einer Sicherung der Datenbank. Praktisch heißt das, jeden Zugang neu einzutragen. Deshalb gehört der Schlüssel in jede Sicherung, getrennt vom Server.",
+      },
+      {
+        q: "Darf ein Dienstleister n8n für mich betreiben?",
+        a: "Einrichten und warten ja, auch auf Ihrem eigenen Server; so steht es in der Lizenz-FAQ von n8n. Betreibt der Dienstleister n8n auf seinem eigenen Server und Sie bauen dort selbst Workflows, ist das nicht erlaubt.",
+      },
+      {
+        q: "Brauche ich den Queue Mode?",
+        a: "Selten. Eine einzelne Instanz schafft laut n8n bis zu 220 Ausführungen pro Sekunde, gemessen mit einem einfachen Workflow; 100.000 Ausführungen im Monat sind im Schnitt 0,04 pro Sekunde. Den Queue Mode mit Redis und mehreren Workern braucht es erst, wenn eine Instanz die Last nicht mehr schafft.",
+      },
+    ],
+    related: [
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
+      { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
+      { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
+      { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
+    ],
+    cta: {
+      headline: "n8n auf dem eigenen Server, ohne selbst zu basteln?",
+      intro:
+        "Ich richte n8n auf Ihrem Server ein, mit PostgreSQL, HTTPS und täglicher Sicherung, oder in der Cloud auf Ihren Namen. Beschreiben Sie kurz Ihr Vorhaben: Sie bekommen innerhalb von 24 Stunden eine Einschätzung mit einmaligen und laufenden Kosten.",
+      button: "n8n-Einrichtung anfragen",
+    },
+  },
+  {
     path: "/ratgeber/website-kosten",
     kicker: "Kosten",
     h1: "Was kostet eine Website 2026?",
     published: "2026-10-13",
-    modified: "2026-10-29",
+    modified: "2026-11-07",
     /* Alle Marktzahlen am 13.10.2026 an den Quellen geprüft. Sie stammen von
        Anbietern, die diese Leistungen selbst verkaufen; der Artikel sagt das
        ausdrücklich, statt sie als Marktpreis auszugeben. Die eigenen Preise
        kommen aus FESTPREIS in site.js. */
-    lede: `Eine Firmen-Website kostet 2026 beim Freelancer meist 800 bis 5.000 € und bei einer Agentur 3.600 bis 18.000 €, so die Preisübersicht der Agentur RHEINSPACE (Stand Juni 2026). Ein Relaunch mit SEO-Migration liegt laut der Agentur Adfera bei 8.000 bis 20.000 € (Stand Oktober 2026), ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000 € (Stand Februar 2026). Ich baue Firmen-Websites ab ${euro(FESTPREIS.website)} und Relaunches ab ${euro(FESTPREIS.relaunch)}. ${UST_HINWEIS}`,
+    lede: `Eine Firmen-Website oder Homepage kostet 2026 beim Freelancer meist 800 bis 5.000 € und bei einer Agentur 3.600 bis 18.000 €, so die Preisübersicht der Agentur RHEINSPACE (Stand Juni 2026). Ein Relaunch mit SEO-Migration liegt laut der Agentur Adfera bei 8.000 bis 20.000 € (Stand Oktober 2026), ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000 € (Stand Februar 2026). Ich baue Firmen-Websites ab ${euro(FESTPREIS.website)} und Relaunches ab ${euro(FESTPREIS.relaunch)}. ${UST_HINWEIS}`,
     table: {
       caption: `Was Websites und Webanwendungen kosten (Stand: Oktober 2026; meine Festpreise: ${UST_KURZ})`,
       columns: ["Marktspanne laut Anbietern", "Mein Festpreis"],
@@ -325,7 +515,7 @@ export const RATGEBER = [
         },
         {
           label: "Stundensatz Software- und Webentwicklung",
-          cells: ["Median 90 € (Freelancer-Kompass 2026, 356 Befragte)", `${RATE_MIN} bis ${RATE_MAX} €`],
+          cells: ["Median 90 € (Freelancer-Kompass 2026)", `${RATE_MIN} bis ${RATE_MAX} €`],
         },
       ],
     },
@@ -333,7 +523,7 @@ export const RATGEBER = [
       {
         h2: "Was kostet eine Firmen-Website?",
         body: [
-          "Zwischen 800 und 18.000 €, je nachdem, wer sie baut. Die Agentur RHEINSPACE nennt für Freelancer 800 bis 5.000 € und für Agenturen 3.600 bis 18.000 € einmalig (Stand Juni 2026). Für eine Agentur-Website mit 5 bis 10 Seiten gibt die Erfurter Agentur Adfera 5.000 bis 12.000 € an (Stand Oktober 2026), COOKIE Design aus Soest für eine professionelle Unternehmenswebsite im Mittelstand 8.000 bis 25.000 € (Stand Mai 2026).",
+          "Zwischen 800 und 18.000 €, je nachdem, wer sie baut. Die Agentur RHEINSPACE nennt für Freelancer 800 bis 5.000 € und für Agenturen 3.600 bis 18.000 € einmalig (Stand Juni 2026). Für eine Agentur-Website mit 5 bis 10 Seiten gibt die Erfurter Agentur Adfera 5.000 bis 12.000 € netto an (Stand Oktober 2026), COOKIE Design aus Soest für eine professionelle Firmenwebsite von einer Agentur 8.000 bis 25.000 € und für den Mittelstand 25.000 bis 60.000 € (Stand Mai 2026).",
           "Die Spanne ist so groß, weil unter dem Wort Website sehr Verschiedenes verkauft wird: ein angepasstes Theme mit fünf Seiten oder eine Seite mit eigener Struktur, Mehrsprachigkeit und gemessenen Ladezeiten. Vergleichbar werden zwei Angebote erst, wenn klar ist, was jeweils enthalten ist.",
           `Mein Festpreis für eine Firmen-Website beginnt bei ${euro(FESTPREIS.website)}. Enthalten sind Struktur, Umsetzung, technisches SEO und die Übergabe mit Quelltext und Zugängen; die Texte kommen von Ihnen oder entstehen gemeinsam.`,
         ],
@@ -342,23 +532,8 @@ export const RATGEBER = [
           daten: {
             titel: "Marktpreise und meine Festpreise",
             zeilen: [
-              {
-                label: "Firmen-Website",
-                max: 20000,
-                maxText: euro(20000),
-                baender: [
-                  { von: 800, bis: 5000, text: "Freelancer 800 bis 5.000 €", ton: "leise" },
-                  { von: 3600, bis: 18000, text: "Agentur 3.600 bis 18.000 €", ton: "cyan" },
-                ],
-                marke: { wert: FESTPREIS.website, text: `mein Festpreis ab ${euro(FESTPREIS.website)}` },
-              },
-              {
-                label: "Relaunch mit SEO-Migration",
-                max: 20000,
-                maxText: euro(20000),
-                baender: [{ von: 8000, bis: 20000, text: "Markt 8.000 bis 20.000 €", ton: "leise" }],
-                marke: { wert: FESTPREIS.relaunch, text: `mein Festpreis ab ${euro(FESTPREIS.relaunch)}` },
-              },
+              SPANNE_FIRMENWEBSITE,
+              SPANNE_RELAUNCH,
               {
                 label: "Kundenportal",
                 max: 150000,
@@ -403,7 +578,7 @@ export const RATGEBER = [
       {
         h2: "Freelancer oder Agentur: wo liegt der Unterschied?",
         body: [
-          `Im Preis vor allem in der Zwischenebene, die bei einer Agentur mitbezahlt wird: Beim Freelancer berät und baut dieselbe Person. Der Freelancer-Kompass 2026 nennt für Software- und Webentwicklung einen Median von 90 € pro Stunde bei 356 Befragten (veröffentlicht von freelancermap im Juli 2026); mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} €.`,
+          `Im Preis vor allem in der Zwischenebene, die bei einer Agentur mitbezahlt wird: Beim Freelancer berät und baut dieselbe Person. Der Freelancer-Kompass 2026 nennt für Software- und Webentwicklung einen Median von 90 € pro Stunde (veröffentlicht von freelancermap im Juli 2026); mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} €.`,
           "Eine Agentur lohnt sich, wenn mehrere Gewerke parallel laufen müssen, etwa Markenentwicklung, Fotografie und Kampagnen, oder wenn eine vertraglich zugesicherte Verfügbarkeit über Jahre gefordert ist.",
         ],
       },
@@ -1737,7 +1912,7 @@ export const RATGEBER = [
     related: [
       { path: "/leistungen/webentwicklung", label: "Firmen-Website erstellen lassen und Relaunch" },
       { path: "/ratgeber/website-kosten", label: "Was kostet eine Website 2026?" },
-      { path: "/leistungen/geo-seo-optimierung", label: "GEO und SEO: in Google und KI-Assistenten gefunden werden" },
+      { path: "/leistungen/geo-seo-optimierung", label: "Generative Engine Optimization (GEO) und SEO" },
       { path: "/projekte/maflats", label: "Case Study: Website-Relaunch für MA-Flats" },
     ],
     cta: {

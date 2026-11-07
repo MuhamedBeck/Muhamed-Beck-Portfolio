@@ -3,8 +3,11 @@
 // The `faq` entries are also emitted as FAQPage JSON-LD by prerender-meta.js.
 
 // With the .js extension: prerender-meta.js imports this file under bare node.
-import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, euro } from "./site.js";
+import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, UST_KURZ, euro } from "./site.js";
 import {
+  ENTSCHEIDUNG_GEO,
+  ENTSCHEIDUNG_KI,
+  ENTSCHEIDUNG_WEBSITE,
   WORKFLOW_BEWERBUNG,
   WORKFLOW_HUBSPOT,
   WORKFLOW_LEBENSLAUF,
@@ -13,7 +16,7 @@ import {
   WORKFLOW_VORQUALIFIZIERUNG,
   WORKFLOW_VORSTELLUNG,
 } from "./workflows.de.js";
-import { LIGHTHOUSE_MAFLATS } from "./grafiken.de.js";
+import { LIGHTHOUSE_MAFLATS, SPANNE_FIRMENWEBSITE, SPANNE_RELAUNCH } from "./grafiken.de.js";
 
 /* Seit dem 07.11.2026 mit dem Rahmen für ein ganzes Projekt, nicht nur dem
    Stundensatz: Wer nur den Satz liest, muss die Summe raten. Der Rahmen steht
@@ -48,6 +51,8 @@ export const REICHWEITE_FESTPREIS_TEXT =
 export const LEISTUNGEN = [
   {
     path: "/leistungen/n8n-automatisierung",
+    // Der bezahlte Einstieg mit Festpreis (PilotAngebot, Inhalt in pilot.de.js).
+    pilot: true,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
        Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
        und die ist auf jeder der sieben Seiten eine andere. */
@@ -61,6 +66,7 @@ export const LEISTUNGEN = [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
+      { path: "/ratgeber/n8n-selbst-hosten", label: "n8n selbst hosten: Docker, Server und Kosten" },
       { path: "/projekte/phoenix-parkservice", label: "Fallstudie Phoenix Parkservice: KI-SEO mit n8n" },
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
       {
@@ -264,7 +270,7 @@ export const LEISTUNGEN = [
       alongside:
         "Mehrsprachigkeit, strukturierte Daten für Suchmaschinen und ein Kontaktweg, der auch ohne Formular funktioniert.",
     },
-    badge: "Webentwicklung & Relaunch",
+    badge: "Homepage & Webentwicklung",
     heroBild: {
       art: "lighthouse",
       daten: LIGHTHOUSE_MAFLATS,
@@ -276,9 +282,13 @@ export const LEISTUNGEN = [
       kurz: "Website erstellen lassen",
       ankerLabel: "Ladezeit mobil",
     },
-    teaser: `Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)}: schnell, auffindbar, ohne Baukasten, mit Messwerten statt Versprechen.`,
-    h1: "Firmen-Website erstellen lassen und Relaunch",
-    intro: `Eine Website soll gefunden werden, schnell laden und Anfragen bringen. Ich baue Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)}, vom Webdesign bis zur Technik aus einer Hand, so, dass diese drei Dinge messbar sind, und übergebe sie so, dass Sie nicht an mir hängen. Als Full-Stack-Entwickler baue ich auch, was über Seiten hinausgeht: Formulare, Terminbuchung und die Anbindung an Ihr CRM.`,
+    teaser: `Homepage und Firmen-Website zum Festpreis ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)}: schnell, auffindbar, ohne Baukasten, mit Messwerten statt Versprechen.`,
+    /* "Homepage" seit dem 07.11.2026 in Überschrift und Text: "homepage
+       erstellen lassen" hat rund 590 Suchen im Monat (Seobility, google.de),
+       und das Wort stand nur in Code-Kommentaren. Gemeint ist die ganze
+       Website, nicht nur die Startseite; so suchen die Leute. */
+    h1: "Homepage und Firmen-Website erstellen lassen",
+    intro: `Ob Homepage oder Firmen-Website: Sie soll gefunden werden, schnell laden und Anfragen bringen. Ich baue Firmen-Websites und Relaunches zum Festpreis ab ${euro(FESTPREIS.website)}, vom Webdesign bis zur Technik aus einer Hand, so, dass diese drei Dinge messbar sind, und übergebe sie so, dass Sie nicht an mir hängen. Als Full-Stack-Entwickler baue ich auch, was über Seiten hinausgeht: Formulare, Terminbuchung und die Anbindung an Ihr CRM.`,
     szenarien: [
       {
         title: "Neue Firmen-Website",
@@ -291,6 +301,25 @@ export const LEISTUNGEN = [
       {
         title: "Branchenseiten mit Standorten und Sprachen",
         text: "Bei maflats.de entstehen neun Standortseiten in fünf Sprachen aus einer Datenquelle. Eine neue Stadt ist ein Eintrag statt einer neuen Seite, und eine fehlende Übersetzung bricht den Build, statt still deutschen Text auszuliefern.",
+      },
+    ],
+    abbildungen: [
+      {
+        titel: "Welche Lösung passt zu Ihrer Homepage?",
+        bild: { art: "workflow", workflow: ENTSCHEIDUNG_WEBSITE },
+        text: "Vereinfacht. Wer täglich selbst Inhalte pflegt, ist mit einem Baukasten oft besser bedient; das sage ich auch im Erstgespräch.",
+      },
+      {
+        titel: "Was eine Homepage kostet: Markt und Festpreis",
+        bild: {
+          art: "spannen",
+          daten: {
+            titel: "Marktspannen laut Anbietern und meine Festpreise",
+            zeilen: [SPANNE_FIRMENWEBSITE, SPANNE_RELAUNCH],
+            quelle: `Marktspannen: RHEINSPACE 06/2026, Adfera 10/2026. Jede Zeile hat ihre eigene Skala. ${UST_KURZ}.`,
+          },
+        },
+        text: "Ausführlich mit allen Quellen im Ratgeber „Was kostet eine Website 2026?“.",
       },
     ],
     leistungen: [
@@ -333,7 +362,7 @@ export const LEISTUNGEN = [
     },
     faq: [
       {
-        q: "Was kostet eine Website?",
+        q: "Was kostet eine Website oder Homepage?",
         a: `Als Festpreis für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch ab ${euro(FESTPREIS.relaunch)}. ${UST_HINWEIS} Enthalten sind Struktur, Umsetzung, technisches SEO, beim Relaunch die Weiterleitungen und am Ende die Übergabe. Den genauen Betrag nenne ich nach dem Erstgespräch, sobald Umfang, Sprachen und Anbindungen feststehen; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
       },
       {
@@ -660,6 +689,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-automatisierung-frankfurt",
+    pilot: true,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
        Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
        und die ist auf jeder der sieben Seiten eine andere. */
@@ -785,6 +815,167 @@ export const LEISTUNGEN = [
       {
         q: "Welche Modelle und Anbieter setzen Sie ein?",
         a: "OpenAI, Azure OpenAI und Anthropic Claude, je nach Anforderung an Datenschutz, Kosten und Qualität. Die Auswahl treffen wir gemeinsam anhand Ihres Use Cases, nach Absprache auch mit anderen Anbietern.",
+      },
+    ],
+  },
+  {
+    path: "/leistungen/ki-beratung",
+    /* Neu am 07.11.2026. "ki beratung" ist mit rund 2.400 Suchen im Monat der
+       größte kaufnahe KI-Begriff, und das Wort kam auf der ganzen Website nicht
+       vor (Seobility, google.de, 07.11.2026). Getrennt von der Frankfurt-Seite,
+       die die Umsetzung verkauft: Hier geht es um die Frage davor, wo KI sich
+       überhaupt lohnt. Beraten wird von jemandem, der KI-Systeme im Betrieb
+       hat, und der erste Anwendungsfall endet als Pilot zum Festpreis statt
+       als Konzeptpapier. */
+    pilot: true,
+    preisKurz: `Pilot zum Festpreis: ${euro(FESTPREIS.pilot)}`,
+    preisText: `Das Erstgespräch ist kostenlos. Beratung darüber hinaus rechne ich nach Aufwand ab, ${RATE_MIN} bis ${RATE_MAX} € pro Stunde; der erste Anwendungsfall als Pilot kostet ${euro(FESTPREIS.pilot)} zum Festpreis. Laufende Kosten für KI-Modelle und Werkzeuge zahlen Sie direkt an die Anbieter. ${UST_HINWEIS}`,
+    cta: {
+      headline: "Wo würde KI bei Ihnen Zeit sparen?",
+      intro:
+        "Beschreiben Sie den Ablauf in zwei Sätzen. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob KI dafür passt oder ein normaler Workflow reicht.",
+      button: "KI-Erstgespräch anfragen",
+    },
+    weiterlesen: [
+      { path: "/leistungen/ki-automatisierung-frankfurt", label: "KI-Automatisierung in Frankfurt umsetzen lassen" },
+      { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
+      { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
+      { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
+    ],
+    badge: "KI-Beratung",
+    heroBild: {
+      art: "workflow",
+      workflow: ENTSCHEIDUNG_KI,
+      text: "Die erste Prüfung im Erstgespräch, vereinfacht. Wo feste Regeln reichen, ist ein Workflow ohne KI billiger und verlässlicher.",
+    },
+    hero: {
+      kurz: "KI-Beratung für Unternehmen",
+      ankerLabel: "KI-Entwürfe im Monat, von Menschen freigegeben",
+    },
+    teaser: `KI-Beratung ohne Folienschlacht: wo KI sich lohnt, was sie kostet, Datenschutz und AI Act, und der erste Anwendungsfall als Pilot zum Festpreis von ${euro(FESTPREIS.pilot)}.`,
+    h1: "KI-Beratung für Unternehmen: vom ersten Anwendungsfall zum laufenden Pilot",
+    intro: `Viele Unternehmen wissen, dass KI etwas bringen könnte, aber nicht, wo. Ich finde mit Ihnen den Ablauf, in dem sie sich messbar lohnt, rechne Aufwand und laufende Kosten vor und ordne Datenschutz und AI Act ein. Danach steht kein Konzeptpapier, sondern der erste Anwendungsfall als Pilot zum Festpreis.`,
+    szenarien: [
+      {
+        title: "Sie wissen nicht, wo KI sich lohnt",
+        text: "Die Ideen reichen vom Chatbot bis zum Komplettumbau. Ich prüfe mit Ihnen die Abläufe, die oft vorkommen, und sage auch, wo ein normaler Workflow ohne KI günstiger ist.",
+      },
+      {
+        title: "Ein KI-Werkzeug wurde gekauft, aber keiner nutzt es",
+        text: "Häufig fehlt die Anbindung an die Programme, in denen gearbeitet wird. Ein Werkzeug, in das jemand Daten von Hand kopieren muss, wird bald nicht mehr geöffnet.",
+      },
+      {
+        title: "Unsicherheit bei Datenschutz und AI Act",
+        text: "Wo die Daten verarbeitet werden, was der AI Act verlangt und welche Entscheidungen ein Mensch treffen muss, klären wir vor dem Start. Eine Rechtsberatung ersetzt das nicht.",
+      },
+    ],
+    abbildungen: [
+      {
+        titel: "Wofür KI im Unternehmen taugt, und wofür nicht",
+        bild: {
+          art: "tabelle",
+          daten: {
+            caption: "Typische Abläufe im Mittelstand",
+            columns: ["Eignung", "Warum"],
+            rows: [
+              {
+                label: "Dokumente auslesen, etwa Rechnungen oder Lebensläufe",
+                cells: [
+                  { text: "gut geeignet", ton: "erfolg" },
+                  "Aus freiem Text werden Felder; feste Regeln prüfen danach Menge, Preis oder Vollständigkeit.",
+                ],
+              },
+              {
+                label: "Texte entwerfen, etwa Antworten oder Vorstellungen",
+                cells: [
+                  { text: "gut, mit Freigabe", ton: "erfolg" },
+                  "Der Entwurf spart die meiste Zeit; ein Mensch gibt frei, bevor etwas hinausgeht.",
+                ],
+              },
+              {
+                label: "Anrufe annehmen und vorsortieren",
+                cells: [
+                  { text: "geeignet, mit Hinweis", ton: "akzent" },
+                  "Funktioniert bei klaren Fragen. Dass eine KI spricht, muss erkennbar sein (Art. 50 KI-Verordnung).",
+                ],
+              },
+              {
+                label: "Entscheidungen über Menschen, etwa Absagen oder Rangfolgen",
+                cells: [
+                  { text: "nur mit Mensch", ton: "warm" },
+                  "Die Entscheidung bleibt bei einem Menschen (Art. 22 DSGVO); KI darf vorbereiten, nicht entscheiden.",
+                ],
+              },
+              {
+                label: "Rechnen und feste Regeln",
+                cells: [
+                  { text: "keine KI nötig", ton: "leise" },
+                  "Ein normaler Workflow ist billiger, schneller und liefert jedes Mal dasselbe Ergebnis.",
+                ],
+              },
+            ],
+          },
+        },
+        text: "Aus meiner Praxis, vereinfacht. Was im Einzelfall gilt, klären wir im Erstgespräch.",
+      },
+    ],
+    leistungen: [
+      "Bestandsaufnahme: welche Abläufe oft vorkommen, Zeit kosten und mit welchen Daten sie arbeiten",
+      "Bewertung jedes Anwendungsfalls nach Nutzen, Aufwand, laufenden Kosten und Risiko",
+      "Kostenrechnung für Modelle und Lizenzen, mit Rechenzentren in der EU, wo es nötig ist",
+      "Einordnung zu DSGVO und AI Act, mit Hinweis, wo eine Rechtsberatung nötig ist",
+      "Der erste Anwendungsfall als Pilot zum Festpreis, getestet mit Ihren echten Daten",
+      "Einweisung des Teams in den neuen Ablauf und Übergabe mit Dokumentation",
+    ],
+    ablauf: [
+      {
+        title: "Erstgespräch",
+        text: "30 Minuten, kostenlos. Sie schildern die Abläufe, die Zeit kosten; ich sage, wo KI passt und wo nicht.",
+      },
+      {
+        title: "Bewertung",
+        text: "Die aussichtsreichsten Fälle nach Nutzen, Aufwand, laufenden Kosten und Risiko. Ehrlich, auch wenn die Antwort „noch nicht“ lautet.",
+      },
+      {
+        title: "Pilot",
+        text: `Der beste Fall wird als Pilot zum Festpreis von ${euro(FESTPREIS.pilot)} umgesetzt und mit Ihren echten Daten getestet.`,
+      },
+      {
+        title: "Ausbau",
+        text: "Mit Zahlen aus dem Pilot entscheiden Sie, ob und wie es weitergeht, nicht mit einer Prognose.",
+      },
+    ],
+    caseStudy: {
+      stat: "300",
+      statLabel: "KI-Entwürfe für Vorstellungsmails im Monat bei meinem Arbeitgeber, jeder vor dem Versand von einem Menschen freigegeben",
+      text: "Bei der TOPEOPLE Group, meinem Arbeitgeber, entwirft eine KI rund 300 Vorstellungsmails im Monat; verschickt wird erst nach Freigabe durch einen Recruiter. Dazu wertet eine KI-Telefonvorqualifizierung, an der ich arbeite, rund 1.900 Anrufe im Monat aus. Stand Oktober 2026.",
+      link: "/projekte/recruiting-automatisierung",
+      linkText: "Zur Case Study KI-Vorqualifizierung",
+    },
+    faq: [
+      {
+        q: "Was kostet eine KI-Beratung?",
+        a: `Das Erstgespräch ist kostenlos. Weitere Beratung rechne ich nach Aufwand ab, ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Der erste Anwendungsfall als Pilot kostet ${euro(FESTPREIS.pilot)} zum Festpreis, mit Test, Übergabe und 30 Tagen Fehlerbehebung. ${UST_HINWEIS}`,
+      },
+      {
+        q: "Brauchen wir zuerst eine KI-Strategie?",
+        a: "Selten. Eine Strategie ohne laufenden Anwendungsfall bleibt Papier. Sinnvoller ist ein Pilot an einem Ablauf, der oft vorkommt; die Zahlen daraus sind die Grundlage für alles Weitere.",
+      },
+      {
+        q: "Was verlangt der AI Act von uns?",
+        a: "Für die meisten Anwendungen im Mittelstand vor allem Transparenz, etwa den Hinweis, dass ein Kunde mit einer KI spricht (Art. 50 KI-Verordnung). Strenger wird es, wenn KI über Menschen entscheidet, zum Beispiel bei der Bewerberauswahl. Was das konkret heißt, steht im Ratgeber zum AI Act; eine Rechtsberatung ersetzt das nicht.",
+      },
+      {
+        q: "Wo werden unsere Daten verarbeitet?",
+        a: "Wo es nötig ist, in der EU: Modelle über Anbieter mit europäischen Rechenzentren, n8n auf Ihrem Konto oder Ihrem eigenen Server. Welche Daten ein Modell überhaupt sieht, legen wir vor dem Start fest.",
+      },
+      {
+        q: "Bieten Sie KI-Schulungen an?",
+        a: "Keine Kurse mit Zertifikat. Wer einen Pilot mit mir umsetzt, bekommt eine Einweisung in den neuen Ablauf für das Team, das damit arbeitet.",
+      },
+      {
+        q: "Arbeiten Sie remote?",
+        a: "Ja, überwiegend, in ganz Deutschland, Österreich und der Schweiz. Vor Ort im Rhein-Main-Gebiet nach Absprache.",
       },
     ],
   },
@@ -1166,6 +1357,10 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/geo-seo-optimierung",
+    /* Seit 07.11.2026 auf "Generative Engine Optimization" ausgerichtet: rund
+       1.300 Suchen im Monat (Seobility, google.de), und der ausgeschriebene
+       Begriff kam auf der Seite nicht vor. llms.txt wird nicht mehr als
+       Leistung angeboten; was dazu belegt ist, steht in der FAQ. */
     cta: {
       headline: "Werden Sie gefunden, wenn jemand Ihr Problem beschreibt?",
       intro:
@@ -1185,33 +1380,31 @@ export const LEISTUNGEN = [
       caption: "So entsteht Sichtbarkeit",
       stages: [
         { kind: "Befund", title: "Messen statt raten",
-          text: "Search Console, Ladezeiten unter Drosselung, Indexierungsstatus und die Frage, welche Seiten überhaupt ausgeliefert werden." },
+          text: "Search Console, Bing Webmaster Tools, Ladezeiten unter Drosselung und die Frage, welche Seiten Crawler überhaupt zu sehen bekommen." },
         { kind: "Schritt", title: "Technik in Ordnung bringen",
-          text: "Serverseitiges Rendern, saubere Weiterleitungen, Sitemap, strukturierte Daten und Ladezeiten, die auch mobil halten." },
-        { kind: "Schritt", title: "Für KI-Systeme lesbar machen",
-          text: "llms.txt, zitierfähige Zahlen mit Quelle, eindeutige Entitätsangaben und Inhalte, die eine Frage wirklich beantworten." },
+          text: "Serverseitiges Rendern, saubere Weiterleitungen, Sitemap, strukturierte Daten und Zugang für die Crawler der KI-Anbieter." },
+        { kind: "Schritt", title: "Zitierfähig schreiben",
+          text: "Ein Absatz pro Frage, der für sich steht, Zahlen mit Quelle und Datum und überall dieselben Angaben zur Firma." },
         { kind: "Ziel", title: "In beiden Welten auffindbar",
-          text: "In Google und Bing über klassische Suchergebnisse, in ChatGPT, Perplexity und Claude über zitierte Passagen." },
+          text: "In Google und Bing über die Suchergebnisse, in ChatGPT, Perplexity und den KI-Übersichten von Google über zitierte Absätze." },
       ],
       alongside: "Gemessen wird vorher und nachher, mit denselben Werkzeugen unter denselben Bedingungen. Eine Zahl ohne Messbedingung ist keine.",
     },
-    badge: "GEO & SEO Optimierung",
+    badge: "Generative Engine Optimization",
     heroBild: {
-      art: "lighthouse",
-      daten: LIGHTHOUSE_MAFLATS,
-      text: "SEO und Barrierefreiheit je 100 Punkte, an einer Website, die ich neu gebaut habe.",
-      link: "/projekte/maflats",
-      linkText: "Zur Fallstudie MA-Flats",
+      art: "workflow",
+      workflow: ENTSCHEIDUNG_GEO,
+      text: "Vereinfacht. An jeder Weiche setzt die Arbeit an: Zugang für die Crawler, Aufnahme in den Index und Absätze, die eine Frage mit Zahl und Quelle beantworten.",
     },
     hero: {
       kurz: "GEO- und SEO-Optimierung",
       ankerLabel: "SEO-Wertung bei maflats.de",
     },
     teaser:
-      "Gefunden werden in Google und in KI-Assistenten. Technik, Inhalte und Auffindbarkeit, gemessen vor und nach der Arbeit.",
-    h1: "GEO und SEO: in Google und KI-Assistenten gefunden werden",
+      "Generative Engine Optimization (GEO) und SEO: in Google und in den KI-Antworten von ChatGPT, Perplexity und Google genannt werden, gemessen vor und nach der Arbeit.",
+    h1: "Generative Engine Optimization (GEO): in Google und KI-Antworten gefunden werden",
     intro:
-      "Suchmaschinen sind nicht mehr der einzige Weg, auf dem Kunden Sie finden. Immer häufiger fragen Menschen ChatGPT, Perplexity oder Claude nach einem Anbieter und bekommen drei Namen genannt. Ob Sie dabei sind, entscheidet sich an anderen Stellen als beim klassischen Ranking. Ich bringe beides in Ordnung: die technische Grundlage, damit Google Ihre Seiten überhaupt sauber lesen kann, und die inhaltliche, damit ein Sprachmodell Sie zitieren kann statt Ihre Wettbewerber.",
+      "Generative Engine Optimization, kurz GEO, sorgt dafür, dass ChatGPT, Perplexity und die KI-Übersichten von Google Ihre Firma nennen und verlinken, wenn jemand Ihr Problem beschreibt. Die Grundlage ist dieselbe wie bei SEO: Crawler müssen Ihre Seiten lesen und in den Index aufnehmen können. Dazu kommen Absätze, die eine Frage für sich beantworten, mit Zahl und Quelle. Ich bringe beides in Ordnung und messe vorher und nachher.",
     szenarien: [
       { title: "Die Seite rankt nicht, obwohl der Inhalt gut ist",
         text: "Häufig liegt es nicht am Text, sondern daran, dass Crawler ohne JavaScript eine leere Seite sehen, Weiterleitungen im Kreis laufen oder jede Unterseite denselben Titel trägt." },
@@ -1220,14 +1413,59 @@ export const LEISTUNGEN = [
       { title: "Der Relaunch hat die Sichtbarkeit gekostet",
         text: "Neue Seite, alte Rankings weg. Meist fehlen Weiterleitungen der alten Adressen oder die Sitemap meldet URLs, die weiterleiten statt zu antworten." },
     ],
+    /* Belege am 07.11.2026 an den Primärquellen geprüft: GEO-Studie
+       (arXiv 2311.09735, Tabelle 1), Google Search Central (Leitfaden vom
+       10.07.2026), Bing Webmaster Blog (10.02.2026), Search-Console-Blog
+       (03.06.2026), Doku von OpenAI, Perplexity und Anthropic. */
+    abbildungen: [
+      {
+        titel: "SEO und GEO im Vergleich",
+        bild: {
+          art: "tabelle",
+          daten: {
+            caption: "Was gleich bleibt und was dazukommt",
+            columns: ["SEO", "GEO"],
+            rows: [
+              { label: "Ziel", cells: ["ein Platz in den Suchergebnissen", "eine Nennung in der KI-Antwort, mit Link"] },
+              { label: "Wer liest mit", cells: ["Googlebot und Bingbot", "dieselben, dazu OAI-SearchBot, PerplexityBot und Claude-SearchBot"] },
+              { label: "Was zählt", cells: ["die Seite als Ganzes", "auch einzelne Absätze, etwa bei Perplexity und Copilot"] },
+              { label: "Messen", cells: ["Search Console: Klicks, Suchanfragen, Position", "Search Console: Impressionen in KI-Übersichten; Bing: Zitate in Copilot"] },
+              { label: "Bringt nichts", cells: ["Keyword-Stuffing", "Keyword-Stuffing und llms.txt als Ersatz für Inhalte"] },
+            ],
+          },
+        },
+        text: "Für Google ist GEO nach eigener Aussage weiterhin SEO, ohne zusätzliche Anforderungen (Google Search Central, Stand Juli 2026). Den Unterschied machen die anderen Assistenten und die Messung.",
+      },
+      {
+        titel: "Was in der GEO-Studie wirkte",
+        bild: {
+          art: "balken",
+          daten: {
+            art: "liste",
+            titel: "Anteil einer Quelle an der KI-Antwort, nachdem ihr Text geändert wurde",
+            zeilen: [
+              { label: "Wörtliche Zitate aus glaubwürdigen Quellen", wert: 27.2, text: "+41 %", ton: "erfolg" },
+              { label: "Statistiken ergänzt", wert: 25.2, text: "+31 %", ton: "erfolg" },
+              { label: "Flüssiger formuliert", wert: 24.7, text: "+28 %", ton: "akzent" },
+              { label: "Quellen angegeben", wert: 24.6, text: "+27 %", ton: "akzent" },
+              { label: "Ohne Änderung", wert: 19.3, text: "Ausgangswert", ton: "leise" },
+              { label: "Keyword-Stuffing", wert: 17.7, text: "−8 %", ton: "warm" },
+            ],
+            quelle: "Aggarwal u. a., KDD 2024, Tabelle 1: Position-Adjusted Word Count, Ausgangswert 19,3. Laborversuch von 2023 mit GPT-3.5 und 1.000 Testfragen; ob er für heutige Assistenten gilt, ist nicht belegt.",
+          },
+        },
+        text: "Der Versuch, der dem Begriff seinen Namen gab. Belegte Aussagen halfen, eingestreute Suchbegriffe schadeten.",
+      },
+    ],
     leistungen: [
       "Technisches Audit: Indexierung, Weiterleitungen, Sitemap, Ladezeiten mobil unter Drosselung",
       "Serverseitiges Rendern oder Vorab-Erzeugung, damit Crawler ohne JavaScript Inhalte sehen",
       "Strukturierte Daten für Person, Dienstleistung, Artikel und Navigationspfade",
-      "llms.txt und zitierfähige Inhalte für ChatGPT, Perplexity und Claude",
+      "Zugang für die Crawler von OpenAI, Perplexity und Google prüfen: robots.txt und Bot-Schutz",
+      "Zitierfähige Inhalte: ein Absatz pro Frage, Zahlen mit Quelle und Datum",
       "Mehrsprachigkeit mit hreflang, sauber und symmetrisch statt halb gepflegt",
       "Inhaltsarbeit: Ratgeber, die eine Suchfrage vollständig beantworten statt sie anzureißen",
-      "Messung vorher und nachher mit Search Console und Lighthouse, dieselben Bedingungen",
+      "Messung vorher und nachher: Search Console mit dem Bericht zu KI-Übersichten, Bing Webmaster Tools und Lighthouse",
     ],
     ablauf: [
       { title: "Befund", text: "Ich messe den Ist-Zustand: Was ist indexiert, was wird ausgeliefert, wie schnell lädt es mobil, was steht in der Search Console." },
@@ -1245,12 +1483,16 @@ export const LEISTUNGEN = [
     preisText:
       `${RATE_MIN} bis ${RATE_MAX} € pro Stunde nach Absprache. Ein Audit hat einen absehbaren Umfang und lässt sich deshalb gut als Festpreis abbilden; die anschließende Umsetzung hängt davon ab, was der Befund ergibt. Laufende Kosten entstehen keine.`,
     faq: [
-      { q: "Was ist GEO und wie unterscheidet es sich von SEO?",
-        a: "SEO zielt auf Platzierungen in Suchergebnissen, GEO darauf, in den Antworten von KI-Assistenten vorzukommen. Die technischen Grundlagen überschneiden sich stark, die inhaltlichen weniger: Sprachmodelle zitieren belegte, eindeutig zuordenbare Aussagen, während Suchmaschinen auch Seiten belohnen, die eine Frage nur anreißen." },
+      { q: "Was ist Generative Engine Optimization (GEO)?",
+        a: "GEO heißt, Inhalte so aufzubereiten, dass KI-Assistenten wie ChatGPT, Perplexity oder die KI-Übersichten von Google sie als Quelle nennen. Der Begriff stammt aus einer Studie von Forschern aus Princeton und dem IIT Delhi (Aggarwal u. a., KDD 2024): Wörtliche Zitate aus glaubwürdigen Quellen erhöhten dort den Anteil einer Seite an der Antwort um 41 Prozent, ergänzte Statistiken um 31 Prozent, Keyword-Stuffing senkte ihn um 8 Prozent. Gemessen wurde 2023 im Labor, mit GPT-3.5 und 1.000 Testfragen." },
+      { q: "Was ist der Unterschied zwischen GEO und SEO?",
+        a: "Bei Google kaum einer: Optimierung für die KI-Suche ist laut Google weiterhin SEO, für KI-Übersichten und KI-Modus gibt es keine zusätzlichen Anforderungen (Google Search Central, Stand Juli 2026). Dazu kommen drei Dinge. Die Crawler der KI-Anbieter müssen die Seite lesen dürfen, Absätze sollten für sich verständlich sein, weil Perplexity und Copilot einzelne Abschnitte bewerten, und Erwähnungen auf anderen Seiten zählen: Bei Software-Fragen stammten in einer KI-Suche mit GPT 73 Prozent der Quellen aus unabhängigen Seiten wie Tests und Fachmedien, bei Google 45 Prozent (University of Toronto, Preprint vom September 2025, Daten aus den USA)." },
+      { q: "Wie misst man, ob GEO wirkt?",
+        a: "Seit Juni 2026 zeigt die Google Search Console in einem eigenen Bericht, wie oft Seiten in KI-Übersichten und im KI-Modus erscheinen, allerdings nur als Impressionen, ohne Klicks. Die Bing Webmaster Tools zählen seit Februar 2026, wie oft Copilot eine Seite zitiert und bei welchen Suchanfragen. Für ChatGPT und Perplexity gibt es keine solche Konsole; dort bleiben Stichproben und die Verweise in der Webanalyse." },
       { q: "Wie lange dauert es, bis man etwas sieht?",
         a: "Technische Korrekturen wirken innerhalb weniger Wochen, sobald Google neu gecrawlt hat. Inhaltliche Arbeit braucht zwei bis drei Monate, bis sich Platzierungen stabilisieren. Wer schnellere Ergebnisse verspricht, verkauft etwas anderes." },
       { q: "Bringt llms.txt überhaupt etwas?",
-        a: "Ehrlich: gemessen ist der Effekt bisher gering, und mehrere Untersuchungen zeigen, dass die Datei selten abgerufen wird. Sie kostet aber fast nichts und schadet nicht. Wichtiger sind belegte Zahlen im Fließtext und konsistente Angaben zur Person oder Firma." },
+        a: "Für die Sichtbarkeit nach heutigem Stand nicht. Google ignoriert die Datei nach eigener Aussage, sie hilft und schadet dort nicht (Google Search Central, Juli 2026). Ahrefs fand bei 137.210 Domains, dass 97 Prozent der vorhandenen Dateien im Mai 2026 kein einziges Mal abgerufen wurden. Diese Website hat eine, weil sie fast nichts kostet; als Maßnahme verkaufe ich sie nicht. Wichtiger sind belegte Zahlen im Fließtext und überall dieselben Angaben zur Firma." },
       { q: "Muss die Seite dafür neu gebaut werden?",
         a: "Meistens nicht. Vieles lässt sich an einer bestehenden Seite beheben. Nur wenn die Grundlage das Rendern für Crawler unmöglich macht, ist ein Neubau der günstigere Weg, und das sage ich vorher." },
       { q: "Arbeiten Sie auch außerhalb Deutschlands?",
