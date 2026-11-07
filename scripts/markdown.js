@@ -130,6 +130,14 @@ const umwandler = () => {
     replacement: (inhalt) => `${inhalt} `,
   });
 
+  /* Links nur mit Symbol (LinkedIn, GitHub, Mail) tragen ihren Namen im
+     aria-label; ohne ihn stünde im Markdown ein leerer Link. */
+  td.addRule("symbolLink", {
+    filter: (node) =>
+      node.nodeName === "A" && !text(node).trim() && Boolean(node.getAttribute("aria-label")),
+    replacement: (_inhalt, node) => ` [${node.getAttribute("aria-label")}](${node.getAttribute("href")}) `,
+  });
+
   /* Zuletzt hinzugefügt, also zuerst geprüft: Versteckte Teile fallen weg,
      auch wenn eine Standardregel (Absatz, Listenpunkt) sonst greifen würde. */
   td.addRule("versteckt", { filter: versteckt, replacement: () => "" });

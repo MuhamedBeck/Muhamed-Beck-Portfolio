@@ -128,7 +128,8 @@ export const LeistungPage = ({ data }) => (
             key={step.title}
             className="stagger border-t border-hairline pt-6"
             style={{ "--fade-delay": `${index * 70}ms` }}>
-            <span className="text-xs tracking-[0.25em] text-accent tabular-nums">
+            {/* The <ol> numbers the steps for screen readers already. */}
+            <span aria-hidden="true" className="text-xs tracking-[0.25em] text-accent tabular-nums">
               {String(index + 1).padStart(2, "0")}
             </span>
             <h3 className="mt-4 text-lg font-normal text-paper">{step.title}</h3>

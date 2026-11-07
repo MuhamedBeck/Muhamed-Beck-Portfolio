@@ -881,6 +881,26 @@ export const LEISTUNGEN = [
         bild: FOTO_WORKSHOP,
         text: `Zuerst sammeln wir die Abläufe, die oft vorkommen und Zeit kosten; erst danach geht es um Modelle und Programme. ${FOTO_WORKSHOP.nachweis}`,
       },
+      /* Zahlen am 07.11.2026 an der Presseinformation des Bitkom geprüft
+         ("Erstmals nutzt die Mehrheit der Unternehmen KI", 14.09.2026). */
+      {
+        titel: "Was Unternehmen ohne KI bremst",
+        bild: {
+          art: "balken",
+          daten: {
+            art: "liste",
+            max: 100,
+            titel: "Gründe gegen den KI-Einsatz, Unternehmen ohne KI, Mehrfachnennung",
+            zeilen: [
+              { label: "Fehlendes technisches Know-how", wert: 85, text: "85 %", ton: "warm" },
+              { label: "Rechtliche Hürden und Unklarheiten", wert: 66, text: "66 %", ton: "warm" },
+              { label: "Schwer zu kalkulierende Kosten", wert: 63, text: "63 %", ton: "warm" },
+            ],
+            quelle: "Bitkom, repräsentative Befragung von 603 Unternehmen ab 20 Beschäftigten, veröffentlicht am 14.09.2026. 57 Prozent der Unternehmen nutzen KI bereits.",
+          },
+        },
+        text: "Gegen die beiden Bremsen, die sich lösen lassen, hilft ein Pilot: Das Know-how bringe ich mit, und der Preis steht vorher fest.",
+      },
       {
         titel: "Wofür KI im Unternehmen taugt, und wofür nicht",
         bild: {
@@ -982,7 +1002,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Bieten Sie KI-Schulungen an?",
-        a: "Keine Kurse mit Zertifikat. Wer einen Pilot mit mir umsetzt, bekommt eine Einweisung in den neuen Ablauf für das Team, das damit arbeitet.",
+        a: "Keine Kurse mit Zertifikat. Wer einen Pilot mit mir umsetzt, bekommt eine Einweisung in den neuen Ablauf für das Team, das damit arbeitet. Ein Zertifikat verlangt auch das Gesetz nicht: Artikel 4 der KI-Verordnung verpflichtet Unternehmen seit der Änderung durch die Verordnung (EU) 2026/1744 vom Juli 2026 nur noch, die KI-Kompetenz ihrer Beschäftigten zu unterstützen; ein bestimmtes Niveau muss niemand garantieren.",
       },
       {
         q: "Arbeiten Sie remote?",
