@@ -173,7 +173,46 @@ const SECTIONS = [
     ),
   },
   {
-    title: "6. Schriftarten",
+    /* Seit 07.11.2026: Terminbuchung über Cal.com und Ablage der Buchungen
+       im privaten Archiv (worker/termin.js). */
+    title: "6. Terminbuchung (Cal.com)",
+    body: (
+      <>
+        <p>
+          Für das kostenlose Erstgespräch können Sie einen Termin direkt buchen. Die
+          Buchung läuft über Cal.com, einen Dienst der Cal.com, Inc. (USA). Folgen Sie dem
+          Link „Termin direkt buchen“, geben Sie auf der Buchungsseite von Cal.com Ihren
+          Namen, Ihre E-Mail-Adresse und auf Wunsch eine Anmerkung an; dort gelten auch
+          die Datenschutzhinweise von Cal.com. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b
+          DSGVO (Anbahnung eines Vertrags).
+        </p>
+        <p>
+          Neben dem Link steht ein Knopf von Cal.com, der eine Anweisung für
+          KI-Assistenten in Ihre Zwischenablage kopiert. Für seine Symbole lädt Ihr
+          Browser beim Aufruf der Seite kleine Bilder von app.cal.com; dabei erhält
+          Cal.com Ihre IP-Adresse und technische Angaben zu Ihrem Browser, und Daten
+          werden in die USA übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
+          (berechtigtes Interesse, die Buchung auch über KI-Assistenten anzubieten).
+        </p>
+        <p>
+          Jede Buchung, Verschiebung und Absage meldet Cal.com an diese Website. Ich
+          speichere dann Ihren Namen, Ihre E-Mail-Adresse, den Termin, Ihre Zeitzone und
+          Ihre Anmerkungen wie eine Anfrage aus dem Formular in meinem nicht öffentlichen
+          Repository bei GitHub (Ziffer 5). Zugangsdaten zum Videogespräch werden nicht
+          gespeichert. Weitere Informationen:{" "}
+          <a
+            href="https://cal.com/privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={EXT_LINK}>
+            cal.com/privacy
+          </a>
+        </p>
+      </>
+    ),
+  },
+  {
+    title: "7. Schriftarten",
     body: (
       <p>
         Diese Website verwendet die Schriftarten Space Grotesk, IBM Plex Sans und
@@ -184,7 +223,7 @@ const SECTIONS = [
     ),
   },
   {
-    title: "7. Externe Links",
+    title: "8. Externe Links",
     body: (
       <p>
         Diese Website enthält Links zu externen Plattformen wie LinkedIn und GitHub.
@@ -195,7 +234,7 @@ const SECTIONS = [
     ),
   },
   {
-    title: "8. SSL- bzw. TLS-Verschlüsselung",
+    title: "9. SSL- bzw. TLS-Verschlüsselung",
     body: (
       <p>
         Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung
@@ -206,7 +245,7 @@ const SECTIONS = [
     ),
   },
   {
-    title: "9. Ihre Rechte",
+    title: "10. Ihre Rechte",
     body: (
       <>
         <p>Ihnen stehen folgende Rechte zu:</p>
@@ -231,7 +270,7 @@ const SECTIONS = [
     ),
   },
   {
-    title: "10. Aktualität dieser Datenschutzerklärung",
+    title: "11. Aktualität dieser Datenschutzerklärung",
     body: (
       <p>
         Ich behalte mir vor, diese Datenschutzerklärung anzupassen, damit sie stets den

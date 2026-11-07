@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { TerminBuchen } from "../TerminBuchen";
 import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa";
 import profilePicture from "../../assets/profilepicture.webp";
 import { useDict, useLocale } from "../../i18n";
@@ -146,6 +147,7 @@ export const Home = ({ isLoaded = true, services = [] }) => {
               {/* The reply promise belongs under the button, where the decision
                   is made, not at the foot of the hero where it used to sit. */}
               <p className="mt-4 text-xs text-paper-mute">{chrome.replyPromise}</p>
+              <TerminBuchen label={chrome.terminBuchen} className="mt-5" />
             </div>
 
           </div>

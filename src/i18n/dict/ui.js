@@ -27,6 +27,7 @@ const de = {
   themeToLight: "Zur hellen Ansicht wechseln",
   themeToDark: "Zur dunklen Ansicht wechseln",
   mailBetreff: "Anfrage über muhamedbeck.com",
+  terminBuchen: "Termin direkt buchen",
 };
 
 const en = {
@@ -44,6 +45,7 @@ const en = {
   themeToLight: "Switch to the light theme",
   themeToDark: "Switch to the dark theme",
   mailBetreff: "Enquiry via muhamedbeck.com",
+  terminBuchen: "Book a call directly",
 };
 
 /* Arabisch, Hocharabisch (فصحى).
@@ -64,6 +66,7 @@ const en = {
  *   themeToLight      Zur hellen Ansicht wechseln
  *   themeToDark       Zur dunklen Ansicht wechseln
  *   mailBetreff       Anfrage über muhamedbeck.com
+ *   terminBuchen      Link zur Terminbuchung bei Cal.com
  *
  * Der Mitteltrenner in replyPromise steht zwischen einem lateinischen und einem
  * arabischen Lauf. Er ist ein neutrales Zeichen, und der Bidi-Algorithmus
@@ -83,6 +86,7 @@ const ar = {
   themeToLight: "التبديل إلى المظهر الفاتح",
   themeToDark: "التبديل إلى المظهر الداكن",
   mailBetreff: "استفسار عبر muhamedbeck.com",
+  terminBuchen: "احجز موعدًا مباشرة",
 };
 
 export default { de, en, ar };

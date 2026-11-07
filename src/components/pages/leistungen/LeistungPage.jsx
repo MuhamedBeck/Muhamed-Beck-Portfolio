@@ -9,6 +9,7 @@ import { RATE_TEXT } from "../../../content/site";
 import { LinkArrow } from "../../LinkArrow";
 import { Stimmen } from "../../Stimmen";
 import { PilotAngebot } from "../../PilotAngebot";
+import { TerminBuchen } from "../../TerminBuchen";
 import { ANKER_SCHLUSS, AnfrageLeiste, AnfrageStart } from "./AnfrageLeiste";
 
 /* Ziel und Beschriftung der Anfrage, an einer Stelle abgeleitet. Sie stehen
@@ -273,6 +274,7 @@ export const LeistungPage = ({ data }) => (
           Kostenloses Erstgespräch · Frankfurt und remote in Deutschland, Österreich und
           der Schweiz
         </p>
+        <TerminBuchen className="mt-6" />
       </div>
     </Section>
 

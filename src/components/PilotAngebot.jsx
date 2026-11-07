@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { TerminBuchen } from "./TerminBuchen";
 import { Grafik } from "./Grafik";
 import { PILOT } from "../content/pilot.de";
 import { WORKFLOW_PILOT } from "../content/workflows.de";
@@ -54,8 +55,11 @@ export const PilotAngebot = () => (
       </div>
     </div>
 
-    <Link to={`/kontakt?leistung=${PILOT.slug}`} className="btn-ghost btn-accent mt-10">
-      Pilot anfragen
-    </Link>
+    <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-4">
+      <Link to={`/kontakt?leistung=${PILOT.slug}`} className="btn-ghost btn-accent">
+        Pilot anfragen
+      </Link>
+      <TerminBuchen />
+    </div>
   </div>
 );

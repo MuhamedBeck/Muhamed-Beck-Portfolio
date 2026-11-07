@@ -5,6 +5,7 @@ import { FaEnvelope, FaPhone, FaLinkedin } from "react-icons/fa";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
 import { CONTACT, RATE_TEXT, SOCIAL, mailtoHref } from "../../content/site";
+import { TerminBuchen } from "../TerminBuchen";
 import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 import { LEISTUNGEN } from "../../content/leistungen.de";
 import { PILOT } from "../../content/pilot.de";
@@ -210,6 +211,7 @@ const Kontakt = () => {
                 E-Mail schreiben
               </a>
             </p>
+            <TerminBuchen className="mt-5" />
 
             {!EMAILJS_IS_CONFIGURED ? (
               /* No EmailJS credentials in this build, so a form could only

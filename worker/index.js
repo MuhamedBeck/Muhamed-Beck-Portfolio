@@ -6,11 +6,14 @@
 // _redirects und der 404-Seite. Die letzte Zeile reicht verirrte Anfragen an
 // genau diese Schicht zurück, statt selbst etwas zu antworten.
 import { anfrageAnnehmen } from "./anfrage.js";
+import { terminAnnehmen } from "./termin.js";
 
 export default {
   async fetch(request, env) {
     const { pathname } = new URL(request.url);
     if (pathname === "/api/anfrage") return anfrageAnnehmen(request, env);
+    // Webhook von Cal.com für Buchungen, Verschiebungen und Absagen.
+    if (pathname === "/api/termin") return terminAnnehmen(request, env);
     return env.ASSETS.fetch(request);
   },
 };

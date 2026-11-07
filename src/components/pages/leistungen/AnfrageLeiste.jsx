@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RATE_MAX, RATE_MIN } from "../../../content/site";
 import { ANFRAGE_ZUSAGE } from "../../../content/leistungen.de";
+import { TerminBuchen } from "../../TerminBuchen";
 
 /* Anker, an denen sich die mobile Leiste orientiert. Als ids statt Refs, weil
    Start und Schluss in verschiedenen Abschnitten von LeistungPage stehen und
@@ -34,6 +35,7 @@ export const AnfrageStart = ({ to, label, preis }) => (
     <p className="text-sm leading-relaxed text-paper-mute">
       {preis ?? `${RATE_MIN} bis ${RATE_MAX} € pro Stunde`} · {ANFRAGE_ZUSAGE}
     </p>
+    <TerminBuchen className="basis-full" />
   </div>
 );
 
