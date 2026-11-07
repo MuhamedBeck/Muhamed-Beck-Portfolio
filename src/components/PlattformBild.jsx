@@ -19,7 +19,7 @@ const TON = {
   leise: { linie: "stroke-paper-mute", text: "fill-paper-mute", muster: "2 5", breite: 1.5 },
 };
 
-const Bild = ({ daten, breite, uid }) => {
+const Bild = ({ daten, breite, uid, verhaeltnis }) => {
   const gross = breite > 500;
   const rand = gross ? 24 : 12;
   const luecke = gross ? 28 : 10;
@@ -33,12 +33,18 @@ const Bild = ({ daten, breite, uid }) => {
   const hoehe = zielY + zielH + oben;
   const schrift = gross ? { name: 15, klein: 11.5 } : { name: 13.5, klein: 10.5 };
   const id = `${uid}-${breite}`;
+  /* Feste Form, wenn verlangt (Projektkarten der Startseite): mehr Fläche
+     ringsum, Inhalt in der Mitte, wie beim Workflow-Fenster. */
+  const W = verhaeltnis ? Math.max(breite, hoehe * verhaeltnis) : breite;
+  const H = verhaeltnis ? W / verhaeltnis : hoehe;
+  const dx = (W - breite) / 2;
+  const dy = (H - hoehe) / 2;
 
   return (
     <svg
-      viewBox={`0 0 ${breite} ${hoehe}`}
-      width={breite}
-      height={hoehe}
+      viewBox={`0 0 ${W} ${H}`}
+      width={W}
+      height={H}
       role="img"
       aria-labelledby={`${id}-titel ${id}-text`}
       className="h-auto w-full font-text">
@@ -51,17 +57,18 @@ const Bild = ({ daten, breite, uid }) => {
           <circle cx="8" cy="8" r="0.9" className="fill-hairline-strong" />
         </pattern>
       </defs>
-      <rect x="0.5" y="0.5" width={breite - 1} height={hoehe - 1} rx="14" className="fill-surface" />
-      <rect x="0.5" y="0.5" width={breite - 1} height={hoehe - 1} rx="14" fill={`url(#${id}-punkte)`} />
+      <rect x="0.5" y="0.5" width={W - 1} height={H - 1} rx="14" className="fill-surface" />
+      <rect x="0.5" y="0.5" width={W - 1} height={H - 1} rx="14" fill={`url(#${id}-punkte)`} />
       <rect
         x="0.5"
         y="0.5"
-        width={breite - 1}
-        height={hoehe - 1}
+        width={W - 1}
+        height={H - 1}
         rx="14"
         fill="none"
         className="stroke-hairline-strong"
       />
+      <g transform={`translate(${dx} ${dy})`}>
 
       {daten.quellen.map((quelle, index) => {
         const ton = TON[quelle.ton];
@@ -158,19 +165,20 @@ const Bild = ({ daten, breite, uid }) => {
       <text x={zielX + 20} y={zielY + 56} fontSize={schrift.klein + 0.5} className="fill-accent">
         {daten.ziel.sub}
       </text>
+      </g>
     </svg>
   );
 };
 
-export const PlattformBild = ({ daten }) => {
+export const PlattformBild = ({ daten, verhaeltnis }) => {
   const uid = `pb${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
   return (
     <>
       <div className="mx-auto max-w-md sm:hidden">
-        <Bild daten={daten} breite={360} uid={uid} />
+        <Bild daten={daten} breite={360} uid={uid} verhaeltnis={verhaeltnis?.klein} />
       </div>
       <div className="mx-auto hidden max-w-3xl sm:block">
-        <Bild daten={daten} breite={680} uid={uid} />
+        <Bild daten={daten} breite={680} uid={uid} verhaeltnis={verhaeltnis?.gross} />
       </div>
     </>
   );

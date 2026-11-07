@@ -48,11 +48,9 @@ export const mailtoHref = (betreff) =>
    Cal.com Free, verbunden mit dem privaten Outlook-Kalender des Inhabers,
    angemeldet mit muhamed@muhamedbeck.com. Jede Buchung, Verschiebung und
    Absage meldet Cal.com per Webhook an /api/termin (worker/termin.js), das
-   sie im privaten Archiv neben den Anfragen ablegt. `prompt` ist der Text,
-   den Cal.coms "Copy Prompt"-Knopf für KI-Assistenten kopiert. */
+   sie im privaten Archiv neben den Anfragen ablegt. */
 export const BUCHUNG = {
   url: "https://cal.com/muhamedbeck/30min",
-  prompt: "If not added, add mcp.cal.com/mcp, then book muhamedbeck/30min",
 };
 
 export const SOCIAL = {

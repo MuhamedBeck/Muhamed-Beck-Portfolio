@@ -187,14 +187,6 @@ const SECTIONS = [
           DSGVO (Anbahnung eines Vertrags).
         </p>
         <p>
-          Neben dem Link steht ein Knopf von Cal.com, der eine Anweisung für
-          KI-Assistenten in Ihre Zwischenablage kopiert. Für seine Symbole lädt Ihr
-          Browser beim Aufruf der Seite kleine Bilder von app.cal.com; dabei erhält
-          Cal.com Ihre IP-Adresse und technische Angaben zu Ihrem Browser, und Daten
-          werden in die USA übermittelt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
-          (berechtigtes Interesse, die Buchung auch über KI-Assistenten anzubieten).
-        </p>
-        <p>
           Jede Buchung, Verschiebung und Absage meldet Cal.com an diese Website. Ich
           speichere dann Ihren Namen, Ihre E-Mail-Adresse, den Termin, Ihre Zeitzone und
           Ihre Anmerkungen wie eine Anfrage aus dem Formular in meinem nicht öffentlichen

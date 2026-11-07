@@ -218,7 +218,7 @@ const Port = ({ x, y }) => (
   <circle cx={x} cy={y} r="3.5" className="fill-ink stroke-hairline-strong" strokeWidth="1.25" />
 );
 
-const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegerung, uid }) => {
+const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegerung, uid, verhaeltnis }) => {
   const { lage, breite, hoehe, raster, spalten } = layout(workflow, ausrichtung);
   const tiefe = tiefen(workflow);
 
@@ -251,6 +251,19 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
     : breite;
 
   /* The run starts at the first node that is in view. */
+  /* Feste Form, wenn verlangt (Projektkarten der Startseite): Das Fenster
+     wächst auf genau dieses Seitenverhältnis, mit mehr gepunkteter Fläche
+     wie im Editor, und der Workflow steht in der Mitte. So sind alle Karten
+     gleich groß, egal wie breit oder hoch ihr Workflow ist. */
+  if (verhaeltnis) {
+    const breiteNeu = Math.max(sicht.w, (LEISTE + sicht.h) * verhaeltnis);
+    const hoeheNeu = breiteNeu / verhaeltnis - LEISTE;
+    sicht.x -= (breiteNeu - sicht.w) / 2;
+    sicht.y -= (hoeheNeu - sicht.h) / 2;
+    sicht.w = breiteNeu;
+    sicht.h = hoeheNeu;
+  }
+
   const basis = Math.min(...workflow.knoten.filter((k) => sichtbar(k.id)).map((k) => tiefe.get(k.id)));
   const takt = (stufe) => `${(verzoegerung + Math.max(0, stufe) * SCHRITT_SEKUNDEN).toFixed(2)}s`;
 
@@ -273,7 +286,7 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
       aria-labelledby={`${id}-titel ${id}-text`}
       /* At most about 1.35 times its drawn size: a short workflow stretched
          across the full column turns into giant nodes and 22px labels. */
-      style={{ maxWidth: `${Math.round(w * 1.35)}px` }}
+      style={verhaeltnis ? undefined : { maxWidth: `${Math.round(w * 1.35)}px` }}
       className="h-auto w-full font-text">
       <title id={`${id}-titel`}>
         {workflow.fenster === "app" ? workflow.titel : `n8n-Workflow: ${workflow.titel}`}
@@ -495,8 +508,10 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
  *   sm. Without it the whole workflow is shown, across from md and down below.
  * @param {boolean} [props.gross]     one type size up, for use beside a headline
  * @param {number} [props.verzoegerung]  seconds before the run starts
+ * @param {object} [props.verhaeltnis] fixed aspect ratio as { klein, gross }
+ *   (width / height), e.g. for cards that must all be the same size
  */
-export const WorkflowCanvas = ({ workflow, ausschnitt, gross = false, verzoegerung = 0.15 }) => {
+export const WorkflowCanvas = ({ workflow, ausschnitt, gross = false, verzoegerung = 0.15, verhaeltnis }) => {
   /* useId is stable between the prerender and hydration, which ids inside an
      SVG need to be. React wraps it in characters that do not belong in a
      url(#...) reference, so only the safe part is kept. */
@@ -507,10 +522,10 @@ export const WorkflowCanvas = ({ workflow, ausschnitt, gross = false, verzoegeru
     return (
       <>
         <div className="sm:hidden">
-          <Fenster {...gemeinsam} ausrichtung="waagerecht" rest={72} {...ausschnitt.klein} />
+          <Fenster {...gemeinsam} ausrichtung="waagerecht" rest={72} {...ausschnitt.klein} verhaeltnis={verhaeltnis?.klein} />
         </div>
         <div className="hidden sm:block">
-          <Fenster {...gemeinsam} ausrichtung="waagerecht" {...ausschnitt.gross} />
+          <Fenster {...gemeinsam} ausrichtung="waagerecht" {...ausschnitt.gross} verhaeltnis={verhaeltnis?.gross} />
         </div>
       </>
     );
@@ -519,10 +534,10 @@ export const WorkflowCanvas = ({ workflow, ausschnitt, gross = false, verzoegeru
   return (
     <>
       <div className="mx-auto max-w-md md:hidden">
-        <Fenster {...gemeinsam} ausrichtung="senkrecht" />
+        <Fenster {...gemeinsam} ausrichtung="senkrecht" verhaeltnis={verhaeltnis?.klein} />
       </div>
       <div className="hidden md:block">
-        <Fenster {...gemeinsam} ausrichtung="waagerecht" />
+        <Fenster {...gemeinsam} ausrichtung="waagerecht" verhaeltnis={verhaeltnis?.gross} />
       </div>
     </>
   );

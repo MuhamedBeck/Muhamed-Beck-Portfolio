@@ -54,6 +54,9 @@ import { LinkArrow } from "../LinkArrow";
    Der Rest ist nicht verloren, die Zeile darunter fuehrt auf /leistungen. */
 const HERO_MAX = 5;
 
+/* Seitenverhältnis der Projektbilder (Breite / Höhe), siehe unten. */
+const KARTEN_VERHAELTNIS = { klein: 4 / 3, gross: 16 / 10 };
+
 const HERO_LEISTUNGEN = LEISTUNGEN.map((leistung) => ({
   kurz: leistung.hero.kurz,
   to: leistung.path,
@@ -140,15 +143,19 @@ export const Startseite = () => {
                 className="stagger group relative border-t border-hairline pt-6"
                 style={{ "--fade-delay": `${index * 80}ms` }}>
                 {/* Something real to look at per project: the screenshot, the
-                    workflow or the migration. Same frame on every card from md
-                    up, with the picture on its lower edge, so the titles of two
-                    cards side by side line up although the pictures differ in
-                    shape. The runs start one after another, not in unison. */}
+                    workflow or the migration. Every picture fills the same
+                    shape, 4:3 on phones and 16:10 from sm up (the width where
+                    the canvas switches its crop), so all cards are exactly the
+                    same size; until 07.11.2026 each picture kept its own height
+                    and the owner saw four different sizes. The runs start one
+                    after another, not in unison. */}
                 {projekt.karte ? (
-                  <div className="mb-7 md:flex md:aspect-[16/10] md:items-end">
-                    <div className="w-full">
-                      <Grafik bild={projekt.karte} verzoegerung={0.2 + index * 0.35} />
-                    </div>
+                  <div className="mb-7">
+                    <Grafik
+                      bild={projekt.karte}
+                      verzoegerung={0.2 + index * 0.35}
+                      verhaeltnis={KARTEN_VERHAELTNIS}
+                    />
                   </div>
                 ) : null}
                 <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">

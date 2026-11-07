@@ -1608,22 +1608,3 @@ dd {
     opacity: 1;
   }
 }
-
-/* Cal.coms "Copy Prompt"-Knopf (src/components/CalPromptKnopf.jsx), die
-   Regeln aus dem Einbau-Code von Cal.com vom 07.11.2026. Unverändert bis auf
-   die Klasse statt #cal-copy-prompt-30min, weil der Knopf auf einer Seite
-   mehrfach steht. Die Farben sind bewusst die von Cal.com und folgen nur dem
-   Farbschema des Systems, nicht dem Schalter der Seite: Entscheidung des
-   Inhabers ("Cal.com-Knopf wie geschickt"). */
-.cal-copy-prompt{--cp-border:#d4d4d8;--cp-bg:#fff;--cp-fg:#18181b;--cp-hover:#fafafa;--cp-tip-bg:#18181b;--cp-tip-fg:#fff;--cp-invert:0}
-@media (prefers-color-scheme:dark){.cal-copy-prompt{--cp-border:#3f3f46;--cp-bg:#18181b;--cp-fg:#fafafa;--cp-hover:#27272a;--cp-tip-bg:#fafafa;--cp-tip-fg:#18181b;--cp-invert:1}}
-.cal-copy-prompt{position:relative;display:inline-flex;align-items:stretch;height:36px;padding:0;border:1px solid var(--cp-border);border-radius:10px;background:var(--cp-bg);color:var(--cp-fg);font:500 14px/1 system-ui,sans-serif;cursor:pointer;text-decoration:none}
-.cal-copy-prompt:hover{background:var(--cp-hover)}
-.cal-copy-prompt>span{display:inline-flex;align-items:center;gap:8px;padding:0 12px}
-.cal-copy-prompt>span:nth-child(2){border-left:1px solid var(--cp-border);padding:0 10px}
-.cal-copy-prompt svg,.cal-copy-prompt img{width:16px;height:16px}
-.cal-copy-prompt [data-cal-mono]{filter:invert(var(--cp-invert))}
-.cal-copy-prompt [data-cal-logos]{display:block;position:relative;width:16px;height:16px}
-.cal-copy-prompt [data-cal-logos] img{position:absolute;inset:0;opacity:0;transition:opacity .5s}
-.cal-copy-prompt [data-cal-tooltip]{position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);white-space:nowrap;padding:6px 8px;border-radius:6px;background:var(--cp-tip-bg);color:var(--cp-tip-fg);font:400 12px/1.4 system-ui,sans-serif;opacity:0;pointer-events:none;transition:opacity .2s}
-.cal-copy-prompt[data-copied] [data-cal-tooltip]{opacity:1}

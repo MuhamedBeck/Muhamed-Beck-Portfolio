@@ -18,7 +18,7 @@ import { Mustersatz } from "./Mustersatz";
  * `verzoegerung` shifts a workflow's run, so several figures in one view do not
  * all start on the same beat.
  */
-export const Grafik = ({ bild, imKopf = false, verzoegerung }) => {
+export const Grafik = ({ bild, imKopf = false, verzoegerung, verhaeltnis }) => {
   switch (bild.art) {
     case "workflow":
       return (
@@ -27,12 +27,13 @@ export const Grafik = ({ bild, imKopf = false, verzoegerung }) => {
           ausschnitt={bild.ausschnitt}
           gross={imKopf}
           verzoegerung={verzoegerung ?? (imKopf ? 0.8 : 0.15)}
+          verhaeltnis={verhaeltnis}
         />
       );
     case "lighthouse":
       return <LighthouseRinge daten={bild.daten} klein={imKopf} />;
     case "plattform":
-      return <PlattformBild daten={bild.daten} />;
+      return <PlattformBild daten={bild.daten} verhaeltnis={verhaeltnis} />;
     case "balken":
       return <Balken daten={bild.daten} />;
     case "spannen":
@@ -49,6 +50,26 @@ export const Grafik = ({ bild, imKopf = false, verzoegerung }) => {
        above the fold that the LCP depends on. Photos bring a smaller second
        width in srcSet, so a phone does not download the 1600 px file. */
     case "bild":
+      /* Mit festem Seitenverhältnis (Projektkarten) steht das Bild ganz im
+         Rahmen, auf der Fläche der Workflow-Fenster: Beschnitten verlor der
+         16:10-Screenshot im 4:3-Rahmen auf dem Telefon seinen linken Rand. */
+      if (verhaeltnis) {
+        return (
+          <div className="aspect-[4/3] overflow-hidden rounded-xl border border-hairline bg-surface sm:aspect-[16/10]">
+            <img
+              src={bild.src}
+              srcSet={bild.srcSet}
+              sizes={bild.sizes}
+              width={bild.width}
+              height={bild.height}
+              alt={bild.alt}
+              loading="lazy"
+              decoding="async"
+              className="h-full w-full object-contain"
+            />
+          </div>
+        );
+      }
       return (
         <img
           src={bild.src}
