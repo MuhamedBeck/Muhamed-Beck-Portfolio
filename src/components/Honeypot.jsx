@@ -6,7 +6,9 @@ import { HONEYPOT_FELD } from "../services/anfrage";
  * Aus dem Bild geschoben statt display:none, weil manche Bots unsichtbar
  * geschaltete Felder auslassen. aria-hidden und tabIndex -1, damit weder ein
  * Screenreader noch die Tabulatortaste darauf landet. Ausgewertet wird es in
- * istBot (services/anfrage.js) und noch einmal im Worker.
+ * hatSpamverdacht (services/anfrage.js): Ist es ausgefüllt, geht die Anfrage
+ * trotzdem hinaus, nur gekennzeichnet. Der Name des Felds ist mit Bedacht
+ * gewählt, siehe HONEYPOT_FELD.
  */
 export const Honeypot = () => (
   <div aria-hidden="true" className="absolute left-[-10000px] h-px w-px overflow-hidden">

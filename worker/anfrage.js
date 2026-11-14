@@ -12,6 +12,8 @@
 //
 // Gespeichert wird nur, was der Absender eingetippt hat. Keine IP-Adresse,
 // kein User-Agent: Die Datenschutzerklärung (Ziffer 5) sagt genau das zu.
+// Dazu kommt höchstens das Ja/Nein-Kennzeichen "Spamverdacht"; der Inhalt des
+// unsichtbaren Felds wird nie übertragen und nie gespeichert.
 
 const HERKUNFT_ERLAUBT = "https://muhamedbeck.com";
 const MAX_ZEICHEN_ANFRAGE = 20_000;
@@ -46,7 +48,7 @@ export const antwortJson = (status, body) =>
  * Prüft die Eingabe des Formulars.
  *
  * @param {unknown} roh  geparstes JSON aus dem Request
- * @returns {{ daten: Record<string, string> } | { fehler: string }}
+ * @returns {{ daten: Record<string, string> & { spamverdacht: boolean } } | { fehler: string }}
  */
 export function pruefen(roh) {
   if (!roh || typeof roh !== "object" || Array.isArray(roh)) {
@@ -70,6 +72,10 @@ export function pruefen(roh) {
     if (!daten[feld]) return { fehler: `${feld} fehlt.` };
   }
   if (!EMAIL_MUSTER.test(daten.email)) return { fehler: "email ist keine E-Mail-Adresse." };
+
+  // Das Formular meldet, ob sein unsichtbares Feld ausgefüllt war. Nur ein
+  // echtes true zählt; die Anfrage wird in beiden Fällen gespeichert.
+  daten.spamverdacht = roh.spamverdacht === true;
 
   return { daten };
 }
@@ -109,6 +115,9 @@ export function alsMarkdown(daten, eingang) {
     "---",
     `eingang: ${JSON.stringify(eingang.toISOString())}`,
     'status: "neu"',
+    // Kein eigener Status und kein eigener Ordner: Wer nach neuen Anfragen
+    // sucht, soll auch die mit Verdacht sehen.
+    ...(daten.spamverdacht ? ["spamverdacht: true"] : []),
     `formular: ${JSON.stringify(daten.formular || "unbekannt")}`,
     `leistung: ${JSON.stringify(daten.leistung)}`,
     `herkunft: ${JSON.stringify(daten.herkunft)}`,
@@ -122,6 +131,9 @@ export function alsMarkdown(daten, eingang) {
     `- **Leistung:** ${angabe(daten.leistung)}`,
     `- **Gefunden über:** ${angabe(daten.herkunft)}`,
     `- **Formular:** ${angabe(daten.formular)}`,
+    ...(daten.spamverdacht
+      ? ["- **Spamverdacht:** ja, das unsichtbare Feld war ausgefüllt"]
+      : []),
     `- **Eingang:** ${BERLIN.format(eingang)} (Berlin)`,
     "",
     "## Nachricht",
@@ -165,7 +177,7 @@ async function inRepositorySpeichern(env, daten, eingang) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        message: `Anfrage: ${daten.leistung || "ohne Angabe"} (${eingang.toISOString()})`,
+        message: `Anfrage${daten.spamverdacht ? " (Spamverdacht)" : ""}: ${daten.leistung || "ohne Angabe"} (${eingang.toISOString()})`,
         content: base64Utf8(alsMarkdown(daten, eingang)),
       }),
     }
@@ -209,8 +221,10 @@ export async function anfrageAnnehmen(request, env) {
   }
 
   // Unsichtbares Feld im Formular, das nur Bots ausfüllen. Sie bekommen ein
-  // "ok", damit sie keinen Grund haben, es anders zu versuchen.
-  if (typeof roh?.zweitadresse === "string" && roh.zweitadresse.trim()) {
+  // "ok", damit sie keinen Grund haben, es anders zu versuchen. Der Name muss
+  // HONEYPOT_FELD in src/services/anfrage.js entsprechen; der Test hält beide
+  // zusammen.
+  if (typeof roh?.kennziffer === "string" && roh.kennziffer.trim()) {
     return antwortJson(200, { ok: true });
   }
 

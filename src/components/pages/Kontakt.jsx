@@ -12,7 +12,12 @@ import { PILOT } from "../../content/pilot.de";
 import ui from "../../i18n/dict/ui";
 import { Honeypot } from "../Honeypot";
 import { Bestaetigung, SendeKnopf } from "../AnfrageStatus";
-import { anfrageArchivieren, istBot, oderNichtAngegeben } from "../../services/anfrage";
+import {
+  anfrageArchivieren,
+  hatSpamverdacht,
+  mailMitVerdacht,
+  oderNichtAngegeben,
+} from "../../services/anfrage";
 
 // Seite gibt es nur auf Deutsch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
 const MAIL_HREF = mailtoHref(ui.de.mailBetreff);
@@ -119,12 +124,11 @@ const Kontakt = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Bots füllen das unsichtbare Feld aus. Sie sehen dieselbe Bestätigung wie
-    // ein Mensch, aber es geht weder eine Mail noch eine Datei hinaus.
-    if (istBot(e.currentTarget)) {
-      setSent(true);
-      return;
-    }
+    // Ein ausgefülltes unsichtbares Feld ist nur ein Verdacht: Autofill oder ein
+    // Passwortmanager können es auch bei einem Menschen füllen. Die Anfrage geht
+    // deshalb trotzdem hinaus, in Mail und Archiv als Spamverdacht gekennzeichnet.
+    // Bis 14.11.2026 wurde sie hier verworfen, mit Erfolgsmeldung und ohne Spur.
+    const verdacht = hatSpamverdacht(e.currentTarget);
     setLoading(true);
     setError(false);
 
@@ -149,22 +153,26 @@ const Kontakt = () => {
       leistung: formData.service_type,
       herkunft: formData.herkunft,
       nachricht: formData.message,
+      spamverdacht: verdacht,
     });
 
     try {
       await emailjs.send(
         EMAILJS.serviceId,
         EMAILJS.templateId,
-        {
-          name: formData.name,
-          email: formData.email,
-          message: combinedMessage,
-          beschreibung: formData.message,
-          leistung: oderNichtAngegeben(formData.service_type),
-          unternehmen: oderNichtAngegeben(formData.company),
-          herkunft: oderNichtAngegeben(formData.herkunft),
-          formular: "Kontaktformular, muhamedbeck.com/kontakt",
-        },
+        mailMitVerdacht(
+          {
+            name: formData.name,
+            email: formData.email,
+            message: combinedMessage,
+            beschreibung: formData.message,
+            leistung: oderNichtAngegeben(formData.service_type),
+            unternehmen: oderNichtAngegeben(formData.company),
+            herkunft: oderNichtAngegeben(formData.herkunft),
+            formular: "Kontaktformular, muhamedbeck.com/kontakt",
+          },
+          verdacht
+        ),
         EMAILJS.publicKey
       );
       setSent(true);

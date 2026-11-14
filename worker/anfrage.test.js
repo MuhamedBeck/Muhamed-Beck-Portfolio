@@ -12,6 +12,7 @@ import {
   pruefen,
   zaunFuer,
 } from "./anfrage.js";
+import { HONEYPOT_FELD, mailMitVerdacht } from "../src/services/anfrage.js";
 
 const GUELTIG = {
   formular: "kontakt",
@@ -90,6 +91,19 @@ test("base64Utf8 übersteht Umlaute", () => {
   assert.equal(Buffer.from(base64Utf8(text), "base64").toString("utf8"), text);
 });
 
+// Chrome füllt auch Felder aus, die aus dem Bild geschoben sind, sobald ihr
+// Name nach Adresse, Name oder Kontakt klingt; autocomplete="off" hält das
+// nicht auf. Der frühere Name "zweitadresse" galt als "Adresszeile 1": Wer
+// den Autofill-Vorschlag annahm, wurde für einen Bot gehalten, sah die
+// Bestätigung, und es ging weder Mail noch Datei hinaus (13.10. bis 14.11.2026).
+// Die Liste folgt den Feldarten, die Browser aus Profilen befüllen.
+const AUTOFILL_MUSTER =
+  /adress|address|addr|street|stra(ss|ß)e|haus|name|mail|tel|phone|fon|mobil|handy|fax|ort|stadt|city|plz|zip|post|land|country|state|region|firma|company|organi[sz]ation|unternehmen|nummer|number|karte|card|cvc|cvv|iban|konto|geburt|birth|url|web|homepage|user|login|pass|kennwort/i;
+
+test("Bot-Feld: der Name klingt nach keinem Feld, das Browser automatisch ausfüllen", () => {
+  assert.doesNotMatch(HONEYPOT_FELD, AUTOFILL_MUSTER);
+});
+
 test("anfrageAnnehmen: Methode, Herkunft, JSON und Honeypot", async () => {
   const keinAufruf = async () => assert.fail("GitHub darf nicht aufgerufen werden");
   await mitFetch(keinAufruf, async () => {
@@ -99,7 +113,10 @@ test("anfrageAnnehmen: Methode, Herkunft, JSON und Honeypot", async () => {
     assert.equal((await anfrageAnnehmen(post(GUELTIG, "https://evil.example"), ENV)).status, 403);
     assert.equal((await anfrageAnnehmen(post("{kaputt"), ENV)).status, 400);
     assert.equal((await anfrageAnnehmen(post({ ...GUELTIG, email: "x" }), ENV)).status, 400);
-    assert.equal((await anfrageAnnehmen(post({ ...GUELTIG, zweitadresse: "spam" }), ENV)).status, 200);
+    // Der Feldname kommt aus dem Formular (src/services/anfrage.js). Benennt
+    // dort jemand das Feld um und hier nicht, landen Bots, die das Formular
+    // direkt an die Schnittstelle schicken, im Archiv.
+    assert.equal((await anfrageAnnehmen(post({ ...GUELTIG, [HONEYPOT_FELD]: "spam" }), ENV)).status, 200);
     assert.equal((await anfrageAnnehmen(post(GUELTIG), {})).status, 503);
   });
 });
@@ -118,6 +135,56 @@ test("anfrageAnnehmen legt die Datei per Contents-API an", async () => {
   assert.equal(aufruf.init.headers.Authorization, "Bearer test-token");
   const body = JSON.parse(aufruf.init.body);
   assert.match(Buffer.from(body.content, "base64").toString("utf8"), /# Anfrage von Erika Muster/);
+});
+
+// Ein ausgefülltes unsichtbares Feld ist nur ein Verdacht: Autofill oder ein
+// Passwortmanager können es auch bei einem Menschen füllen. Die Anfrage wird
+// deshalb zugestellt und gekennzeichnet. Verworfen hinterließe sie keine Spur.
+test("pruefen übernimmt den Spamverdacht nur als echtes Ja", () => {
+  assert.equal(pruefen({ ...GUELTIG, spamverdacht: true }).daten.spamverdacht, true);
+  assert.equal(pruefen(GUELTIG).daten.spamverdacht, false);
+  assert.equal(pruefen({ ...GUELTIG, spamverdacht: "nein" }).daten.spamverdacht, false);
+});
+
+test("alsMarkdown kennzeichnet nur Anfragen mit Spamverdacht und lässt sie als neu stehen", () => {
+  const eingang = new Date("2026-10-13T09:15:02Z");
+  const verdacht = alsMarkdown(pruefen({ ...GUELTIG, spamverdacht: true }).daten, eingang);
+  assert.match(verdacht, /\nstatus: "neu"\n/);
+  assert.match(verdacht, /\nspamverdacht: true\n/);
+  assert.match(verdacht, /- \*\*Spamverdacht:\*\* ja, das unsichtbare Feld war ausgefüllt/);
+
+  const gewoehnlich = alsMarkdown(pruefen(GUELTIG).daten, eingang);
+  assert.doesNotMatch(gewoehnlich, /spamverdacht/i);
+});
+
+test("anfrageAnnehmen speichert auch eine Anfrage mit Spamverdacht, gekennzeichnet", async () => {
+  let aufruf;
+  const github = async (url, init) => {
+    aufruf = { url, init };
+    return new Response("{}", { status: 201 });
+  };
+  const antwort = await mitFetch(github, () =>
+    anfrageAnnehmen(post({ ...GUELTIG, spamverdacht: true }), ENV)
+  );
+
+  assert.equal(antwort.status, 201);
+  const body = JSON.parse(aufruf.init.body);
+  assert.match(body.message, /^Anfrage \(Spamverdacht\): /);
+  assert.match(Buffer.from(body.content, "base64").toString("utf8"), /\*\*Spamverdacht:\*\* ja/);
+});
+
+test("mailMitVerdacht kennzeichnet Formularzeile und Nachricht, sonst bleibt die Mail unverändert", () => {
+  const felder = {
+    name: "Erika Muster",
+    formular: "Kontaktformular, muhamedbeck.com/kontakt",
+    message: "Art der Anfrage: Website",
+  };
+  assert.deepEqual(mailMitVerdacht(felder, false), felder);
+
+  const markiert = mailMitVerdacht(felder, true);
+  assert.equal(markiert.name, "Erika Muster");
+  assert.match(markiert.formular, /^Kontaktformular, muhamedbeck\.com\/kontakt \(Spamverdacht: /);
+  assert.match(markiert.message, /^Spamverdacht: .+\n\nArt der Anfrage: Website$/);
 });
 
 test("anfrageAnnehmen meldet 502, wenn GitHub ablehnt", async () => {

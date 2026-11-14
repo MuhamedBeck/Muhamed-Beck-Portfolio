@@ -7,7 +7,12 @@ import { EMAILJS, EMAILJS_IS_CONFIGURED } from "../../content/emailjs";
 import ui from "../../i18n/dict/ui";
 import { Honeypot } from "../Honeypot";
 import { Bestaetigung, SendeKnopf } from "../AnfrageStatus";
-import { anfrageArchivieren, istBot, oderNichtAngegeben } from "../../services/anfrage";
+import {
+  anfrageArchivieren,
+  hatSpamverdacht,
+  mailMitVerdacht,
+  oderNichtAngegeben,
+} from "../../services/anfrage";
 
 // Seite gibt es nur auf Englisch, deshalb steht der Betreff fest. Siehe mailtoHref in site.js.
 const MAIL_HREF = mailtoHref(ui.en.mailBetreff);
@@ -109,11 +114,9 @@ export const HireMe = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Same bot trap as /kontakt: the confirmation shows, nothing is sent.
-    if (istBot(e.currentTarget)) {
-      setSent(true);
-      return;
-    }
+    // Same rule as /kontakt: a filled hidden field is a suspicion, not a
+    // verdict. The enquiry is still sent, flagged in the mail and the archive.
+    const verdacht = hatSpamverdacht(e.currentTarget);
     setLoading(true);
     setError(false);
 
@@ -133,22 +136,26 @@ export const HireMe = () => {
       unternehmen: formData.company,
       leistung: formData.service_type,
       nachricht: formData.message,
+      spamverdacht: verdacht,
     });
 
     try {
       await emailjs.send(
         EMAILJS.serviceId,
         EMAILJS.templateId,
-        {
-          name: formData.name,
-          email: formData.email,
-          message: combinedMessage,
-          beschreibung: formData.message,
-          leistung: oderNichtAngegeben(formData.service_type),
-          unternehmen: oderNichtAngegeben(formData.company),
-          herkunft: oderNichtAngegeben(""),
-          formular: "Englisches Formular, muhamedbeck.com/en/hire",
-        },
+        mailMitVerdacht(
+          {
+            name: formData.name,
+            email: formData.email,
+            message: combinedMessage,
+            beschreibung: formData.message,
+            leistung: oderNichtAngegeben(formData.service_type),
+            unternehmen: oderNichtAngegeben(formData.company),
+            herkunft: oderNichtAngegeben(""),
+            formular: "Englisches Formular, muhamedbeck.com/en/hire",
+          },
+          verdacht
+        ),
         EMAILJS.publicKey
       );
       setSent(true);
