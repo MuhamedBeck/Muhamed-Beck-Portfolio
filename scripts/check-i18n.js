@@ -19,6 +19,7 @@ import {
   estimatePixelWidth,
   isMeasurable,
 } from "./snippet-width.js";
+import { GEPRUEFTE_GRUPPE, pruefeTexte } from "./geschuetzte-bezeichnungen.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -148,6 +149,29 @@ for (const route of ROUTES) {
     fail(`route "${route.id}" is in the EAGER map in src/main.jsx but is not marked eager`);
   }
 }
+
+// ---------------------------------------------------------------------------
+// Geschützte Bezeichnungen (Stufe 1, vor dem Build)
+// ---------------------------------------------------------------------------
+
+// Registry-Texte der Gruppe und der ganze Quelltext ihrer Wörterbuch- und
+// Inhaltsmodule, Kommentare eingeschlossen. Stufe 2 prüft nach dem Prerender
+// das fertige HTML (scripts/check-bezeichnungen.js).
+const bezeichnungsEintraege = ROUTES.filter((route) => route.group === GEPRUEFTE_GRUPPE).flatMap(
+  (route) =>
+    ["title", "description", "h1"].map((feld) => ({
+      ort: `route "${route.id}": ${feld}`,
+      text: String(route[feld] ?? ""),
+    }))
+);
+for (const ordner of [join("src", "i18n", "dict"), join("src", "content")]) {
+  for (const datei of readdirSync(join(root, ordner))) {
+    if (!/^dolmetscher.*\.js$/.test(datei)) continue;
+    const pfad = join(ordner, datei);
+    bezeichnungsEintraege.push({ ort: pfad, text: readFileSync(join(root, pfad), "utf8") });
+  }
+}
+for (const meldung of pruefeTexte(bezeichnungsEintraege)) fail(meldung);
 
 // ---------------------------------------------------------------------------
 // Dictionary completeness

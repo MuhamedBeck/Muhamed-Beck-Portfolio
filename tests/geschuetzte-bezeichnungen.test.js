@@ -1,0 +1,83 @@
+// Tests für scripts/geschuetzte-bezeichnungen.js. Ausführen mit `npm test`.
+// Unsichtbare Zeichen stehen als \u-Folge, damit sie beim Bearbeiten nicht
+// verloren gehen.
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import {
+  findeBezeichnungen,
+  normalisieren,
+  pruefeTexte,
+} from "../scripts/geschuetzte-bezeichnungen.js";
+
+const frei = (text) => assert.deepEqual(findeBezeichnungen(text), [], text);
+const gesperrt = (text) => assert.notEqual(findeBezeichnungen(text).length, 0, text);
+
+test("normalisieren: Schreibung, Leerzeichen, Trennstriche, arabische Zeichen", () => {
+  assert.equal(normalisieren("Staatlich GEPRÜFT"), "staatlich geprüft");
+  assert.equal(normalisieren("ver\u00ADeidigt"), "vereidigt");
+  assert.equal(normalisieren("öffentlich\n   bestellt"), "öffentlich bestellt");
+  assert.equal(normalisieren("Diplom‑Dolmetscher"), "diplom-dolmetscher");
+  assert.equal(normalisieren("م\u064Fح\u064Eل\u0651\u064Eف"), "محلف");
+  assert.equal(normalisieren("مع\u0640\u0640\u0640تمد"), "معتمد");
+  assert.equal(normalisieren("أإآٱ"), "اااا");
+  assert.equal(normalisieren("مح\u200Fلف"), "محلف");
+});
+
+test("deutsche Stämme und Wendungen in jeder Wortform", () => {
+  for (const text of [
+    "Vereidigung", "beeidigter Dolmetscher", "Ermächtigung", "beglaubigte Übersetzung",
+    "Zertifikat", "zertifiziert", "akkreditiert", "lizenzierter", "autorisierte",
+    "staatlich anerkannt", "gerichtlich zugelassen", "Zulassung", "gerichtsfest",
+    "Gerichtsdolmetscher", "Gerichtsübersetzerin", "Justizdolmetscher", "Polizeidolmetscher",
+    "Urkundenübersetzung", "öffentlich bestellt", "staatlich geprüft", "geprüfter Dolmetscher",
+    "geprüfte Übersetzerin", "Diplom-Dolmetscher", "Diplom-Übersetzer", "bescheinigte Übersetzung",
+    "bestätigte Übersetzung", "amtliche Übersetzung", "offizielle Übersetzungen",
+    "rechtsgültig", "rechtsverbindlich", "Stempel", "Siegel", "Kassenleistung",
+  ]) gesperrt(text);
+});
+
+test("englische Wörter und Wendungen", () => {
+  for (const text of [
+    "sworn translator", "Certified", "accredited", "licensed", "registered", "approved",
+    "appointed", "attested", "notarized", "notarised", "apostille", "court interpreter",
+    "court translator", "court-appointed", "police interpreter", "state-certified",
+    "official translation", "official translator", "legally valid", "legally recognised",
+    "legally recognized", "authorised translator", "authorized interpreter",
+  ]) gesperrt(text);
+});
+
+test("arabische Stämme mit und ohne Artikel, Wendungen", () => {
+  for (const text of [
+    "مترجم محلف", "المترجم المحل\u0651ف", "مترجمة محلفة", "ترجمة معتمدة", "الترجمة المعتمدة",
+    "مرخص", "مجاز", "مصدق", "تصديق", "معترف به", "ترجمة موثقة", "مترجم محاكم",
+    "مترجم المحكمة", "مترجم قضائي", "مترجم رسمي", "ترجمة رسمية", "الترجمة الرسمية",
+    "وثائق رسمية", "ترجمة قانونية", "ختم",
+  ]) gesperrt(text);
+});
+
+test("erlaubte Wörter und die festgelegten Sätze bleiben frei", () => {
+  for (const text of [
+    "Dolmetscher", "Übersetzer", "interpreter", "translator", "appointment",
+    "مترجم فوري", "مترجم شفوي", "ترجمة شفوية", "مترجم تحريري", "ترجمة تحريرية", "كاتب العدل",
+    "Dolmetscher Arabisch Deutsch in Frankfurt | Muhamed Beck",
+    "Dolmetscher und Übersetzer für Arabisch und Deutsch in Frankfurt",
+    "مترجم فوري عربي ألماني في فرانكفورت | محمد نور بيك",
+    "مترجم شفوي وتحريري بين العربية والألمانية في فرانكفورت",
+    "Erste Einsätze 2017, seit 2022 regelmäßig. Über 150 Einsätze bei Polizei, Gerichten, Kliniken und Behörden.",
+    "Einsätze bei Polizei und Gerichten",
+    "Übersetzungen zum Verständnis und für den Geschäftsverkehr, nicht zur Vorlage bei Ämtern oder Gerichten.",
+    "Translations for understanding and business use, not for submission to authorities or courts.",
+    "ترجمات للفهم وللمراسلات والأعمال، وليست للتقديم إلى الدوائر الحكومية أو المحاكم.",
+    "Verbindlich wird der Termin erst, wenn Sie mir das bestätigen.",
+    "Ich dolmetsche das Gespräch und übersetze Schreiben zum Verständnis; Rechtsberatung leiste ich nicht.",
+    "Ein gesetzliches Widerrufsrecht bleibt unberührt.",
+  ]) frei(text);
+});
+
+test("findeBezeichnungen nennt den Treffer, pruefeTexte den Ort", () => {
+  assert.deepEqual(findeBezeichnungen("Zertifikat und nochmals zertifiziert"), ["zertifi"]);
+  assert.deepEqual(pruefeTexte([{ ort: "a", text: "Dolmetscher" }]), []);
+  assert.deepEqual(pruefeTexte([{ ort: 'route "x": title', text: "Vereidigter Dolmetscher" }]), [
+    'route "x": title: geschützte Bezeichnung „vereidig“',
+  ]);
+});
