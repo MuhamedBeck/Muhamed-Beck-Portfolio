@@ -6,7 +6,7 @@
 // TypeScript's structural checking: generate-sitemap.js and prerender-meta.js
 // import the registry under bare `node`, and Node cannot load .ts. The checks
 // below are the parts of that safety net which actually matter here.
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROUTES, getHome } from "../src/routes/registry.js";
@@ -94,6 +94,17 @@ for (const route of ROUTES) {
   for (const field of ["title", "description", "h1"]) {
     if (route[field]?.includes("—")) {
       fail(`${where}: ${field} contains an em dash; use a colon, comma or a separate sentence`);
+    }
+  }
+
+  // An own preview image must exist, or every shared link shows none at all.
+  if (route.ogImage) {
+    const { src, width, height } = route.ogImage;
+    if (typeof src !== "string" || !src.startsWith("/") || !existsSync(join(root, "public", src))) {
+      fail(`${where}: ogImage.src ${JSON.stringify(src)} is not a file under public/`);
+    }
+    if (typeof width !== "number" || typeof height !== "number") {
+      fail(`${where}: ogImage needs numeric width and height`);
     }
   }
 }

@@ -45,10 +45,18 @@ export const DEFAULT_LOCALE = "de";
  * @property {string}  h1        asserted against the rendered markup at build time,
  *                               so a missing translation fails the build
  * @property {string}  [ogType]  defaults to "website"
+ * @property {{ src: string, width: number, height: number }} [ogImage]
+ *                               own preview image for shared links, instead of
+ *                               /og-image.jpg; src is a path under public/.
+ *                               check-i18n fails when the file is missing.
  * @property {string}  lastmod
  * @property {string}  changefreq
  * @property {string}  priority
  */
+
+/* Preview image of the interpreter pages: the site-wide one shows the IT role,
+   and these links are passed on mostly through WhatsApp. */
+const DOLMETSCH_VORSCHAU = { src: "/bilder/dolmetscher-vorschau-v1.jpg", width: 1200, height: 630 };
 
 /** @type {RouteEntry[]} */
 export const ROUTES = [
@@ -833,6 +841,7 @@ export const ROUTES = [
     title: "Dolmetscher Arabisch Deutsch in Frankfurt | Muhamed Beck",
     description: `Dolmetscher und Übersetzer für Arabisch, Deutsch und Englisch in Frankfurt und Rhein-Main: vor Ort, per Video und Telefon, ab ${preisText(DOLMETSCH_PREIS.vorOrtStunde, "de")} je Stunde.`,
     h1: "Dolmetscher und Übersetzer für Arabisch und Deutsch in Frankfurt",
+    ogImage: DOLMETSCH_VORSCHAU,
     lastmod: "2026-11-17",
     changefreq: "monthly",
     priority: "0.8",
@@ -846,6 +855,7 @@ export const ROUTES = [
     title: "Arabic Interpreter in Frankfurt | Muhamed Nur Beck",
     description: `Arabic interpreter and translator for German and English in Frankfurt and the Rhine-Main area: on site, by video and phone, from ${preisText(DOLMETSCH_PREIS.vorOrtStunde, "en")} per hour.`,
     h1: "Arabic interpreter and translator in Frankfurt",
+    ogImage: DOLMETSCH_VORSCHAU,
     lastmod: "2026-11-17",
     changefreq: "monthly",
     priority: "0.8",
@@ -866,6 +876,7 @@ export const ROUTES = [
     title: "مترجم فوري عربي ألماني في فرانكفورت | محمد نور بيك",
     description: `مترجم شفوي وتحريري للعربية والألمانية والإنجليزية في فرانكفورت ومنطقة الراين-ماين: حضوريًا أو عبر الفيديو والهاتف، ابتداءً من ${preisText(DOLMETSCH_PREIS.vorOrtStunde, "ar")} للساعة.`,
     h1: "مترجم شفوي وتحريري بين العربية والألمانية في فرانكفورت",
+    ogImage: DOLMETSCH_VORSCHAU,
     lastmod: "2026-11-17",
     changefreq: "monthly",
     priority: "0.8",

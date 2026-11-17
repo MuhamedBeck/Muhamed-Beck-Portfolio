@@ -24,7 +24,11 @@ import { RATGEBER } from "./src/content/ratgeber.de.js";
 import { CONTACT, RATE_MAX, RATE_MIN, RATE_TEXT, SAME_AS } from "./src/content/site.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
 import { ohneSkriptMaengel } from "./scripts/live-pruefungen.js";
-import { schriftVorladen } from "./src/seo/kopfZusaetze.js";
+import { schriftVorladen, vorschaubildErsetzungen } from "./src/seo/kopfZusaetze.js";
+import { dolmetscherServiceKnoten } from "./src/seo/dolmetscherSchema.js";
+import { INHALT as DOLMETSCHER_DE } from "./src/content/dolmetscher.de.js";
+import { INHALT as DOLMETSCHER_EN } from "./src/content/dolmetscher.en.js";
+import { INHALT as DOLMETSCHER_AR } from "./src/content/dolmetscher.ar.js";
 
 // Route components are loaded through dynamic import() so one registry entry can
 // serve both the lazy client router and this eager build-time pass. They have to
@@ -360,12 +364,15 @@ const faqNode = (source) =>
     : null;
 
 /** Per-page structured data, as one @graph appended to the head. */
+const DOLMETSCHER_INHALT = { de: DOLMETSCHER_DE, en: DOLMETSCHER_EN, ar: DOLMETSCHER_AR };
+
 const pageJsonLd = (route) => {
   const leistung = LEISTUNGEN.find((item) => item.path === route.path);
   const article = RATGEBER.find((item) => item.path === route.path);
   const nodes = [
     breadcrumbNode(route),
     leistung ? serviceNode(route, leistung) : null,
+    route.group === "dolmetscher" ? dolmetscherServiceKnoten(route, DOLMETSCHER_INHALT[route.locale]) : null,
     article ? articleNode(route, article) : null,
     faqNode(leistung ?? article),
   ].filter(Boolean);
@@ -403,6 +410,11 @@ for (const route of ROUTES) {
     [/(<meta name="twitter:title" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${title}${b}`, "twitter:title"],
     [/(<meta name="twitter:description" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${description}${b}`, "twitter:description"],
   ];
+
+  // Own preview image (registry field ogImage); mandatory like every replacement here.
+  if (route.ogImage) {
+    replacements.push(...vorschaubildErsetzungen(route.ogImage));
+  }
 
   if (route.path !== "/") {
     replacements.push([
