@@ -913,6 +913,23 @@ export const ROUTES = [
     changefreq: "yearly",
     priority: "0.3",
   },
+  {
+    id: "widerrufsbelehrung",
+    path: "/widerrufsbelehrung",
+    locale: "de",
+    group: "widerrufsbelehrung",
+    load: () =>
+      import("../components/pages/Widerrufsbelehrung.jsx").then((m) => ({
+        default: m.Widerrufsbelehrung,
+      })),
+    title: "Widerrufsbelehrung | Muhamed Beck",
+    description:
+      "Widerrufsbelehrung für Verbraucher zu den Dolmetsch- und Übersetzungsleistungen von Muhamed Nur Beck, mit Muster-Widerrufsformular.",
+    h1: "Widerrufsbelehrung",
+    lastmod: "2026-11-17",
+    changefreq: "yearly",
+    priority: "0.3",
+  },
 ];
 
 // Deliberately has no `path`: usePageMeta then falls back to the pathname the

@@ -27,6 +27,7 @@ const de = {
   fuss: {
     kontakt: "Kontakt",
     itVerweis: "IT und Automatisierung: muhamedbeck.com",
+    widerruf: "Widerrufsbelehrung",
     rechtstexteHinweis: "",
   },
   preise: {
@@ -37,6 +38,7 @@ const de = {
   formular: {
     hinweis:
       "Das ist eine Anfrage, keine Buchung, und sie verpflichtet Sie zu nichts. Ich antworte in der Regel innerhalb von 24 Stunden mit Termin und Preis oder mit einer Absage. Verbindlich wird der Termin erst, wenn Sie mir das bestätigen. Wenn es schneller gehen muss: WhatsApp oder Anruf.",
+    widerruf: "Für Verbraucher: Widerrufsbelehrung",
     bestaetigungTitel: "Ihre Anfrage ist angekommen.",
     bestaetigungText:
       "Sie ist noch keine Buchung: Ich melde mich in der Regel innerhalb von 24 Stunden mit Termin und Preis oder mit einer Absage. Haben Sie bis dahin nichts gehört, rufen Sie mich bitte an; ohne meine Antwort ist nichts vereinbart.",
@@ -143,7 +145,8 @@ const en = {
   fuss: {
     kontakt: "Contact",
     itVerweis: "IT and automation: muhamedbeck.com",
-    rechtstexteHinweis: "The imprint and the privacy policy are available in German.",
+    widerruf: "Right of withdrawal (German)",
+    rechtstexteHinweis: "The imprint, the privacy policy and the right of withdrawal are available in German.",
   },
   preise: {
     endpreise:
@@ -152,6 +155,7 @@ const en = {
   formular: {
     hinweis:
       "This is a request, not a booking, and it does not commit you to anything. I reply, usually within 24 hours, with a date and price or with a decline. The appointment only becomes binding once you confirm it to me. If it is urgent: WhatsApp or call.",
+    widerruf: "For consumers: right of withdrawal (in German)",
     bestaetigungTitel: "Your request has arrived.",
     bestaetigungText:
       "It is not yet a booking: I will get back to you, usually within 24 hours, with a date and price or with a decline. If you have not heard from me by then, please call me; nothing is agreed without my reply.",
@@ -253,7 +257,9 @@ const en = {
  *                        oder Sie lieber sprechen. · Antwort in der Regel
  *                        innerhalb von 24 Stunden.
  *   fuss                 Kontakt · IT und Automatisierung: muhamedbeck.com ·
- *                        Impressum und Datenschutzerklärung gibt es auf Deutsch.
+ *                        Widerrufsrecht (auf Deutsch) · Impressum,
+ *                        Datenschutzerklärung und Informationen zum
+ *                        Widerrufsrecht gibt es auf Deutsch.
  *   preise.endpreise     Alle Preise sind Endpreise; als Kleinunternehmer nach
  *                        § 19 des deutschen Umsatzsteuergesetzes berechne ich
  *                        keine Mehrwertsteuer. Es gibt keine weiteren Kosten.
@@ -263,6 +269,8 @@ const en = {
  *                        einer Absage. Verbindlich wird der Termin erst, wenn
  *                        Sie ihn mir bestätigen. Wenn es eilt: WhatsApp oder
  *                        Anruf.
+ *   formular.widerruf    Für Verbraucher: Informationen zum Widerrufsrecht
+ *                        (auf Deutsch)
  *   bestaetigung         Ihre Anfrage ist angekommen. Sie ist noch keine
  *                        Buchung: Ich melde mich in der Regel innerhalb von 24
  *                        Stunden mit Termin und Preis oder mit einer Absage.
@@ -313,7 +321,8 @@ const ar = {
   fuss: {
     kontakt: "التواصل",
     itVerweis: "تقنية المعلومات والأتمتة: muhamedbeck.com",
-    rechtstexteHinweis: "بيانات الناشر وسياسة الخصوصية متاحة باللغة الألمانية.",
+    widerruf: "حق الانسحاب من العقد (بالألمانية)",
+    rechtstexteHinweis: "بيانات الناشر وسياسة الخصوصية ومعلومات حق الانسحاب من العقد متاحة باللغة الألمانية.",
   },
   preise: {
     endpreise:
@@ -322,6 +331,7 @@ const ar = {
   formular: {
     hinweis:
       "هذا طلب وليس حجزًا، ولا يُلزمك بشيء. أرد عادةً خلال 24 ساعة بموعد وسعر أو باعتذار. يصبح الموعد مُلزمًا فقط عندما تؤكده لي. إذا كان الأمر عاجلًا: واتساب أو اتصال هاتفي.",
+    widerruf: "للمستهلكين: معلومات عن حق الانسحاب من العقد (بالألمانية)",
     bestaetigungTitel: "وصل طلبك.",
     bestaetigungText:
       "لم يصبح حجزًا بعد: سأتواصل معك عادةً خلال 24 ساعة بموعد وسعر أو باعتذار. إذا لم تسمع مني حتى ذلك الحين، فاتصل بي من فضلك؛ لا يُتفق على شيء دون ردي.",

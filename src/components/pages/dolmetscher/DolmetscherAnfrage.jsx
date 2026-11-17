@@ -115,6 +115,11 @@ export const DolmetscherAnfrage = () => {
   return (
     <div>
       <p className="max-w-[60ch] leading-relaxed text-paper-soft">{t.hinweis}</p>
+      <p className="mt-3 text-sm">
+        <a href="/widerrufsbelehrung" target="_blank" rel="noopener" className="text-accent hover:underline">
+          {t.widerruf}
+        </a>
+      </p>
       <form onSubmit={absenden} className="mt-8 space-y-6">
         <Honeypot />
 

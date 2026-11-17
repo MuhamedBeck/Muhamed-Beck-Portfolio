@@ -11,8 +11,8 @@ const VERWEIS = "-my-1.5 inline-flex items-center gap-2 py-1.5 transition-colors
 
 /**
  * Schlanker Fuß der Dolmetscher-Seite: Kontakt, Rechtstexte, Verweis zur
- * IT-Seite. Impressum und Datenschutz gibt es nur auf Deutsch; die englische
- * und die arabische Fassung sagen das dazu.
+ * IT-Seite. Impressum, Datenschutz und Widerrufsbelehrung gibt es nur auf
+ * Deutsch; die englische und die arabische Fassung sagen das dazu.
  */
 export const DolmetscherFuss = () => {
   const t = useDict(woerter);
@@ -52,6 +52,9 @@ export const DolmetscherFuss = () => {
             </a>
             <a href="/datenschutz" className="-my-2 py-2 transition-colors hover:text-paper-dim">
               {rechtliches.privacy}
+            </a>
+            <a href="/widerrufsbelehrung" className="-my-2 py-2 transition-colors hover:text-paper-dim">
+              {t.fuss.widerruf}
             </a>
             {t.fuss.rechtstexteHinweis ? <span>{t.fuss.rechtstexteHinweis}</span> : null}
           </div>
