@@ -28,6 +28,9 @@ const de = {
   themeToDark: "Zur dunklen Ansicht wechseln",
   mailBetreff: "Anfrage über muhamedbeck.com",
   terminBuchen: "Termin direkt buchen",
+  /* Steht nur im vorgerenderten HTML vor dem gesperrten Sendeknopf und wird
+     nur sichtbar, wenn kein Skript läuft (components/AnfrageStatus.jsx). */
+  formularOhneSkript: "Das Formular braucht JavaScript. Sie erreichen mich direkt:",
 };
 
 const en = {
@@ -46,6 +49,7 @@ const en = {
   themeToDark: "Switch to the dark theme",
   mailBetreff: "Enquiry via muhamedbeck.com",
   terminBuchen: "Book a call directly",
+  formularOhneSkript: "This form needs JavaScript. You can reach me directly:",
 };
 
 /* Arabisch, Hocharabisch (فصحى).
@@ -67,6 +71,8 @@ const en = {
  *   themeToDark       Zur dunklen Ansicht wechseln
  *   mailBetreff       Anfrage über muhamedbeck.com
  *   terminBuchen      Link zur Terminbuchung bei Cal.com
+ *   formularOhneSkript  Dieses Formular braucht JavaScript. Sie können mich
+ *                       direkt erreichen:
  *
  * Der Mitteltrenner in replyPromise steht zwischen einem lateinischen und einem
  * arabischen Lauf. Er ist ein neutrales Zeichen, und der Bidi-Algorithmus
@@ -87,6 +93,7 @@ const ar = {
   themeToDark: "التبديل إلى المظهر الداكن",
   mailBetreff: "استفسار عبر muhamedbeck.com",
   terminBuchen: "احجز موعدًا مباشرة",
+  formularOhneSkript: "يحتاج هذا النموذج إلى JavaScript. يمكنك التواصل معي مباشرة:",
 };
 
 export default { de, en, ar };

@@ -23,6 +23,7 @@ import { LEISTUNGEN } from "./src/content/leistungen.de.js";
 import { RATGEBER } from "./src/content/ratgeber.de.js";
 import { CONTACT, RATE_MAX, RATE_MIN, RATE_TEXT, SAME_AS } from "./src/content/site.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
+import { ohneSkriptMaengel } from "./scripts/live-pruefungen.js";
 
 // Route components are loaded through dynamic import() so one registry entry can
 // serve both the lazy client router and this eager build-time pass. They have to
@@ -442,6 +443,13 @@ for (const route of ROUTES) {
     throw new Error(
       `prerender-meta: render("${route.path}") emitted ${headings.length} <h1> elements, expected exactly 1.`
     );
+  }
+  // Ein Formular muss ohne Skript ungefährlich sein: Sendeknopf gesperrt und
+  // ein Hinweis mit Mail und Telefon. Sonst schickt der Browser die Felder per
+  // GET in die Adresszeile, und nichts kommt an (AnfrageStatus.jsx).
+  const ohneSkript = ohneSkriptMaengel(markup);
+  if (ohneSkript.length) {
+    throw new Error(`prerender-meta: render("${route.path}"): ${ohneSkript.join("; ")}`);
   }
   replacements.push(
     [/<noscript>[\s\S]*?<\/noscript>\s*/, () => "", "noscript"],

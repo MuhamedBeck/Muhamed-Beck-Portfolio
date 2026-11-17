@@ -55,7 +55,9 @@ const versteckt = (node) => {
   if (node.nodeType !== 1) return false;
   if (node.getAttribute("aria-hidden") === "true") return true;
   const k = klassen(node);
-  return k.includes(" lg:hidden ") || k.includes(" md:hidden ");
+  /* ohne-skript: der Hinweis vor dem gesperrten Sendeknopf (AnfrageStatus.jsx),
+     für Leser ohne Skript gedacht, nicht für die Markdown-Fassung. */
+  return k.includes(" lg:hidden ") || k.includes(" md:hidden ") || k.includes(" ohne-skript ");
 };
 
 /* Sichtbarer Text ohne versteckte Teile. In den Tabellen stehen die
