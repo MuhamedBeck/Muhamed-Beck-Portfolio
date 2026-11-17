@@ -111,6 +111,16 @@ export const DolmetscherPage = ({ inhalt }) => {
             </>
           ) : null}
           <p className={KLEIN}>{t.preise.endpreise}</p>
+          {/* Zum Kosten-Ratgeber, der Preise am Markt und den gesetzlichen
+              Satz daneben stellt; nur auf Deutsch, die anderen Fassungen
+              sagen das im Linktext. Muster wie unternehmen.verweis. */}
+          {preise.ratgeber ? (
+            <p className="mt-6">
+              <Link to={preise.ratgeber.href} className="text-accent hover:underline">
+                {preise.ratgeber.text}
+              </Link>
+            </p>
+          ) : null}
         </Abschnitt>
       ) : null}
 

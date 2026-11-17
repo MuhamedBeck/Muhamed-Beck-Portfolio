@@ -122,6 +122,10 @@ export const INHALT = {
       },
       beispiel: `Example: one hour in Hanau costs ${p(DOLMETSCH_PREIS.vorOrtStunde)} + ${p(hanau.betrag)} = ${p(DOLMETSCH_PREIS.vorOrtStunde + hanau.betrag)}.`,
     },
+    ratgeber: {
+      text: "What an interpreter costs: price comparison (in German)",
+      href: "/dolmetscher-arabisch-frankfurt/kosten",
+    },
   },
 
   ablauf: {

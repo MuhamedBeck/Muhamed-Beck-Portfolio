@@ -6,6 +6,7 @@ import { INHALT as DE } from "../src/content/dolmetscher.de.js";
 import { INHALT as EN, ORTE as ORTE_EN } from "../src/content/dolmetscher.en.js";
 import { INHALT as AR, ORTE as ORTE_AR } from "../src/content/dolmetscher.ar.js";
 import { ANFAHRT_STUFEN, DOLMETSCH_PREIS, preisText } from "../src/content/site.js";
+import { ROUTES } from "../src/routes/registry.js";
 
 const texte = (wert) =>
   typeof wert === "string" ? [wert] : wert && typeof wert === "object" ? Object.values(wert).flatMap(texte) : [];
@@ -149,4 +150,12 @@ test("Englisch: Zwecksatz, Zeichen vor dem Betrag, 24-Stunden-Wendung", () => {
   for (const ort of Object.keys(ORTE_EN)) {
     assert.ok(ANFAHRT_STUFEN.some((stufe) => stufe.orte.includes(ort)), ort);
   }
+});
+
+test("Preise: Verweis auf den Kosten-Ratgeber in allen drei Fassungen", () => {
+  const ziel = ROUTES.find((route) => route.id === "dolmetscher.kosten").path;
+  assert.deepEqual([DE, EN, AR].map((inhalt) => inhalt.preise.ratgeber?.href), [ziel, ziel, ziel]);
+  assert.equal(DE.preise.ratgeber.text, "Was kostet ein Dolmetscher? Preise im Vergleich");
+  assert.equal(EN.preise.ratgeber.text, "What an interpreter costs: price comparison (in German)");
+  assert.equal(AR.preise.ratgeber.text, "كم يكلّف المترجم الفوري؟ مقارنة الأسعار (الصفحة بالألمانية)");
 });

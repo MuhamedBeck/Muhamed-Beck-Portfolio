@@ -175,7 +175,9 @@ export const INHALT = {
    *                  Antwort mit Termin und Preis; dabei bleibt es, auch wenn
    *                  die Fahrt länger dauert.
    *   anfahrt.beispiel  Beispiel: Eine Stunde in Hanau kostet 70 Euro +
-   *                  15 Euro = 85 Euro. */
+   *                  15 Euro = 85 Euro.
+   *   ratgeber       Was kostet ein Dolmetscher? Preise im Vergleich (Seite
+   *                  auf Deutsch) */
   preise: {
     titel: "الأسعار",
     ersteSpalte: "الخدمة",
@@ -241,6 +243,10 @@ export const INHALT = {
         })),
       },
       beispiel: `مثال: ساعة واحدة في هاناو تكلف ${p(DOLMETSCH_PREIS.vorOrtStunde)} + ${p(hanau.betrag)} = ${p(DOLMETSCH_PREIS.vorOrtStunde + hanau.betrag)}.`,
+    },
+    ratgeber: {
+      text: "كم يكلّف المترجم الفوري؟ مقارنة الأسعار (الصفحة بالألمانية)",
+      href: "/dolmetscher-arabisch-frankfurt/kosten",
     },
   },
 

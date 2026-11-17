@@ -137,6 +137,10 @@ export const INHALT = {
       },
       beispiel: `Beispiel: Eine Stunde in Hanau kostet ${p(DOLMETSCH_PREIS.vorOrtStunde)} + ${p(hanau.betrag)} = ${p(DOLMETSCH_PREIS.vorOrtStunde + hanau.betrag)}.`,
     },
+    ratgeber: {
+      text: "Was kostet ein Dolmetscher? Preise im Vergleich",
+      href: "/dolmetscher-arabisch-frankfurt/kosten",
+    },
   },
 
   ablauf: {
