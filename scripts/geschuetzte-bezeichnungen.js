@@ -1,11 +1,18 @@
-// Geschützte Bezeichnungen, die auf den Seiten der Gruppe `dolmetscher`
-// nicht stehen. Geprüft wird nach Stämmen und Mustern auf normalisiertem
-// Text.
+// Geschützte Bezeichnungen, die auf den Seiten der Gruppe `dolmetscher` und
+// ihrer Untergruppen `dolmetscher.*` nicht stehen. Geprüft wird nach Stämmen
+// und Mustern auf normalisiertem Text.
 //
 // Läuft unter bloßem Node (check-i18n, Tests, Prüfung nach dem Prerender):
 // reines JavaScript, keine Importe.
 
 export const GEPRUEFTE_GRUPPE = "dolmetscher";
+
+/* Die Dolmetscher-Seite und ihre Unterseiten, etwa der Ratgeber zu den
+   Kosten in der Gruppe `dolmetscher.kosten`. Nur der Punkt trennt, damit
+   eine fremde Gruppe, die zufällig mit denselben Buchstaben beginnt, nicht
+   mitgeprüft wird. */
+export const istGepruefteGruppe = (gruppe) =>
+  gruppe === GEPRUEFTE_GRUPPE || String(gruppe ?? "").startsWith(`${GEPRUEFTE_GRUPPE}.`);
 
 const STAEMME = [
   // Deutsch

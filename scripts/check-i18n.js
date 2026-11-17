@@ -19,7 +19,7 @@ import {
   estimatePixelWidth,
   isMeasurable,
 } from "./snippet-width.js";
-import { GEPRUEFTE_GRUPPE, pruefeTexte } from "./geschuetzte-bezeichnungen.js";
+import { istGepruefteGruppe, pruefeTexte } from "./geschuetzte-bezeichnungen.js";
 import nav from "../src/i18n/dict/nav.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -166,10 +166,11 @@ for (const route of ROUTES) {
 // Geschützte Bezeichnungen (Stufe 1, vor dem Build)
 // ---------------------------------------------------------------------------
 
-// Registry-Texte der Gruppe und der ganze Quelltext ihrer Wörterbuch- und
-// Inhaltsmodule, Kommentare eingeschlossen. Stufe 2 prüft nach dem Prerender
+// Registry-Texte der Gruppe `dolmetscher` und ihrer Untergruppen `dolmetscher.*`
+// und der ganze Quelltext ihrer Wörterbuch- und Inhaltsmodule, Kommentare
+// eingeschlossen. Stufe 2 prüft nach dem Prerender
 // das fertige HTML (scripts/check-bezeichnungen.js).
-const bezeichnungsEintraege = ROUTES.filter((route) => route.group === GEPRUEFTE_GRUPPE).flatMap(
+const bezeichnungsEintraege = ROUTES.filter((route) => istGepruefteGruppe(route.group)).flatMap(
   (route) =>
     ["title", "description", "h1"].map((feld) => ({
       ort: `route "${route.id}": ${feld}`,

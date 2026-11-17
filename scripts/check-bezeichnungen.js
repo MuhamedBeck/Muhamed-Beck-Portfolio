@@ -2,7 +2,8 @@
 //
 // Stufe 1 (scripts/check-i18n.js) liest die Quelltexte vor dem Build. Diese
 // Stufe liest, was ausgeliefert wird: den Text der vorgerenderten Seiten der
-// Gruppe GEPRUEFTE_GRUPPE, ihren Kopf, ihre strukturierten Daten und ihre
+// Gruppe `dolmetscher` und ihrer Untergruppen `dolmetscher.*`
+// (istGepruefteGruppe), ihren Kopf, ihre strukturierten Daten und ihre
 // Verweisziele (texteAusHtml in geschuetzte-bezeichnungen.js). So fallen auch
 // Wörter auf, die erst beim Rendern zusammenkommen.
 //
@@ -12,7 +13,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROUTES } from "../src/routes/registry.js";
-import { GEPRUEFTE_GRUPPE, pruefeTexte, texteAusHtml } from "./geschuetzte-bezeichnungen.js";
+import { istGepruefteGruppe, pruefeTexte, texteAusHtml } from "./geschuetzte-bezeichnungen.js";
 
 const wurzel = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(wurzel, "dist");
@@ -32,7 +33,7 @@ if (dateien) {
     eintraege.push({ ort: pfad, text: readFileSync(pfad, "utf8") });
   }
 } else {
-  for (const route of ROUTES.filter((eintrag) => eintrag.group === GEPRUEFTE_GRUPPE)) {
+  for (const route of ROUTES.filter((eintrag) => istGepruefteGruppe(eintrag.group))) {
     const datei = join(dist, ...route.path.split("/").filter(Boolean), "index.html");
     if (!existsSync(datei)) {
       problems.push(`${route.path}: ${datei} fehlt. Ist prerender-meta.js gelaufen?`);
@@ -55,5 +56,5 @@ if (problems.length) {
 
 const anzahl = dateien
   ? `${dateien.length} Dateien`
-  : `${ROUTES.filter((eintrag) => eintrag.group === GEPRUEFTE_GRUPPE).length} Seiten`;
+  : `${ROUTES.filter((eintrag) => istGepruefteGruppe(eintrag.group)).length} Seiten`;
 console.log(`check-bezeichnungen: ${anzahl} ohne geschützte Bezeichnungen`);

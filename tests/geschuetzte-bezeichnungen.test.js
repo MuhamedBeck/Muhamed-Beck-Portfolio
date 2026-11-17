@@ -5,10 +5,19 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   findeBezeichnungen,
+  istGepruefteGruppe,
   normalisieren,
   pruefeTexte,
   texteAusHtml,
 } from "../scripts/geschuetzte-bezeichnungen.js";
+
+test("istGepruefteGruppe: die Dolmetscher-Seite und ihre Unterseiten, sonst nichts", () => {
+  assert.equal(istGepruefteGruppe("dolmetscher"), true);
+  assert.equal(istGepruefteGruppe("dolmetscher.kosten"), true);
+  assert.equal(istGepruefteGruppe("dolmetscherei"), false);
+  assert.equal(istGepruefteGruppe("ratgeber.kosten"), false);
+  assert.equal(istGepruefteGruppe("widerrufsbelehrung"), false);
+});
 
 const frei = (text) => assert.deepEqual(findeBezeichnungen(text), [], text);
 const gesperrt = (text) => assert.notEqual(findeBezeichnungen(text).length, 0, text);
