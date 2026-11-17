@@ -44,6 +44,15 @@ export const CONTACT = {
 export const mailtoHref = (betreff) =>
   `mailto:${CONTACT.email}${betreff ? `?subject=${encodeURIComponent(betreff)}` : ""}`;
 
+/**
+ * WhatsApp-Verweis auf die Nummer aus CONTACT, wahlweise mit vorbereitetem
+ * Text. wa.me verlangt die Nummer nur aus Ziffern, ohne Plus.
+ *
+ * @param {string} [text] vorbereiteter Text der Nachricht
+ */
+export const whatsappHref = (text) =>
+  `https://wa.me/${CONTACT.phone.replace(/\D/g, "")}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+
 /* Terminbuchung für das kostenlose Erstgespräch, seit 07.11.2026.
    Cal.com Free, verbunden mit dem privaten Outlook-Kalender des Inhabers,
    angemeldet mit muhamed@muhamedbeck.com. Jede Buchung, Verschiebung und
@@ -104,7 +113,8 @@ export const RATE_TEXT_EN = `${RATE_MIN} to ${RATE_MAX} € by agreement, depend
    Fällt die Kleinunternehmerregel weg (Umsatz über der Grenze), sind genau
    diese beiden Konstanten zu ändern, etwa auf "zuzüglich 19 % Umsatzsteuer",
    und die Stellen zu prüfen, die einen Preis ohne Zusatz nennen; die Suche
-   nach UST_ zeigt alle. */
+   nach UST_ zeigt alle. Der ausführliche Satz der Dolmetscher-Seite steht
+   in drei Sprachen in src/i18n/dict/dolmetscher.js unter preise.endpreise. */
 export const UST_HINWEIS =
   "Als Kleinunternehmer nach § 19 UStG berechne ich keine Umsatzsteuer, alle Preise sind Endpreise.";
 /** Kurzform für Tabellen- und Bildunterschriften. */
@@ -150,3 +160,74 @@ export const FESTPREIS = {
 
 /** "4.900 €", mit deutschem Tausenderpunkt wie überall auf der Seite. */
 export const euro = (betrag) => `${betrag.toLocaleString("de-DE")} €`;
+
+/* Dolmetsch- und Übersetzungspreise, am 15.11.2026 mit dem Inhaber
+   festgelegt. Anfahrt in festen Beträgen je Entfernungsstufe; Entfernungen
+   ab der Frankfurter Hauptwache, Stand 15.11.2026. */
+export const DOLMETSCH_PREIS = {
+  vorOrtStunde: 70,
+  halbeStunde: 35,
+  notarStandesamt: 240,
+  normzeile: 1.4,
+  mindestauftrag: 30,
+  messeHalbtag: 320,
+  messeTag: 590,
+};
+
+export const ANFAHRT_START = "Frankfurter Hauptwache";
+
+/* bisKm null und betrag null heißen: weiter entfernt, nach Absprache. */
+export const ANFAHRT_STUFEN = [
+  {
+    id: "bis15",
+    vonKm: 0,
+    bisKm: 15,
+    betrag: 0,
+    orte: ["Frankfurt (ganzes Stadtgebiet)", "Offenbach", "Neu-Isenburg", "Bad Vilbel", "Eschborn", "Flughafen"],
+  },
+  {
+    id: "bis25",
+    vonKm: 15,
+    bisKm: 25,
+    betrag: 15,
+    orte: ["Bad Homburg", "Oberursel", "Kronberg", "Hofheim", "Langen", "Hanau"],
+  },
+  { id: "bis35", vonKm: 25, bisKm: 35, betrag: 25, orte: ["Rüsselsheim", "Friedberg"] },
+  {
+    id: "bis50",
+    vonKm: 35,
+    bisKm: 50,
+    betrag: 35,
+    orte: ["Darmstadt", "Wiesbaden", "Mainz", "Bad Nauheim", "Aschaffenburg"],
+  },
+  { id: "weiter", vonKm: 50, bisKm: null, betrag: null, orte: ["Gießen"] },
+];
+
+/* Tausender gruppieren, ohne Intl: Prerender und Browser sollen dieselbe
+   Zeichenkette liefern, unabhängig von der ICU-Ausstattung. */
+const gruppiert = (ganzzahl, trenner) => String(ganzzahl).replace(/\B(?=(\d{3})+(?!\d))/g, trenner);
+
+/**
+ * Betrag in der Schreibweise der Sprache. Ganze Beträge ohne
+ * Nachkommastellen, alle anderen mit genau zwei.
+ *
+ * de (und jede unbekannte Sprache): "1.200 €", "1,40 €"
+ * en: "€1,200", "€1.40"
+ * ar: "1.200 يورو", "1,40 يورو"; das Wort statt des Zeichens, weil ein
+ *     neutrales Zeichen in arabischem Text die Seite wechselt.
+ *
+ * @param {number} betrag
+ * @param {string} [locale]
+ */
+export const preisText = (betrag, locale = "de") => {
+  const cent = Math.round(betrag * 100);
+  const ganz = Math.trunc(cent / 100);
+  const rest = cent % 100;
+  const englisch = locale === "en";
+  const zahl =
+    gruppiert(ganz, englisch ? "," : ".") +
+    (rest === 0 ? "" : `${englisch ? "." : ","}${String(rest).padStart(2, "0")}`);
+  if (englisch) return `€${zahl}`;
+  if (locale === "ar") return `${zahl} يورو`;
+  return `${zahl} €`;
+};
