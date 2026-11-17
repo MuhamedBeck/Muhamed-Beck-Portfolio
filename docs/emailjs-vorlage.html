@@ -15,10 +15,14 @@
     5. From Name: muhamedbeck.com
     6. Speichern, dann über das Formular eine Testanfrage schicken
 
-  Variablen (gesendet von Kontakt.jsx und HireMe.jsx):
+  Variablen (gesendet von Kontakt.jsx, HireMe.jsx und DolmetscherAnfrage.jsx):
     {{name}} {{email}} {{leistung}} {{unternehmen}} {{herkunft}} {{formular}}
     {{beschreibung}}  der Nachrichtentext, Zeilenumbrüche bleiben erhalten
   Leere optionale Felder kommen als "nicht angegeben" an.
+  Das Anfrageformular der Dolmetscher-Seite schreibt Art, Sprachen, Anlass,
+  Wunschtermin, Ort und Telefon als beschriftete Zeilen in {{beschreibung}}
+  und {{message}} und sendet sie zusätzlich einzeln als {{art}} {{sprachen}}
+  {{anlass}} {{wunschtermin}} {{ort}} {{telefon}} {{seitensprache}}.
 
   Zwei geschweifte Klammern, nicht drei: EmailJS entwertet so jedes HTML in der
   Eingabe. Drei Klammern würden es ungeprüft einsetzen, und dann könnte jeder,

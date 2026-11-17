@@ -26,6 +26,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import TurndownService from "turndown";
 import { ROUTES, SITE_URL } from "../src/routes/registry.js";
+import { localeConfig } from "../src/i18n/locales.js";
 
 const wurzel = join(dirname(fileURLToPath(import.meta.url)), "..");
 const dist = join(wurzel, "dist");
@@ -69,7 +70,9 @@ const text = (node) => {
   return [...(node.childNodes ?? [])].map(text).join(" ");
 };
 
-const umwandler = () => {
+/* `wort` steht vor der Beschreibung einer Grafik, in der Sprache der Seite
+   (localeConfig(locale).abbildung). */
+const umwandler = (wort) => {
   const td = new TurndownService({
     headingStyle: "atx",
     bulletListMarker: "-",
@@ -95,7 +98,7 @@ const umwandler = () => {
       const titel = erstes(node, "title")?.textContent?.trim();
       const text = erstes(node, "desc")?.textContent?.trim();
       if (!titel && !text) return "";
-      return `\n\n*Abbildung: ${[titel, text].filter(Boolean).join(". ")}*\n\n`;
+      return `\n\n*${wort}: ${[titel, text].filter(Boolean).join(". ")}*\n\n`;
     },
   });
 
@@ -160,9 +163,17 @@ const frontmatter = (route) => {
   return zeilen.join("\n");
 };
 
-const td = umwandler();
+/* Ein Umwandler je Sprache, jeweils einmal erzeugt. */
+const umwandlerJeSprache = new Map();
+const umwandlerFuer = (locale) => {
+  const wort = localeConfig(locale).abbildung;
+  if (!umwandlerJeSprache.has(wort)) umwandlerJeSprache.set(wort, umwandler(wort));
+  return umwandlerJeSprache.get(wort);
+};
+
 let anzahl = 0;
 for (const route of ROUTES) {
+  const td = umwandlerFuer(route.locale);
   const htmlDatei = join(ordner(route.path), "index.html");
   if (!existsSync(htmlDatei)) {
     throw new Error(`markdown: ${htmlDatei} fehlt. Ist prerender-meta.js gelaufen?`);

@@ -1,14 +1,16 @@
 # Watches the live site for the failure that looks like success.
 #
-# Both contact forms disappear when the EmailJS variables are missing at build
+# Every contact form disappears when the EmailJS variables are missing at build
 # time. The resulting page is a valid HTTP 200 with a polite line offering an
 # email address instead, so nothing about it looks broken: not the build, not
 # the deploy, not the browser. It has shipped that way twice, and both times it
 # was found by accident.
 #
-# This job fetches the live pages and fails when the forms are gone. GitHub
-# emails a failed workflow run to whoever watches the repository, which is the
-# notification. Check it is switched on under
+# This job fetches the live pages and fails when a form is gone or its send
+# button ships unlocked, when the interpreter pages lose their WhatsApp or
+# phone link, or when the Worker can no longer write to the request archive
+# (/api/anfrage/status). GitHub emails a failed workflow run to whoever watches
+# the repository, which is the notification. Check it is switched on under
 #   github.com/settings/notifications -> Actions -> Email, "Only notify for failed workflows"
 #
 # No npm install: scripts/check-live.js uses only Node builtins and reads the
@@ -33,6 +35,7 @@ on:
     branches: [main]
     paths:
       - "scripts/check-live.js"
+      - "scripts/live-pruefungen.js"
       - ".github/workflows/kontaktformular.yml"
 
 jobs:
@@ -63,9 +66,19 @@ jobs:
             echo ""
             if [ "${{ steps.probe.outcome }}" = "success" ]; then
               echo "Alles in Ordnung."
+            elif grep -q "Anfrage-Archiv" probe.log 2>/dev/null; then
+              echo "**Fehlgeschlagen.** Der Worker erreicht das Archiv der Anfragen nicht,"
+              echo "meist ist der GitHub-Token abgelaufen. Die Mails kommen weiter an,"
+              echo "nur das Archiv bleibt leer."
+              echo ""
+              echo "Behebung:"
+              echo ""
+              echo '```'
+              echo "npx wrangler secret put GITHUB_TOKEN"
+              echo '```'
             else
               echo "**Fehlgeschlagen.** Wahrscheinlichste Ursache: der letzte Deploy"
-              echo "wurde ohne ausgefüllte \`.env\` gebaut, dann fehlen beide"
+              echo "wurde ohne ausgefüllte \`.env\` gebaut, dann fehlen die"
               echo "Kontaktformulare und jede Anfrage darüber geht verloren."
               echo ""
               echo "Behebung:"

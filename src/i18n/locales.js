@@ -27,6 +27,8 @@ export const LIVE_LOCALES = ["de", "en", "ar"];
  * @property dir       writing direction for <html dir>. Lives here rather than
  *                     being derived from the language, because this file is the
  *                     one place both React and the bare-node build scripts read.
+ * @property abbildung the word in front of a graphic's description in the
+ *                     Markdown version of a page (scripts/markdown.js).
  */
 export const LOCALES = {
   de: {
@@ -38,6 +40,7 @@ export const LOCALES = {
     homeLabel: "Startseite",
     flag: "de",
     dir: "ltr",
+    abbildung: "Abbildung",
   },
   en: {
     htmlLang: "en",
@@ -48,6 +51,7 @@ export const LOCALES = {
     homeLabel: "Home",
     flag: "gb",
     dir: "ltr",
+    abbildung: "Figure",
   },
   ar: {
     htmlLang: "ar",
@@ -61,6 +65,7 @@ export const LOCALES = {
     homeLabel: "الصفحة الرئيسية",
     flag: "sa",
     dir: "rtl",
+    abbildung: "شكل",
   },
 };
 

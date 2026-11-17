@@ -101,7 +101,10 @@ Two rules worth not rediscovering:
 | | |
 | --- | --- |
 | `npm run dev` | Vite dev server |
-| `npm run build` | check-i18n → sitemap + llms.txt → client build → SSR build → prerender |
+| `npm run build` | check-env → check-i18n → sitemap + llms.txt → client build → SSR build → prerender → check-bezeichnungen → markdown |
+| `npm test` | tests for the Worker (`worker/`) and the build scripts and content (`tests/`) |
+| `npm run deploy` | tests → build → `wrangler deploy` → live check of the deployed site |
+| `npm run check:bezeichnungen` | protected terms on the interpreter pages, after the prerender |
 | `npm run check:i18n` | validation only |
 | `npm run lint` | ESLint |
 | `npx wrangler dev` | serve `dist/` with the real `_redirects` and trailing-slash behaviour |
@@ -123,10 +126,14 @@ cp .env.example .env
 | `VITE_PUBLIC_KEY` | Account -> General |
 
 The template is versioned in `docs/emailjs-vorlage.html`; paste it into the
-EmailJS template editor (setup steps are in the file). Both forms send
+EmailJS template editor (setup steps are in the file). All forms (`Kontakt.jsx`,
+`HireMe.jsx` and the interpreter page's `DolmetscherAnfrage.jsx`) send
 `{{name}}`, `{{email}}`, `{{beschreibung}}`, `{{leistung}}`, `{{unternehmen}}`,
 `{{herkunft}}` and `{{formular}}`, plus `{{message}}` with everything in one
-field for templates that predate the file.
+field for templates that predate the file. The interpreter form writes its own
+details (type, languages, occasion, preferred date, place, phone) as labelled
+lines into `{{message}}` and `{{beschreibung}}`, so the existing template shows
+them without a change.
 
 Vite inlines these at **build** time, so adding them to `.env` after a build
 does nothing: run `npm run build` again.
@@ -149,12 +156,19 @@ Cloudflare Workers Static Assets, configured in `wrangler.jsonc`:
   stores every form request as a Markdown file in the private repo
   `MuhamedBeck/anfragen`, next to the EmailJS mail. It needs the secret
   `GITHUB_TOKEN`, a fine-grained token with "Contents: Read and write" on that
-  repo only: `npx wrangler secret put GITHUB_TOKEN`. Tests: `npm test`.
+  repo only: `npx wrangler secret put GITHUB_TOKEN`. `GET /api/anfrage/status`
+  answers whether the Worker can still write there with that token.
+
+Deploy through the chain, not with `wrangler deploy` alone:
 
 ```bash
-npm run build
-npx wrangler deploy
+npm run deploy   # npm test → npm run build → wrangler deploy → scripts/check-live.js
 ```
+
+The live check fetches the deployed pages: every contact form renders with its
+send button locked until the script runs, the interpreter pages carry their
+WhatsApp and phone links, every route answers, and the request archive is
+reachable. Tests live in `worker/` and `tests/` (`npm test`).
 
 Verify redirects with `npx wrangler dev` before deploying: a syntax error in `_redirects` is
 dropped silently at upload rather than reported.

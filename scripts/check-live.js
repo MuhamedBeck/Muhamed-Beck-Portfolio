@@ -1,17 +1,22 @@
 // Probes the deployed site for the failures that are invisible from the build.
 //
-// The one this exists for: both contact forms disappear when the EmailJS
+// The one this exists for: every contact form disappears when the EmailJS
 // variables are missing at build time, and the resulting page is a perfectly
 // valid 200 with a polite line offering an email address instead. Nothing about
 // it looks broken from the outside, so it can sit there for weeks losing
 // enquiries. That has happened twice.
 //
-// It is checkable over plain HTTP because prerender-meta.js renders the page at
+// It is checkable over plain HTTP because prerender-meta.js renders the pages at
 // build time: dist/kontakt/index.html contains the real <form> markup, or it
-// contains the fallback. No browser needed.
+// contains the fallback. No browser needed. The same holds for the send button,
+// which the prerendered HTML ships locked until the script runs, for the
+// WhatsApp and phone links of the interpreter pages, and for the request
+// archive, whose Worker reports at /api/anfrage/status whether its token still
+// gets it in.
 //
 // Run after a deploy, and on a schedule from .github/workflows/kontaktformular.yml,
-// where a failure mails whoever watches the repository.
+// where a failure mails whoever watches the repository. Node builtins and the
+// project's own plain modules only: that job runs without npm install.
 //
 //   node scripts/check-live.js
 //   node scripts/check-live.js --base http://localhost:4173
@@ -20,6 +25,9 @@ import { readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROUTES, SITE_URL } from "../src/routes/registry.js";
+import { CONTACT, whatsappHref } from "../src/content/site.js";
+import { FELD_IDS } from "../src/services/dolmetscherAnfrage.js";
+import { archivStatusMaengel, kontaktwegeMaengel, ohneSkriptMaengel } from "./live-pruefungen.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -50,6 +58,8 @@ const get = async (path) => {
   }
 };
 
+const DOLMETSCHER = ROUTES.filter((route) => route.group === "dolmetscher");
+
 const FORMS = [
   {
     path: "/kontakt",
@@ -61,15 +71,28 @@ const FORMS = [
     label: "Contact form (English)",
     fields: ["hire-name", "hire-email", "hire-service", "hire-message"],
   },
+  // Only fields that are always in the prerendered HTML; date, time and place
+  // appear once a type of request is chosen.
+  ...DOLMETSCHER.map((route) => ({
+    path: route.path,
+    label: `Anfrageformular Dolmetschen (${route.locale})`,
+    fields: ["art", "sprachen", "name", "email", "nachricht"].map((name) => FELD_IDS[name]),
+  })),
 ];
 
 const probe = async () => {
   const failures = [];
   const fail = (what, detail) => failures.push({ what, detail });
+  // Each page once per attempt, though several checks read it.
+  const pages = new Map();
+  const pageOf = (path) => {
+    if (!pages.has(path)) pages.set(path, get(path));
+    return pages.get(path);
+  };
 
   // 1. The contact forms. This is the whole reason the script exists.
   for (const form of FORMS) {
-    const page = await get(form.path);
+    const page = await pageOf(form.path);
 
     if (page.status !== 200) {
       fail(form.label, `${form.path} answered HTTP ${page.status}${page.error ? ` (${page.error})` : ""}`);
@@ -96,6 +119,24 @@ const probe = async () => {
 
     if (missing.length) fail(form.label, `${form.path} renders a form but is missing: ${missing.join(", ")}`);
     else if (!page.body.includes("<form")) fail(form.label, `${form.path} has the fields but no <form> around them`);
+
+    // Without the script the button would send the form as a GET to this very
+    // address, and nothing would arrive. The prerendered HTML must ship it
+    // locked, next to a note with mail and phone.
+    for (const mangel of ohneSkriptMaengel(page.body)) fail(form.label, `${form.path}: ${mangel}`);
+  }
+
+  // The interpreter pages promise WhatsApp and a phone call next to the form.
+  // A wrong number there loses the urgent requests, which come that way.
+  for (const route of DOLMETSCHER) {
+    const name = `Kontaktwege Dolmetschen (${route.locale})`;
+    const result = await pageOf(route.path);
+    if (result.status !== 200) {
+      fail(name, `${route.path} answered HTTP ${result.status}`);
+      continue;
+    }
+    const wege = { whatsapp: whatsappHref(), telefon: `tel:${CONTACT.phone}` };
+    for (const mangel of kontaktwegeMaengel(result.body, wege)) fail(name, `${route.path}: ${mangel}`);
   }
 
   // The Arabic contact page carries no form on purpose, so it cannot be checked
@@ -151,6 +192,9 @@ const probe = async () => {
   if (archiv.status !== 405) {
     fail("Anfrage-Archiv", `/api/anfrage answered HTTP ${archiv.status}, expected 405 from the Worker`);
   }
+  // Reaching the Worker is not enough: an expired token means the mail still
+  // arrives and the archive quietly stays empty.
+  for (const mangel of archivStatusMaengel(await get("/api/anfrage/status"))) fail("Anfrage-Archiv", mangel);
 
   return failures;
 };
@@ -175,6 +219,7 @@ if (failures.length) {
 }
 
 console.log(
-  `check-live: ${BASE} OK - both contact forms render, ${ROUTES.length} routes answer 200, ` +
-    "IndexNow key, sitemap and request archive in place"
+  `check-live: ${BASE} OK - ${FORMS.length} contact forms render with a locked send button, ` +
+    `WhatsApp and phone links in place, ${ROUTES.length} routes answer 200, ` +
+    "IndexNow key, sitemap and request archive in place, archive token valid"
 );

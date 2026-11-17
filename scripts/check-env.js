@@ -53,7 +53,7 @@ if (!missing.length) {
 if (process.env.ALLOW_MISSING_EMAILJS === "1") {
   console.warn(
     `check-env: building WITHOUT a contact form on purpose (missing ${missing.join(", ")}).\n` +
-      "check-env: /kontakt and /en/hire will show the direct contact details instead."
+      "check-env: every page with a contact form will show the direct contact details instead."
   );
   process.exit(0);
 }
@@ -61,9 +61,9 @@ if (process.env.ALLOW_MISSING_EMAILJS === "1") {
 console.error(`\ncheck-env: ${missing.length} of ${REQUIRED.length} EmailJS values missing\n`);
 for (const key of missing) console.error(`  - ${key}`);
 console.error(
-  "\nWithout these the build succeeds but both contact forms are replaced by a\n" +
-    "line saying the form is unavailable, and every enquiry that would have come\n" +
-    "through them is lost.\n\n" +
+  "\nWithout these the build succeeds but every page with a contact form shows a\n" +
+    "line saying the form is unavailable instead, and every enquiry that would\n" +
+    "have come through them is lost.\n\n" +
     "  cp .env.example .env      then fill in the three values from dashboard.emailjs.com\n\n" +
     "To build the form-less version deliberately:\n\n" +
     "  ALLOW_MISSING_EMAILJS=1 npm run build\n"

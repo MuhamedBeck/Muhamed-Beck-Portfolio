@@ -7,6 +7,7 @@ import {
   findeBezeichnungen,
   normalisieren,
   pruefeTexte,
+  texteAusHtml,
 } from "../scripts/geschuetzte-bezeichnungen.js";
 
 const frei = (text) => assert.deepEqual(findeBezeichnungen(text), [], text);
@@ -80,4 +81,23 @@ test("findeBezeichnungen nennt den Treffer, pruefeTexte den Ort", () => {
   assert.deepEqual(pruefeTexte([{ ort: 'route "x": title', text: "Vereidigter Dolmetscher" }]), [
     'route "x": title: geschützte Bezeichnung „vereidig“',
   ]);
+});
+
+test("texteAusHtml: Text ohne Tags, Kopf-Angaben, eigene strukturierte Daten, Verweise und Attribute", () => {
+  const html = [
+    "<html><head><title>Titel mit Siegel</title>",
+    '<meta name="description" content="Beschreibung &amp; Zulassung" />',
+    '<script type="application/ld+json">{"@type":"Person","note":"certified"}</script>',
+    '<script type="application/ld+json">{"@type":"Service","description":"sworn"}</script>',
+    '</head><body><div id="root"><main>',
+    "<p>Polizei<!-- -->dolmetscher</p><p>staatlich <em>geprüft</em></p><p>ver<span>eidigt</span></p>",
+    '<a href="https://wa.me/49?text=%D9%85%D8%AD%D9%84%D9%81" aria-label="Stempel">x</a>',
+    '<img alt="beglaubigt" /><script>var registered = 1;</script>',
+    "</main></div></body></html>",
+  ].join("\n");
+  const meldungen = pruefeTexte(texteAusHtml(html)).join("\n");
+  for (const treffer of [
+    "siegel", "zulassung", "sworn", "polizeidolmetsch", "staatlich geprüft", "vereidig", "محلف", "stempel", "beglaubig",
+  ]) assert.ok(meldungen.includes(`„${treffer}“`), treffer);
+  assert.doesNotMatch(meldungen, /certified|registered/);
 });
