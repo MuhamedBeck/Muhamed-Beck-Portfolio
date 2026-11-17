@@ -87,7 +87,7 @@ test("texteAusHtml: Text ohne Tags, Kopf-Angaben, eigene strukturierte Daten, Ve
   const html = [
     "<html><head><title>Titel mit Siegel</title>",
     '<meta name="description" content="Beschreibung &amp; Zulassung" />',
-    '<script type="application/ld+json">{"@type":"Person","note":"certified"}</script>',
+    '<script type="application/ld+json">{"@graph":[{"@type":"WebSite","note":"certified"}]}</script>',
     '<script type="application/ld+json">{"@type":"Service","description":"sworn"}</script>',
     '</head><body><div id="root"><main>',
     "<p>Polizei<!-- -->dolmetscher</p><p>staatlich <em>geprüft</em></p><p>ver<span>eidigt</span></p>",
@@ -100,4 +100,29 @@ test("texteAusHtml: Text ohne Tags, Kopf-Angaben, eigene strukturierte Daten, Ve
     "siegel", "zulassung", "sworn", "polizeidolmetsch", "staatlich geprüft", "vereidig", "محلف", "stempel", "beglaubig",
   ]) assert.ok(meldungen.includes(`„${treffer}“`), treffer);
   assert.doesNotMatch(meldungen, /certified|registered/);
+});
+
+test("Varianten: Bindestrich, Umschreibung, weitere Stämme, arabische Schreibweisen", () => {
+  for (const text of [
+    "öffentlich-bestellter Übersetzer", "öffentlich bestellt und vereidet", "allgemein beeideter Dolmetscher",
+    "Dolmetscher mit Lizenz", "Urkundsübersetzer", "Gerichtssprachmittler", "notarielle Übersetzung",
+    "ermaechtigter Übersetzer", "staatlich geprueft", "oeffentlich bestellt", "Gerichtsuebersetzer",
+    "مترجم قانوني", "المترجم القانوني", "الأختام", "ترجمه موثقه", "مترجم رسمى", "ترجمه رسميه",
+  ]) gesperrt(text);
+  for (const text of [
+    "Notariat", "Notar und Standesamt", "في الختام", "ويبقى حق الانسحاب المقرر قانونًا قائمًا.",
+    "ولا أقدّم استشارات قانونية.",
+  ]) frei(text);
+});
+
+test("texteAusHtml: Vorlagenblock wird am Inhalt erkannt, nicht an der Stelle", () => {
+  const seite = '<script type="application/ld+json">{"@graph":[{"@type":"Service","description":"sworn"}]}</script>';
+  const vorlage = '<script type="application/ld+json">{"@graph":[{"@type":"WebSite","name":"certified"}]}</script>';
+  const html = (...bloecke) =>
+    `<html><head><title>T</title>${bloecke.join("")}</head><body><div id="root"><main>x</main></div></body></html>`;
+  const melde = (h) => pruefeTexte(texteAusHtml(h)).join("\n");
+  assert.match(melde(html(seite, vorlage)), /„sworn“/);
+  assert.doesNotMatch(melde(html(seite, vorlage)), /certified/);
+  assert.match(melde(html(seite)), /„sworn“/);
+  assert.match(melde(html(vorlage, seite)), /„sworn“/);
 });

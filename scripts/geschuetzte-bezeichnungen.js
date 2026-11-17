@@ -9,18 +9,22 @@ export const GEPRUEFTE_GRUPPE = "dolmetscher";
 
 const STAEMME = [
   // Deutsch
-  "vereidig", "beeidig", "ermächtig", "beglaubig", "zertifi", "akkrediti", "lizenzi", "autorisi",
-  "anerkannt", "zugelassen", "zulassung", "gerichtlich", "gerichtsfest", "gerichtsdolmetsch",
-  "gerichtsübersetz", "justizdolmetsch", "polizeidolmetsch", "urkundenübersetz",
+  "vereidig", "beeidig", "vereidet", "beeidet", "ermächtig", "beglaubig", "zertifi", "akkrediti",
+  "lizenz", "autorisi", "anerkannt", "zugelassen", "zulassung", "gerichtlich", "gerichtsfest",
+  "gerichtsdolmetsch", "gerichtsübersetz", "gerichtssprachmittl", "justizdolmetsch",
+  "polizeidolmetsch", "urkundenübersetz", "urkundsübersetz", "notariell",
   "öffentlich bestellt", "staatlich geprüft", "rechtsgültig", "rechtsverbindlich",
   "stempel", "siegel", "kassenleistung",
+  // Deutsch, mit ae, oe, ue statt der Umlaute geschrieben
+  "ermaechtig", "gerichtsuebersetz", "urkundenuebersetz", "urkundsuebersetz",
+  "oeffentlich bestellt", "staatlich geprueft",
   // Englisch
   "sworn", "certified", "accredited", "licensed", "registered", "approved", "appointed",
   "attested", "notarized", "notarised", "apostille", "court interpreter", "court translator",
   "court-appointed", "police interpreter", "state-certified", "official translation",
   "official translator", "legally valid", "legally recognised", "legally recognized",
   // Arabisch
-  "محلف", "معتمد", "مرخص", "مجاز", "مصدق", "تصديق", "معترف", "ختم",
+  "محلف", "معتمد", "مرخص", "مجاز", "مصدق", "تصديق", "معترف", "ختم", "اختام",
 ];
 
 const MUSTER = [
@@ -28,9 +32,11 @@ const MUSTER = [
   /diplom[- ]?(dolmetscher|übersetzer)/,
   /(bescheinigte|bestätigte|amtliche|offizielle)[nrs]? übersetzung/,
   /authori[sz]ed (translator|interpreter)/,
-  // Arabische Wendungen, das zweite Wort mit oder ohne Artikel.
-  /ترجمة (ال)?موثقة/, /مترجم (ال)?محاكم/, /مترجم (ال)?محكمة/, /مترجم (ال)?قضائي/,
-  /مترجم (ال)?رسمي/, /ترجمة (ال)?رسمية/, /وثائق (ال)?رسمية/, /ترجمة (ال)?قانونية/,
+  // Arabische Wendungen, das zweite Wort mit oder ohne Artikel. Geschrieben in
+  // der Form nach normalisieren: Ta marbuta als Ha, Alif maqsura als Ya.
+  /ترجمه (ال)?موثقه/, /مترجم (ال)?محاكم/, /مترجم (ال)?محكمه/, /مترجم (ال)?قضائي/,
+  /مترجم (ال)?رسمي/, /ترجمه (ال)?رسميه/, /وثائق (ال)?رسميه/, /ترجمه (ال)?قانونيه/,
+  /مترجم (ال)?قانوني/,
 ];
 
 /* Zeichen, die beim Abgleich nicht zählen: weicher Trennstrich, Breiten- und
@@ -43,7 +49,8 @@ const UNSICHTBAR = new RegExp(
 /**
  * Text in die Form bringen, in der gesucht wird: NFKC, klein, gleiche
  * Bindestriche, ohne unsichtbare Zeichen und Vokalzeichen, Alif-Formen
- * vereinheitlicht, Leerraum zusammengefasst.
+ * vereinheitlicht, Ta marbuta als Ha und Alif maqsura als Ya (beides wird im
+ * Netz oft so geschrieben), Leerraum zusammengefasst.
  *
  * @param {string} text
  * @returns {string}
@@ -55,6 +62,8 @@ export function normalisieren(text) {
     .replace(/[‐‑]/g, "-")
     .replace(UNSICHTBAR, "")
     .replace(/[أإآٱ]/g, "ا")
+    .replace(/ة/g, "ه")
+    .replace(/ى/g, "ي")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -68,12 +77,15 @@ export function normalisieren(text) {
  */
 export function findeBezeichnungen(text) {
   const normal = normalisieren(text);
+  /* Dieselbe Wendung mit Bindestrich statt Leerzeichen („öffentlich-bestellt“)
+     zählt genauso. */
+  const ohneBindestrich = normal.replace(/-/g, " ");
   const treffer = [];
   for (const stamm of STAEMME) {
-    if (normal.includes(stamm)) treffer.push(stamm);
+    if (normal.includes(stamm) || ohneBindestrich.includes(stamm.replace(/-/g, " "))) treffer.push(stamm);
   }
   for (const muster of MUSTER) {
-    const fund = normal.match(muster);
+    const fund = normal.match(muster) ?? ohneBindestrich.match(muster);
     if (fund) treffer.push(fund[0]);
   }
   return [...new Set(treffer)];
@@ -111,12 +123,26 @@ const prozentDekodiert = (wert) => {
 
 const WURZEL = '<div id="root">';
 
+/* Der Block der Vorlage (index.html) beschreibt die IT-Seite: Person, Website,
+   Unternehmen. Er ist der einzige mit einem Knoten vom Typ WebSite; die Blöcke
+   der Seite (Brotkrumen, Service) haben keinen. Erkannt wird er deshalb am
+   Inhalt, nicht an seiner Stelle; was sich nicht lesen lässt, wird geprüft. */
+const istVorlagenBlock = (block) => {
+  try {
+    const daten = JSON.parse(block);
+    const knoten = Array.isArray(daten?.["@graph"]) ? daten["@graph"] : [daten];
+    return knoten.some((eintrag) => eintrag?.["@type"] === "WebSite");
+  } catch {
+    return false;
+  }
+};
+
 /**
  * Prüfbare Texte einer vorgerenderten Seite, für Stufe 2 der Sperre
  * (scripts/check-bezeichnungen.js): sichtbarer Text, einmal mit Lücke an
  * jedem Tag und einmal zusammengezogen (ein Wort kann über ein Tag laufen),
  * Titel und Meta-Angaben im Kopf, die strukturierten Daten der Seite ohne
- * den ersten Block (der stammt aus der Vorlage und gehört der IT), dazu
+ * den Block der Vorlage (istVorlagenBlock: der IT-Teil mit WebSite), dazu
  * Verweisziele und lesbare Attribute.
  *
  * @param {string} html
@@ -139,8 +165,8 @@ export function texteAusHtml(html) {
   const meta = [...kopf.matchAll(/<meta\b[^>]*\scontent="([^"]*)"/gi)].map((treffer) => treffer[1]);
 
   const daten = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)]
-    .slice(1)
-    .map((treffer) => treffer[1]);
+    .map((treffer) => treffer[1])
+    .filter((block) => !istVorlagenBlock(block));
 
   const attribute = [...inhalt.matchAll(/\s(href|alt|title|aria-label|placeholder)="([^"]*)"/gi)].map(
     ([, name, wert]) => {
