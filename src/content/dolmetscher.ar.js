@@ -81,8 +81,9 @@ export const INHALT = {
    *   einleitung   Ich bin Muhamed Nur Beck (in lateinischer Schrift
    *                wiederholt) und dolmetsche und übersetze zwischen Arabisch,
    *                Deutsch und Englisch, bei Terminen und für Schriftstücke.
-   *                Ich dolmetsche nacheinander, also nach jedem Satz oder
-   *                Abschnitt des Gesprächs, nicht gleichzeitig. Vor Ort in
+   *                Wer einen „مترجم فوري“ (wörtlich: Sofort-Dolmetscher)
+   *                für einen Termin sucht: Ich dolmetsche nacheinander, also
+   *                nach jedem Satz oder Abschnitt, nicht gleichzeitig. Vor Ort in
    *                Frankfurt und im Rhein-Main-Gebiet, weiter entfernte
    *                Termine nach Absprache, per Video und Telefon in ganz
    *                Deutschland.
@@ -96,7 +97,7 @@ export const INHALT = {
   kopf: {
     h1: "مترجم شفوي وتحريري بين العربية والألمانية في فرانكفورت",
     einleitung:
-      "أنا محمد نور بيك (Muhamed Nur Beck)، أترجم شفويًا وتحريريًا بين العربية والألمانية والإنجليزية، في المواعيد وللنصوص المكتوبة. أترجم الحديث بالتتابع، أي بعد كل جملة أو مقطع، لا في الوقت نفسه. حضوريًا في فرانكفورت ومنطقة الراين-ماين، والمواعيد الأبعد بالاتفاق، وعبر الفيديو والهاتف في جميع أنحاء ألمانيا.",
+      "أنا محمد نور بيك (Muhamed Nur Beck)، أترجم شفويًا وتحريريًا بين العربية والألمانية والإنجليزية، في المواعيد وللنصوص المكتوبة. إذا كنت تبحث عن مترجم فوري لموعدك، فأنا أترجم الحديث بالتتابع، أي بعد كل جملة أو مقطع، لا في الوقت نفسه. حضوريًا في فرانكفورت ومنطقة الراين-ماين، والمواعيد الأبعد بالاتفاق، وعبر الفيديو والهاتف في جميع أنحاء ألمانيا.",
     portraitAlt: "محمد نور بيك، مترجم شفوي وتحريري في فرانكفورت",
     belege:
       "أولى مهامي في الترجمة كانت عام 2017، وأعمل بانتظام منذ 2022. أكثر من 150 مهمة في مراكز الشرطة والمحاكم والمستشفيات والدوائر الحكومية. العربية والألمانية لغتاي الأم، وأتحدث الإنجليزية بطلاقة تكفي للمفاوضات.",

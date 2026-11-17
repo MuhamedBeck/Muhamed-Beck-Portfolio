@@ -86,7 +86,7 @@ export const RATGEBER = [
       {
         h2: "Welche laufenden Kosten kommen zum Honorar dazu?",
         body: [
-          "Die Lizenz- und Betriebskosten der Software, die getrennt vom Honorar anfallen: n8n Cloud beginnt bei 20 € im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „Was kostet n8n?“.",
+          "Die Lizenz- und Betriebskosten der Software, die getrennt vom Honorar anfallen: n8n Cloud beginnt bei 20 € im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „n8n Kosten und Preise“.",
           "Der wichtigste Kostenhebel ist dabei das Abrechnungsmodell des Tools: n8n zählt eine Workflow-Ausführung unabhängig davon, wie viele Schritte sie durchläuft, Make zählt jede einzelne Operation. Bei vielschrittigen Workflows mit hohem Volumen ist der Unterschied erheblich.",
         ],
       },
@@ -124,7 +124,7 @@ export const RATGEBER = [
       },
       {
         q: "Was kostet n8n selbst?",
-        a: "Die Lizenz- und Betriebskosten fallen getrennt vom Honorar an: n8n Cloud beginnt bei 20 € im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „Was kostet n8n?“.",
+        a: "Die Lizenz- und Betriebskosten fallen getrennt vom Honorar an: n8n Cloud beginnt bei 20 € im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „n8n Kosten und Preise“.",
       },
       {
         q: "Wie schnell amortisiert sich eine Automatisierung?",
@@ -133,7 +133,7 @@ export const RATGEBER = [
     ],
     related: [
       { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
-      { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
+      { path: "/ratgeber/n8n-kosten", label: "n8n Kosten und Preise: Lizenz, Betrieb und Umsetzung" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       {
         path: "/leistungen/n8n-automatisierung-oesterreich",
@@ -150,9 +150,9 @@ export const RATGEBER = [
   {
     path: "/ratgeber/n8n-kosten",
     kicker: "Kosten",
-    h1: "Was kostet n8n? Lizenz, Betrieb und Umsetzung",
+    h1: "n8n Kosten und Preise: Lizenz, Betrieb und Umsetzung",
     published: "2026-10-27",
-    modified: "2026-11-07",
+    modified: "2026-11-17",
     /* Seit 27.10.2026. Zielt auf "n8n kosten", "n8n preise" und "n8n kostenlos"
        (zusammen rund 1.200 Suchen im Monat laut Seobility) und grenzt sich vom
        Honorar-Ratgeber /ratgeber/n8n-freelancer-kosten ab: hier die Software
@@ -470,7 +470,7 @@ export const RATGEBER = [
     ],
     related: [
       { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
-      { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
+      { path: "/ratgeber/n8n-kosten", label: "n8n Kosten und Preise: Lizenz, Betrieb und Umsetzung" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
     ],

@@ -67,7 +67,7 @@ export const LEISTUNGEN = [
     weiterlesen: [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
-      { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
+      { path: "/ratgeber/n8n-kosten", label: "n8n Kosten und Preise: Lizenz, Betrieb und Umsetzung" },
       { path: "/ratgeber/n8n-selbst-hosten", label: "n8n selbst hosten: Docker, Server und Kosten" },
       { path: "/projekte/phoenix-parkservice", label: "Fallstudie Phoenix Parkservice: KI-SEO mit n8n" },
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
@@ -850,7 +850,7 @@ export const LEISTUNGEN = [
       { path: "/leistungen/ki-automatisierung-frankfurt", label: "KI-Automatisierung in Frankfurt umsetzen lassen" },
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
       { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
-      { path: "/ratgeber/n8n-kosten", label: "Was kostet n8n? Lizenz, Betrieb und Umsetzung" },
+      { path: "/ratgeber/n8n-kosten", label: "n8n Kosten und Preise: Lizenz, Betrieb und Umsetzung" },
     ],
     badge: "KI-Beratung",
     heroBild: {

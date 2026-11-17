@@ -405,13 +405,17 @@ export const ROUTES = [
     group: "ratgeber.n8n-kosten",
     load: () => import("../components/pages/ratgeber/RatgeberRoute.jsx"),
     props: { path: "/ratgeber/n8n-kosten" },
-    title: "Was kostet n8n? Lizenz, Betrieb und Umsetzung 2026",
+    /* „n8n Kosten“ seit 17.11.2026 wörtlich in Titel, Überschrift und
+       Navigation: Mit „Was kostet n8n?“ rankte für „n8n kosten“ (590 Suchen im
+       Monat) nur der Freelancer-Ratgeber, auf Platz 48; diese Seite stand nicht
+       in den ersten 96 Treffern (Seobility, 17.11.2026). */
+    title: "n8n Kosten 2026: Preise für Cloud, Lizenz und Betrieb",
     description:
-      "n8n kostet in der Cloud ab 20 € im Monat, die Community Edition ist kostenlos. Was Betrieb, KI und Umsetzung kosten, mit Beispielen aus echten Angeboten.",
-    h1: "Was kostet n8n? Lizenz, Betrieb und Umsetzung",
-    navLabel: "Was n8n kostet",
+      "n8n Kosten 2026: Cloud ab 20 € im Monat, Community Edition kostenlos. Was Betrieb, KI und Umsetzung kosten, mit Beispielen aus echten Angeboten.",
+    h1: "n8n Kosten und Preise: Lizenz, Betrieb und Umsetzung",
+    navLabel: "n8n Kosten und Preise",
     ogType: "article",
-    lastmod: "2026-11-07",
+    lastmod: "2026-11-17",
     changefreq: "monthly",
     priority: "0.8",
   },

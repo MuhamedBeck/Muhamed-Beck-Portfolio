@@ -132,6 +132,8 @@ test("Arabisch: festgelegte Wörter, Beträge mit dem Wort, jeder Ort übersetzt
   assert.ok(text.includes(preisText(DOLMETSCH_PREIS.normzeile, "ar")));
   assert.doesNotMatch(text, /[€٠-٩]/);
   assert.ok(AR.kopf.einleitung.includes("Muhamed Nur Beck"));
+  // Das Suchwort aus dem Titel steht auch im Text.
+  assert.ok(AR.kopf.einleitung.includes("مترجم فوري"));
   for (const stelle of [AR.ablauf.workflow.beschreibung, AR.ablauf.unterschrift, AR.fragen.liste[0].a]) {
     assert.ok(stelle.includes("عادةً خلال 24 ساعة"), stelle);
   }
