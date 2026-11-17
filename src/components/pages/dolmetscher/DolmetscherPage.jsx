@@ -71,7 +71,11 @@ export const DolmetscherPage = ({ inhalt }) => {
           <p className={KLEIN}>
             {kopf.belege}{" "}
             {kopf.belegeVerweis ? (
-              <Link to="/lebenslauf" className="text-accent hover:underline">
+              /* Unterstrichen: mitten im Fließtext unterschiede ihn sonst nur
+                 die Farbe, und die hebt sich vom gedämpften Text kaum ab. */
+              <Link
+                to="/lebenslauf"
+                className="text-accent underline decoration-hairline-strong underline-offset-4 transition-colors hover:decoration-accent">
                 {kopf.belegeVerweis}
               </Link>
             ) : null}
