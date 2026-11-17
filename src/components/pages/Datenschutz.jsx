@@ -134,7 +134,12 @@ const SECTIONS = [
           Wenn Sie mir über das Kontakt- oder Anfrageformular eine Nachricht senden,
           werden die von Ihnen eingegebenen Daten (Name, E-Mail-Adresse, ggf. Firma, Art
           der Anfrage, wie Sie auf mich aufmerksam wurden, und Nachrichtentext) zur
-          Bearbeitung Ihrer Anfrage verarbeitet. Für den technischen Versand nutze ich
+          Bearbeitung Ihrer Anfrage verarbeitet. Im Anfrageformular für Dolmetsch- und
+          Übersetzungsleistungen kommen hinzu: Art der Anfrage, Sprachen, Anlass,
+          Wunschtermin, Ort des Termins, die Sprache der Seite, von der Sie anfragen, und,
+          wenn Sie sie angeben, Ihre Telefonnummer. Bitte tragen Sie dort keine
+          Gesundheitsdaten, Aktenzeichen, Unterlagen oder Namen anderer Personen ein. Für
+          den technischen Versand nutze ich
           den Dienst EmailJS (emailjs.com). Ihre Angaben werden dabei über die Server von
           EmailJS an mein E-Mail-Postfach übermittelt; dabei kann eine Datenverarbeitung
           außerhalb der EU stattfinden. Weitere Informationen:{" "}
@@ -151,7 +156,11 @@ const SECTIONS = [
           Repository bei GitHub (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco,
           CA 94107, USA), damit sie auch dann vollständig vorliegt, wenn eine E-Mail nicht
           ankommt, und ich Anfragen geordnet bearbeiten kann. Gespeichert werden dieselben
-          Angaben wie oben, nicht aber Ihre IP-Adresse. Die Übermittlung läuft über die
+          Angaben wie oben, nicht aber Ihre IP-Adresse. Zum Schutz vor automatisierten
+          Einsendungen enthält das Formular ein für Menschen unsichtbares Feld. War es beim
+          Absenden ausgefüllt, wird die Anfrage in der E-Mail und in der Datei mit dem
+          Vermerk „Spamverdacht“ gekennzeichnet; der Inhalt dieses Felds wird weder
+          übertragen noch gespeichert. Die Übermittlung läuft über die
           Infrastruktur von Cloudflare (Ziffer 3); auch bei GitHub kann eine
           Datenverarbeitung außerhalb der EU stattfinden. Weitere Informationen:{" "}
           <a
@@ -168,6 +177,12 @@ const SECTIONS = [
           Interesse an der Bearbeitung von Anfragen). Ihre Daten werden an beiden Orten
           gelöscht, sobald sie für die Bearbeitung Ihrer Anfrage nicht mehr erforderlich
           sind und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+        </p>
+        <p>
+          Unterlagen für eine Übersetzung schicken Sie mir bitte per E-Mail. Ich verwende
+          sie nur für diesen Auftrag und lösche sie nach Abschluss, soweit keine
+          gesetzliche Aufbewahrungspflicht besteht. An einem Videotermin nehme ich über
+          den Dienst teil, zu dem Sie oder die Praxis einladen.
         </p>
       </>
     ),
@@ -204,7 +219,34 @@ const SECTIONS = [
     ),
   },
   {
-    title: "7. Schriftarten",
+    title: "7. Kontakt über WhatsApp",
+    body: (
+      <p>
+        Auf der Seite für Dolmetsch- und Übersetzungsleistungen können Sie mich über
+        WhatsApp erreichen. Schon beim Öffnen des Verweises erhält WhatsApp technische
+        Daten wie Ihre IP-Adresse. Anbieter ist die WhatsApp Ireland Limited, Merrion
+        Road, Dublin 4, D04 X2K5, Irland; sie verarbeitet diese Daten in eigener
+        Verantwortung, auch in den USA (EU-US Data Privacy Framework,
+        Standardvertragsklauseln). Wenn Sie mir dort schreiben, erhalte ich Ihre
+        Telefonnummer, Ihren Profilnamen und den Inhalt der Nachricht. Rechtsgrundlage
+        ist Art. 6 Abs. 1 lit. b DSGVO, bei Anfragen für andere Personen Art. 6 Abs. 1
+        lit. f DSGVO. Bitte senden Sie über WhatsApp keine Unterlagen und keine Angaben
+        zur Gesundheit. Den Chatverlauf lösche ich, sobald Ihre Anfrage erledigt ist und
+        keine Aufbewahrungspflicht besteht. Wenn Sie WhatsApp nicht nutzen möchten,
+        erreichen Sie mich über das Formular, das Telefon oder die E-Mail-Adresse.
+        Weitere Informationen:{" "}
+        <a
+          href="https://www.whatsapp.com/legal/privacy-policy-eea"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={EXT_LINK}>
+          whatsapp.com/legal/privacy-policy-eea
+        </a>
+      </p>
+    ),
+  },
+  {
+    title: "8. Schriftarten",
     body: (
       <p>
         Diese Website verwendet die Schriftarten Space Grotesk, IBM Plex Sans und
@@ -215,7 +257,7 @@ const SECTIONS = [
     ),
   },
   {
-    title: "8. Externe Links",
+    title: "9. Externe Links",
     body: (
       <p>
         Diese Website enthält Links zu externen Plattformen wie LinkedIn und GitHub.
@@ -226,7 +268,7 @@ const SECTIONS = [
     ),
   },
   {
-    title: "9. SSL- bzw. TLS-Verschlüsselung",
+    title: "10. SSL- bzw. TLS-Verschlüsselung",
     body: (
       <p>
         Diese Website nutzt aus Sicherheitsgründen und zum Schutz der Übertragung
@@ -237,7 +279,7 @@ const SECTIONS = [
     ),
   },
   {
-    title: "10. Ihre Rechte",
+    title: "11. Ihre Rechte",
     body: (
       <>
         <p>Ihnen stehen folgende Rechte zu:</p>
@@ -262,7 +304,7 @@ const SECTIONS = [
     ),
   },
   {
-    title: "11. Aktualität dieser Datenschutzerklärung",
+    title: "12. Aktualität dieser Datenschutzerklärung",
     body: (
       <p>
         Ich behalte mir vor, diese Datenschutzerklärung anzupassen, damit sie stets den
