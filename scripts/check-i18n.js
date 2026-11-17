@@ -20,6 +20,7 @@ import {
   isMeasurable,
 } from "./snippet-width.js";
 import { GEPRUEFTE_GRUPPE, pruefeTexte } from "./geschuetzte-bezeichnungen.js";
+import nav from "../src/i18n/dict/nav.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
@@ -181,6 +182,13 @@ for (const ordner of [join("src", "i18n", "dict"), join("src", "content")]) {
     const pfad = join(ordner, datei);
     bezeichnungsEintraege.push({ ort: pfad, text: readFileSync(join(root, pfad), "utf8") });
   }
+}
+// Der Verweis in der Fußzeile der IT-Seiten nennt die Dolmetscher-Seite.
+for (const sprache of LIVE_LOCALES) {
+  bezeichnungsEintraege.push({
+    ort: `dict/nav.js [${sprache}]: footer.dolmetscher`,
+    text: String(nav[sprache]?.footer?.dolmetscher ?? ""),
+  });
 }
 for (const meldung of pruefeTexte(bezeichnungsEintraege)) fail(meldung);
 

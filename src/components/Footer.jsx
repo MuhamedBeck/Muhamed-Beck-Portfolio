@@ -1,7 +1,7 @@
 import { FaEnvelope, FaPhone, FaLinkedin, FaGithub } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useDict, useLocale } from "../i18n";
-import { ROUTES, sectionsFor } from "../routes/registry.js";
+import { ROUTES, getGroupRoute, sectionsFor } from "../routes/registry.js";
 import { CONTACT, PERSON, SOCIAL, mailtoHref } from "../content/site";
 import nav from "../i18n/dict/nav";
 import ui from "../i18n/dict/ui";
@@ -37,6 +37,7 @@ const Footer = () => {
   const t = useDict(nav).footer;
   const chrome = useDict(ui);
   const locale = useLocale();
+  const dolmetscher = getGroupRoute("dolmetscher", locale);
 
   const abschnitte = sectionsFor(locale);
   const services = columnFor(locale, `${abschnitte.services}/`);
@@ -118,7 +119,7 @@ const Footer = () => {
             © {new Date().getFullYear()} {PERSON.name}. {t.rights}
           </p>
           <p className="hidden sm:block">{t.tagline}</p>
-          <div className="flex items-center gap-5">
+          <div className="flex flex-wrap items-center justify-center gap-x-5">
             {/* Legal pages stay German regardless of interface language: they
                 are the legally binding text and a translation would only add
                 exposure. */}
@@ -128,6 +129,13 @@ const Footer = () => {
             <Link to="/datenschutz" className="-my-2 py-2 transition-colors hover:text-paper-dim">
               {t.privacy}
             </Link>
+            {/* The interpreter pages, in the visitor's language. Only here and
+                not in the menu or the columns: the IT pages stay about IT. */}
+            {dolmetscher ? (
+              <Link to={dolmetscher.path} className="-my-2 py-2 transition-colors hover:text-paper-dim">
+                {t.dolmetscher}
+              </Link>
+            ) : null}
           </div>
         </div>
       </div>

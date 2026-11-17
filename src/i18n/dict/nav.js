@@ -24,6 +24,7 @@ const de = {
     privacy: "Datenschutz",
     rights: "Alle Rechte vorbehalten.",
     tagline: "KI-Automatisierung und Webentwicklung aus Frankfurt am Main.",
+    dolmetscher: "Dolmetscher Arabisch",
   },
 };
 
@@ -44,6 +45,7 @@ const en = {
     privacy: "Privacy",
     rights: "All rights reserved.",
     tagline: "AI and process automation from Frankfurt, Germany.",
+    dolmetscher: "Arabic interpreter",
   },
 };
 
@@ -56,7 +58,8 @@ const en = {
  *   cta       Ein Projekt starten
  *   footer    Leistungen · Artikel · Projekte · Rechtliches · Kontakt ·
  *             Impressum · Datenschutz · Alle Rechte vorbehalten. ·
- *             Prozessautomatisierung und KI aus Frankfurt am Main, Deutschland. */
+ *             Prozessautomatisierung und KI aus Frankfurt am Main, Deutschland. ·
+ *             Dolmetscher Arabisch */
 const ar = {
   primary: [
     { to: "/ar/services", label: "الخدمات" },
@@ -74,6 +77,7 @@ const ar = {
     privacy: "الخصوصية",
     rights: "جميع الحقوق محفوظة.",
     tagline: "أتمتة العمليات والذكاء الاصطناعي من فرانكفورت، ألمانيا.",
+    dolmetscher: "مترجم فوري عربي",
   },
 };
 

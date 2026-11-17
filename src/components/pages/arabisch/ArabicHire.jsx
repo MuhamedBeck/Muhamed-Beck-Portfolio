@@ -15,6 +15,11 @@ const MAIL_HREF = mailtoHref(ui.ar.mailBetreff);
  * locale; a third form would be a third thing that can silently stop sending,
  * and the site has already lost enquiries that way twice. Direct contact is
  * also what a first enquiry from a new market actually looks like.
+ *
+ * That still holds for this page. The interpreter pages are the one exception
+ * and have their own form: everything new travels in the variables the mail
+ * template already knows, and each language version has its own entry in
+ * scripts/check-live.js.
  */
 export const ArabicHire = () => (
   <PageShell

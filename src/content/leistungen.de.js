@@ -3,6 +3,7 @@
 // The `faq` entries are also emitted as FAQPage JSON-LD by prerender-meta.js.
 
 // With the .js extension: prerender-meta.js imports this file under bare node.
+import { WEBSITE_AUF_ARABISCH } from "./dolmetscher.verweise.js";
 import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, UST_KURZ, euro } from "./site.js";
 import {
   ENTSCHEIDUNG_GEO,
@@ -243,6 +244,7 @@ export const LEISTUNGEN = [
         path: "/projekte/phoenix-parkservice",
         label: "Phoenix Parkservice: Buchungsplattform und Website",
       },
+      WEBSITE_AUF_ARABISCH.weiterlesen,
     ],
     flow: {
       caption: "So entsteht eine Website",
@@ -327,10 +329,12 @@ export const LEISTUNGEN = [
         },
         text: "Ausführlich mit allen Quellen im Ratgeber „Was kostet eine Website 2026?“.",
       },
+      WEBSITE_AUF_ARABISCH.abbildung,
     ],
     leistungen: [
       "Neubau und Relaunch von Firmen-Websites, statisch erzeugt, etwa mit Astro",
       "Mehrsprachigkeit mit geprüfter Vollständigkeit der Übersetzungen",
+      WEBSITE_AUF_ARABISCH.leistung,
       "Technisches SEO: Titel, Beschreibungen, strukturierte Daten, Sitemap, hreflang",
       "Weiterleitung aller alten Adressen beim Relaunch",
       "Barrierefreiheit und Kernwerte: Tastaturbedienung, Kontraste, Ladezeit, Layoutstabilität",

@@ -1008,3 +1008,8 @@ export function getAlternates(entry) {
 export function getHome(locale) {
   return ROUTES.find((route) => route.group === "home" && route.locale === locale);
 }
+
+/** The entry of a group in one locale, or undefined when that locale has none. */
+export function getGroupRoute(group, locale) {
+  return ROUTES.find((route) => route.group === group && route.locale === locale);
+}

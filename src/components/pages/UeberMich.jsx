@@ -7,6 +7,7 @@ import { LinkArrow } from "../LinkArrow";
 import { WERDEGANG, WERDEGANG_STAND } from "../../content/lebenslauf.de";
 import { Werdegang } from "../Werdegang";
 import { Werkzeuge } from "../Werkzeuge";
+import { DOLMETSCHER_PFAD, UEBER_MICH_VERWEIS } from "../../content/dolmetscher.verweise";
 
 // The site had no About page in German at all, which is the single biggest
 // structural gap it had. This is where the Person entity lives: an assistant
@@ -130,7 +131,14 @@ const UeberMich = () => (
             ich auch nicht.
           </p>
           <p>
-            Ich spreche Deutsch, Englisch und Arabisch. Anfragen beantworte ich innerhalb
+            Ich spreche Deutsch, Englisch und Arabisch.
+            {UEBER_MICH_VERWEIS.vor}
+            <Link
+              to={DOLMETSCHER_PFAD}
+              className="text-paper-soft underline decoration-hairline-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent">
+              {UEBER_MICH_VERWEIS.link}
+            </Link>
+            {UEBER_MICH_VERWEIS.nach} Anfragen beantworte ich innerhalb
             von 24 Stunden, und wenn sich Ihr Vorhaben nicht rechnet,
             sage ich das im Erstgespräch statt hinterher.
           </p>

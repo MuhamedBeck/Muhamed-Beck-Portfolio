@@ -196,6 +196,18 @@ const Lebenslauf = () => (
 
                 {station.punkte ? <Punktliste punkte={station.punkte} /> : null}
 
+                {/* Die Adresse steht ausgeschrieben, damit sie auch im Ausdruck steht. */}
+                {station.verweis ? (
+                  <p className="mt-3 max-w-[68ch] text-sm leading-relaxed text-paper-soft">
+                    {station.verweis.text}{" "}
+                    <Link
+                      to={station.verweis.pfad}
+                      className="text-paper-soft underline decoration-hairline-strong underline-offset-4 transition-colors hover:text-accent hover:decoration-accent">
+                      {station.verweis.adresse}
+                    </Link>
+                  </p>
+                ) : null}
+
                 {station.gruppen
                   ? station.gruppen.map((gruppe) => (
                       <div key={gruppe.titel} className="mt-5">

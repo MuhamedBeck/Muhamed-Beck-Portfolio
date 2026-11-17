@@ -19,6 +19,8 @@
  * Die Dolmetschertätigkeit läuft neben der Hauptbeschäftigung, INFOMOTION lief
  * neben dem Studium. Sortiert wird nach Enddatum, laufende Tätigkeiten zuerst.
  */
+import { LEBENSLAUF_PUNKT, LEBENSLAUF_VERWEIS } from "./dolmetscher.verweise.js";
+
 
 /* Oktober 2026: Die Angaben zur TOPEOPLE-Plattform am 28.10.2026 gegen das
    Repository geprüft. Sie ist JavaScript (JSX), nicht TypeScript, liegt auf
@@ -28,7 +30,7 @@
    dahinter und ist ersetzt. Der Voice-AI-Punkt ist auf die zwei Teile
    aufgeteilt, die nachweislich seine sind: die KI-Telefonvorqualifizierung
    in n8n und die Telefonie im Browser. */
-export const LEBENSLAUF_STAND = "Oktober 2026";
+export const LEBENSLAUF_STAND = "November 2026";
 
 export const KURZPROFIL = [
   "Ich baue Software, die Arbeit abschafft. Bei der TOPEOPLE Group GmbH leite ich seit März 2026 die Entwicklung einer internen Sales- und Recruiting-Plattform, die HubSpot bereits abgelöst hat und als Nächstes RecruitCRM und Personio ablösen soll: 19 Fachbereiche, 17 Rollen auf Row-Level-Security, über 90 geplante Jobs für Datenkonsistenz und automatisierte Tests mit Vitest und Playwright. Heute arbeiten 54 Kolleginnen und Kollegen damit.",
@@ -99,7 +101,9 @@ export const STATIONEN = [
       "Dolmetschen im medizinischen und behördlichen Umfeld",
       "Übersetzung von Berichten, Schriftstücken und Einverständniserklärungen unter Zeitdruck",
       "Vertrauliche und kultursensible Kommunikation zwischen deutschsprachigem Fachpersonal und arabischsprachigen Klienten",
+      LEBENSLAUF_PUNKT,
     ],
+    verweis: LEBENSLAUF_VERWEIS,
   },
   {
     von: "07/2024",
@@ -205,7 +209,7 @@ export const STATIONEN = [
     ort: "Frankfurt am Main",
     punkte: [
       "Dolmetschen vor Ort im medizinischen und behördlichen Umfeld",
-      "Übersetzung offizieller Dokumente unter knappen Fristen",
+      "Übersetzung von Schriftstücken unter knappen Fristen",
       "Kulturelle Nuancen berücksichtigt, Vertraulichkeit durchgehend gewahrt",
     ],
   },
@@ -319,7 +323,7 @@ export const KENNTNISSE = [
 export const SPRACHEN = [
   { sprache: "Deutsch", niveau: "Muttersprache" },
   { sprache: "Arabisch", niveau: "Muttersprache" },
-  { sprache: "Englisch", niveau: "C1, verhandlungssicher" },
+  { sprache: "Englisch", niveau: "verhandlungssicher" },
 ];
 
 export const ZERTIFIKATE = [
