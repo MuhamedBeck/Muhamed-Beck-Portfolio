@@ -4,7 +4,8 @@ import { Section } from "../../Section";
 import { Tabelle } from "../../Tabelle";
 import { WorkflowCanvas } from "../../WorkflowCanvas";
 import { FaqListe } from "../../FaqListe";
-import { useDict } from "../../../i18n";
+import { useDict, useLocale } from "../../../i18n";
+import { localeConfig } from "../../../i18n/locales";
 import woerter from "../../../i18n/dict/dolmetscher";
 import profilePicture from "../../../assets/profilepicture.webp";
 import { DolmetscherKopf } from "./DolmetscherKopf";
@@ -34,6 +35,7 @@ const KLEIN = "mt-4 max-w-[68ch] text-sm leading-relaxed text-paper-mute";
  */
 export const DolmetscherPage = ({ inhalt }) => {
   const t = useDict(woerter);
+  const richtung = localeConfig(useLocale()).dir;
   const { kopf, einsatzarten, preise, ablauf, sprachen, unternehmen, vertraulichkeit, anfrage, fragen } =
     inhalt;
 
@@ -113,7 +115,7 @@ export const DolmetscherPage = ({ inhalt }) => {
           <figure className="m-0 border-t border-hairline pt-8">
             <h2 className="headline-sub max-w-[32ch]">{ablauf.titel}</h2>
             <div className="mt-8">
-              <WorkflowCanvas workflow={ablauf.workflow} />
+              <WorkflowCanvas workflow={ablauf.workflow} richtung={richtung} />
             </div>
             <figcaption className={KLEIN}>{ablauf.unterschrift}</figcaption>
           </figure>

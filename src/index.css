@@ -711,6 +711,9 @@ dd {
 :lang(ar) .link-arrow {
   letter-spacing: 0;
   font-weight: 600;
+  /* Arabic has no capitals; uppercase only turned Latin names on the buttons
+     (WhatsApp, n8n) into shouting. */
+  text-transform: none;
 }
 
 /* The Latin rule subtracts a trailing letter-space from the right padding so a
@@ -1541,6 +1544,10 @@ dd {
   inset: auto 0 0;
   height: 2px;
   overflow: hidden;
+  /* The bar below is 40 % wide with inset: 0, so it sits at the start edge.
+     Right to left that is the right edge, and the translateX sweep would run
+     off the button instead of across it. */
+  direction: ltr;
 }
 
 .sende-linie::after {

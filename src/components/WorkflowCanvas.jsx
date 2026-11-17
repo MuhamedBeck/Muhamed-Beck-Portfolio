@@ -39,6 +39,7 @@ import {
   LuUsers,
 } from "react-icons/lu";
 import { WERKZEUGMARKEN } from "./icons/werkzeugmarken";
+import { LEISTE, N, UNTEN, ausgang, ausloeserForm, eingang, kurve, layout } from "./workflowGeometrie";
 
 /**
  * A real workflow, drawn the way the n8n editor shows it.
@@ -111,19 +112,7 @@ const ICONS = {
   wiederholen: LuRotateCcw,
 };
 
-const N = 56; // node edge length, as in the editor
-const LEISTE = 36; // title bar of the window
-const OBEN = 40; // canvas padding above the first row
-const UNTEN = 64; // room for two lines of label under the last row
 const SCHRITT_SEKUNDEN = 0.22;
-
-/* Across, labels sit under each node. Down, the connections leave through the
-   bottom of a node, so a label underneath would be crossed by its own line:
-   there the labels sit to the right, and the rows can be closer together. */
-const RASTER = {
-  waagerecht: { schritt: 132, zeile: 96, rand: 48 },
-  senkrecht: { schritt: 100, zeile: 150, rand: 40, beschriftung: 142 },
-};
 
 /* Order of execution: how many connections lie between a trigger and a node.
    Nodes at the same depth light up together, and a connection lights up
@@ -146,80 +135,16 @@ const tiefen = (workflow) => {
   return tiefe;
 };
 
-const layout = (workflow, ausrichtung) => {
-  const zeilen = workflow.knoten.map((knoten) => knoten.zeile);
-  const zMin = Math.min(...zeilen);
-  const zMax = Math.max(...zeilen);
-  const spalten = Math.max(...workflow.knoten.map((knoten) => knoten.spalte));
-  const raster = RASTER[ausrichtung];
-
-  if (ausrichtung === "waagerecht") {
-    const lage = new Map(
-      workflow.knoten.map((knoten) => [
-        knoten.id,
-        { x: raster.rand + knoten.spalte * raster.schritt, y: OBEN + (knoten.zeile - zMin) * raster.zeile },
-      ])
-    );
-    return {
-      lage,
-      raster,
-      spalten,
-      breite: 2 * raster.rand + spalten * raster.schritt + N,
-      hoehe: OBEN + (zMax - zMin) * raster.zeile + N + UNTEN,
-    };
-  }
-
-  /* Down: the main path runs in one column, branches step out to its left and
-     right, and every label needs room to the right of its node. */
-  const mitte = raster.rand + -zMin * raster.zeile + N / 2;
-  const lage = new Map(
-    workflow.knoten.map((knoten) => [
-      knoten.id,
-      { x: mitte + knoten.zeile * raster.zeile - N / 2, y: OBEN + knoten.spalte * raster.schritt },
-    ])
-  );
-  return {
-    lage,
-    raster,
-    spalten,
-    breite: mitte + zMax * raster.zeile + N / 2 + 12 + raster.beschriftung,
-    hoehe: OBEN + spalten * raster.schritt + N + OBEN,
-  };
-};
-
-/* Port positions. An IF node has two outputs, "ja" above "nein" across, or
-   "ja" left of "nein" down. */
-const ausgang = (punkt, ausrichtung, welcher) => {
-  const versatz = welcher === "ja" ? -10 : welcher === "nein" ? 10 : 0;
-  return ausrichtung === "waagerecht"
-    ? { x: punkt.x + N, y: punkt.y + N / 2 + versatz }
-    : { x: punkt.x + N / 2 + versatz, y: punkt.y + N };
-};
-
-const eingang = (punkt, ausrichtung) =>
-  ausrichtung === "waagerecht"
-    ? { x: punkt.x, y: punkt.y + N / 2 }
-    : { x: punkt.x + N / 2, y: punkt.y };
-
-const kurve = (a, b, ausrichtung) => {
-  if (ausrichtung === "waagerecht") {
-    const k = Math.max(30, (b.x - a.x) / 2);
-    return `M${a.x} ${a.y}C${a.x + k} ${a.y} ${b.x - k} ${b.y} ${b.x} ${b.y}`;
-  }
-  const k = Math.max(30, (b.y - a.y) / 2);
-  return `M${a.x} ${a.y}C${a.x} ${a.y + k} ${b.x} ${b.y - k} ${b.x} ${b.y}`;
-};
-
-/* The trigger's half-round left side, as in the editor. */
-const ausloeserForm = (x, y) =>
-  `M${x + N / 2} ${y}H${x + N - 10}Q${x + N} ${y} ${x + N} ${y + 10}V${y + N - 10}Q${x + N} ${y + N} ${x + N - 10} ${y + N}H${x + N / 2}A${N / 2} ${N / 2} 0 0 1 ${x + N / 2} ${y}Z`;
-
 const Port = ({ x, y }) => (
   <circle cx={x} cy={y} r="3.5" className="fill-ink stroke-hairline-strong" strokeWidth="1.25" />
 );
 
-const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegerung, uid, verhaeltnis }) => {
-  const { lage, breite, hoehe, raster, spalten } = layout(workflow, ausrichtung);
+const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegerung, uid, verhaeltnis, richtung }) => {
+  const { lage, breite, hoehe, raster, spalten } = layout(workflow, ausrichtung, richtung);
+  /* Von rechts gelesen: waagerechte Abstände wechseln das Vorzeichen, die
+     Anker bleiben, weil direction="rtl" am svg start und end mitdreht. */
+  const rtl = richtung === "rtl";
+  const s = rtl ? -1 : 1;
   const tiefe = tiefen(workflow);
 
   /* Ausschnitt: the columns from `ab` to `bis`, cut out around the main row.
@@ -284,6 +209,7 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
       height={h}
       role="img"
       aria-labelledby={`${id}-titel ${id}-text`}
+      direction={rtl ? "rtl" : undefined}
       /* At most about 1.35 times its drawn size: a short workflow stretched
          across the full column turns into giant nodes and 22px labels. */
       style={verhaeltnis ? undefined : { maxWidth: `${Math.round(w * 1.35)}px` }}
@@ -323,9 +249,9 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
             {workflow.kanten
               .filter((kante) => sichtbar(kante.von) || sichtbar(kante.nach))
               .map((kante) => {
-                const a = ausgang(lage.get(kante.von), ausrichtung, kante.ausgang);
-                const b = eingang(lage.get(kante.nach), ausrichtung);
-                const d = kurve(a, b, ausrichtung);
+                const a = ausgang(lage.get(kante.von), ausrichtung, kante.ausgang, richtung);
+                const b = eingang(lage.get(kante.nach), ausrichtung, richtung);
+                const d = kurve(a, b, ausrichtung, richtung);
                 const stufe = 2 * (tiefe.get(kante.von) - basis) + 1;
                 const mitte = { x: (a.x + b.x) / 2, y: (a.y + b.y) / 2 };
                 return (
@@ -345,7 +271,7 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
                         each name moves out to the middle of its own branch. */}
                     {kante.ausgang ? (
                       <text
-                        x={ausrichtung === "waagerecht" ? a.x + 7 : mitte.x + (kante.ausgang === "ja" ? -8 : 8)}
+                        x={ausrichtung === "waagerecht" ? a.x + 7 * s : mitte.x + (kante.ausgang === "ja" ? -8 : 8) * s}
                         y={ausrichtung === "waagerecht" ? a.y + (kante.ausgang === "ja" ? -6 : -4) : mitte.y + 4}
                         textAnchor={ausrichtung === "senkrecht" && kante.ausgang === "ja" ? "end" : "start"}
                         fontSize="10.5"
@@ -355,7 +281,7 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
                     ) : null}
                     {kante.menge ? (
                       <text
-                        x={ausrichtung === "waagerecht" ? mitte.x : mitte.x + 10}
+                        x={ausrichtung === "waagerecht" ? mitte.x : mitte.x + 10 * s}
                         y={ausrichtung === "waagerecht" ? mitte.y - 9 : mitte.y + 4}
                         textAnchor={ausrichtung === "waagerecht" ? "middle" : "start"}
                         fontSize="10.5"
@@ -378,11 +304,15 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
                 const verzug = { "--wf-delay": takt(2 * (tiefe.get(knoten.id) - basis)) };
                 const ausgaenge = knoten.art === "weiche" ? ["ja", "nein"] : [undefined];
                 const waagerecht = ausrichtung === "waagerecht";
+                const neben = rtl ? x - 12 : x + N + 12;
+                /* Das Häkchen sitzt an der Ecke, von der aus weitergelesen
+                   wird: von rechts gelesen unten links, sonst unten rechts. */
+                const haken = rtl ? x + 4 : x + N - 4;
                 return (
                   <g key={knoten.id}>
                     {knoten.art === "ausloeser" ? (
                       <path
-                        d={ausloeserForm(x, y)}
+                        d={ausloeserForm(x, y, richtung)}
                         className="wf-knoten fill-ink stroke-hairline-strong"
                         strokeWidth="1.25"
                         style={verzug}
@@ -419,12 +349,12 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
                       aria-hidden="true"
                       focusable="false"
                     />
-                    {knoten.art !== "ausloeser" ? <Port {...eingang({ x, y }, ausrichtung)} /> : null}
+                    {knoten.art !== "ausloeser" ? <Port {...eingang({ x, y }, ausrichtung, richtung)} /> : null}
                     {knoten.art !== "mensch" &&
                     (workflow.art !== "entscheidung" ||
                       workflow.kanten.some((kante) => kante.von === knoten.id))
                       ? ausgaenge.map((welcher) => (
-                          <Port key={welcher ?? "aus"} {...ausgang({ x, y }, ausrichtung, welcher)} />
+                          <Port key={welcher ?? "aus"} {...ausgang({ x, y }, ausrichtung, welcher, richtung)} />
                         ))
                       : null}
                     {/* No check mark on a person: the run ends where a human
@@ -434,9 +364,9 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
                         marks at all; its end nodes say their outcome in colour. */}
                     {knoten.art !== "mensch" && workflow.art !== "entscheidung" ? (
                       <g className="wf-haken" style={verzug}>
-                        <circle cx={x + N - 4} cy={y + N - 4} r="8" className="fill-success" />
+                        <circle cx={haken} cy={y + N - 4} r="8" className="fill-success" />
                         <LuCheck
-                          x={x + N - 9.5}
+                          x={haken - 5.5}
                           y={y + N - 9.5}
                           size={11}
                           className="text-ink"
@@ -446,7 +376,7 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
                       </g>
                     ) : null}
                     <text
-                      x={waagerecht ? x + N / 2 : x + N + 12}
+                      x={waagerecht ? x + N / 2 : neben}
                       y={waagerecht ? y + N + 20 : y + N / 2 + (knoten.sub ? -2 : 5)}
                       textAnchor={waagerecht ? "middle" : "start"}
                       fontSize={schrift.label}
@@ -455,7 +385,7 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
                     </text>
                     {knoten.sub ? (
                       <text
-                        x={waagerecht ? x + N / 2 : x + N + 12}
+                        x={waagerecht ? x + N / 2 : neben}
                         y={waagerecht ? y + N + 22 + schrift.sub + 3 : y + N / 2 + schrift.sub + 3}
                         textAnchor={waagerecht ? "middle" : "start"}
                         fontSize={schrift.sub}
@@ -473,16 +403,16 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
         <rect x="0" y="0" width={w} height={LEISTE} className="fill-ink" />
         <rect x="0" y="0" width={w} height={LEISTE} className="fill-surface" />
         <line x1="0" x2={w} y1={LEISTE} y2={LEISTE} className="stroke-hairline" />
-        <text x="16" y="23" fontSize="12" className="fill-paper-dim">
+        <text x={rtl ? w - 16 : 16} y="23" fontSize="12" className="fill-paper-dim">
           {workflow.titel}
         </text>
         {workflow.fenster !== "app" ? (
           <>
-            <text x={w - 52} y="23" fontSize="11" textAnchor="end" className="fill-paper-mute">
+            <text x={rtl ? 52 : w - 52} y="23" fontSize="11" textAnchor="end" className="fill-paper-mute">
               Aktiv
             </text>
-            <rect x={w - 44} y="11" width="28" height="15" rx="7.5" className="fill-success" />
-            <circle cx={w - 23.5} cy="18.5" r="5" className="fill-ink" />
+            <rect x={rtl ? 16 : w - 44} y="11" width="28" height="15" rx="7.5" className="fill-success" />
+            <circle cx={rtl ? 23.5 : w - 23.5} cy="18.5" r="5" className="fill-ink" />
           </>
         ) : null}
       </g>
@@ -510,8 +440,19 @@ const Fenster = ({ workflow, ausrichtung, ab, bis, rest = 100, gross, verzoegeru
  * @param {number} [props.verzoegerung]  seconds before the run starts
  * @param {object} [props.verhaeltnis] fixed aspect ratio as { klein, gross }
  *   (width / height), e.g. for cards that must all be the same size
+ * @param {"ltr"|"rtl"} [props.richtung] Leserichtung der Seite. Mit "rtl"
+ *   beginnt der Ablauf rechts (siehe workflowGeometrie.js). Gilt für die ganze
+ *   Grafik; ein Ausschnitt läuft immer von links, weil keine arabische Seite
+ *   einen braucht.
  */
-export const WorkflowCanvas = ({ workflow, ausschnitt, gross = false, verzoegerung = 0.15, verhaeltnis }) => {
+export const WorkflowCanvas = ({
+  workflow,
+  ausschnitt,
+  gross = false,
+  verzoegerung = 0.15,
+  verhaeltnis,
+  richtung = "ltr",
+}) => {
   /* useId is stable between the prerender and hydration, which ids inside an
      SVG need to be. React wraps it in characters that do not belong in a
      url(#...) reference, so only the safe part is kept. */
@@ -534,10 +475,10 @@ export const WorkflowCanvas = ({ workflow, ausschnitt, gross = false, verzoegeru
   return (
     <>
       <div className="mx-auto max-w-md md:hidden">
-        <Fenster {...gemeinsam} ausrichtung="senkrecht" verhaeltnis={verhaeltnis?.klein} />
+        <Fenster {...gemeinsam} ausrichtung="senkrecht" verhaeltnis={verhaeltnis?.klein} richtung={richtung} />
       </div>
       <div className="hidden md:block">
-        <Fenster {...gemeinsam} ausrichtung="waagerecht" verhaeltnis={verhaeltnis?.gross} />
+        <Fenster {...gemeinsam} ausrichtung="waagerecht" verhaeltnis={verhaeltnis?.gross} richtung={richtung} />
       </div>
     </>
   );

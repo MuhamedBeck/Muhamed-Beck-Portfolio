@@ -24,6 +24,7 @@ import { RATGEBER } from "./src/content/ratgeber.de.js";
 import { CONTACT, RATE_MAX, RATE_MIN, RATE_TEXT, SAME_AS } from "./src/content/site.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
 import { ohneSkriptMaengel } from "./scripts/live-pruefungen.js";
+import { schriftVorladen } from "./src/seo/kopfZusaetze.js";
 
 // Route components are loaded through dynamic import() so one registry entry can
 // serve both the lazy client router and this eager build-time pass. They have to
@@ -470,6 +471,12 @@ for (const route of ROUTES) {
   // Only pages that actually render the hero image get its preload.
   if (route.heroPreload) {
     html = replaceRequired(html, /<\/head>/, () => `${heroPreload}</head>`, "head end", route.path);
+  }
+
+  // Arabic pages preload their text face, so they do not paint in the fallback first.
+  const schrift = schriftVorladen(route.locale);
+  if (schrift) {
+    html = replaceRequired(html, /<\/head>/, () => `${schrift}</head>`, "head end", route.path);
   }
 
   const outDir =

@@ -3,6 +3,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { INHALT as DE } from "../src/content/dolmetscher.de.js";
+import { INHALT as EN, ORTE as ORTE_EN } from "../src/content/dolmetscher.en.js";
+import { INHALT as AR, ORTE as ORTE_AR } from "../src/content/dolmetscher.ar.js";
+import { ANFAHRT_STUFEN, DOLMETSCH_PREIS, preisText } from "../src/content/site.js";
 
 const texte = (wert) =>
   typeof wert === "string" ? [wert] : wert && typeof wert === "object" ? Object.values(wert).flatMap(texte) : [];
@@ -96,4 +99,52 @@ test("Wortlaut-Regeln der deutschen Seite", () => {
   assert.doesNotMatch(alles, /jederzeit|immer erreichbar|Urkunde|Zeugnis|Ausweis|Schweigepflicht|zur Verschwiegenheit verpflichtet/i);
   assert.match(DE.sprachen.text, /Hocharabisch, Levantinisch \(Syrien, Libanon, Palästina, Jordanien\), Ägyptisch, Irakisch und Golf-Arabisch/);
   assert.match(DE.kopf.einleitung, /Rhein-Main/);
+});
+
+// Listen werden an ihrem ersten Element gemessen, wie in scripts/check-i18n.js.
+const form = (wert, pfad = "") =>
+  Array.isArray(wert)
+    ? [`${pfad}:liste`, ...(wert.length ? form(wert[0], `${pfad}[]`) : [])]
+    : wert && typeof wert === "object"
+      ? Object.keys(wert).sort().flatMap((schluessel) => form(wert[schluessel], pfad ? `${pfad}.${schluessel}` : schluessel))
+      : [`${pfad}:${typeof wert}`];
+
+test("Deutsch und Arabisch haben dieselbe Schlüsselform", () => {
+  assert.deepEqual(form(AR), form(DE));
+  assert.deepEqual(AR.preise.tabelle.rows.map((row) => row.schluessel), DE.preise.tabelle.rows.map((row) => row.schluessel));
+  assert.deepEqual(
+    AR.ablauf.workflow.knoten.map((knoten) => [knoten.id, knoten.art, knoten.icon]),
+    DE.ablauf.workflow.knoten.map((knoten) => [knoten.id, knoten.art, knoten.icon])
+  );
+  assert.equal(AR.fragen.liste.length, 7);
+});
+
+test("Englisch ist die erklärte Teilmenge kopf, preise, ablauf, anfrage", () => {
+  assert.deepEqual(Object.keys(EN), ["kopf", "preise", "ablauf", "anfrage"]);
+  for (const abschnitt of Object.keys(EN)) assert.deepEqual(form(EN[abschnitt]), form(DE[abschnitt]), abschnitt);
+});
+
+test("Arabisch: festgelegte Wörter, Beträge mit dem Wort, jeder Ort übersetzt", () => {
+  const text = texte(AR).join("\n");
+  assert.ok(text.includes("ترجمات للفهم وللمراسلات والأعمال، وليست للتقديم إلى الدوائر الحكومية أو المحاكم."));
+  assert.ok(text.includes("كاتب العدل"));
+  assert.ok(text.includes(preisText(DOLMETSCH_PREIS.vorOrtStunde, "ar")));
+  assert.ok(text.includes(preisText(DOLMETSCH_PREIS.normzeile, "ar")));
+  assert.doesNotMatch(text, /[€٠-٩]/);
+  assert.ok(AR.kopf.einleitung.includes("Muhamed Nur Beck"));
+  for (const stelle of [AR.ablauf.workflow.beschreibung, AR.ablauf.unterschrift, AR.fragen.liste[0].a]) {
+    assert.ok(stelle.includes("عادةً خلال 24 ساعة"), stelle);
+  }
+  for (const ort of ANFAHRT_STUFEN.flatMap((stufe) => stufe.orte)) assert.ok(ORTE_AR[ort], ort);
+});
+
+test("Englisch: Zwecksatz, Zeichen vor dem Betrag, 24-Stunden-Wendung", () => {
+  const text = texte(EN).join("\n");
+  assert.ok(text.includes("Translations for understanding and business use, not for submission to authorities or courts."));
+  assert.ok(text.includes("€70") && text.includes("€1.40") && text.includes("€240"));
+  assert.doesNotMatch(text, /\d €|يورو/);
+  assert.ok(EN.ablauf.workflow.beschreibung.includes("usually within 24 hours"));
+  for (const ort of Object.keys(ORTE_EN)) {
+    assert.ok(ANFAHRT_STUFEN.some((stufe) => stufe.orte.includes(ort)), ort);
+  }
 });
