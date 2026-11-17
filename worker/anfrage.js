@@ -10,17 +10,23 @@
 // Token mit "Contents: Read and write" ausschließlich für dieses eine
 // Repository. Im Browser hätte jeder ihn auslesen können.
 //
-// Gespeichert wird nur, was der Absender eingetippt hat. Keine IP-Adresse,
-// kein User-Agent: Die Datenschutzerklärung (Ziffer 5) sagt genau das zu.
-// Dazu kommt höchstens das Ja/Nein-Kennzeichen "Spamverdacht"; der Inhalt des
+// Gespeichert wird, was der Absender eingetippt oder ausgewählt hat, dazu
+// Eingangszeit, Kennung des Formulars, Status und das Ja/Nein-Kennzeichen
+// "Spamverdacht". Keine IP-Adresse, kein User-Agent: Die
+// Datenschutzerklärung (Ziffer 5) sagt genau das zu. Der Inhalt des
 // unsichtbaren Felds wird nie übertragen und nie gespeichert.
 
 const HERKUNFT_ERLAUBT = "https://muhamedbeck.com";
 const MAX_ZEICHEN_ANFRAGE = 20_000;
 
 /* Grenzen je Feld. Großzügig für Menschen, eng genug, dass niemand das
-   Repository mit einem einzelnen Aufruf füllen kann. */
-const GRENZEN = {
+   Repository mit einem einzelnen Aufruf füllen kann. Nur Längen, keine
+   Formatprüfung: Der Worker darf nie strenger sein als das Formular, sonst
+   käme die Mail an und die Archivdatei fehlte. Die Felder ab telefon
+   gehören zum Anfrageformular der Dolmetscher-Seite
+   (FELD_GRENZEN in src/services/dolmetscherAnfrage.js, ein Test hält beide
+   zusammen). */
+export const GRENZEN = {
   name: 200,
   email: 320,
   unternehmen: 200,
@@ -28,7 +34,25 @@ const GRENZEN = {
   herkunft: 200,
   formular: 60,
   nachricht: 10_000,
+  telefon: 40,
+  art: 60,
+  sprachen: 60,
+  anlass: 100,
+  wunschdatum: 60,
+  wunschzeit: 60,
+  treffpunkt: 300,
 };
+
+/* Feste Zuordnung der Kennungen des Dolmetscher-Formulars zur Sprache der
+   Seite. Nur diese Kennungen gelten als Dolmetsch-Anfrage; aus dem vom
+   Browser geschickten Wert wird nie ein Pfad oder Ordner gebildet. */
+const DOLMETSCH_FORMULARE = {
+  "dolmetscher-de": "Deutsch",
+  "dolmetscher-en": "Englisch",
+  "dolmetscher-ar": "Arabisch",
+};
+
+const istDolmetschAnfrage = (daten) => Object.hasOwn(DOLMETSCH_FORMULARE, daten.formular);
 
 const PFLICHT = ["name", "email", "nachricht"];
 
@@ -108,6 +132,7 @@ const BERLIN = new Intl.DateTimeFormat("de-DE", {
  * gültiger YAML-String, so braucht es keine eigene Maskierung.
  */
 export function alsMarkdown(daten, eingang) {
+  if (istDolmetschAnfrage(daten)) return alsDolmetschMarkdown(daten, eingang);
   const angabe = (wert) => (wert ? einzeilig(wert) : "nicht angegeben");
   const zaun = zaunFuer(daten.nachricht);
 
@@ -145,6 +170,66 @@ export function alsMarkdown(daten, eingang) {
   ].join("\n");
 }
 
+/* Eigener Aufbau für Anfragen von der Dolmetscher-Seite: Art, Sprachen,
+   Anlass und Wunschtermin im Kopf, damit sich die Dateien auswerten lassen. */
+function alsDolmetschMarkdown(daten, eingang) {
+  const angabe = (wert) => (wert ? einzeilig(wert) : "nicht angegeben");
+  const zaun = zaunFuer(daten.nachricht);
+  const wunschtermin = [daten.wunschdatum, daten.wunschzeit].filter(Boolean).join(" ");
+
+  return [
+    "---",
+    `eingang: ${JSON.stringify(eingang.toISOString())}`,
+    'status: "neu"',
+    ...(daten.spamverdacht ? ["spamverdacht: true"] : []),
+    `formular: ${JSON.stringify(daten.formular)}`,
+    `leistung: ${JSON.stringify(daten.leistung)}`,
+    `herkunft: ${JSON.stringify(daten.herkunft)}`,
+    `art: ${JSON.stringify(daten.art)}`,
+    `sprachen: ${JSON.stringify(daten.sprachen)}`,
+    `anlass: ${JSON.stringify(daten.anlass)}`,
+    `wunschtermin: ${JSON.stringify(wunschtermin)}`,
+    "---",
+    "",
+    `# Dolmetsch-Anfrage von ${einzeilig(daten.name)}`,
+    "",
+    `- **Name:** ${einzeilig(daten.name)}`,
+    `- **E-Mail:** ${einzeilig(daten.email)}`,
+    `- **Telefon:** ${angabe(daten.telefon)}`,
+    `- **Art:** ${angabe(daten.art)}`,
+    `- **Sprachen:** ${angabe(daten.sprachen)}`,
+    `- **Anlass:** ${angabe(daten.anlass)}`,
+    `- **Wunschtermin:** ${angabe(wunschtermin)}`,
+    `- **Ort:** ${angabe(daten.treffpunkt)}`,
+    `- **Gefunden über:** ${angabe(daten.herkunft)}`,
+    `- **Formular:** ${angabe(daten.formular)}`,
+    `- **Sprache der Seite:** ${DOLMETSCH_FORMULARE[daten.formular]}`,
+    ...(daten.spamverdacht
+      ? ["- **Spamverdacht:** ja, das unsichtbare Feld war ausgefüllt"]
+      : []),
+    `- **Eingang:** ${BERLIN.format(eingang)} (Berlin)`,
+    "",
+    "## Nachricht",
+    "",
+    `${zaun}text`,
+    daten.nachricht,
+    zaun,
+    "",
+  ].join("\n");
+}
+
+/**
+ * Commit-Nachricht für die Archivdatei. Dolmetsch-Anfragen tragen nur die
+ * Eingangszeit, weil sich eine Commit-Nachricht kaum wieder entfernen lässt;
+ * alle anderen die Leistung, einzeilig, damit kein Zeilenumbruch aus dem
+ * Formular Zusatzzeilen in den Commit schreibt.
+ */
+export function commitNachricht(daten, eingang) {
+  const zeit = eingang.toISOString();
+  if (istDolmetschAnfrage(daten)) return `Dolmetsch-Anfrage (${zeit})`;
+  return `Anfrage${daten.spamverdacht ? " (Spamverdacht)" : ""}: ${einzeilig(daten.leistung || "ohne Angabe")} (${zeit})`;
+}
+
 /** anfragen/2026/10/2026-10-13T09-15-02Z-a1b2c3.md */
 export function dateiPfad(eingang, kennung) {
   const iso = eingang.toISOString();
@@ -177,7 +262,7 @@ async function inRepositorySpeichern(env, daten, eingang) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        message: `Anfrage${daten.spamverdacht ? " (Spamverdacht)" : ""}: ${daten.leistung || "ohne Angabe"} (${eingang.toISOString()})`,
+        message: commitNachricht(daten, eingang),
         content: base64Utf8(alsMarkdown(daten, eingang)),
       }),
     }

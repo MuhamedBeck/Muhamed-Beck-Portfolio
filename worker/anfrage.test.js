@@ -4,15 +4,18 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { Buffer } from "node:buffer";
 import {
+  GRENZEN,
   alsMarkdown,
   anfrageAnnehmen,
   base64Utf8,
+  commitNachricht,
   dateiPfad,
   einzeilig,
   pruefen,
   zaunFuer,
 } from "./anfrage.js";
 import { HONEYPOT_FELD, mailMitVerdacht } from "../src/services/anfrage.js";
+import { FELD_GRENZEN, LEERE_FELDER, archivObjekt } from "../src/services/dolmetscherAnfrage.js";
 
 const GUELTIG = {
   formular: "kontakt",
@@ -197,4 +200,100 @@ test("anfrageAnnehmen meldet 502, wenn GitHub ablehnt", async () => {
   } finally {
     console.error = fehlerLog;
   }
+});
+
+const DOLMETSCH = {
+  formular: "dolmetscher-ar",
+  name: "ليلى حداد",
+  email: "leila@example.com",
+  telefon: "٠١٧٦ ١٢٣٤٥٦٧",
+  art: "Termin vor Ort",
+  sprachen: "Deutsch und Arabisch",
+  anlass: "Behörde",
+  wunschdatum: "2026-12-03",
+  wunschzeit: "10:30",
+  treffpunkt: "Offenbach",
+  herkunft: "Empfehlung",
+  leistung: "Dolmetschen: Termin vor Ort",
+  nachricht: "أحتاج إلى مترجم لموعد.\nشكرًا",
+};
+const EINGANG = new Date("2026-12-01T08:00:00Z");
+
+test("pruefen übernimmt die Felder der Dolmetsch-Anfrage und verwirft Unbekanntes", () => {
+  const { daten, fehler } = pruefen({ ...DOLMETSCH, treffpunkt: "  Offenbach ", fremd: "x" });
+  assert.equal(fehler, undefined);
+  assert.equal(daten.treffpunkt, "Offenbach");
+  assert.equal(daten.telefon, "٠١٧٦ ١٢٣٤٥٦٧");
+  assert.equal(daten.fremd, undefined);
+  assert.match(pruefen({ ...DOLMETSCH, treffpunkt: "x".repeat(301) }).fehler, /länger/);
+});
+
+test("Formular verlangt nie mehr, als der Worker annimmt", () => {
+  for (const [feld, grenze] of Object.entries(FELD_GRENZEN)) assert.equal(GRENZEN[feld], grenze, feld);
+  const archiv = archivObjekt({ ...LEERE_FELDER, art: "vor-ort" }, { locale: "de", verdacht: false });
+  for (const feld of Object.keys(archiv)) {
+    if (feld !== "spamverdacht") assert.ok(feld in GRENZEN, `${feld} fehlt in GRENZEN`);
+  }
+});
+
+test("alsMarkdown: eigene Kopffelder und Zeilen für Dolmetsch-Anfragen", () => {
+  const md = alsMarkdown(pruefen(DOLMETSCH).daten, EINGANG);
+  assert.match(md, /^---\neingang: "2026-12-01T08:00:00\.000Z"\nstatus: "neu"\nformular: "dolmetscher-ar"\nleistung: "Dolmetschen: Termin vor Ort"\nherkunft: "Empfehlung"\nart: "Termin vor Ort"\nsprachen: "Deutsch und Arabisch"\nanlass: "Behörde"\nwunschtermin: "2026-12-03 10:30"\n---\n\n# Dolmetsch-Anfrage von ليلى حداد\n/);
+  for (const zeile of [
+    "- **Name:** ليلى حداد", "- **E-Mail:** leila@example.com", "- **Telefon:** ٠١٧٦ ١٢٣٤٥٦٧",
+    "- **Art:** Termin vor Ort", "- **Sprachen:** Deutsch und Arabisch", "- **Anlass:** Behörde",
+    "- **Wunschtermin:** 2026-12-03 10:30", "- **Ort:** Offenbach", "- **Gefunden über:** Empfehlung",
+    "- **Formular:** dolmetscher-ar", "- **Sprache der Seite:** Arabisch",
+    "- **Eingang:** 01.12.2026, 09:00 (Berlin)",
+  ]) assert.ok(md.includes(`\n${zeile}\n`), zeile);
+  assert.doesNotMatch(md, /Unternehmen|\*\*Leistung/);
+  assert.match(md, /~~~~text\nأحتاج إلى مترجم لموعد\.\nشكرًا\n~~~~/);
+});
+
+test("alsMarkdown: Kontakt-Anfragen bleiben wie bisher, eine fremde Kennung zählt nicht", () => {
+  const kontakt = alsMarkdown(pruefen(GUELTIG).daten, EINGANG);
+  assert.match(kontakt, /^---\neingang: "2026-12-01T08:00:00\.000Z"\nstatus: "neu"\nformular: "kontakt"\nleistung: "Website erstellen lassen"\nherkunft: "Google-Suche"\n---\n\n# Anfrage von Erika Muster\n/);
+  assert.doesNotMatch(kontakt, /Telefon|Sprachen|Wunschtermin|Sprache der Seite|Dolmetsch/);
+  const fremd = alsMarkdown(pruefen({ ...DOLMETSCH, formular: "dolmetscher-xx" }).daten, EINGANG);
+  assert.match(fremd, /\n# Anfrage von /);
+});
+
+// Prüfschwerpunkt 4.
+test("Wunschtermin halb oder als Freitext", () => {
+  const md = (felder) => alsMarkdown(pruefen({ ...DOLMETSCH, ...felder }).daten, EINGANG);
+  assert.match(md({ wunschzeit: "" }), /\nwunschtermin: "2026-12-03"\n/);
+  assert.match(md({ wunschdatum: "" }), /- \*\*Wunschtermin:\*\* 10:30\n/);
+  assert.match(md({ wunschdatum: "3.12.", wunschzeit: "vormittags" }), /- \*\*Wunschtermin:\*\* 3\.12\. vormittags\n/);
+  const ohne = md({ wunschdatum: "", wunschzeit: "" });
+  assert.match(ohne, /\nwunschtermin: ""\n/);
+  assert.match(ohne, /- \*\*Wunschtermin:\*\* nicht angegeben\n/);
+  assert.doesNotMatch(ohne, /undefined/);
+});
+
+test("commitNachricht: Dolmetsch-Anfrage nur mit Zeit, sonst einzeilig", () => {
+  assert.equal(commitNachricht(pruefen(DOLMETSCH).daten, EINGANG), "Dolmetsch-Anfrage (2026-12-01T08:00:00.000Z)");
+  assert.equal(
+    commitNachricht(pruefen({ ...DOLMETSCH, spamverdacht: true }).daten, EINGANG),
+    "Dolmetsch-Anfrage (2026-12-01T08:00:00.000Z)"
+  );
+  assert.equal(
+    commitNachricht(pruefen({ ...GUELTIG, leistung: "Website\nerstellen", spamverdacht: true }).daten, EINGANG),
+    "Anfrage (Spamverdacht): Website erstellen (2026-12-01T08:00:00.000Z)"
+  );
+  assert.equal(commitNachricht(pruefen({ ...GUELTIG, leistung: "" }).daten, EINGANG), "Anfrage: ohne Angabe (2026-12-01T08:00:00.000Z)");
+});
+
+// Prüfschwerpunkt 5.
+test("anfrageAnnehmen: arabische Schrift und arabisch-indische Ziffern", async () => {
+  let aufruf;
+  const github = async (url, init) => {
+    aufruf = { url, init };
+    return new Response("{}", { status: 201 });
+  };
+  const antwort = await mitFetch(github, () => anfrageAnnehmen(post(DOLMETSCH), ENV));
+  assert.equal(antwort.status, 201);
+  const body = JSON.parse(aufruf.init.body);
+  assert.match(body.message, /^Dolmetsch-Anfrage \(\d{4}-\d{2}-\d{2}T[\d:.]+Z\)$/);
+  const datei = Buffer.from(body.content, "base64").toString("utf8");
+  for (const text of ["ليلى حداد", "٠١٧٦ ١٢٣٤٥٦٧", "أحتاج إلى مترجم لموعد.\nشكرًا"]) assert.ok(datei.includes(text), text);
 });
