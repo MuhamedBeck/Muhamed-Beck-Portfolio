@@ -898,7 +898,7 @@ export const ROUTES = [
     props: { path: "/dolmetscher-arabisch-frankfurt/kosten" },
     title: "Dolmetscher Kosten pro Stunde 2026: Preise für Arabisch",
     description:
-      "Was kostet ein Dolmetscher? Direkt beauftragt meist 70 bis 120 € pro Stunde, Gerichte zahlen nach JVEG 93 €. Dazu Notar, Video, Anfahrt und Zuschläge.",
+      "Dolmetscher kosten laut einem Vermittlungsportal für Frankfurt oft 70 bis 120 € pro Stunde, Gerichte zahlen nach JVEG 93 €. Dazu Notar, Video, Anfahrt.",
     h1: "Was kostet ein Dolmetscher für Arabisch?",
     ogType: "article",
     ogImage: DOLMETSCH_VORSCHAU,

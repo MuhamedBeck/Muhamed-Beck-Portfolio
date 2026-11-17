@@ -43,14 +43,14 @@ export const DOLMETSCH_RATGEBER = [
     published: "2026-11-17",
     modified: "2026-11-17",
     autorPfad: "/lebenslauf",
-    lede: `Ein Dolmetscher kostet direkt beauftragt meist 70 bis 120 € je Stunde, so die Richtwerte eines Vermittlungsportals für Frankfurt (2026). Gerichte und Staatsanwaltschaften zahlen nach § 9 Abs. 5 JVEG 93 € je Stunde. Ich dolmetsche Arabisch und Deutsch vor Ort für ${stunde} je Stunde und per Video oder Telefon für ${halbe} je angefangene 30 Minuten, abends und am Wochenende ohne Zuschlag.`,
+    lede: `Ein Dolmetscher kostet oft etwa 70 bis 120 € je Stunde, so die Richtwerte eines Vermittlungsportals für Frankfurt (2026). Gerichte und Staatsanwaltschaften zahlen nach § 9 Abs. 5 JVEG 93 € je Stunde. Ich dolmetsche Arabisch und Deutsch vor Ort für ${stunde} je Stunde und per Video oder Telefon für ${halbe} je angefangene 30 Minuten, abends und am Wochenende ohne Zuschlag.`,
     table: {
       caption: "Was Dolmetschen kostet (Stand: November 2026; meine Preise sind Endpreise)",
       columns: ["Gerichte nach JVEG", "Markt laut Anbietern", "Mein Preis"],
       rows: [
         {
           label: "Eine Stunde vor Ort",
-          cells: ["93 €", "70 bis 120 € (Vermittlungsportal, Frankfurt)", stunde],
+          cells: ["93 €", "oft etwa 70 bis 120 € (Richtwerte eines Vermittlungsportals, Frankfurt)", stunde],
         },
         {
           label: "Mindestdauer",
@@ -96,14 +96,14 @@ export const DOLMETSCH_RATGEBER = [
           label: "Notartermin",
           cells: [
             "gilt nicht",
-            "ab 390 €, meist 420 bis 530 € einschließlich Mehrwertsteuer (Agentur, München)",
+            "ab 390 €, meist 420 bis 530 € einschließlich Mehrwertsteuer, für Englisch (Agentur in Bayern, meist München)",
             `${notar} Festpreis bis 2 Stunden`,
           ],
         },
         {
           label: "30 Minuten per Video oder Telefon",
           cells: [
-            "93 € je Stunde wie vor Ort",
+            "93 € je Stunde",
             "25 € (Empfehlung eines Dolmetschdienstes, Berlin); Hotline 1,99 € je Minute, also 59,70 €",
             halbe,
           ],
@@ -130,7 +130,7 @@ export const DOLMETSCH_RATGEBER = [
       {
         h2: "Was kostet ein Dolmetscher pro Stunde?",
         body: [
-          "Direkt beauftragt meist 70 bis 120 €: So beziffert ein Vermittlungsportal für Frankfurt die üblichen Preise für Begleit- und Verhandlungsdolmetschen (Richtwerte für 2026, abgerufen im November 2026). Gerichte und Staatsanwaltschaften zahlen Dolmetschern nach § 9 Abs. 5 JVEG 93 € je Stunde.",
+          "Oft etwa 70 bis 120 €: So beziffert ein Vermittlungsportal für Frankfurt typische Preise für Begleit- und Verhandlungsdolmetschen (Richtwerte für 2026, abgerufen im November 2026). Gerichte und Staatsanwaltschaften zahlen Dolmetschern nach § 9 Abs. 5 JVEG 93 € je Stunde.",
           "Dieser Satz gilt nur, wenn Gerichte, Staatsanwaltschaften oder Behörden in bestimmten Verfahren einen Dolmetscher heranziehen, etwa im Bußgeldverfahren oder wenn die Polizei im Auftrag der Staatsanwaltschaft handelt (§ 1 JVEG). Für private Aufträge gibt es keinen festen Satz; jeder Dolmetscher legt seinen Preis selbst fest.",
           "Häufig gilt eine Mindestbuchung von 2 bis 3 Stunden; für einen halben Tag nennt dasselbe Portal 350 bis 600 €, für einen ganzen Tag 600 bis 1.000 € oder mehr. Für Einsätze in Gesundheit, Bildung und Sozialem empfiehlt ein vom Berliner Senat geförderter Dolmetschdienst den Einrichtungen 50 € für die erste Stunde vor Ort und danach 25 € je 30 Minuten (abgerufen im November 2026).",
           `Ich dolmetsche vor Ort für ${stunde} je Stunde, mit einer Mindestdauer von 1 Stunde; danach rechne ich ${halbe} je angefangene 30 Minuten ab. Für Messen und Verhandlungen kostet bei mir ein halber Tag (bis 4 Stunden) ${p(DOLMETSCH_PREIS.messeHalbtag)} und ein ganzer (bis 8 Stunden) ${p(DOLMETSCH_PREIS.messeTag)}.`,
@@ -143,7 +143,7 @@ export const DOLMETSCH_RATGEBER = [
             art: "liste",
             titel: "Eine Stunde Dolmetschen vor Ort",
             zeilen: [
-              { label: "Direkt beauftragt, Richtwerte eines Vermittlungsportals", von: 70, wert: 120, text: "70 bis 120 €", ton: "leise" },
+              { label: "Richtwerte eines Vermittlungsportals für Frankfurt", von: 70, wert: 120, text: "70 bis 120 €", ton: "leise" },
               { label: "Gerichte und Staatsanwaltschaften nach § 9 JVEG", wert: 93, text: "93 €", ton: "cyan" },
               { label: "Mein Preis", wert: DOLMETSCH_PREIS.vorOrtStunde, text: stunde, ton: "akzent" },
             ],
@@ -154,7 +154,7 @@ export const DOLMETSCH_RATGEBER = [
       {
         h2: "Was kostet ein Dolmetscher beim Notar?",
         body: [
-          "Meist eine Pauschale zwischen 390 und 530 €: Eine Agentur für Notartermine in München nennt ab 390 € und in neun von zehn Fällen 420 bis 530 € einschließlich Mehrwertsteuer, für Termine auf Englisch; andere Sprachen kosten dort meist mehr (abgerufen im November 2026).",
+          "Ab 390 €, meist 420 bis 530 € als Pauschale: So nennt es eine Agentur für Notartermine in Bayern, die vor allem in München arbeitet, für Termine auf Englisch und einschließlich Mehrwertsteuer; andere Sprachen kosten dort meist mehr (abgerufen im November 2026).",
           "Eine Dolmetscherin für Italienisch in Leipzig berechnet 400 € pauschal für Vorbereitung, Anreise und die ganze Zeit beim Notar (abgerufen im November 2026). Eine vollständige schriftliche Übersetzung des Vertrags ist bei beiden Anbietern nicht enthalten.",
           `Mein Festpreis beim Notar beträgt ${notar} für bis zu 2 Stunden. Enthalten sind die Durchsicht des Entwurfs vor dem Termin und die Anfahrt in Frankfurt und der nahen Umgebung; weiter entfernt kommt der Betrag der Entfernungsstufe hinzu. Dauert der Termin länger, berechne ich ${halbe} je angefangene 30 Minuten. Die Gebühren des Notariats zahlen Sie dort.`,
         ],
@@ -164,18 +164,18 @@ export const DOLMETSCH_RATGEBER = [
             art: "liste",
             titel: "Ein Notartermin als Pauschale",
             zeilen: [
-              { label: "Agentur in München, Englisch, meist", von: 420, wert: 530, text: "420 bis 530 €", ton: "leise" },
+              { label: "Agentur in Bayern, Englisch, meist", von: 420, wert: 530, text: "420 bis 530 €", ton: "leise" },
               { label: "Dolmetscherin in Leipzig, Italienisch", wert: 400, text: "400 €", ton: "leise" },
               { label: "Mein Festpreis, Arabisch, bis 2 Stunden", wert: DOLMETSCH_PREIS.notarStandesamt, text: notar, ton: "akzent" },
             ],
-            quelle: "Anbieterangaben, abgerufen am 17.11.2026; München einschließlich Mehrwertsteuer, Leipzig ohne Angabe dazu. Mein Preis ist ein Endpreis.",
+            quelle: "Anbieterangaben, abgerufen am 17.11.2026; Agentur einschließlich Mehrwertsteuer, Leipzig ohne Angabe dazu. Mein Preis ist ein Endpreis.",
           },
         },
       },
       {
         h2: "Was kostet Dolmetschen per Video oder Telefon?",
         body: [
-          "Ab 25 € für 30 Minuten: Ein vom Berliner Senat geförderter Dolmetschdienst für Gesundheit, Bildung und Soziales empfiehlt 25 € bis 30 Minuten und danach 1 € je Minute (abgerufen im November 2026). Eine bundesweite Telefon-Hotline berechnet 1,99 € je Minute einschließlich Mehrwertsteuer, ohne Vertrag; 30 Minuten kosten dort also 59,70 €.",
+          "Ab 25 € für 30 Minuten: Ein vom Berliner Senat geförderter Dolmetschdienst für Gesundheit, Bildung und Soziales empfiehlt 25 € bis 30 Minuten und danach 1 € je Minute (abgerufen im November 2026). Eine Dolmetscher-Hotline berechnet 1,99 € je Minute einschließlich Mehrwertsteuer, ohne Vertrag und über die Telefonrechnung; aus dem Mobilfunk kann der Preis abweichen. 30 Minuten kosten dort also 59,70 €.",
           `Ich dolmetsche per Video oder Telefon für ${halbe} je angefangene 30 Minuten. Bei Video trete ich dem Termin bei, zu dem Sie mich einladen. Kurzfristig ist das oft möglich, auch abends und am Wochenende.`,
         ],
       },
@@ -191,7 +191,7 @@ export const DOLMETSCH_RATGEBER = [
       {
         h2: "Was kostet eine schriftliche Übersetzung?",
         body: [
-          "Zwischen 1,20 und 2,05 € je Normzeile mit 55 Anschlägen, so die Preisliste eines Frankfurter Übersetzungsbüros: 1,20 bis 1,55 € für allgemeine Texte und 1,50 bis 2,05 € für Fachtexte, jeweils zuzüglich Mehrwertsteuer, mit einem Mindestauftrag von 30 € und 50 % Zuschlag für Eilaufträge (abgerufen im November 2026). Ein Übersetzer in Berlin nennt für Arabisch 1,85 € je Normzeile.",
+          "Zwischen 1,20 und 2,05 € je Normzeile, so die Preisliste eines Frankfurter Übersetzungsbüros: 1,20 bis 1,55 € für allgemeine Texte und 1,50 bis 2,05 € für Fachtexte, jeweils zuzüglich Mehrwertsteuer, mit einem Mindestauftrag von 30 € und 50 % Zuschlag für Eilaufträge (abgerufen im November 2026). Ein Übersetzer in Berlin nennt für Arabisch 1,85 € je Normzeile.",
           "Gerichte zahlen nach § 11 JVEG 1,95 € je angefangene 55 Anschläge, bei schwierigen Texten oder wenn der Text nicht als bearbeitbare Datei vorliegt bis 2,30 €, mindestens 20 € je Auftrag.",
           `Ich übersetze für ${p(DOLMETSCH_PREIS.normzeile)} je Normzeile, gezählt im deutschen oder englischen Text, mit einem Mindestauftrag von ${p(DOLMETSCH_PREIS.mindestauftrag)}; den Gesamtpreis nenne ich vor Beginn. ${zwecksatz}`,
         ],
@@ -208,7 +208,7 @@ export const DOLMETSCH_RATGEBER = [
     faq: [
       {
         q: "Was kostet ein Dolmetscher für Arabisch pro Stunde?",
-        a: `Direkt beauftragt meist 70 bis 120 € je Stunde, so die Richtwerte eines Vermittlungsportals für Frankfurt (2026); Gerichte zahlen nach § 9 Abs. 5 JVEG 93 €. Ich dolmetsche Arabisch und Deutsch vor Ort für ${stunde} je Stunde.`,
+        a: `Oft etwa 70 bis 120 € je Stunde, so die Richtwerte eines Vermittlungsportals für Frankfurt (2026); Gerichte zahlen nach § 9 Abs. 5 JVEG 93 €. Ich dolmetsche Arabisch und Deutsch vor Ort für ${stunde} je Stunde.`,
       },
       {
         q: "Gibt es abends oder am Wochenende einen Zuschlag?",

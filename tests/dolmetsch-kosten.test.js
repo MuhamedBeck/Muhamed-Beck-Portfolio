@@ -101,3 +101,40 @@ test("jede Seite unter der Dolmetscher-Adresse steht unter der Wortsperre", () =
   assert.ok(unter.length >= 2);
   for (const route of unter) assert.ok(istGepruefteGruppe(route.group), route.path);
 });
+
+// Befunde der Abschlussprüfung vom 17.11.2026: Marktzahlen so eng wie die Quellen
+// in .claude/recherche/2026-11-17/kosten-quellen.md (privat, nicht im Repository).
+test("Quellentreue: die Spanne 70 bis 120 € steht nur mit dem Portal und nur als „oft“", () => {
+  const route = ROUTES.find((eintrag) => eintrag.id === "dolmetscher.kosten");
+  const stellen = [...texte(artikel), route.description].filter(
+    (text) => text.includes("70 bis 120") && text !== "70 bis 120 €"
+  );
+  assert.ok(stellen.length >= 4, `nur ${stellen.length} Stellen`);
+  for (const text of stellen) {
+    assert.match(text, /Vermittlungsportal/, text);
+    assert.doesNotMatch(text, /meist (etwa )?70 bis 120|direkt beauftragt/i, text);
+  }
+  const balken = artikel.sections[0].bild.daten.zeilen.find((zeile) => zeile.text === "70 bis 120 €");
+  assert.match(balken.label, /Vermittlungsportal/);
+  assert.doesNotMatch(balken.label, /direkt beauftragt/i);
+});
+
+test("Quellentreue Notar: ab 390 €, meist 420 bis 530 €, Agentur in Bayern, für Englisch", () => {
+  const notar = artikel.sections[1];
+  assert.match(notar.body[0], /^Ab 390 €, meist 420 bis 530 €/);
+  assert.doesNotMatch(alles, /zwischen 390 und 530/);
+  const zelle = artikel.table.rows.find((zeile) => zeile.label === "Notartermin").cells[1];
+  for (const muster of [/ab 390 €, meist 420 bis 530 €/, /Englisch/, /Bayern/]) assert.match(zelle, muster);
+  const balken = notar.bild.daten.zeilen[0];
+  for (const muster of [/Bayern/, /Englisch/]) assert.match(balken.label, muster);
+});
+
+test("Quellentreue: keine Angabe, die die Quellen nicht tragen", () => {
+  assert.doesNotMatch(alles, /bundesweit/i);
+  const hotline = artikel.sections[2].body[0];
+  assert.match(hotline, /1,99 € je Minute/);
+  assert.match(hotline, /Mobilfunk/);
+  assert.doesNotMatch(artikel.sections[4].body[0], /55 Anschläg/);
+  const video = artikel.table.rows.find((zeile) => zeile.label === "30 Minuten per Video oder Telefon");
+  assert.equal(video.cells[0], "93 € je Stunde");
+});
