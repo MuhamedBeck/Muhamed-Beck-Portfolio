@@ -16,6 +16,11 @@ import { WERKZEUGMARKEN } from "./icons/werkzeugmarken";
  * A cell may be a string or { text, ton }: the second carries a coloured dot,
  * so a verdict ("verboten", "richtig") is seen before it is read. The colour
  * repeats what the words say and never replaces them.
+ *
+ * `schreibweise="normal"` setzt Überschrift und die Spaltennamen der
+ * Telefon-Karten in normaler Schreibweise statt als gesperrtes Etikett in
+ * Versalien; ohne Überschrift entfällt das Element. Vorgabe ist "versal",
+ * damit jede bestehende Tabelle bleibt, wie sie ist.
  */
 const PUNKT = {
   erfolg: "bg-success",
@@ -57,57 +62,70 @@ const Zelle = ({ inhalt }) =>
     inhalt
   );
 
-export const Tabelle = ({ daten, ersteSpalte = "Kriterium" }) => (
-  <div className="md:-mx-4 md:overflow-x-auto md:px-4">
-    <table role="table" className="w-full border-collapse text-start max-md:block md:min-w-[42rem]">
-      <caption className="label mb-6 text-start max-md:block">{daten.caption}</caption>
-      <thead role="rowgroup" className="max-md:sr-only">
-        <tr role="row">
-          <th
-            role="columnheader"
-            scope="col"
-            className="w-[13rem] pb-4 text-start text-sm font-normal text-paper-mute">
-            <span className="sr-only">{ersteSpalte}</span>
-          </th>
-          {daten.columns.map((column) => (
+export const Tabelle = ({ daten, ersteSpalte = "Kriterium", schreibweise = "versal" }) => {
+  const normal = schreibweise === "normal";
+  return (
+    <div className="md:-mx-4 md:overflow-x-auto md:px-4">
+      <table role="table" className="w-full border-collapse text-start max-md:block md:min-w-[42rem]">
+        {normal ? (
+          daten.caption ? (
+            <caption className="mb-6 text-start text-sm text-paper-dim max-md:block">{daten.caption}</caption>
+          ) : null
+        ) : (
+          <caption className="label mb-6 text-start max-md:block">{daten.caption}</caption>
+        )}
+        <thead role="rowgroup" className="max-md:sr-only">
+          <tr role="row">
             <th
-              key={spalte(column).text}
               role="columnheader"
               scope="col"
-              className="pb-4 ps-6 text-start text-lg font-normal text-paper">
-              <Spaltenkopf column={column} size={20} />
+              className="w-[13rem] pb-4 text-start text-sm font-normal text-paper-mute">
+              <span className="sr-only">{ersteSpalte}</span>
             </th>
-          ))}
-        </tr>
-      </thead>
-      <tbody role="rowgroup" className="max-md:block">
-        {daten.rows.map((row) => (
-          <tr
-            key={row.label}
-            role="row"
-            className="border-t border-hairline align-top max-md:mt-4 max-md:block max-md:rounded-lg max-md:border max-md:bg-surface max-md:p-5">
-            <th
-              role="rowheader"
-              scope="row"
-              className="py-5 pe-6 text-start text-sm font-normal leading-snug text-paper-dim max-md:block max-md:p-0 max-md:text-base max-md:text-paper">
-              {row.label}
-            </th>
-            {row.cells.map((cell, index) => (
-              <td
-                key={spalte(daten.columns[index]).text}
-                role="cell"
-                className="py-5 ps-6 leading-relaxed text-paper-soft max-md:mt-4 max-md:block max-md:p-0">
-                <span
-                  aria-hidden="true"
-                  className="mb-1 block text-xs tracking-[0.18em] text-paper-mute uppercase md:hidden">
-                  <Spaltenkopf column={daten.columns[index]} size={12} />
-                </span>
-                <Zelle inhalt={cell} />
-              </td>
+            {daten.columns.map((column) => (
+              <th
+                key={spalte(column).text}
+                role="columnheader"
+                scope="col"
+                className="pb-4 ps-6 text-start text-lg font-normal text-paper">
+                <Spaltenkopf column={column} size={20} />
+              </th>
             ))}
           </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-);
+        </thead>
+        <tbody role="rowgroup" className="max-md:block">
+          {daten.rows.map((row) => (
+            <tr
+              key={row.label}
+              role="row"
+              className="border-t border-hairline align-top max-md:mt-4 max-md:block max-md:rounded-lg max-md:border max-md:bg-surface max-md:p-5">
+              <th
+                role="rowheader"
+                scope="row"
+                className="py-5 pe-6 text-start text-sm font-normal leading-snug text-paper-dim max-md:block max-md:p-0 max-md:text-base max-md:text-paper">
+                {row.label}
+              </th>
+              {row.cells.map((cell, index) => (
+                <td
+                  key={spalte(daten.columns[index]).text}
+                  role="cell"
+                  className="py-5 ps-6 leading-relaxed text-paper-soft max-md:mt-4 max-md:block max-md:p-0">
+                  <span
+                    aria-hidden="true"
+                    className={
+                      normal
+                        ? "mb-1 block text-xs text-paper-mute md:hidden"
+                        : "mb-1 block text-xs tracking-[0.18em] text-paper-mute uppercase md:hidden"
+                    }>
+                    <Spaltenkopf column={daten.columns[index]} size={12} />
+                  </span>
+                  <Zelle inhalt={cell} />
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
