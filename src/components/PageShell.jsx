@@ -11,16 +11,22 @@ import { Section, SectionHeader } from "./Section";
  * Every page repeated this block along with its own copy of the menu state.
  * Centralising it also guarantees the <main> landmark is present, which several
  * pages were missing.
+ *
+ * `kopfzeile` und `fusszeile` (wahlweise) ersetzen Navigation samt Drawer
+ * und Fußzeile, für Seiten mit eigenem Rahmen. Ohne beide rendert jede Seite
+ * wie bisher; Titelblock, <main> und useRouteMeta bleiben in jedem Fall hier.
  */
-export const PageShell = ({ label, headline, intro, aside, children }) => {
+export const PageShell = ({ label, headline, intro, aside, kopfzeile, fusszeile, children }) => {
   useRouteMeta();
   const [menuOpen, setMenuOpen] = useState(false);
   const header = <SectionHeader as="h1" label={label} headline={headline} intro={intro} />;
 
   return (
     <div className="min-h-[100dvh] text-paper bg-ink">
-      <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-      <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      {/* Zwei Plätze, kein Fragment: So bleibt die Lage von <main> im Baum
+          gleich, und die useId-Kennungen der Seiten ändern sich nicht. */}
+      {kopfzeile ?? <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />}
+      {kopfzeile ? null : <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />}
 
       <main id="inhalt" tabIndex={-1}>
         {/* pt-28 clears the fixed 64px navbar.
@@ -57,7 +63,7 @@ export const PageShell = ({ label, headline, intro, aside, children }) => {
         {children}
       </main>
 
-      <Footer />
+      {fusszeile ?? <Footer />}
     </div>
   );
 };
