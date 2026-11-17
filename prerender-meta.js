@@ -21,6 +21,7 @@ import {
 import { localeConfig } from "./src/i18n/locales.js";
 import { LEISTUNGEN } from "./src/content/leistungen.de.js";
 import { RATGEBER } from "./src/content/ratgeber.de.js";
+import { DOLMETSCH_RATGEBER } from "./src/content/dolmetscher.ratgeber.de.js";
 import { CONTACT, RATE_MAX, RATE_MIN, RATE_TEXT, SAME_AS } from "./src/content/site.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
 import { ohneSkriptMaengel } from "./scripts/live-pruefungen.js";
@@ -346,7 +347,8 @@ const articleNode = (route, article) => ({
   },
   inLanguage: localeConfig(route.locale).intlLocale,
   articleSection: article.kicker,
-  image: `${SITE_URL}/og-image.jpg`,
+  // The route's own preview image where it has one (the interpreter guide).
+  image: `${SITE_URL}${route.ogImage?.src ?? "/og-image.jpg"}`,
   mainEntityOfPage: `${SITE_URL}${route.path}`,
 });
 
@@ -368,7 +370,7 @@ const DOLMETSCHER_INHALT = { de: DOLMETSCHER_DE, en: DOLMETSCHER_EN, ar: DOLMETS
 
 const pageJsonLd = (route) => {
   const leistung = LEISTUNGEN.find((item) => item.path === route.path);
-  const article = RATGEBER.find((item) => item.path === route.path);
+  const article = [...RATGEBER, ...DOLMETSCH_RATGEBER].find((item) => item.path === route.path);
   const nodes = [
     breadcrumbNode(route),
     leistung ? serviceNode(route, leistung) : null,

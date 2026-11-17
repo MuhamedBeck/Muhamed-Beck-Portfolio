@@ -53,9 +53,19 @@ const anfrageZiel = (related) => {
  *
  * Measure is capped at ~68 characters. Long lines are harder to read and this
  * is the one page type people actually read rather than scan.
+ *
+ * Wahlweise für Ratgeber außerhalb der IT, etwa den der Dolmetscher-Seite:
+ * `kopfzeile` und `fusszeile` ersetzen Navigation und Fußzeile (PageShell),
+ * `knoepfe` ersetzt den Knopf im Abschluss, `data.autorPfad` das Ziel der
+ * Autorenzeile. Ohne sie rendert jeder IT-Ratgeber wie bisher.
  */
-export const RatgeberPage = ({ data }) => (
-  <PageShell label={data.kicker} headline={data.h1} intro={data.lede}>
+export const RatgeberPage = ({ data, kopfzeile, fusszeile, knoepfe }) => (
+  <PageShell
+    label={data.kicker}
+    headline={data.h1}
+    intro={data.lede}
+    kopfzeile={kopfzeile}
+    fusszeile={fusszeile}>
     <Section className="!pt-0">
       {/* Text column beside the table of contents from lg up; the column was
           empty there and the guides run to twelve screens. */}
@@ -77,7 +87,9 @@ export const RatgeberPage = ({ data }) => (
           <span aria-hidden="true">·</span>
           <span>
             Von{" "}
-            <Link to="/ueber-mich" className="-my-2 inline-block py-2 text-accent underline-offset-4 hover:underline">
+            <Link
+              to={data.autorPfad ?? "/ueber-mich"}
+              className="-my-2 inline-block py-2 text-accent underline-offset-4 hover:underline">
               {PERSON.name}
             </Link>
           </span>
@@ -183,9 +195,13 @@ export const RatgeberPage = ({ data }) => (
           {data.cta?.intro ??
             "Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob und wie sich das automatisieren lässt."}
         </p>
-        <Link to={anfrageZiel(data.related)} className="btn-ghost btn-accent mt-8">
-          {data.cta?.button ?? "Kostenloses Erstgespräch"}
-        </Link>
+        {knoepfe ? (
+          <div className="mt-8">{knoepfe}</div>
+        ) : (
+          <Link to={anfrageZiel(data.related)} className="btn-ghost btn-accent mt-8">
+            {data.cta?.button ?? "Kostenloses Erstgespräch"}
+          </Link>
+        )}
       </div>
     </Section>
   </PageShell>

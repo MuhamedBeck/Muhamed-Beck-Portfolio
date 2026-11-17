@@ -8,13 +8,15 @@ import ui from "../../../i18n/dict/ui";
 
 /**
  * Die drei Wege zur Anfrage als Knöpfe: der gefüllte springt zum Formular
- * auf derselben Seite, WhatsApp und Anruf daneben.
+ * auf derselben Seite, WhatsApp und Anruf daneben. Auf einer Seite ohne
+ * Formular, etwa dem Kosten-Ratgeber, führt `anfrageZiel` zum Formular der
+ * Dolmetscher-Seite.
  */
-export const KontaktKnoepfe = () => {
+export const KontaktKnoepfe = ({ anfrageZiel = "#anfrage" }) => {
   const t = useDict(woerter);
   return (
     <div className="flex flex-wrap items-center gap-3">
-      <a href="#anfrage" className="btn-ghost btn-accent">
+      <a href={anfrageZiel} className="btn-ghost btn-accent">
         {t.wege.anfrage}
       </a>
       <a

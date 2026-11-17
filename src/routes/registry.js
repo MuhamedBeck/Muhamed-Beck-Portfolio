@@ -885,6 +885,27 @@ export const ROUTES = [
     changefreq: "monthly",
     priority: "0.8",
   },
+  /* Ratgeber zu den Kosten, nur auf Deutsch, im Rahmen der Dolmetscher-Seite
+     und in keinem Menü. Eigene Gruppe unter `dolmetscher.`, damit die
+     Wortsperre ihn prüft, check-live aber kein Formular auf ihm erwartet.
+     Im Titel die Suchbegriffe „dolmetscher kosten“ und „pro stunde“. */
+  {
+    id: "dolmetscher.kosten",
+    path: "/dolmetscher-arabisch-frankfurt/kosten",
+    locale: "de",
+    group: "dolmetscher.kosten",
+    load: () => import("../components/pages/dolmetscher/DolmetscherKostenRoute.jsx"),
+    props: { path: "/dolmetscher-arabisch-frankfurt/kosten" },
+    title: "Dolmetscher Kosten pro Stunde 2026: Preise für Arabisch",
+    description:
+      "Was kostet ein Dolmetscher? Direkt beauftragt meist 70 bis 120 € pro Stunde, Gerichte zahlen nach JVEG 93 €. Dazu Notar, Video, Anfahrt und Zuschläge.",
+    h1: "Was kostet ein Dolmetscher für Arabisch?",
+    ogType: "article",
+    ogImage: DOLMETSCH_VORSCHAU,
+    lastmod: "2026-11-17",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
   {
     id: "impressum",
     path: "/impressum",

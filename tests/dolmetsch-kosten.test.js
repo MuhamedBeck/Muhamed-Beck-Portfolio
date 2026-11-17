@@ -7,7 +7,7 @@ import { DOLMETSCH_RATGEBER, getDolmetschRatgeber } from "../src/content/dolmets
 import { RATGEBER } from "../src/content/ratgeber.de.js";
 import { ANFAHRT_STUFEN, DOLMETSCH_PREIS, preisText } from "../src/content/site.js";
 import woerter from "../src/i18n/dict/dolmetscher.js";
-import { findeBezeichnungen } from "../scripts/geschuetzte-bezeichnungen.js";
+import { findeBezeichnungen, istGepruefteGruppe } from "../scripts/geschuetzte-bezeichnungen.js";
 
 const PFAD = "/dolmetscher-arabisch-frankfurt/kosten";
 const texte = (wert) =>
@@ -77,4 +77,27 @@ test("Weiterlesen und Abschluss bleiben im Dolmetscher-Bereich", () => {
   assert.ok(artikel.related.some((verweis) => verweis.path === "/dolmetscher-arabisch-frankfurt"));
   assert.ok(artikel.related.every((verweis) => !/^\/(ratgeber|leistungen|kontakt)/.test(verweis.path)));
   assert.ok(artikel.cta.intro.includes("in der Regel innerhalb von 24 Stunden"));
+});
+
+test("Route: Adresse, Gruppe unter der Sperre, Titel, Vorschaubild, Datum wie der Artikel", () => {
+  const route = ROUTES.find((eintrag) => eintrag.id === "dolmetscher.kosten");
+  assert.ok(route, "Route dolmetscher.kosten fehlt");
+  assert.equal(route.path, PFAD);
+  assert.equal(route.locale, "de");
+  assert.equal(route.group, "dolmetscher.kosten");
+  assert.ok(istGepruefteGruppe(route.group));
+  assert.equal(route.title, "Dolmetscher Kosten pro Stunde 2026: Preise für Arabisch");
+  assert.equal(route.h1, artikel.h1);
+  assert.equal(route.ogType, "article");
+  assert.equal(route.ogImage.src, "/bilder/dolmetscher-vorschau-v1.jpg");
+  assert.equal(route.lastmod, artikel.modified);
+  assert.equal(route.navLabel, undefined);
+  assert.equal(route.eager, undefined);
+  assert.match(route.description, /93 €/);
+});
+
+test("jede Seite unter der Dolmetscher-Adresse steht unter der Wortsperre", () => {
+  const unter = ROUTES.filter((route) => route.path.startsWith("/dolmetscher-arabisch-frankfurt"));
+  assert.ok(unter.length >= 2);
+  for (const route of unter) assert.ok(istGepruefteGruppe(route.group), route.path);
 });

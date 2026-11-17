@@ -61,6 +61,7 @@
 - [Eigene CRM-Plattform für eine Personalberatung](https://muhamedbeck.com/projekte/crm-plattform-personalberatung): Interne Web-App einer Personalberatung für Vertrieb, Account Management und Recruiting: 54 Nutzer, HubSpot abgelöst, 10.000 Anrufe im Monat im ATS.
 - [Buchungsplattform und KI-SEO für Phoenix Parkservice](https://muhamedbeck.com/projekte/phoenix-parkservice): Buchungs- und Verwaltungssoftware mit Spring Boot und Angular, dazu KI-SEO mit n8n: 35 % mehr organischer Traffic in drei Monaten.
 - [Dolmetscher und Übersetzer für Arabisch und Deutsch in Frankfurt](https://muhamedbeck.com/dolmetscher-arabisch-frankfurt): Dolmetscher und Übersetzer für Arabisch, Deutsch und Englisch in Frankfurt und Rhein-Main: vor Ort, per Video und Telefon, ab 70 € je Stunde.
+- [Was kostet ein Dolmetscher für Arabisch?](https://muhamedbeck.com/dolmetscher-arabisch-frankfurt/kosten): Was kostet ein Dolmetscher? Direkt beauftragt meist 70 bis 120 € pro Stunde, Gerichte zahlen nach JVEG 93 €. Dazu Notar, Video, Anfahrt und Zuschläge.
 - [Impressum](https://muhamedbeck.com/impressum): Impressum von Muhamed Nur Beck, AI Automation & Full-Stack Developer aus Frankfurt am Main. Angaben gemäß § 5 DDG.
 - [Datenschutzerklärung](https://muhamedbeck.com/datenschutz): Datenschutzerklärung für muhamedbeck.com: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.
 - [Widerrufsbelehrung](https://muhamedbeck.com/widerrufsbelehrung): Widerrufsbelehrung für Verbraucher zu den Dolmetsch- und Übersetzungsleistungen von Muhamed Nur Beck, mit Muster-Widerrufsformular.

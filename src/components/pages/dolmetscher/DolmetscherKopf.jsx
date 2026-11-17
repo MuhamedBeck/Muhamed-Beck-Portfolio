@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 import { FaPhone } from "react-icons/fa";
 import { useDict, useLocale } from "../../../i18n";
 import { localeConfig } from "../../../i18n/locales.js";
-import { findRoute, getAlternates } from "../../../routes/registry.js";
+import { findRoute, getAlternates, getGroupRoute } from "../../../routes/registry.js";
 import { CONTACT, whatsappHref } from "../../../content/site";
 import { ThemeSwitcher } from "../../ThemeSwitcher";
 import { Marke } from "../../icons/Marke";
@@ -31,6 +31,9 @@ export const DolmetscherKopf = () => {
   const { pathname } = useLocation();
   const route = findRoute(pathname);
   const ziele = new Map((route ? getAlternates(route) : []).map((r) => [r.locale, r.path]));
+  /* Der Name führt zur Dolmetscher-Seite der Sprache, auch von einer
+     Unterseite wie dem Kosten-Ratgeber aus. */
+  const startseite = getGroupRoute("dolmetscher", locale)?.path ?? pathname;
 
   return (
     <header className="site-nav fixed top-0 z-40 w-full border-b border-hairline bg-ink/85 backdrop-blur-lg">
@@ -39,7 +42,7 @@ export const DolmetscherKopf = () => {
       </a>
       <div className="mx-auto max-w-6xl px-4">
         <div className="flex h-16 items-center justify-between gap-3">
-          <a href={pathname} className="flex min-w-0 flex-col leading-tight">
+          <a href={startseite} className="flex min-w-0 flex-col leading-tight">
             <span className="truncate text-sm font-medium text-paper">{t.kopf.name}</span>
             <span className="hidden text-xs text-paper-mute md:block">{t.kopf.rolle}</span>
           </a>
