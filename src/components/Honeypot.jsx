@@ -11,7 +11,7 @@ import { HONEYPOT_FELD } from "../services/anfrage";
  * gewählt, siehe HONEYPOT_FELD.
  */
 export const Honeypot = () => (
-  <div aria-hidden="true" className="absolute left-[-10000px] h-px w-px overflow-hidden">
+  <div aria-hidden="true" className="absolute start-[-10000px] h-px w-px overflow-hidden">
     <label htmlFor={HONEYPOT_FELD}>Bitte leer lassen</label>
     <input
       id={HONEYPOT_FELD}

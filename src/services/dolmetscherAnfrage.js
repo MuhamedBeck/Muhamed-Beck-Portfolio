@@ -58,6 +58,13 @@ export const LEERE_FELDER = {
   nachricht: "",
 };
 
+/* Kennung (id) je Feld; der Schlüssel ist zugleich das Attribut `name`. Die
+   Live-Prüfung (scripts/check-live.js) sucht diese Kennungen im
+   vorgerenderten HTML. */
+export const FELD_IDS = Object.fromEntries(
+  Object.keys(LEERE_FELDER).map((name) => [name, `dolmetscher-${name}`])
+);
+
 /* Längengrenzen der freien Felder, gleich denen des Workers (GRENZEN in
    worker/anfrage.js); ein Test hält beide zusammen. */
 export const FELD_GRENZEN = {

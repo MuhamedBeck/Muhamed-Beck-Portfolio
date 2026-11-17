@@ -10,6 +10,7 @@ import profilePicture from "../../../assets/profilepicture.webp";
 import { DolmetscherKopf } from "./DolmetscherKopf";
 import { DolmetscherFuss } from "./DolmetscherFuss";
 import { KontaktKnoepfe, KontaktListe } from "./Kontaktwege";
+import { DolmetscherAnfrage } from "./DolmetscherAnfrage";
 
 /* Folgeabschnitte beginnen mit Haarlinie und Abstand (Muster LeistungPage). */
 const Abschnitt = ({ id, titel, children }) => (
@@ -146,8 +147,8 @@ export const DolmetscherPage = ({ inhalt }) => {
       {anfrage ? (
         <Abschnitt id="anfrage" titel={anfrage.titel}>
           <p className={TEXT}>{anfrage.einleitung}</p>
-          <div className="mt-10 grid gap-x-14 gap-y-12 md:grid-cols-[1.25fr_1fr]">
-            <div />
+          <div className="mt-10 grid gap-x-14 gap-y-16 md:grid-cols-[1.25fr_1fr]">
+            <DolmetscherAnfrage />
             <KontaktListe />
           </div>
         </Abschnitt>
