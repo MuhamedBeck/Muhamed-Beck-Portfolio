@@ -60,6 +60,7 @@
 - [Recruiting-Automatisierung mit n8n und KI-Telefonie](https://muhamedbeck.com/projekte/recruiting-automatisierung): Wie n8n und GPT bei der TOPEOPLE Group neue Bewerber anrufen, auswerten und vorstellen: rund 1.900 KI-Anrufe und 300 Vorstellungen im Monat.
 - [Eigene CRM-Plattform für eine Personalberatung](https://muhamedbeck.com/projekte/crm-plattform-personalberatung): Interne Web-App einer Personalberatung für Vertrieb, Account Management und Recruiting: 54 Nutzer, HubSpot abgelöst, 10.000 Anrufe im Monat im ATS.
 - [Buchungsplattform und KI-SEO für Phoenix Parkservice](https://muhamedbeck.com/projekte/phoenix-parkservice): Buchungs- und Verwaltungssoftware mit Spring Boot und Angular, dazu KI-SEO mit n8n: 35 % mehr organischer Traffic in drei Monaten.
+- [Dolmetscher und Übersetzer für Arabisch und Deutsch in Frankfurt](https://muhamedbeck.com/dolmetscher-arabisch-frankfurt): Dolmetscher und Übersetzer für Arabisch, Deutsch und Englisch in Frankfurt und Rhein-Main: vor Ort, per Video und Telefon, ab 70 € je Stunde.
 - [Impressum](https://muhamedbeck.com/impressum): Impressum von Muhamed Nur Beck, AI Automation & Full-Stack Developer aus Frankfurt am Main. Angaben gemäß § 5 DDG.
 - [Datenschutzerklärung](https://muhamedbeck.com/datenschutz): Datenschutzerklärung für muhamedbeck.com: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.
 
@@ -70,6 +71,7 @@
 - [Start a project](https://muhamedbeck.com/en/hire): Request AI automation, web development or CRM integration and get a personal reply within 24 hours from Muhamed Beck, freelance developer in Frankfurt.
 - [AR data visualisation](https://muhamedbeck.com/en/projects/ar-data-visualization): Case study on visualizing SAP BusinessObjects data in Augmented Reality: concept, architecture and implementation by Muhamed Beck.
 - [LLM unit test automation](https://muhamedbeck.com/en/projects/llm-maven-plugin): Master thesis project: a Maven plugin that uses Large Language Models to automatically generate unit tests for Java Spring Boot projects.
+- [Arabic interpreter and translator in Frankfurt](https://muhamedbeck.com/en/arabic-interpreter-frankfurt): Arabic interpreter and translator for German and English in Frankfurt and the Rhine-Main area: on site, by video and phone, from €70 per hour.
 
 ## العربية
 
@@ -78,3 +80,4 @@
 - [ابدأ مشروعًا](https://muhamedbeck.com/ar/hire): صف العملية التي تستهلك أكبر وقت لديك، وستحصل على تقييم صريح خلال 24 ساعة. الاستشارة الأولى مجانية، والعمل عن بُعد مع عملاء في أوروبا والمنطقة العربية.
 - [أتمتة اختبارات الوحدة بنموذج لغوي](https://muhamedbeck.com/ar/projects/llm-maven-plugin): مكوّن Maven إضافي يولّد اختبارات وحدة لمشاريع Spring Boot بنموذج لغوي: زيادة 33 بالمئة في التغطية مقيسة بـ JaCoCo، وكلفة 2,13 يورو بدل 566 يورو.
 - [تصوير البيانات في الواقع المعزز](https://muhamedbeck.com/ar/projects/ar-data-visualization): عرض تقارير SAP BusinessObjects في الواقع المعزز داخل المتصفح، مع استبيان شمل 81 مشاركًا في شركات ألمانية حول عوائق التبني. أكثر من 50 إطارًا في الثانية.
+- [مترجم شفوي وتحريري بين العربية والألمانية في فرانكفورت](https://muhamedbeck.com/ar/arabic-interpreter-frankfurt): مترجم شفوي وتحريري للعربية والألمانية والإنجليزية في فرانكفورت ومنطقة الراين-ماين: حضوريًا أو عبر الفيديو والهاتف، ابتداءً من 70 يورو للساعة.

@@ -728,6 +728,14 @@ dd {
   letter-spacing: 0;
 }
 
+/* Die Sprachwahl der Dolmetscher-Seite zeigt "العربية" auch auf der deutschen
+   und englischen Fassung; dort steht die arabische Schrift nicht im Stapel,
+   weil sie an :lang(ar) auf <html> hängt. */
+.sprachwahl [lang="ar"] {
+  font-family: "IBM Plex Sans Arabic", var(--font-text);
+  letter-spacing: 0;
+}
+
 /* Entrance stagger. Choreography lives in a --fade-delay custom property so a
    list can compute its own rhythm from an index instead of needing a class per
    step.

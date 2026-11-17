@@ -343,6 +343,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://muhamedbeck.com/dolmetscher-arabisch-frankfurt</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://muhamedbeck.com/dolmetscher-arabisch-frankfurt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://muhamedbeck.com/en/arabic-interpreter-frankfurt"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://muhamedbeck.com/ar/arabic-interpreter-frankfurt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://muhamedbeck.com/dolmetscher-arabisch-frankfurt"/>
+  </url>
+  <url>
+    <loc>https://muhamedbeck.com/en/arabic-interpreter-frankfurt</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://muhamedbeck.com/dolmetscher-arabisch-frankfurt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://muhamedbeck.com/en/arabic-interpreter-frankfurt"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://muhamedbeck.com/ar/arabic-interpreter-frankfurt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://muhamedbeck.com/dolmetscher-arabisch-frankfurt"/>
+  </url>
+  <url>
+    <loc>https://muhamedbeck.com/ar/arabic-interpreter-frankfurt</loc>
+    <lastmod>2026-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="de" href="https://muhamedbeck.com/dolmetscher-arabisch-frankfurt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://muhamedbeck.com/en/arabic-interpreter-frankfurt"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://muhamedbeck.com/ar/arabic-interpreter-frankfurt"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://muhamedbeck.com/dolmetscher-arabisch-frankfurt"/>
+  </url>
+  <url>
     <loc>https://muhamedbeck.com/impressum</loc>
     <lastmod>2026-10-26</lastmod>
     <changefreq>yearly</changefreq>

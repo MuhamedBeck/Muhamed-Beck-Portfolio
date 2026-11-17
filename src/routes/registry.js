@@ -17,7 +17,7 @@
 // client can hand it straight to React.lazy and the SSR pass can read `.default`.
 
 // With the .js extension: node scripts import this registry directly.
-import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "../content/site.js";
+import { DOLMETSCH_PREIS, FESTPREIS, RATE_MAX, RATE_MIN, euro, preisText } from "../content/site.js";
 
 export const SITE_URL = "https://muhamedbeck.com";
 
@@ -820,6 +820,53 @@ export const ROUTES = [
     navLabel: "Phoenix Parkservice",
     ogType: "article",
     lastmod: "2026-10-29",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  // Dolmetscher-Seite: dieselbe Seite in drei Sprachen, in keinem Menü.
+  {
+    id: "dolmetscher.de",
+    path: "/dolmetscher-arabisch-frankfurt",
+    locale: "de",
+    group: "dolmetscher",
+    load: () => import("../components/pages/dolmetscher/DolmetscherRoute.jsx"),
+    title: "Dolmetscher Arabisch Deutsch in Frankfurt | Muhamed Beck",
+    description: `Dolmetscher und Übersetzer für Arabisch, Deutsch und Englisch in Frankfurt und Rhein-Main: vor Ort, per Video und Telefon, ab ${preisText(DOLMETSCH_PREIS.vorOrtStunde, "de")} je Stunde.`,
+    h1: "Dolmetscher und Übersetzer für Arabisch und Deutsch in Frankfurt",
+    lastmod: "2026-11-17",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  {
+    id: "dolmetscher.en",
+    path: "/en/arabic-interpreter-frankfurt",
+    locale: "en",
+    group: "dolmetscher",
+    load: () => import("../components/pages/dolmetscher/DolmetscherEnRoute.jsx"),
+    title: "Arabic Interpreter in Frankfurt | Muhamed Nur Beck",
+    description: `Arabic interpreter and translator for German and English in Frankfurt and the Rhine-Main area: on site, by video and phone, from ${preisText(DOLMETSCH_PREIS.vorOrtStunde, "en")} per hour.`,
+    h1: "Arabic interpreter and translator in Frankfurt",
+    lastmod: "2026-11-17",
+    changefreq: "monthly",
+    priority: "0.8",
+  },
+  /* Rückübersetzung:
+   *   title        Dolmetscher Arabisch Deutsch in Frankfurt | Muhamed Nur Beck
+   *   description  Dolmetscher und Übersetzer für Arabisch, Deutsch und Englisch
+   *                in Frankfurt und im Rhein-Main-Gebiet: vor Ort, per Video und
+   *                Telefon, ab 70 Euro je Stunde.
+   *   h1           Dolmetscher und Übersetzer (mündlich und schriftlich) zwischen
+   *                Arabisch und Deutsch in Frankfurt */
+  {
+    id: "dolmetscher.ar",
+    path: "/ar/arabic-interpreter-frankfurt",
+    locale: "ar",
+    group: "dolmetscher",
+    load: () => import("../components/pages/dolmetscher/DolmetscherArRoute.jsx"),
+    title: "مترجم فوري عربي ألماني في فرانكفورت | محمد نور بيك",
+    description: `مترجم شفوي وتحريري للعربية والألمانية والإنجليزية في فرانكفورت ومنطقة الراين-ماين: حضوريًا أو عبر الفيديو والهاتف، ابتداءً من ${preisText(DOLMETSCH_PREIS.vorOrtStunde, "ar")} للساعة.`,
+    h1: "مترجم شفوي وتحريري بين العربية والألمانية في فرانكفورت",
+    lastmod: "2026-11-17",
     changefreq: "monthly",
     priority: "0.8",
   },
