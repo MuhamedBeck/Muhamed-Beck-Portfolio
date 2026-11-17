@@ -56,7 +56,7 @@ export const Spannen = ({ daten }) => (
                 />
               </div>
               <div className="mt-3 flex justify-between text-xs text-paper-mute tabular-nums">
-                <span>0 €</span>
+                <span>0&nbsp;€</span>
                 <span>{zeile.maxText}</span>
               </div>
               <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm">

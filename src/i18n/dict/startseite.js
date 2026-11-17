@@ -71,7 +71,7 @@ const de = {
     items: [
       {
         q: "Was kostet ein n8n Freelancer?",
-        a: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Zum Einstieg gibt es einen Workflow als Pilot zum Festpreis von ${euro(FESTPREIS.pilot)}, mit Test an echten Daten, Übergabe und 30 Tagen Fehlerbehebung.`,
+        a: `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde, nach Absprache und je nach Projektumfang. Zum Einstieg gibt es einen Workflow als Pilot zum Festpreis von ${euro(FESTPREIS.pilot)}, mit Test an echten Daten, Übergabe und 30 Tagen Fehlerbehebung.`,
       },
       {
         q: "Wie lange dauert ein Projekt?",
@@ -149,7 +149,7 @@ const en = {
     items: [
       {
         q: "What does an n8n freelancer cost?",
-        a: `${RATE_MIN} to ${RATE_MAX} € per hour, by agreement and depending on project scope. A fixed price is possible where the scope is clearly drawn.`,
+        a: `${RATE_MIN} to ${RATE_MAX}\u00A0€ per hour, by agreement and depending on project scope. A fixed price is possible where the scope is clearly drawn.`,
       },
       {
         q: "How long does an automation project take?",

@@ -20,7 +20,7 @@ export const PROJECTS_EN = [
       "Master thesis at INFOMOTION GmbH: automated unit test generation for Java Spring Boot projects",
     role: "Master thesis, 02/2022 to 10/2024",
     stats: [
-      { value: "9 → 42 %", label: "test coverage", note: "measured with JaCoCo" },
+      { value: "9 → 42\u00A0%", label: "test coverage", note: "measured with JaCoCo" },
       { value: "1,440 → 30 min", label: "writing effort", note: "per project, against manual test development" },
       { value: "€2.13", label: "per generated suite", note: "down from €566 manually" },
     ],
@@ -37,7 +37,7 @@ export const PROJECTS_EN = [
     ergebnisse: [
       "Test coverage rose from 9 to 42 percent across the evaluated projects",
       "Effort for writing tests fell from 1,440 to 30 minutes per project compared with manual development",
-      "Cost per generated test suite fell from about 566 € of developer time to about 2.13 € in API cost",
+      "Cost per generated test suite fell from about 566\u00A0€ of developer time to about 2.13\u00A0€ in API cost",
       "Prompt engineering was shown to measurably affect the quality of generated technical code",
       "Produced a reusable framework for integrating LLMs into enterprise software development workflows",
     ],

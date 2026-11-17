@@ -29,12 +29,12 @@ export const PILOT = {
     "30 Tage Fehlerbehebung nach der Abnahme, zusätzlich zu den gesetzlichen Mängelrechten",
   ],
   nichtEnthalten: [
-    "Laufende Kosten der Anbieter, die Sie direkt zahlen: n8n Cloud ab 20 € im Monat bei jährlicher Zahlung, KI-Modelle nach Verbrauch",
+    "Laufende Kosten der Anbieter, die Sie direkt zahlen: n8n Cloud ab 20\u00A0€ im Monat bei jährlicher Zahlung, KI-Modelle nach Verbrauch",
     "Lizenzen der angebundenen Programme, falls deren Schnittstelle einen höheren Tarif verlangt",
     "Weitere Workflows und laufende Wartung; die vereinbaren wir danach nach Aufwand oder als eigenes Angebot",
   ],
   dauer: "Dauer: meist zwei bis vier Wochen, je nachdem, wie schnell Zugänge und Testdaten da sind.",
   // Vom Inhaber am 07.11.2026 festgelegt.
-  zahlung: "Zahlung: 30 % bei Auftrag, 70 % nach Ihrer Abnahme.",
+  zahlung: "Zahlung: 30\u00A0% bei Auftrag, 70\u00A0% nach Ihrer Abnahme.",
   ust: UST_KURZ,
 };

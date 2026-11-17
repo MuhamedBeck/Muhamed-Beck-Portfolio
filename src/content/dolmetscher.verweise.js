@@ -81,7 +81,7 @@ export const WEBSITE_AUF_ARABISCH = {
         ],
       },
     },
-    text: `Jede Zeile lässt sich an den arabischen Seiten dieser Website nachprüfen. Eine weitere Sprache läuft wie jede Erweiterung über den vereinbarten Umfang zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
+    text: `Jede Zeile lässt sich an den arabischen Seiten dieser Website nachprüfen. Eine weitere Sprache läuft wie jede Erweiterung über den vereinbarten Umfang zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde.`,
   },
   leistung: "Arabische Fassung mit Leserichtung von rechts nach links, arabischer Schrift und eigenen Sprachverweisen",
   weiterlesen: { path: "/ar", label: "Die arabische Fassung dieser Website" },

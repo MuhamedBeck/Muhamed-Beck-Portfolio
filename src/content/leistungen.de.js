@@ -25,7 +25,7 @@ import { FOTO_ENTWURF, FOTO_KI_ASSISTENTEN, FOTO_WORKSHOP } from "./fotos.de.js"
    so schon in den Ratgebern (n8n-Freelancer-Kosten, n8n-Kosten); der Median
    des Freelancer-Kompass bleibt dort. */
 export const PREIS_TEXT =
-  `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang. Ein einzelner Workflow kostet in der Umsetzung meist einen vierstelligen Betrag, eine Prozesskette über mehrere Systeme einen niedrigen fünfstelligen; bei klar umrissenem Umfang als Festpreis. Laufend kommen oft unter 100 € im Monat dazu, die Sie direkt an die Anbieter zahlen. ${UST_HINWEIS}`;
+  `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde, nach Absprache und je nach Projektumfang. Ein einzelner Workflow kostet in der Umsetzung meist einen vierstelligen Betrag, eine Prozesskette über mehrere Systeme einen niedrigen fünfstelligen; bei klar umrissenem Umfang als Festpreis. Laufend kommen oft unter 100\u00A0€ im Monat dazu, die Sie direkt an die Anbieter zahlen. ${UST_HINWEIS}`;
 
 /* Wo gearbeitet wird, im sichtbaren Text und nicht nur im Schema.
    prerender-meta.js setzt seit jeher areaServed auf Deutschland, Österreich
@@ -177,7 +177,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet eine n8n-Automatisierung?",
-        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang. Kleine Workflows sind oft in wenigen Stunden umgesetzt, komplexe Integrationen mit mehreren Systemen kalkuliere ich nach einem kostenlosen Erstgespräch transparent als Fest- oder Stundenpreis.`,
+        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€ nach Absprache und je nach Projektumfang. Kleine Workflows sind oft in wenigen Stunden umgesetzt, komplexe Integrationen mit mehreren Systemen kalkuliere ich nach einem kostenlosen Erstgespräch transparent als Fest- oder Stundenpreis.`,
       },
       {
         q: "n8n oder Zapier: was passt besser zu meinem Unternehmen?",
@@ -221,7 +221,7 @@ export const LEISTUNGEN = [
        Festpreise statt nur Stundensatz, weil wer eine Website kauft,
        Gesamtpreise vergleicht. Die Beträge kommen aus FESTPREIS in site.js. */
     preisKurz: `Website ab ${euro(FESTPREIS.website)}, Relaunch ab ${euro(FESTPREIS.relaunch)}`,
-    preisText: `Festpreise für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch mit Weiterleitungen und Messung vorher und nachher ab ${euro(FESTPREIS.relaunch)}. Was über den vereinbarten Umfang hinausgeht, etwa weitere Sprachen, Buchung oder Anbindungen, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Laufende Kosten entstehen nur für Domain und Hosting, nicht für die Seite selbst. ${UST_HINWEIS}`,
+    preisText: `Festpreise für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch mit Weiterleitungen und Messung vorher und nachher ab ${euro(FESTPREIS.relaunch)}. Was über den vereinbarten Umfang hinausgeht, etwa weitere Sprachen, Buchung oder Anbindungen, läuft zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde. Laufende Kosten entstehen nur für Domain und Hosting, nicht für die Seite selbst. ${UST_HINWEIS}`,
     reichweiteText: REICHWEITE_FESTPREIS_TEXT,
     cta: {
       headline: "Brauchen Sie eine Website, die schnell ist und gefunden wird?",
@@ -373,7 +373,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet eine Website oder Homepage?",
-        a: `Als Festpreis für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch ab ${euro(FESTPREIS.relaunch)}. ${UST_HINWEIS} Enthalten sind Struktur, Umsetzung, technisches SEO, beim Relaunch die Weiterleitungen und am Ende die Übergabe. Den genauen Betrag nenne ich nach dem Erstgespräch, sobald Umfang, Sprachen und Anbindungen feststehen; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
+        a: `Als Festpreis für Unternehmen: eine Firmen-Website ab ${euro(FESTPREIS.website)}, ein Relaunch ab ${euro(FESTPREIS.relaunch)}. ${UST_HINWEIS} Enthalten sind Struktur, Umsetzung, technisches SEO, beim Relaunch die Weiterleitungen und am Ende die Übergabe. Den genauen Betrag nenne ich nach dem Erstgespräch, sobald Umfang, Sprachen und Anbindungen feststehen; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde.`,
       },
       {
         /* Seit 26.10.2026: "Webdesign" kam auf der ganzen Website nicht vor,
@@ -417,7 +417,7 @@ export const LEISTUNGEN = [
        nicht nach einem Neubau. Bis dahin verkaufte die Seite nur Neubau und
        Relaunch ab einigen Tausend Euro. */
     preisKurz: `Überarbeitung ab ${euro(FESTPREIS.update)}`,
-    preisText: `Festpreis für Unternehmen: Kleinere Überarbeitungen mit vorher vereinbartem Umfang beginnen bei ${euro(FESTPREIS.update)}. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab oder biete sie ebenfalls als Festpreis an. Lohnt sich eine Überarbeitung nicht, sage ich das, bevor Sie Geld ausgeben. ${UST_HINWEIS}`,
+    preisText: `Festpreis für Unternehmen: Kleinere Überarbeitungen mit vorher vereinbartem Umfang beginnen bei ${euro(FESTPREIS.update)}. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde ab oder biete sie ebenfalls als Festpreis an. Lohnt sich eine Überarbeitung nicht, sage ich das, bevor Sie Geld ausgeben. ${UST_HINWEIS}`,
     reichweiteText: REICHWEITE_FESTPREIS_TEXT,
     cta: {
       headline: "Soll Ihre Website wieder zeitgemäß aussehen und schneller laden?",
@@ -535,7 +535,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet es, eine Website überarbeiten zu lassen?",
-        a: `Kleinere Überarbeitungen beginnen bei ${euro(FESTPREIS.update)}, als Festpreis für einen vorher vereinbarten Umfang. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab oder biete sie ebenfalls als Festpreis an. Den genauen Betrag nenne ich nach einem Blick auf Ihre Seite.`,
+        a: `Kleinere Überarbeitungen beginnen bei ${euro(FESTPREIS.update)}, als Festpreis für einen vorher vereinbarten Umfang. Größere Umbauten rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde ab oder biete sie ebenfalls als Festpreis an. Den genauen Betrag nenne ich nach einem Blick auf Ihre Seite.`,
       },
       {
         q: "Überarbeitung oder Neubau: Was lohnt sich?",
@@ -568,7 +568,7 @@ export const LEISTUNGEN = [
        TOPEOPLE steht ausdrücklich als Arbeit beim Arbeitgeber da, nie als
        Kundenprojekt. */
     preisKurz: `Web-App ab ${euro(FESTPREIS.webApp)}, Kundenportal ab ${euro(FESTPREIS.portal)}`,
-    preisText: `Festpreise für Unternehmen: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}. Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Laufende Kosten entstehen für Hosting und Datenbank; die schätzen wir vor dem Start, nicht danach. ${UST_HINWEIS}`,
+    preisText: `Festpreise für Unternehmen: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}. Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde. Laufende Kosten entstehen für Hosting und Datenbank; die schätzen wir vor dem Start, nicht danach. ${UST_HINWEIS}`,
     reichweiteText: REICHWEITE_FESTPREIS_TEXT,
     cta: {
       headline: "Welcher Ablauf soll endlich über eine eigene Anwendung laufen?",
@@ -673,7 +673,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet eine Web-App oder ein Buchungssystem?",
-        a: `Als Festpreis für Unternehmen: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}. ${UST_HINWEIS} Den genauen Betrag nenne ich, sobald Abläufe, Rollen und Schnittstellen feststehen; Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde.`,
+        a: `Als Festpreis für Unternehmen: eine Web-App oder ein Buchungssystem in der ersten Ausbaustufe ab ${euro(FESTPREIS.webApp)}, ein Kundenportal mit Rollen und Schnittstellen ab ${euro(FESTPREIS.portal)}. ${UST_HINWEIS} Den genauen Betrag nenne ich, sobald Abläufe, Rollen und Schnittstellen feststehen; Weiterentwicklung danach läuft zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde.`,
       },
       {
         q: "Lohnt sich eine eigene Anwendung oder reicht fertige Software?",
@@ -797,7 +797,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet KI-Automatisierung?",
-        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang. Ein Prototyp für einen klar umrissenen Use Case ist oft überschaubar; den konkreten Rahmen besprechen wir in einem kostenlosen Erstgespräch.`,
+        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€ nach Absprache und je nach Projektumfang. Ein Prototyp für einen klar umrissenen Use Case ist oft überschaubar; den konkreten Rahmen besprechen wir in einem kostenlosen Erstgespräch.`,
       },
       {
         q: "Ist der Einsatz von GPT und Co. DSGVO-konform möglich?",
@@ -839,7 +839,7 @@ export const LEISTUNGEN = [
        als Konzeptpapier. */
     pilot: true,
     preisKurz: `Pilot zum Festpreis: ${euro(FESTPREIS.pilot)}`,
-    preisText: `Das Erstgespräch ist kostenlos. Beratung darüber hinaus rechne ich nach Aufwand ab, ${RATE_MIN} bis ${RATE_MAX} € pro Stunde; der erste Anwendungsfall als Pilot kostet ${euro(FESTPREIS.pilot)} zum Festpreis. Laufende Kosten für KI-Modelle und Werkzeuge zahlen Sie direkt an die Anbieter. ${UST_HINWEIS}`,
+    preisText: `Das Erstgespräch ist kostenlos. Beratung darüber hinaus rechne ich nach Aufwand ab, ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde; der erste Anwendungsfall als Pilot kostet ${euro(FESTPREIS.pilot)} zum Festpreis. Laufende Kosten für KI-Modelle und Werkzeuge zahlen Sie direkt an die Anbieter. ${UST_HINWEIS}`,
     cta: {
       headline: "Wo würde KI bei Ihnen Zeit sparen?",
       intro:
@@ -896,9 +896,9 @@ export const LEISTUNGEN = [
             max: 100,
             titel: "Gründe gegen den KI-Einsatz, Unternehmen ohne KI, Mehrfachnennung",
             zeilen: [
-              { label: "Fehlendes technisches Know-how", wert: 85, text: "85 %", ton: "warm" },
-              { label: "Rechtliche Hürden und Unklarheiten", wert: 66, text: "66 %", ton: "warm" },
-              { label: "Schwer zu kalkulierende Kosten", wert: 63, text: "63 %", ton: "warm" },
+              { label: "Fehlendes technisches Know-how", wert: 85, text: "85\u00A0%", ton: "warm" },
+              { label: "Rechtliche Hürden und Unklarheiten", wert: 66, text: "66\u00A0%", ton: "warm" },
+              { label: "Schwer zu kalkulierende Kosten", wert: 63, text: "63\u00A0%", ton: "warm" },
             ],
             quelle: "Bitkom, repräsentative Befragung von 603 Unternehmen ab 20 Beschäftigten, veröffentlicht am 14.09.2026. 57 Prozent der Unternehmen nutzen KI bereits.",
           },
@@ -990,7 +990,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet eine KI-Beratung?",
-        a: `Das Erstgespräch ist kostenlos. Weitere Beratung rechne ich nach Aufwand ab, ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Der erste Anwendungsfall als Pilot kostet ${euro(FESTPREIS.pilot)} zum Festpreis, mit Test, Übergabe und 30 Tagen Fehlerbehebung. ${UST_HINWEIS}`,
+        a: `Das Erstgespräch ist kostenlos. Weitere Beratung rechne ich nach Aufwand ab, ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde. Der erste Anwendungsfall als Pilot kostet ${euro(FESTPREIS.pilot)} zum Festpreis, mit Test, Übergabe und 30 Tagen Fehlerbehebung. ${UST_HINWEIS}`,
       },
       {
         q: "Brauchen wir zuerst eine KI-Strategie?",
@@ -1017,7 +1017,7 @@ export const LEISTUNGEN = [
   {
     path: "/leistungen/voice-ai-agenten",
     preisText:
-      `${RATE_MIN} bis ${RATE_MAX} € pro Stunde für die Umsetzung. Anders als bei den übrigen Leistungen kommen laufende Kosten dazu: Sprachagenten werden je Gesprächsminute abgerechnet, dazu Telefonie und Rufnummer. Was das konkret bedeutet, steht im Ratgeber zu KI-Telefonagenten.`,
+      `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde für die Umsetzung. Anders als bei den übrigen Leistungen kommen laufende Kosten dazu: Sprachagenten werden je Gesprächsminute abgerechnet, dazu Telefonie und Rufnummer. Was das konkret bedeutet, steht im Ratgeber zu KI-Telefonagenten.`,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
        Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
        und die ist auf jeder der sieben Seiten eine andere. */
@@ -1139,7 +1139,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Was kostet ein KI-Telefonagent?",
-        a: `Die Umsetzung rechne ich mit ${RATE_MIN} bis ${RATE_MAX} € pro Stunde nach Absprache und je nach Projektumfang ab. Dazu kommen laufende Kosten für Telefonie und Sprachmodelle, die sich pro Gesprächsminute bemessen. Beides schätzen wir vor dem Start anhand Ihres tatsächlichen Anrufaufkommens.`,
+        a: `Die Umsetzung rechne ich mit ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde nach Absprache und je nach Projektumfang ab. Dazu kommen laufende Kosten für Telefonie und Sprachmodelle, die sich pro Gesprächsminute bemessen. Beides schätzen wir vor dem Start anhand Ihres tatsächlichen Anrufaufkommens.`,
       },
       {
         q: "Bleiben die Gesprächsdaten in der EU?",
@@ -1150,7 +1150,7 @@ export const LEISTUNGEN = [
   {
     path: "/leistungen/ki-agenten-entwicklung",
     preisText:
-      `${RATE_MIN} bis ${RATE_MAX} € pro Stunde für die Entwicklung. Dazu kommen laufende Modellkosten je Anfrage, die vom eingesetzten Modell und vom Umfang der Eingaben abhängen. Beides wird vorher abgeschätzt, damit der Betrieb später keine Überraschung ist.`,
+      `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde für die Entwicklung. Dazu kommen laufende Modellkosten je Anfrage, die vom eingesetzten Modell und vom Umfang der Eingaben abhängen. Beides wird vorher abgeschätzt, damit der Betrieb später keine Überraschung ist.`,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
        Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
        und die ist auf jeder der sieben Seiten eine andere. */
@@ -1263,7 +1263,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Was kostet die Entwicklung eines KI-Agenten?",
-        a: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde nach Absprache und je nach Projektumfang, dazu die laufenden Modellkosten. Der ehrliche Hinweis vorweg: Für viele Aufgaben ist ein normaler Workflow die günstigere und stabilere Lösung. Das prüfen wir im Erstgespräch, bevor Sie in einen Agenten investieren.`,
+        a: `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde nach Absprache und je nach Projektumfang, dazu die laufenden Modellkosten. Der ehrliche Hinweis vorweg: Für viele Aufgaben ist ein normaler Workflow die günstigere und stabilere Lösung. Das prüfen wir im Erstgespräch, bevor Sie in einen Agenten investieren.`,
       },
     ],
   },
@@ -1370,7 +1370,7 @@ export const LEISTUNGEN = [
     faq: [
       {
         q: "Was kostet eine HubSpot-Integration?",
-        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang. Eine einzelne Anbindung ist oft in wenigen Tagen umgesetzt; komplexe bidirektionale Synchronisationen kalkuliere ich nach einem kostenlosen Erstgespräch.`,
+        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€ nach Absprache und je nach Projektumfang. Eine einzelne Anbindung ist oft in wenigen Tagen umgesetzt; komplexe bidirektionale Synchronisationen kalkuliere ich nach einem kostenlosen Erstgespräch.`,
       },
       {
         q: "Welche Systeme haben Sie bereits an HubSpot angebunden?",
@@ -1407,7 +1407,7 @@ export const LEISTUNGEN = [
       { path: "/projekte/maflats", label: "Website-Relaunch für MA-Flats" },
       {
         path: "/projekte/phoenix-parkservice",
-        label: "Phoenix Parkservice: 35 % mehr organischer Traffic",
+        label: "Phoenix Parkservice: 35\u00A0% mehr organischer Traffic",
       },
       { path: "/ratgeber/website-relaunch", label: "Website-Relaunch ohne Ranking-Verlust" },
     ],
@@ -1484,12 +1484,12 @@ export const LEISTUNGEN = [
             art: "liste",
             titel: "Anteil einer Quelle an der KI-Antwort, nachdem ihr Text geändert wurde",
             zeilen: [
-              { label: "Wörtliche Zitate aus glaubwürdigen Quellen", wert: 27.2, text: "+41 %", ton: "erfolg" },
-              { label: "Statistiken ergänzt", wert: 25.2, text: "+31 %", ton: "erfolg" },
-              { label: "Flüssiger formuliert", wert: 24.7, text: "+28 %", ton: "akzent" },
-              { label: "Quellen angegeben", wert: 24.6, text: "+27 %", ton: "akzent" },
+              { label: "Wörtliche Zitate aus glaubwürdigen Quellen", wert: 27.2, text: "+41\u00A0%", ton: "erfolg" },
+              { label: "Statistiken ergänzt", wert: 25.2, text: "+31\u00A0%", ton: "erfolg" },
+              { label: "Flüssiger formuliert", wert: 24.7, text: "+28\u00A0%", ton: "akzent" },
+              { label: "Quellen angegeben", wert: 24.6, text: "+27\u00A0%", ton: "akzent" },
               { label: "Ohne Änderung", wert: 19.3, text: "Ausgangswert", ton: "leise" },
-              { label: "Keyword-Stuffing", wert: 17.7, text: "−8 %", ton: "warm" },
+              { label: "Keyword-Stuffing", wert: 17.7, text: "−8\u00A0%", ton: "warm" },
             ],
             quelle: "Aggarwal u. a., KDD 2024, Tabelle 1: Position-Adjusted Word Count, Ausgangswert 19,3. Laborversuch von 2023 mit GPT-3.5 und 1.000 Testfragen; ob er für heutige Assistenten gilt, ist nicht belegt.",
           },
@@ -1521,7 +1521,7 @@ export const LEISTUNGEN = [
       linkText: "Die Fallstudie im Detail",
     },
     preisText:
-      `${RATE_MIN} bis ${RATE_MAX} € pro Stunde nach Absprache. Ein Audit hat einen absehbaren Umfang und lässt sich deshalb gut als Festpreis abbilden; die anschließende Umsetzung hängt davon ab, was der Befund ergibt. Laufende Kosten entstehen keine.`,
+      `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde nach Absprache. Ein Audit hat einen absehbaren Umfang und lässt sich deshalb gut als Festpreis abbilden; die anschließende Umsetzung hängt davon ab, was der Befund ergibt. Laufende Kosten entstehen keine.`,
     faq: [
       { q: "Was ist Generative Engine Optimization (GEO)?",
         a: "GEO heißt, Inhalte so aufzubereiten, dass KI-Assistenten wie ChatGPT, Perplexity oder die KI-Übersichten von Google sie als Quelle nennen. Der Begriff stammt aus einer Studie von Forschern aus Princeton und dem IIT Delhi (Aggarwal u. a., KDD 2024): Wörtliche Zitate aus glaubwürdigen Quellen erhöhten dort den Anteil einer Seite an der Antwort um 41 Prozent, ergänzte Statistiken um 31 Prozent, Keyword-Stuffing senkte ihn um 8 Prozent. Gemessen wurde 2023 im Labor, mit GPT-3.5 und 1.000 Testfragen." },
@@ -1652,7 +1652,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Was kostet Recruiting-Automatisierung?",
-        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang. Ein einzelner Workflow, etwa der automatisierte Bewerbungseingang, ist meist in wenigen Tagen produktiv. Eine durchgängige Kette über den ganzen Funnel dauert je nach Systemlandschaft einige Wochen.`,
+        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€ nach Absprache und je nach Projektumfang. Ein einzelner Workflow, etwa der automatisierte Bewerbungseingang, ist meist in wenigen Tagen produktiv. Eine durchgängige Kette über den ganzen Funnel dauert je nach Systemlandschaft einige Wochen.`,
       },
       {
         q: "Wie messe ich, ob sich das gelohnt hat?",
@@ -1735,7 +1735,7 @@ export const LEISTUNGEN = [
       linkText: "Was die KI-Verordnung verlangt",
     },
     preisText:
-      `${RATE_MIN} bis ${RATE_MAX} € pro Stunde für den Aufbau. Der Umfang hängt vor allem an der Zahl der Profile und daran, wie klar die Personas schon sind. Laufende Kosten entstehen für die eingesetzten Sprachmodelle, abgerechnet je Beitrag; das lässt sich vorher abschätzen.`,
+      `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde für den Aufbau. Der Umfang hängt vor allem an der Zahl der Profile und daran, wie klar die Personas schon sind. Laufende Kosten entstehen für die eingesetzten Sprachmodelle, abgerechnet je Beitrag; das lässt sich vorher abschätzen.`,
     faq: [
       { q: "Ist das mit den Regeln von LinkedIn vereinbar?",
         a: "Das hängt davon ab, was automatisiert wird. Inhalte vorbereiten, planen und veröffentlichen ist unkritisch, dafür gibt es offizielle Schnittstellen. Alles, was darüber hinaus im Namen eines Kontos handelt, sollte man bewusst entscheiden und eng begrenzen. Wir klären das vor dem Aufbau, nicht danach." },
@@ -1765,7 +1765,7 @@ export const LEISTUNGEN = [
 
        Steht als letzte Leistung, damit sie nie unter die fünf auf der
        Startseite rückt. */
-    preisText: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, für Auftraggeber in Österreich derselbe Satz wie in Deutschland, abgerechnet in Euro. Für Unternehmen mit UID-Nummer stelle ich netto in Rechnung, die Umsatzsteuer schuldet nach dem Reverse-Charge-Verfahren der Auftraggeber. Klar umrissene Workflows und Integrationen gehen auch zum Festpreis.`,
+    preisText: `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde, für Auftraggeber in Österreich derselbe Satz wie in Deutschland, abgerechnet in Euro. Für Unternehmen mit UID-Nummer stelle ich netto in Rechnung, die Umsatzsteuer schuldet nach dem Reverse-Charge-Verfahren der Auftraggeber. Klar umrissene Workflows und Integrationen gehen auch zum Festpreis.`,
     reichweiteText:
       "Der Standort ist Frankfurt am Main. Für Unternehmen in Wien und ganz Österreich läuft die Zusammenarbeit remote, in derselben Zeitzone und auf Deutsch; Termine vor Ort klären wir mit Aufwand und Reise vorher.",
     cta: {
@@ -1854,7 +1854,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Wie wird für Unternehmen in Österreich abgerechnet?",
-        a: `In Euro, zum selben Satz wie in Deutschland: ${RATE_MIN} bis ${RATE_MAX} € pro Stunde oder als Festpreis. Für Unternehmen mit UID-Nummer stelle ich netto in Rechnung, die Umsatzsteuer schuldet nach dem Reverse-Charge-Verfahren Ihr Unternehmen. Die Rechnung trägt dafür beide UID-Nummern und den entsprechenden Hinweis.`,
+        a: `In Euro, zum selben Satz wie in Deutschland: ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde oder als Festpreis. Für Unternehmen mit UID-Nummer stelle ich netto in Rechnung, die Umsatzsteuer schuldet nach dem Reverse-Charge-Verfahren Ihr Unternehmen. Die Rechnung trägt dafür beide UID-Nummern und den entsprechenden Hinweis.`,
       },
       {
         q: "Gilt für Unternehmen in Österreich dieselbe DSGVO?",
@@ -1866,7 +1866,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Bieten Sie auch reine n8n-Beratung an, ohne Umsetzung?",
-        a: `Ja. Manche Unternehmen brauchen zuerst eine Einschätzung: welcher Ablauf sich lohnt, ob n8n das richtige Werkzeug ist und was Betrieb und Wartung kosten. Die Beratung rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ab; das Erstgespräch ist kostenlos.`,
+        a: `Ja. Manche Unternehmen brauchen zuerst eine Einschätzung: welcher Ablauf sich lohnt, ob n8n das richtige Werkzeug ist und was Betrieb und Wartung kosten. Die Beratung rechne ich nach Aufwand zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde ab; das Erstgespräch ist kostenlos.`,
       },
       {
         q: "Haben Sie Referenzen aus Österreich?",
@@ -1874,7 +1874,7 @@ export const LEISTUNGEN = [
       },
       {
         q: "Was kostet ein n8n Freelancer in Österreich?",
-        a: `Belastbare Durchschnittswerte nur für Österreich gibt es nicht: Der Freelancer-Kompass 2026 weist für IT-Freelancer im DACH-Raum einen Median von 95 € pro Stunde aus, ohne nach Ländern zu trennen. Mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} € pro Stunde, unabhängig vom Sitz des Auftraggebers.`,
+        a: `Belastbare Durchschnittswerte nur für Österreich gibt es nicht: Der Freelancer-Kompass 2026 weist für IT-Freelancer im DACH-Raum einen Median von 95\u00A0€ pro Stunde aus, ohne nach Ländern zu trennen. Mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde, unabhängig vom Sitz des Auftraggebers.`,
       },
     ],
   },

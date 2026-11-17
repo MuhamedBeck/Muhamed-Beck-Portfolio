@@ -80,7 +80,7 @@ const STEPS = [
 const RESULTS = [
   { value: "1,900", label: "AI phone calls a month, evaluated automatically" },
   { value: "54", label: "users on the CRM platform whose development I lead" },
-  { value: "35 %", label: "more organic traffic" },
+  { value: "35\u00A0%", label: "more organic traffic" },
 ];
 
 const SERVICE_OPTIONS = [

@@ -102,7 +102,7 @@ export const AR_LEISTUNGEN = [
  *             4 Bauen und übergeben — Mit Dokumentation, und mit Wartung, wenn
  *               Sie sie wollen. */
 export const AR_KONDITIONEN = {
-  rate: `من ${RATE_MIN} إلى ${RATE_MAX} يورو في الساعة، بحسب الاتفاق وحجم المشروع`,
+  rate: `من ${RATE_MIN} إلى ${RATE_MAX}\u00A0يورو في الساعة، بحسب الاتفاق وحجم المشروع`,
   rateNote:
     "الفوترة باليورو. للعملاء خارج منطقة اليورو يتم العمل عن بُعد وعبر وصول آمن إلى الأنظمة.",
 };

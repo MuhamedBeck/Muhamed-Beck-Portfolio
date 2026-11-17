@@ -46,23 +46,23 @@ test("ANFAHRT_STUFEN: fünf Stufen, feste Beträge, jeder Ort genau einmal", () 
   assert.equal(ANFAHRT_START, "Frankfurter Hauptwache");
 });
 
-test("Beispiel der Seite: eine Stunde in Hanau kostet 85 €", () => {
+test("Beispiel der Seite: eine Stunde in Hanau kostet 85\u00A0€", () => {
   const hanau = ANFAHRT_STUFEN.find((stufe) => stufe.orte.includes("Hanau"));
-  assert.equal(preisText(DOLMETSCH_PREIS.vorOrtStunde + hanau.betrag), "85 €");
+  assert.equal(preisText(DOLMETSCH_PREIS.vorOrtStunde + hanau.betrag), "85\u00A0€");
 });
 
 test("preisText schreibt Beträge je Sprache", () => {
-  assert.equal(preisText(70, "de"), "70 €");
-  assert.equal(preisText(1.4, "de"), "1,40 €");
-  assert.equal(preisText(1200, "de"), "1.200 €");
+  assert.equal(preisText(70, "de"), "70\u00A0€");
+  assert.equal(preisText(1.4, "de"), "1,40\u00A0€");
+  assert.equal(preisText(1200, "de"), "1.200\u00A0€");
   assert.equal(preisText(70, "en"), "€70");
   assert.equal(preisText(1.4, "en"), "€1.40");
   assert.equal(preisText(1200, "en"), "€1,200");
-  assert.equal(preisText(70, "ar"), "70 يورو");
-  assert.equal(preisText(1.4, "ar"), "1,40 يورو");
-  assert.equal(preisText(1200, "ar"), "1.200 يورو");
-  assert.equal(preisText(70), "70 €");
-  assert.equal(preisText(70, "fr"), "70 €");
+  assert.equal(preisText(70, "ar"), "70\u00A0يورو");
+  assert.equal(preisText(1.4, "ar"), "1,40\u00A0يورو");
+  assert.equal(preisText(1200, "ar"), "1.200\u00A0يورو");
+  assert.equal(preisText(70), "70\u00A0€");
+  assert.equal(preisText(70, "fr"), "70\u00A0€");
 });
 
 // Prüfschwerpunkt 5: arabischer vorbereiteter Text.

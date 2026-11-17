@@ -413,14 +413,14 @@ export const ENTSCHEIDUNG_HOSTING = {
   titel: "n8n Cloud oder selbst hosten?",
   art: "entscheidung",
   fenster: "app",
-  beschreibung: `Entscheidungshilfe für den Betrieb von n8n. Dürfen die Daten das eigene Haus nicht verlassen, wird n8n selbst gehostet, und jemand muss Updates und Sicherungen übernehmen. Sonst entscheidet die eigene IT: Ist sie vorhanden, geht beides, die Cloud ist aber bequemer. Fehlt sie, ist n8n Cloud ab ${N8N_CLOUD_AB} € im Monat die einfachere Wahl.`,
+  beschreibung: `Entscheidungshilfe für den Betrieb von n8n. Dürfen die Daten das eigene Haus nicht verlassen, wird n8n selbst gehostet, und jemand muss Updates und Sicherungen übernehmen. Sonst entscheidet die eigene IT: Ist sie vorhanden, geht beides, die Cloud ist aber bequemer. Fehlt sie, ist n8n Cloud ab ${N8N_CLOUD_AB}\u00A0€ im Monat die einfachere Wahl.`,
   knoten: [
     { id: "vorhaben", art: "ausloeser", icon: "liste", label: "Ihr Vorhaben", sub: "n8n einführen", spalte: 0, zeile: 0 },
     { id: "daten", art: "weiche", icon: "schild", label: "Daten im Haus?", sub: "Vorgabe, Branche", spalte: 1, zeile: 0 },
     { id: "selbst", marke: "n8n", label: "Selbst hosten", sub: "plus Wartung", spalte: 2, zeile: -1.1 },
     { id: "it", art: "weiche", icon: "personen", label: "Eigene IT?", sub: "Updates, Backups", spalte: 2, zeile: 0 },
     { id: "beides", icon: "tauschen", ton: "leise", label: "Beides geht", sub: "Cloud bequemer", spalte: 3, zeile: -0.6 },
-    { id: "cloud", marke: "n8n", label: "n8n Cloud", sub: `ab ${N8N_CLOUD_AB} € im Monat`, spalte: 3, zeile: 0.6 },
+    { id: "cloud", marke: "n8n", label: "n8n Cloud", sub: `ab ${N8N_CLOUD_AB}\u00A0€ im Monat`, spalte: 3, zeile: 0.6 },
   ],
   kanten: [
     { von: "vorhaben", nach: "daten" },

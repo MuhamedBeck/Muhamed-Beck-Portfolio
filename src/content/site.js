@@ -93,10 +93,10 @@ export const SAME_AS = [
 export const RATE_MIN = 80;
 export const RATE_MAX = 120;
 
-export const RATE_TEXT = `${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang`;
+export const RATE_TEXT = `${RATE_MIN} bis ${RATE_MAX}\u00A0€ nach Absprache und je nach Projektumfang`;
 // English rendering of the same rate, so the English pages do not print a
 // German sentence at a reader.
-export const RATE_TEXT_EN = `${RATE_MIN} to ${RATE_MAX} € by agreement, depending on project scope`;
+export const RATE_TEXT_EN = `${RATE_MIN} to ${RATE_MAX}\u00A0€ by agreement, depending on project scope`;
 // Arabic deliberately does not get a third suffix here. Its rate sentence lives
 // with the rest of its page copy in src/content/ar.js, the way the Arabic case
 // studies live in projects.ar.js: a suffix per locale stops scaling at three,
@@ -159,7 +159,7 @@ export const FESTPREIS = {
 };
 
 /** "4.900 €", mit deutschem Tausenderpunkt wie überall auf der Seite. */
-export const euro = (betrag) => `${betrag.toLocaleString("de-DE")} €`;
+export const euro = (betrag) => `${betrag.toLocaleString("de-DE")}\u00A0€`;
 
 /* Dolmetsch- und Übersetzungspreise, am 15.11.2026 mit dem Inhaber
    festgelegt. Anfahrt in festen Beträgen je Entfernungsstufe; Entfernungen
@@ -228,6 +228,6 @@ export const preisText = (betrag, locale = "de") => {
     gruppiert(ganz, englisch ? "," : ".") +
     (rest === 0 ? "" : `${englisch ? "." : ","}${String(rest).padStart(2, "0")}`);
   if (englisch) return `€${zahl}`;
-  if (locale === "ar") return `${zahl} يورو`;
-  return `${zahl} €`;
+  if (locale === "ar") return `${zahl}\u00A0يورو`;
+  return `${zahl}\u00A0€`;
 };

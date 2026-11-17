@@ -36,7 +36,7 @@ export const RATGEBER = [
     modified: "2026-11-07",
     // The lede is written to be quotable on its own, with no unresolved
     // pronouns and no dependency on a preceding paragraph.
-    lede: `Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147 € pro Stunde. Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde; die Erhebung weist Deutschland, Österreich und die Schweiz nicht getrennt aus. Muhamed Nur Beck, Autor dieses Ratgebers, arbeitet als n8n Freelancer in Frankfurt zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde, nach Absprache und je nach Projektumfang.`,
+    lede: `Ein n8n Freelancer in Deutschland kostet im Jahr 2026 üblicherweise zwischen 75 und 147\u00A0€ pro Stunde. Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95\u00A0€ pro Stunde; die Erhebung weist Deutschland, Österreich und die Schweiz nicht getrennt aus. Muhamed Nur Beck, Autor dieses Ratgebers, arbeitet als n8n Freelancer in Frankfurt zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde, nach Absprache und je nach Projektumfang.`,
     // Same four figures the prose states, so the scale and the text cannot
     // disagree. Sources are named in the copy below.
     scale: {
@@ -49,15 +49,15 @@ export const RATGEBER = [
       {
         h2: "Was kostet ein n8n Freelancer pro Stunde?",
         body: [
-          "Zwischen 75 und 147 € pro Stunde, mit deutlichem Ausschlag nach oben bei Spezialisierung auf KI-Integration. Diese Spanne nennt das Freelancer-Verzeichnis von freelancermap für n8n-Profile (Stand August 2026). Der Median über alle IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde.",
+          "Zwischen 75 und 147\u00A0€ pro Stunde, mit deutlichem Ausschlag nach oben bei Spezialisierung auf KI-Integration. Diese Spanne nennt das Freelancer-Verzeichnis von freelancermap für n8n-Profile (Stand August 2026). Der Median über alle IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95\u00A0€ pro Stunde.",
           "Die Spanne erklärt sich weniger durch das Tool als durch das, was um das Tool herum passiert. Wer ausschließlich Workflows zusammensteckt, liegt am unteren Ende. Wer zusätzlich APIs anbindet, Fehlerbehandlung und Monitoring aufsetzt und DSGVO-Fragen beantworten kann, liegt am oberen.",
         ],
       },
       {
         h2: "Was kostet ein n8n Freelancer in Österreich und der Schweiz?",
         body: [
-          "Dieselbe Spanne, soweit sich das belegen lässt. Der Freelancer-Kompass 2026 erhebt den deutschsprachigen Raum als Ganzes und weist den Median von 95 € pro Stunde ausdrücklich nicht nach Ländern getrennt aus. Wer Ihnen einen eigenen österreichischen Mittelwert nennt, hat ihn aus einer anderen Quelle oder geschätzt.",
-          "Aussagekräftiger als die Landesgrenze ist die Aufschlüsselung nach Fachgebiet, die dieselbe Erhebung liefert: SAP und ERP liegen bei 120 €, Data und Analytics bei 100 €, IT-Infrastruktur bei 95 €, Software- und Webentwicklung bei 90 € pro Stunde. Workflow-Automatisierung liegt in der Praxis zwischen den beiden letzten Gruppen, weil sie Entwicklung und Systemintegration verbindet.",
+          "Dieselbe Spanne, soweit sich das belegen lässt. Der Freelancer-Kompass 2026 erhebt den deutschsprachigen Raum als Ganzes und weist den Median von 95\u00A0€ pro Stunde ausdrücklich nicht nach Ländern getrennt aus. Wer Ihnen einen eigenen österreichischen Mittelwert nennt, hat ihn aus einer anderen Quelle oder geschätzt.",
+          "Aussagekräftiger als die Landesgrenze ist die Aufschlüsselung nach Fachgebiet, die dieselbe Erhebung liefert: SAP und ERP liegen bei 120\u00A0€, Data und Analytics bei 100\u00A0€, IT-Infrastruktur bei 95\u00A0€, Software- und Webentwicklung bei 90\u00A0€ pro Stunde. Workflow-Automatisierung liegt in der Praxis zwischen den beiden letzten Gruppen, weil sie Entwicklung und Systemintegration verbindet.",
           "Für die Schweiz werden Sätze in Franken verhandelt und liegen spürbar höher; eine aktuelle Erhebung mit vergleichbarer Methodik gibt es dazu nicht, weshalb hier keine Zahl steht. Mein eigener Satz ändert sich durch den Sitz des Auftraggebers nicht. Der Aufwand für einen Workflow hängt an den beteiligten Systemen, nicht an der Landesgrenze.",
         ],
       },
@@ -79,14 +79,14 @@ export const RATGEBER = [
       {
         h2: "Was kostet ein typisches Automatisierungsprojekt insgesamt?",
         body: [
-          `Ein einzelner Workflow liegt meist im Bereich weniger Arbeitstage, eine durchgängige Prozesskette mit CRM- oder ATS-Anbindung im Bereich weniger Wochen. Bei ${RATE_MIN} bis ${RATE_MAX} € pro Stunde ergibt das für einen abgegrenzten Workflow typischerweise einen vierstelligen Betrag, für eine mehrstufige Integration einen niedrigen fünfstelligen.`,
+          `Ein einzelner Workflow liegt meist im Bereich weniger Arbeitstage, eine durchgängige Prozesskette mit CRM- oder ATS-Anbindung im Bereich weniger Wochen. Bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde ergibt das für einen abgegrenzten Workflow typischerweise einen vierstelligen Betrag, für eine mehrstufige Integration einen niedrigen fünfstelligen.`,
           "Belastbarer wird die Zahl erst nach einem Blick auf die konkreten Systeme. Ob ein Zielsystem eine dokumentierte REST-API hat oder nur einen CSV-Export per E-Mail, macht beim Aufwand den Unterschied zwischen zwei Tagen und zwei Wochen.",
         ],
       },
       {
         h2: "Welche laufenden Kosten kommen zum Honorar dazu?",
         body: [
-          "Die Lizenz- und Betriebskosten der Software, die getrennt vom Honorar anfallen: n8n Cloud beginnt bei 20 € im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „n8n Kosten und Preise“.",
+          "Die Lizenz- und Betriebskosten der Software, die getrennt vom Honorar anfallen: n8n Cloud beginnt bei 20\u00A0€ im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „n8n Kosten und Preise“.",
           "Der wichtigste Kostenhebel ist dabei das Abrechnungsmodell des Tools: n8n zählt eine Workflow-Ausführung unabhängig davon, wie viele Schritte sie durchläuft, Make zählt jede einzelne Operation. Bei vielschrittigen Workflows mit hohem Volumen ist der Unterschied erheblich.",
         ],
       },
@@ -108,11 +108,11 @@ export const RATGEBER = [
     faq: [
       {
         q: "Was kostet ein n8n Freelancer pro Stunde?",
-        a: `Zwischen 75 und 147 € pro Stunde in Deutschland (freelancermap, Stand August 2026). Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95 € pro Stunde. Mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} € nach Absprache und je nach Projektumfang.`,
+        a: `Zwischen 75 und 147\u00A0€ pro Stunde in Deutschland (freelancermap, Stand August 2026). Der Median für IT-Freelancer im DACH-Raum liegt laut Freelancer-Kompass 2026 bei 95\u00A0€ pro Stunde. Mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€ nach Absprache und je nach Projektumfang.`,
       },
       {
         q: "Kostet ein n8n Freelancer in Wien oder Zürich mehr als in Deutschland?",
-        a: `Der Freelancer-Kompass 2026 erhebt den deutschsprachigen Raum als Ganzes und weist den Median von 95 € pro Stunde nicht nach Ländern getrennt aus. Für die Schweiz werden Sätze in Franken verhandelt und liegen höher, eine aktuelle Erhebung mit vergleichbarer Methodik gibt es dazu aber nicht. Mein Satz bleibt bei ${RATE_MIN} bis ${RATE_MAX} €, unabhängig vom Sitz des Auftraggebers.`,
+        a: `Der Freelancer-Kompass 2026 erhebt den deutschsprachigen Raum als Ganzes und weist den Median von 95\u00A0€ pro Stunde nicht nach Ländern getrennt aus. Für die Schweiz werden Sätze in Franken verhandelt und liegen höher, eine aktuelle Erhebung mit vergleichbarer Methodik gibt es dazu aber nicht. Mein Satz bleibt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€, unabhängig vom Sitz des Auftraggebers.`,
       },
       {
         q: "Arbeiten Sie auch für Auftraggeber in Österreich und der Schweiz?",
@@ -124,7 +124,7 @@ export const RATGEBER = [
       },
       {
         q: "Was kostet n8n selbst?",
-        a: "Die Lizenz- und Betriebskosten fallen getrennt vom Honorar an: n8n Cloud beginnt bei 20 € im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „n8n Kosten und Preise“.",
+        a: "Die Lizenz- und Betriebskosten fallen getrennt vom Honorar an: n8n Cloud beginnt bei 20\u00A0€ im Monat, die Community Edition ist zum Selbsthosten kostenlos. Was Lizenz, Betrieb und KI-Schritte im Einzelnen kosten, steht im Ratgeber „n8n Kosten und Preise“.",
       },
       {
         q: "Wie schnell amortisiert sich eine Automatisierung?",
@@ -163,14 +163,14 @@ export const RATGEBER = [
        stammen aus Angeboten des Inhabers vom Oktober 2026: eigene Beträge
        bewusst gerundet, keine Namen, keine Kundenzitate, keine Details, an
        denen ein Kunde zu erkennen wäre. Kosten Dritter stehen genau da. */
-    lede: "n8n selbst kostet wenig: In der Cloud beginnt es laut n8n bei 20 € im Monat für 2.500 Ausführungen, die Community Edition zum Selbsthosten ist kostenlos (Stand Oktober 2026). Teurer als die Software ist fast immer die Umsetzung. Eine Rechnungsprüfung mit KI lag in einem meiner Angebote bei rund 5.000 € einmalig und 30 bis 55 € im Monat für die beteiligten Anbieter.",
+    lede: "n8n selbst kostet wenig: In der Cloud beginnt es laut n8n bei 20\u00A0€ im Monat für 2.500 Ausführungen, die Community Edition zum Selbsthosten ist kostenlos (Stand Oktober 2026). Teurer als die Software ist fast immer die Umsetzung. Eine Rechnungsprüfung mit KI lag in einem meiner Angebote bei rund 5.000\u00A0€ einmalig und 30 bis 55\u00A0€ im Monat für die beteiligten Anbieter.",
     table: {
       caption: "n8n-Tarife laut n8n.io (Stand: Oktober 2026, bei jährlicher Abrechnung)",
       columns: ["Preis pro Monat", "Ausführungen pro Monat", "Betrieb"],
       rows: [
-        { label: "Starter", cells: ["20 €", "2.500", "Cloud von n8n"] },
-        { label: "Pro", cells: ["50 €", "10.000", "Cloud von n8n"] },
-        { label: "Business", cells: ["667 €", "40.000", "nur selbst gehostet"] },
+        { label: "Starter", cells: ["20\u00A0€", "2.500", "Cloud von n8n"] },
+        { label: "Pro", cells: ["50\u00A0€", "10.000", "Cloud von n8n"] },
+        { label: "Business", cells: ["667\u00A0€", "40.000", "nur selbst gehostet"] },
         { label: "Enterprise", cells: ["auf Anfrage", "individuell", "Cloud oder selbst gehostet"] },
         { label: "Community Edition", cells: ["keine Lizenzgebühr", "nur durch den eigenen Server begrenzt", "selbst gehostet"] },
       ],
@@ -179,8 +179,8 @@ export const RATGEBER = [
       {
         h2: "Was kostet n8n im Monat?",
         body: [
-          "Zwischen 0 und 50 € für die meisten kleinen und mittleren Unternehmen. Laut der Preisseite von n8n kostet der Cloud-Tarif Starter 20 € im Monat für 2.500 Ausführungen und der Tarif Pro 50 € für 10.000 Ausführungen, jeweils bei jährlicher Abrechnung (Stand Oktober 2026). Die Community Edition, die man auf einem eigenen Server betreibt, kostet keine Lizenzgebühr.",
-          "Der Tarif Business für 667 € im Monat und Enterprise auf Anfrage richten sich an Unternehmen, die n8n selbst betreiben und Funktionen wie Single Sign-on oder eine Versionsverwaltung über Git brauchen. Unbegrenzt viele Workflows und Nutzer enthalten laut n8n alle Tarife.",
+          "Zwischen 0 und 50\u00A0€ für die meisten kleinen und mittleren Unternehmen. Laut der Preisseite von n8n kostet der Cloud-Tarif Starter 20\u00A0€ im Monat für 2.500 Ausführungen und der Tarif Pro 50\u00A0€ für 10.000 Ausführungen, jeweils bei jährlicher Abrechnung (Stand Oktober 2026). Die Community Edition, die man auf einem eigenen Server betreibt, kostet keine Lizenzgebühr.",
+          "Der Tarif Business für 667\u00A0€ im Monat und Enterprise auf Anfrage richten sich an Unternehmen, die n8n selbst betreiben und Funktionen wie Single Sign-on oder eine Versionsverwaltung über Git brauchen. Unbegrenzt viele Workflows und Nutzer enthalten laut n8n alle Tarife.",
         ],
       },
       {
@@ -200,7 +200,7 @@ export const RATGEBER = [
       {
         h2: "n8n Cloud oder selbst hosten: was ist günstiger?",
         body: [
-          "Für die meisten kleinen und mittleren Unternehmen n8n Cloud, obwohl sie eine Monatsgebühr kostet. Updates, Sicherungen und Absicherung eines eigenen Servers kosten Arbeitszeit, und die übersteigt die 20 bis 50 € einer Cloud-Lizenz schnell.",
+          "Für die meisten kleinen und mittleren Unternehmen n8n Cloud, obwohl sie eine Monatsgebühr kostet. Updates, Sicherungen und Absicherung eines eigenen Servers kosten Arbeitszeit, und die übersteigt die 20 bis 50\u00A0€ einer Cloud-Lizenz schnell.",
           "In meinen Angeboten sehe ich das n8n-Konto deshalb fast immer in der Cloud vor, auf den Namen des Kunden. Der Kunde zahlt den Anbieter direkt, und alle Konten gehören ihm, auch wenn wir später nicht mehr zusammenarbeiten.",
           "Selbst hosten lohnt sich, wenn ohnehin ein eigener Rechner im Unternehmen läuft, der Kunde das ausdrücklich will oder Daten das Haus nicht verlassen sollen. In einem meiner Angebote lief das System auf dem eigenen Rechner des Kunden: n8n Community Edition plus Datenbank, mit Fernzugriff, automatischem Neustart nach einem Stromausfall und täglicher Datensicherung. Laufende Lizenzkosten entstehen dann kaum.",
         ],
@@ -208,7 +208,7 @@ export const RATGEBER = [
       {
         h2: "Was kosten KI-Schritte in n8n?",
         body: [
-          "KI-Modelle rechnen nicht pro Monat ab, sondern pro Verarbeitung, also nach Textmenge oder Seitenzahl. In meinem Angebot für eine Rechnungsprüfung lagen n8n und das KI-Auslesen der Rechnungen über Mistral zusammen bei rund 30 bis 55 € im Monat, je nach Zahl der Rechnungen.",
+          "KI-Modelle rechnen nicht pro Monat ab, sondern pro Verarbeitung, also nach Textmenge oder Seitenzahl. In meinem Angebot für eine Rechnungsprüfung lagen n8n und das KI-Auslesen der Rechnungen über Mistral zusammen bei rund 30 bis 55\u00A0€ im Monat, je nach Zahl der Rechnungen.",
           "Mistral ist ein Anbieter aus Paris mit Verarbeitung in europäischen Rechenzentren. Die Nutzung der Daten zum Training lässt sich im Konto abschalten; laut Mistral werden die Inhalte dann nicht zum Training verwendet. Für Unternehmen, die keine Daten in die USA geben wollen, ist das oft der entscheidende Punkt.",
         ],
       },
@@ -216,15 +216,15 @@ export const RATGEBER = [
         h2: "Welche Kosten übersieht man bei n8n leicht?",
         body: [
           "Vor allem die der anderen Programme. Viele Werkzeuge öffnen ihre Schnittstelle erst in einem höheren Tarif, die Rechnungssoftware Billomat etwa laut ihrer Preisseite erst ab dem Tarif Business (Stand Oktober 2026). Das gehört vor dem Projekt geklärt, weil es die laufenden Kosten stärker verändern kann als n8n selbst.",
-          "Dazu kommen kleinere Posten: ein eigenes Benutzerkonto für die Automatisierung, etwa ein Microsoft-365-Benutzer für ein eigenes Postfach (in meinem Angebot rund 7 € im Monat), und die Wartung. Workflows brechen, wenn sich Schnittstellen oder Abläufe ändern. Ich rechne Wartung nach Aufwand ab oder als monatliche Pauschale, in einem Angebot ab 120 € im Monat, je nach Umfang.",
+          "Dazu kommen kleinere Posten: ein eigenes Benutzerkonto für die Automatisierung, etwa ein Microsoft-365-Benutzer für ein eigenes Postfach (in meinem Angebot rund 7\u00A0€ im Monat), und die Wartung. Workflows brechen, wenn sich Schnittstellen oder Abläufe ändern. Ich rechne Wartung nach Aufwand ab oder als monatliche Pauschale, in einem Angebot ab 120\u00A0€ im Monat, je nach Umfang.",
         ],
       },
       {
         h2: "Was kostet eine n8n-Automatisierung insgesamt?",
         body: [
-          "Ein einzelner Workflow kostet in der Umsetzung meist einen vierstelligen Betrag, die laufenden Kosten liegen dann oft unter 100 € im Monat. Drei Beispiele aus meinen Angeboten vom Oktober 2026 zeigen die Spanne; Namen und erkennbare Details sind weggelassen, die eigenen Beträge gerundet.",
-          "Rechnungsprüfung für einen Händler: Eine KI liest eingehende Rechnungen aus, feste Regeln prüfen Menge und Preis gegen Wareneingang und Einkaufspreisliste, auch bei Rabatten, abweichenden Artikelnummern, Teillieferungen und Gutschriften. Fällt die Automatisierung aus, bleiben die Rechnungen liegen und werden wie bisher geprüft. Festpreis rund 5.000 €, dazu 30 bis 55 € im Monat an die Anbieter, Umsetzung in 5 bis 8 Wochen einschließlich 2 Wochen Testbetrieb, Fehlerbehebung 12 Monate inklusive.",
-          "Akquise-Datenbank für ein Start-up: Kontakte, Status und automatisches Nachfassen per E-Mail, auf dem eigenen Rechner des Kunden mit der kostenlosen Community Edition. Erste Ausbaustufe unter 2.000 €, Umsetzung in etwa 4 Wochen, kaum laufende Kosten; eine KI, die eingehende Antworten vorsortiert, kam als Option für wenige hundert Euro dazu.",
+          "Ein einzelner Workflow kostet in der Umsetzung meist einen vierstelligen Betrag, die laufenden Kosten liegen dann oft unter 100\u00A0€ im Monat. Drei Beispiele aus meinen Angeboten vom Oktober 2026 zeigen die Spanne; Namen und erkennbare Details sind weggelassen, die eigenen Beträge gerundet.",
+          "Rechnungsprüfung für einen Händler: Eine KI liest eingehende Rechnungen aus, feste Regeln prüfen Menge und Preis gegen Wareneingang und Einkaufspreisliste, auch bei Rabatten, abweichenden Artikelnummern, Teillieferungen und Gutschriften. Fällt die Automatisierung aus, bleiben die Rechnungen liegen und werden wie bisher geprüft. Festpreis rund 5.000\u00A0€, dazu 30 bis 55\u00A0€ im Monat an die Anbieter, Umsetzung in 5 bis 8 Wochen einschließlich 2 Wochen Testbetrieb, Fehlerbehebung 12 Monate inklusive.",
+          "Akquise-Datenbank für ein Start-up: Kontakte, Status und automatisches Nachfassen per E-Mail, auf dem eigenen Rechner des Kunden mit der kostenlosen Community Edition. Erste Ausbaustufe unter 2.000\u00A0€, Umsetzung in etwa 4 Wochen, kaum laufende Kosten; eine KI, die eingehende Antworten vorsortiert, kam als Option für wenige hundert Euro dazu.",
           "Abrechnung für einen Dienstleister: Am Anfang stand ein großes Vorhaben, ein KI-System für das ganze Unternehmen. Begonnen wird mit einem klar abgegrenzten Teil, hier der monatlichen Abrechnung aus geprüften Stundenzetteln mit Freigabe vor dem Versand. So zeigt sich der Nutzen, bevor mehr Geld fließt.",
         ],
         bild: {
@@ -233,10 +233,10 @@ export const RATGEBER = [
             art: "liste",
             titel: "Rechnungsprüfung aus einem Angebot: das erste Jahr",
             zeilen: [
-              { label: "Umsetzung, einmalig", wert: 5000, text: "rund 5.000 €", ton: "akzent" },
-              { label: "n8n und KI, zwölf Monate", von: 360, wert: 660, text: "360 bis 660 €", ton: "cyan" },
+              { label: "Umsetzung, einmalig", wert: 5000, text: "rund 5.000\u00A0€", ton: "akzent" },
+              { label: "n8n und KI, zwölf Monate", von: 360, wert: 660, text: "360 bis 660\u00A0€", ton: "cyan" },
             ],
-            quelle: "Festpreis gerundet. Laufend 30 bis 55 € im Monat an die Anbieter, hier mal zwölf.",
+            quelle: "Festpreis gerundet. Laufend 30 bis 55\u00A0€ im Monat an die Anbieter, hier mal zwölf.",
           },
         },
       },
@@ -249,7 +249,7 @@ export const RATGEBER = [
       {
         h2: "Wie fängt man mit kleinem Budget an?",
         body: [
-          "Mit einem Ausschnitt statt dem ganzen Ablauf. Bei der Rechnungsprüfung wäre ein Start mit dem wichtigsten Lieferanten unter 1.500 € möglich gewesen; jeder weitere Lieferant kostet danach deutlich weniger, weil die Technik dann schon steht.",
+          "Mit einem Ausschnitt statt dem ganzen Ablauf. Bei der Rechnungsprüfung wäre ein Start mit dem wichtigsten Lieferanten unter 1.500\u00A0€ möglich gewesen; jeder weitere Lieferant kostet danach deutlich weniger, weil die Technik dann schon steht.",
           "So entsteht der Nutzen früh, und die Entscheidung über den nächsten Schritt fällt auf Grundlage echter Zahlen statt einer Schätzung.",
         ],
       },
@@ -257,18 +257,18 @@ export const RATGEBER = [
         h2: "Was bestimmt den Preis einer n8n-Automatisierung?",
         body: [
           "Vor allem die Antworten auf fünf Fragen, die ich vor jedem Festpreis stelle. In welcher Form kommen die Daten an, als PDF, als Scan oder strukturiert? Wo liegen sie, und wie heißen die Dateien? Wie viele Vorgänge gibt es im Monat? Welche Tarife haben die beteiligten Programme, und haben sie eine Schnittstelle? Wer gibt frei, bevor etwas nach außen geht?",
-          `Danach steht ein Festpreis für den vereinbarten Umfang; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. ${UST_HINWEIS}`,
+          `Danach steht ein Festpreis für den vereinbarten Umfang; was darüber hinausgeht, läuft zu ${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde. ${UST_HINWEIS}`,
         ],
       },
     ],
     faq: [
       {
         q: "Ist n8n kostenlos?",
-        a: "Die Community Edition ja: Sie darf für eigene interne Geschäftszwecke ohne Lizenzgebühr genutzt werden (Sustainable Use License). Kosten entstehen trotzdem für Server und Wartung. n8n Cloud beginnt laut n8n bei 20 € im Monat (Stand Oktober 2026).",
+        a: "Die Community Edition ja: Sie darf für eigene interne Geschäftszwecke ohne Lizenzgebühr genutzt werden (Sustainable Use License). Kosten entstehen trotzdem für Server und Wartung. n8n Cloud beginnt laut n8n bei 20\u00A0€ im Monat (Stand Oktober 2026).",
       },
       {
         q: "Was kostet n8n Cloud?",
-        a: "Laut n8n.io 20 € im Monat im Tarif Starter mit 2.500 Ausführungen und 50 € im Tarif Pro mit 10.000 Ausführungen, jeweils bei jährlicher Abrechnung (Stand Oktober 2026).",
+        a: "Laut n8n.io 20\u00A0€ im Monat im Tarif Starter mit 2.500 Ausführungen und 50\u00A0€ im Tarif Pro mit 10.000 Ausführungen, jeweils bei jährlicher Abrechnung (Stand Oktober 2026).",
       },
       {
         q: "Was ist günstiger, n8n Cloud oder selbst hosten?",
@@ -280,7 +280,7 @@ export const RATGEBER = [
       },
       {
         q: "Was kostet eine n8n-Automatisierung insgesamt?",
-        a: `Ein einzelner Workflow meist einen vierstelligen Betrag in der Umsetzung, dazu laufende Kosten von oft unter 100 € im Monat. In meinen Angeboten reichte die Spanne von unter 2.000 € für eine erste Ausbaustufe bis rund 5.000 € für eine Rechnungsprüfung mit KI. ${UST_HINWEIS}`,
+        a: `Ein einzelner Workflow meist einen vierstelligen Betrag in der Umsetzung, dazu laufende Kosten von oft unter 100\u00A0€ im Monat. In meinen Angeboten reichte die Spanne von unter 2.000\u00A0€ für eine erste Ausbaustufe bis rund 5.000\u00A0€ für eine Rechnungsprüfung mit KI. ${UST_HINWEIS}`,
       },
       {
         q: "Wer zahlt die laufenden Kosten?",
@@ -318,7 +318,7 @@ export const RATGEBER = [
        Cloud-Kunden nur eingeschränkt an. Wenig Fließtext, die Grafiken tragen;
        jede Zahl aus einer Grafik steht trotzdem auch im Text, weil Google und
        Bing Bilder nur als Ergänzung zum Text werten. */
-    lede: `n8n selbst zu hosten heißt, die kostenlose Community Edition auf einem eigenen Server zu betreiben, laut n8n am besten mit Docker (n8n-Dokumentation, Stand Oktober 2026). Ein Server mit 2 Kernen und 4 GB Arbeitsspeicher kostet in Deutschland ab 8,26 € im Monat (netcup, November 2026). Teurer ist die Pflege mit Updates und Sicherungen, und n8n selbst rät allen ohne Servererfahrung zur Cloud ab ${N8N_CLOUD_AB} € im Monat.`,
+    lede: `n8n selbst zu hosten heißt, die kostenlose Community Edition auf einem eigenen Server zu betreiben, laut n8n am besten mit Docker (n8n-Dokumentation, Stand Oktober 2026). Ein Server mit 2 Kernen und 4 GB Arbeitsspeicher kostet in Deutschland ab 8,26\u00A0€ im Monat (netcup, November 2026). Teurer ist die Pflege mit Updates und Sicherungen, und n8n selbst rät allen ohne Servererfahrung zur Cloud ab ${N8N_CLOUD_AB}\u00A0€ im Monat.`,
     sections: [
       {
         h2: "Was braucht man, um n8n selbst zu hosten?",
@@ -346,7 +346,7 @@ export const RATGEBER = [
       {
         h2: "Was kostet n8n selbst gehostet?",
         body: [
-          "Die Lizenz nichts, der Server ab 8,26 € im Monat. So viel kostet bei netcup ein VPS mit 2 Kernen und 4 GB Arbeitsspeicher bei 12 Monaten Laufzeit; bei IONOS sind es regulär 12 €, bei Hetzner 23,79 €, jeweils inklusive Mehrwertsteuer (Preisseiten am 7. November 2026). Hetzner hat seine Preise 2026 erhöht und nimmt neue Cloud-Kunden nur eingeschränkt an; Anleitungen mit 4 oder 5 € im Monat sind überholt.",
+          "Die Lizenz nichts, der Server ab 8,26\u00A0€ im Monat. So viel kostet bei netcup ein VPS mit 2 Kernen und 4 GB Arbeitsspeicher bei 12 Monaten Laufzeit; bei IONOS sind es regulär 12\u00A0€, bei Hetzner 23,79\u00A0€, jeweils inklusive Mehrwertsteuer (Preisseiten am 7. November 2026). Hetzner hat seine Preise 2026 erhöht und nimmt neue Cloud-Kunden nur eingeschränkt an; Anleitungen mit 4 oder 5\u00A0€ im Monat sind überholt.",
           "Den größten Posten zeigt keine Preisliste: die Zeit für Updates, Sicherungen und Kontrolle. n8n veröffentlicht fast jede Woche eine neue Version und rät Selbsthostern, mindestens einmal im Monat zu aktualisieren (n8n-Dokumentation, Stand Oktober 2026).",
         ],
         bild: {
@@ -355,14 +355,14 @@ export const RATGEBER = [
             art: "liste",
             titel: "Monatliche Kosten im Vergleich",
             zeilen: [
-              { label: "Server bei netcup, 2 Kerne, 4 GB", wert: 8.26, text: "8,26 €", ton: "cyan" },
-              { label: "Server bei IONOS, 2 Kerne, 4 GB", wert: 12, text: "12 €", ton: "cyan" },
-              { label: "Server bei Hetzner, 2 Kerne, 4 GB", wert: 23.79, text: "23,79 €", ton: "cyan" },
-              { label: "n8n Cloud Starter, 2.500 Ausführungen", marke: "n8n", wert: N8N_CLOUD_AB, text: `${N8N_CLOUD_AB} €`, ton: "akzent" },
-              { label: "n8n Cloud Pro, 10.000 Ausführungen", marke: "n8n", wert: 50, text: "50 €", ton: "akzent" },
-              { label: "Eine Stunde Pflege im Monat", von: RATE_MIN, wert: RATE_MAX, text: `${RATE_MIN} bis ${RATE_MAX} €`, ton: "warm" },
+              { label: "Server bei netcup, 2 Kerne, 4 GB", wert: 8.26, text: "8,26\u00A0€", ton: "cyan" },
+              { label: "Server bei IONOS, 2 Kerne, 4 GB", wert: 12, text: "12\u00A0€", ton: "cyan" },
+              { label: "Server bei Hetzner, 2 Kerne, 4 GB", wert: 23.79, text: "23,79\u00A0€", ton: "cyan" },
+              { label: "n8n Cloud Starter, 2.500 Ausführungen", marke: "n8n", wert: N8N_CLOUD_AB, text: `${N8N_CLOUD_AB}\u00A0€`, ton: "akzent" },
+              { label: "n8n Cloud Pro, 10.000 Ausführungen", marke: "n8n", wert: 50, text: "50\u00A0€", ton: "akzent" },
+              { label: "Eine Stunde Pflege im Monat", von: RATE_MIN, wert: RATE_MAX, text: `${RATE_MIN} bis ${RATE_MAX}\u00A0€`, ton: "warm" },
             ],
-            quelle: "Preise laut Anbieter am 07.11.2026. Server inklusive MwSt., netcup bei 12 Monaten Laufzeit, IONOS ohne Aktionspreis. n8n Cloud bei jährlicher Zahlung, monatlich 24 und 60 €. Die Pflegestunde ist eine Annahme zu meinem Stundensatz.",
+            quelle: "Preise laut Anbieter am 07.11.2026. Server inklusive MwSt., netcup bei 12 Monaten Laufzeit, IONOS ohne Aktionspreis. n8n Cloud bei jährlicher Zahlung, monatlich 24 und 60\u00A0€. Die Pflegestunde ist eine Annahme zu meinem Stundensatz.",
           },
         },
       },
@@ -438,14 +438,14 @@ export const RATGEBER = [
         h2: "Darf man n8n selbst gehostet kommerziell nutzen?",
         body: [
           "Für eigene interne Geschäftszwecke ja, ohne Lizenzgebühr: Die Community Edition steht unter der Sustainable Use License (Lizenztext im n8n-Repository, abgerufen im November 2026). Ein Dienstleister darf n8n laut der Lizenz-FAQ von n8n auf dem Server seines Kunden einrichten und warten und dafür Geld nehmen. Nicht erlaubt ist, n8n als Dienst zu betreiben, in dem Kunden selbst Workflows bauen.",
-          "Projekte, Single Sign-on, Git-Versionierung und Umgebungen fehlen in der Community Edition. Selbst gehostet gibt es sie ab dem Tarif Business für 667 € im Monat bei jährlicher Zahlung, teils erst in Enterprise (n8n.io, November 2026).",
+          "Projekte, Single Sign-on, Git-Versionierung und Umgebungen fehlen in der Community Edition. Selbst gehostet gibt es sie ab dem Tarif Business für 667\u00A0€ im Monat bei jährlicher Zahlung, teils erst in Enterprise (n8n.io, November 2026).",
         ],
       },
     ],
     faq: [
       {
         q: "Ist n8n selbst gehostet kostenlos?",
-        a: "Die Lizenz ja, für eigene interne Geschäftszwecke. Es kosten der Server, ab 8,26 € im Monat bei netcup (November 2026), und die Zeit für Updates und Sicherungen.",
+        a: "Die Lizenz ja, für eigene interne Geschäftszwecke. Es kosten der Server, ab 8,26\u00A0€ im Monat bei netcup (November 2026), und die Zeit für Updates und Sicherungen.",
       },
       {
         q: "Wie viel Arbeitsspeicher braucht n8n?",
@@ -491,34 +491,34 @@ export const RATGEBER = [
        Anbietern, die diese Leistungen selbst verkaufen; der Artikel sagt das
        ausdrücklich, statt sie als Marktpreis auszugeben. Die eigenen Preise
        kommen aus FESTPREIS in site.js. */
-    lede: `Eine Firmen-Website oder Homepage kostet 2026 beim Freelancer meist 800 bis 5.000 € und bei einer Agentur 3.600 bis 18.000 €, so die Preisübersicht der Agentur RHEINSPACE (Stand Juni 2026). Ein Relaunch mit SEO-Migration liegt laut der Agentur Adfera bei 8.000 bis 20.000 € (Stand Oktober 2026), ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000 € (Stand Februar 2026). Ich baue Firmen-Websites ab ${euro(FESTPREIS.website)} und Relaunches ab ${euro(FESTPREIS.relaunch)}. ${UST_HINWEIS}`,
+    lede: `Eine Firmen-Website oder Homepage kostet 2026 beim Freelancer meist 800 bis 5.000\u00A0€ und bei einer Agentur 3.600 bis 18.000\u00A0€, so die Preisübersicht der Agentur RHEINSPACE (Stand Juni 2026). Ein Relaunch mit SEO-Migration liegt laut der Agentur Adfera bei 8.000 bis 20.000\u00A0€ (Stand Oktober 2026), ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000\u00A0€ (Stand Februar 2026). Ich baue Firmen-Websites ab ${euro(FESTPREIS.website)} und Relaunches ab ${euro(FESTPREIS.relaunch)}. ${UST_HINWEIS}`,
     table: {
       caption: `Was Websites und Webanwendungen kosten (Stand: Oktober 2026; meine Festpreise: ${UST_KURZ})`,
       columns: ["Marktspanne laut Anbietern", "Mein Festpreis"],
       rows: [
         {
           label: "Website aus dem Baukasten",
-          cells: ["0 bis 500 € einmalig, dazu 15 bis 50 € im Monat (RHEINSPACE, 06/2026)", "nicht im Angebot"],
+          cells: ["0 bis 500\u00A0€ einmalig, dazu 15 bis 50\u00A0€ im Monat (RHEINSPACE, 06/2026)", "nicht im Angebot"],
         },
         {
           label: "Firmen-Website",
-          cells: ["Freelancer 800 bis 5.000 €, Agentur 3.600 bis 18.000 € (RHEINSPACE, 06/2026)", `ab ${euro(FESTPREIS.website)}`],
+          cells: ["Freelancer 800 bis 5.000\u00A0€, Agentur 3.600 bis 18.000\u00A0€ (RHEINSPACE, 06/2026)", `ab ${euro(FESTPREIS.website)}`],
         },
         {
           label: "Relaunch mit SEO-Migration",
-          cells: ["8.000 bis 20.000 € (Adfera, 10/2026)", `ab ${euro(FESTPREIS.relaunch)}`],
+          cells: ["8.000 bis 20.000\u00A0€ (Adfera, 10/2026)", `ab ${euro(FESTPREIS.relaunch)}`],
         },
         {
           label: "Buchungssystem",
-          cells: ["erste Version ab 10.000 €, mit Schnittstellen ab 20.000 € (Shopboostr, 02/2026)", `ab ${euro(FESTPREIS.webApp)}`],
+          cells: ["erste Version ab 10.000\u00A0€, mit Schnittstellen ab 20.000\u00A0€ (Shopboostr, 02/2026)", `ab ${euro(FESTPREIS.webApp)}`],
         },
         {
           label: "Kundenportal",
-          cells: ["25.000 bis 150.000 € (CodeGuides, abgerufen 10/2026)", `ab ${euro(FESTPREIS.portal)}`],
+          cells: ["25.000 bis 150.000\u00A0€ (CodeGuides, abgerufen 10/2026)", `ab ${euro(FESTPREIS.portal)}`],
         },
         {
           label: "Stundensatz Software- und Webentwicklung",
-          cells: ["Median 90 € (Freelancer-Kompass 2026)", `${RATE_MIN} bis ${RATE_MAX} €`],
+          cells: ["Median 90\u00A0€ (Freelancer-Kompass 2026)", `${RATE_MIN} bis ${RATE_MAX}\u00A0€`],
         },
       ],
     },
@@ -526,7 +526,7 @@ export const RATGEBER = [
       {
         h2: "Was kostet eine Firmen-Website?",
         body: [
-          "Zwischen 800 und 18.000 €, je nachdem, wer sie baut. Die Agentur RHEINSPACE nennt für Freelancer 800 bis 5.000 € und für Agenturen 3.600 bis 18.000 € einmalig (Stand Juni 2026). Für eine Agentur-Website mit 5 bis 10 Seiten gibt die Erfurter Agentur Adfera 5.000 bis 12.000 € netto an (Stand Oktober 2026), COOKIE Design aus Soest für eine professionelle Firmenwebsite von einer Agentur 8.000 bis 25.000 € und für den Mittelstand 25.000 bis 60.000 € (Stand Mai 2026).",
+          "Zwischen 800 und 18.000\u00A0€, je nachdem, wer sie baut. Die Agentur RHEINSPACE nennt für Freelancer 800 bis 5.000\u00A0€ und für Agenturen 3.600 bis 18.000\u00A0€ einmalig (Stand Juni 2026). Für eine Agentur-Website mit 5 bis 10 Seiten gibt die Erfurter Agentur Adfera 5.000 bis 12.000\u00A0€ netto an (Stand Oktober 2026), COOKIE Design aus Soest für eine professionelle Firmenwebsite von einer Agentur 8.000 bis 25.000\u00A0€ und für den Mittelstand 25.000 bis 60.000\u00A0€ (Stand Mai 2026).",
           "Die Spanne ist so groß, weil unter dem Wort Website sehr Verschiedenes verkauft wird: ein angepasstes Theme mit fünf Seiten oder eine Seite mit eigener Struktur, Mehrsprachigkeit und gemessenen Ladezeiten. Vergleichbar werden zwei Angebote erst, wenn klar ist, was jeweils enthalten ist.",
           `Mein Festpreis für eine Firmen-Website beginnt bei ${euro(FESTPREIS.website)}. Enthalten sind Struktur, Umsetzung, technisches SEO und die Übergabe mit Quelltext und Zugängen; die Texte kommen von Ihnen oder entstehen gemeinsam.`,
         ],
@@ -541,7 +541,7 @@ export const RATGEBER = [
                 label: "Kundenportal",
                 max: 150000,
                 maxText: euro(150000),
-                baender: [{ von: 25000, bis: 150000, text: "Markt 25.000 bis 150.000 €", ton: "leise" }],
+                baender: [{ von: 25000, bis: 150000, text: "Markt 25.000 bis 150.000\u00A0€", ton: "leise" }],
                 marke: { wert: FESTPREIS.portal, text: `mein Festpreis ab ${euro(FESTPREIS.portal)}` },
               },
             ],
@@ -552,15 +552,15 @@ export const RATGEBER = [
       {
         h2: "Was kostet ein Website-Relaunch?",
         body: [
-          "Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026); RHEINSPACE beziffert allein die Migration von Inhalten und Adressen auf 1.000 bis 5.000 € (Stand Juni 2026). Mehr Aufwand als ein Neubau entsteht dort, wo alte Adressen, Inhalte und Platzierungen erhalten bleiben müssen.",
+          "Mit SEO-Migration laut Adfera 8.000 bis 20.000\u00A0€ (Stand Oktober 2026); RHEINSPACE beziffert allein die Migration von Inhalten und Adressen auf 1.000 bis 5.000\u00A0€ (Stand Juni 2026). Mehr Aufwand als ein Neubau entsteht dort, wo alte Adressen, Inhalte und Platzierungen erhalten bleiben müssen.",
           `Gespart wird am häufigsten ausgerechnet an dem Posten, an dem die Sichtbarkeit hängt: der Weiterleitung jeder alten Adresse auf ihre neue Entsprechung. Google empfiehlt, solche Weiterleitungen mindestens ein Jahr bestehen zu lassen (Google Search Central, Stand August 2026). Mein Festpreis für einen Relaunch beginnt bei ${euro(FESTPREIS.relaunch)} und schließt diese Weiterleitungen ein.`,
         ],
       },
       {
         h2: "Was kostet eine Website mit Buchungssystem oder Kundenportal?",
         body: [
-          "Ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000 € als Festpreis für eine erste Version, mittelkomplexe Lösungen liegen bei rund 15.000 €, Plattformen mit Schnittstellen bei 20.000 € und mehr (Stand Februar 2026). Groenewold IT Solutions nennt für Buchungssysteme eine Gesamtspanne von 5.950 bis 83.231 € netto (Stand September 2026).",
-          "Ein Kundenportal kostet laut CodeGuides meist zwischen 25.000 und 150.000 €, ein einfaches Portal 25.000 bis 35.000 € (abgerufen im Oktober 2026). Fertige Buchungswerkzeuge im Abo sind deutlich günstiger: Für Tools wie Calendly oder SimplyBook.me nennt Shopboostr 0 bis 200 € im Monat.",
+          "Ein individuell entwickeltes Buchungssystem beginnt laut Shopboostr bei etwa 10.000\u00A0€ als Festpreis für eine erste Version, mittelkomplexe Lösungen liegen bei rund 15.000\u00A0€, Plattformen mit Schnittstellen bei 20.000\u00A0€ und mehr (Stand Februar 2026). Groenewold IT Solutions nennt für Buchungssysteme eine Gesamtspanne von 5.950 bis 83.231\u00A0€ netto (Stand September 2026).",
+          "Ein Kundenportal kostet laut CodeGuides meist zwischen 25.000 und 150.000\u00A0€, ein einfaches Portal 25.000 bis 35.000\u00A0€ (abgerufen im Oktober 2026). Fertige Buchungswerkzeuge im Abo sind deutlich günstiger: Für Tools wie Calendly oder SimplyBook.me nennt Shopboostr 0 bis 200\u00A0€ im Monat.",
           `Eine eigene Anwendung lohnt sich, wenn Ihr Ablauf das ist, was Sie von anderen unterscheidet. Bildet eine fertige Software ihn ab, ist sie fast immer die günstigere Wahl. Meine Festpreise beginnen bei ${euro(FESTPREIS.webApp)} für eine Web-App oder ein Buchungssystem und bei ${euro(FESTPREIS.portal)} für ein Kundenportal.`,
         ],
       },
@@ -574,14 +574,14 @@ export const RATGEBER = [
       {
         h2: "Welche laufenden Kosten kommen dazu?",
         body: [
-          "Für eine typische WordPress-Website eines mittelständischen Unternehmens nennt RHEINSPACE 80 bis 200 € im Monat für Betrieb und Wartung (Stand Juni 2026). Adfera beziffert die laufenden Kosten insgesamt auf etwa 2.000 bis 8.000 € im Jahr, darin Hosting, Updates und Inhaltsänderungen (Stand Oktober 2026).",
+          "Für eine typische WordPress-Website eines mittelständischen Unternehmens nennt RHEINSPACE 80 bis 200\u00A0€ im Monat für Betrieb und Wartung (Stand Juni 2026). Adfera beziffert die laufenden Kosten insgesamt auf etwa 2.000 bis 8.000\u00A0€ im Jahr, darin Hosting, Updates und Inhaltsänderungen (Stand Oktober 2026).",
           "Eine statisch erzeugte Website kommt ohne Datenbank und ohne Plugin-Updates aus; laufende Kosten entstehen dann im Wesentlichen für Domain und Hosting. Deshalb baue ich Firmen-Websites so: Die Ersparnis liegt nicht beim Bau, sondern in den Jahren danach.",
         ],
       },
       {
         h2: "Freelancer oder Agentur: wo liegt der Unterschied?",
         body: [
-          `Im Preis vor allem in der Zwischenebene, die bei einer Agentur mitbezahlt wird: Beim Freelancer berät und baut dieselbe Person. Der Freelancer-Kompass 2026 nennt für Software- und Webentwicklung einen Median von 90 € pro Stunde (veröffentlicht von freelancermap im Juli 2026); mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX} €.`,
+          `Im Preis vor allem in der Zwischenebene, die bei einer Agentur mitbezahlt wird: Beim Freelancer berät und baut dieselbe Person. Der Freelancer-Kompass 2026 nennt für Software- und Webentwicklung einen Median von 90\u00A0€ pro Stunde (veröffentlicht von freelancermap im Juli 2026); mein Satz liegt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€.`,
           "Eine Agentur lohnt sich, wenn mehrere Gewerke parallel laufen müssen, etwa Markenentwicklung, Fotografie und Kampagnen, oder wenn eine vertraglich zugesicherte Verfügbarkeit über Jahre gefordert ist.",
         ],
       },
@@ -595,7 +595,7 @@ export const RATGEBER = [
     faq: [
       {
         q: "Was kostet eine einfache Firmen-Website?",
-        a: `Beim Freelancer meist 800 bis 5.000 €, bei einer Agentur 3.600 bis 18.000 € (RHEINSPACE, Stand Juni 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.website)}, mit Struktur, Umsetzung, technischem SEO und Übergabe des Quelltexts.`,
+        a: `Beim Freelancer meist 800 bis 5.000\u00A0€, bei einer Agentur 3.600 bis 18.000\u00A0€ (RHEINSPACE, Stand Juni 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.website)}, mit Struktur, Umsetzung, technischem SEO und Übergabe des Quelltexts.`,
       },
       {
         q: "Was kostet es, eine bestehende Website zu überarbeiten?",
@@ -603,11 +603,11 @@ export const RATGEBER = [
       },
       {
         q: "Was kostet ein Website-Relaunch?",
-        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)}, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
+        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000\u00A0€ (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)}, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
       },
       {
         q: "Was kostet ein Buchungssystem?",
-        a: `Individuell entwickelt laut Shopboostr ab etwa 10.000 € für eine erste Version und ab 20.000 € mit Schnittstellen (Stand Februar 2026). Fertige Buchungswerkzeuge kosten dort 0 bis 200 € im Monat. Meine Web-Apps und Buchungssysteme beginnen bei ${euro(FESTPREIS.webApp)}.`,
+        a: `Individuell entwickelt laut Shopboostr ab etwa 10.000\u00A0€ für eine erste Version und ab 20.000\u00A0€ mit Schnittstellen (Stand Februar 2026). Fertige Buchungswerkzeuge kosten dort 0 bis 200\u00A0€ im Monat. Meine Web-Apps und Buchungssysteme beginnen bei ${euro(FESTPREIS.webApp)}.`,
       },
       {
         q: "Warum liegen Ihre Preise über denen mancher Freelancer?",
@@ -615,7 +615,7 @@ export const RATGEBER = [
       },
       {
         q: "Welche laufenden Kosten hat eine Website?",
-        a: "Eine statisch erzeugte Website im Wesentlichen nur Domain und Hosting. Für eine WordPress-Website nennt RHEINSPACE dagegen 80 bis 200 € im Monat für Betrieb und Wartung (Stand Juni 2026).",
+        a: "Eine statisch erzeugte Website im Wesentlichen nur Domain und Hosting. Für eine WordPress-Website nennt RHEINSPACE dagegen 80 bis 200\u00A0€ im Monat für Betrieb und Wartung (Stand Juni 2026).",
       },
       {
         q: "Kommt zu Ihren Preisen noch Umsatzsteuer dazu?",
@@ -668,7 +668,7 @@ export const RATGEBER = [
         },
         {
           label: "Vergrößerung",
-          cells: ["Im Browser auf 200 % vergrößern.", "Alle Texte bleiben lesbar und alle Funktionen bedienbar, nichts wird abgeschnitten."],
+          cells: ["Im Browser auf 200\u00A0% vergrößern.", "Alle Texte bleiben lesbar und alle Funktionen bedienbar, nichts wird abgeschnitten."],
         },
         {
           label: "Kontrast",
@@ -745,7 +745,7 @@ export const RATGEBER = [
       {
         h2: "Was droht bei Verstößen gegen das BFSG?",
         body: [
-          "Ein Bußgeld bis 100.000 €, wenn eine Dienstleistung angeboten wird, die die Anforderungen nicht erfüllt, und bis 10.000 € bei anderen Verstößen, etwa fehlenden oder falschen Informationen (§ 37 BFSG). Die Beträge sind Obergrenzen; die tatsächliche Höhe legt die zuständige Behörde im Einzelfall fest.",
+          "Ein Bußgeld bis 100.000\u00A0€, wenn eine Dienstleistung angeboten wird, die die Anforderungen nicht erfüllt, und bis 10.000\u00A0€ bei anderen Verstößen, etwa fehlenden oder falschen Informationen (§ 37 BFSG). Die Beträge sind Obergrenzen; die tatsächliche Höhe legt die zuständige Behörde im Einzelfall fest.",
         ],
       },
       {
@@ -776,7 +776,7 @@ export const RATGEBER = [
       },
       {
         q: "Welche Strafen drohen nach dem BFSG?",
-        a: "Ein Bußgeld bis 100.000 € für eine Dienstleistung, die die Anforderungen nicht erfüllt, und bis 10.000 € für andere Verstöße (§ 37 BFSG).",
+        a: "Ein Bußgeld bis 100.000\u00A0€ für eine Dienstleistung, die die Anforderungen nicht erfüllt, und bis 10.000\u00A0€ für andere Verstöße (§ 37 BFSG).",
       },
       {
         q: "Reicht ein Barrierefreiheits-Plugin?",
@@ -1051,23 +1051,23 @@ export const RATGEBER = [
       rows: [
         {
           label: "Verbot der Emotionserkennung, Art. 5 Abs. 1 lit. f KI-VO",
-          cells: ["2. Februar 2025", "bis 35 Mio. € oder 7 % des Jahresumsatzes (Art. 99 Abs. 3 KI-VO)"],
+          cells: ["2. Februar 2025", "bis 35\u00A0Mio.\u00A0€ oder 7\u00A0% des Jahresumsatzes (Art. 99 Abs. 3 KI-VO)"],
         },
         {
           label: "Transparenzpflicht bei KI-Kontakt, Art. 50 KI-VO",
-          cells: ["2. August 2026", "bis 15 Mio. € oder 3 % des Jahresumsatzes (Art. 99 Abs. 4 KI-VO)"],
+          cells: ["2. August 2026", "bis 15\u00A0Mio.\u00A0€ oder 3\u00A0% des Jahresumsatzes (Art. 99 Abs. 4 KI-VO)"],
         },
         {
           label: "Erläuterung an abgelehnte Personen, Art. 86 KI-VO",
-          cells: ["2. August 2026", "bis 50.000 € als Ordnungswidrigkeit (§ 15 KI-MIG)"],
+          cells: ["2. August 2026", "bis 50.000\u00A0€ als Ordnungswidrigkeit (§ 15 KI-MIG)"],
         },
         {
           label: "Hochrisiko-Pflichten Recruiting, Anhang III Nr. 4 KI-VO",
-          cells: ["2. Dezember 2027", "bis 15 Mio. € oder 3 % des Jahresumsatzes (Art. 99 Abs. 4 KI-VO)"],
+          cells: ["2. Dezember 2027", "bis 15\u00A0Mio.\u00A0€ oder 3\u00A0% des Jahresumsatzes (Art. 99 Abs. 4 KI-VO)"],
         },
         {
           label: "Automatisierte Einzelentscheidung, Art. 22 DSGVO",
-          cells: ["25. Mai 2018", "bis 20 Mio. € oder 4 % des Jahresumsatzes (Art. 83 Abs. 5 lit. b DSGVO)"],
+          cells: ["25. Mai 2018", "bis 20\u00A0Mio.\u00A0€ oder 4\u00A0% des Jahresumsatzes (Art. 83 Abs. 5 lit. b DSGVO)"],
         },
         {
           label: "Benachteiligungsverbot, §§ 3, 7 AGG",
@@ -1223,19 +1223,19 @@ export const RATGEBER = [
               {
                 label: "Verbotene Praktiken, Art. 5",
                 wert: 35,
-                text: "35 Mio. € oder 7 %",
+                text: "35\u00A0Mio.\u00A0€ oder 7\u00A0%",
                 ton: "warm",
               },
               {
                 label: "Betreiber- und Transparenzpflichten",
                 wert: 15,
-                text: "15 Mio. € oder 3 %",
+                text: "15\u00A0Mio.\u00A0€ oder 3\u00A0%",
                 ton: "akzent",
               },
               {
                 label: "Verweigerte Erklärung nach Art. 86, § 15 KI-MIG",
                 wert: 0.05,
-                text: "50.000 €",
+                text: "50.000\u00A0€",
                 ton: "cyan",
               },
             ],
@@ -1558,9 +1558,9 @@ export const RATGEBER = [
             max: 100,
             titel: "Wortfehlerrate von Whisper large-v3 auf Deutsch",
             zeilen: [
-              { label: "Vorgelesene Sätze", wert: 5, text: "rund 5 %", ton: "erfolg" },
-              { label: "Kuratiertes Audio", wert: 8.4, text: "8,4 %", ton: "akzent" },
-              { label: "Echtes Produktionsaudio", wert: 19.9, text: "19,9 %", ton: "warm" },
+              { label: "Vorgelesene Sätze", wert: 5, text: "rund 5\u00A0%", ton: "erfolg" },
+              { label: "Kuratiertes Audio", wert: 8.4, text: "8,4\u00A0%", ton: "akzent" },
+              { label: "Echtes Produktionsaudio", wert: 19.9, text: "19,9\u00A0%", ton: "warm" },
             ],
             quelle: "Vorgelesen: Open ASR Leaderboard, FLEURS und CoVoST-2, Stand August 2026. Kuratiert und Produktion: Benchmark von Deepgram über 26 Stunden deutsches Audio, vom Anbieter selbst.",
           },
@@ -1681,7 +1681,7 @@ export const RATGEBER = [
                     text: "Pflicht seit 02.08.2026",
                     ton: "warm",
                   },
-                  "Art. 50 KI-Verordnung, Bußgeld bis 15 Mio. € oder 3 %",
+                  "Art. 50 KI-Verordnung, Bußgeld bis 15\u00A0Mio.\u00A0€ oder 3\u00A0%",
                 ],
               },
             ],
@@ -1886,7 +1886,7 @@ export const RATGEBER = [
       {
         h2: "Was kostet ein Relaunch?",
         body: [
-          `Mit SEO-Migration laut der Agentur Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} und schließt die Zuordnung und Weiterleitung aller alten Adressen ein. Die Spannen für Neubau, Relaunch und Webanwendungen stehen im Ratgeber zu den Kosten einer Website.`,
+          `Mit SEO-Migration laut der Agentur Adfera 8.000 bis 20.000\u00A0€ (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)} und schließt die Zuordnung und Weiterleitung aller alten Adressen ein. Die Spannen für Neubau, Relaunch und Webanwendungen stehen im Ratgeber zu den Kosten einer Website.`,
         ],
       },
     ],
@@ -1909,7 +1909,7 @@ export const RATGEBER = [
       },
       {
         q: "Was kostet ein Relaunch mit Weiterleitungen?",
-        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000 € (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)}, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
+        a: `Mit SEO-Migration laut Adfera 8.000 bis 20.000\u00A0€ (Stand Oktober 2026). Mein Festpreis beginnt bei ${euro(FESTPREIS.relaunch)}, die Weiterleitungen aller alten Adressen sind darin enthalten.`,
       },
     ],
     related: [

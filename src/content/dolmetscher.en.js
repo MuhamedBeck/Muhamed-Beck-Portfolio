@@ -30,8 +30,8 @@ const ort = (name) => ORTE[name] ?? name;
 
 const stufenLabel = (stufe) => {
   if (stufe.bisKm === null) return "further";
-  if (stufe.vonKm === 0) return `up to about ${stufe.bisKm} km`;
-  return `over ${stufe.vonKm} to ${stufe.bisKm} km`;
+  if (stufe.vonKm === 0) return `up to about ${stufe.bisKm}\u00A0km`;
+  return `over ${stufe.vonKm} to ${stufe.bisKm}\u00A0km`;
 };
 
 const stufenBetrag = (stufe) => {

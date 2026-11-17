@@ -30,35 +30,35 @@ test("Einsatzarten: sieben Zeilen im festgelegten Wortlaut", () => {
 test("Preise: sechs Zeilen, Beträge aus site.js, Bedingungen im Wortlaut", () => {
   const { tabelle } = DE.preise;
   assert.deepEqual(tabelle.rows.map((row) => [row.schluessel, row.label, row.cells[0]]), [
-    ["vorOrt", "Dolmetschen vor Ort", "70 € je Stunde"],
-    ["anfahrt", "Anfahrt", "in Frankfurt und der nahen Umgebung inklusive, sonst 15 €, 25 € oder 35 €"],
-    ["videoTelefon", "Video und Telefon", "35 € je angefangene 30 Minuten"],
-    ["notarStandesamt", "Notar und Standesamt", "240 € Festpreis"],
-    ["uebersetzung", "Schriftliche Übersetzung", "1,40 € je Normzeile"],
-    ["messe", "Messe und Verhandlung", "320 € Halbtag, 590 € Tag"],
+    ["vorOrt", "Dolmetschen vor Ort", "70\u00A0€ je Stunde"],
+    ["anfahrt", "Anfahrt", "in Frankfurt und der nahen Umgebung inklusive, sonst 15\u00A0€, 25\u00A0€ oder 35\u00A0€"],
+    ["videoTelefon", "Video und Telefon", "35\u00A0€ je angefangene 30 Minuten"],
+    ["notarStandesamt", "Notar und Standesamt", "240\u00A0€ Festpreis"],
+    ["uebersetzung", "Schriftliche Übersetzung", "1,40\u00A0€ je Normzeile"],
+    ["messe", "Messe und Verhandlung", "320\u00A0€ Halbtag, 590\u00A0€ Tag"],
   ]);
   assert.equal(zeile(tabelle, "Dolmetschen vor Ort").cells[1],
-    "Mindestdauer 1 Stunde, danach 35 € je angefangene 30 Minuten. Die Zeit läuft vom vereinbarten Beginn bis zum Ende des Termins, Wartezeit eingeschlossen.");
+    "Mindestdauer 1 Stunde, danach 35\u00A0€ je angefangene 30 Minuten. Die Zeit läuft vom vereinbarten Beginn bis zum Ende des Termins, Wartezeit eingeschlossen.");
   assert.equal(zeile(tabelle, "Anfahrt").cells[1],
     "Feste Beträge je Entfernungsstufe, siehe unten. Fahrzeit berechne ich nicht.");
   assert.equal(zeile(tabelle, "Notar und Standesamt").cells[1],
-    "Bis 2 Stunden, Durchsicht des Entwurfs vor dem Termin und Anfahrt in der ersten Stufe enthalten; weiter entfernt kommt der Betrag der Stufe hinzu. Darüber hinaus 35 € je angefangene 30 Minuten. Gebühren, die Standesamt oder Notariat selbst erheben, zahlen Sie dort.");
+    "Bis 2 Stunden, Durchsicht des Entwurfs vor dem Termin und Anfahrt in der ersten Stufe enthalten; weiter entfernt kommt der Betrag der Stufe hinzu. Darüber hinaus 35\u00A0€ je angefangene 30 Minuten. Gebühren, die Standesamt oder Notariat selbst erheben, zahlen Sie dort.");
   assert.equal(zeile(tabelle, "Schriftliche Übersetzung").cells[1],
-    "Je angefangene Zeile mit 55 Anschlägen einschließlich Leerzeichen, gezählt im deutschen oder englischen Text; Mindestauftrag 30 €; den Gesamtpreis nenne ich vor Beginn. Zum Verständnis und für den Geschäftsverkehr, nicht zur Vorlage bei Ämtern oder Gerichten.");
+    "Je angefangene Zeile mit 55 Anschlägen einschließlich Leerzeichen, gezählt im deutschen oder englischen Text; Mindestauftrag 30\u00A0€; den Gesamtpreis nenne ich vor Beginn. Zum Verständnis und für den Geschäftsverkehr, nicht zur Vorlage bei Ämtern oder Gerichten.");
   assert.equal(zeile(tabelle, "Messe und Verhandlung").cells[1],
-    "Halbtag bis 4 Stunden, Tag bis 8 Stunden; darüber hinaus 35 € je angefangene 30 Minuten.");
+    "Halbtag bis 4 Stunden, Tag bis 8 Stunden; darüber hinaus 35\u00A0€ je angefangene 30 Minuten.");
 });
 
 test("Anfahrt: fünf Stufen mit Betrag und Orten, Beispiel Hanau", () => {
   const { tabelle, beispiel, text } = DE.preise.anfahrt;
   assert.deepEqual(tabelle.rows.map((row) => [row.label, row.cells[0]]), [
-    ["bis etwa 15 km", "inklusive"], ["über 15 bis 25 km", "15 €"], ["über 25 bis 35 km", "25 €"],
-    ["über 35 bis 50 km", "35 €"], ["weiter", "nach Absprache"],
+    ["bis etwa 15\u00A0km", "inklusive"], ["über 15 bis 25\u00A0km", "15\u00A0€"], ["über 25 bis 35\u00A0km", "25\u00A0€"],
+    ["über 35 bis 50\u00A0km", "35\u00A0€"], ["weiter", "nach Absprache"],
   ]);
   assert.equal(tabelle.rows[0].cells[1],
     "Frankfurt (ganzes Stadtgebiet), Offenbach, Neu-Isenburg, Bad Vilbel, Eschborn, Flughafen");
   assert.equal(tabelle.rows[4].cells[1], "zum Beispiel Gießen");
-  assert.ok(beispiel.includes("70 € + 15 € = 85 €"));
+  assert.ok(beispiel.includes("70\u00A0€ + 15\u00A0€ = 85\u00A0€"));
   assert.ok(text.includes("Frankfurter Hauptwache"));
 });
 
@@ -73,7 +73,7 @@ test("Belege, Vertraulichkeit und Absage im festgelegten Wortlaut", () => {
     "Wie schicke ich Unterlagen für eine Übersetzung?", "Was passiert, wenn ich absage?",
   ]);
   assert.equal(DE.fragen.liste[6].a,
-    "Absagen bis 24 Stunden vor dem Termin kosten nichts. Bei späterer Absage oder wenn Sie nicht erscheinen, berechne ich 70 €, bei Video- und Telefonterminen 35 €. Sie können nachweisen, dass mir kein oder ein wesentlich geringerer Schaden entstanden ist. Ein gesetzliches Widerrufsrecht bleibt unberührt.");
+    "Absagen bis 24 Stunden vor dem Termin kosten nichts. Bei späterer Absage oder wenn Sie nicht erscheinen, berechne ich 70\u00A0€, bei Video- und Telefonterminen 35\u00A0€. Sie können nachweisen, dass mir kein oder ein wesentlich geringerer Schaden entstanden ist. Ein gesetzliches Widerrufsrecht bleibt unberührt.");
   assert.ok(DE.fragen.liste[1].a.includes(
     "Bei kurzen Terminen in größerer Entfernung schlage ich oft Video oder Telefon vor."));
 });
@@ -145,7 +145,7 @@ test("Englisch: Zwecksatz, Zeichen vor dem Betrag, 24-Stunden-Wendung", () => {
   const text = texte(EN).join("\n");
   assert.ok(text.includes("Translations for understanding and business use, not for submission to authorities or courts."));
   assert.ok(text.includes("€70") && text.includes("€1.40") && text.includes("€240"));
-  assert.doesNotMatch(text, /\d €|يورو/);
+  assert.doesNotMatch(text, /\d\s€|يورو/);
   assert.ok(EN.ablauf.workflow.beschreibung.includes("usually within 24 hours"));
   for (const ort of Object.keys(ORTE_EN)) {
     assert.ok(ANFAHRT_STUFEN.some((stufe) => stufe.orte.includes(ort)), ort);

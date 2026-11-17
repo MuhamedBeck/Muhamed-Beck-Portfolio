@@ -31,7 +31,7 @@ const de = {
   introKurz:
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.",
   servicesHeading: "Was Sie beauftragen können",
-  preisZeile: `${RATE_MIN} bis ${RATE_MAX} € pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)}, Überarbeitungen ab ${euro(FESTPREIS.update)}. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.`,
+  preisZeile: `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)}, Überarbeitungen ab ${euro(FESTPREIS.update)}. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.`,
   stats: [
     { value: "1.900", label: "KI-Anrufe im Monat bei meinem Arbeitgeber, automatisch ausgewertet" },
     { value: "54", label: "Nutzer der Plattform meines Arbeitgebers, deren Entwicklung ich leite" },
@@ -57,7 +57,7 @@ const en = {
   introKurz:
     "I'm Muhamed Nur Beck, AI Automation Manager and full-stack developer in Frankfurt, Germany.",
   servicesHeading: "What you can commission",
-  preisZeile: `${RATE_MIN} to ${RATE_MAX} € per hour by agreement. Every service with process, examples and price range.`,
+  preisZeile: `${RATE_MIN} to ${RATE_MAX}\u00A0€ per hour by agreement. Every service with process, examples and price range.`,
   stats: [
     { value: "1,900", label: "AI phone calls a month at my employer, evaluated automatically" },
     { value: "54", label: "users on my employer's platform, whose development I lead" },
@@ -114,7 +114,7 @@ const ar = {
   /* Der Preis ohne Leerzeichen vor dem Prozent- beziehungsweise Eurozeichen,
      aus demselben Grund wie bei stats: neutrale Zeichen kippen im arabischen
      Lauf an die falsche Seite der Zahl. */
-  preisZeile: `من ${RATE_MIN} إلى ${RATE_MAX} يورو للساعة حسب الاتفاق. كل خدمة مع سير العمل والأمثلة ونطاق السعر.`,
+  preisZeile: `من ${RATE_MIN} إلى ${RATE_MAX}\u00A0يورو للساعة حسب الاتفاق. كل خدمة مع سير العمل والأمثلة ونطاق السعر.`,
   stats: [
     /* No percent sign since 29.10.2026. If one comes back, write it without
        the space the German and English versions use: the percent sign is

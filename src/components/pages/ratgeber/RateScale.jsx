@@ -51,7 +51,7 @@ export const RateScale = ({ data }) => (
           className="absolute top-14 -translate-x-1/2 text-center text-xs leading-snug text-paper-mute"
           style={von(data.median.value)}>
           <span className="block text-sm text-paper tabular-nums">
-            {data.median.value} €
+            {data.median.value}&nbsp;€
           </span>
           {data.median.label}
         </p>
@@ -59,8 +59,8 @@ export const RateScale = ({ data }) => (
 
       {/* Axis */}
       <div className="flex justify-between border-t border-hairline pt-3 text-xs text-paper-mute tabular-nums">
-        <span>{AXIS.min} €</span>
-        <span>{AXIS.max} €</span>
+        <span>{AXIS.min}&nbsp;€</span>
+        <span>{AXIS.max}&nbsp;€</span>
       </div>
 
       {/* A <dl> may contain <div> wrappers, but <dt> and <dd> have to be that
@@ -75,14 +75,14 @@ export const RateScale = ({ data }) => (
               aria-hidden="true"
               className="h-2 w-6 shrink-0 rounded-full bg-surface-strong"
             />
-            {data.market.from} bis {data.market.to} €
+            {data.market.from} bis {data.market.to}&nbsp;€
           </dt>
           <dd className="mt-1 ps-9 text-sm text-paper-mute">{data.market.label}</dd>
         </div>
         <div>
           <dt className="flex items-baseline gap-3 text-sm text-paper tabular-nums">
             <span aria-hidden="true" className="h-2 w-6 shrink-0 rounded-full bg-accent" />
-            {data.own.from} bis {data.own.to} €
+            {data.own.from} bis {data.own.to}&nbsp;€
           </dt>
           <dd className="mt-1 ps-9 text-sm text-paper-mute">{data.own.label}</dd>
         </div>

@@ -21,8 +21,8 @@ const hanau = ANFAHRT_STUFEN.find((stufe) => stufe.orte.includes("Hanau"));
 
 const stufenLabel = (stufe) => {
   if (stufe.bisKm === null) return "weiter";
-  if (stufe.vonKm === 0) return `bis etwa ${stufe.bisKm} km`;
-  return `über ${stufe.vonKm} bis ${stufe.bisKm} km`;
+  if (stufe.vonKm === 0) return `bis etwa ${stufe.bisKm}\u00A0km`;
+  return `über ${stufe.vonKm} bis ${stufe.bisKm}\u00A0km`;
 };
 
 const stufenBetrag = (stufe) => {

@@ -41,7 +41,7 @@ export const KURZPROFIL = [
 export const KENNZAHLEN = [
   { wert: "1.900", label: "KI-Anrufe im Monat, automatisch ausgewertet" },
   { wert: "54", label: "Nutzer der Plattform, deren Entwicklung ich leite" },
-  { wert: "9 → 42 %", label: "Testabdeckung durch das Maven-Plugin, mit JaCoCo gemessen" },
+  { wert: "9 → 42\u00A0%", label: "Testabdeckung durch das Maven-Plugin, mit JaCoCo gemessen" },
   { wert: "3", label: "Sprachen auf Verhandlungsniveau oder darüber" },
 ];
 

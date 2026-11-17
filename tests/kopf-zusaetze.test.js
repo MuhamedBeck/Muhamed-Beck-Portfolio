@@ -68,11 +68,11 @@ test("dolmetscherServiceKnoten: Leistung, Person, Gebiet, Kanal, Preise aus site
       angebot.description,
     ]),
     [
-      ["Dolmetschen vor Ort", 70, "EUR", "70 € je Stunde"],
-      ["Video und Telefon", 35, "EUR", "35 € je angefangene 30 Minuten"],
-      ["Notar und Standesamt", 240, "EUR", "240 € Festpreis"],
-      ["Schriftliche Übersetzung", 1.4, "EUR", "1,40 € je Normzeile"],
-      ["Messe und Verhandlung", [320, 590], "EUR", "320 € Halbtag, 590 € Tag"],
+      ["Dolmetschen vor Ort", 70, "EUR", "70\u00A0€ je Stunde"],
+      ["Video und Telefon", 35, "EUR", "35\u00A0€ je angefangene 30 Minuten"],
+      ["Notar und Standesamt", 240, "EUR", "240\u00A0€ Festpreis"],
+      ["Schriftliche Übersetzung", 1.4, "EUR", "1,40\u00A0€ je Normzeile"],
+      ["Messe und Verhandlung", [320, 590], "EUR", "320\u00A0€ Halbtag, 590\u00A0€ Tag"],
     ]
   );
   for (const feld of ["isRelatedTo", "aggregateRating", "review", "audience"]) assert.equal(knoten[feld], undefined, feld);

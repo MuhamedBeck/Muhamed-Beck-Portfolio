@@ -156,7 +156,7 @@ export const PROJEKTE = [
        deshalb abgerundet, ebenso die Zahl der aktiven Workflows. Die Plattform
        hat seitdem eine eigene Fallstudie. */
     stats: [
-      { value: "1.900", label: "KI-Anrufe im Monat", note: "automatisch ausgewertet, unter 1 % fehlgeschlagene Läufe" },
+      { value: "1.900", label: "KI-Anrufe im Monat", note: "automatisch ausgewertet, unter 1\u00A0% fehlgeschlagene Läufe" },
       { value: "~300", label: "Vorstellungen im Monat", note: "als fertiger Entwurf, verschickt erst nach Freigabe" },
       { value: "60+", label: "aktive n8n-Workflows", note: "über 40.000 Ausführungen im Monat" },
     ],
@@ -190,7 +190,7 @@ export const PROJEKTE = [
     /* Ergebnisse mit Zahl als Objekt (groß und farbig im Raster), der Rest als
        Satz. Die Zahlen ergänzen die Kennzahlen oben, statt sie zu wiederholen. */
     ergebnisse: [
-      { wert: "< 1 %", text: "fehlgeschlagene Läufe bei rund 1.900 ausgewerteten KI-Anrufen im Monat", ton: "erfolg" },
+      { wert: "< 1\u00A0%", text: "fehlgeschlagene Läufe bei rund 1.900 ausgewerteten KI-Anrufen im Monat", ton: "erfolg" },
       { wert: "300", text: "Vorstellungsmails im Monat als fertiger Entwurf; was an den Kunden geht, entscheidet weiterhin der Recruiter", ton: "akzent" },
       { wert: "500+", text: "Absagen im Monat, je nach Stellenlage bis 1.500, ohne Handarbeit verschickt", ton: "cyan" },
       { wert: "40.000+", text: "Ausführungen im Monat in über 60 aktiven Workflows", ton: "warm" },
@@ -260,7 +260,7 @@ export const PROJEKTE = [
       { wert: "17", text: "Rollen, jede mit eigenen Rechten direkt in der Datenbank", ton: "akzent" },
       { wert: "90+", text: "geplante Hintergrundjobs halten die Daten zwischen den Systemen gleich", ton: "cyan" },
       { wert: "1 Klick", text: "holt Kandidaten und Kontakte aus LinkedIn, XING und Stellenanzeigen in die Plattform", ton: "warm" },
-      { wert: "0 €", text: "Lizenzkosten für HubSpot, seit die Plattform den Vertrieb trägt", ton: "erfolg" },
+      { wert: "0\u00A0€", text: "Lizenzkosten für HubSpot, seit die Plattform den Vertrieb trägt", ton: "erfolg" },
       "54 Nutzer im Unternehmen, Stand Oktober 2026; die Teams ziehen Schritt für Schritt in die Plattform um",
       "HubSpot ist abgelöst und gekündigt, die 16.000 Leads sind übernommen",
       "Rund 10.000 Anrufe im Monat stehen ohne Nacharbeit beim richtigen Kontakt im ATS",
@@ -370,9 +370,9 @@ export const PROJEKTE = [
       "Masterarbeit bei der INFOMOTION GmbH: ein Maven-Plugin, mit dem sich Unit-Tests für Java-Spring-Boot-Projekte automatisch erzeugen lassen",
     role: "Masterarbeit und Full-Stack Developer, 02/2022 bis 10/2024",
     stats: [
-      { value: "9 → 42 %", label: "Testabdeckung", note: "mit JaCoCo gemessen" },
+      { value: "9 → 42\u00A0%", label: "Testabdeckung", note: "mit JaCoCo gemessen" },
       { value: "1.440 → 30 min", label: "Schreibaufwand", note: "je Projekt, gegenüber manueller Entwicklung" },
-      { value: "2,13 €", label: "pro Testsuite", note: "statt rund 566 € Entwicklerzeit" },
+      { value: "2,13\u00A0€", label: "pro Testsuite", note: "statt rund 566\u00A0€ Entwicklerzeit" },
     ],
     bild: {
       art: "balken",
@@ -380,9 +380,9 @@ export const PROJEKTE = [
       daten: {
         art: "vergleich",
         zeilen: [
-          { label: "Testabdeckung", max: 100, vorher: { wert: 9, text: "9 %" }, nachher: { wert: 42, text: "42 %" } },
+          { label: "Testabdeckung", max: 100, vorher: { wert: 9, text: "9\u00A0%" }, nachher: { wert: 42, text: "42\u00A0%" } },
           { label: "Schreibaufwand je Projekt", vorher: { wert: 1440, text: "1.440 min" }, nachher: { wert: 30, text: "30 min" } },
-          { label: "Kosten je Testsuite", vorher: { wert: 566, text: "rund 566 €" }, nachher: { wert: 2.13, text: "2,13 €" } },
+          { label: "Kosten je Testsuite", vorher: { wert: 566, text: "rund 566\u00A0€" }, nachher: { wert: 2.13, text: "2,13\u00A0€" } },
         ],
         quelle: "Gemessen in drei Kundenprojekten: Testabdeckung mit JaCoCo, Aufwand gegenüber manueller Entwicklung, Kosten als Entwicklerzeit gegenüber API-Kosten.",
       },
@@ -400,7 +400,7 @@ export const PROJEKTE = [
     ergebnisse: [
       "Die Testabdeckung stieg über die untersuchten Projekte von 9 auf 42 Prozent, gemessen mit JaCoCo",
       "Der Schreibaufwand für Tests sank je Projekt von 1.440 auf 30 Minuten gegenüber manueller Entwicklung",
-      "Die Kosten pro erzeugter Testsuite fielen von rund 566 € Entwicklerzeit auf etwa 2,13 € API-Kosten",
+      "Die Kosten pro erzeugter Testsuite fielen von rund 566\u00A0€ Entwicklerzeit auf etwa 2,13\u00A0€ API-Kosten",
       "Prompt Engineering beeinflusst die Qualität erzeugten Fachcodes messbar, nicht nur gefühlt",
       "Ein wiederverwendbarer Rahmen für die Einbindung von LLMs in Entwicklungsprozesse im Unternehmen",
     ],
@@ -434,8 +434,8 @@ export const PROJEKTE = [
         max: 100,
         titel: "Meistgenannte Hürden für AR im Reporting",
         zeilen: [
-          { label: "Fehlendes Wissen", wert: 59, text: "59 %", ton: "warm" },
-          { label: "Fehlende Anwendungsfälle", wert: 41, text: "41 %", ton: "akzent" },
+          { label: "Fehlendes Wissen", wert: 59, text: "59\u00A0%", ton: "warm" },
+          { label: "Fehlende Anwendungsfälle", wert: 41, text: "41\u00A0%", ton: "akzent" },
         ],
         quelle: "Befragung von 81 Personen in deutschen Unternehmen, Bachelorarbeit 2022.",
       },

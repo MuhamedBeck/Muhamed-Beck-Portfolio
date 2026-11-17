@@ -17,8 +17,8 @@
 
 ## Konditionen
 
-- Stundensatz: 80 bis 120 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer im DACH-Raum lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
-- Festpreise für Unternehmen: Website überarbeiten ab 990 €, Firmen-Website ab 2.900 €, Relaunch ab 3.900 €, Web-App oder Buchungssystem ab 7.900 €, Kundenportal ab 14.900 €. Als Kleinunternehmer nach § 19 UStG berechne ich keine Umsatzsteuer, alle Preise sind Endpreise.
+- Stundensatz: 80 bis 120 € nach Absprache und je nach Projektumfang. Marktkontext: Der Median für IT-Freelancer im DACH-Raum lag laut Freelancer-Kompass 2026 bei 95 € pro Stunde.
+- Festpreise für Unternehmen: Website überarbeiten ab 990 €, Firmen-Website ab 2.900 €, Relaunch ab 3.900 €, Web-App oder Buchungssystem ab 7.900 €, Kundenportal ab 14.900 €. Als Kleinunternehmer nach § 19 UStG berechne ich keine Umsatzsteuer, alle Preise sind Endpreise.
 - Festpreise auch möglich für klar umrissene Workflows und Integrationen.
 - Antwort auf Projektanfragen innerhalb von 24 Stunden: https://muhamedbeck.com/kontakt
 
@@ -43,13 +43,13 @@
 - [KI im Recruiting und der AI Act](https://muhamedbeck.com/ratgeber/ki-recruiting-ai-act): Die Hochrisiko-Pflichten für Recruiting-KI gelten erst ab Dezember 2027. Emotionserkennung im Bewerbungsgespräch ist dagegen seit Februar 2025 verboten.
 - [KI-Telefonagenten: Kosten und Rechtslage](https://muhamedbeck.com/ratgeber/ki-telefonagent-kosten-recht): Was ein KI-Telefonagent je Minute kostet, welche Anbieter in der EU verarbeiten und warum das Mitschneiden ohne Einwilligung in Deutschland strafbar ist.
 - [Website-Relaunch ohne Ranking-Verlust](https://muhamedbeck.com/ratgeber/website-relaunch): Warum Relaunches Sichtbarkeit kosten und wie man es verhindert: alte Adressen erfassen, 301-Weiterleitungen, Sitemap, Search Console, Messung.
-- [Homepage und Firmen-Website erstellen lassen](https://muhamedbeck.com/leistungen/webentwicklung): Homepage oder Firmen-Website zum Festpreis ab 2.900 €, Relaunch ab 3.900 €: schnell, auffindbar, ohne Baukasten. Frankfurt und remote.
-- [Website überarbeiten und modernisieren lassen](https://muhamedbeck.com/leistungen/website-ueberarbeiten): Bestehende Website überarbeiten lassen ab 990 €: modernes Design, schnellere Ladezeit, gut lesbar auf dem Telefon, aktuelle Inhalte.
-- [Web-App und Buchungssystem entwickeln lassen](https://muhamedbeck.com/leistungen/web-app-entwicklung): Buchungssysteme, Kundenportale und interne Software ab 7.900 €: Spring Boot, Angular oder React, mit Rollen, Schnittstellen und eigenem Quellcode.
+- [Homepage und Firmen-Website erstellen lassen](https://muhamedbeck.com/leistungen/webentwicklung): Homepage oder Firmen-Website zum Festpreis ab 2.900 €, Relaunch ab 3.900 €: schnell, auffindbar, ohne Baukasten. Frankfurt und remote.
+- [Website überarbeiten und modernisieren lassen](https://muhamedbeck.com/leistungen/website-ueberarbeiten): Bestehende Website überarbeiten lassen ab 990 €: modernes Design, schnellere Ladezeit, gut lesbar auf dem Telefon, aktuelle Inhalte.
+- [Web-App und Buchungssystem entwickeln lassen](https://muhamedbeck.com/leistungen/web-app-entwicklung): Buchungssysteme, Kundenportale und interne Software ab 7.900 €: Spring Boot, Angular oder React, mit Rollen, Schnittstellen und eigenem Quellcode.
 - [n8n Experte und Spezialist für Workflow-Automatisierung](https://muhamedbeck.com/leistungen/n8n-automatisierung): n8n Experte und Spezialist für Deutschland, Österreich und die Schweiz: Workflows, API- und CRM-Anbindung, KI-Integration. 80 bis 120 € pro Stunde.
 - [n8n Freelancer und Beratung für Wien und Österreich](https://muhamedbeck.com/leistungen/n8n-automatisierung-oesterreich): n8n Beratung und Umsetzung für Unternehmen in Wien und Österreich: Workflow-Automatisierung remote, Rechnung in Euro mit Reverse Charge.
 - [KI-Automatisierung für Unternehmen in Frankfurt](https://muhamedbeck.com/leistungen/ki-automatisierung-frankfurt): KI- und Prozessautomatisierung für Unternehmen in Frankfurt und Rhein-Main: LLM-Lösungen, RAG und Voice-AI, DSGVO-konform. Auch remote.
-- [KI-Beratung für Unternehmen: vom ersten Anwendungsfall zum laufenden Pilot](https://muhamedbeck.com/leistungen/ki-beratung): KI-Beratung ohne Folien: wo KI sich lohnt, was sie kostet, Datenschutz und AI Act, und der erste Anwendungsfall als Pilot zum Festpreis von 1.490 €.
+- [KI-Beratung für Unternehmen: vom ersten Anwendungsfall zum laufenden Pilot](https://muhamedbeck.com/leistungen/ki-beratung): KI-Beratung ohne Folien: wo KI sich lohnt, was sie kostet, Datenschutz und AI Act, und der erste Anwendungsfall als Pilot zum Festpreis von 1.490 €.
 - [HubSpot Integration und CRM-Automatisierung](https://muhamedbeck.com/leistungen/hubspot-integration): HubSpot und CRM-Integrationen vom Freelancer: REST-APIs, Webhooks, OAuth2 und Datenabgleich zwischen ATS, CRM und internen Tools.
 - [Recruiting-Automatisierung mit n8n und ATS-Anbindung](https://muhamedbeck.com/leistungen/recruiting-automatisierung): Bewerbungseingang, Vorqualifizierung per KI-Anruf, Vorstellung und Absagen automatisieren: n8n mit RecruitCRM, Personio und HubSpot.
 - [KI-Telefonassistent und Voice-AI-Agenten für Unternehmen](https://muhamedbeck.com/leistungen/voice-ai-agenten): KI-Telefonassistent für Unternehmen: Voice-AI mit Twilio, Speech-to-Text und Text-to-Speech, CRM-Anbindung und Transparenzhinweis nach EU AI Act.
@@ -60,7 +60,7 @@
 - [Recruiting-Automatisierung mit n8n und KI-Telefonie](https://muhamedbeck.com/projekte/recruiting-automatisierung): Wie n8n und GPT bei der TOPEOPLE Group neue Bewerber anrufen, auswerten und vorstellen: rund 1.900 KI-Anrufe und 300 Vorstellungen im Monat.
 - [Eigene CRM-Plattform für eine Personalberatung](https://muhamedbeck.com/projekte/crm-plattform-personalberatung): Interne Web-App einer Personalberatung für Vertrieb, Account Management und Recruiting: 54 Nutzer, HubSpot abgelöst, 10.000 Anrufe im Monat im ATS.
 - [Buchungsplattform und KI-SEO für Phoenix Parkservice](https://muhamedbeck.com/projekte/phoenix-parkservice): Buchungs- und Verwaltungssoftware mit Spring Boot und Angular, dazu KI-SEO mit n8n: 35 % mehr organischer Traffic in drei Monaten.
-- [Dolmetscher und Übersetzer für Arabisch und Deutsch in Frankfurt](https://muhamedbeck.com/dolmetscher-arabisch-frankfurt): Dolmetscher und Übersetzer für Arabisch, Deutsch und Englisch in Frankfurt und Rhein-Main: vor Ort, per Video und Telefon, ab 70 € je Stunde.
+- [Dolmetscher und Übersetzer für Arabisch und Deutsch in Frankfurt](https://muhamedbeck.com/dolmetscher-arabisch-frankfurt): Dolmetscher und Übersetzer für Arabisch, Deutsch und Englisch in Frankfurt und Rhein-Main: vor Ort, per Video und Telefon, ab 70 € je Stunde.
 - [Was kostet ein Dolmetscher für Arabisch?](https://muhamedbeck.com/dolmetscher-arabisch-frankfurt/kosten): Dolmetscher kosten laut einem Vermittlungsportal für Frankfurt oft 70 bis 120 € pro Stunde, Gerichte zahlen nach JVEG 93 €. Dazu Notar, Video, Anfahrt.
 - [Impressum](https://muhamedbeck.com/impressum): Impressum von Muhamed Nur Beck, AI Automation & Full-Stack Developer aus Frankfurt am Main. Angaben gemäß § 5 DDG.
 - [Datenschutzerklärung](https://muhamedbeck.com/datenschutz): Datenschutzerklärung für muhamedbeck.com: Informationen zur Verarbeitung personenbezogener Daten nach DSGVO.
@@ -82,4 +82,4 @@
 - [ابدأ مشروعًا](https://muhamedbeck.com/ar/hire): صف العملية التي تستهلك أكبر وقت لديك، وستحصل على تقييم صريح خلال 24 ساعة. الاستشارة الأولى مجانية، والعمل عن بُعد مع عملاء في أوروبا والمنطقة العربية.
 - [أتمتة اختبارات الوحدة بنموذج لغوي](https://muhamedbeck.com/ar/projects/llm-maven-plugin): مكوّن Maven إضافي يولّد اختبارات وحدة لمشاريع Spring Boot بنموذج لغوي: زيادة 33 بالمئة في التغطية مقيسة بـ JaCoCo، وكلفة 2,13 يورو بدل 566 يورو.
 - [تصوير البيانات في الواقع المعزز](https://muhamedbeck.com/ar/projects/ar-data-visualization): عرض تقارير SAP BusinessObjects في الواقع المعزز داخل المتصفح، مع استبيان شمل 81 مشاركًا في شركات ألمانية حول عوائق التبني. أكثر من 50 إطارًا في الثانية.
-- [مترجم شفوي وتحريري بين العربية والألمانية في فرانكفورت](https://muhamedbeck.com/ar/arabic-interpreter-frankfurt): مترجم شفوي وتحريري للعربية والألمانية والإنجليزية في فرانكفورت ومنطقة الراين-ماين: حضوريًا أو عبر الفيديو والهاتف، ابتداءً من 70 يورو للساعة.
+- [مترجم شفوي وتحريري بين العربية والألمانية في فرانكفورت](https://muhamedbeck.com/ar/arabic-interpreter-frankfurt): مترجم شفوي وتحريري للعربية والألمانية والإنجليزية في فرانكفورت ومنطقة الراين-ماين: حضوريًا أو عبر الفيديو والهاتف، ابتداءً من 70 يورو للساعة.

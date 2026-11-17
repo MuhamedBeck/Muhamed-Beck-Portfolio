@@ -33,7 +33,7 @@ export const AnfrageStart = ({ to, label, preis }) => (
       {label}
     </Link>
     <p className="text-sm leading-relaxed text-paper-mute">
-      {preis ?? `${RATE_MIN} bis ${RATE_MAX} € pro Stunde`} · {ANFRAGE_ZUSAGE}
+      {preis ?? `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde`} · {ANFRAGE_ZUSAGE}
     </p>
     <TerminBuchen className="basis-full" />
   </div>

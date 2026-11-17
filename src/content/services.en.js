@@ -60,7 +60,7 @@ export const SERVICES = [
       "Local SEO for German businesses",
     ],
     result: {
-      value: "35 %",
+      value: "35\u00A0%",
       text: "more organic traffic for Phoenix Parkservice, a freelance engagement, through AI-supported SEO workflows.",
     },
   },

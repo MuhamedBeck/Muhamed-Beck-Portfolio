@@ -51,7 +51,7 @@ test("eigene Beträge aus site.js, gesetzlicher Satz im Einstieg", () => {
     ...ANFAHRT_STUFEN.filter((stufe) => stufe.betrag > 0).map((stufe) => stufe.betrag),
   ];
   for (const betrag of eigene) assert.ok(alles.includes(p(betrag)), p(betrag));
-  assert.match(artikel.lede, /93 €/);
+  assert.match(artikel.lede, /93\u00A0€/);
   assert.ok(artikel.lede.includes(p(DOLMETSCH_PREIS.vorOrtStunde)));
   assert.ok(artikel.sections[4].body.join(" ").includes(woerter.de.formular.zwecksatz));
   assert.ok(artikel.faq.some((frage) => frage.a.includes(woerter.de.preise.endpreise)));
@@ -61,7 +61,7 @@ test("Tabelle: drei Spalten, zehn Zeilen, erste Zeile Gesetz, Markt, eigener Pre
   assert.deepEqual(artikel.table.columns, ["Gerichte nach JVEG", "Markt laut Anbietern", "Mein Preis"]);
   assert.equal(artikel.table.rows.length, 10);
   assert.equal(artikel.table.rows[0].label, "Eine Stunde vor Ort");
-  assert.equal(artikel.table.rows[0].cells[0], "93 €");
+  assert.equal(artikel.table.rows[0].cells[0], "93\u00A0€");
   assert.equal(artikel.table.rows[0].cells[2], preisText(DOLMETSCH_PREIS.vorOrtStunde, "de"));
 });
 
@@ -93,7 +93,8 @@ test("Route: Adresse, Gruppe unter der Sperre, Titel, Vorschaubild, Datum wie de
   assert.equal(route.lastmod, artikel.modified);
   assert.equal(route.navLabel, undefined);
   assert.equal(route.eager, undefined);
-  assert.match(route.description, /93 €/);
+  // Meta-Beschreibung: bricht nirgends sichtbar um, normales Leerzeichen erlaubt.
+  assert.match(route.description, /93\s€/);
 });
 
 test("jede Seite unter der Dolmetscher-Adresse steht unter der Wortsperre", () => {
@@ -104,27 +105,27 @@ test("jede Seite unter der Dolmetscher-Adresse steht unter der Wortsperre", () =
 
 // Befunde der Abschlussprüfung vom 17.11.2026: Marktzahlen so eng wie die Quellen
 // in .claude/recherche/2026-11-17/kosten-quellen.md (privat, nicht im Repository).
-test("Quellentreue: die Spanne 70 bis 120 € steht nur mit dem Portal und nur als „oft“", () => {
+test("Quellentreue: die Spanne 70 bis 120\u00A0€ steht nur mit dem Portal und nur als „oft“", () => {
   const route = ROUTES.find((eintrag) => eintrag.id === "dolmetscher.kosten");
   const stellen = [...texte(artikel), route.description].filter(
-    (text) => text.includes("70 bis 120") && text !== "70 bis 120 €"
+    (text) => text.includes("70 bis 120") && text !== "70 bis 120\u00A0€"
   );
   assert.ok(stellen.length >= 4, `nur ${stellen.length} Stellen`);
   for (const text of stellen) {
     assert.match(text, /Vermittlungsportal/, text);
     assert.doesNotMatch(text, /meist (etwa )?70 bis 120|direkt beauftragt/i, text);
   }
-  const balken = artikel.sections[0].bild.daten.zeilen.find((zeile) => zeile.text === "70 bis 120 €");
+  const balken = artikel.sections[0].bild.daten.zeilen.find((zeile) => zeile.text === "70 bis 120\u00A0€");
   assert.match(balken.label, /Vermittlungsportal/);
   assert.doesNotMatch(balken.label, /direkt beauftragt/i);
 });
 
-test("Quellentreue Notar: ab 390 €, meist 420 bis 530 €, Agentur in Bayern, für Englisch", () => {
+test("Quellentreue Notar: ab 390\u00A0€, meist 420 bis 530\u00A0€, Agentur in Bayern, für Englisch", () => {
   const notar = artikel.sections[1];
-  assert.match(notar.body[0], /^Ab 390 €, meist 420 bis 530 €/);
+  assert.match(notar.body[0], /^Ab 390\u00A0€, meist 420 bis 530\u00A0€/);
   assert.doesNotMatch(alles, /zwischen 390 und 530/);
   const zelle = artikel.table.rows.find((zeile) => zeile.label === "Notartermin").cells[1];
-  for (const muster of [/ab 390 €, meist 420 bis 530 €/, /Englisch/, /Bayern/]) assert.match(zelle, muster);
+  for (const muster of [/ab 390\u00A0€, meist 420 bis 530\u00A0€/, /Englisch/, /Bayern/]) assert.match(zelle, muster);
   const balken = notar.bild.daten.zeilen[0];
   for (const muster of [/Bayern/, /Englisch/]) assert.match(balken.label, muster);
 });
@@ -132,9 +133,17 @@ test("Quellentreue Notar: ab 390 €, meist 420 bis 530 €, Agentur in Bayern, 
 test("Quellentreue: keine Angabe, die die Quellen nicht tragen", () => {
   assert.doesNotMatch(alles, /bundesweit/i);
   const hotline = artikel.sections[2].body[0];
-  assert.match(hotline, /1,99 € je Minute/);
+  assert.match(hotline, /1,99\u00A0€ je Minute/);
   assert.match(hotline, /Mobilfunk/);
   assert.doesNotMatch(artikel.sections[4].body[0], /55 Anschläg/);
   const video = artikel.table.rows.find((zeile) => zeile.label === "30 Minuten per Video oder Telefon");
-  assert.equal(video.cells[0], "93 € je Stunde");
+  assert.equal(video.cells[0], "93\u00A0€ je Stunde");
+});
+
+test("Absage: Marktspalte mit der belegten Empfehlung statt „je nach Anbieter“", () => {
+  const zeile = artikel.table.rows.find((eintrag) => eintrag.label === "Absage");
+  assert.equal(
+    zeile.cells[1],
+    "unter 24 Stunden vorher 50\u00A0€ vor Ort, 25\u00A0€ bei Video und Telefon, früher kostenlos (Empfehlung eines Dolmetschdienstes, Berlin)"
+  );
 });

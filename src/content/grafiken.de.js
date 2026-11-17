@@ -27,8 +27,8 @@ export const SPANNE_FIRMENWEBSITE = {
   max: 20000,
   maxText: euro(20000),
   baender: [
-    { von: 800, bis: 5000, text: "Freelancer 800 bis 5.000 €", ton: "leise" },
-    { von: 3600, bis: 18000, text: "Agentur 3.600 bis 18.000 €", ton: "cyan" },
+    { von: 800, bis: 5000, text: "Freelancer 800 bis 5.000\u00A0€", ton: "leise" },
+    { von: 3600, bis: 18000, text: "Agentur 3.600 bis 18.000\u00A0€", ton: "cyan" },
   ],
   marke: { wert: FESTPREIS.website, text: `mein Festpreis ab ${euro(FESTPREIS.website)}` },
 };
@@ -37,6 +37,6 @@ export const SPANNE_RELAUNCH = {
   label: "Relaunch mit SEO-Migration",
   max: 20000,
   maxText: euro(20000),
-  baender: [{ von: 8000, bis: 20000, text: "Markt 8.000 bis 20.000 €", ton: "leise" }],
+  baender: [{ von: 8000, bis: 20000, text: "Markt 8.000 bis 20.000\u00A0€", ton: "leise" }],
   marke: { wert: FESTPREIS.relaunch, text: `mein Festpreis ab ${euro(FESTPREIS.relaunch)}` },
 };
