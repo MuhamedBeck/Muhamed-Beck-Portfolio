@@ -169,7 +169,7 @@ export const ROUTES = [
     description:
       "AI Automation Manager & Full-Stack Developer in Frankfurt. n8n and Zapier automation, LLM & RAG, React, Angular, Spring Boot. Available for freelance work.",
     h1: "Processes that run without you",
-    lastmod: "2026-11-07",
+    lastmod: "2026-11-18",
     changefreq: "weekly",
     priority: "1.0",
   },
@@ -223,7 +223,7 @@ export const ROUTES = [
     description:
       "مدير أتمتة الذكاء الاصطناعي ومطوّر برمجيات متكامل في فرانكفورت. أتمتة العمليات باستخدام n8n، وربط أنظمة CRM وATS، ووكلاء ذكاء اصطناعي. الرد خلال 24 ساعة.",
     h1: "عمليات تعمل من دونك",
-    lastmod: "2026-11-07",
+    lastmod: "2026-11-18",
     changefreq: "monthly",
     priority: "0.9",
   },

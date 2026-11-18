@@ -82,7 +82,7 @@ export const Startseite = () => {
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <main id="inhalt" tabIndex={-1}>
-        <Home isLoaded={isLoaded} services={HERO_LEISTUNGEN.slice(0, HERO_MAX)} />
+        <Home isLoaded={isLoaded} services={HERO_LEISTUNGEN.slice(0, HERO_MAX)} kompakt />
         <TechMarquee />
 
         <Section id="leistungen">
@@ -91,14 +91,14 @@ export const Startseite = () => {
             headline={t.services.headline}
             intro={t.services.intro}
           />
-          {/* Drei Gruppen, je Leistung eine Zeile. Vorher standen hier 13
-              Karten mit der langen Seitenüberschrift und drei Zeilen Text,
-              mobil 3,6 Bildschirmhöhen. Jetzt liest man auf dem Handy nur
-              Namen und findet den eigenen Bereich auf einen Blick. Der
-              Kurztext erscheint erst ab lg, wo drei Spalten Platz haben; im
-              HTML bleibt er immer, und auf /leistungen steht er ohnehin.
-              Die ganze Zeile ist der Link (.karten-link), vorgelesen wird
-              nur der Name. */}
+          {/* Drei Gruppen, je Leistung eine Zeile mit dem kurzen Namen, auf
+              dem Handy untereinander, ab lg in drei Spalten. Vorher standen
+              hier 13 Karten mit der langen Seitenüberschrift und drei Zeilen
+              Text, mobil 3,6 Bildschirmhöhen; auch die Kurztexte allein
+              waren am Desktop noch 296 Wörter. Wer überfliegt, findet so den
+              eigenen Bereich auf einen Blick; die Kurztexte stehen auf
+              /leistungen. Der Link ist die ganze Zeile, vorgelesen wird nur
+              der Name. */}
           <div className="mt-14 grid gap-y-12 lg:grid-cols-3 lg:gap-x-10">
             {t.services.bereiche.map((bereich, index) => (
               <div
@@ -109,18 +109,20 @@ export const Startseite = () => {
                 <ul className="mt-5 border-b border-hairline">
                   {LEISTUNGEN.filter((leistung) => leistung.bereich === bereich.id).map(
                     (leistung) => (
-                      <li key={leistung.path} className="group relative border-t border-hairline">
+                      <li key={leistung.path} className="border-t border-hairline">
                         <Link
                           to={leistung.path}
-                          className="karten-link flex items-baseline justify-between gap-x-4 py-3">
-                          <span className="text-lg text-paper underline-offset-4 group-hover:underline">
+                          className="group flex items-baseline justify-between gap-x-4 py-3">
+                          {/* Zwischen lg und xl eine Stufe kleiner: in den
+                              drei schmalen Spalten bei 1024 px brach
+                              „n8n- und Workflow-Automatisierung“ sonst um,
+                              und die Linien der ersten Spalte standen
+                              versetzt zu den anderen. */}
+                          <span className="text-lg text-paper underline-offset-4 group-hover:underline lg:text-base xl:text-lg">
                             {leistung.hero.kurz}
                           </span>
                           <LinkArrow className="shrink-0 text-paper-mute" />
                         </Link>
-                        <p className="-mt-1 hidden pb-4 text-sm leading-relaxed text-paper-soft lg:block">
-                          {leistung.teaser}
-                        </p>
                       </li>
                     ),
                   )}

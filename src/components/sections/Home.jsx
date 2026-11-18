@@ -41,8 +41,13 @@ const DELAY = {
  *
  *   Empty by default, so a caller that passes nothing simply gets no register
  *   instead of a broken one.
+ * @param {boolean} [props.kompakt] Set only by the German homepage. The
+ *   provenance note then sits as one short line directly under the figures,
+ *   and the strip at the foot of the hero (rule, social icons, note) is left
+ *   out, which shortens the hero; the icons are in the footer of every page.
+ *   /en and /ar keep the strip.
  */
-export const Home = ({ isLoaded = true, services = [] }) => {
+export const Home = ({ isLoaded = true, services = [], kompakt = false }) => {
   const t = useDict(home);
   const chrome = useDict(ui);
   const locale = useLocale();
@@ -210,65 +215,77 @@ export const Home = ({ isLoaded = true, services = [] }) => {
               left column ended at y=498 while the right ran to y=986, so the
               composition visibly tipped; these two figures fill that gap and
               belong next to the claim they support. */}
-          <dl
-            className="stagger grid grid-cols-2 gap-x-10 gap-y-8 border-t border-hairline pt-8 md:col-start-1 md:row-start-2"
+          <div
+            className="stagger md:col-start-1 md:row-start-2"
             style={{ "--fade-delay": `${DELAY.stats}ms` }}>
-            {t.stats.map((stat) => (
-              <div key={stat.label}>
-                {/* tabular-nums keeps the row from shifting between locales,
-                    which format numbers differently. */}
-                <dd className="text-4xl font-light tracking-tight tabular-nums text-paper">
-                  {stat.value}
-                </dd>
-                <dt className="mt-3 max-w-[24ch] text-sm leading-snug text-paper-mute">
-                  {stat.label}
-                </dt>
-              </div>
-            ))}
-          </dl>
+            <dl className="grid grid-cols-2 gap-x-10 gap-y-8 border-t border-hairline pt-8">
+              {t.stats.map((stat) => (
+                <div key={stat.label}>
+                  {/* tabular-nums keeps the row from shifting between locales,
+                      which format numbers differently. */}
+                  <dd className="text-4xl font-light tracking-tight tabular-nums text-paper">
+                    {stat.value}
+                  </dd>
+                  <dt className="mt-3 max-w-[24ch] text-sm leading-snug text-paper-mute">
+                    {stat.label}
+                  </dt>
+                </div>
+              ))}
+            </dl>
+            {kompakt ? (
+              <p className="mt-6 text-xs leading-relaxed text-paper-mute">{t.statsNote}</p>
+            ) : null}
+          </div>
         </div>
 
-        <hr className="rule mt-16" />
-
-        {/* Moved out of the first screen. These are person marks, not reasons to
-            commission anything, and above the fold they competed with the one
-            button that is. */}
-        <div
-          className="stagger mt-10 -ms-3 flex items-center gap-2"
-          style={{ "--fade-delay": `${DELAY.socials}ms` }}>
-          <a
-            href={SOCIAL.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-accent"
-            aria-label={t.socials.linkedin}>
-            <FaLinkedin className="h-5 w-5" />
-          </a>
-          <a
-            href={SOCIAL.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-accent"
-            aria-label={t.socials.github}>
-            <FaGithub className="h-5 w-5" />
-          </a>
-          <a
-            href={mailtoHref(chrome.mailBetreff)}
-            className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-accent"
-            aria-label={t.socials.email}>
-            <FaEnvelope className="h-5 w-5" />
-          </a>
-        </div>
-
-
-        {/* Provenance for the figures above. It was written months ago and sat
-            unrendered in the dictionary; a number without its source is the one
-            thing a reader cannot check, and naming employer versus freelance
-            client is exactly what makes these checkable. */}
-        <p className="mt-8 max-w-[72ch] text-sm leading-relaxed text-paper-mute">
-          {t.statsNote}
-        </p>
+        {kompakt ? null : <UntererStreifen t={t} chrome={chrome} />}
       </div>
     </section>
   );
 };
+
+/* Rule, person marks and the provenance note at the foot of the hero, for the
+   homepages that do not set `kompakt`. */
+const UntererStreifen = ({ t, chrome }) => (
+  <>
+    <hr className="rule mt-16" />
+
+    {/* Moved out of the first screen. These are person marks, not reasons to
+        commission anything, and above the fold they competed with the one
+        button that is. */}
+    <div
+      className="stagger mt-10 -ms-3 flex items-center gap-2"
+      style={{ "--fade-delay": `${DELAY.socials}ms` }}>
+      <a
+        href={SOCIAL.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-accent"
+        aria-label={t.socials.linkedin}>
+        <FaLinkedin className="h-5 w-5" />
+      </a>
+      <a
+        href={SOCIAL.github}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-accent"
+        aria-label={t.socials.github}>
+        <FaGithub className="h-5 w-5" />
+      </a>
+      <a
+        href={mailtoHref(chrome.mailBetreff)}
+        className="inline-flex h-11 w-11 items-center justify-center text-paper-soft transition-colors duration-300 hover:text-accent"
+        aria-label={t.socials.email}>
+        <FaEnvelope className="h-5 w-5" />
+      </a>
+    </div>
+
+    {/* Provenance for the figures above. It was written months ago and sat
+        unrendered in the dictionary; a number without its source is the one
+        thing a reader cannot check, and naming employer versus freelance
+        client is exactly what makes these checkable. */}
+    <p className="mt-8 max-w-[72ch] text-sm leading-relaxed text-paper-mute">
+      {t.statsNote}
+    </p>
+  </>
+);

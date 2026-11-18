@@ -31,13 +31,16 @@ const de = {
   introKurz:
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main.",
   servicesHeading: "Was Sie beauftragen können",
-  preisZeile: `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)}, Überarbeitungen ab ${euro(FESTPREIS.update)}. Jede Leistung mit Ablauf, Beispielen und Preisrahmen.`,
+  preisZeile: `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde, Websites zum Festpreis ab ${euro(FESTPREIS.website)}, Überarbeitungen ab ${euro(FESTPREIS.update)}.`,
   stats: [
     { value: "1.900", label: "KI-Anrufe im Monat bei meinem Arbeitgeber, automatisch ausgewertet" },
     { value: "54", label: "Nutzer der Plattform meines Arbeitgebers, deren Entwicklung ich leite" },
   ],
+  // Eine Zeile direkt unter den Zahlen (Home, kompakt). Beide Zahlen stammen
+  // vom Arbeitgeber; der frühere Satz zu Phoenix Parkservice gehörte zu einer
+  // Zahl, die hier nicht mehr steht.
   statsNote:
-    "Alle Werte stammen aus produktiv laufenden Systemen, nicht aus Demos, Stand Oktober 2026. TOPEOPLE Group GmbH ist mein Arbeitgeber, Phoenix Parkservice war ein Freelance-Mandat.",
+    "Werte aus laufenden Systemen meines Arbeitgebers TOPEOPLE Group GmbH, Stand Oktober 2026.",
   socials: {
     linkedin: "Muhamed Nur Beck auf LinkedIn",
     github: "Muhamed Nur Beck auf GitHub",
@@ -63,7 +66,7 @@ const en = {
     { value: "54", label: "users on my employer's platform, whose development I lead" },
   ],
   statsNote:
-    "All figures come from systems running in production, not from demos, as of October 2026. TOPEOPLE Group GmbH is my employer; Phoenix Parkservice was a freelance engagement.",
+    "All figures come from systems running in production, not from demos, as of October 2026. TOPEOPLE Group GmbH is my employer.",
   socials: {
     linkedin: "Muhamed Nur Beck on LinkedIn",
     github: "Muhamed Nur Beck on GitHub",
@@ -97,7 +100,7 @@ const en = {
  *               Entwicklung ich leite
  *   statsNote   Alle Zahlen stammen aus produktiv laufenden Systemen, nicht aus
  *               Demos, nach dem Stand von Oktober 2026. TOPEOPLE Group GmbH ist
- *               mein Arbeitgeber, Phoenix Parkservice war ein Freelance-Mandat.
+ *               mein Arbeitgeber.
  *   socials     Muhamed Nur Beck auf LinkedIn / auf GitHub / E-Mail an ihn */
 const ar = {
   label: "n8n ووكلاء الذكاء الاصطناعي وأتمتة العمليات",
@@ -124,7 +127,7 @@ const ar = {
     { value: "54", label: "مستخدمًا لمنصة جهة عملي التي أقود تطويرها" },
   ],
   statsNote:
-    "جميع الأرقام مأخوذة من أنظمة تعمل في بيئة الإنتاج، لا من عروض توضيحية، بحسب بيانات أكتوبر 2026. شركة TOPEOPLE Group GmbH هي جهة عملي، ومشروع Phoenix Parkservice كان تكليفًا مستقلًا.",
+    "جميع الأرقام مأخوذة من أنظمة تعمل في بيئة الإنتاج، لا من عروض توضيحية، بحسب بيانات أكتوبر 2026. شركة TOPEOPLE Group GmbH هي جهة عملي.",
   socials: {
     linkedin: "محمد نور بيك على لينكد إن",
     github: "محمد نور بيك على غيت هب",
