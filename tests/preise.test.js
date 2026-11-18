@@ -10,6 +10,7 @@ import {
   preisText,
   whatsappHref,
 } from "../src/content/site.js";
+import dolmetscher from "../src/i18n/dict/dolmetscher.js";
 
 test("DOLMETSCH_PREIS trägt die festgelegten Beträge", () => {
   assert.deepEqual(DOLMETSCH_PREIS, {
@@ -75,4 +76,18 @@ test("whatsappHref: Nummer ohne Plus, Text vollständig kodiert", () => {
   assert.ok(href.startsWith("https://wa.me/4917666008485?text="));
   assert.doesNotMatch(kodiert, /[ &#+]/);
   assert.equal(decodeURIComponent(kodiert), text);
+});
+
+// In einer Zeile ist die Vorlage in WhatsApp ein Block, in dem man die Stellen
+// zum Ausfüllen erst suchen muss.
+test("WhatsApp-Vorlage: Anrede, Anliegen und jede Angabe in eigener Zeile", () => {
+  for (const sprache of ["de", "en", "ar"]) {
+    const text = dolmetscher[sprache].kopf.whatsappText;
+    const zeilen = text.split("\n");
+    assert.equal(zeilen.length, 6, `${sprache}: ${JSON.stringify(text)}`);
+    assert.equal(zeilen[1], "", `${sprache}: Leerzeile nach der Anrede`);
+    assert.equal(zeilen[3], "", `${sprache}: Leerzeile vor den Angaben`);
+    assert.ok(zeilen[4].endsWith(": …") && zeilen[5].endsWith(": …"), sprache);
+    assert.match(whatsappHref(text), /%0A%0A/);
+  }
 });

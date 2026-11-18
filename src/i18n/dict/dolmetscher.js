@@ -13,7 +13,9 @@ const de = {
     rolle: "Dolmetscher und Übersetzer",
     whatsappAria: "Über WhatsApp schreiben",
     anrufAria: "Anrufen",
-    whatsappText: "Guten Tag Herr Beck, ich möchte einen Termin anfragen. Datum und Uhrzeit: … Ort: …",
+    // In Zeilen, damit die Stellen zum Ausfüllen in WhatsApp sofort ins Auge
+    // fallen; whatsappHref kodiert jeden Umbruch als %0A.
+    whatsappText: "Guten Tag Herr Beck,\n\nich möchte einen Termin anfragen.\n\nDatum und Uhrzeit: …\nOrt: …",
   },
   wege: {
     anfrage: "Anfrage stellen",
@@ -131,7 +133,7 @@ const en = {
     rolle: "Interpreter and translator",
     whatsappAria: "Message on WhatsApp",
     anrufAria: "Call",
-    whatsappText: "Hello Mr Beck, I would like to request an appointment. Date and time: … Place: …",
+    whatsappText: "Hello Mr Beck,\n\nI would like to request an appointment.\n\nDate and time: …\nPlace: …",
   },
   wege: {
     anfrage: "Send a request",
@@ -250,8 +252,9 @@ const en = {
  *   kopf.rolle           Dolmetscher und Übersetzer (mündlich und schriftlich)
  *   kopf.whatsappAria    Über WhatsApp schreiben
  *   kopf.anrufAria       Anrufen
- *   kopf.whatsappText    Guten Tag Herr Beck, ich möchte einen Termin anfragen.
- *                        Datum und Uhrzeit: … Ort: …
+ *   kopf.whatsappText    Guten Tag Herr Beck, / ich möchte einen Termin
+ *                        anfragen. / Datum und Uhrzeit: … / Ort: … (in Zeilen
+ *                        wie im Deutschen)
  *   wege                 Anfrage senden · WhatsApp · Anruf · E-Mail
  *   wege.*Hinweis        Für kurze Fragen und eilige Termine. · Wenn es eilt
  *                        oder Sie lieber sprechen. · Antwort in der Regel
@@ -307,7 +310,7 @@ const ar = {
     rolle: "مترجم شفوي وتحريري",
     whatsappAria: "مراسلة عبر واتساب",
     anrufAria: "اتصال هاتفي",
-    whatsappText: "مرحبًا سيد بيك، أود طلب موعد. التاريخ والوقت: … المكان: …",
+    whatsappText: "مرحبًا سيد بيك،\n\nأود طلب موعد.\n\nالتاريخ والوقت: …\nالمكان: …",
   },
   wege: {
     anfrage: "إرسال طلب",

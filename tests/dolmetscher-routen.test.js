@@ -46,7 +46,7 @@ test("Beschreibungen nennen keine Gattungen von Einsatzorten", () => {
 test("Wörterbuch: festgelegte Sätze stehen wörtlich", () => {
   const { de, en, ar } = woerter;
   assert.equal(de.kopf.whatsappText,
-    "Guten Tag Herr Beck, ich möchte einen Termin anfragen. Datum und Uhrzeit: … Ort: …");
+    "Guten Tag Herr Beck,\n\nich möchte einen Termin anfragen.\n\nDatum und Uhrzeit: …\nOrt: …");
   assert.equal(de.formular.hinweis,
     "Das ist eine Anfrage, keine Buchung, und sie verpflichtet Sie zu nichts. Ich antworte in der Regel innerhalb von 24 Stunden mit Termin und Preis oder mit einer Absage. Verbindlich wird der Termin erst, wenn Sie mir das bestätigen. Wenn es schneller gehen muss: WhatsApp oder Anruf.");
   assert.equal(`${de.formular.bestaetigungTitel} ${de.formular.bestaetigungText}`,
