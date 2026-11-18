@@ -13,7 +13,8 @@ import { LinkArrow } from "./LinkArrow";
  *
  * Zwei Darstellungen, weil die Stimme an zwei Orten zwei verschiedene Aufgaben
  * hat. Auf der Startseite ist sie der einzige Satz auf der Seite, den nicht der
- * Anbieter selbst sagt, und trägt deshalb Zitatgröße. In der Fallstudie steht
+ * Anbieter selbst sagt, und trägt deshalb Zitatgröße, auf dem Handy eine Stufe
+ * kleiner (in text-xl lief es dort über 19 Zeilen). In der Fallstudie steht
  * sie zwischen sechs anderen Abschnitten; dort dieselbe Größe zu nehmen hieße,
  * sie gegen die Ergebnisse antreten zu lassen, die sie stützen soll.
  *
@@ -63,7 +64,7 @@ export const Stimmen = ({ label, headline, projekt }) => {
                 <p
                   className={`text-paper-soft ${
                     gross
-                      ? "max-w-[46ch] text-xl leading-relaxed md:text-2xl md:leading-[1.5]"
+                      ? "max-w-[46ch] text-lg leading-relaxed md:text-2xl md:leading-[1.5]"
                       : "max-w-[58ch] text-lg leading-relaxed"
                   }`}>
                   <span

@@ -78,7 +78,7 @@ export const ROUTES = [
     description:
       `n8n Freelancer aus Frankfurt: Workflow-Automatisierung, KI-Agenten, Websites und Web-Apps für Firmen. ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Antwort in 24 Stunden.`,
     h1: "Prozesse, die ohne Sie laufen",
-    lastmod: "2026-11-07",
+    lastmod: "2026-11-18",
     changefreq: "weekly",
     priority: "1.0",
   },

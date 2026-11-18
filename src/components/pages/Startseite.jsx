@@ -14,6 +14,7 @@ import { useRouteMeta } from "../../seo/useRouteMeta";
 import { LEISTUNGEN } from "../../content/leistungen.de";
 import { PROJEKTE } from "../../content/projekte.de";
 import { Grafik } from "../Grafik";
+import { FaqListe } from "../FaqListe";
 import startseite from "../../i18n/dict/startseite";
 import { LinkArrow } from "../LinkArrow";
 
@@ -90,32 +91,43 @@ export const Startseite = () => {
             headline={t.services.headline}
             intro={t.services.intro}
           />
-          <ul className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2 md:gap-y-12">
-            {LEISTUNGEN.map((leistung, index) => (
-              <li
-                key={leistung.path}
-                className="stagger group relative border-t border-hairline pt-6"
-                style={{ "--fade-delay": `${(index % 2) * 80}ms` }}>
-                {/* Der Pfeil sitzt an der Ueberschrift statt in einer eigenen
-                    Zeile darunter. Vorher stand die Leistung dreimal in
-                    derselben Karte: als Ueberschrift, im Teaser und noch
-                    einmal als Versalien-Zeile mit dem Badge — obwohl die
-                    Ueberschrift bereits der Link auf dieselbe Seite ist.
-                    Mobil kostete diese dritte Zeile rund 58 px je Karte,
-                    bei sieben Karten also einen halben Bildschirm.
-                    Nur die Ueberschrift ist der Link (siehe .karten-link). */}
-                <h3 className="headline-sub underline-offset-[0.18em] group-hover:underline">
-                  <Link to={leistung.path} className="karten-link">
-                    {leistung.h1}
-                  </Link>
-                  <LinkArrow className="ms-2 align-[0.08em] text-[0.6em] text-paper-mute" />
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-paper-soft">
-                  {leistung.teaser}
-                </p>
-              </li>
+          {/* Drei Gruppen, je Leistung eine Zeile. Vorher standen hier 13
+              Karten mit der langen Seitenüberschrift und drei Zeilen Text,
+              mobil 3,6 Bildschirmhöhen. Jetzt liest man auf dem Handy nur
+              Namen und findet den eigenen Bereich auf einen Blick. Der
+              Kurztext erscheint erst ab lg, wo drei Spalten Platz haben; im
+              HTML bleibt er immer, und auf /leistungen steht er ohnehin.
+              Die ganze Zeile ist der Link (.karten-link), vorgelesen wird
+              nur der Name. */}
+          <div className="mt-14 grid gap-y-12 lg:grid-cols-3 lg:gap-x-10">
+            {t.services.bereiche.map((bereich, index) => (
+              <div
+                key={bereich.id}
+                className="stagger"
+                style={{ "--fade-delay": `${index * 80}ms` }}>
+                <h3 className="headline-sub">{bereich.titel}</h3>
+                <ul className="mt-5 border-b border-hairline">
+                  {LEISTUNGEN.filter((leistung) => leistung.bereich === bereich.id).map(
+                    (leistung) => (
+                      <li key={leistung.path} className="group relative border-t border-hairline">
+                        <Link
+                          to={leistung.path}
+                          className="karten-link flex items-baseline justify-between gap-x-4 py-3">
+                          <span className="text-lg text-paper underline-offset-4 group-hover:underline">
+                            {leistung.hero.kurz}
+                          </span>
+                          <LinkArrow className="shrink-0 text-paper-mute" />
+                        </Link>
+                        <p className="-mt-1 hidden pb-4 text-sm leading-relaxed text-paper-soft lg:block">
+                          {leistung.teaser}
+                        </p>
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
           <div className="mt-12">
             <Link to="/leistungen" className="btn-ghost">
               {t.services.all}
@@ -193,31 +205,27 @@ export const Startseite = () => {
                 key={step.title}
                 className="stagger border-t border-hairline pt-6"
                 style={{ "--fade-delay": `${index * 70}ms` }}>
-                <span className="text-xs tracking-[0.25em] text-accent tabular-nums">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-4 text-lg font-normal text-paper">{step.title}</h3>
+                {/* Nummer und Schritt in einer Zeile; die Nummer allein in
+                    einer eigenen Zeile kostete mobil 36 px je Schritt. */}
+                <div className="flex items-baseline gap-x-3">
+                  <span className="text-xs tracking-[0.25em] text-accent tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-lg font-normal text-paper">{step.title}</h3>
+                </div>
                 <p className="mt-2 text-sm leading-relaxed text-paper-soft">{step.text}</p>
               </li>
             ))}
           </ol>
         </Section>
 
-        {/* Visible FAQ and the FAQPage JSON-LD read from this same array, so the
-            two cannot drift apart. */}
+        {/* Collapsed like on the service pages: fully open, the six answers
+            took two screens on a phone. The answers stay in the HTML. Unlike
+            the service pages, the homepage emits no FAQPage JSON-LD;
+            prerender-meta.js builds it only for service and guide pages. */}
         <Section id="faq">
           <SectionHeader label={t.faq.label} headline={t.faq.headline} />
-          <dl className="mt-14 max-w-3xl">
-            {t.faq.items.map((item, index) => (
-              <div
-                key={item.q}
-                className="stagger border-t border-hairline py-7 md:grid md:grid-cols-[1fr_1.4fr] md:gap-x-12"
-                style={{ "--fade-delay": `${Math.min(index, 3) * 60}ms` }}>
-                <dt className="text-lg leading-snug font-normal text-paper">{item.q}</dt>
-                <dd className="mt-3 leading-relaxed text-paper-soft md:mt-0">{item.a}</dd>
-              </div>
-            ))}
-          </dl>
+          <FaqListe fragen={t.faq.items} abstand="mt-14" />
           {/* The homepage answers short; the service page answers in full. This
               is the way from one to the other, and it stops the two versions
               from having to say the same thing at the same length. */}

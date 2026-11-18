@@ -53,6 +53,8 @@ export const REICHWEITE_FESTPREIS_TEXT =
 export const LEISTUNGEN = [
   {
     path: "/leistungen/n8n-automatisierung",
+    // Gruppe auf der Startseite; Titel und Reihenfolge in startseite.js (services.bereiche).
+    bereich: "automatisierung",
     // Der bezahlte Einstieg mit Festpreis (PilotAngebot, Inhalt in pilot.de.js).
     pilot: true,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
@@ -211,6 +213,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/webentwicklung",
+    bereich: "web",
     /* Zweite Stelle, direkt nach n8n, seit dem 13.10.2026. Vorher stand die
        Seite auf Platz sechs, außerhalb der fünf Leistungen, die die Startseite
        oben zeigt. Die Search Console verzeichnete für sie in sieben Wochen
@@ -411,6 +414,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/website-ueberarbeiten",
+    bereich: "web",
     /* Eigene Seite seit dem 26.10.2026: der günstige Einstieg für kleinere
        Web-Aufträge. Wer eine Website hat, die alt aussieht, langsam lädt oder
        veraltete Inhalte zeigt, sucht nach "Website überarbeiten lassen" und
@@ -561,6 +565,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/web-app-entwicklung",
+    bereich: "web",
     /* Eigene Seite für Webanwendungen seit dem 13.10.2026. Wer ein
        Buchungssystem oder ein Kundenportal sucht, sucht nicht nach "Website",
        und die Webentwicklungsseite verkauft Firmen-Websites. Beleg ist Phoenix
@@ -699,6 +704,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-automatisierung-frankfurt",
+    bereich: "ki",
     pilot: true,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
        Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
@@ -830,6 +836,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-beratung",
+    bereich: "ki",
     /* Neu am 07.11.2026. "ki beratung" ist mit rund 2.400 Suchen im Monat der
        größte kaufnahe KI-Begriff, und das Wort kam auf der ganzen Website nicht
        vor (Seobility, google.de, 07.11.2026). Getrennt von der Frankfurt-Seite,
@@ -1016,6 +1023,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/voice-ai-agenten",
+    bereich: "ki",
     preisText:
       `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde für die Umsetzung. Anders als bei den übrigen Leistungen kommen laufende Kosten dazu: Sprachagenten werden je Gesprächsminute abgerechnet, dazu Telefonie und Rufnummer. Was das konkret bedeutet, steht im Ratgeber zu KI-Telefonagenten.`,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
@@ -1149,6 +1157,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/ki-agenten-entwicklung",
+    bereich: "ki",
     preisText:
       `${RATE_MIN} bis ${RATE_MAX}\u00A0€ pro Stunde für die Entwicklung. Dazu kommen laufende Modellkosten je Anfrage, die vom eingesetzten Modell und vom Umfang der Eingaben abhängen. Beides wird vorher abgeschätzt, damit der Betrieb später keine Überraschung ist.`,
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
@@ -1269,6 +1278,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/hubspot-integration",
+    bereich: "automatisierung",
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
        Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
        und die ist auf jeder der sieben Seiten eine andere. */
@@ -1392,6 +1402,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/geo-seo-optimierung",
+    bereich: "web",
     /* Seit 07.11.2026 auf "Generative Engine Optimization" ausgerichtet: rund
        1.300 Suchen im Monat (Seobility, google.de), und der ausgeschriebene
        Begriff kam auf der Seite nicht vor. llms.txt wird nicht mehr als
@@ -1541,6 +1552,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/recruiting-automatisierung",
+    bereich: "automatisierung",
     /* Eigener Schluss statt der allgemeinen Frage nach dem Prozess.
        Wer diese Seite zu Ende liest, hat eine bestimmte Frage im Kopf,
        und die ist auf jeder der sieben Seiten eine andere. */
@@ -1662,6 +1674,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/linkedin-automatisierung",
+    bereich: "automatisierung",
     cta: {
       headline: "Wie viel Zeit kostet Sie LinkedIn im Monat?",
       intro:
@@ -1751,6 +1764,7 @@ export const LEISTUNGEN = [
   },
   {
     path: "/leistungen/n8n-automatisierung-oesterreich",
+    bereich: "automatisierung",
     /* Eigene Seite für Österreich seit dem 13.10.2026. Im August bewusst
        verworfen, weil eine Domain von sieben Tagen keinen Puffer gegen den
        Eindruck einer Doorway-Seite hatte, mit Wiedervorlage ab rund 100

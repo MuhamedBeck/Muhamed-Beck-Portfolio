@@ -21,6 +21,16 @@ const de = {
     headline: "Was ich für Sie baue und automatisiere",
     intro:
       "Von einzelnen Workflows über die Firmen-Website bis zur eigenen Web-App.",
+    /* Gruppen statt 13 gleichrangiger Karten: Auf dem Handy waren das 3,6
+       Bildschirmhöhen Text, und wer nur eine Website sucht, musste sich durch
+       alle Automatisierungen lesen. Welche Leistung wohin gehört, steht als
+       `bereich` in leistungen.de.js; tests/startseite-bereiche.test.js prüft,
+       dass keine dabei herausfällt. */
+    bereiche: [
+      { id: "automatisierung", titel: "Automatisierung" },
+      { id: "ki", titel: "KI" },
+      { id: "web", titel: "Websites und Apps" },
+    ],
     all: "Alle Leistungen ansehen",
   },
   cases: {
