@@ -50,6 +50,10 @@ Wer eine Route hinzufügt, prüft in dieser Reihenfolge:
       pauschal auf heute setzt, meldet die ganze Seite an — das Skript bricht in
       dem Fall ab und verlangt eine bewusste Entscheidung.
 - [ ] Metadaten in `src/seo/routes.meta.js` (Titel, Description, Canonical, OG)
+- [ ] Neue Leistung in `src/content/leistungen.de.js`: `bereich` setzen
+      (`automatisierung`, `ki` oder `web`), sonst fehlt sie in den Gruppen der
+      Startseite. `tests/startseite-bereiche.test.js` fängt das ab und hält die
+      Zuordnung fest; dort den neuen Pfad ergänzen.
 - [ ] Übersetzungen in `src/i18n/dict/` für **alle** Sprachen aus `LIVE_LOCALES`
 - [ ] `npm run check:i18n` grün
 - [ ] `npm run build` grün, danach `dist/<route>/index.html` gegenlesen
