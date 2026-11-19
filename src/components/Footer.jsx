@@ -38,6 +38,9 @@ const Footer = () => {
   const chrome = useDict(ui);
   const locale = useLocale();
   const dolmetscher = getGroupRoute("dolmetscher", locale);
+  // Die Seite mit allen Profilen gibt es nur auf Deutsch; in en und ar ist
+  // das undefined und der Link entfällt.
+  const profile = getGroupRoute("links", locale);
 
   const abschnitte = sectionsFor(locale);
   const services = columnFor(locale, `${abschnitte.services}/`);
@@ -108,6 +111,15 @@ const Footer = () => {
                 aria-label={chrome.githubAria}>
                 <FaGithub className="h-4 w-4" aria-hidden="true" />
               </a>
+              {/* Zwei Symbole zeigen zwei Profile; der Textlink führt zu allen.
+                  Die Beschriftung ist das navLabel der Route. */}
+              {profile ? (
+                <Link
+                  to={profile.path}
+                  className="inline-flex h-11 items-center px-2 text-sm text-paper-soft transition-colors duration-300 hover:text-paper">
+                  {profile.navLabel ?? profile.h1}
+                </Link>
+              ) : null}
             </div>
           </div>
         </div>

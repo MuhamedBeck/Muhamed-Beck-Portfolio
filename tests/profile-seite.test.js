@@ -72,3 +72,14 @@ test("Profile: Links nach außen öffnen sicher, Texte und Farben stehen nicht i
   assert.doesNotMatch(quelle, /\b(text|bg|border)-(gray|slate|zinc|neutral|stone|white|black)\b/);
   assert.ok(!quelle.includes(PROFIL_SEITE.headline), "Überschrift steht in der Komponente");
 });
+
+/* Die Fußzeile ist auf jeder Seite, in drei Sprachen. Der Link darf nur dort
+   stehen, wo die Gruppe eine Route hat, und seine Beschriftung kommt aus der
+   Registry, damit die Wörterbücher für en und ar kein totes Wort tragen. */
+test("Profile: die Fußzeile verlinkt die Seite über die Registry", () => {
+  const quelle = quelltext("../src/components/Footer.jsx");
+  assert.match(quelle, /getGroupRoute\("links", locale\)/);
+  assert.match(quelle, /to=\{profile\.path\}/);
+  assert.match(quelle, /profile\.navLabel/);
+  assert.ok(!quelle.includes("Alle Profile"), "Beschriftung steht in der Komponente");
+});
