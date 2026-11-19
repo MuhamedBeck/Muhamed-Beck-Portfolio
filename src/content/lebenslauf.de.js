@@ -124,7 +124,7 @@ export const STATIONEN = [
   },
   {
     von: "02/2022",
-    bis: "10/2024",
+    bis: "09/2024",
     rolle: "Masterand und Full-Stack-Entwickler",
     firma: "INFOMOTION GmbH",
     ort: "Frankfurt am Main",

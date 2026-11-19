@@ -18,7 +18,7 @@ export const PROJECTS_EN = [
     title: "LLM unit test automation",
     subtitle:
       "Master thesis at INFOMOTION GmbH: automated unit test generation for Java Spring Boot projects",
-    role: "Master thesis, 02/2022 to 10/2024",
+    role: "Master thesis, 02/2022 to 09/2024",
     stats: [
       { value: "9 → 42\u00A0%", label: "test coverage", note: "measured with JaCoCo" },
       { value: "1,440 → 30 min", label: "writing effort", note: "per project, against manual test development" },

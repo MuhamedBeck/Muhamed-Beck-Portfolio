@@ -30,7 +30,7 @@ const STATIONS = [
     text: "Buchungs- und Verwaltungssoftware mit Spring Boot und Angular, dazu KI-gestützte SEO-Automatisierung mit n8n. Der organische Traffic stieg in drei Monaten um 35 Prozent.",
   },
   {
-    period: "02/2022 bis 10/2024",
+    period: "02/2022 bis 09/2024",
     role: "Full-Stack Developer und Masterarbeit",
     org: "INFOMOTION GmbH",
     text: "Masterarbeit über ein Maven-Plugin, das mit Large Language Models automatisch Unit-Tests für Java-Spring-Boot-Projekte erzeugt. Die Testabdeckung stieg von 9 auf 42 Prozent, der Schreibaufwand für Tests sank je Projekt von 1.440 auf 30 Minuten.",

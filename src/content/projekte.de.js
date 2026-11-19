@@ -364,7 +364,7 @@ export const PROJEKTE = [
     title: "Unit-Tests automatisch erzeugen mit einem LLM",
     subtitle:
       "Masterarbeit bei der INFOMOTION GmbH: ein Maven-Plugin, mit dem sich Unit-Tests für Java-Spring-Boot-Projekte automatisch erzeugen lassen",
-    role: "Masterarbeit und Full-Stack Developer, 02/2022 bis 10/2024",
+    role: "Masterarbeit und Full-Stack Developer, 02/2022 bis 09/2024",
     stats: [
       { value: "9 → 42\u00A0%", label: "Testabdeckung", note: "mit JaCoCo gemessen" },
       { value: "1.440 → 30 min", label: "Schreibaufwand", note: "je Projekt, gegenüber manueller Entwicklung" },

@@ -57,7 +57,7 @@ const EXPERIENCE = [
     ],
   },
   {
-    period: "02/2022 to 10/2024",
+    period: "02/2022 to 09/2024",
     role: "Full-Stack Developer and Master Thesis",
     org: "INFOMOTION GmbH",
     highlights: [
