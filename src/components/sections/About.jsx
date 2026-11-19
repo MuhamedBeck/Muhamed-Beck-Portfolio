@@ -40,7 +40,7 @@ const EXPERIENCE = [
     highlights: [
       "Automated recruiting workflows with n8n, including AI phone pre-screening that calls new candidates within minutes and evaluates about 1,900 calls a month",
       "Use GPT to write client introduction emails from recruiter notes, about 300 a month, saved as drafts until a person approves them",
-      "Lead developer of the in-house CRM platform since 03/2026: 54 users, HubSpot already replaced",
+      "Lead developer of the in-house CRM platform since 03/2026: 54 users, HubSpot and RecruitCRM already replaced",
       "Shipped ATS and CRM integrations over REST and webhooks with OAuth2 and JWT, including Personio, HubSpot and RecruitCRM",
       "Ran delivery on GitHub and Vercel, with audit logging and automated error triage",
       "Set LLM guardrails covering PII and GDPR, evaluation tests, audit and RBAC, plus ROI tracking on time-to-hire and SLA",

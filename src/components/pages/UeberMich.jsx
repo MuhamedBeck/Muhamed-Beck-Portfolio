@@ -21,7 +21,7 @@ const STATIONS = [
     period: "seit 09/2025",
     role: "AI Automation Manager",
     org: "TOPEOPLE Group GmbH, Frankfurt am Main",
-    text: "Automatisierung der Recruiting-Prozesse mit n8n, Zapier und GPT, darunter eine KI-Telefonvorqualifizierung, die neue Bewerber wenige Minuten nach dem Eingang anruft und rund 1.900 Anrufe im Monat auswertet. Seit 03/2026 außerdem Lead-Entwickler der internen CRM-Plattform, die HubSpot abgelöst hat und von 54 Mitarbeitenden genutzt wird. Auslieferung über GitHub und Vercel, mit Audit-Logging und automatisierter Fehler-Triage.",
+    text: "Automatisierung der Recruiting-Prozesse mit n8n, Zapier und GPT, darunter eine KI-Telefonvorqualifizierung, die neue Bewerber wenige Minuten nach dem Eingang anruft und rund 1.900 Anrufe im Monat auswertet. Seit 03/2026 außerdem Lead-Entwickler der internen CRM-Plattform, die HubSpot und RecruitCRM abgelöst hat und von 54 Mitarbeitenden genutzt wird. Auslieferung über GitHub und Vercel, mit Audit-Logging und automatisierter Fehler-Triage.",
   },
   {
     period: "07/2024 bis 09/2025",

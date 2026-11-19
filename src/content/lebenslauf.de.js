@@ -33,7 +33,7 @@ import { LEBENSLAUF_PUNKT, LEBENSLAUF_VERWEIS } from "./dolmetscher.verweise.js"
 export const LEBENSLAUF_STAND = "November 2026";
 
 export const KURZPROFIL = [
-  "Ich baue Software, die Arbeit abschafft. Bei der TOPEOPLE Group GmbH leite ich seit März 2026 die Entwicklung einer internen Sales- und Recruiting-Plattform, die HubSpot bereits abgelöst hat und als Nächstes RecruitCRM und Personio ablösen soll: 19 Fachbereiche, 17 Rollen auf Row-Level-Security, über 90 geplante Jobs für Datenkonsistenz und automatisierte Tests mit Vitest und Playwright. Heute arbeiten 54 Kolleginnen und Kollegen damit.",
+  "Ich baue Software, die Arbeit abschafft. Bei der TOPEOPLE Group GmbH leite ich seit März 2026 die Entwicklung einer internen Sales- und Recruiting-Plattform, die HubSpot und RecruitCRM bereits abgelöst hat und als Nächstes Personio ablösen soll: 19 Fachbereiche, 17 Rollen auf Row-Level-Security, über 90 geplante Jobs für Datenkonsistenz und automatisierte Tests mit Vitest und Playwright. Heute arbeiten 54 Kolleginnen und Kollegen damit.",
   "Parallel automatisiere ich die Prozesse drumherum mit n8n und Zapier, vom Bewerbungseingang über die telefonische Vorqualifizierung durch eine KI-Assistentin bis zur Vorstellung beim Kunden. Neue Kandidaten bekommen ihren ersten Anruf jetzt wenige Minuten nach dem Eingang statt am selben Tag, und rund 1.900 dieser Anrufe im Monat wertet GPT automatisch aus.",
   "Davor die Masterarbeit bei INFOMOTION über ein LLM-basiertes Maven-Plugin, das Unit-Tests automatisch erzeugt. In drei Kundenprojekten stieg die Testabdeckung von durchschnittlich 9 auf 42 Prozent, der manuelle Aufwand sank von 1.440 auf 30 Minuten pro Projekt.",
 ];
@@ -59,7 +59,7 @@ export const STATIONEN = [
       {
         titel: "Plattform",
         punkte: [
-          "Interne SaaS-Plattform (React 19, JavaScript, Vercel Serverless, Supabase/PostgreSQL) für Vertrieb, Account Management und Recruiting: HubSpot abgelöst und gekündigt, RecruitCRM und Personio als nächste Schritte geplant; 19 Fachbereiche, 54 Nutzer, produktiv im Tagesgeschäft",
+          "Interne SaaS-Plattform (React 19, JavaScript, Vercel Serverless, Supabase/PostgreSQL) für Vertrieb, Account Management und Recruiting: HubSpot und RecruitCRM abgelöst und gekündigt, Personio als nächster Schritt geplant; 19 Fachbereiche, 54 Nutzer, produktiv im Tagesgeschäft",
           "Mandantenfähiges Rollenmodell mit 17 Rollen auf Row-Level-Security, dazu Audit-Logging",
           "Über 90 geplante Jobs für Datenkonsistenz: Abgleich gegen Fremdsysteme, SLA-Eskalation, automatisches Zusammenführen von Dubletten",
           "Telefonie im Browser mit Twilio Voice SDK (WebRTC) und Live-Transkription über Deepgram; rund 10.000 Anrufe im Monat werden automatisch im ATS protokolliert",

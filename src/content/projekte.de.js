@@ -17,15 +17,15 @@ import { LIGHTHOUSE_MAFLATS } from "./grafiken.de.js";
 
 /* Der Umzug der TOPEOPLE Group in die eigene Plattform, als Bild in der
    Fallstudie und auf der Projektkarte der Startseite. Eine Quelle für beide,
-   damit der Stand (HubSpot abgelöst, der Rest geplant) nicht auseinanderläuft. */
+   damit der Stand (HubSpot und RecruitCRM abgelöst, Personio geplant) nicht auseinanderläuft. */
 const UMZUG_PLATTFORM = {
   label: "Vom Nebeneinander zur eigenen Plattform",
   beschreibung:
-    "HubSpot für den Vertrieb ist abgelöst und läuft in der eigenen Plattform. RecruitCRM für das Recruiting soll als Nächstes folgen, Personio für die Personalabteilung zuletzt. Die Plattform hat 54 Nutzer, Stand Oktober 2026.",
+    "HubSpot für den Vertrieb und RecruitCRM für das Recruiting sind abgelöst, beide Bereiche laufen in der eigenen Plattform. Personio für die Personalabteilung soll als Nächstes folgen. Die Plattform hat 54 Nutzer, Stand Oktober 2026.",
   quellen: [
     { name: "HubSpot", bereich: "Vertrieb", status: "abgelöst", ton: "erfolg" },
-    { name: "RecruitCRM", bereich: "Recruiting", status: "als Nächstes", ton: "warm" },
-    { name: "Personio", bereich: "Personal", status: "zuletzt", ton: "leise" },
+    { name: "RecruitCRM", bereich: "Recruiting", status: "abgelöst", ton: "erfolg" },
+    { name: "Personio", bereich: "Personal", status: "als Nächstes", ton: "warm" },
   ],
   ziel: { name: "Eigene Plattform", sub: "54 Nutzer, Stand Oktober 2026" },
 };
@@ -214,8 +214,9 @@ export const PROJEKTE = [
        diesem Projekt nie gab: Die App ist JavaScript (JSX) und liegt auf
        GitHub. Zahlen vom 28.10.2026 aus dem Repository, die 54 Nutzer vom
        Inhaber. Gebaut wird im Team; was Kollegen gebaut haben, steht hier
-       nicht als seine Arbeit. RecruitCRM und Personio abzulösen ist ein Plan
-       und steht deshalb als Plan da, nicht als Ergebnis.
+       nicht als seine Arbeit. HubSpot und RecruitCRM sind abgelöst und
+       gekündigt (RecruitCRM laut Inhaber am 19.11.2026). Personio abzulösen ist
+       ein Plan und steht deshalb als Plan da, nicht als Ergebnis.
 
        Die Zeile darunter bleibt einzeilig, aus demselben Grund wie bei Phoenix. */
     leistung: { path: "/leistungen/web-app-entwicklung", label: "Web-App und Buchungssystem entwickeln lassen" },
@@ -237,7 +238,7 @@ export const PROJEKTE = [
     bild: {
       art: "plattform",
       label: "Der Umzug in eine Plattform",
-      text: "Stand Oktober 2026. Abgelöst ist HubSpot; RecruitCRM und Personio abzulösen ist der Plan.",
+      text: "Stand November 2026. HubSpot und RecruitCRM sind abgelöst. Personio abzulösen ist der Plan.",
       daten: UMZUG_PLATTFORM,
     },
     ausgangslage:
@@ -260,8 +261,9 @@ export const PROJEKTE = [
       { wert: "0\u00A0€", text: "Lizenzkosten für HubSpot, seit die Plattform den Vertrieb trägt", ton: "erfolg" },
       "54 Nutzer im Unternehmen, Stand Oktober 2026; die Teams ziehen Schritt für Schritt in die Plattform um",
       "HubSpot ist abgelöst und gekündigt, die 16.000 Leads sind übernommen",
+      "RecruitCRM ist ebenfalls abgelöst und gekündigt",
       "Rund 10.000 Anrufe im Monat stehen ohne Nacharbeit beim richtigen Kontakt im ATS",
-      "Die Recruiting-Workflows aus n8n ziehen nach und nach in die Plattform um. Als Nächstes soll RecruitCRM abgelöst werden, als letzter Schritt Personio; das ist der Plan, Stand Oktober 2026",
+      "Die Recruiting-Workflows aus n8n ziehen nach und nach in die Plattform um. Als letzter Schritt soll Personio abgelöst werden; das ist der Plan, Stand November 2026",
     ],
     stack: [
       "React 19",

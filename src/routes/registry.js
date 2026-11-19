@@ -78,7 +78,7 @@ export const ROUTES = [
     description:
       `n8n Freelancer aus Frankfurt: Workflow-Automatisierung, KI-Agenten, Websites und Web-Apps für Firmen. ${RATE_MIN} bis ${RATE_MAX} € pro Stunde. Antwort in 24 Stunden.`,
     h1: "Prozesse, die ohne Sie laufen",
-    lastmod: "2026-11-18",
+    lastmod: "2026-11-19",
     changefreq: "weekly",
     priority: "1.0",
   },
@@ -828,11 +828,11 @@ export const ROUTES = [
     props: { path: "/projekte/crm-plattform-personalberatung" },
     title: "Case Study: Eigene CRM-Plattform statt HubSpot",
     description:
-      "Interne Web-App einer Personalberatung für Vertrieb, Account Management und Recruiting: 54 Nutzer, HubSpot abgelöst, 10.000 Anrufe im Monat im ATS.",
+      "Web-App einer Personalberatung für Vertrieb, Account Management und Recruiting: 54 Nutzer, HubSpot und RecruitCRM abgelöst, 10.000 Anrufe im Monat.",
     h1: "Eigene CRM-Plattform für eine Personalberatung",
     navLabel: "CRM-Plattform",
     ogType: "article",
-    lastmod: "2026-11-07",
+    lastmod: "2026-11-19",
     changefreq: "monthly",
     priority: "0.8",
   },
