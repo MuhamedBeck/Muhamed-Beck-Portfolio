@@ -34,6 +34,11 @@ export const PROFIL_GRUPPEN = [
         text: "Werdegang und berufliches Netzwerk.",
       },
       {
+        name: "XING",
+        url: "https://www.xing.com/profile/MuhamedNur_Beck",
+        text: "Werdegang und Kontakt im deutschsprachigen Netzwerk.",
+      },
+      {
         name: "GitHub",
         url: SOCIAL.github,
         text: "Öffentlicher Code, darunter diese Website.",
@@ -57,6 +62,16 @@ export const PROFIL_GRUPPEN = [
         name: "freelance.de",
         url: "https://www.freelance.de/freelancer/433254-n8n-Experte-KI-Automatisierung-Webentwicklung",
         text: "Profil mit Berufserfahrung, Ausbildung und Stundensatz.",
+      },
+      {
+        name: "Malt",
+        url: "https://www.malt.com/profile/muhamednurbeck",
+        text: "Profil mit Tagessatz, Stationen und Kenntnissen.",
+      },
+      {
+        name: "Upwork",
+        url: "https://www.upwork.com/freelancers/~016b799b56fc5c286f",
+        text: "Englisches Profil für internationale Aufträge.",
       },
     ],
   },

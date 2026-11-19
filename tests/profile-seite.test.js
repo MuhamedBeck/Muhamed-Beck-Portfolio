@@ -57,10 +57,21 @@ test("Profile: jedes Portal ist bewusst aufgenommen", () => {
     "community.n8n.io",
     "www.freelancermap.de",
     "www.freelance.de",
+    "www.xing.com",
+    "www.malt.com",
+    "www.upwork.com",
   ];
   for (const profil of alleProfile()) {
     assert.ok(geprueft.includes(new URL(profil.url).host), `${profil.name} ist nicht geprüft`);
   }
+});
+
+/* Seit dem 19.11.2026 gepflegt und ohne Anmeldung angesehen. Die Adressen
+   stehen hier fest, damit ein Tippfehler nicht still ins Leere führt. */
+test("Profile: XING, Malt und Upwork stehen auf der Seite", () => {
+  assert.equal(adresseVon("XING"), "https://www.xing.com/profile/MuhamedNur_Beck");
+  assert.equal(adresseVon("Malt"), "https://www.malt.com/profile/muhamednurbeck");
+  assert.equal(adresseVon("Upwork"), "https://www.upwork.com/freelancers/~016b799b56fc5c286f");
 });
 
 test("Profile: Links nach außen öffnen sicher, Texte und Farben stehen nicht in der Komponente", () => {

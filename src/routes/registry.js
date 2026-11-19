@@ -155,7 +155,7 @@ export const ROUTES = [
       import("../components/pages/Profile.jsx").then((m) => ({ default: m.Profile })),
     title: "Profile und Portale | Muhamed Beck",
     description:
-      "Die öffentlichen Profile von Muhamed Nur Beck an einer Stelle: LinkedIn, GitHub, n8n Community, freelancermap und freelance.de.",
+      "Die öffentlichen Profile von Muhamed Nur Beck an einer Stelle: LinkedIn, XING, GitHub, n8n Community, freelancermap, freelance.de, Malt und Upwork.",
     h1: "Profile und Portale",
     navLabel: "Alle Profile",
     lastmod: "2026-11-19",
