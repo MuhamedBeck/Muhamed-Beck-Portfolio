@@ -148,3 +148,44 @@ keine Umschreibungen wie `ae`/`oe`/`ue`.
 - [ ] Nach dem Deploy `npm run check:live` grün — beide Formulare müssen rendern
 - [ ] Bei neuen Routen: `dist/<route>/index.html` enthält den richtigen Titel
 - [ ] Keine Secrets im Diff (EmailJS-Keys gehören in Umgebungsvariablen)
+- [ ] Angaben zur Person geändert (Stationen, Preise, Leistungen, Kennzahlen):
+      betroffene Profile nach §9 benannt
+
+## 9. Profile außerhalb der Website
+
+Was hier über Muhamed Nur Beck steht, steht gekürzt noch einmal auf seinen
+Profilen bei anderen Diensten, allen voran auf denen, die `/links` aufführt
+(`src/content/profile.de.js`). Die Website ist die Quelle, die Profile sind
+Kopien, und Kopien veralten still: Kein Test und kein Build merkt, wenn ein
+Portal noch den alten Stand zeigt.
+
+Deshalb gehört die Frage „Welche Profile betrifft das?“ zu jeder Aufgabe, die
+eine dieser Angaben ändert, auch wenn niemand sie stellt:
+
+- Stationen, Zeiträume und ihre Beschreibungen (`src/content/lebenslauf.de.js`)
+- Titel und Positionierung, Leistungen, Kenntnisse, Abschlüsse, Zertifikate
+- Stunden- und Tagessatz, Festpreise, Verfügbarkeit
+- Projekte und ihre Kennzahlen (`src/content/projekte.de.js`)
+- Kontaktdaten und Porträt (`src/content/site.js`)
+
+Das gilt auch, wenn die Neuigkeit nur im Gespräch fällt („ich habe ein neues
+Zertifikat“, „mein Satz ist jetzt …“) und noch keine Datei berührt ist.
+
+So läuft der Abgleich:
+
+1. Erst die Website, dann die Profile, nie umgekehrt.
+2. Vor dem Abschluss der Aufgabe nennen, welches Profil welche Angabe noch
+   anders zeigt, und vorschlagen, es gleich nachzuziehen.
+3. Nachgezogen wird im Browser (Playwright-MCP, sichtbares Fenster). Er meldet
+   sich dort selbst an; Zugangsdaten werden nie erfragt und nie gespeichert.
+4. Auf ein Portal kommt nur, was auf der Website steht oder was er freigegeben
+   hat. Texte an die Längengrenze des Portals kürzen, nichts hinzuerfinden.
+5. Nach dem Speichern die öffentliche Ansicht ohne Anmeldung gegenlesen.
+
+Kommt ein Profil dazu oder fällt eines weg, ändert sich zuerst `/links`:
+`src/content/profile.de.js`, die erlaubten Hosts in
+`tests/profile-seite.test.js`, die Description der Route und ihr `lastmod`.
+
+Konten, Bearbeitungsseiten, die Zuordnung der Felder und die Eigenheiten der
+Formulare stehen in `.claude/portale.md`. Die Datei ist nicht eingecheckt, weil
+das Repository öffentlich ist. Fehlt sie, nachfragen statt raten.
