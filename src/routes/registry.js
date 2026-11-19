@@ -145,6 +145,24 @@ export const ROUTES = [
     priority: "0.7",
   },
   {
+    id: "links",
+    path: "/links",
+    locale: "de",
+    // Eigene Gruppe wie der Lebenslauf: Die Seite gibt es nur auf Deutsch, und
+    // die Fußzeile zeigt den Link deshalb nur dort, wo die Gruppe eine Route hat.
+    group: "links",
+    load: () =>
+      import("../components/pages/Profile.jsx").then((m) => ({ default: m.Profile })),
+    title: "Profile und Portale | Muhamed Beck",
+    description:
+      "Die öffentlichen Profile von Muhamed Nur Beck an einer Stelle: LinkedIn, GitHub, n8n Community, freelancermap und freelance.de.",
+    h1: "Profile und Portale",
+    navLabel: "Alle Profile",
+    lastmod: "2026-11-19",
+    changefreq: "monthly",
+    priority: "0.3",
+  },
+  {
     id: "kontakt",
     path: "/kontakt",
     locale: "de",

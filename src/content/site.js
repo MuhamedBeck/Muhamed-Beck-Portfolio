@@ -73,21 +73,22 @@ export const SOCIAL = {
   // Without www: github.com answers www.github.com with a 301, which Ahrefs
   // reported as a link to a redirect on every page.
   github: "https://github.com/MuhamedBeck",
+  /* Öffentliches Profil, am 07.10.2026 geprüft: erreichbar ohne Anmeldung und
+     index,follow. Nicht /profile/307578/form, das ist die Bearbeitungsansicht
+     und leitet Fremde zum Login. */
+  freelancermap: "https://www.freelancermap.de/profil/muhamed-nur-beck",
 };
 
 /** Everything a search engine should be able to confirm is the same person. */
 export const SAME_AS = [
   SOCIAL.linkedin,
   SOCIAL.github,
-  /* Öffentliches Profil, am 07.10.2026 geprüft: erreichbar ohne Anmeldung und
-     index,follow. Nicht /profile/307578/form, das ist die Bearbeitungsansicht
-     und leitet Fremde zum Login.
-
-     GULP fehlt hier bewusst. Das Profil dort ist öffentlich, zeigt aber keinen
-     Namen (GULP anonymisiert für Nicht-Kunden) und trägt noindex. Ein sameAs
-     soll belegen, dass dort dieselbe Person steht; eine Seite ohne Namen kann
-     das nicht. */
-  "https://www.freelancermap.de/profil/muhamed-nur-beck",
+  /* GULP und freelance.de fehlen hier bewusst. Beide Profile sind öffentlich,
+     zeigen Besuchern ohne Anmeldung aber keinen Namen, und GULP trägt dazu
+     noindex. Ein sameAs soll belegen, dass dort dieselbe Person steht; eine
+     Seite ohne Namen kann das nicht. Die Seite /links nennt freelance.de
+     trotzdem: Dort geht es um den Weg zum Profil, nicht um den Beleg. */
+  SOCIAL.freelancermap,
 ];
 
 // The hourly rate, in one place. Every page, FAQ, guide, llms.txt and the
