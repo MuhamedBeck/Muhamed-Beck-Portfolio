@@ -41,3 +41,18 @@ export function vorschaubildErsetzungen({ src, width, height }) {
     [/(<meta name="twitter:image" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${url}${b}`, "twitter:image"],
   ];
 }
+
+/* Vorschaubild für geteilte Links, wenn eine Route kein eigenes hat. Seit
+   19.11.2026 deutsch (scripts/vorschaubild.html); /en und /ar behalten das
+   bisherige englische Bild, das für sie geschrieben ist. */
+const VORSCHAU_DE = { src: "/og-image.jpg", width: 1200, height: 630 };
+const VORSCHAU_FREMD = { src: "/og-image-en.jpg", width: 1200, height: 800 };
+
+/**
+ * Vorschaubild einer Route: ihr eigenes (`ogImage`), sonst das ihrer Sprache.
+ *
+ * @param {{ locale: string, ogImage?: { src: string, width: number, height: number } }} route
+ * @returns {{ src: string, width: number, height: number }}
+ */
+export const vorschaubildFuer = (route) =>
+  route.ogImage ?? (route.locale === "de" ? VORSCHAU_DE : VORSCHAU_FREMD);

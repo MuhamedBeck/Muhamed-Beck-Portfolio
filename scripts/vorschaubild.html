@@ -1,0 +1,111 @@
+<!doctype html>
+<!--
+  Vorlage für public/og-image.jpg (1200 × 630), das Vorschaubild geteilter
+  Links auf den deutschen Seiten. Gleiche Schrift, Farben und Bildsprache wie
+  der Kopfbereich der Startseite, damit das Bild nach der Seite aussieht.
+
+  Erzeugen: Schriften und Porträt als data-URL einbetten (Browser laden
+  Schriften aus file:// sonst nicht), Seite bei 1200 × 630 öffnen, als JPEG
+  (Qualität 88) aufnehmen. Danach LinkedIn Post Inspector und den
+  WhatsApp-Cache neu laden lassen, sonst zeigen beide noch das alte Bild.
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<title>Vorschaubild muhamedbeck.com</title>
+<style>
+  @font-face {
+    font-family: "Space Grotesk";
+    font-weight: 300 700;
+    src: url("../public/fonts/space-grotesk-latin.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "IBM Plex Sans";
+    font-weight: 400 600;
+    src: url("../public/fonts/ibm-plex-sans-latin.woff2") format("woff2");
+  }
+  :root {
+    --ink: #0a0a0a;
+    --paper: #f3f4f6;
+    --paper-soft: #9ca3af;
+    --paper-mute: #7d8592;
+    --accent: #60a5fa;
+    --hairline: rgb(255 255 255 / 0.1);
+    --hairline-strong: rgb(255 255 255 / 0.2);
+  }
+  html,
+  body {
+    margin: 0;
+  }
+  body {
+    width: 1200px;
+    height: 630px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: "IBM Plex Sans", sans-serif;
+  }
+  .rahmen {
+    box-sizing: border-box;
+    width: 1200px;
+    height: 630px;
+    padding: 64px 80px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    column-gap: 72px;
+    align-items: center;
+  }
+  .label {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 26px 0 0;
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 300;
+    font-size: 74px;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+  .person {
+    margin-top: 34px;
+    font-size: 24px;
+    color: var(--paper-soft);
+  }
+  .fuss {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    font-size: 19px;
+    color: var(--paper-mute);
+  }
+  .bild {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px solid var(--hairline-strong);
+    object-fit: cover;
+    object-position: center 18%;
+  }
+</style>
+</head>
+<body>
+  <div class="rahmen">
+    <div>
+      <div class="label">n8n, KI-Automatisierung und Webentwicklung</div>
+      <h1>Prozesse, die ohne Sie laufen</h1>
+      <div class="person">Muhamed Nur Beck · Frankfurt am Main</div>
+      <div class="fuss">
+        <span>muhamedbeck.com</span>
+        <span>Kostenlose Einschätzung in 24 Stunden</span>
+      </div>
+    </div>
+    <img class="bild" src="../src/assets/profilepicture.webp" alt="" />
+  </div>
+</body>
+</html>

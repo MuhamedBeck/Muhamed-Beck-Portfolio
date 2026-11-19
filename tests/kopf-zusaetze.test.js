@@ -85,3 +85,16 @@ test("Service-Knoten jeder Fassung: keine Gattungen, keine geschützten Bezeichn
     assert.doesNotMatch(json, /Polizei|Gericht|Klinik|Behörde|police|court|hospital|الشرطة|المحاكم|المستشفيات/i, locale);
   }
 });
+
+// Seit 19.11.2026: deutsches Vorschaubild für die deutschen Seiten; /en und /ar
+// behalten das bisherige englische, Seiten mit eigenem Bild ihres.
+test("vorschaubildFuer: Bild je Sprache, eigenes Bild hat Vorrang", async () => {
+  const { vorschaubildFuer } = await import("../src/seo/kopfZusaetze.js");
+  const route = (pfad) => ROUTES.find((eintrag) => eintrag.path === pfad);
+  assert.deepEqual(vorschaubildFuer(route("/")), { src: "/og-image.jpg", width: 1200, height: 630 });
+  assert.deepEqual(vorschaubildFuer(route("/leistungen/n8n-automatisierung")), { src: "/og-image.jpg", width: 1200, height: 630 });
+  assert.deepEqual(vorschaubildFuer(route("/en")), { src: "/og-image-en.jpg", width: 1200, height: 800 });
+  assert.deepEqual(vorschaubildFuer(route("/ar")), { src: "/og-image-en.jpg", width: 1200, height: 800 });
+  assert.deepEqual(vorschaubildFuer(gruppe.de), gruppe.de.ogImage);
+  assert.deepEqual(vorschaubildFuer(gruppe.en), gruppe.en.ogImage);
+});

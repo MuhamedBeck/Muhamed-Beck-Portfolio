@@ -25,7 +25,7 @@ import { DOLMETSCH_RATGEBER } from "./src/content/dolmetscher.ratgeber.de.js";
 import { CONTACT, RATE_MAX, RATE_MIN, RATE_TEXT, SAME_AS } from "./src/content/site.js";
 import { prepare, render } from "./dist-ssr/entry-server.js";
 import { ohneSkriptMaengel } from "./scripts/live-pruefungen.js";
-import { schriftVorladen, vorschaubildErsetzungen } from "./src/seo/kopfZusaetze.js";
+import { schriftVorladen, vorschaubildErsetzungen, vorschaubildFuer } from "./src/seo/kopfZusaetze.js";
 import { dolmetscherServiceKnoten } from "./src/seo/dolmetscherSchema.js";
 import { INHALT as DOLMETSCHER_DE } from "./src/content/dolmetscher.de.js";
 import { INHALT as DOLMETSCHER_EN } from "./src/content/dolmetscher.en.js";
@@ -347,8 +347,8 @@ const articleNode = (route, article) => ({
   },
   inLanguage: localeConfig(route.locale).intlLocale,
   articleSection: article.kicker,
-  // The route's own preview image where it has one (the interpreter guide).
-  image: `${SITE_URL}${route.ogImage?.src ?? "/og-image.jpg"}`,
+  // The route's own preview image, else the one for its language.
+  image: `${SITE_URL}${vorschaubildFuer(route).src}`,
   mainEntityOfPage: `${SITE_URL}${route.path}`,
 });
 
@@ -413,10 +413,9 @@ for (const route of ROUTES) {
     [/(<meta name="twitter:description" content=")[^"]*(" \/>)/, (m, a, b) => `${a}${description}${b}`, "twitter:description"],
   ];
 
-  // Own preview image (registry field ogImage); mandatory like every replacement here.
-  if (route.ogImage) {
-    replacements.push(...vorschaubildErsetzungen(route.ogImage));
-  }
+  // Preview image: the route's own (registry field ogImage), else the one for
+  // its language; mandatory like every replacement here.
+  replacements.push(...vorschaubildErsetzungen(vorschaubildFuer(route)));
 
   if (route.path !== "/") {
     replacements.push([
