@@ -29,6 +29,7 @@
 - [Projekte und Case Studies](https://muhamedbeck.com/projekte): Case Studies: Website-Relaunch für MA-Flats, Buchungsplattform für Phoenix Parkservice, CRM-Plattform und Recruiting mit n8n, dazu zwei Abschlussarbeiten.
 - [Muhamed Nur Beck](https://muhamedbeck.com/ueber-mich): AI Automation Manager und Full-Stack-Entwickler aus Frankfurt: Werdegang und Stationen bei TOPEOPLE, Phoenix Parkservice und INFOMOTION.
 - [Muhamed Nur Beck](https://muhamedbeck.com/lebenslauf): Lebenslauf von Muhamed Nur Beck: AI Automation Manager in Frankfurt. Stationen, Ausbildung, Kenntnisse und Sprachen auf einer Seite, als PDF druckbar.
+- [Profile und Portale](https://muhamedbeck.com/links): Die öffentlichen Profile von Muhamed Nur Beck an einer Stelle: LinkedIn, GitHub, n8n Community, freelancermap und freelance.de.
 - [Kostenlose Einschätzung](https://muhamedbeck.com/kontakt): Kostenlose Einschätzung zu Automatisierung, KI oder Ihrer Website: Antwort per Mail in 24 Stunden mit den drei wichtigsten Punkten und einem Preisrahmen.
 - [Unit-Tests automatisch erzeugen mit einem LLM](https://muhamedbeck.com/projekte/llm-unit-test-automatisierung): Maven-Plugin, das Unit-Tests für Spring Boot mit einem LLM erzeugt: Testabdeckung von 9 auf 42 % laut JaCoCo, Kosten je Testsuite von 566 € auf 2,13 €.
 - [SAP-BusinessObjects-Berichte in Augmented Reality](https://muhamedbeck.com/projekte/ar-datenvisualisierung): AR-Visualisierung von SAP-BusinessObjects-Berichten im Browser, mit einer Befragung von 81 Personen aus Unternehmen zu den Hürden der Einführung.

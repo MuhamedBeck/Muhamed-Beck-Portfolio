@@ -36,7 +36,7 @@ export const PROFIL_GRUPPEN = [
       {
         name: "GitHub",
         url: SOCIAL.github,
-        text: "Öffentlicher Code, darunter der Quelltext dieser Website.",
+        text: "Öffentlicher Code, darunter diese Website.",
       },
       {
         name: "n8n Community",
