@@ -39,7 +39,7 @@ export const PREIS_TEXT =
 /* Die Zusage neben dem ersten Anfrage-Knopf jeder Leistungsseite. Der Preis
    daneben kommt aus RATE_MIN und RATE_MAX in site.js, damit er nicht ein
    drittes Mal von Hand gepflegt wird. */
-export const ANFRAGE_ZUSAGE = "Kostenloses Erstgespräch · Antwort innerhalb von 24 Stunden";
+export const ANFRAGE_ZUSAGE = "Antwort per Mail innerhalb von 24 Stunden";
 
 export const REICHWEITE_TEXT =
   "Auftraggeber in Deutschland, Österreich und der Schweiz. Die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch, zum selben Stundensatz.";
@@ -64,7 +64,6 @@ export const LEISTUNGEN = [
       headline: "Welcher Ablauf frisst bei Ihnen die meiste Zeit?",
       intro:
         "Beschreiben Sie ihn in zwei Sätzen, mit den Systemen, die daran hängen. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob n8n dafür das richtige Werkzeug ist oder ob es einfacher geht.",
-      button: "Workflow anfragen",
     },
     weiterlesen: [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
@@ -120,7 +119,7 @@ export const LEISTUNGEN = [
        konkurrieren. */
     h1: "n8n Experte und Spezialist für Workflow-Automatisierung",
     intro:
-      "Ich berate und baue als n8n Experte: erst die Frage, welcher Ablauf sich überhaupt lohnt zu automatisieren, dann die Workflow-Automatisierung mit n8n und Zapier, die Ihre Tools verbindet und manuelle Arbeit abschafft. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse in der Praxis, nicht nur in Demos. Anders als bei einer Agentur ist die Person, die berät, auch die, die baut, und sie bleibt es bis zur Übergabe.",
+      "Ich berate und baue als n8n Experte: erst die Frage, welcher Ablauf sich lohnt, dann die Workflow-Automatisierung mit n8n und Zapier, die Ihre Tools verbindet. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse, nicht nur in Demos. Wer berät, baut auch selbst, bis zur Übergabe.",
     /* Der Satz zur Reichweite steht hier und nicht nur im Service-Schema.
        areaServed nennt seit jeher Deutschland, Österreich und die Schweiz,
        im sichtbaren Text stand dagegen ausschließlich Frankfurt. Die Search
@@ -230,7 +229,6 @@ export const LEISTUNGEN = [
       headline: "Brauchen Sie eine Website, die schnell ist und gefunden wird?",
       intro:
         "Schreiben Sie mir, was die jetzige Seite nicht leistet, oder dass es noch keine gibt. Sie bekommen innerhalb von 24 Stunden eine ehrliche Einschätzung, ob sich ein Neubau lohnt und welcher Festpreis dafür realistisch ist.",
-      button: "Website anfragen",
     },
     weiterlesen: [
       {
@@ -427,7 +425,6 @@ export const LEISTUNGEN = [
       headline: "Soll Ihre Website wieder zeitgemäß aussehen und schneller laden?",
       intro:
         "Schicken Sie mir die Adresse Ihrer Website und sagen Sie kurz, was Sie stört. Sie bekommen innerhalb von 24 Stunden eine ehrliche Einschätzung: gezielte Überarbeitung oder doch ein Neubau, und was es kostet.",
-      button: "Überarbeitung anfragen",
     },
     weiterlesen: [
       {
@@ -579,7 +576,6 @@ export const LEISTUNGEN = [
       headline: "Welcher Ablauf soll endlich über eine eigene Anwendung laufen?",
       intro:
         "Beschreiben Sie, was heute per Telefon, Tabelle oder E-Mail von Hand erledigt wird. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob sich eine eigene Anwendung lohnt oder fertige Software reicht, und welcher Festpreis realistisch ist.",
-      button: "Web-App anfragen",
     },
     weiterlesen: [
       {
@@ -626,7 +622,7 @@ export const LEISTUNGEN = [
     teaser: `Buchungssysteme, Kundenportale und interne Software als eigene Web-App, ab ${euro(FESTPREIS.webApp)}. Mit Rollen, Schnittstellen und Übergabe des Quellcodes.`,
     h1: "Web-App und Buchungssystem entwickeln lassen",
     intro:
-      "Wenn Buchungen per Telefon kommen, Termine in Tabellen stehen und jede Änderung drei Leute beschäftigt, lohnt sich oft eine eigene Webanwendung. Manchmal reicht auch fertige Software, und das sage ich vorher. Ich entwickle Buchungssysteme, Kundenportale und interne Software als Web-App: Spring Boot oder Supabase im Hintergrund, Angular oder React im Browser, mit Rollen, Schnittstellen und automatisierter Auslieferung. Für Phoenix Parkservice habe ich so 15 Monate lang Website, Kundenportal und interne Verwaltungssoftware aus einer Hand entwickelt.",
+      "Wenn Buchungen per Telefon kommen und Termine in Tabellen stehen, lohnt sich oft eine eigene Webanwendung; manchmal reicht fertige Software, und das sage ich vorher. Ich entwickle Buchungssysteme, Kundenportale und interne Software als Web-App. Für Phoenix Parkservice habe ich so 15 Monate lang Website, Kundenportal und Verwaltung aus einer Hand gebaut.",
     szenarien: [
       {
         title: "Buchungssystem",
@@ -713,7 +709,6 @@ export const LEISTUNGEN = [
       headline: "Wo soll KI bei Ihnen wirklich Arbeit abnehmen?",
       intro:
         "Schreiben Sie mir den Anwendungsfall, nicht die Technik. Wenn KI sich dafür nicht rechnet, sage ich das, bevor wir anfangen.",
-      button: "Kostenloses Erstgespräch",
     },
     weiterlesen: [
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
@@ -851,7 +846,6 @@ export const LEISTUNGEN = [
       headline: "Wo würde KI bei Ihnen Zeit sparen?",
       intro:
         "Beschreiben Sie den Ablauf in zwei Sätzen. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob KI dafür passt oder ein normaler Workflow reicht.",
-      button: "KI-Erstgespräch anfragen",
     },
     weiterlesen: [
       { path: "/leistungen/ki-automatisierung-frankfurt", label: "KI-Automatisierung in Frankfurt umsetzen lassen" },
@@ -1033,7 +1027,6 @@ export const LEISTUNGEN = [
       headline: "Wie viele Anrufe gehen bei Ihnen verloren?",
       intro:
         "Sagen Sie mir, wann das Telefon klingelt und niemand rangeht. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob ein Sprachassistent das auffängt und was er im Monat wirklich kostet.",
-      button: "Telefonassistent anfragen",
     },
     /* Der Ratgeber zu KI-Telefonagenten zuerst: Der preisText oben verweist
        auf ihn, und bis Oktober 2026 verlinkte ihn keine einzige Seite aus dem
@@ -1080,7 +1073,7 @@ export const LEISTUNGEN = [
       "Sprachagenten, die Anrufe annehmen, qualifizieren und ins CRM schreiben. Mit Twilio, Speech-to-Text und Text-to-Speech.",
     h1: "KI-Telefonassistent und Voice-AI-Agenten für Unternehmen",
     intro:
-      "Ein KI-Telefonassistent, auch Voice Agent oder Call Agent genannt, nimmt Anrufe für Ihr Unternehmen an, versteht das Anliegen, beantwortet wiederkehrende Fragen und übergibt an einen Menschen, sobald es nötig wird. Bei meinem Arbeitgeber arbeite ich an einer KI-Telefonvorqualifizierung für Bewerber mit Twilio, ElevenLabs und OpenAI, rund 1.900 automatisch ausgewertete Anrufe im Monat, und an der Telefonie im Browser über WebRTC. Der Anspruch dabei ist nicht, den Menschen zu imitieren, sondern die Anrufe abzufangen, die sonst niemand annimmt.",
+      "Ein KI-Telefonassistent, auch Voice Agent oder Call Agent genannt, nimmt Anrufe für Ihr Unternehmen an, beantwortet wiederkehrende Fragen und übergibt an einen Menschen, sobald es nötig wird. Bei meinem Arbeitgeber arbeite ich an einer KI-Telefonvorqualifizierung für Bewerber mit Twilio, ElevenLabs und OpenAI: rund 1.900 automatisch ausgewertete Anrufe im Monat.",
     szenarien: [
       {
         title: "Anrufe außerhalb der Bürozeiten",
@@ -1167,7 +1160,6 @@ export const LEISTUNGEN = [
       headline: "Welche Aufgabe soll ein Agent für Sie übernehmen?",
       intro:
         "Beschreiben Sie sie so genau wie möglich, samt der Stelle, an der ein Mensch übernehmen muss. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob ein Agent dafür trägt.",
-      button: "KI-Agenten anfragen",
     },
     weiterlesen: [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
@@ -1286,7 +1278,6 @@ export const LEISTUNGEN = [
       headline: "Welche Systeme sprechen bei Ihnen nicht miteinander?",
       intro:
         "Nennen Sie mir die beiden Enden und was dazwischen heute von Hand passiert. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, wie die Anbindung aussehen würde.",
-      button: "Integration anfragen",
     },
     weiterlesen: [
       {
@@ -1325,7 +1316,7 @@ export const LEISTUNGEN = [
       "HubSpot, RecruitCRM und Personio sauber angebunden: REST, Webhooks, OAuth2, Rate-Limit- und Retry-Strategien.",
     h1: "HubSpot Integration und CRM-Automatisierung",
     intro:
-      "Ich verbinde HubSpot mit Ihren übrigen Systemen: ATS, Recruiting-Tools, interne Datenbanken oder Websites. Leads, Kandidaten und Deals fließen automatisch dorthin, wo sie gebraucht werden: CRM-Automatisierung ohne Doppeleingaben und ohne veraltete Datenstände. Aus der Praxis: Bei meinem Arbeitgeber habe ich den HubSpot-Import der eigenen Plattform gebaut, die HubSpot abgelöst hat; übernommen wurden dabei 16.000 Leads.",
+      "Ich verbinde HubSpot mit Ihren übrigen Systemen: ATS, Recruiting-Tools, interne Datenbanken oder Websites. Leads, Kandidaten und Deals fließen automatisch dorthin, wo sie gebraucht werden: CRM-Automatisierung ohne Doppeleingaben. Bei meinem Arbeitgeber habe ich den HubSpot-Import der eigenen Plattform gebaut, die HubSpot abgelöst hat: 16.000 übernommene Leads.",
     szenarien: [
       {
         title: "Daten-Synchronisation",
@@ -1411,7 +1402,6 @@ export const LEISTUNGEN = [
       headline: "Werden Sie gefunden, wenn jemand Ihr Problem beschreibt?",
       intro:
         "Schreiben Sie mir, wonach Ihre Kunden suchen und was sie stattdessen finden. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob das eine Frage der Inhalte, der Technik oder der Auffindbarkeit für KI-Assistenten ist.",
-      button: "Sichtbarkeit prüfen lassen",
     },
     weiterlesen: [
       { path: "/leistungen/webentwicklung", label: "Firmen-Website erstellen lassen und Relaunch" },
@@ -1450,7 +1440,7 @@ export const LEISTUNGEN = [
       "Generative Engine Optimization (GEO) und SEO: in Google und in den KI-Antworten von ChatGPT, Perplexity und Google genannt werden, gemessen vor und nach der Arbeit.",
     h1: "Generative Engine Optimization (GEO): in Google und KI-Antworten gefunden werden",
     intro:
-      "Generative Engine Optimization, kurz GEO, sorgt dafür, dass ChatGPT, Perplexity und die KI-Übersichten von Google Ihre Firma nennen und verlinken, wenn jemand Ihr Problem beschreibt. Die Grundlage ist dieselbe wie bei SEO: Crawler müssen Ihre Seiten lesen und in den Index aufnehmen können. Dazu kommen Absätze, die eine Frage für sich beantworten, mit Zahl und Quelle. Ich bringe beides in Ordnung und messe vorher und nachher.",
+      "Generative Engine Optimization, kurz GEO, sorgt dafür, dass ChatGPT, Perplexity und die KI-Übersichten von Google Ihre Firma nennen, wenn jemand Ihr Problem beschreibt. Die Grundlage ist dieselbe wie bei SEO. Ich bringe beides in Ordnung und messe vorher und nachher.",
     szenarien: [
       { title: "Die Seite rankt nicht, obwohl der Inhalt gut ist",
         text: "Häufig liegt es nicht am Text, sondern daran, dass Crawler ohne JavaScript eine leere Seite sehen, Weiterleitungen im Kreis laufen oder jede Unterseite denselben Titel trägt." },
@@ -1560,7 +1550,6 @@ export const LEISTUNGEN = [
       headline: "Wie viele Stunden kostet Sie eine Stelle bis zum Vertrag?",
       intro:
         "Beschreiben Sie kurz Ihren Ablauf und welches Bewerbermanagement Sie nutzen. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was sich davon automatisieren lässt und was beim Menschen bleiben muss.",
-      button: "Recruiting-Projekt anfragen",
     },
     weiterlesen: [
       { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und der AI Act" },
@@ -1600,7 +1589,7 @@ export const LEISTUNGEN = [
       "Bewerbungseingang, Screening, Terminierung und Statuspflege automatisiert. Der Bereich, in dem ich täglich arbeite.",
     h1: "Recruiting-Automatisierung mit n8n und ATS-Anbindung",
     intro:
-      "Recruiting ist der Prozess, in dem ich täglich automatisiere. Als AI Automation Manager arbeite ich bei meinem Arbeitgeber an einer KI-Telefonvorqualifizierung, die neue Bewerber wenige Minuten nach dem Eingang anruft und rund 1.900 Anrufe im Monat automatisch auswertet. Bewerbungseingang, Vorqualifizierung, Vorstellung und Absage lassen sich über die ATS-Anbindung an RecruitCRM oder Personio und an HubSpot ohne Copy-and-paste verbinden; freigegeben wird dort, wo ein Mensch entscheiden soll.",
+      "Recruiting ist der Prozess, in dem ich täglich automatisiere: Bei meinem Arbeitgeber ruft eine KI-Telefonvorqualifizierung neue Bewerber wenige Minuten nach dem Eingang an, rund 1.900 Anrufe im Monat. Eingang, Vorqualifizierung, Vorstellung und Absage verbinde ich über RecruitCRM, Personio oder HubSpot, ohne Copy-and-paste.",
     szenarien: [
       {
         title: "Bewerbungen ohne Copy-and-paste",
@@ -1679,7 +1668,6 @@ export const LEISTUNGEN = [
       headline: "Wie viel Zeit kostet Sie LinkedIn im Monat?",
       intro:
         "Schreiben Sie mir, wie viele Profile Sie betreuen und was daran heute Handarbeit ist. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was sich davon sinnvoll automatisieren lässt und was besser bei Menschen bleibt.",
-      button: "LinkedIn-Setup besprechen",
     },
     weiterlesen: [
       { path: "/ratgeber/ki-recruiting-ai-act", label: "KI im Recruiting und die KI-Verordnung" },
@@ -1716,7 +1704,7 @@ export const LEISTUNGEN = [
       "Mehrere Profile mit eigener Persona, geplanten Themen und KI-Beiträgen, die als solche gekennzeichnet sind.",
     h1: "LinkedIn-Automatisierung für Unternehmen und Teams",
     intro:
-      "Wer im Unternehmen mehrere LinkedIn-Profile bespielt, etwa für Geschäftsführung, Vertrieb und Teams, verbringt damit schnell mehrere Stunden pro Woche, und trotzdem klingen am Ende alle gleich. Ich baue Systeme, die das tragen: je Profil eine eigene Persona mit Tonfall und Zielgruppe, Themen nach Redaktionsplan statt aus dem Bauch, Beiträge und Bilder mit ordentlicher KI-Kennzeichnung, dazu ein Protokoll über jeden Lauf. Kontrolle bleibt bei Ihnen, das System schlägt vor und dokumentiert.",
+      "Wer mehrere LinkedIn-Profile bespielt, etwa für Geschäftsführung, Vertrieb und Teams, verbringt damit schnell mehrere Stunden pro Woche, und am Ende klingen alle gleich. Ich baue Systeme mit eigener Persona je Profil, Themen nach Redaktionsplan und gekennzeichneten KI-Beiträgen. Die Kontrolle bleibt bei Ihnen.",
     szenarien: [
       { title: "Mehrere Profile, eine Handschrift",
         text: "Wenn Vertrieb, Recruiting und Geschäftsführung dasselbe posten, merkt es die Zielgruppe. Je Profil eine eigene Persona löst das, ohne dass jemand dreimal schreibt." },
@@ -1786,7 +1774,6 @@ export const LEISTUNGEN = [
       headline: "Welcher Ablauf kostet Ihr Team die meiste Zeit?",
       intro:
         "Beschreiben Sie ihn in zwei Sätzen, mit den Systemen, die daran hängen. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob n8n dafür das richtige Werkzeug ist, per E-Mail oder in einem Videotermin.",
-      button: "Workflow anfragen",
     },
     weiterlesen: [
       {
@@ -1813,7 +1800,7 @@ export const LEISTUNGEN = [
       "n8n-Workflows für Unternehmen in Wien und ganz Österreich, remote aus Frankfurt: derselbe Satz, Rechnung in Euro, Datenschutz nach DSGVO wie in Deutschland.",
     h1: "n8n Freelancer und Beratung für Wien und Österreich",
     intro:
-      "Für Unternehmen in Wien und ganz Österreich berate ich zu n8n und baue Workflow-Automatisierungen: Tools verbinden, Abläufe beschleunigen, KI dort einbinden, wo sie messbar Arbeit abnimmt. Mein Standort ist Frankfurt am Main, die Zusammenarbeit läuft remote, in derselben Zeitzone und auf Deutsch. Was für Auftraggeber in Österreich anders ist, betrifft vor allem Rechnung und Datenschutz, und genau das steht auf dieser Seite.",
+      "Für Unternehmen in Wien und ganz Österreich berate ich zu n8n und baue Workflow-Automatisierungen: Tools verbinden, Abläufe beschleunigen, KI dort einbinden, wo sie messbar Arbeit abnimmt. Die Zusammenarbeit läuft remote aus Frankfurt, in derselben Zeitzone und auf Deutsch. Was für Österreich anders ist, Rechnung und Datenschutz, steht auf dieser Seite.",
     szenarien: [
       {
         title: "Remote in derselben Zeitzone",

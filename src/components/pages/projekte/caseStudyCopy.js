@@ -1,3 +1,5 @@
+import { ANFRAGE_KNOPF } from "../../../content/site.js";
+
 /**
  * Section labels and closing call to action, per locale.
  *
@@ -14,8 +16,8 @@ export const CASE_STUDY_COPY = {
     screenshots: "Die Seite",
     ctaHeadline: "Ähnliche Prozesse in Ihrem Unternehmen?",
     ctaIntro:
-      "Schreiben Sie mir, welcher Ablauf bei Ihnen am meisten Zeit kostet. Den Rest klären wir im Gespräch.",
-    ctaButton: "Kostenloses Erstgespräch",
+      "Schreiben Sie mir, welcher Ablauf bei Ihnen am meisten Zeit kostet. Sie bekommen innerhalb von 24 Stunden eine Einschätzung per Mail.",
+    ctaButton: ANFRAGE_KNOPF,
     ctaHref: "/kontakt",
   },
   en: {

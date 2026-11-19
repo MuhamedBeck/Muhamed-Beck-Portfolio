@@ -53,6 +53,12 @@ export const mailtoHref = (betreff) =>
 export const whatsappHref = (text) =>
   `https://wa.me/${CONTACT.phone.replace(/\D/g, "")}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
 
+/* Der erste Schritt seit 19.11.2026: eine kostenlose Einschätzung per Mail,
+   nicht gleich ein Termin. Jeder deutsche Knopf, der auf /kontakt führt, trägt
+   diesen Text, damit Knopf und Zielseite dasselbe sagen; tests/einschaetzung.test.js
+   prüft das. Das Erstgespräch bleibt über die Terminbuchung erreichbar. */
+export const ANFRAGE_KNOPF = "Kostenlose Einschätzung anfordern";
+
 /* Terminbuchung für das kostenlose Erstgespräch, seit 07.11.2026.
    Cal.com Free, verbunden mit dem privaten Outlook-Kalender des Inhabers,
    angemeldet mit muhamed@muhamedbeck.com. Jede Buchung, Verschiebung und

@@ -7,7 +7,7 @@
 // Both locales live in one file on purpose: with two languages, seeing them
 // side by side makes a missing or drifting translation obvious in review.
 
-import { FESTPREIS, euro } from "../../content/site.js";
+import { ANFRAGE_KNOPF, FESTPREIS, euro } from "../../content/site.js";
 
 const de = {
   languageSwitcher: "Sprache wählen",
@@ -16,7 +16,7 @@ const de = {
   openMenu: "Menü öffnen",
   closeMenu: "Menü schließen",
   menu: "Menü",
-  requestProject: "Kostenloses Erstgespräch",
+  requestProject: ANFRAGE_KNOPF,
   /* Seit 07.11.2026 mit dem Pilot: ChatGPT ruft die Startseite am häufigsten
      ab (Cloudflare, Oktober 2026), und dort stand der Einstieg mit Preis erst
      weit unten. Nur auf Deutsch, die anderen Sprachen bieten ihn nicht an. */

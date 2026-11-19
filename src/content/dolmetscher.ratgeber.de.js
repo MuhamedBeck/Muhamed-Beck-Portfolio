@@ -234,6 +234,14 @@ export const DOLMETSCH_RATGEBER = [
       },
       { path: "/lebenslauf", label: "Lebenslauf von Muhamed Nur Beck" },
     ],
+    // Unter der Einleitung und nach der Tabelle (RatgeberPage, Angebot).
+    angebot: {
+      text: "Ablauf, Anfahrt und Anfrage:",
+      links: [
+        { to: "/dolmetscher-arabisch-frankfurt", label: "Dolmetscher für Arabisch in Frankfurt" },
+        { to: "/dolmetscher-arabisch-frankfurt#anfrage", label: "Termin anfragen" },
+      ],
+    },
     cta: {
       headline: "Sie brauchen einen Dolmetscher für Arabisch?",
       intro:

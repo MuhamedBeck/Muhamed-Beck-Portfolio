@@ -28,7 +28,7 @@ export const ANKER_SCHLUSS = "anfrage-schluss";
 export const AnfrageStart = ({ to, label, preis }) => (
   <div
     id={ANKER_START}
-    className="flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-hairline pt-8">
+    className="flex flex-wrap items-center gap-x-7 gap-y-4 border-t border-hairline pt-6">
     <Link to={to} className="btn-ghost btn-accent">
       {label}
     </Link>

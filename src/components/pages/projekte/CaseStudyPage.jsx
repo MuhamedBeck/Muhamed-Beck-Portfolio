@@ -275,7 +275,7 @@ export const CaseStudyPage = ({ data, locale = "de" }) => {
         <h2 className="headline-sub">{data.cta?.headline ?? copy.ctaHeadline}</h2>
         <p className="intro mt-5">{data.cta?.intro ?? copy.ctaIntro}</p>
         <Link to={ctaZiel} className="btn-ghost btn-accent mt-8">
-          {data.cta?.button ?? copy.ctaButton}
+          {copy.ctaButton}
         </Link>
       </div>
     </Section>

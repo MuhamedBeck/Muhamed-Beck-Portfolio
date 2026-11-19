@@ -17,7 +17,7 @@
 // With the .js extension: prerender-meta.js imports this file under bare node.
 import { SPANNE_FIRMENWEBSITE, SPANNE_RELAUNCH } from "./grafiken.de.js";
 import { FOTO_SERVER } from "./fotos.de.js";
-import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, UST_KURZ, euro } from "./site.js";
+import { ANFRAGE_KNOPF, FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, UST_KURZ, euro } from "./site.js";
 import {
   ARCHITEKTUR_N8N,
   ENTSCHEIDUNG_BFSG,
@@ -140,11 +140,19 @@ export const RATGEBER = [
         label: "n8n Freelancer und Beratung für Wien und Österreich",
       },
     ],
+    // Unter der Einleitung und nach der Skala (RatgeberPage, Angebot).
+    angebot: {
+      text: `Mein Einstieg: ein Workflow als Pilot zum Festpreis von ${euro(FESTPREIS.pilot)}.`,
+      links: [
+        { to: "/leistungen/n8n-automatisierung", label: "n8n Spezialist in Frankfurt" },
+        { to: "/ratgeber/n8n-kosten", label: "n8n Kosten für Lizenz und Betrieb" },
+        { to: "/kontakt?leistung=n8n-automatisierung", label: ANFRAGE_KNOPF },
+      ],
+    },
     cta: {
       headline: "Wie viele Stunden braucht Ihr Workflow?",
       intro:
         "Beschreiben Sie mir den Ablauf, den Sie automatisieren wollen, und welche Programme beteiligt sind. Sie bekommen innerhalb von 24 Stunden eine Einschätzung des Aufwands und was er zu meinem Stundensatz kostet.",
-      button: "n8n-Automatisierung anfragen",
     },
   },
   {
@@ -294,11 +302,17 @@ export const RATGEBER = [
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/leistungen/n8n-automatisierung-oesterreich", label: "n8n Freelancer und Beratung für Wien und Österreich" },
     ],
+    angebot: {
+      text: `Ich setze n8n für Unternehmen um; ein erster Workflow kostet als Pilot ${euro(FESTPREIS.pilot)} zum Festpreis.`,
+      links: [
+        { to: "/leistungen/n8n-automatisierung", label: "n8n Spezialist in Frankfurt" },
+        { to: "/kontakt?leistung=n8n-automatisierung", label: ANFRAGE_KNOPF },
+      ],
+    },
     cta: {
       headline: "Was soll bei Ihnen automatisch laufen?",
       intro:
         "Beschreiben Sie kurz den Ablauf, der Zeit kostet. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, ob sich n8n lohnt, mit einmaligen und laufenden Kosten.",
-      button: "n8n-Automatisierung anfragen",
     },
   },
   {
@@ -478,7 +492,6 @@ export const RATGEBER = [
       headline: "n8n auf dem eigenen Server, ohne selbst zu basteln?",
       intro:
         "Ich richte n8n auf Ihrem Server ein, mit PostgreSQL, HTTPS und täglicher Sicherung, oder in der Cloud auf Ihren Namen. Beschreiben Sie kurz Ihr Vorhaben: Sie bekommen innerhalb von 24 Stunden eine Einschätzung mit einmaligen und laufenden Kosten.",
-      button: "n8n-Einrichtung anfragen",
     },
   },
   {
@@ -633,7 +646,6 @@ export const RATGEBER = [
       headline: "Was soll Ihre Website leisten?",
       intro:
         "Schreiben Sie mir, was die jetzige Seite nicht kann, oder dass es noch keine gibt. Sie bekommen innerhalb von 24 Stunden eine Einschätzung und einen realistischen Festpreis.",
-      button: "Website anfragen",
     },
   },
   {
@@ -797,7 +809,6 @@ export const RATGEBER = [
       headline: "Soll Ihre Website barrierefrei werden?",
       intro:
         "Schicken Sie mir die Adresse Ihrer Website. Sie bekommen innerhalb von 24 Stunden eine ehrliche Einschätzung, was an der Seite fehlt und was eine Überarbeitung kostet.",
-      button: "Website prüfen lassen",
     },
   },
   {
@@ -955,7 +966,6 @@ export const RATGEBER = [
       headline: "Welches Werkzeug passt zu Ihrem Ablauf?",
       intro:
         "Schreiben Sie mir, welche Programme verbunden werden sollen und wie oft der Ablauf im Monat läuft. Sie bekommen innerhalb von 24 Stunden eine Empfehlung mit Begründung, welches der drei Werkzeuge zu Ihnen passt.",
-      button: "Empfehlung anfragen",
     },
   },
   {
@@ -1035,7 +1045,6 @@ export const RATGEBER = [
       headline: "Womit sollten Sie anfangen?",
       intro:
         "Eine Anleitung ersetzt nicht den Blick auf Ihre eigenen Abläufe. Schreiben Sie mir, wie eine Bewerbung bei Ihnen heute vom Eingang bis zur Zusage läuft: Sie bekommen innerhalb von 24 Stunden eine Einschätzung, welcher Schritt sich zuerst lohnt.",
-      button: "Recruiting-Automatisierung anfragen",
     },
   },
   {
@@ -1401,7 +1410,6 @@ export const RATGEBER = [
       headline: "Wollen Sie KI im Recruiting einsetzen?",
       intro:
         "Schreiben Sie mir, wofür: Vorsortierung, Terminabsprache oder Kommunikation mit Bewerbern. Sie bekommen innerhalb von 24 Stunden eine Einschätzung, wie sich das umsetzen lässt, ohne dass ein Modell über Bewerber entscheidet.",
-      button: "Recruiting-Automatisierung anfragen",
     },
   },
   {
@@ -1751,7 +1759,6 @@ export const RATGEBER = [
       headline: "Was würde ein Telefonassistent bei Ihnen kosten?",
       intro:
         "Sagen Sie mir, wie viele Anrufe im Monat ankommen und wie lange ein Gespräch ungefähr dauert. Sie bekommen innerhalb von 24 Stunden eine Einschätzung der laufenden Kosten pro Monat und des einmaligen Aufwands.",
-      button: "Telefonassistent anfragen",
     },
   },
   {
@@ -1922,7 +1929,6 @@ export const RATGEBER = [
       headline: "Steht bei Ihnen ein Relaunch an?",
       intro:
         "Diese Anleitung deckt den üblichen Ablauf ab, jede Website hat aber eigene Sonderfälle. Schreiben Sie mir die Adresse Ihrer jetzigen Website: Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was beim Umzug zu sichern ist, und einen realistischen Festpreis.",
-      button: "Relaunch anfragen",
     },
   },
 ];

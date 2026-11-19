@@ -4,8 +4,8 @@ import { Section } from "../../Section";
 import { WorkflowDiagram } from "./WorkflowDiagram";
 import { Grafik } from "../../Grafik";
 import { FaqListe } from "../../FaqListe";
-import { PREIS_TEXT, REICHWEITE_TEXT } from "../../../content/leistungen.de";
-import { RATE_TEXT } from "../../../content/site";
+import { ANFRAGE_ZUSAGE, PREIS_TEXT, REICHWEITE_TEXT } from "../../../content/leistungen.de";
+import { ANFRAGE_KNOPF, RATE_TEXT } from "../../../content/site";
 import { LinkArrow } from "../../LinkArrow";
 import { Stimmen } from "../../Stimmen";
 import { PilotAngebot } from "../../PilotAngebot";
@@ -20,7 +20,6 @@ import { ANKER_SCHLUSS, AnfrageLeiste, AnfrageStart } from "./AnfrageLeiste";
    kann. Der Wert ist der Pfad-Slug, damit Ziel und Vorbelegung dieselbe
    Quelle haben. */
 const anfrageZiel = (data) => `/kontakt?leistung=${data.path.split("/").pop()}`;
-const anfrageLabel = (data) => data.cta?.button ?? "Kostenloses Erstgespräch";
 
 /**
  * Landing page template for a service.
@@ -57,14 +56,8 @@ export const LeistungPage = ({ data }) => (
     label={data.badge}
     headline={data.h1}
     intro={data.intro}
-    aside={data.heroBild ? <HeroBild data={data.heroBild} /> : undefined}>
-    <Section className="!pt-0">
-      <AnfrageStart
-        to={anfrageZiel(data)}
-        label={anfrageLabel(data)}
-        preis={data.preisKurz}
-      />
-    </Section>
+    aside={data.heroBild ? <HeroBild data={data.heroBild} /> : undefined}
+    aktion={<AnfrageStart to={anfrageZiel(data)} label={ANFRAGE_KNOPF} preis={data.preisKurz} />}>
 
     <Section className="!pt-0">
       <div className="grid gap-x-10 gap-y-10 md:grid-cols-3">
@@ -268,16 +261,16 @@ export const LeistungPage = ({ data }) => (
             Bruch in einem sonst kurzen Weg, und er sass genau dort, wo die
             Kaufabsicht am hoechsten ist. */}
         <Link to={anfrageZiel(data)} className="btn-ghost btn-accent mt-8">
-          {anfrageLabel(data)}
+          {ANFRAGE_KNOPF}
         </Link>
         <p className="mt-5 text-sm text-paper-mute">
-          Kostenloses Erstgespräch · Frankfurt und remote in Deutschland, Österreich und
-          der Schweiz
+          {ANFRAGE_ZUSAGE} · Frankfurt und remote in Deutschland, Österreich und der
+          Schweiz
         </p>
         <TerminBuchen className="mt-6" />
       </div>
     </Section>
 
-    <AnfrageLeiste to={anfrageZiel(data)} label={anfrageLabel(data)} />
+    <AnfrageLeiste to={anfrageZiel(data)} label={ANFRAGE_KNOPF} />
   </PageShell>
 );

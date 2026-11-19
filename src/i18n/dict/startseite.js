@@ -10,7 +10,7 @@
 // the two above it cannot be quoted.
 
 // With the .js extension: check-i18n imports this file under bare node.
-import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "../../content/site.js";
+import { ANFRAGE_KNOPF, FESTPREIS, RATE_MAX, RATE_MIN, euro } from "../../content/site.js";
 
 const de = {
   services: {
@@ -109,7 +109,7 @@ const de = {
     // Both pillars: the old question only fitted automation.
     headline: "Ein Prozess, der Zeit frisst, oder eine Website, die keine Anfragen bringt?",
     text: "Schreiben Sie mir kurz, worum es geht. Sie bekommen innerhalb von 24 Stunden eine echte Einschätzung, keine Standardantwort.",
-    button: "Kostenloses Erstgespräch",
+    button: ANFRAGE_KNOPF,
   },
 };
 

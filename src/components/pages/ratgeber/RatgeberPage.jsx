@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "../../PageShell";
 import { Section } from "../../Section";
-import { PERSON } from "../../../content/site";
+import { ANFRAGE_KNOPF, PERSON } from "../../../content/site";
 import { RateScale } from "./RateScale";
 import { LinkArrow } from "../../LinkArrow";
 import { Grafik } from "../../Grafik";
@@ -42,6 +42,28 @@ const anfrageZiel = (related) => {
   return leistung ? `/kontakt?leistung=${leistung.path.split("/").pop()}` : "/kontakt";
 };
 
+/* Ein Satz mit zwei, drei Verweisen auf das passende Angebot (`data.angebot`).
+   Steht unter der Einleitung und noch einmal nach Tabelle oder Skala: Die
+   Ratgeber mit den meisten Rankings zeigten das Angebot sonst erst nach etwa
+   zehn Handy-Bildschirmen. Eine schlichte Zeile, kein Kasten. */
+const Angebot = ({ daten }) => (
+  <p data-angebot="" className="max-w-[68ch] border-t border-hairline pt-6 leading-relaxed text-paper-soft">
+    {daten.text}{" "}
+    {daten.links.map((link, index) => (
+      <span key={link.to}>
+        {/* Geschütztes Leerzeichen vor dem Punkt: Er bleibt am Ende der
+            Zeile, statt eine neue Zeile zu beginnen. */}
+        {index ? "\u00A0· " : null}
+        <Link
+          to={link.to}
+          className="text-accent underline decoration-hairline-strong underline-offset-4 transition-colors hyphens-none hover:decoration-accent">
+          {link.label}
+        </Link>
+      </span>
+    ))}
+  </p>
+);
+
 /**
  * Article template.
  *
@@ -64,6 +86,7 @@ export const RatgeberPage = ({ data, kopfzeile, fusszeile, knoepfe }) => (
     label={data.kicker}
     headline={data.h1}
     intro={data.lede}
+    aktion={data.angebot ? <Angebot daten={data.angebot} /> : undefined}
     kopfzeile={kopfzeile}
     fusszeile={fusszeile}>
     <Section className="!pt-0">
@@ -163,6 +186,12 @@ export const RatgeberPage = ({ data, kopfzeile, fusszeile, knoepfe }) => (
       ) : null}
     </Section>
 
+    {data.angebot ? (
+      <Section className="!pt-0">
+        <Angebot daten={data.angebot} />
+      </Section>
+    ) : null}
+
     {/* Visible FAQ and the FAQPage JSON-LD read from the same array. */}
     <Section className="!pt-0">
       <h2 className="label">Häufige Fragen</h2>
@@ -199,7 +228,7 @@ export const RatgeberPage = ({ data, kopfzeile, fusszeile, knoepfe }) => (
           <div className="mt-8">{knoepfe}</div>
         ) : (
           <Link to={anfrageZiel(data.related)} className="btn-ghost btn-accent mt-8">
-            {data.cta?.button ?? "Kostenloses Erstgespräch"}
+            {ANFRAGE_KNOPF}
           </Link>
         )}
       </div>

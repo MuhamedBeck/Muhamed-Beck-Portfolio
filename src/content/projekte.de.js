@@ -45,7 +45,6 @@ export const PROJEKTE = [
     cta: {
       headline: "Soll Ihre Website auch so schnell sein?",
       intro: `Schreiben Sie mir, was Ihre jetzige Seite nicht leistet, oder dass es noch keine gibt. Firmen-Websites baue ich zum Festpreis ab ${euro(FESTPREIS.website)}.`,
-      button: "Website anfragen",
     },
     /* Kartenbild auf der Startseite (seit dem Entwurf vom 29.10.2026): je
        Kundenprojekt etwas Echtes zum Ansehen statt nur Titel und Zahlen. */
@@ -137,7 +136,6 @@ export const PROJEKTE = [
     cta: {
       headline: "Soll Ihr Recruiting auch so laufen?",
       intro: "Diese Case Study zeigt den Aufbau bei meinem Arbeitgeber. Schreiben Sie mir, mit welchem ATS und welchen Programmen Sie arbeiten: Sie bekommen innerhalb von 24 Stunden eine Einschätzung, was sich davon auf Ihr Recruiting übertragen lässt.",
-      button: "Recruiting-Automatisierung anfragen",
     },
     karte: {
       art: "workflow",
@@ -224,7 +222,6 @@ export const PROJEKTE = [
     cta: {
       headline: "Arbeiten Ihre Teams auch in mehreren Programmen nebeneinander?",
       intro: `Diese Case Study zeigt eine Plattform, die ich bei meinem Arbeitgeber im Team entwickle. Schreiben Sie mir, welche Programme bei Ihnen nebeneinander laufen und wo Daten doppelt gepflegt werden. Web-Apps entwickle ich zum Festpreis ab ${euro(FESTPREIS.webApp)}, Kundenportale ab ${euro(FESTPREIS.portal)}.`,
-      button: "Web-App anfragen",
     },
     karte: { art: "plattform", daten: UMZUG_PLATTFORM },
     title: "Eigene CRM-Plattform für eine Personalberatung",
@@ -300,7 +297,6 @@ export const PROJEKTE = [
     cta: {
       headline: "Sollen Ihre Buchungen auch über eine eigene Plattform laufen?",
       intro: `Schreiben Sie mir, wie Buchungen und Abläufe heute bei Ihnen laufen. Web-Apps und Buchungssysteme entwickle ich zum Festpreis ab ${euro(FESTPREIS.webApp)}.`,
-      button: "Web-App anfragen",
     },
     karte: {
       art: "workflow",

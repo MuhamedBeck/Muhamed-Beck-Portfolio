@@ -576,6 +576,9 @@ dd {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    /* Lange Beschriftungen brechen auf dem Handy um („Kostenlose Einschätzung
+       anfordern“); ohne das stünden beide Zeilen linksbündig im Knopf. */
+    text-align: center;
     gap: 0.5rem;
     min-height: 3rem;
     padding: 0.875rem calc(1.75rem - 0.25em) 0.875rem 1.75rem;

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "../PageShell";
 import { Section } from "../Section";
 import profilePicture from "../../assets/profilepicture.webp";
-import { FESTPREIS, PERSON, RATE_MAX, RATE_MIN, SOCIAL, UST_KURZ, euro } from "../../content/site";
+import { ANFRAGE_KNOPF, FESTPREIS, PERSON, RATE_MAX, RATE_MIN, SOCIAL, UST_KURZ, euro } from "../../content/site";
 import { LinkArrow } from "../LinkArrow";
 import { WERDEGANG, WERDEGANG_STAND } from "../../content/lebenslauf.de";
 import { Werdegang } from "../Werdegang";
@@ -154,7 +154,7 @@ const UeberMich = () => (
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
             <Link to="/kontakt" className="btn-ghost btn-accent">
-              Kostenloses Erstgespräch
+              {ANFRAGE_KNOPF}
             </Link>
             <Link to="/leistungen" className="link-arrow">
               Alle Leistungen <LinkArrow />
@@ -230,11 +230,11 @@ const UeberMich = () => (
       <div className="max-w-2xl pt-12">
         <h2 className="headline-sub">Klingt passend?</h2>
         <p className="intro mt-5">
-          Schreiben Sie mir, welcher Prozess Sie am meisten Zeit kostet. Den Rest klären
-          wir im Gespräch.
+          Schreiben Sie mir, welcher Prozess Sie am meisten Zeit kostet. Sie bekommen
+          innerhalb von 24 Stunden eine Einschätzung per Mail.
         </p>
         <Link to="/kontakt" className="btn-ghost btn-accent mt-8">
-          Kostenloses Erstgespräch
+          {ANFRAGE_KNOPF}
         </Link>
       </div>
     </Section>

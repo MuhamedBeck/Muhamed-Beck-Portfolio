@@ -16,7 +16,7 @@
 // seven weeks the web development page earned one impression and no inquiry.
 
 // With the .js extension: check-i18n imports this file under bare node.
-import { FESTPREIS, RATE_MAX, RATE_MIN, euro } from "../../content/site.js";
+import { ANFRAGE_KNOPF, FESTPREIS, RATE_MAX, RATE_MIN, euro } from "../../content/site.js";
 
 const de = {
   label: "n8n, KI-Automatisierung und Webentwicklung",
@@ -24,7 +24,7 @@ const de = {
   intro:
     "Ich bin Muhamed Nur Beck, AI Automation Manager und Full-Stack-Entwickler in Frankfurt am Main. Ich automatisiere Geschäftsprozesse mit n8n, binde CRM- und ATS-Systeme an, bringe KI dorthin, wo sie messbar Arbeit abnimmt, und baue Websites, die schnell laden und gefunden werden.",
   portraitAlt: "Muhamed Nur Beck, AI Automation Manager aus Frankfurt am Main",
-  ctaPrimary: "Kostenloses Erstgespräch",
+  ctaPrimary: ANFRAGE_KNOPF,
   // No count: it said "neun" and would have been wrong with the next page.
   ctaSecondary: "Alle Leistungen ansehen",
   ctaSchreiben: "Oder direkt schreiben",

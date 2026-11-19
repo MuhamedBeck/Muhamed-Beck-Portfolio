@@ -200,8 +200,8 @@ const Kontakt = () => {
   return (
     <PageShell
       label="Kontakt"
-      headline="Kostenloses Erstgespräch"
-      intro="30 Minuten, unverbindlich und ohne Kosten. Beschreiben Sie kurz, worum es geht. Sie bekommen eine echte Einschätzung, ob und wie sich das lösen lässt, keine Standardantwort und kein Verkaufsgespräch.">
+      headline="Kostenlose Einschätzung"
+      intro="Schicken Sie mir Ihre Website-Adresse oder beschreiben Sie Ihren Ablauf in ein paar Sätzen. Sie bekommen innerhalb von 24 Stunden per Mail die drei wichtigsten Punkte und einen Preisrahmen. Lieber sprechen? Dann buchen Sie direkt einen Termin.">
       <Section className="!pt-0">
         <div className="grid gap-x-14 gap-y-16 md:grid-cols-[1.25fr_1fr]">
           <div>
@@ -394,8 +394,8 @@ const Kontakt = () => {
                 </SendeKnopf>
 
                 <p className="text-sm text-paper-mute">
-                  Kostenloses Erstgespräch · Antwort innerhalb von 24 Stunden ·
-                  Frankfurt und remote
+                  Kostenlos · Antwort per Mail innerhalb von 24 Stunden · Frankfurt
+                  und remote
                 </p>
                 <p className="text-sm text-paper-mute">
                   Ihre Angaben nutze ich nur, um Ihre Anfrage zu beantworten. Mehr
@@ -456,7 +456,7 @@ const Kontakt = () => {
             </p>
           </div>
           <div>
-            <h2 className="label">Erstgespräch</h2>
+            <h2 className="label">Einschätzung</h2>
             <p className="leading-relaxed text-paper-soft">
               Kostenlos und unverbindlich. Wenn sich das Vorhaben in Ihrem Fall nicht
               rechnet, sage ich das.

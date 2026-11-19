@@ -15,11 +15,24 @@ import { Section, SectionHeader } from "./Section";
  * `kopfzeile` und `fusszeile` (wahlweise) ersetzen Navigation samt Drawer
  * und Fußzeile, für Seiten mit eigenem Rahmen. Ohne beide rendert jede Seite
  * wie bisher; Titelblock, <main> und useRouteMeta bleiben in jedem Fall hier.
+ *
+ * `aktion` (wahlweise) steht direkt unter der Einleitung, in derselben Spalte:
+ * auf dem Handy also vor der Kopfgrafik, am Desktop links neben ihr. Dort
+ * gehören Anfrage-Knopf und Preis hin; unter der Grafik lagen sie auf dem
+ * Handy außerhalb des ersten Bildschirms.
  */
-export const PageShell = ({ label, headline, intro, aside, kopfzeile, fusszeile, children }) => {
+export const PageShell = ({ label, headline, intro, aside, aktion, kopfzeile, fusszeile, children }) => {
   useRouteMeta();
   const [menuOpen, setMenuOpen] = useState(false);
-  const header = <SectionHeader as="h1" label={label} headline={headline} intro={intro} />;
+  const titel = <SectionHeader as="h1" label={label} headline={headline} intro={intro} />;
+  const header = aktion ? (
+    <div>
+      {titel}
+      <div className="mt-6">{aktion}</div>
+    </div>
+  ) : (
+    titel
+  );
 
   return (
     <div className="min-h-[100dvh] text-paper bg-ink">
