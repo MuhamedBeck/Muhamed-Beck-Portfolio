@@ -51,6 +51,27 @@ const HeroBild = ({ data }) => (
   </figure>
 );
 
+/* A figure in the body of the page under its own heading: a chart, a table,
+   a decision tree. Most belong near the top, where the page shows what the
+   service looks like. One marked `vorFragen` answers an objection instead
+   (which tool, which hosting) and sits directly above the questions, so the
+   way from offer to price stays as short as it was. */
+const Abbildung = ({ abbildung }) => (
+  <Section className="!pt-0">
+    <figure className="m-0 border-t border-hairline pt-8">
+      <h2 className="headline-sub max-w-[32ch]">{abbildung.titel}</h2>
+      <div className="mt-8">
+        <Grafik bild={abbildung.bild} />
+      </div>
+      {abbildung.text ? (
+        <figcaption className="mt-4 max-w-[68ch] text-sm leading-relaxed text-paper-mute">
+          {abbildung.text}
+        </figcaption>
+      ) : null}
+    </figure>
+  </Section>
+);
+
 export const LeistungPage = ({ data }) => (
   <PageShell
     label={data.badge}
@@ -79,24 +100,14 @@ export const LeistungPage = ({ data }) => (
       </Section>
     ) : null}
 
-    {/* Figures in the body of the page, each under its own heading: a chart,
-        a table, a decision tree. Until 07.11.2026 a service page could carry
-        a single picture in its header, and everything else was prose. */}
-    {(data.abbildungen ?? []).map((abbildung) => (
-      <Section key={abbildung.titel} className="!pt-0">
-        <figure className="m-0 border-t border-hairline pt-8">
-          <h2 className="headline-sub max-w-[32ch]">{abbildung.titel}</h2>
-          <div className="mt-8">
-            <Grafik bild={abbildung.bild} />
-          </div>
-          {abbildung.text ? (
-            <figcaption className="mt-4 max-w-[68ch] text-sm leading-relaxed text-paper-mute">
-              {abbildung.text}
-            </figcaption>
-          ) : null}
-        </figure>
-      </Section>
-    ))}
+    {/* Figures in the body of the page, each under its own heading. Until
+        07.11.2026 a service page could carry a single picture in its header,
+        and everything else was prose. */}
+    {(data.abbildungen ?? [])
+      .filter((abbildung) => !abbildung.vorFragen)
+      .map((abbildung) => (
+        <Abbildung key={abbildung.titel} abbildung={abbildung} />
+      ))}
 
     <Section className="!pt-0">
       <h2 className="label">Leistungen im Überblick</h2>
@@ -204,6 +215,12 @@ export const LeistungPage = ({ data }) => (
         der Fallstudie, aber nicht auf der Seite, die Websites verkauft. Ohne
         freigegebene Stimme zum Projekt rendert die Komponente nichts. */}
     <Stimmen projekt={data.caseStudy.link} />
+
+    {(data.abbildungen ?? [])
+      .filter((abbildung) => abbildung.vorFragen)
+      .map((abbildung) => (
+        <Abbildung key={abbildung.titel} abbildung={abbildung} />
+      ))}
 
     {/* Visible text and the FAQPage JSON-LD read from this same array, so the
         two can never disagree.

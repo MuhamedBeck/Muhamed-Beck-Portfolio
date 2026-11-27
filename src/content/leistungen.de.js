@@ -7,8 +7,11 @@ import { WEBSITE_AUF_ARABISCH } from "./dolmetscher.verweise.js";
 import { FESTPREIS, RATE_MAX, RATE_MIN, UST_HINWEIS, UST_KURZ, euro } from "./site.js";
 import {
   ENTSCHEIDUNG_GEO,
+  ENTSCHEIDUNG_HOSTING,
   ENTSCHEIDUNG_KI,
   ENTSCHEIDUNG_WEBSITE,
+  ENTSCHEIDUNG_WERKZEUG,
+  N8N_CLOUD_AB,
   WORKFLOW_BEWERBUNG,
   WORKFLOW_HUBSPOT,
   WORKFLOW_LEBENSLAUF,
@@ -112,14 +115,14 @@ export const LEISTUNGEN = [
     },
     teaser:
       "Workflows, die CRM, ATS, E-Mail und interne Tools verbinden, mit Monitoring und Fehlerbehandlung statt Bastellösung.",
-    /* "Experte und Spezialist" statt "Berater und Entwickler": So wird
-       gesucht. Search Console bis 13.10.2026: "n8n spezialist" 98 und
-       "n8n experte" 23 Impressionen, "n8n berater" 3. "Freelancer" trägt die
-       Startseite im Titel, damit die beiden nicht um dieselbe Anfrage
-       konkurrieren. */
-    h1: "n8n Experte und Spezialist für Workflow-Automatisierung",
+    /* So wird gesucht: "n8n Freelancer" steht seit dem 27.11.2026 vorn in
+       Titel, Überschrift und Beschreibung, "Experte" und "Spezialist" bleiben
+       im Titel und im Label. Dieselbe Überschrift ist der Linktext, mit dem
+       die Ratgeber und die Österreich-Seite hierher zeigen.
+       tests/n8n-freelancer-seite.test.js hält das fest. */
+    h1: "n8n Freelancer und Experte für Workflow-Automatisierung",
     intro:
-      "Ich berate und baue als n8n Experte: erst die Frage, welcher Ablauf sich lohnt, dann die Workflow-Automatisierung mit n8n und Zapier, die Ihre Tools verbindet. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse, nicht nur in Demos. Wer berät, baut auch selbst, bis zur Übergabe.",
+      "Als n8n Freelancer berate und baue ich selbst: erst die Frage, welcher Ablauf sich lohnt, dann die Workflow-Automatisierung mit n8n und Zapier, die Ihre Tools verbindet. Als AI Automation Manager automatisiere ich täglich Recruiting- und Vertriebsprozesse, nicht nur in Demos. Wer berät, baut auch, bis zur Übergabe.",
     /* Der Satz zur Reichweite steht hier und nicht nur im Service-Schema.
        areaServed nennt seit jeher Deutschland, Österreich und die Schweiz,
        im sichtbaren Text stand dagegen ausschließlich Frankfurt. Die Search
@@ -141,8 +144,28 @@ export const LEISTUNGEN = [
         text: "GPT-Modelle übernehmen Klassifizierung, Anreicherung und Texterstellung direkt im Workflow.",
       },
     ],
+    /* Werkzeugwahl und Betrieb als Bild: dieselben Entscheidungsbäume wie in
+       den Ratgebern zum Vergleich und zu den Kosten, damit Leistungsseite und
+       Ratgeber dasselbe sagen. Der Cloud-Preis kommt aus N8N_CLOUD_AB. Mit
+       vorFragen stehen sie direkt über den Fragen (LeistungPage), nicht
+       zwischen Ablauf und Leistungsliste. */
+    abbildungen: [
+      {
+        titel: "n8n, Make oder Zapier: welches Werkzeug passt?",
+        bild: { art: "workflow", workflow: ENTSCHEIDUNG_WERKZEUG },
+        vorFragen: true,
+        text: "Vereinfacht. Der wichtigste Unterschied ist die Abrechnung: n8n zählt eine Workflow-Ausführung, Make jede einzelne Operation darin, und nur n8n lässt sich selbst hosten. Wo Zapier oder Make reichen, sage ich das auch.",
+      },
+      {
+        titel: "n8n Cloud oder selbst hosten?",
+        bild: { art: "workflow", workflow: ENTSCHEIDUNG_HOSTING },
+        vorFragen: true,
+        text: `Für die meisten kleinen Unternehmen ist n8n Cloud ab ${N8N_CLOUD_AB}\u00A0€ im Monat die einfachere Wahl. Selbst gehostet bleiben die Daten im eigenen Haus; dann braucht es jemanden für Updates und Sicherungen. Beides richte ich ein.`,
+      },
+    ],
     leistungen: [
       "Entwicklung individueller n8n-Workflows (self-hosted oder Cloud)",
+      "n8n einrichten: Cloud oder selbst gehostet mit Docker, Updates und Sicherung",
       "Zapier-Automatisierungen und Migration bestehender Zaps zu n8n",
       "API-Anbindungen und Webhooks (REST, OAuth2/JWT)",
       "CRM- und ATS-Automatisierung (HubSpot, RecruitCRM, Personio)",
@@ -177,12 +200,24 @@ export const LEISTUNGEN = [
     },
     faq: [
       {
-        q: "Was kostet eine n8n-Automatisierung?",
-        a: `Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€ nach Absprache und je nach Projektumfang. Kleine Workflows sind oft in wenigen Stunden umgesetzt, komplexe Integrationen mit mehreren Systemen kalkuliere ich nach einem kostenlosen Erstgespräch transparent als Fest- oder Stundenpreis.`,
+        q: "Was kostet ein n8n Freelancer?",
+        a: `In Deutschland zwischen 75 und 147\u00A0€ pro Stunde (freelancermap, Stand August 2026). Mein Stundensatz liegt bei ${RATE_MIN} bis ${RATE_MAX}\u00A0€ nach Absprache und je nach Projektumfang. Kleine Workflows sind oft in wenigen Stunden umgesetzt, komplexe Integrationen mit mehreren Systemen kalkuliere ich nach einem kostenlosen Erstgespräch transparent als Fest- oder Stundenpreis. Als Einstieg gibt es einen Workflow als Pilot zum Festpreis von ${euro(FESTPREIS.pilot)}.`,
+      },
+      {
+        q: "n8n Freelancer oder n8n Agentur: was passt besser?",
+        a: "Für einzelne Prozesse und mittlere Projektgrößen ist ein Freelancer meist günstiger und schneller, weil keine Zwischenebene mitfinanziert wird und die Person, die berät, auch die ist, die baut. Eine Agentur lohnt sich, wenn mehrere Gewerke parallel laufen müssen oder eine vertragliche Verfügbarkeitsgarantie über Jahre gefordert ist. Bei mir sprechen Sie von der ersten Einschätzung bis zur Übergabe mit derselben Person.",
+      },
+      {
+        q: "Was ist n8n?",
+        a: "n8n ist ein Werkzeug für Workflow-Automatisierung: Ein Auslöser, etwa ein Formular, eine E-Mail oder ein Zeitplan, startet einen Ablauf, und die Schritte darin, die Nodes, lesen, prüfen und schreiben Daten in Ihre Programme. Es gibt n8n als Cloud-Dienst und als Community Edition zum Selbsthosten, die für eigene interne Geschäftszwecke ohne Lizenzgebühr genutzt werden darf (Sustainable Use License). Gezählt wird je Ausführung eines ganzen Workflows, nicht je Einzelschritt.",
       },
       {
         q: "n8n oder Zapier: was passt besser zu meinem Unternehmen?",
         a: "Zapier ist schnell eingerichtet und gut für einfache Standard-Verknüpfungen. n8n kann komplexere Logik, ist bei vielen Ausführungen deutlich günstiger und lässt sich self-hosted betreiben, womit Daten in Ihrer Infrastruktur bleiben. Das ist besonders für DSGVO-sensible Prozesse relevant. Ich arbeite täglich mit beiden und berate Sie ehrlich, welches Tool passt.",
+      },
+      {
+        q: "Können Sie bestehende Zapier-Automatisierungen zu n8n umziehen?",
+        a: "Ja, das gehört zu den Leistungen. Ich nehme die bestehenden Zaps auf, baue sie in n8n nach, teste sie mit echten Daten und stelle erst dann um. Das lohnt sich vor allem bei vielen Ausführungen oder wenn die Daten in der eigenen Infrastruktur bleiben sollen.",
       },
       {
         q: "Wie lange dauert ein typisches Automatisierungsprojekt?",
@@ -193,6 +228,14 @@ export const LEISTUNGEN = [
         a: "Ja. Ich habe unter anderem HubSpot, RecruitCRM und Personio über REST-APIs, Webhooks und OAuth2 angebunden, inklusive Rate-Limit- und Retry-Strategien für einen stabilen Datenaustausch.",
       },
       {
+        q: "Kann unser Team die Workflows später selbst anpassen?",
+        a: "Ja. Die Workflows laufen in Ihrer eigenen n8n-Instanz, Konten und Zugänge auf Ihren Namen, und zur Übergabe gehört eine Dokumentation. Wer n8n bedienen kann, ändert einen Schritt selbst; größere Umbauten übernehme ich nach Absprache.",
+      },
+      {
+        q: "Was passiert, wenn ein Workflow ausfällt?",
+        a: "Jeder Workflow bekommt eine Fehlerbehandlung mit Benachrichtigung: Schlägt ein Schritt fehl, wird er wiederholt, und bleibt der Fehler, wird er gemeldet, statt dass Daten unbemerkt liegen bleiben. Im Pilot sind 30 Tage Fehlerbehebung nach der Abnahme enthalten, danach betreue ich Workflows nach Absprache weiter.",
+      },
+      {
         q: "Übernehmen Sie auch Wartung und Weiterentwicklung?",
         a: "Ja, nach Absprache betreue ich Workflows auch nach der Übergabe, überwache sie und entwickle sie weiter, wenn sich Ihre Prozesse ändern.",
       },
@@ -201,7 +244,7 @@ export const LEISTUNGEN = [
         a: "Beides. Ich sitze in Frankfurt am Main und arbeite im Rhein-Main-Gebiet auch gerne vor Ort, ansonsten remote in ganz Deutschland, Österreich und der Schweiz.",
       },
       {
-        q: "Arbeiten Sie auch für Unternehmen in Österreich und der Schweiz?",
+        q: "Arbeiten Sie als n8n Freelancer auch für Unternehmen in Österreich und der Schweiz?",
         a: "Ja. Automatisierungsprojekte laufen ohnehin fast vollständig remote: Abstimmung per Video, Zugriff auf die Systeme über die üblichen Freigaben, Übergabe dokumentiert. Mein Standort ist Frankfurt am Main, die Zeitzone ist dieselbe, und Anfragen beantworte ich innerhalb von 24 Stunden. Vor Ort komme ich im Rhein-Main-Gebiet, für Termine in Wien oder Zürich klären wir Aufwand und Reise vorher.",
       },
       {
@@ -1778,7 +1821,7 @@ export const LEISTUNGEN = [
     weiterlesen: [
       {
         path: "/leistungen/n8n-automatisierung",
-        label: "n8n Experte und Spezialist für Workflow-Automatisierung",
+        label: "n8n Freelancer und Experte für Workflow-Automatisierung",
       },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },

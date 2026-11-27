@@ -69,7 +69,7 @@ test("Ratgeber: Angebotszeile mit Links auf vorhandene Seiten", async () => {
     "/ratgeber/n8n-kosten",
     "/kontakt?leistung=n8n-automatisierung",
   ]);
-  assert.equal(links[0].label, "n8n Spezialist in Frankfurt");
+  assert.equal(links[0].label, "n8n Freelancer aus Frankfurt");
   assert.ok(links[1].label.startsWith("n8n Kosten"), links[1].label);
   assert.equal(links[2].label, ANFRAGE_KNOPF);
 });

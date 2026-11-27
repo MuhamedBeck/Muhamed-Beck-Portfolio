@@ -132,7 +132,7 @@ export const RATGEBER = [
       },
     ],
     related: [
-      { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Freelancer und Experte für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-kosten", label: "n8n Kosten und Preise: Lizenz, Betrieb und Umsetzung" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       {
@@ -144,7 +144,7 @@ export const RATGEBER = [
     angebot: {
       text: `Mein Einstieg: ein Workflow als Pilot zum Festpreis von ${euro(FESTPREIS.pilot)}.`,
       links: [
-        { to: "/leistungen/n8n-automatisierung", label: "n8n Spezialist in Frankfurt" },
+        { to: "/leistungen/n8n-automatisierung", label: "n8n Freelancer aus Frankfurt" },
         { to: "/ratgeber/n8n-kosten", label: "n8n Kosten für Lizenz und Betrieb" },
         { to: "/kontakt?leistung=n8n-automatisierung", label: ANFRAGE_KNOPF },
       ],
@@ -296,7 +296,7 @@ export const RATGEBER = [
       },
     ],
     related: [
-      { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Freelancer und Experte für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-selbst-hosten", label: "n8n selbst hosten: Docker, Server und Kosten" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
@@ -305,7 +305,7 @@ export const RATGEBER = [
     angebot: {
       text: `Ich setze n8n für Unternehmen um; ein erster Workflow kostet als Pilot ${euro(FESTPREIS.pilot)} zum Festpreis.`,
       links: [
-        { to: "/leistungen/n8n-automatisierung", label: "n8n Spezialist in Frankfurt" },
+        { to: "/leistungen/n8n-automatisierung", label: "n8n Freelancer aus Frankfurt" },
         { to: "/kontakt?leistung=n8n-automatisierung", label: ANFRAGE_KNOPF },
       ],
     },
@@ -483,7 +483,7 @@ export const RATGEBER = [
       },
     ],
     related: [
-      { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Freelancer und Experte für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-kosten", label: "n8n Kosten und Preise: Lizenz, Betrieb und Umsetzung" },
       { path: "/ratgeber/n8n-vs-make-vs-zapier", label: "n8n, Make und Zapier im Vergleich" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
@@ -958,7 +958,7 @@ export const RATGEBER = [
       },
     ],
     related: [
-      { path: "/leistungen/n8n-automatisierung", label: "n8n Experte und Spezialist für Workflow-Automatisierung" },
+      { path: "/leistungen/n8n-automatisierung", label: "n8n Freelancer und Experte für Workflow-Automatisierung" },
       { path: "/ratgeber/n8n-freelancer-kosten", label: "Was kostet ein n8n Freelancer?" },
       { path: "/leistungen/ki-agenten-entwicklung", label: "KI-Agenten entwickeln lassen" },
     ],

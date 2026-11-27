@@ -77,7 +77,7 @@ const de = {
     label: "Häufige Fragen",
     headline: "Was Auftraggeber am häufigsten fragen",
     // The link goes to the n8n service page, so the label says that, not "Ratgeber".
-    all: "Ausführliche Antworten zur n8n-Automatisierung",
+    all: "Ausführliche Antworten zum n8n Freelancer",
     items: [
       {
         q: "Was kostet ein n8n Freelancer?",
